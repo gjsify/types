@@ -35,22 +35,14 @@ export namespace Bump {
         interface SignalSignatures extends Gee.PriorityQueue.SignalSignatures {
             'consumer-shortage': ConsumerShortage;
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::waiting-threads': GObject.Object.Notify;
             'notify::waiting-threads': GObject.Object.Notify;
             'notify::capacity': GObject.Object.Notify;
             'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::is-full': GObject.Object.Notify;
             'notify::is-full': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
         }
 
@@ -130,10 +122,7 @@ export namespace Bump {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::active': GObject.Object.Notify;
             'notify::time-acquired': GObject.Object.Notify;
-            'notify::time-acquired': GObject.Object.Notify;
             'notify::time-released': GObject.Object.Notify;
-            'notify::time-released': GObject.Object.Notify;
-            'notify::duration-held': GObject.Object.Notify;
             'notify::duration-held': GObject.Object.Notify;
         }
 
@@ -679,13 +668,9 @@ export namespace Bump {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::t-type': GObject.Object.Notify;
-            'notify::t-type': GObject.Object.Notify;
             'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
             'notify::t-destroy-func': GObject.Object.Notify;
             'notify::pool': GObject.Object.Notify;
-            'notify::auto-reset': GObject.Object.Notify;
             'notify::auto-reset': GObject.Object.Notify;
             'notify::triggered': GObject.Object.Notify;
         }
@@ -829,10 +814,7 @@ export namespace Bump {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
         }
 
@@ -962,20 +944,13 @@ export namespace Bump {
         // Signal signatures
         interface SignalSignatures extends Factory.SignalSignatures {
             'notify::t-type': GObject.Object.Notify;
-            'notify::t-type': GObject.Object.Notify;
             'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
             'notify::t-destroy-func': GObject.Object.Notify;
             'notify::pool': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::is-initialized': GObject.Object.Notify;
-            'notify::is-initialized': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
             'notify::g-type': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
         }
 
@@ -1042,19 +1017,13 @@ export namespace Bump {
         // Signal signatures
         interface SignalSignatures extends Claim.SignalSignatures {
             'notify::t-type': GObject.Object.Notify;
-            'notify::t-type': GObject.Object.Notify;
             'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
             'notify::t-destroy-func': GObject.Object.Notify;
             'notify::pool': GObject.Object.Notify;
             'notify::resource': GObject.Object.Notify;
             'notify::active': GObject.Object.Notify;
             'notify::time-acquired': GObject.Object.Notify;
-            'notify::time-acquired': GObject.Object.Notify;
             'notify::time-released': GObject.Object.Notify;
-            'notify::time-released': GObject.Object.Notify;
-            'notify::duration-held': GObject.Object.Notify;
             'notify::duration-held': GObject.Object.Notify;
         }
 
@@ -1125,27 +1094,16 @@ export namespace Bump {
         // Signal signatures
         interface SignalSignatures extends Factory.SignalSignatures {
             'notify::t-type': GObject.Object.Notify;
-            'notify::t-type': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
             'notify::t-dup-func': GObject.Object.Notify;
             'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::max-resources': GObject.Object.Notify;
             'notify::max-resources': GObject.Object.Notify;
             'notify::max-idle-time': GObject.Object.Notify;
-            'notify::max-idle-time': GObject.Object.Notify;
-            'notify::num-resources': GObject.Object.Notify;
             'notify::num-resources': GObject.Object.Notify;
             'notify::idle-resources': GObject.Object.Notify;
-            'notify::idle-resources': GObject.Object.Notify;
-            'notify::active-resources': GObject.Object.Notify;
             'notify::active-resources': GObject.Object.Notify;
             'notify::pool': GObject.Object.Notify;
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
         }
 
@@ -1323,7 +1281,6 @@ export namespace Bump {
         // Signal signatures
         interface SignalSignatures extends TaskQueue.SignalSignatures {
             'notify::max-claims': GObject.Object.Notify;
-            'notify::max-claims': GObject.Object.Notify;
             'notify::claims': GObject.Object.Notify;
             'notify::pool': GObject.Object.Notify;
         }
@@ -1417,10 +1374,7 @@ export namespace Bump {
             'notify::semaphore': GObject.Object.Notify;
             'notify::active': GObject.Object.Notify;
             'notify::time-acquired': GObject.Object.Notify;
-            'notify::time-acquired': GObject.Object.Notify;
             'notify::time-released': GObject.Object.Notify;
-            'notify::time-released': GObject.Object.Notify;
-            'notify::duration-held': GObject.Object.Notify;
             'notify::duration-held': GObject.Object.Notify;
         }
 

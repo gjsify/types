@@ -36,11 +36,8 @@ export namespace GUPnPDLNA {
         interface SignalSignatures extends GstPbutils.Discoverer.SignalSignatures {
             done: Done;
             'notify::extended-mode': GObject.Object.Notify;
-            'notify::extended-mode': GObject.Object.Notify;
-            'notify::relaxed-mode': GObject.Object.Notify;
             'notify::relaxed-mode': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
-            'notify::use-cache': GObject.Object.Notify;
             'notify::use-cache': GObject.Object.Notify;
         }
 
@@ -195,7 +192,6 @@ export namespace GUPnPDLNA {
     namespace Profile {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::encoding-profile': GObject.Object.Notify;
             'notify::encoding-profile': GObject.Object.Notify;
             'notify::extended': GObject.Object.Notify;
             'notify::mime': GObject.Object.Notify;

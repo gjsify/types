@@ -134,10 +134,7 @@ export namespace GnomeBG {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::file': GObject.Object.Notify;
             'notify::has-multiple-sizes': GObject.Object.Notify;
-            'notify::has-multiple-sizes': GObject.Object.Notify;
             'notify::start-time': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
-            'notify::total-duration': GObject.Object.Notify;
             'notify::total-duration': GObject.Object.Notify;
         }
 

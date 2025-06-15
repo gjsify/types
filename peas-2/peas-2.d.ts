@@ -73,8 +73,6 @@ export namespace Peas {
             'load-plugin': LoadPlugin;
             'unload-plugin': UnloadPlugin;
             'notify::loaded-plugins': GObject.Object.Notify;
-            'notify::loaded-plugins': GObject.Object.Notify;
-            'notify::nonglobal-loaders': GObject.Object.Notify;
             'notify::nonglobal-loaders': GObject.Object.Notify;
         }
 
@@ -868,8 +866,6 @@ export namespace Peas {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::data-dir': GObject.Object.Notify;
-            'notify::data-dir': GObject.Object.Notify;
-            'notify::plugin-info': GObject.Object.Notify;
             'notify::plugin-info': GObject.Object.Notify;
         }
 
@@ -980,9 +976,7 @@ export namespace Peas {
             'extension-added': ExtensionAdded;
             'extension-removed': ExtensionRemoved;
             'notify::construct-properties': GObject.Object.Notify;
-            'notify::construct-properties': GObject.Object.Notify;
             'notify::engine': GObject.Object.Notify;
-            'notify::extension-type': GObject.Object.Notify;
             'notify::extension-type': GObject.Object.Notify;
         }
 
@@ -1650,8 +1644,6 @@ export namespace Peas {
         // Signal signatures
         interface SignalSignatures extends GObject.TypeModule.SignalSignatures {
             'notify::local-linkage': GObject.Object.Notify;
-            'notify::local-linkage': GObject.Object.Notify;
-            'notify::module-name': GObject.Object.Notify;
             'notify::module-name': GObject.Object.Notify;
             'notify::path': GObject.Object.Notify;
             'notify::resident': GObject.Object.Notify;
@@ -2231,14 +2223,10 @@ export namespace Peas {
             'notify::dependencies': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::help-uri': GObject.Object.Notify;
-            'notify::help-uri': GObject.Object.Notify;
             'notify::hidden': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
             'notify::loaded': GObject.Object.Notify;
             'notify::module-dir': GObject.Object.Notify;
-            'notify::module-dir': GObject.Object.Notify;
-            'notify::module-name': GObject.Object.Notify;
             'notify::module-name': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::version': GObject.Object.Notify;

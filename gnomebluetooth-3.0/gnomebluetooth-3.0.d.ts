@@ -238,18 +238,11 @@ export namespace GnomeBluetooth {
             'device-added': DeviceAdded;
             'device-removed': DeviceRemoved;
             'notify::default-adapter': GObject.Object.Notify;
-            'notify::default-adapter': GObject.Object.Notify;
-            'notify::default-adapter-address': GObject.Object.Notify;
             'notify::default-adapter-address': GObject.Object.Notify;
             'notify::default-adapter-name': GObject.Object.Notify;
-            'notify::default-adapter-name': GObject.Object.Notify;
-            'notify::default-adapter-powered': GObject.Object.Notify;
             'notify::default-adapter-powered': GObject.Object.Notify;
             'notify::default-adapter-setup-mode': GObject.Object.Notify;
-            'notify::default-adapter-setup-mode': GObject.Object.Notify;
             'notify::default-adapter-state': GObject.Object.Notify;
-            'notify::default-adapter-state': GObject.Object.Notify;
-            'notify::num-adapters': GObject.Object.Notify;
             'notify::num-adapters': GObject.Object.Notify;
         }
 
@@ -453,15 +446,11 @@ export namespace GnomeBluetooth {
             'notify::address': GObject.Object.Notify;
             'notify::alias': GObject.Object.Notify;
             'notify::battery-level': GObject.Object.Notify;
-            'notify::battery-level': GObject.Object.Notify;
             'notify::battery-percentage': GObject.Object.Notify;
-            'notify::battery-percentage': GObject.Object.Notify;
-            'notify::battery-type': GObject.Object.Notify;
             'notify::battery-type': GObject.Object.Notify;
             'notify::connectable': GObject.Object.Notify;
             'notify::connected': GObject.Object.Notify;
             'notify::icon': GObject.Object.Notify;
-            'notify::legacy-pairing': GObject.Object.Notify;
             'notify::legacy-pairing': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::paired': GObject.Object.Notify;

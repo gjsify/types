@@ -75,7 +75,6 @@ export namespace Plasma {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::gpu-device': GObject.Object.Notify;
-            'notify::gpu-device': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -131,7 +130,6 @@ export namespace Plasma {
     namespace ClientOptions {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::n-retries': GObject.Object.Notify;
             'notify::n-retries': GObject.Object.Notify;
         }
 
@@ -191,12 +189,9 @@ export namespace Plasma {
             'notify::client': GObject.Object.Notify;
             'notify::data': GObject.Object.Notify;
             'notify::gpu-device': GObject.Object.Notify;
-            'notify::gpu-device': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::metadata': GObject.Object.Notify;
             'notify::raw-data': GObject.Object.Notify;
-            'notify::raw-data': GObject.Object.Notify;
-            'notify::raw-metadata': GObject.Object.Notify;
             'notify::raw-metadata': GObject.Object.Notify;
         }
 
@@ -254,12 +249,9 @@ export namespace Plasma {
             'notify::client': GObject.Object.Notify;
             'notify::data': GObject.Object.Notify;
             'notify::gpu-device': GObject.Object.Notify;
-            'notify::gpu-device': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::metadata': GObject.Object.Notify;
             'notify::raw-data': GObject.Object.Notify;
-            'notify::raw-data': GObject.Object.Notify;
-            'notify::raw-metadata': GObject.Object.Notify;
             'notify::raw-metadata': GObject.Object.Notify;
         }
 
@@ -361,12 +353,9 @@ export namespace Plasma {
             'notify::client': GObject.Object.Notify;
             'notify::data': GObject.Object.Notify;
             'notify::gpu-device': GObject.Object.Notify;
-            'notify::gpu-device': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::metadata': GObject.Object.Notify;
             'notify::raw-data': GObject.Object.Notify;
-            'notify::raw-data': GObject.Object.Notify;
-            'notify::raw-metadata': GObject.Object.Notify;
             'notify::raw-metadata': GObject.Object.Notify;
         }
 

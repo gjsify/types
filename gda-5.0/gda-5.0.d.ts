@@ -2458,8 +2458,6 @@ export namespace Gda {
             'dsn-removed': DsnRemoved;
             'dsn-to-be-removed': DsnToBeRemoved;
             'notify::system-filename': GObject.Object.Notify;
-            'notify::system-filename': GObject.Object.Notify;
-            'notify::user-filename': GObject.Object.Notify;
             'notify::user-filename': GObject.Object.Notify;
         }
 
@@ -2663,24 +2661,15 @@ export namespace Gda {
             error: Error;
             'transaction-status-changed': TransactionStatusChanged;
             'notify::auth-string': GObject.Object.Notify;
-            'notify::auth-string': GObject.Object.Notify;
-            'notify::cnc-string': GObject.Object.Notify;
             'notify::cnc-string': GObject.Object.Notify;
             'notify::dsn': GObject.Object.Notify;
             'notify::events-history-size': GObject.Object.Notify;
-            'notify::events-history-size': GObject.Object.Notify;
-            'notify::execution-slowdown': GObject.Object.Notify;
             'notify::execution-slowdown': GObject.Object.Notify;
             'notify::execution-timer': GObject.Object.Notify;
-            'notify::execution-timer': GObject.Object.Notify;
-            'notify::is-wrapper': GObject.Object.Notify;
             'notify::is-wrapper': GObject.Object.Notify;
             'notify::meta-store': GObject.Object.Notify;
-            'notify::meta-store': GObject.Object.Notify;
-            'notify::monitor-wrapped-in-mainloop': GObject.Object.Notify;
             'notify::monitor-wrapped-in-mainloop': GObject.Object.Notify;
             'notify::provider': GObject.Object.Notify;
-            'notify::thread-owner': GObject.Object.Notify;
             'notify::thread-owner': GObject.Object.Notify;
         }
 
@@ -5356,8 +5345,6 @@ export namespace Gda {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'diff-computed': DiffComputed;
             'notify::new-model': GObject.Object.Notify;
-            'notify::new-model': GObject.Object.Notify;
-            'notify::old-model': GObject.Object.Notify;
             'notify::old-model': GObject.Object.Notify;
         }
 
@@ -5457,8 +5444,6 @@ export namespace Gda {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::n-columns': GObject.Object.Notify;
-            'notify::n-columns': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -7839,13 +7824,10 @@ export namespace Gda {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::data-string': GObject.Object.Notify;
-            'notify::data-string': GObject.Object.Notify;
             'notify::filename': GObject.Object.Notify;
             'notify::options': GObject.Object.Notify;
             'notify::random-access': GObject.Object.Notify;
-            'notify::random-access': GObject.Object.Notify;
             'notify::strict': GObject.Object.Notify;
-            'notify::xml-node': GObject.Object.Notify;
             'notify::xml-node': GObject.Object.Notify;
         }
 
@@ -9118,18 +9100,13 @@ export namespace Gda {
             'end-of-data': EndOfData;
             'row-changed': RowChanged;
             'notify::current-row': GObject.Object.Notify;
-            'notify::current-row': GObject.Object.Notify;
-            'notify::data-model': GObject.Object.Notify;
             'notify::data-model': GObject.Object.Notify;
             'notify::forced-model': GObject.Object.Notify;
-            'notify::forced-model': GObject.Object.Notify;
-            'notify::update-model': GObject.Object.Notify;
             'notify::update-model': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::holders': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
-            'notify::validate-changes': GObject.Object.Notify;
             'notify::validate-changes': GObject.Object.Notify;
         }
 
@@ -11790,13 +11767,9 @@ export namespace Gda {
             'sample-size-changed': SampleSizeChanged;
             'validate-row-changes': ValidateRowChanges;
             'notify::cache-changes': GObject.Object.Notify;
-            'notify::cache-changes': GObject.Object.Notify;
-            'notify::defer-sync': GObject.Object.Notify;
             'notify::defer-sync': GObject.Object.Notify;
             'notify::model': GObject.Object.Notify;
             'notify::prepend-null-entry': GObject.Object.Notify;
-            'notify::prepend-null-entry': GObject.Object.Notify;
-            'notify::sample-size': GObject.Object.Notify;
             'notify::sample-size': GObject.Object.Notify;
         }
 
@@ -13212,25 +13185,15 @@ export namespace Gda {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::auto-reset': GObject.Object.Notify;
-            'notify::auto-reset': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::delete-stmt': GObject.Object.Notify;
-            'notify::delete-stmt': GObject.Object.Notify;
-            'notify::exec-params': GObject.Object.Notify;
             'notify::exec-params': GObject.Object.Notify;
             'notify::execution-delay': GObject.Object.Notify;
-            'notify::execution-delay': GObject.Object.Notify;
-            'notify::insert-stmt': GObject.Object.Notify;
             'notify::insert-stmt': GObject.Object.Notify;
             'notify::model-usage': GObject.Object.Notify;
-            'notify::model-usage': GObject.Object.Notify;
-            'notify::prepared-stmt': GObject.Object.Notify;
             'notify::prepared-stmt': GObject.Object.Notify;
             'notify::select-stmt': GObject.Object.Notify;
-            'notify::select-stmt': GObject.Object.Notify;
             'notify::store-all-rows': GObject.Object.Notify;
-            'notify::store-all-rows': GObject.Object.Notify;
-            'notify::update-stmt': GObject.Object.Notify;
             'notify::update-stmt': GObject.Object.Notify;
         }
 
@@ -18415,20 +18378,13 @@ export namespace Gda {
             'validate-change': ValidateChange;
             'notify::description': GObject.Object.Notify;
             'notify::full-bind': GObject.Object.Notify;
-            'notify::full-bind': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
             'notify::g-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::not-null': GObject.Object.Notify;
-            'notify::not-null': GObject.Object.Notify;
-            'notify::simple-bind': GObject.Object.Notify;
             'notify::simple-bind': GObject.Object.Notify;
             'notify::source-column': GObject.Object.Notify;
-            'notify::source-column': GObject.Object.Notify;
             'notify::source-model': GObject.Object.Notify;
-            'notify::source-model': GObject.Object.Notify;
-            'notify::validate-changes': GObject.Object.Notify;
             'notify::validate-changes': GObject.Object.Notify;
         }
 
@@ -19283,7 +19239,6 @@ export namespace Gda {
             'notify::catalog': GObject.Object.Notify;
             'notify::cnc': GObject.Object.Notify;
             'notify::cnc-string': GObject.Object.Notify;
-            'notify::cnc-string': GObject.Object.Notify;
             'notify::schema': GObject.Object.Notify;
         }
 
@@ -19621,7 +19576,6 @@ export namespace Gda {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::features': GObject.Object.Notify;
             'notify::meta-store': GObject.Object.Notify;
-            'notify::meta-store': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -19933,7 +19887,6 @@ export namespace Gda {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::nb-values': GObject.Object.Notify;
-            'notify::nb-values': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -20036,9 +19989,7 @@ export namespace Gda {
             'sequence-item-remove': SequenceItemRemove;
             'notify::connection': GObject.Object.Notify;
             'notify::op-type': GObject.Object.Notify;
-            'notify::op-type': GObject.Object.Notify;
             'notify::provider': GObject.Object.Notify;
-            'notify::spec-filename': GObject.Object.Notify;
             'notify::spec-filename': GObject.Object.Notify;
         }
 
@@ -20672,7 +20623,6 @@ export namespace Gda {
             'notify::id': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::validate-changes': GObject.Object.Notify;
-            'notify::validate-changes': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -21192,11 +21142,8 @@ export namespace Gda {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::column-error': GObject.Object.Notify;
-            'notify::column-error': GObject.Object.Notify;
-            'notify::line-error': GObject.Object.Notify;
             'notify::line-error': GObject.Object.Notify;
             'notify::mode': GObject.Object.Notify;
-            'notify::tokenizer-flavour': GObject.Object.Notify;
             'notify::tokenizer-flavour': GObject.Object.Notify;
         }
 
@@ -22219,7 +22166,6 @@ export namespace Gda {
             'node-has-child-toggled': NodeHasChildToggled;
             'node-inserted': NodeInserted;
             'notify::is-list': GObject.Object.Notify;
-            'notify::is-list': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -22466,9 +22412,7 @@ export namespace Gda {
         interface SignalSignatures extends TreeManager.SignalSignatures {
             'notify::connection': GObject.Object.Notify;
             'notify::meta-store': GObject.Object.Notify;
-            'notify::meta-store': GObject.Object.Notify;
             'notify::schema': GObject.Object.Notify;
-            'notify::table-name': GObject.Object.Notify;
             'notify::table-name': GObject.Object.Notify;
             'notify::func': GObject.Object.Notify;
             'notify::recursive': GObject.Object.Notify;
@@ -22666,7 +22610,6 @@ export namespace Gda {
         interface SignalSignatures extends TreeManager.SignalSignatures {
             'notify::connection': GObject.Object.Notify;
             'notify::meta-store': GObject.Object.Notify;
-            'notify::meta-store': GObject.Object.Notify;
             'notify::func': GObject.Object.Notify;
             'notify::recursive': GObject.Object.Notify;
         }
@@ -22797,7 +22740,6 @@ export namespace Gda {
         // Signal signatures
         interface SignalSignatures extends TreeManager.SignalSignatures {
             'notify::connection': GObject.Object.Notify;
-            'notify::meta-store': GObject.Object.Notify;
             'notify::meta-store': GObject.Object.Notify;
             'notify::schema': GObject.Object.Notify;
             'notify::func': GObject.Object.Notify;
@@ -23056,8 +22998,6 @@ export namespace Gda {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::format-id': GObject.Object.Notify;
-            'notify::format-id': GObject.Object.Notify;
-            'notify::transaction-id': GObject.Object.Notify;
             'notify::transaction-id': GObject.Object.Notify;
         }
 

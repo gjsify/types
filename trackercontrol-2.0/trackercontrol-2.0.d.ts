@@ -76,8 +76,6 @@ export namespace TrackerControl {
             'miner-progress': MinerProgress;
             'miner-resumed': MinerResumed;
             'notify::auto-start': GObject.Object.Notify;
-            'notify::auto-start': GObject.Object.Notify;
-            'notify::domain-ontology': GObject.Object.Notify;
             'notify::domain-ontology': GObject.Object.Notify;
         }
 

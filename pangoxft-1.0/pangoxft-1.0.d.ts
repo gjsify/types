@@ -225,8 +225,6 @@ export namespace PangoXft {
         // Signal signatures
         interface SignalSignatures extends PangoFc.FontMap.SignalSignatures {
             'notify::item-type': GObject.Object.Notify;
-            'notify::item-type': GObject.Object.Notify;
-            'notify::n-items': GObject.Object.Notify;
             'notify::n-items': GObject.Object.Notify;
         }
 

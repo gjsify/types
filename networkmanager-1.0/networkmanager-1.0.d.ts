@@ -4322,45 +4322,26 @@ export namespace NetworkManager {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::anonymous-identity': GObject.Object.Notify;
-            'notify::anonymous-identity': GObject.Object.Notify;
-            'notify::ca-path': GObject.Object.Notify;
             'notify::ca-path': GObject.Object.Notify;
             'notify::identity': GObject.Object.Notify;
             'notify::pac-file': GObject.Object.Notify;
-            'notify::pac-file': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::password-flags': GObject.Object.Notify;
-            'notify::password-flags': GObject.Object.Notify;
-            'notify::password-raw-flags': GObject.Object.Notify;
             'notify::password-raw-flags': GObject.Object.Notify;
             'notify::phase1-fast-provisioning': GObject.Object.Notify;
-            'notify::phase1-fast-provisioning': GObject.Object.Notify;
-            'notify::phase1-peaplabel': GObject.Object.Notify;
             'notify::phase1-peaplabel': GObject.Object.Notify;
             'notify::phase1-peapver': GObject.Object.Notify;
-            'notify::phase1-peapver': GObject.Object.Notify;
-            'notify::phase2-auth': GObject.Object.Notify;
             'notify::phase2-auth': GObject.Object.Notify;
             'notify::phase2-autheap': GObject.Object.Notify;
-            'notify::phase2-autheap': GObject.Object.Notify;
-            'notify::phase2-ca-path': GObject.Object.Notify;
             'notify::phase2-ca-path': GObject.Object.Notify;
             'notify::phase2-private-key-password': GObject.Object.Notify;
-            'notify::phase2-private-key-password': GObject.Object.Notify;
             'notify::phase2-private-key-password-flags': GObject.Object.Notify;
-            'notify::phase2-private-key-password-flags': GObject.Object.Notify;
-            'notify::phase2-subject-match': GObject.Object.Notify;
             'notify::phase2-subject-match': GObject.Object.Notify;
             'notify::pin': GObject.Object.Notify;
             'notify::pin-flags': GObject.Object.Notify;
-            'notify::pin-flags': GObject.Object.Notify;
-            'notify::private-key-password': GObject.Object.Notify;
             'notify::private-key-password': GObject.Object.Notify;
             'notify::private-key-password-flags': GObject.Object.Notify;
-            'notify::private-key-password-flags': GObject.Object.Notify;
             'notify::subject-match': GObject.Object.Notify;
-            'notify::subject-match': GObject.Object.Notify;
-            'notify::system-ca-certs': GObject.Object.Notify;
             'notify::system-ca-certs': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
@@ -5227,7 +5208,6 @@ export namespace NetworkManager {
             'notify::encapsulation': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::password-flags': GObject.Object.Notify;
-            'notify::password-flags': GObject.Object.Notify;
             'notify::protocol': GObject.Object.Notify;
             'notify::username': GObject.Object.Notify;
             'notify::vci': GObject.Object.Notify;
@@ -5404,7 +5384,6 @@ export namespace NetworkManager {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::interface-name': GObject.Object.Notify;
-            'notify::interface-name': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
 
@@ -5527,14 +5506,9 @@ export namespace NetworkManager {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::ageing-time': GObject.Object.Notify;
-            'notify::ageing-time': GObject.Object.Notify;
-            'notify::forward-delay': GObject.Object.Notify;
             'notify::forward-delay': GObject.Object.Notify;
             'notify::hello-time': GObject.Object.Notify;
-            'notify::hello-time': GObject.Object.Notify;
             'notify::interface-name': GObject.Object.Notify;
-            'notify::interface-name': GObject.Object.Notify;
-            'notify::max-age': GObject.Object.Notify;
             'notify::max-age': GObject.Object.Notify;
             'notify::priority': GObject.Object.Notify;
             'notify::stp': GObject.Object.Notify;
@@ -5669,8 +5643,6 @@ export namespace NetworkManager {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::hairpin-mode': GObject.Object.Notify;
-            'notify::hairpin-mode': GObject.Object.Notify;
-            'notify::path-cost': GObject.Object.Notify;
             'notify::path-cost': GObject.Object.Notify;
             'notify::priority': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -5760,7 +5732,6 @@ export namespace NetworkManager {
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::number': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
-            'notify::password-flags': GObject.Object.Notify;
             'notify::password-flags': GObject.Object.Notify;
             'notify::username': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -5853,14 +5824,10 @@ export namespace NetworkManager {
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::autoconnect': GObject.Object.Notify;
             'notify::gateway-ping-timeout': GObject.Object.Notify;
-            'notify::gateway-ping-timeout': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::interface-name': GObject.Object.Notify;
             'notify::interface-name': GObject.Object.Notify;
             'notify::master': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::slave-type': GObject.Object.Notify;
             'notify::slave-type': GObject.Object.Notify;
             'notify::timestamp': GObject.Object.Notify;
             'notify::type': GObject.Object.Notify;
@@ -6185,22 +6152,13 @@ export namespace NetworkManager {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::app-fcoe-flags': GObject.Object.Notify;
-            'notify::app-fcoe-flags': GObject.Object.Notify;
-            'notify::app-fcoe-mode': GObject.Object.Notify;
             'notify::app-fcoe-mode': GObject.Object.Notify;
             'notify::app-fcoe-priority': GObject.Object.Notify;
-            'notify::app-fcoe-priority': GObject.Object.Notify;
-            'notify::app-fip-flags': GObject.Object.Notify;
             'notify::app-fip-flags': GObject.Object.Notify;
             'notify::app-fip-priority': GObject.Object.Notify;
-            'notify::app-fip-priority': GObject.Object.Notify;
-            'notify::app-iscsi-flags': GObject.Object.Notify;
             'notify::app-iscsi-flags': GObject.Object.Notify;
             'notify::app-iscsi-priority': GObject.Object.Notify;
-            'notify::app-iscsi-priority': GObject.Object.Notify;
             'notify::priority-flow-control-flags': GObject.Object.Notify;
-            'notify::priority-flow-control-flags': GObject.Object.Notify;
-            'notify::priority-group-flags': GObject.Object.Notify;
             'notify::priority-group-flags': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
@@ -6485,20 +6443,14 @@ export namespace NetworkManager {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::allowed-bands': GObject.Object.Notify;
-            'notify::allowed-bands': GObject.Object.Notify;
             'notify::apn': GObject.Object.Notify;
             'notify::home-only': GObject.Object.Notify;
-            'notify::home-only': GObject.Object.Notify;
             'notify::network-id': GObject.Object.Notify;
-            'notify::network-id': GObject.Object.Notify;
-            'notify::network-type': GObject.Object.Notify;
             'notify::network-type': GObject.Object.Notify;
             'notify::number': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::password-flags': GObject.Object.Notify;
-            'notify::password-flags': GObject.Object.Notify;
             'notify::pin': GObject.Object.Notify;
-            'notify::pin-flags': GObject.Object.Notify;
             'notify::pin-flags': GObject.Object.Notify;
             'notify::username': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -6708,23 +6660,14 @@ export namespace NetworkManager {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::dhcp-client-id': GObject.Object.Notify;
-            'notify::dhcp-client-id': GObject.Object.Notify;
-            'notify::dhcp-hostname': GObject.Object.Notify;
             'notify::dhcp-hostname': GObject.Object.Notify;
             'notify::dhcp-send-hostname': GObject.Object.Notify;
-            'notify::dhcp-send-hostname': GObject.Object.Notify;
-            'notify::dhcp-timeout': GObject.Object.Notify;
             'notify::dhcp-timeout': GObject.Object.Notify;
             'notify::ignore-auto-dns': GObject.Object.Notify;
-            'notify::ignore-auto-dns': GObject.Object.Notify;
             'notify::ignore-auto-routes': GObject.Object.Notify;
-            'notify::ignore-auto-routes': GObject.Object.Notify;
-            'notify::may-fail': GObject.Object.Notify;
             'notify::may-fail': GObject.Object.Notify;
             'notify::method': GObject.Object.Notify;
             'notify::never-default': GObject.Object.Notify;
-            'notify::never-default': GObject.Object.Notify;
-            'notify::route-metric': GObject.Object.Notify;
             'notify::route-metric': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
@@ -7101,19 +7044,12 @@ export namespace NetworkManager {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::dhcp-hostname': GObject.Object.Notify;
-            'notify::dhcp-hostname': GObject.Object.Notify;
-            'notify::ignore-auto-dns': GObject.Object.Notify;
             'notify::ignore-auto-dns': GObject.Object.Notify;
             'notify::ignore-auto-routes': GObject.Object.Notify;
-            'notify::ignore-auto-routes': GObject.Object.Notify;
             'notify::ip6-privacy': GObject.Object.Notify;
-            'notify::ip6-privacy': GObject.Object.Notify;
-            'notify::may-fail': GObject.Object.Notify;
             'notify::may-fail': GObject.Object.Notify;
             'notify::method': GObject.Object.Notify;
             'notify::never-default': GObject.Object.Notify;
-            'notify::never-default': GObject.Object.Notify;
-            'notify::route-metric': GObject.Object.Notify;
             'notify::route-metric': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
@@ -7455,9 +7391,7 @@ export namespace NetworkManager {
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::mtu': GObject.Object.Notify;
             'notify::p-key': GObject.Object.Notify;
-            'notify::p-key': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::transport-mode': GObject.Object.Notify;
             'notify::transport-mode': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
@@ -7636,29 +7570,19 @@ export namespace NetworkManager {
             'notify::baud': GObject.Object.Notify;
             'notify::crtscts': GObject.Object.Notify;
             'notify::lcp-echo-failure': GObject.Object.Notify;
-            'notify::lcp-echo-failure': GObject.Object.Notify;
             'notify::lcp-echo-interval': GObject.Object.Notify;
-            'notify::lcp-echo-interval': GObject.Object.Notify;
-            'notify::mppe-stateful': GObject.Object.Notify;
             'notify::mppe-stateful': GObject.Object.Notify;
             'notify::mru': GObject.Object.Notify;
             'notify::mtu': GObject.Object.Notify;
-            'notify::no-vj-comp': GObject.Object.Notify;
             'notify::no-vj-comp': GObject.Object.Notify;
             'notify::noauth': GObject.Object.Notify;
             'notify::nobsdcomp': GObject.Object.Notify;
             'notify::nodeflate': GObject.Object.Notify;
             'notify::refuse-chap': GObject.Object.Notify;
-            'notify::refuse-chap': GObject.Object.Notify;
-            'notify::refuse-eap': GObject.Object.Notify;
             'notify::refuse-eap': GObject.Object.Notify;
             'notify::refuse-mschap': GObject.Object.Notify;
-            'notify::refuse-mschap': GObject.Object.Notify;
-            'notify::refuse-mschapv2': GObject.Object.Notify;
             'notify::refuse-mschapv2': GObject.Object.Notify;
             'notify::refuse-pap': GObject.Object.Notify;
-            'notify::refuse-pap': GObject.Object.Notify;
-            'notify::require-mppe': GObject.Object.Notify;
             'notify::require-mppe': GObject.Object.Notify;
             'notify::require-mppe-128': GObject.Object.Notify;
             'notify::require-mppe128': GObject.Object.Notify;
@@ -7937,7 +7861,6 @@ export namespace NetworkManager {
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::password': GObject.Object.Notify;
             'notify::password-flags': GObject.Object.Notify;
-            'notify::password-flags': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
             'notify::username': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -8028,7 +7951,6 @@ export namespace NetworkManager {
             'notify::baud': GObject.Object.Notify;
             'notify::bits': GObject.Object.Notify;
             'notify::parity': GObject.Object.Notify;
-            'notify::send-delay': GObject.Object.Notify;
             'notify::send-delay': GObject.Object.Notify;
             'notify::stopbits': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -8125,7 +8047,6 @@ export namespace NetworkManager {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::config': GObject.Object.Notify;
-            'notify::interface-name': GObject.Object.Notify;
             'notify::interface-name': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
@@ -8259,8 +8180,6 @@ export namespace NetworkManager {
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::persistent': GObject.Object.Notify;
             'notify::service-type': GObject.Object.Notify;
-            'notify::service-type': GObject.Object.Notify;
-            'notify::user-name': GObject.Object.Notify;
             'notify::user-name': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
@@ -8433,7 +8352,6 @@ export namespace NetworkManager {
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::flags': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::interface-name': GObject.Object.Notify;
             'notify::interface-name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -8611,7 +8529,6 @@ export namespace NetworkManager {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::network-name': GObject.Object.Notify;
-            'notify::network-name': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
 
@@ -8687,11 +8604,9 @@ export namespace NetworkManager {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::auto-negotiate': GObject.Object.Notify;
-            'notify::auto-negotiate': GObject.Object.Notify;
             'notify::duplex': GObject.Object.Notify;
             'notify::mtu': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
-            'notify::s390-nettype': GObject.Object.Notify;
             'notify::s390-nettype': GObject.Object.Notify;
             'notify::speed': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -8901,7 +8816,6 @@ export namespace NetworkManager {
             'notify::rate': GObject.Object.Notify;
             'notify::security': GObject.Object.Notify;
             'notify::tx-power': GObject.Object.Notify;
-            'notify::tx-power': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
 
@@ -9107,31 +9021,18 @@ export namespace NetworkManager {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::auth-alg': GObject.Object.Notify;
-            'notify::auth-alg': GObject.Object.Notify;
-            'notify::key-mgmt': GObject.Object.Notify;
             'notify::key-mgmt': GObject.Object.Notify;
             'notify::leap-password': GObject.Object.Notify;
-            'notify::leap-password': GObject.Object.Notify;
             'notify::leap-password-flags': GObject.Object.Notify;
-            'notify::leap-password-flags': GObject.Object.Notify;
-            'notify::leap-username': GObject.Object.Notify;
             'notify::leap-username': GObject.Object.Notify;
             'notify::psk': GObject.Object.Notify;
             'notify::psk-flags': GObject.Object.Notify;
-            'notify::psk-flags': GObject.Object.Notify;
-            'notify::wep-key-flags': GObject.Object.Notify;
             'notify::wep-key-flags': GObject.Object.Notify;
             'notify::wep-key-type': GObject.Object.Notify;
-            'notify::wep-key-type': GObject.Object.Notify;
-            'notify::wep-key0': GObject.Object.Notify;
             'notify::wep-key0': GObject.Object.Notify;
             'notify::wep-key1': GObject.Object.Notify;
-            'notify::wep-key1': GObject.Object.Notify;
-            'notify::wep-key2': GObject.Object.Notify;
             'notify::wep-key2': GObject.Object.Notify;
             'notify::wep-key3': GObject.Object.Notify;
-            'notify::wep-key3': GObject.Object.Notify;
-            'notify::wep-tx-keyidx': GObject.Object.Notify;
             'notify::wep-tx-keyidx': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }

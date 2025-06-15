@@ -74,8 +74,6 @@ export namespace GUPnPIgd {
             'error-mapping-port': ErrorMappingPort;
             'mapped-external-port': MappedExternalPort;
             'notify::main-context': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
-            'error-mapping-port::main-context': ErrorMappingPort;
             'error-mapping-port::main-context': ErrorMappingPort;
         }
 
@@ -182,7 +180,6 @@ export namespace GUPnPIgd {
     namespace SimpleIgdThread {
         // Signal signatures
         interface SignalSignatures extends SimpleIgd.SignalSignatures {
-            'notify::main-context': GObject.Object.Notify;
             'notify::main-context': GObject.Object.Notify;
         }
 

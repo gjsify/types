@@ -85,30 +85,18 @@ export namespace MPID {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::access-protocols': GObject.Object.Notify;
-            'notify::access-protocols': GObject.Object.Notify;
             'notify::audio-folders': GObject.Object.Notify;
-            'notify::audio-folders': GObject.Object.Notify;
-            'notify::drive-type': GObject.Object.Notify;
             'notify::drive-type': GObject.Object.Notify;
             'notify::error': GObject.Object.Notify;
             'notify::folder-depth': GObject.Object.Notify;
-            'notify::folder-depth': GObject.Object.Notify;
-            'notify::fs-uuid': GObject.Object.Notify;
             'notify::fs-uuid': GObject.Object.Notify;
             'notify::input-formats': GObject.Object.Notify;
-            'notify::input-formats': GObject.Object.Notify;
-            'notify::input-path': GObject.Object.Notify;
             'notify::input-path': GObject.Object.Notify;
             'notify::model': GObject.Object.Notify;
             'notify::mpi-file': GObject.Object.Notify;
-            'notify::mpi-file': GObject.Object.Notify;
-            'notify::output-formats': GObject.Object.Notify;
             'notify::output-formats': GObject.Object.Notify;
             'notify::playlist-formats': GObject.Object.Notify;
-            'notify::playlist-formats': GObject.Object.Notify;
             'notify::playlist-path': GObject.Object.Notify;
-            'notify::playlist-path': GObject.Object.Notify;
-            'notify::requires-eject': GObject.Object.Notify;
             'notify::requires-eject': GObject.Object.Notify;
             'notify::serial': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;

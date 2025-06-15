@@ -620,8 +620,6 @@ export namespace GstWebRTC {
             'notify::certificate': GObject.Object.Notify;
             'notify::client': GObject.Object.Notify;
             'notify::remote-certificate': GObject.Object.Notify;
-            'notify::remote-certificate': GObject.Object.Notify;
-            'notify::session-id': GObject.Object.Notify;
             'notify::session-id': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::transport': GObject.Object.Notify;
@@ -735,20 +733,15 @@ export namespace GstWebRTC {
             'send-data': SendData;
             'send-string': SendString;
             'notify::buffered-amount': GObject.Object.Notify;
-            'notify::buffered-amount': GObject.Object.Notify;
-            'notify::buffered-amount-low-threshold': GObject.Object.Notify;
             'notify::buffered-amount-low-threshold': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::max-packet-lifetime': GObject.Object.Notify;
-            'notify::max-packet-lifetime': GObject.Object.Notify;
-            'notify::max-retransmits': GObject.Object.Notify;
             'notify::max-retransmits': GObject.Object.Notify;
             'notify::negotiated': GObject.Object.Notify;
             'notify::ordered': GObject.Object.Notify;
             'notify::priority': GObject.Object.Notify;
             'notify::protocol': GObject.Object.Notify;
-            'notify::ready-state': GObject.Object.Notify;
             'notify::ready-state': GObject.Object.Notify;
         }
 
@@ -863,8 +856,6 @@ export namespace GstWebRTC {
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'add-local-ip-address': AddLocalIpAddress;
             'notify::max-rtp-port': GObject.Object.Notify;
-            'notify::max-rtp-port': GObject.Object.Notify;
-            'notify::min-rtp-port': GObject.Object.Notify;
             'notify::min-rtp-port': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -1000,7 +991,6 @@ export namespace GstWebRTC {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'notify::stream-id': GObject.Object.Notify;
-            'notify::stream-id': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
         }
@@ -1072,7 +1062,6 @@ export namespace GstWebRTC {
             'on-new-candidate': OnNewCandidate;
             'on-selected-candidate-pair-change': OnSelectedCandidatePairChange;
             'notify::component': GObject.Object.Notify;
-            'notify::gathering-state': GObject.Object.Notify;
             'notify::gathering-state': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -1272,8 +1261,6 @@ export namespace GstWebRTC {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'notify::codec-preferences': GObject.Object.Notify;
-            'notify::codec-preferences': GObject.Object.Notify;
-            'notify::current-direction': GObject.Object.Notify;
             'notify::current-direction': GObject.Object.Notify;
             'notify::direction': GObject.Object.Notify;
             'notify::kind': GObject.Object.Notify;
@@ -1384,8 +1371,6 @@ export namespace GstWebRTC {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'notify::max-channels': GObject.Object.Notify;
-            'notify::max-channels': GObject.Object.Notify;
-            'notify::max-message-size': GObject.Object.Notify;
             'notify::max-message-size': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::transport': GObject.Object.Notify;

@@ -326,7 +326,6 @@ export namespace Spelling {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
         }
 
         // Constructor properties interface

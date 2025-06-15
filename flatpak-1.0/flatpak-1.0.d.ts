@@ -564,7 +564,6 @@ export namespace Flatpak {
             'notify::arch': GObject.Object.Notify;
             'notify::branch': GObject.Object.Notify;
             'notify::collection-id': GObject.Object.Notify;
-            'notify::collection-id': GObject.Object.Notify;
             'notify::commit': GObject.Object.Notify;
             'notify::kind': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -1496,34 +1495,21 @@ export namespace Flatpak {
         // Signal signatures
         interface SignalSignatures extends Ref.SignalSignatures {
             'notify::appdata-content-rating': GObject.Object.Notify;
-            'notify::appdata-content-rating': GObject.Object.Notify;
-            'notify::appdata-content-rating-type': GObject.Object.Notify;
             'notify::appdata-content-rating-type': GObject.Object.Notify;
             'notify::appdata-license': GObject.Object.Notify;
-            'notify::appdata-license': GObject.Object.Notify;
-            'notify::appdata-name': GObject.Object.Notify;
             'notify::appdata-name': GObject.Object.Notify;
             'notify::appdata-summary': GObject.Object.Notify;
-            'notify::appdata-summary': GObject.Object.Notify;
-            'notify::appdata-version': GObject.Object.Notify;
             'notify::appdata-version': GObject.Object.Notify;
             'notify::deploy-dir': GObject.Object.Notify;
-            'notify::deploy-dir': GObject.Object.Notify;
-            'notify::end-of-life': GObject.Object.Notify;
             'notify::end-of-life': GObject.Object.Notify;
             'notify::end-of-life-rebase': GObject.Object.Notify;
-            'notify::end-of-life-rebase': GObject.Object.Notify;
-            'notify::installed-size': GObject.Object.Notify;
             'notify::installed-size': GObject.Object.Notify;
             'notify::is-current': GObject.Object.Notify;
-            'notify::is-current': GObject.Object.Notify;
-            'notify::latest-commit': GObject.Object.Notify;
             'notify::latest-commit': GObject.Object.Notify;
             'notify::origin': GObject.Object.Notify;
             'notify::subpaths': GObject.Object.Notify;
             'notify::arch': GObject.Object.Notify;
             'notify::branch': GObject.Object.Notify;
-            'notify::collection-id': GObject.Object.Notify;
             'notify::collection-id': GObject.Object.Notify;
             'notify::commit': GObject.Object.Notify;
             'notify::kind': GObject.Object.Notify;
@@ -1845,7 +1831,6 @@ export namespace Flatpak {
             'notify::arch': GObject.Object.Notify;
             'notify::branch': GObject.Object.Notify;
             'notify::collection-id': GObject.Object.Notify;
-            'notify::collection-id': GObject.Object.Notify;
             'notify::commit': GObject.Object.Notify;
             'notify::kind': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -1954,15 +1939,11 @@ export namespace Flatpak {
         // Signal signatures
         interface SignalSignatures extends Ref.SignalSignatures {
             'notify::should-autoprune': GObject.Object.Notify;
-            'notify::should-autoprune': GObject.Object.Notify;
             'notify::should-delete': GObject.Object.Notify;
-            'notify::should-delete': GObject.Object.Notify;
-            'notify::should-download': GObject.Object.Notify;
             'notify::should-download': GObject.Object.Notify;
             'notify::subpaths': GObject.Object.Notify;
             'notify::arch': GObject.Object.Notify;
             'notify::branch': GObject.Object.Notify;
-            'notify::collection-id': GObject.Object.Notify;
             'notify::collection-id': GObject.Object.Notify;
             'notify::commit': GObject.Object.Notify;
             'notify::kind': GObject.Object.Notify;
@@ -2341,19 +2322,13 @@ export namespace Flatpak {
         // Signal signatures
         interface SignalSignatures extends Ref.SignalSignatures {
             'notify::download-size': GObject.Object.Notify;
-            'notify::download-size': GObject.Object.Notify;
-            'notify::end-of-life': GObject.Object.Notify;
             'notify::end-of-life': GObject.Object.Notify;
             'notify::end-of-life-rebase': GObject.Object.Notify;
-            'notify::end-of-life-rebase': GObject.Object.Notify;
-            'notify::installed-size': GObject.Object.Notify;
             'notify::installed-size': GObject.Object.Notify;
             'notify::metadata': GObject.Object.Notify;
             'notify::remote-name': GObject.Object.Notify;
-            'notify::remote-name': GObject.Object.Notify;
             'notify::arch': GObject.Object.Notify;
             'notify::branch': GObject.Object.Notify;
-            'notify::collection-id': GObject.Object.Notify;
             'notify::collection-id': GObject.Object.Notify;
             'notify::commit': GObject.Object.Notify;
             'notify::kind': GObject.Object.Notify;
@@ -2545,7 +2520,6 @@ export namespace Flatpak {
             'webflow-done': WebflowDone;
             'webflow-start': WebflowStart;
             'notify::installation': GObject.Object.Notify;
-            'notify::no-interaction': GObject.Object.Notify;
             'notify::no-interaction': GObject.Object.Notify;
         }
 

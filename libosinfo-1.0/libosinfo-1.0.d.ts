@@ -465,7 +465,6 @@ export namespace Libosinfo {
             'notify::alpha': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::mime-types': GObject.Object.Notify;
-            'notify::mime-types': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
         }
@@ -602,7 +601,6 @@ export namespace Libosinfo {
     namespace DatamapList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
             'notify::element-type': GObject.Object.Notify;
         }
 
@@ -920,7 +918,6 @@ export namespace Libosinfo {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
             'notify::element-type': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1110,7 +1107,6 @@ export namespace Libosinfo {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
             'notify::element-type': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1212,7 +1208,6 @@ export namespace Libosinfo {
         // Signal signatures
         interface SignalSignatures extends Filter.SignalSignatures {
             'notify::target-filter': GObject.Object.Notify;
-            'notify::target-filter': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1279,7 +1274,6 @@ export namespace Libosinfo {
     namespace DeviceLinkList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
             'notify::element-type': GObject.Object.Notify;
         }
 
@@ -1357,7 +1351,6 @@ export namespace Libosinfo {
     namespace DeviceList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
             'notify::element-type': GObject.Object.Notify;
         }
 
@@ -1751,7 +1744,6 @@ export namespace Libosinfo {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
             'notify::element-type': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1793,7 +1785,6 @@ export namespace Libosinfo {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
             'notify::architecture': GObject.Object.Notify;
-            'notify::cloud-init': GObject.Object.Notify;
             'notify::cloud-init': GObject.Object.Notify;
             'notify::format': GObject.Object.Notify;
             'notify::url': GObject.Object.Notify;
@@ -1900,7 +1891,6 @@ export namespace Libosinfo {
     namespace ImageList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
             'notify::element-type': GObject.Object.Notify;
         }
 
@@ -2210,7 +2200,6 @@ export namespace Libosinfo {
             'notify::name': GObject.Object.Notify;
             'notify::policy': GObject.Object.Notify;
             'notify::value-map': GObject.Object.Notify;
-            'notify::value-map': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
         }
 
@@ -2296,7 +2285,6 @@ export namespace Libosinfo {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
             'notify::element-type': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2338,19 +2326,12 @@ export namespace Libosinfo {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
             'notify::avatar-format': GObject.Object.Notify;
-            'notify::avatar-format': GObject.Object.Notify;
-            'notify::installation-source': GObject.Object.Notify;
             'notify::installation-source': GObject.Object.Notify;
             'notify::path-format': GObject.Object.Notify;
-            'notify::path-format': GObject.Object.Notify;
             'notify::preferred-injection-method': GObject.Object.Notify;
-            'notify::preferred-injection-method': GObject.Object.Notify;
-            'notify::product-key-format': GObject.Object.Notify;
             'notify::product-key-format': GObject.Object.Notify;
             'notify::profile': GObject.Object.Notify;
             'notify::template-data': GObject.Object.Notify;
-            'notify::template-data': GObject.Object.Notify;
-            'notify::template-uri': GObject.Object.Notify;
             'notify::template-uri': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
         }
@@ -2999,7 +2980,6 @@ export namespace Libosinfo {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
             'notify::element-type': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3070,7 +3050,6 @@ export namespace Libosinfo {
     namespace List {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
             'notify::element-type': GObject.Object.Notify;
         }
 
@@ -3293,30 +3272,20 @@ export namespace Libosinfo {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
             'notify::application-id': GObject.Object.Notify;
-            'notify::application-id': GObject.Object.Notify;
             'notify::architecture': GObject.Object.Notify;
             'notify::eject-after-install': GObject.Object.Notify;
-            'notify::eject-after-install': GObject.Object.Notify;
-            'notify::initrd-path': GObject.Object.Notify;
             'notify::initrd-path': GObject.Object.Notify;
             'notify::installer': GObject.Object.Notify;
             'notify::installer-reboots': GObject.Object.Notify;
-            'notify::installer-reboots': GObject.Object.Notify;
             'notify::installer-script': GObject.Object.Notify;
-            'notify::installer-script': GObject.Object.Notify;
-            'notify::kernel-path': GObject.Object.Notify;
             'notify::kernel-path': GObject.Object.Notify;
             'notify::languages': GObject.Object.Notify;
             'notify::live': GObject.Object.Notify;
             'notify::os': GObject.Object.Notify;
             'notify::publisher-id': GObject.Object.Notify;
-            'notify::publisher-id': GObject.Object.Notify;
-            'notify::system-id': GObject.Object.Notify;
             'notify::system-id': GObject.Object.Notify;
             'notify::url': GObject.Object.Notify;
             'notify::volume-id': GObject.Object.Notify;
-            'notify::volume-id': GObject.Object.Notify;
-            'notify::volume-size': GObject.Object.Notify;
             'notify::volume-size': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
         }
@@ -3757,7 +3726,6 @@ export namespace Libosinfo {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
             'notify::element-type': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3826,15 +3794,12 @@ export namespace Libosinfo {
         // Signal signatures
         interface SignalSignatures extends Product.SignalSignatures {
             'notify::cloud-image-username': GObject.Object.Notify;
-            'notify::cloud-image-username': GObject.Object.Notify;
             'notify::distro': GObject.Object.Notify;
             'notify::family': GObject.Object.Notify;
-            'notify::kernel-url-argument': GObject.Object.Notify;
             'notify::kernel-url-argument': GObject.Object.Notify;
             'notify::codename': GObject.Object.Notify;
             'notify::logo': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
-            'notify::short-id': GObject.Object.Notify;
             'notify::short-id': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
             'notify::version': GObject.Object.Notify;
@@ -4111,7 +4076,6 @@ export namespace Libosinfo {
         // Signal signatures
         interface SignalSignatures extends ProductList.SignalSignatures {
             'notify::element-type': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4234,7 +4198,6 @@ export namespace Libosinfo {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
             'notify::element-type': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4278,7 +4241,6 @@ export namespace Libosinfo {
             'notify::codename': GObject.Object.Notify;
             'notify::logo': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
-            'notify::short-id': GObject.Object.Notify;
             'notify::short-id': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
             'notify::version': GObject.Object.Notify;
@@ -4353,7 +4315,6 @@ export namespace Libosinfo {
         // Signal signatures
         interface SignalSignatures extends ProductList.SignalSignatures {
             'notify::element-type': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4427,7 +4388,6 @@ export namespace Libosinfo {
             'notify::codename': GObject.Object.Notify;
             'notify::logo': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
-            'notify::short-id': GObject.Object.Notify;
             'notify::short-id': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
             'notify::version': GObject.Object.Notify;
@@ -4607,7 +4567,6 @@ export namespace Libosinfo {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
             'notify::element-type': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4680,7 +4639,6 @@ export namespace Libosinfo {
         interface SignalSignatures extends Entity.SignalSignatures {
             'notify::architecture': GObject.Object.Notify;
             'notify::cpu': GObject.Object.Notify;
-            'notify::n-cpus': GObject.Object.Notify;
             'notify::n-cpus': GObject.Object.Notify;
             'notify::ram': GObject.Object.Notify;
             'notify::storage': GObject.Object.Notify;
@@ -4816,7 +4774,6 @@ export namespace Libosinfo {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
             'notify::element-type': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4889,21 +4846,13 @@ export namespace Libosinfo {
         interface SignalSignatures extends Entity.SignalSignatures {
             'notify::architecture': GObject.Object.Notify;
             'notify::boot-iso-path': GObject.Object.Notify;
-            'notify::boot-iso-path': GObject.Object.Notify;
-            'notify::has-treeinfo': GObject.Object.Notify;
             'notify::has-treeinfo': GObject.Object.Notify;
             'notify::initrd-path': GObject.Object.Notify;
-            'notify::initrd-path': GObject.Object.Notify;
-            'notify::kernel-path': GObject.Object.Notify;
             'notify::kernel-path': GObject.Object.Notify;
             'notify::os': GObject.Object.Notify;
             'notify::treeinfo-arch': GObject.Object.Notify;
-            'notify::treeinfo-arch': GObject.Object.Notify;
-            'notify::treeinfo-family': GObject.Object.Notify;
             'notify::treeinfo-family': GObject.Object.Notify;
             'notify::treeinfo-variant': GObject.Object.Notify;
-            'notify::treeinfo-variant': GObject.Object.Notify;
-            'notify::treeinfo-version': GObject.Object.Notify;
             'notify::treeinfo-version': GObject.Object.Notify;
             'notify::url': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
@@ -5184,7 +5133,6 @@ export namespace Libosinfo {
     namespace TreeList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
             'notify::element-type': GObject.Object.Notify;
         }
 

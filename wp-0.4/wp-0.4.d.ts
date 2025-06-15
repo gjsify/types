@@ -508,22 +508,14 @@ export namespace Wp {
         // Signal signatures
         interface SignalSignatures extends GlobalProxy.SignalSignatures {
             'notify::factory-name': GObject.Object.Notify;
-            'notify::factory-name': GObject.Object.Notify;
-            'notify::global-properties': GObject.Object.Notify;
             'notify::global-properties': GObject.Object.Notify;
             'notify::permissions': GObject.Object.Notify;
             'notify::bound-id': GObject.Object.Notify;
-            'notify::bound-id': GObject.Object.Notify;
             'notify::pw-proxy': GObject.Object.Notify;
-            'notify::pw-proxy': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::native-info': GObject.Object.Notify;
-            'notify::native-info': GObject.Object.Notify;
-            'notify::param-info': GObject.Object.Notify;
             'notify::param-info': GObject.Object.Notify;
             'notify::properties': GObject.Object.Notify;
         }
@@ -804,9 +796,7 @@ export namespace Wp {
         interface SignalSignatures extends Plugin.SignalSignatures {
             'notify::name': GObject.Object.Notify;
             'notify::active-features': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
         }
 
@@ -874,11 +864,8 @@ export namespace Wp {
             connected: Connected;
             disconnected: Disconnected;
             'notify::g-main-context': GObject.Object.Notify;
-            'notify::g-main-context': GObject.Object.Notify;
             'notify::properties': GObject.Object.Notify;
             'notify::pw-context': GObject.Object.Notify;
-            'notify::pw-context': GObject.Object.Notify;
-            'notify::pw-core': GObject.Object.Notify;
             'notify::pw-core': GObject.Object.Notify;
         }
 
@@ -1153,12 +1140,9 @@ export namespace Wp {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::bus-type': GObject.Object.Notify;
-            'notify::bus-type': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::active-features': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
         }
 
@@ -1208,22 +1192,14 @@ export namespace Wp {
         // Signal signatures
         interface SignalSignatures extends GlobalProxy.SignalSignatures {
             'notify::factory-name': GObject.Object.Notify;
-            'notify::factory-name': GObject.Object.Notify;
-            'notify::global-properties': GObject.Object.Notify;
             'notify::global-properties': GObject.Object.Notify;
             'notify::permissions': GObject.Object.Notify;
             'notify::bound-id': GObject.Object.Notify;
-            'notify::bound-id': GObject.Object.Notify;
             'notify::pw-proxy': GObject.Object.Notify;
-            'notify::pw-proxy': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::native-info': GObject.Object.Notify;
-            'notify::native-info': GObject.Object.Notify;
-            'notify::param-info': GObject.Object.Notify;
             'notify::param-info': GObject.Object.Notify;
             'notify::properties': GObject.Object.Notify;
         }
@@ -1497,25 +1473,16 @@ export namespace Wp {
         interface SignalSignatures extends GlobalProxy.SignalSignatures {
             'notify::direction': GObject.Object.Notify;
             'notify::media-class': GObject.Object.Notify;
-            'notify::media-class': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::factory-name': GObject.Object.Notify;
-            'notify::factory-name': GObject.Object.Notify;
-            'notify::global-properties': GObject.Object.Notify;
             'notify::global-properties': GObject.Object.Notify;
             'notify::permissions': GObject.Object.Notify;
             'notify::bound-id': GObject.Object.Notify;
-            'notify::bound-id': GObject.Object.Notify;
             'notify::pw-proxy': GObject.Object.Notify;
-            'notify::pw-proxy': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::native-info': GObject.Object.Notify;
-            'notify::native-info': GObject.Object.Notify;
-            'notify::param-info': GObject.Object.Notify;
             'notify::param-info': GObject.Object.Notify;
             'notify::properties': GObject.Object.Notify;
         }
@@ -1828,22 +1795,14 @@ export namespace Wp {
         // Signal signatures
         interface SignalSignatures extends GlobalProxy.SignalSignatures {
             'notify::factory-name': GObject.Object.Notify;
-            'notify::factory-name': GObject.Object.Notify;
-            'notify::global-properties': GObject.Object.Notify;
             'notify::global-properties': GObject.Object.Notify;
             'notify::permissions': GObject.Object.Notify;
             'notify::bound-id': GObject.Object.Notify;
-            'notify::bound-id': GObject.Object.Notify;
             'notify::pw-proxy': GObject.Object.Notify;
-            'notify::pw-proxy': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::native-info': GObject.Object.Notify;
-            'notify::native-info': GObject.Object.Notify;
-            'notify::param-info': GObject.Object.Notify;
             'notify::param-info': GObject.Object.Notify;
             'notify::properties': GObject.Object.Notify;
         }
@@ -2657,18 +2616,12 @@ export namespace Wp {
         // Signal signatures
         interface SignalSignatures extends Proxy.SignalSignatures {
             'notify::factory-name': GObject.Object.Notify;
-            'notify::factory-name': GObject.Object.Notify;
-            'notify::global-properties': GObject.Object.Notify;
             'notify::global-properties': GObject.Object.Notify;
             'notify::permissions': GObject.Object.Notify;
             'notify::bound-id': GObject.Object.Notify;
-            'notify::bound-id': GObject.Object.Notify;
             'notify::pw-proxy': GObject.Object.Notify;
-            'notify::pw-proxy': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
         }
 
@@ -2758,25 +2711,16 @@ export namespace Wp {
             'notify::item': GObject.Object.Notify;
             'notify::direction': GObject.Object.Notify;
             'notify::media-class': GObject.Object.Notify;
-            'notify::media-class': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::factory-name': GObject.Object.Notify;
-            'notify::factory-name': GObject.Object.Notify;
-            'notify::global-properties': GObject.Object.Notify;
             'notify::global-properties': GObject.Object.Notify;
             'notify::permissions': GObject.Object.Notify;
             'notify::bound-id': GObject.Object.Notify;
-            'notify::bound-id': GObject.Object.Notify;
             'notify::pw-proxy': GObject.Object.Notify;
-            'notify::pw-proxy': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::native-info': GObject.Object.Notify;
-            'notify::native-info': GObject.Object.Notify;
-            'notify::param-info': GObject.Object.Notify;
             'notify::param-info': GObject.Object.Notify;
             'notify::properties': GObject.Object.Notify;
         }
@@ -3059,18 +3003,12 @@ export namespace Wp {
             'notify::name': GObject.Object.Notify;
             'notify::properties': GObject.Object.Notify;
             'notify::factory-name': GObject.Object.Notify;
-            'notify::factory-name': GObject.Object.Notify;
-            'notify::global-properties': GObject.Object.Notify;
             'notify::global-properties': GObject.Object.Notify;
             'notify::permissions': GObject.Object.Notify;
             'notify::bound-id': GObject.Object.Notify;
-            'notify::bound-id': GObject.Object.Notify;
             'notify::pw-proxy': GObject.Object.Notify;
-            'notify::pw-proxy': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
         }
 
@@ -3130,7 +3068,6 @@ export namespace Wp {
             'notify::core': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::properties': GObject.Object.Notify;
-            'notify::pw-impl-module': GObject.Object.Notify;
             'notify::pw-impl-module': GObject.Object.Notify;
         }
 
@@ -3215,19 +3152,12 @@ export namespace Wp {
         // Signal signatures
         interface SignalSignatures extends Proxy.SignalSignatures {
             'notify::pw-impl-node': GObject.Object.Notify;
-            'notify::pw-impl-node': GObject.Object.Notify;
-            'notify::bound-id': GObject.Object.Notify;
             'notify::bound-id': GObject.Object.Notify;
             'notify::pw-proxy': GObject.Object.Notify;
-            'notify::pw-proxy': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::native-info': GObject.Object.Notify;
-            'notify::native-info': GObject.Object.Notify;
-            'notify::param-info': GObject.Object.Notify;
             'notify::param-info': GObject.Object.Notify;
             'notify::properties': GObject.Object.Notify;
         }
@@ -3520,22 +3450,14 @@ export namespace Wp {
             'state-changed': StateChanged;
             'notify::state': GObject.Object.Notify;
             'notify::factory-name': GObject.Object.Notify;
-            'notify::factory-name': GObject.Object.Notify;
-            'notify::global-properties': GObject.Object.Notify;
             'notify::global-properties': GObject.Object.Notify;
             'notify::permissions': GObject.Object.Notify;
             'notify::bound-id': GObject.Object.Notify;
-            'notify::bound-id': GObject.Object.Notify;
             'notify::pw-proxy': GObject.Object.Notify;
-            'notify::pw-proxy': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::native-info': GObject.Object.Notify;
-            'notify::native-info': GObject.Object.Notify;
-            'notify::param-info': GObject.Object.Notify;
             'notify::param-info': GObject.Object.Notify;
             'notify::properties': GObject.Object.Notify;
         }
@@ -3836,18 +3758,12 @@ export namespace Wp {
         interface SignalSignatures extends GlobalProxy.SignalSignatures {
             changed: Changed;
             'notify::factory-name': GObject.Object.Notify;
-            'notify::factory-name': GObject.Object.Notify;
-            'notify::global-properties': GObject.Object.Notify;
             'notify::global-properties': GObject.Object.Notify;
             'notify::permissions': GObject.Object.Notify;
             'notify::bound-id': GObject.Object.Notify;
-            'notify::bound-id': GObject.Object.Notify;
             'notify::pw-proxy': GObject.Object.Notify;
-            'notify::pw-proxy': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
         }
 
@@ -3943,31 +3859,19 @@ export namespace Wp {
             'ports-changed': PortsChanged;
             'state-changed': StateChanged;
             'notify::max-input-ports': GObject.Object.Notify;
-            'notify::max-input-ports': GObject.Object.Notify;
-            'notify::max-output-ports': GObject.Object.Notify;
             'notify::max-output-ports': GObject.Object.Notify;
             'notify::n-input-ports': GObject.Object.Notify;
-            'notify::n-input-ports': GObject.Object.Notify;
-            'notify::n-output-ports': GObject.Object.Notify;
             'notify::n-output-ports': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::factory-name': GObject.Object.Notify;
-            'notify::factory-name': GObject.Object.Notify;
-            'notify::global-properties': GObject.Object.Notify;
             'notify::global-properties': GObject.Object.Notify;
             'notify::permissions': GObject.Object.Notify;
             'notify::bound-id': GObject.Object.Notify;
-            'notify::bound-id': GObject.Object.Notify;
             'notify::pw-proxy': GObject.Object.Notify;
-            'notify::pw-proxy': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::native-info': GObject.Object.Notify;
-            'notify::native-info': GObject.Object.Notify;
-            'notify::param-info': GObject.Object.Notify;
             'notify::param-info': GObject.Object.Notify;
             'notify::properties': GObject.Object.Notify;
         }
@@ -4329,9 +4233,7 @@ export namespace Wp {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::active-features': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
         }
 
@@ -4628,9 +4530,7 @@ export namespace Wp {
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::name': GObject.Object.Notify;
             'notify::active-features': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
         }
 
@@ -4702,22 +4602,14 @@ export namespace Wp {
         // Signal signatures
         interface SignalSignatures extends GlobalProxy.SignalSignatures {
             'notify::factory-name': GObject.Object.Notify;
-            'notify::factory-name': GObject.Object.Notify;
-            'notify::global-properties': GObject.Object.Notify;
             'notify::global-properties': GObject.Object.Notify;
             'notify::permissions': GObject.Object.Notify;
             'notify::bound-id': GObject.Object.Notify;
-            'notify::bound-id': GObject.Object.Notify;
             'notify::pw-proxy': GObject.Object.Notify;
-            'notify::pw-proxy': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::native-info': GObject.Object.Notify;
-            'notify::native-info': GObject.Object.Notify;
-            'notify::param-info': GObject.Object.Notify;
             'notify::param-info': GObject.Object.Notify;
             'notify::properties': GObject.Object.Notify;
         }
@@ -5021,13 +4913,9 @@ export namespace Wp {
             'pw-proxy-created': PwProxyCreated;
             'pw-proxy-destroyed': PwProxyDestroyed;
             'notify::bound-id': GObject.Object.Notify;
-            'notify::bound-id': GObject.Object.Notify;
             'notify::pw-proxy': GObject.Object.Notify;
-            'notify::pw-proxy': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
         }
 
@@ -5117,9 +5005,7 @@ export namespace Wp {
             'notify::id': GObject.Object.Notify;
             'notify::properties': GObject.Object.Notify;
             'notify::active-features': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
         }
 
@@ -5390,15 +5276,10 @@ export namespace Wp {
             'object-removed': ObjectRemoved;
             'notify::properties': GObject.Object.Notify;
             'notify::spa-device-handle': GObject.Object.Notify;
-            'notify::spa-device-handle': GObject.Object.Notify;
-            'notify::bound-id': GObject.Object.Notify;
             'notify::bound-id': GObject.Object.Notify;
             'notify::pw-proxy': GObject.Object.Notify;
-            'notify::pw-proxy': GObject.Object.Notify;
-            'notify::active-features': GObject.Object.Notify;
             'notify::active-features': GObject.Object.Notify;
             'notify::core': GObject.Object.Notify;
-            'notify::supported-features': GObject.Object.Notify;
             'notify::supported-features': GObject.Object.Notify;
         }
 

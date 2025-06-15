@@ -518,7 +518,6 @@ export namespace Libxfce4windowing {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'icon-changed': IconChanged;
             'notify::class-id': GObject.Object.Notify;
-            'notify::class-id': GObject.Object.Notify;
             'notify::gicon': GObject.Object.Notify;
             'notify::instances': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -652,8 +651,6 @@ export namespace Libxfce4windowing {
         // Signal signatures
         interface SignalSignatures extends Application.SignalSignatures {
             'notify::app-id': GObject.Object.Notify;
-            'notify::app-id': GObject.Object.Notify;
-            'notify::class-id': GObject.Object.Notify;
             'notify::class-id': GObject.Object.Notify;
             'notify::gicon': GObject.Object.Notify;
             'notify::instances': GObject.Object.Notify;
@@ -706,7 +703,6 @@ export namespace Libxfce4windowing {
         // Signal signatures
         interface SignalSignatures extends Application.SignalSignatures {
             'notify::class-id': GObject.Object.Notify;
-            'notify::class-id': GObject.Object.Notify;
             'notify::gicon': GObject.Object.Notify;
             'notify::instances': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -750,11 +746,8 @@ export namespace Libxfce4windowing {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::active-window': GObject.Object.Notify;
-            'notify::active-window': GObject.Object.Notify;
             'notify::screen': GObject.Object.Notify;
             'notify::show-desktop': GObject.Object.Notify;
-            'notify::show-desktop': GObject.Object.Notify;
-            'notify::workspace-manager': GObject.Object.Notify;
             'notify::workspace-manager': GObject.Object.Notify;
         }
 
@@ -1308,11 +1301,8 @@ export namespace Libxfce4windowing {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::active-window': GObject.Object.Notify;
-            'notify::active-window': GObject.Object.Notify;
             'notify::screen': GObject.Object.Notify;
             'notify::show-desktop': GObject.Object.Notify;
-            'notify::show-desktop': GObject.Object.Notify;
-            'notify::workspace-manager': GObject.Object.Notify;
             'notify::workspace-manager': GObject.Object.Notify;
         }
 
@@ -1912,7 +1902,6 @@ export namespace Libxfce4windowing {
             'notify::application': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::class-ids': GObject.Object.Notify;
-            'notify::class-ids': GObject.Object.Notify;
             'notify::gicon': GObject.Object.Notify;
             'notify::monitors': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -2126,7 +2115,6 @@ export namespace Libxfce4windowing {
             'notify::application': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::class-ids': GObject.Object.Notify;
-            'notify::class-ids': GObject.Object.Notify;
             'notify::gicon': GObject.Object.Notify;
             'notify::monitors': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -2181,7 +2169,6 @@ export namespace Libxfce4windowing {
             'notify::application': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::class-ids': GObject.Object.Notify;
-            'notify::class-ids': GObject.Object.Notify;
             'notify::gicon': GObject.Object.Notify;
             'notify::monitors': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -2224,7 +2211,6 @@ export namespace Libxfce4windowing {
     namespace WnckIcon {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::wnck-object': GObject.Object.Notify;
             'notify::wnck-object': GObject.Object.Notify;
         }
 
@@ -2938,8 +2924,6 @@ export namespace Libxfce4windowing {
             'notify::group': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::layout-column': GObject.Object.Notify;
-            'notify::layout-column': GObject.Object.Notify;
-            'notify::layout-row': GObject.Object.Notify;
             'notify::layout-row': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::number': GObject.Object.Notify;
@@ -3565,16 +3549,11 @@ export namespace Libxfce4windowing {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::create-workspace-func': GObject.Object.Notify;
-            'notify::create-workspace-func': GObject.Object.Notify;
-            'notify::move-viewport-func': GObject.Object.Notify;
             'notify::move-viewport-func': GObject.Object.Notify;
             'notify::set-layout-func': GObject.Object.Notify;
-            'notify::set-layout-func': GObject.Object.Notify;
-            'notify::active-workspace': GObject.Object.Notify;
             'notify::active-workspace': GObject.Object.Notify;
             'notify::monitors': GObject.Object.Notify;
             'notify::screen': GObject.Object.Notify;
-            'notify::workspace-manager': GObject.Object.Notify;
             'notify::workspace-manager': GObject.Object.Notify;
             'notify::workspaces': GObject.Object.Notify;
         }
@@ -4180,10 +4159,8 @@ export namespace Libxfce4windowing {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             destroyed: Destroyed;
             'notify::active-workspace': GObject.Object.Notify;
-            'notify::active-workspace': GObject.Object.Notify;
             'notify::monitors': GObject.Object.Notify;
             'notify::screen': GObject.Object.Notify;
-            'notify::workspace-manager': GObject.Object.Notify;
             'notify::workspace-manager': GObject.Object.Notify;
             'notify::workspaces': GObject.Object.Notify;
         }
@@ -5257,8 +5234,6 @@ export namespace Libxfce4windowing {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::wl-manager': GObject.Object.Notify;
-            'notify::wl-manager': GObject.Object.Notify;
-            'notify::wl-registry': GObject.Object.Notify;
             'notify::wl-registry': GObject.Object.Notify;
             'notify::screen': GObject.Object.Notify;
         }
@@ -6278,8 +6253,6 @@ export namespace Libxfce4windowing {
             'notify::group': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::layout-column': GObject.Object.Notify;
-            'notify::layout-column': GObject.Object.Notify;
-            'notify::layout-row': GObject.Object.Notify;
             'notify::layout-row': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::number': GObject.Object.Notify;
@@ -6914,8 +6887,6 @@ export namespace Libxfce4windowing {
             'notify::group': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::layout-column': GObject.Object.Notify;
-            'notify::layout-column': GObject.Object.Notify;
-            'notify::layout-row': GObject.Object.Notify;
             'notify::layout-row': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::number': GObject.Object.Notify;

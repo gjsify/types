@@ -274,10 +274,7 @@ export namespace Polkit {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
             'notify::backend-features': GObject.Object.Notify;
-            'notify::backend-features': GObject.Object.Notify;
             'notify::backend-name': GObject.Object.Notify;
-            'notify::backend-name': GObject.Object.Notify;
-            'notify::backend-version': GObject.Object.Notify;
             'notify::backend-version': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -2125,12 +2122,9 @@ export namespace Polkit {
         // Signal signatures
         interface SignalSignatures extends Gio.Permission.SignalSignatures {
             'notify::action-id': GObject.Object.Notify;
-            'notify::action-id': GObject.Object.Notify;
             'notify::subject': GObject.Object.Notify;
             'notify::allowed': GObject.Object.Notify;
             'notify::can-acquire': GObject.Object.Notify;
-            'notify::can-acquire': GObject.Object.Notify;
-            'notify::can-release': GObject.Object.Notify;
             'notify::can-release': GObject.Object.Notify;
         }
 
@@ -4791,7 +4785,6 @@ export namespace Polkit {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::pid': GObject.Object.Notify;
             'notify::start-time': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
         }
 
@@ -5513,7 +5506,6 @@ export namespace Polkit {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::pid': GObject.Object.Notify;
-            'notify::session-id': GObject.Object.Notify;
             'notify::session-id': GObject.Object.Notify;
         }
 

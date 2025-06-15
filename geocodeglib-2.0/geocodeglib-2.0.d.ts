@@ -417,9 +417,7 @@ export namespace GeocodeGlib {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::answer-count': GObject.Object.Notify;
-            'notify::answer-count': GObject.Object.Notify;
             'notify::bounded': GObject.Object.Notify;
-            'notify::search-area': GObject.Object.Notify;
             'notify::search-area': GObject.Object.Notify;
         }
 
@@ -1624,10 +1622,7 @@ export namespace GeocodeGlib {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::base-url': GObject.Object.Notify;
-            'notify::base-url': GObject.Object.Notify;
             'notify::maintainer-email-address': GObject.Object.Notify;
-            'notify::maintainer-email-address': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
             'notify::user-agent': GObject.Object.Notify;
         }
 
@@ -2475,30 +2470,22 @@ export namespace GeocodeGlib {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::administrative-area': GObject.Object.Notify;
-            'notify::administrative-area': GObject.Object.Notify;
             'notify::area': GObject.Object.Notify;
-            'notify::bounding-box': GObject.Object.Notify;
             'notify::bounding-box': GObject.Object.Notify;
             'notify::building': GObject.Object.Notify;
             'notify::continent': GObject.Object.Notify;
             'notify::country': GObject.Object.Notify;
-            'notify::country-code': GObject.Object.Notify;
             'notify::country-code': GObject.Object.Notify;
             'notify::county': GObject.Object.Notify;
             'notify::icon': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::osm-id': GObject.Object.Notify;
-            'notify::osm-id': GObject.Object.Notify;
-            'notify::osm-type': GObject.Object.Notify;
             'notify::osm-type': GObject.Object.Notify;
             'notify::place-type': GObject.Object.Notify;
-            'notify::place-type': GObject.Object.Notify;
-            'notify::postal-code': GObject.Object.Notify;
             'notify::postal-code': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::street': GObject.Object.Notify;
-            'notify::street-address': GObject.Object.Notify;
             'notify::street-address': GObject.Object.Notify;
             'notify::town': GObject.Object.Notify;
         }

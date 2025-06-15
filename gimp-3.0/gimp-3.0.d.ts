@@ -7277,8 +7277,6 @@ export namespace Gimp {
         interface SignalSignatures extends Procedure.SignalSignatures {
             'notify::name': GObject.Object.Notify;
             'notify::plug-in': GObject.Object.Notify;
-            'notify::plug-in': GObject.Object.Notify;
-            'notify::procedure-type': GObject.Object.Notify;
             'notify::procedure-type': GObject.Object.Notify;
         }
 
@@ -8281,37 +8279,21 @@ export namespace Gimp {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::cmyk-profile': GObject.Object.Notify;
-            'notify::cmyk-profile': GObject.Object.Notify;
-            'notify::display-optimize': GObject.Object.Notify;
             'notify::display-optimize': GObject.Object.Notify;
             'notify::display-profile': GObject.Object.Notify;
-            'notify::display-profile': GObject.Object.Notify;
-            'notify::display-profile-from-gdk': GObject.Object.Notify;
             'notify::display-profile-from-gdk': GObject.Object.Notify;
             'notify::display-rendering-intent': GObject.Object.Notify;
-            'notify::display-rendering-intent': GObject.Object.Notify;
             'notify::display-use-black-point-compensation': GObject.Object.Notify;
-            'notify::display-use-black-point-compensation': GObject.Object.Notify;
-            'notify::gray-profile': GObject.Object.Notify;
             'notify::gray-profile': GObject.Object.Notify;
             'notify::mode': GObject.Object.Notify;
             'notify::out-of-gamut-color': GObject.Object.Notify;
-            'notify::out-of-gamut-color': GObject.Object.Notify;
-            'notify::rgb-profile': GObject.Object.Notify;
             'notify::rgb-profile': GObject.Object.Notify;
             'notify::show-hsv': GObject.Object.Notify;
-            'notify::show-hsv': GObject.Object.Notify;
-            'notify::show-rgb-u8': GObject.Object.Notify;
             'notify::show-rgb-u8': GObject.Object.Notify;
             'notify::simulation-gamut-check': GObject.Object.Notify;
-            'notify::simulation-gamut-check': GObject.Object.Notify;
-            'notify::simulation-optimize': GObject.Object.Notify;
             'notify::simulation-optimize': GObject.Object.Notify;
             'notify::simulation-profile': GObject.Object.Notify;
-            'notify::simulation-profile': GObject.Object.Notify;
             'notify::simulation-rendering-intent': GObject.Object.Notify;
-            'notify::simulation-rendering-intent': GObject.Object.Notify;
-            'notify::simulation-use-black-point-compensation': GObject.Object.Notify;
             'notify::simulation-use-black-point-compensation': GObject.Object.Notify;
         }
 
@@ -10237,21 +10219,13 @@ export namespace Gimp {
         interface SignalSignatures extends FileProcedure.SignalSignatures {
             'notify::capabilities': GObject.Object.Notify;
             'notify::supports-comment': GObject.Object.Notify;
-            'notify::supports-comment': GObject.Object.Notify;
-            'notify::supports-exif': GObject.Object.Notify;
             'notify::supports-exif': GObject.Object.Notify;
             'notify::supports-iptc': GObject.Object.Notify;
-            'notify::supports-iptc': GObject.Object.Notify;
-            'notify::supports-profile': GObject.Object.Notify;
             'notify::supports-profile': GObject.Object.Notify;
             'notify::supports-thumbnail': GObject.Object.Notify;
-            'notify::supports-thumbnail': GObject.Object.Notify;
-            'notify::supports-xmp': GObject.Object.Notify;
             'notify::supports-xmp': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::plug-in': GObject.Object.Notify;
-            'notify::plug-in': GObject.Object.Notify;
-            'notify::procedure-type': GObject.Object.Notify;
             'notify::procedure-type': GObject.Object.Notify;
         }
 
@@ -10561,8 +10535,6 @@ export namespace Gimp {
         interface SignalSignatures extends Procedure.SignalSignatures {
             'notify::name': GObject.Object.Notify;
             'notify::plug-in': GObject.Object.Notify;
-            'notify::plug-in': GObject.Object.Notify;
-            'notify::procedure-type': GObject.Object.Notify;
             'notify::procedure-type': GObject.Object.Notify;
         }
 
@@ -13924,8 +13896,6 @@ export namespace Gimp {
         interface SignalSignatures extends Procedure.SignalSignatures {
             'notify::name': GObject.Object.Notify;
             'notify::plug-in': GObject.Object.Notify;
-            'notify::plug-in': GObject.Object.Notify;
-            'notify::procedure-type': GObject.Object.Notify;
             'notify::procedure-type': GObject.Object.Notify;
         }
 
@@ -15198,8 +15168,6 @@ export namespace Gimp {
         interface SignalSignatures extends FileProcedure.SignalSignatures {
             'notify::name': GObject.Object.Notify;
             'notify::plug-in': GObject.Object.Notify;
-            'notify::plug-in': GObject.Object.Notify;
-            'notify::procedure-type': GObject.Object.Notify;
             'notify::procedure-type': GObject.Object.Notify;
         }
 
@@ -15497,8 +15465,6 @@ export namespace Gimp {
         // Signal signatures
         interface SignalSignatures extends GObject.TypeModule.SignalSignatures {
             'notify::auto-load': GObject.Object.Notify;
-            'notify::auto-load': GObject.Object.Notify;
-            'notify::on-disk': GObject.Object.Notify;
             'notify::on-disk': GObject.Object.Notify;
         }
 
@@ -18777,10 +18743,7 @@ export namespace Gimp {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::program-name': GObject.Object.Notify;
-            'notify::program-name': GObject.Object.Notify;
             'notify::read-channel': GObject.Object.Notify;
-            'notify::read-channel': GObject.Object.Notify;
-            'notify::write-channel': GObject.Object.Notify;
             'notify::write-channel': GObject.Object.Notify;
         }
 
@@ -19149,8 +19112,6 @@ export namespace Gimp {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::name': GObject.Object.Notify;
             'notify::plug-in': GObject.Object.Notify;
-            'notify::plug-in': GObject.Object.Notify;
-            'notify::procedure-type': GObject.Object.Notify;
             'notify::procedure-type': GObject.Object.Notify;
         }
 
@@ -22271,8 +22232,6 @@ export namespace Gimp {
         interface SignalSignatures extends Procedure.SignalSignatures {
             'notify::name': GObject.Object.Notify;
             'notify::plug-in': GObject.Object.Notify;
-            'notify::plug-in': GObject.Object.Notify;
-            'notify::procedure-type': GObject.Object.Notify;
             'notify::procedure-type': GObject.Object.Notify;
         }
 
@@ -22550,8 +22509,6 @@ export namespace Gimp {
         interface SignalSignatures extends LoadProcedure.SignalSignatures {
             'notify::name': GObject.Object.Notify;
             'notify::plug-in': GObject.Object.Notify;
-            'notify::plug-in': GObject.Object.Notify;
-            'notify::procedure-type': GObject.Object.Notify;
             'notify::procedure-type': GObject.Object.Notify;
         }
 

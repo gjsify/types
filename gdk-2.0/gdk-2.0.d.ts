@@ -5553,7 +5553,6 @@ export namespace Gdk {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'display-opened': DisplayOpened;
             'notify::default-display': GObject.Object.Notify;
-            'notify::default-display': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -6758,7 +6757,6 @@ export namespace Gdk {
             'composited-changed': CompositedChanged;
             'monitors-changed': MonitorsChanged;
             'size-changed': SizeChanged;
-            'notify::font-options': GObject.Object.Notify;
             'notify::font-options': GObject.Object.Notify;
             'notify::resolution': GObject.Object.Notify;
         }

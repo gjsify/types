@@ -346,11 +346,8 @@ export namespace DMAP {
             disconnected: Disconnected;
             'operation-done': OperationDone;
             'notify::base-uri': GObject.Object.Notify;
-            'notify::base-uri': GObject.Object.Notify;
-            'notify::database-id': GObject.Object.Notify;
             'notify::database-id': GObject.Object.Notify;
             'notify::db': GObject.Object.Notify;
-            'notify::dmap-version': GObject.Object.Notify;
             'notify::dmap-version': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::host': GObject.Object.Notify;
@@ -358,8 +355,6 @@ export namespace DMAP {
             'notify::password': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
             'notify::revision-number': GObject.Object.Notify;
-            'notify::revision-number': GObject.Object.Notify;
-            'notify::session-id': GObject.Object.Notify;
             'notify::session-id': GObject.Object.Notify;
             'notify::username': GObject.Object.Notify;
         }
@@ -1208,21 +1203,14 @@ export namespace DMAP {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::auth-method': GObject.Object.Notify;
-            'notify::auth-method': GObject.Object.Notify;
-            'notify::container-db': GObject.Object.Notify;
             'notify::container-db': GObject.Object.Notify;
             'notify::db': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::revision-number': GObject.Object.Notify;
-            'notify::revision-number': GObject.Object.Notify;
-            'notify::server-ipv4': GObject.Object.Notify;
             'notify::server-ipv4': GObject.Object.Notify;
             'notify::server-ipv6': GObject.Object.Notify;
-            'notify::server-ipv6': GObject.Object.Notify;
             'notify::transcode-mimetype': GObject.Object.Notify;
-            'notify::transcode-mimetype': GObject.Object.Notify;
-            'notify::txt-records': GObject.Object.Notify;
             'notify::txt-records': GObject.Object.Notify;
         }
 

@@ -319,15 +319,10 @@ export namespace TrackerMiner {
             finished: Finished;
             'items-available': ItemsAvailable;
             'notify::class-names': GObject.Object.Notify;
-            'notify::class-names': GObject.Object.Notify;
-            'notify::commit-batch-size': GObject.Object.Notify;
             'notify::commit-batch-size': GObject.Object.Notify;
             'notify::data-source': GObject.Object.Notify;
-            'notify::data-source': GObject.Object.Notify;
-            'notify::priority-rdf-types': GObject.Object.Notify;
             'notify::priority-rdf-types': GObject.Object.Notify;
             'notify::progress': GObject.Object.Notify;
-            'notify::remaining-time': GObject.Object.Notify;
             'notify::remaining-time': GObject.Object.Notify;
             'notify::status': GObject.Object.Notify;
         }
@@ -1027,15 +1022,10 @@ export namespace TrackerMiner {
         // Signal signatures
         interface SignalSignatures extends Decorator.SignalSignatures {
             'notify::class-names': GObject.Object.Notify;
-            'notify::class-names': GObject.Object.Notify;
-            'notify::commit-batch-size': GObject.Object.Notify;
             'notify::commit-batch-size': GObject.Object.Notify;
             'notify::data-source': GObject.Object.Notify;
-            'notify::data-source': GObject.Object.Notify;
-            'notify::priority-rdf-types': GObject.Object.Notify;
             'notify::priority-rdf-types': GObject.Object.Notify;
             'notify::progress': GObject.Object.Notify;
-            'notify::remaining-time': GObject.Object.Notify;
             'notify::remaining-time': GObject.Object.Notify;
             'notify::status': GObject.Object.Notify;
         }
@@ -1556,7 +1546,6 @@ export namespace TrackerMiner {
             'directory-removed': DirectoryRemoved;
             'directory-updated': DirectoryUpdated;
             'notify::filter-hidden': GObject.Object.Notify;
-            'notify::filter-hidden': GObject.Object.Notify;
             'notify::root': GObject.Object.Notify;
         }
 
@@ -1809,7 +1798,6 @@ export namespace TrackerMiner {
             started: Started;
             stopped: Stopped;
             'notify::progress': GObject.Object.Notify;
-            'notify::remaining-time': GObject.Object.Notify;
             'notify::remaining-time': GObject.Object.Notify;
             'notify::status': GObject.Object.Notify;
         }
@@ -2486,15 +2474,11 @@ export namespace TrackerMiner {
             'remove-children': RemoveChildren;
             'remove-file': RemoveFile;
             'notify::data-provider': GObject.Object.Notify;
-            'notify::data-provider': GObject.Object.Notify;
             'notify::processing-pool-ready-limit': GObject.Object.Notify;
-            'notify::processing-pool-ready-limit': GObject.Object.Notify;
-            'notify::processing-pool-wait-limit': GObject.Object.Notify;
             'notify::processing-pool-wait-limit': GObject.Object.Notify;
             'notify::root': GObject.Object.Notify;
             'notify::throttle': GObject.Object.Notify;
             'notify::progress': GObject.Object.Notify;
-            'notify::remaining-time': GObject.Object.Notify;
             'notify::remaining-time': GObject.Object.Notify;
             'notify::status': GObject.Object.Notify;
         }
@@ -3211,7 +3195,6 @@ export namespace TrackerMiner {
             disconnected: Disconnected;
             'notify::progress': GObject.Object.Notify;
             'notify::remaining-time': GObject.Object.Notify;
-            'notify::remaining-time': GObject.Object.Notify;
             'notify::status': GObject.Object.Notify;
         }
 
@@ -3794,8 +3777,6 @@ export namespace TrackerMiner {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::dbus-connection': GObject.Object.Notify;
-            'notify::dbus-connection': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
             'notify::miner': GObject.Object.Notify;
         }

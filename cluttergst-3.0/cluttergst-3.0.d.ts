@@ -142,13 +142,9 @@ export namespace ClutterGst {
         // Signal signatures
         interface SignalSignatures extends Content.SignalSignatures {
             'notify::fill-allocation': GObject.Object.Notify;
-            'notify::fill-allocation': GObject.Object.Notify;
-            'notify::paint-borders': GObject.Object.Notify;
             'notify::paint-borders': GObject.Object.Notify;
             'notify::frame': GObject.Object.Notify;
             'notify::paint-frame': GObject.Object.Notify;
-            'notify::paint-frame': GObject.Object.Notify;
-            'notify::paint-overlays': GObject.Object.Notify;
             'notify::paint-overlays': GObject.Object.Notify;
             'notify::player': GObject.Object.Notify;
             'notify::sink': GObject.Object.Notify;
@@ -731,7 +727,6 @@ export namespace ClutterGst {
             'ready-for-capture': ReadyForCapture;
             'video-saved': VideoSaved;
             'notify::device': GObject.Object.Notify;
-            'notify::audio-volume': GObject.Object.Notify;
             'notify::audio-volume': GObject.Object.Notify;
             'notify::idle': GObject.Object.Notify;
             'notify::playing': GObject.Object.Notify;
@@ -1535,7 +1530,6 @@ export namespace ClutterGst {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'capture-resolution-changed': CaptureResolutionChanged;
             'notify::element-factory': GObject.Object.Notify;
-            'notify::element-factory': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::node': GObject.Object.Notify;
         }
@@ -1721,8 +1715,6 @@ export namespace ClutterGst {
             'size-change': SizeChange;
             'notify::frame': GObject.Object.Notify;
             'notify::paint-frame': GObject.Object.Notify;
-            'notify::paint-frame': GObject.Object.Notify;
-            'notify::paint-overlays': GObject.Object.Notify;
             'notify::paint-overlays': GObject.Object.Notify;
             'notify::player': GObject.Object.Notify;
             'notify::sink': GObject.Object.Notify;
@@ -2291,17 +2283,11 @@ export namespace ClutterGst {
         // Signal signatures
         interface SignalSignatures extends Content.SignalSignatures {
             'notify::cull-backface': GObject.Object.Notify;
-            'notify::cull-backface': GObject.Object.Notify;
-            'notify::input-region': GObject.Object.Notify;
             'notify::input-region': GObject.Object.Notify;
             'notify::output-region': GObject.Object.Notify;
-            'notify::output-region': GObject.Object.Notify;
-            'notify::paint-borders': GObject.Object.Notify;
             'notify::paint-borders': GObject.Object.Notify;
             'notify::frame': GObject.Object.Notify;
             'notify::paint-frame': GObject.Object.Notify;
-            'notify::paint-frame': GObject.Object.Notify;
-            'notify::paint-overlays': GObject.Object.Notify;
             'notify::paint-overlays': GObject.Object.Notify;
             'notify::player': GObject.Object.Notify;
             'notify::sink': GObject.Object.Notify;
@@ -2886,31 +2872,19 @@ export namespace ClutterGst {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'should-buffer': ShouldBuffer;
             'notify::audio-stream': GObject.Object.Notify;
-            'notify::audio-stream': GObject.Object.Notify;
-            'notify::audio-streams': GObject.Object.Notify;
             'notify::audio-streams': GObject.Object.Notify;
             'notify::buffer-fill': GObject.Object.Notify;
-            'notify::buffer-fill': GObject.Object.Notify;
-            'notify::can-seek': GObject.Object.Notify;
             'notify::can-seek': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-seek': GObject.Object.Notify;
-            'notify::in-seek': GObject.Object.Notify;
             'notify::progress': GObject.Object.Notify;
             'notify::seek-flags': GObject.Object.Notify;
-            'notify::seek-flags': GObject.Object.Notify;
-            'notify::subtitle-font-name': GObject.Object.Notify;
             'notify::subtitle-font-name': GObject.Object.Notify;
             'notify::subtitle-track': GObject.Object.Notify;
-            'notify::subtitle-track': GObject.Object.Notify;
             'notify::subtitle-tracks': GObject.Object.Notify;
-            'notify::subtitle-tracks': GObject.Object.Notify;
-            'notify::subtitle-uri': GObject.Object.Notify;
             'notify::subtitle-uri': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
             'notify::user-agent': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
-            'notify::audio-volume': GObject.Object.Notify;
             'notify::audio-volume': GObject.Object.Notify;
             'notify::idle': GObject.Object.Notify;
             'notify::playing': GObject.Object.Notify;
@@ -3855,29 +3829,19 @@ export namespace ClutterGst {
             'new-overlays': NewOverlays;
             'pipeline-ready': PipelineReady;
             'notify::update-priority': GObject.Object.Notify;
-            'notify::update-priority': GObject.Object.Notify;
-            'notify::show-preroll-frame': GObject.Object.Notify;
             'notify::show-preroll-frame': GObject.Object.Notify;
             'notify::async': GObject.Object.Notify;
             'notify::blocksize': GObject.Object.Notify;
             'notify::enable-last-sample': GObject.Object.Notify;
-            'notify::enable-last-sample': GObject.Object.Notify;
-            'notify::last-sample': GObject.Object.Notify;
             'notify::last-sample': GObject.Object.Notify;
             'notify::max-bitrate': GObject.Object.Notify;
-            'notify::max-bitrate': GObject.Object.Notify;
             'notify::max-lateness': GObject.Object.Notify;
-            'notify::max-lateness': GObject.Object.Notify;
-            'notify::processing-deadline': GObject.Object.Notify;
             'notify::processing-deadline': GObject.Object.Notify;
             'notify::qos': GObject.Object.Notify;
-            'notify::render-delay': GObject.Object.Notify;
             'notify::render-delay': GObject.Object.Notify;
             'notify::stats': GObject.Object.Notify;
             'notify::sync': GObject.Object.Notify;
             'notify::throttle-time': GObject.Object.Notify;
-            'notify::throttle-time': GObject.Object.Notify;
-            'notify::ts-offset': GObject.Object.Notify;
             'notify::ts-offset': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;

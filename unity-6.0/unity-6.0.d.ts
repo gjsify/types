@@ -376,7 +376,6 @@ export namespace Unity {
             'notify::ribbon': GObject.Object.Notify;
             'notify::category': GObject.Object.Notify;
             'notify::size-hint': GObject.Object.Notify;
-            'notify::size-hint': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -441,8 +440,6 @@ export namespace Unity {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::unity-running': GObject.Object.Notify;
-            'notify::unity-running': GObject.Object.Notify;
-            'notify::unity-bus-name': GObject.Object.Notify;
             'notify::unity-bus-name': GObject.Object.Notify;
         }
 
@@ -515,12 +512,9 @@ export namespace Unity {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::app-uri': GObject.Object.Notify;
-            'notify::app-uri': GObject.Object.Notify;
             'notify::count': GObject.Object.Notify;
             'notify::count-visible': GObject.Object.Notify;
-            'notify::count-visible': GObject.Object.Notify;
             'notify::progress': GObject.Object.Notify;
-            'notify::progress-visible': GObject.Object.Notify;
             'notify::progress-visible': GObject.Object.Notify;
             'notify::urgent': GObject.Object.Notify;
             'notify::quicklist': GObject.Object.Notify;
@@ -1138,7 +1132,6 @@ export namespace Unity {
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
             'notify::handled': GObject.Object.Notify;
             'notify::goto-uri': GObject.Object.Notify;
-            'notify::goto-uri': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1195,8 +1188,6 @@ export namespace Unity {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::name': GObject.Object.Notify;
             'notify::icon-hint': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
-            'notify::default-renderer': GObject.Object.Notify;
             'notify::default-renderer': GObject.Object.Notify;
         }
 
@@ -1258,8 +1249,6 @@ export namespace Unity {
             changed: Changed;
             'notify::id': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
             'notify::icon-hint': GObject.Object.Notify;
             'notify::renderer': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
@@ -1325,8 +1314,6 @@ export namespace Unity {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::id': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
             'notify::icon-hint': GObject.Object.Notify;
             'notify::active': GObject.Object.Notify;
         }
@@ -1387,11 +1374,8 @@ export namespace Unity {
         // Signal signatures
         interface SignalSignatures extends Filter.SignalSignatures {
             'notify::sort-type': GObject.Object.Notify;
-            'notify::sort-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
             'notify::icon-hint': GObject.Object.Notify;
             'notify::renderer': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
@@ -1463,11 +1447,8 @@ export namespace Unity {
         // Signal signatures
         interface SignalSignatures extends OptionsFilter.SignalSignatures {
             'notify::sort-type': GObject.Object.Notify;
-            'notify::sort-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
             'notify::icon-hint': GObject.Object.Notify;
             'notify::renderer': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
@@ -1521,11 +1502,8 @@ export namespace Unity {
         // Signal signatures
         interface SignalSignatures extends OptionsFilter.SignalSignatures {
             'notify::sort-type': GObject.Object.Notify;
-            'notify::sort-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
             'notify::icon-hint': GObject.Object.Notify;
             'notify::renderer': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
@@ -1575,11 +1553,8 @@ export namespace Unity {
         // Signal signatures
         interface SignalSignatures extends OptionsFilter.SignalSignatures {
             'notify::sort-type': GObject.Object.Notify;
-            'notify::sort-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
             'notify::icon-hint': GObject.Object.Notify;
             'notify::renderer': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
@@ -1636,8 +1611,6 @@ export namespace Unity {
             'notify::rating': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
             'notify::icon-hint': GObject.Object.Notify;
             'notify::renderer': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
@@ -1691,11 +1664,8 @@ export namespace Unity {
         // Signal signatures
         interface SignalSignatures extends OptionsFilter.SignalSignatures {
             'notify::sort-type': GObject.Object.Notify;
-            'notify::sort-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
             'notify::icon-hint': GObject.Object.Notify;
             'notify::renderer': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
@@ -1749,7 +1719,6 @@ export namespace Unity {
     namespace PreferencesManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::remote-content-search': GObject.Object.Notify;
             'notify::remote-content-search': GObject.Object.Notify;
         }
 
@@ -1817,9 +1786,7 @@ export namespace Unity {
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
             finished: Finished;
             'notify::search-string': GObject.Object.Notify;
-            'notify::search-string': GObject.Object.Notify;
             'notify::hints': GObject.Object.Notify;
-            'notify::results-model': GObject.Object.Notify;
             'notify::results-model': GObject.Object.Notify;
         }
 
@@ -1890,21 +1857,14 @@ export namespace Unity {
             'notify::searching': GObject.Object.Notify;
             'notify::exported': GObject.Object.Notify;
             'notify::search-in-global': GObject.Object.Notify;
-            'notify::search-in-global': GObject.Object.Notify;
-            'notify::home-lens-default-name': GObject.Object.Notify;
             'notify::home-lens-default-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
-            'notify::search-hint': GObject.Object.Notify;
             'notify::search-hint': GObject.Object.Notify;
             'notify::filters': GObject.Object.Notify;
             'notify::categories': GObject.Object.Notify;
             'notify::merge-strategy': GObject.Object.Notify;
-            'notify::merge-strategy': GObject.Object.Notify;
             'notify::global-merge-strategy': GObject.Object.Notify;
-            'notify::global-merge-strategy': GObject.Object.Notify;
-            'notify::sources-display-name': GObject.Object.Notify;
             'notify::sources-display-name': GObject.Object.Notify;
         }
 
@@ -2019,8 +1979,6 @@ export namespace Unity {
             'notify::title': GObject.Object.Notify;
             'notify::subtitle': GObject.Object.Notify;
             'notify::description-markup': GObject.Object.Notify;
-            'notify::description-markup': GObject.Object.Notify;
-            'notify::image-source-uri': GObject.Object.Notify;
             'notify::image-source-uri': GObject.Object.Notify;
             'notify::image': GObject.Object.Notify;
         }
@@ -2565,12 +2523,8 @@ export namespace Unity {
             activated: Activated;
             'notify::id': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::extra-text': GObject.Object.Notify;
             'notify::extra-text': GObject.Object.Notify;
             'notify::icon-hint': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
-            'notify::layout-hint': GObject.Object.Notify;
             'notify::layout-hint': GObject.Object.Notify;
             'notify::hints': GObject.Object.Notify;
         }
@@ -3116,8 +3070,6 @@ export namespace Unity {
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
             'notify::id': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
             'notify::icon-hint': GObject.Object.Notify;
             'notify::data': GObject.Object.Notify;
         }
@@ -3178,8 +3130,6 @@ export namespace Unity {
             'notify::title': GObject.Object.Notify;
             'notify::subtitle': GObject.Object.Notify;
             'notify::description-markup': GObject.Object.Notify;
-            'notify::description-markup': GObject.Object.Notify;
-            'notify::image-source-uri': GObject.Object.Notify;
             'notify::image-source-uri': GObject.Object.Notify;
             'notify::image': GObject.Object.Notify;
         }
@@ -3223,16 +3173,12 @@ export namespace Unity {
         // Signal signatures
         interface SignalSignatures extends Preview.SignalSignatures {
             'notify::app-icon': GObject.Object.Notify;
-            'notify::app-icon': GObject.Object.Notify;
             'notify::license': GObject.Object.Notify;
             'notify::copyright': GObject.Object.Notify;
-            'notify::last-update': GObject.Object.Notify;
             'notify::last-update': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::subtitle': GObject.Object.Notify;
             'notify::description-markup': GObject.Object.Notify;
-            'notify::description-markup': GObject.Object.Notify;
-            'notify::image-source-uri': GObject.Object.Notify;
             'notify::image-source-uri': GObject.Object.Notify;
             'notify::image': GObject.Object.Notify;
         }
@@ -3320,16 +3266,11 @@ export namespace Unity {
             play: Play;
             pause: Pause;
             'notify::current-track-uri': GObject.Object.Notify;
-            'notify::current-track-uri': GObject.Object.Notify;
             'notify::current-progress': GObject.Object.Notify;
-            'notify::current-progress': GObject.Object.Notify;
-            'notify::current-track-state': GObject.Object.Notify;
             'notify::current-track-state': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::subtitle': GObject.Object.Notify;
             'notify::description-markup': GObject.Object.Notify;
-            'notify::description-markup': GObject.Object.Notify;
-            'notify::image-source-uri': GObject.Object.Notify;
             'notify::image-source-uri': GObject.Object.Notify;
             'notify::image': GObject.Object.Notify;
         }
@@ -3402,8 +3343,6 @@ export namespace Unity {
             'notify::title': GObject.Object.Notify;
             'notify::subtitle': GObject.Object.Notify;
             'notify::description-markup': GObject.Object.Notify;
-            'notify::description-markup': GObject.Object.Notify;
-            'notify::image-source-uri': GObject.Object.Notify;
             'notify::image-source-uri': GObject.Object.Notify;
             'notify::image': GObject.Object.Notify;
         }
@@ -3463,8 +3402,6 @@ export namespace Unity {
             'notify::title': GObject.Object.Notify;
             'notify::subtitle': GObject.Object.Notify;
             'notify::description-markup': GObject.Object.Notify;
-            'notify::description-markup': GObject.Object.Notify;
-            'notify::image-source-uri': GObject.Object.Notify;
             'notify::image-source-uri': GObject.Object.Notify;
             'notify::image': GObject.Object.Notify;
         }
@@ -3591,8 +3528,6 @@ export namespace Unity {
             'notify::title': GObject.Object.Notify;
             'notify::subtitle': GObject.Object.Notify;
             'notify::description-markup': GObject.Object.Notify;
-            'notify::description-markup': GObject.Object.Notify;
-            'notify::image-source-uri': GObject.Object.Notify;
             'notify::image-source-uri': GObject.Object.Notify;
             'notify::image': GObject.Object.Notify;
         }
@@ -3683,16 +3618,11 @@ export namespace Unity {
             'notify::active': GObject.Object.Notify;
             'notify::exported': GObject.Object.Notify;
             'notify::search-in-global': GObject.Object.Notify;
-            'notify::search-in-global': GObject.Object.Notify;
             'notify::provides-personal-content': GObject.Object.Notify;
-            'notify::provides-personal-content': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
             'notify::sources': GObject.Object.Notify;
             'notify::filters': GObject.Object.Notify;
             'notify::results-model': GObject.Object.Notify;
-            'notify::results-model': GObject.Object.Notify;
-            'notify::global-results-model': GObject.Object.Notify;
             'notify::global-results-model': GObject.Object.Notify;
         }
 
@@ -3789,14 +3719,11 @@ export namespace Unity {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::uri': GObject.Object.Notify;
             'notify::track-no': GObject.Object.Notify;
-            'notify::track-no': GObject.Object.Notify;
             'notify::artist': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::album': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
             'notify::art-location': GObject.Object.Notify;
-            'notify::art-location': GObject.Object.Notify;
-            'notify::art-icon': GObject.Object.Notify;
             'notify::art-icon': GObject.Object.Notify;
         }
 
@@ -3888,10 +3815,7 @@ export namespace Unity {
             'notify::name': GObject.Object.Notify;
             'notify::icon': GObject.Object.Notify;
             'notify::creation-date': GObject.Object.Notify;
-            'notify::creation-date': GObject.Object.Notify;
             'notify::modification-date': GObject.Object.Notify;
-            'notify::modification-date': GObject.Object.Notify;
-            'notify::last-play-date': GObject.Object.Notify;
             'notify::last-play-date': GObject.Object.Notify;
         }
 
@@ -3988,29 +3912,17 @@ export namespace Unity {
             next: Next;
             activate_playlist: ActivatePlaylist;
             'notify::app-info': GObject.Object.Notify;
-            'notify::app-info': GObject.Object.Notify;
             'notify::desktop-file-name': GObject.Object.Notify;
-            'notify::desktop-file-name': GObject.Object.Notify;
-            'notify::is-blacklisted': GObject.Object.Notify;
             'notify::is-blacklisted': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::can-go-next': GObject.Object.Notify;
-            'notify::can-go-next': GObject.Object.Notify;
-            'notify::can-go-previous': GObject.Object.Notify;
             'notify::can-go-previous': GObject.Object.Notify;
             'notify::can-play': GObject.Object.Notify;
-            'notify::can-play': GObject.Object.Notify;
-            'notify::can-pause': GObject.Object.Notify;
             'notify::can-pause': GObject.Object.Notify;
             'notify::current-track': GObject.Object.Notify;
-            'notify::current-track': GObject.Object.Notify;
-            'notify::playback-state': GObject.Object.Notify;
             'notify::playback-state': GObject.Object.Notify;
             'notify::current-playlist': GObject.Object.Notify;
-            'notify::current-playlist': GObject.Object.Notify;
             'notify::track-menu': GObject.Object.Notify;
-            'notify::track-menu': GObject.Object.Notify;
-            'notify::player-menu': GObject.Object.Notify;
             'notify::player-menu': GObject.Object.Notify;
         }
 

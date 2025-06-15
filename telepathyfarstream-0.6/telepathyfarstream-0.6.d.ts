@@ -55,8 +55,6 @@ export namespace TelepathyFarstream {
             'fs-conference-removed': FsConferenceRemoved;
             'notify::channel': GObject.Object.Notify;
             'notify::fs-conferences': GObject.Object.Notify;
-            'notify::fs-conferences': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 
@@ -811,16 +809,10 @@ export namespace TelepathyFarstream {
             'stop-receiving': StopReceiving;
             'stop-sending': StopSending;
             'notify::fs-conference': GObject.Object.Notify;
-            'notify::fs-conference': GObject.Object.Notify;
-            'notify::fs-session': GObject.Object.Notify;
             'notify::fs-session': GObject.Object.Notify;
             'notify::media-type': GObject.Object.Notify;
-            'notify::media-type': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
             'notify::sink-pad': GObject.Object.Notify;
-            'notify::sink-pad': GObject.Object.Notify;
-            'notify::tf-channel': GObject.Object.Notify;
             'notify::tf-channel': GObject.Object.Notify;
         }
 

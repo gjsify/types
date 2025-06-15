@@ -246,11 +246,8 @@ export namespace Gom {
             'notify::filter': GObject.Object.Notify;
             'notify::limit': GObject.Object.Notify;
             'notify::m2m-table': GObject.Object.Notify;
-            'notify::m2m-table': GObject.Object.Notify;
-            'notify::m2m-type': GObject.Object.Notify;
             'notify::m2m-type': GObject.Object.Notify;
             'notify::offset': GObject.Object.Notify;
-            'notify::resource-type': GObject.Object.Notify;
             'notify::resource-type': GObject.Object.Notify;
             'notify::sorting': GObject.Object.Notify;
         }
@@ -823,13 +820,9 @@ export namespace Gom {
             'notify::count': GObject.Object.Notify;
             'notify::filter': GObject.Object.Notify;
             'notify::is-writable': GObject.Object.Notify;
-            'notify::is-writable': GObject.Object.Notify;
             'notify::m2m-table': GObject.Object.Notify;
-            'notify::m2m-table': GObject.Object.Notify;
-            'notify::m2m-type': GObject.Object.Notify;
             'notify::m2m-type': GObject.Object.Notify;
             'notify::repository': GObject.Object.Notify;
-            'notify::resource-type': GObject.Object.Notify;
             'notify::resource-type': GObject.Object.Notify;
             'notify::sorting': GObject.Object.Notify;
         }

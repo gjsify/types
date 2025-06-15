@@ -165,7 +165,6 @@ export namespace SugarGestures {
             pressed: Pressed;
             'notify::threshold': GObject.Object.Notify;
             'notify::trigger-delay': GObject.Object.Notify;
-            'notify::trigger-delay': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::widget': GObject.Object.Notify;
         }
@@ -233,8 +232,6 @@ export namespace SugarGestures {
         interface SignalSignatures extends TouchController.SignalSignatures {
             'angle-changed': AngleChanged;
             'notify::max-touches': GObject.Object.Notify;
-            'notify::max-touches': GObject.Object.Notify;
-            'notify::min-touches': GObject.Object.Notify;
             'notify::min-touches': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::widget': GObject.Object.Notify;
@@ -357,8 +354,6 @@ export namespace SugarGestures {
         // Signal signatures
         interface SignalSignatures extends EventController.SignalSignatures {
             'notify::max-touches': GObject.Object.Notify;
-            'notify::max-touches': GObject.Object.Notify;
-            'notify::min-touches': GObject.Object.Notify;
             'notify::min-touches': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::widget': GObject.Object.Notify;
@@ -450,8 +445,6 @@ export namespace SugarGestures {
         interface SignalSignatures extends TouchController.SignalSignatures {
             'scale-changed': ScaleChanged;
             'notify::max-touches': GObject.Object.Notify;
-            'notify::max-touches': GObject.Object.Notify;
-            'notify::min-touches': GObject.Object.Notify;
             'notify::min-touches': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::widget': GObject.Object.Notify;

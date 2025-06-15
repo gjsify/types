@@ -323,13 +323,9 @@ export namespace GstCheck {
         // Signal signatures
         interface SignalSignatures extends Gst.Clock.SignalSignatures {
             'notify::clock-type': GObject.Object.Notify;
-            'notify::clock-type': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
             'notify::start-time': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
             'notify::window-size': GObject.Object.Notify;
-            'notify::window-size': GObject.Object.Notify;
-            'notify::window-threshold': GObject.Object.Notify;
             'notify::window-threshold': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;

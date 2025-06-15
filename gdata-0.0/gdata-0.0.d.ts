@@ -1444,8 +1444,6 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::is-fixed': GObject.Object.Notify;
-            'notify::is-fixed': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -1518,22 +1516,17 @@ export namespace GData {
             'notify::key': GObject.Object.Notify;
             'notify::role': GObject.Object.Notify;
             'notify::scope-type': GObject.Object.Notify;
-            'notify::scope-type': GObject.Object.Notify;
-            'notify::scope-value': GObject.Object.Notify;
             'notify::scope-value': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -1681,10 +1674,8 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::email-address': GObject.Object.Notify;
-            'notify::email-address': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -2256,7 +2247,6 @@ export namespace GData {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::scope': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2334,8 +2324,6 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::authorization-domain': GObject.Object.Notify;
-            'notify::authorization-domain': GObject.Object.Notify;
-            'notify::feed-uri': GObject.Object.Notify;
             'notify::feed-uri': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
         }
@@ -2561,22 +2549,17 @@ export namespace GData {
             'notify::key': GObject.Object.Notify;
             'notify::role': GObject.Object.Notify;
             'notify::scope-type': GObject.Object.Notify;
-            'notify::scope-type': GObject.Object.Notify;
-            'notify::scope-value': GObject.Object.Notify;
             'notify::scope-value': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -2626,26 +2609,20 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
             'notify::access-level': GObject.Object.Notify;
-            'notify::access-level': GObject.Object.Notify;
             'notify::color': GObject.Object.Notify;
             'notify::is-hidden': GObject.Object.Notify;
-            'notify::is-hidden': GObject.Object.Notify;
-            'notify::is-selected': GObject.Object.Notify;
             'notify::is-selected': GObject.Object.Notify;
             'notify::timezone': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -3075,17 +3052,11 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
             'notify::anyone-can-add-self': GObject.Object.Notify;
-            'notify::anyone-can-add-self': GObject.Object.Notify;
             'notify::edited': GObject.Object.Notify;
             'notify::guests-can-invite-others': GObject.Object.Notify;
-            'notify::guests-can-invite-others': GObject.Object.Notify;
-            'notify::guests-can-modify': GObject.Object.Notify;
             'notify::guests-can-modify': GObject.Object.Notify;
             'notify::guests-can-see-guests': GObject.Object.Notify;
-            'notify::guests-can-see-guests': GObject.Object.Notify;
             'notify::original-event-id': GObject.Object.Notify;
-            'notify::original-event-id': GObject.Object.Notify;
-            'notify::original-event-uri': GObject.Object.Notify;
             'notify::original-event-uri': GObject.Object.Notify;
             'notify::recurrence': GObject.Object.Notify;
             'notify::sequence': GObject.Object.Notify;
@@ -3095,17 +3066,14 @@ export namespace GData {
             'notify::visibility': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -3505,19 +3473,14 @@ export namespace GData {
             'notify::icon': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::items-per-page': GObject.Object.Notify;
-            'notify::items-per-page': GObject.Object.Notify;
             'notify::logo': GObject.Object.Notify;
             'notify::next-page-token': GObject.Object.Notify;
-            'notify::next-page-token': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
             'notify::start-index': GObject.Object.Notify;
             'notify::subtitle': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::total-results': GObject.Object.Notify;
-            'notify::total-results': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -3561,37 +3524,23 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Query.SignalSignatures {
             'notify::future-events': GObject.Object.Notify;
-            'notify::future-events': GObject.Object.Notify;
-            'notify::max-attendees': GObject.Object.Notify;
             'notify::max-attendees': GObject.Object.Notify;
             'notify::order-by': GObject.Object.Notify;
-            'notify::order-by': GObject.Object.Notify;
-            'notify::show-deleted': GObject.Object.Notify;
             'notify::show-deleted': GObject.Object.Notify;
             'notify::single-events': GObject.Object.Notify;
-            'notify::single-events': GObject.Object.Notify;
             'notify::start-max': GObject.Object.Notify;
-            'notify::start-max': GObject.Object.Notify;
-            'notify::start-min': GObject.Object.Notify;
             'notify::start-min': GObject.Object.Notify;
             'notify::timezone': GObject.Object.Notify;
             'notify::author': GObject.Object.Notify;
             'notify::categories': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::is-strict': GObject.Object.Notify;
-            'notify::is-strict': GObject.Object.Notify;
-            'notify::max-results': GObject.Object.Notify;
             'notify::max-results': GObject.Object.Notify;
             'notify::published-max': GObject.Object.Notify;
-            'notify::published-max': GObject.Object.Notify;
-            'notify::published-min': GObject.Object.Notify;
             'notify::published-min': GObject.Object.Notify;
             'notify::q': GObject.Object.Notify;
             'notify::start-index': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
             'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-min': GObject.Object.Notify;
             'notify::updated-min': GObject.Object.Notify;
         }
 
@@ -3852,7 +3801,6 @@ export namespace GData {
         interface SignalSignatures extends Service.SignalSignatures {
             'notify::authorizer': GObject.Object.Notify;
             'notify::locale': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
         }
@@ -4670,7 +4618,6 @@ export namespace GData {
             'notify::scheme': GObject.Object.Notify;
             'notify::term': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5238,17 +5185,14 @@ export namespace GData {
         interface SignalSignatures extends Entry.SignalSignatures {
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -5292,22 +5236,17 @@ export namespace GData {
             'notify::key': GObject.Object.Notify;
             'notify::role': GObject.Object.Notify;
             'notify::scope-type': GObject.Object.Notify;
-            'notify::scope-type': GObject.Object.Notify;
-            'notify::scope-value': GObject.Object.Notify;
             'notify::scope-value': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -5357,36 +5296,24 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends DocumentsEntry.SignalSignatures {
             'notify::can-edit': GObject.Object.Notify;
-            'notify::can-edit': GObject.Object.Notify;
-            'notify::file-size': GObject.Object.Notify;
             'notify::file-size': GObject.Object.Notify;
             'notify::is-deleted': GObject.Object.Notify;
-            'notify::is-deleted': GObject.Object.Notify;
-            'notify::last-modified-by': GObject.Object.Notify;
             'notify::last-modified-by': GObject.Object.Notify;
             'notify::last-viewed': GObject.Object.Notify;
-            'notify::last-viewed': GObject.Object.Notify;
-            'notify::quota-used': GObject.Object.Notify;
             'notify::quota-used': GObject.Object.Notify;
             'notify::resource-id': GObject.Object.Notify;
-            'notify::resource-id': GObject.Object.Notify;
             'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::writers-can-invite': GObject.Object.Notify;
             'notify::writers-can-invite': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -5811,36 +5738,24 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends DocumentsDocument.SignalSignatures {
             'notify::can-edit': GObject.Object.Notify;
-            'notify::can-edit': GObject.Object.Notify;
-            'notify::file-size': GObject.Object.Notify;
             'notify::file-size': GObject.Object.Notify;
             'notify::is-deleted': GObject.Object.Notify;
-            'notify::is-deleted': GObject.Object.Notify;
-            'notify::last-modified-by': GObject.Object.Notify;
             'notify::last-modified-by': GObject.Object.Notify;
             'notify::last-viewed': GObject.Object.Notify;
-            'notify::last-viewed': GObject.Object.Notify;
-            'notify::quota-used': GObject.Object.Notify;
             'notify::quota-used': GObject.Object.Notify;
             'notify::resource-id': GObject.Object.Notify;
-            'notify::resource-id': GObject.Object.Notify;
             'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::writers-can-invite': GObject.Object.Notify;
             'notify::writers-can-invite': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -6113,17 +6028,14 @@ export namespace GData {
             'notify::name': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -6184,19 +6096,12 @@ export namespace GData {
             'notify::categories': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::is-strict': GObject.Object.Notify;
-            'notify::is-strict': GObject.Object.Notify;
-            'notify::max-results': GObject.Object.Notify;
             'notify::max-results': GObject.Object.Notify;
             'notify::published-max': GObject.Object.Notify;
-            'notify::published-max': GObject.Object.Notify;
-            'notify::published-min': GObject.Object.Notify;
             'notify::published-min': GObject.Object.Notify;
             'notify::q': GObject.Object.Notify;
             'notify::start-index': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
             'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-min': GObject.Object.Notify;
             'notify::updated-min': GObject.Object.Notify;
         }
 
@@ -6239,36 +6144,24 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
             'notify::can-edit': GObject.Object.Notify;
-            'notify::can-edit': GObject.Object.Notify;
-            'notify::file-size': GObject.Object.Notify;
             'notify::file-size': GObject.Object.Notify;
             'notify::is-deleted': GObject.Object.Notify;
-            'notify::is-deleted': GObject.Object.Notify;
-            'notify::last-modified-by': GObject.Object.Notify;
             'notify::last-modified-by': GObject.Object.Notify;
             'notify::last-viewed': GObject.Object.Notify;
-            'notify::last-viewed': GObject.Object.Notify;
-            'notify::quota-used': GObject.Object.Notify;
             'notify::quota-used': GObject.Object.Notify;
             'notify::resource-id': GObject.Object.Notify;
-            'notify::resource-id': GObject.Object.Notify;
             'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::writers-can-invite': GObject.Object.Notify;
             'notify::writers-can-invite': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -6810,19 +6703,14 @@ export namespace GData {
             'notify::icon': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::items-per-page': GObject.Object.Notify;
-            'notify::items-per-page': GObject.Object.Notify;
             'notify::logo': GObject.Object.Notify;
             'notify::next-page-token': GObject.Object.Notify;
-            'notify::next-page-token': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
             'notify::start-index': GObject.Object.Notify;
             'notify::subtitle': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::total-results': GObject.Object.Notify;
-            'notify::total-results': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -6866,36 +6754,24 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends DocumentsEntry.SignalSignatures {
             'notify::can-edit': GObject.Object.Notify;
-            'notify::can-edit': GObject.Object.Notify;
-            'notify::file-size': GObject.Object.Notify;
             'notify::file-size': GObject.Object.Notify;
             'notify::is-deleted': GObject.Object.Notify;
-            'notify::is-deleted': GObject.Object.Notify;
-            'notify::last-modified-by': GObject.Object.Notify;
             'notify::last-modified-by': GObject.Object.Notify;
             'notify::last-viewed': GObject.Object.Notify;
-            'notify::last-viewed': GObject.Object.Notify;
-            'notify::quota-used': GObject.Object.Notify;
             'notify::quota-used': GObject.Object.Notify;
             'notify::resource-id': GObject.Object.Notify;
-            'notify::resource-id': GObject.Object.Notify;
             'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::writers-can-invite': GObject.Object.Notify;
             'notify::writers-can-invite': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -7229,10 +7105,7 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::quota-total': GObject.Object.Notify;
-            'notify::quota-total': GObject.Object.Notify;
             'notify::quota-used': GObject.Object.Notify;
-            'notify::quota-used': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -7313,36 +7186,24 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends DocumentsDocument.SignalSignatures {
             'notify::can-edit': GObject.Object.Notify;
-            'notify::can-edit': GObject.Object.Notify;
-            'notify::file-size': GObject.Object.Notify;
             'notify::file-size': GObject.Object.Notify;
             'notify::is-deleted': GObject.Object.Notify;
-            'notify::is-deleted': GObject.Object.Notify;
-            'notify::last-modified-by': GObject.Object.Notify;
             'notify::last-modified-by': GObject.Object.Notify;
             'notify::last-viewed': GObject.Object.Notify;
-            'notify::last-viewed': GObject.Object.Notify;
-            'notify::quota-used': GObject.Object.Notify;
             'notify::quota-used': GObject.Object.Notify;
             'notify::resource-id': GObject.Object.Notify;
-            'notify::resource-id': GObject.Object.Notify;
             'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::writers-can-invite': GObject.Object.Notify;
             'notify::writers-can-invite': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -7613,36 +7474,24 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends DocumentsDocument.SignalSignatures {
             'notify::can-edit': GObject.Object.Notify;
-            'notify::can-edit': GObject.Object.Notify;
-            'notify::file-size': GObject.Object.Notify;
             'notify::file-size': GObject.Object.Notify;
             'notify::is-deleted': GObject.Object.Notify;
-            'notify::is-deleted': GObject.Object.Notify;
-            'notify::last-modified-by': GObject.Object.Notify;
             'notify::last-modified-by': GObject.Object.Notify;
             'notify::last-viewed': GObject.Object.Notify;
-            'notify::last-viewed': GObject.Object.Notify;
-            'notify::quota-used': GObject.Object.Notify;
             'notify::quota-used': GObject.Object.Notify;
             'notify::resource-id': GObject.Object.Notify;
-            'notify::resource-id': GObject.Object.Notify;
             'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::writers-can-invite': GObject.Object.Notify;
             'notify::writers-can-invite': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -7916,7 +7765,6 @@ export namespace GData {
             'notify::key': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::visibility': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -8493,31 +8341,20 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Query.SignalSignatures {
             'notify::exact-title': GObject.Object.Notify;
-            'notify::exact-title': GObject.Object.Notify;
-            'notify::folder-id': GObject.Object.Notify;
             'notify::folder-id': GObject.Object.Notify;
             'notify::show-deleted': GObject.Object.Notify;
-            'notify::show-deleted': GObject.Object.Notify;
-            'notify::show-folders': GObject.Object.Notify;
             'notify::show-folders': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::author': GObject.Object.Notify;
             'notify::categories': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::is-strict': GObject.Object.Notify;
-            'notify::is-strict': GObject.Object.Notify;
-            'notify::max-results': GObject.Object.Notify;
             'notify::max-results': GObject.Object.Notify;
             'notify::published-max': GObject.Object.Notify;
-            'notify::published-max': GObject.Object.Notify;
-            'notify::published-min': GObject.Object.Notify;
             'notify::published-min': GObject.Object.Notify;
             'notify::q': GObject.Object.Notify;
             'notify::start-index': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
             'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-min': GObject.Object.Notify;
             'notify::updated-min': GObject.Object.Notify;
         }
 
@@ -8688,7 +8525,6 @@ export namespace GData {
         interface SignalSignatures extends Service.SignalSignatures {
             'notify::authorizer': GObject.Object.Notify;
             'notify::locale': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
         }
@@ -9863,36 +9699,24 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends DocumentsDocument.SignalSignatures {
             'notify::can-edit': GObject.Object.Notify;
-            'notify::can-edit': GObject.Object.Notify;
-            'notify::file-size': GObject.Object.Notify;
             'notify::file-size': GObject.Object.Notify;
             'notify::is-deleted': GObject.Object.Notify;
-            'notify::is-deleted': GObject.Object.Notify;
-            'notify::last-modified-by': GObject.Object.Notify;
             'notify::last-modified-by': GObject.Object.Notify;
             'notify::last-viewed': GObject.Object.Notify;
-            'notify::last-viewed': GObject.Object.Notify;
-            'notify::quota-used': GObject.Object.Notify;
             'notify::quota-used': GObject.Object.Notify;
             'notify::resource-id': GObject.Object.Notify;
-            'notify::resource-id': GObject.Object.Notify;
             'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::writers-can-invite': GObject.Object.Notify;
             'notify::writers-can-invite': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -10182,36 +10006,24 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends DocumentsDocument.SignalSignatures {
             'notify::can-edit': GObject.Object.Notify;
-            'notify::can-edit': GObject.Object.Notify;
-            'notify::file-size': GObject.Object.Notify;
             'notify::file-size': GObject.Object.Notify;
             'notify::is-deleted': GObject.Object.Notify;
-            'notify::is-deleted': GObject.Object.Notify;
-            'notify::last-modified-by': GObject.Object.Notify;
             'notify::last-modified-by': GObject.Object.Notify;
             'notify::last-viewed': GObject.Object.Notify;
-            'notify::last-viewed': GObject.Object.Notify;
-            'notify::quota-used': GObject.Object.Notify;
             'notify::quota-used': GObject.Object.Notify;
             'notify::resource-id': GObject.Object.Notify;
-            'notify::resource-id': GObject.Object.Notify;
             'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::writers-can-invite': GObject.Object.Notify;
             'notify::writers-can-invite': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -10583,13 +10395,9 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Gio.InputStream.SignalSignatures {
             'notify::authorization-domain': GObject.Object.Notify;
-            'notify::authorization-domain': GObject.Object.Notify;
             'notify::cancellable': GObject.Object.Notify;
             'notify::content-length': GObject.Object.Notify;
-            'notify::content-length': GObject.Object.Notify;
             'notify::content-type': GObject.Object.Notify;
-            'notify::content-type': GObject.Object.Notify;
-            'notify::download-uri': GObject.Object.Notify;
             'notify::download-uri': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
         }
@@ -11302,17 +11110,14 @@ export namespace GData {
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -11596,19 +11401,14 @@ export namespace GData {
             'notify::icon': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::items-per-page': GObject.Object.Notify;
-            'notify::items-per-page': GObject.Object.Notify;
             'notify::logo': GObject.Object.Notify;
             'notify::next-page-token': GObject.Object.Notify;
-            'notify::next-page-token': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
             'notify::start-index': GObject.Object.Notify;
             'notify::subtitle': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::total-results': GObject.Object.Notify;
-            'notify::total-results': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -11903,12 +11703,9 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::is-primary': GObject.Object.Notify;
-            'notify::is-primary': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::relation-type': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -12520,8 +12317,6 @@ export namespace GData {
             'notify::date': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::relation-type': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -12650,9 +12445,7 @@ export namespace GData {
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::label': GObject.Object.Notify;
             'notify::relation-type': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -13235,8 +13028,6 @@ export namespace GData {
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::content': GObject.Object.Notify;
             'notify::relation-type': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -13338,7 +13129,6 @@ export namespace GData {
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::code': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -13891,8 +13681,6 @@ export namespace GData {
             'notify::label': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::relation-type': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -14020,12 +13808,9 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::is-primary': GObject.Object.Notify;
-            'notify::is-primary': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::relation-type': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -14632,13 +14417,9 @@ export namespace GData {
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::address': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::is-primary': GObject.Object.Notify;
             'notify::is-primary': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::relation-type': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -15274,12 +15055,9 @@ export namespace GData {
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::address': GObject.Object.Notify;
             'notify::is-primary': GObject.Object.Notify;
-            'notify::is-primary': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::protocol': GObject.Object.Notify;
             'notify::relation-type': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -15904,16 +15682,11 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::additional-name': GObject.Object.Notify;
-            'notify::additional-name': GObject.Object.Notify;
-            'notify::family-name': GObject.Object.Notify;
             'notify::family-name': GObject.Object.Notify;
             'notify::full-name': GObject.Object.Notify;
-            'notify::full-name': GObject.Object.Notify;
-            'notify::given-name': GObject.Object.Notify;
             'notify::given-name': GObject.Object.Notify;
             'notify::prefix': GObject.Object.Notify;
             'notify::suffix': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -16567,17 +16340,13 @@ export namespace GData {
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::department': GObject.Object.Notify;
             'notify::is-primary': GObject.Object.Notify;
-            'notify::is-primary': GObject.Object.Notify;
-            'notify::job-description': GObject.Object.Notify;
             'notify::job-description': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::relation-type': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
             'notify::symbol': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -17300,13 +17069,10 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::is-primary': GObject.Object.Notify;
-            'notify::is-primary': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::number': GObject.Object.Notify;
             'notify::relation-type': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -17937,25 +17703,18 @@ export namespace GData {
             'notify::city': GObject.Object.Notify;
             'notify::country': GObject.Object.Notify;
             'notify::country-code': GObject.Object.Notify;
-            'notify::country-code': GObject.Object.Notify;
             'notify::house-name': GObject.Object.Notify;
-            'notify::house-name': GObject.Object.Notify;
-            'notify::is-primary': GObject.Object.Notify;
             'notify::is-primary': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::mail-class': GObject.Object.Notify;
-            'notify::mail-class': GObject.Object.Notify;
             'notify::neighborhood': GObject.Object.Notify;
-            'notify::po-box': GObject.Object.Notify;
             'notify::po-box': GObject.Object.Notify;
             'notify::postcode': GObject.Object.Notify;
             'notify::region': GObject.Object.Notify;
             'notify::relation-type': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
             'notify::street': GObject.Object.Notify;
             'notify::subregion': GObject.Object.Notify;
             'notify::usage': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -18865,13 +18624,9 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::absolute-time': GObject.Object.Notify;
-            'notify::absolute-time': GObject.Object.Notify;
-            'notify::is-absolute-time': GObject.Object.Notify;
             'notify::is-absolute-time': GObject.Object.Notify;
             'notify::method': GObject.Object.Notify;
             'notify::relative-time': GObject.Object.Notify;
-            'notify::relative-time': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -19475,14 +19230,9 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::end-time': GObject.Object.Notify;
-            'notify::end-time': GObject.Object.Notify;
-            'notify::is-date': GObject.Object.Notify;
             'notify::is-date': GObject.Object.Notify;
             'notify::start-time': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
             'notify::value-string': GObject.Object.Notify;
-            'notify::value-string': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -20111,10 +19861,7 @@ export namespace GData {
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::label': GObject.Object.Notify;
             'notify::relation-type': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
             'notify::value-string': GObject.Object.Notify;
-            'notify::value-string': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -20701,12 +20448,8 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::email-address': GObject.Object.Notify;
-            'notify::email-address': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
             'notify::relation-type': GObject.Object.Notify;
             'notify::value-string': GObject.Object.Notify;
-            'notify::value-string': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -21306,7 +21049,6 @@ export namespace GData {
             'notify::uri': GObject.Object.Notify;
             'notify::version': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -21848,7 +21590,6 @@ export namespace GData {
     namespace GoaAuthorizer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::goa-object': GObject.Object.Notify;
             'notify::goa-object': GObject.Object.Notify;
         }
 
@@ -22562,14 +22303,11 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::content-type': GObject.Object.Notify;
-            'notify::content-type': GObject.Object.Notify;
             'notify::language': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
             'notify::relation-type': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -23225,7 +22963,6 @@ export namespace GData {
             'notify::label': GObject.Object.Notify;
             'notify::scheme': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -23335,17 +23072,14 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::content-type': GObject.Object.Notify;
-            'notify::content-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::expression': GObject.Object.Notify;
             'notify::filesize': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::is-default': GObject.Object.Notify;
-            'notify::is-default': GObject.Object.Notify;
             'notify::medium': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -23532,7 +23266,6 @@ export namespace GData {
             'notify::role': GObject.Object.Notify;
             'notify::scheme': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -23621,7 +23354,6 @@ export namespace GData {
             'notify::time': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -23735,15 +23467,10 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::client-id': GObject.Object.Notify;
-            'notify::client-id': GObject.Object.Notify;
-            'notify::client-secret': GObject.Object.Notify;
             'notify::client-secret': GObject.Object.Notify;
             'notify::locale': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::redirect-uri': GObject.Object.Notify;
-            'notify::redirect-uri': GObject.Object.Notify;
-            'notify::refresh-token': GObject.Object.Notify;
             'notify::refresh-token': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
         }
@@ -24778,7 +24505,6 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::constructed-from-xml': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -24868,21 +24594,15 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
             'notify::album-id': GObject.Object.Notify;
-            'notify::album-id': GObject.Object.Notify;
             'notify::bytes-used': GObject.Object.Notify;
-            'notify::bytes-used': GObject.Object.Notify;
-            'notify::comment-count': GObject.Object.Notify;
             'notify::comment-count': GObject.Object.Notify;
             'notify::edited': GObject.Object.Notify;
-            'notify::is-commenting-enabled': GObject.Object.Notify;
             'notify::is-commenting-enabled': GObject.Object.Notify;
             'notify::latitude': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::longitude': GObject.Object.Notify;
             'notify::nickname': GObject.Object.Notify;
             'notify::num-photos': GObject.Object.Notify;
-            'notify::num-photos': GObject.Object.Notify;
-            'notify::num-photos-remaining': GObject.Object.Notify;
             'notify::num-photos-remaining': GObject.Object.Notify;
             'notify::tags': GObject.Object.Notify;
             'notify::timestamp': GObject.Object.Notify;
@@ -24890,17 +24610,14 @@ export namespace GData {
             'notify::visibility': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -25247,17 +24964,14 @@ export namespace GData {
         interface SignalSignatures extends Comment.SignalSignatures {
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -25310,19 +25024,14 @@ export namespace GData {
             'notify::icon': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::items-per-page': GObject.Object.Notify;
-            'notify::items-per-page': GObject.Object.Notify;
             'notify::logo': GObject.Object.Notify;
             'notify::next-page-token': GObject.Object.Notify;
-            'notify::next-page-token': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
             'notify::start-index': GObject.Object.Notify;
             'notify::subtitle': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::total-results': GObject.Object.Notify;
-            'notify::total-results': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -25366,25 +25075,19 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
             'notify::album-id': GObject.Object.Notify;
-            'notify::album-id': GObject.Object.Notify;
             'notify::caption': GObject.Object.Notify;
             'notify::checksum': GObject.Object.Notify;
-            'notify::comment-count': GObject.Object.Notify;
             'notify::comment-count': GObject.Object.Notify;
             'notify::credit': GObject.Object.Notify;
             'notify::distance': GObject.Object.Notify;
             'notify::edited': GObject.Object.Notify;
             'notify::exposure': GObject.Object.Notify;
             'notify::file-id': GObject.Object.Notify;
-            'notify::file-id': GObject.Object.Notify;
             'notify::flash': GObject.Object.Notify;
-            'notify::focal-length': GObject.Object.Notify;
             'notify::focal-length': GObject.Object.Notify;
             'notify::fstop': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::image-unique-id': GObject.Object.Notify;
-            'notify::image-unique-id': GObject.Object.Notify;
-            'notify::is-commenting-enabled': GObject.Object.Notify;
             'notify::is-commenting-enabled': GObject.Object.Notify;
             'notify::iso': GObject.Object.Notify;
             'notify::latitude': GObject.Object.Notify;
@@ -25397,21 +25100,17 @@ export namespace GData {
             'notify::timestamp': GObject.Object.Notify;
             'notify::version': GObject.Object.Notify;
             'notify::video-status': GObject.Object.Notify;
-            'notify::video-status': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -26397,29 +26096,20 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Query.SignalSignatures {
             'notify::image-size': GObject.Object.Notify;
-            'notify::image-size': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::tag': GObject.Object.Notify;
-            'notify::thumbnail-size': GObject.Object.Notify;
             'notify::thumbnail-size': GObject.Object.Notify;
             'notify::visibility': GObject.Object.Notify;
             'notify::author': GObject.Object.Notify;
             'notify::categories': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::is-strict': GObject.Object.Notify;
-            'notify::is-strict': GObject.Object.Notify;
-            'notify::max-results': GObject.Object.Notify;
             'notify::max-results': GObject.Object.Notify;
             'notify::published-max': GObject.Object.Notify;
-            'notify::published-max': GObject.Object.Notify;
-            'notify::published-min': GObject.Object.Notify;
             'notify::published-min': GObject.Object.Notify;
             'notify::q': GObject.Object.Notify;
             'notify::start-index': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
             'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-min': GObject.Object.Notify;
             'notify::updated-min': GObject.Object.Notify;
         }
 
@@ -26605,7 +26295,6 @@ export namespace GData {
         interface SignalSignatures extends Service.SignalSignatures {
             'notify::authorizer': GObject.Object.Notify;
             'notify::locale': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
         }
@@ -26872,28 +26561,21 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
             'notify::max-photos-per-album': GObject.Object.Notify;
-            'notify::max-photos-per-album': GObject.Object.Notify;
             'notify::nickname': GObject.Object.Notify;
             'notify::quota-current': GObject.Object.Notify;
-            'notify::quota-current': GObject.Object.Notify;
             'notify::quota-limit': GObject.Object.Notify;
-            'notify::quota-limit': GObject.Object.Notify;
-            'notify::thumbnail-uri': GObject.Object.Notify;
             'notify::thumbnail-uri': GObject.Object.Notify;
             'notify::user': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -27055,19 +26737,12 @@ export namespace GData {
             'notify::categories': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::is-strict': GObject.Object.Notify;
-            'notify::is-strict': GObject.Object.Notify;
-            'notify::max-results': GObject.Object.Notify;
             'notify::max-results': GObject.Object.Notify;
             'notify::published-max': GObject.Object.Notify;
-            'notify::published-max': GObject.Object.Notify;
-            'notify::published-min': GObject.Object.Notify;
             'notify::published-min': GObject.Object.Notify;
             'notify::q': GObject.Object.Notify;
             'notify::start-index': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
             'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-min': GObject.Object.Notify;
             'notify::updated-min': GObject.Object.Notify;
         }
 
@@ -27432,7 +27107,6 @@ export namespace GData {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::authorizer': GObject.Object.Notify;
             'notify::locale': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
         }
@@ -28092,36 +27766,22 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Query.SignalSignatures {
             'notify::completed-max': GObject.Object.Notify;
-            'notify::completed-max': GObject.Object.Notify;
-            'notify::completed-min': GObject.Object.Notify;
             'notify::completed-min': GObject.Object.Notify;
             'notify::due-max': GObject.Object.Notify;
-            'notify::due-max': GObject.Object.Notify;
-            'notify::due-min': GObject.Object.Notify;
             'notify::due-min': GObject.Object.Notify;
             'notify::show-completed': GObject.Object.Notify;
-            'notify::show-completed': GObject.Object.Notify;
             'notify::show-deleted': GObject.Object.Notify;
-            'notify::show-deleted': GObject.Object.Notify;
-            'notify::show-hidden': GObject.Object.Notify;
             'notify::show-hidden': GObject.Object.Notify;
             'notify::author': GObject.Object.Notify;
             'notify::categories': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::is-strict': GObject.Object.Notify;
-            'notify::is-strict': GObject.Object.Notify;
-            'notify::max-results': GObject.Object.Notify;
             'notify::max-results': GObject.Object.Notify;
             'notify::published-max': GObject.Object.Notify;
-            'notify::published-max': GObject.Object.Notify;
-            'notify::published-min': GObject.Object.Notify;
             'notify::published-min': GObject.Object.Notify;
             'notify::q': GObject.Object.Notify;
             'notify::start-index': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
             'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-min': GObject.Object.Notify;
             'notify::updated-min': GObject.Object.Notify;
         }
 
@@ -28349,7 +28009,6 @@ export namespace GData {
         interface SignalSignatures extends Service.SignalSignatures {
             'notify::authorizer': GObject.Object.Notify;
             'notify::locale': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
         }
@@ -28651,8 +28310,6 @@ export namespace GData {
             'notify::completed': GObject.Object.Notify;
             'notify::due': GObject.Object.Notify;
             'notify::is-deleted': GObject.Object.Notify;
-            'notify::is-deleted': GObject.Object.Notify;
-            'notify::is-hidden': GObject.Object.Notify;
             'notify::is-hidden': GObject.Object.Notify;
             'notify::notes': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -28660,17 +28317,14 @@ export namespace GData {
             'notify::status': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -28872,17 +28526,14 @@ export namespace GData {
         interface SignalSignatures extends Entry.SignalSignatures {
             'notify::content': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -28928,17 +28579,13 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Gio.OutputStream.SignalSignatures {
             'notify::authorization-domain': GObject.Object.Notify;
-            'notify::authorization-domain': GObject.Object.Notify;
             'notify::cancellable': GObject.Object.Notify;
             'notify::content-length': GObject.Object.Notify;
-            'notify::content-length': GObject.Object.Notify;
-            'notify::content-type': GObject.Object.Notify;
             'notify::content-type': GObject.Object.Notify;
             'notify::entry': GObject.Object.Notify;
             'notify::method': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
             'notify::slug': GObject.Object.Notify;
-            'notify::upload-uri': GObject.Object.Notify;
             'notify::upload-uri': GObject.Object.Notify;
         }
 
@@ -29156,13 +28803,10 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Category.SignalSignatures {
             'notify::is-assignable': GObject.Object.Notify;
-            'notify::is-assignable': GObject.Object.Notify;
-            'notify::is-deprecated': GObject.Object.Notify;
             'notify::is-deprecated': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::scheme': GObject.Object.Notify;
             'notify::term': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -29694,20 +29338,16 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Comment.SignalSignatures {
             'notify::parent-comment-uri': GObject.Object.Notify;
-            'notify::parent-comment-uri': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -29799,19 +29439,14 @@ export namespace GData {
             'notify::icon': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::items-per-page': GObject.Object.Notify;
-            'notify::items-per-page': GObject.Object.Notify;
             'notify::logo': GObject.Object.Notify;
             'notify::next-page-token': GObject.Object.Notify;
-            'notify::next-page-token': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
             'notify::start-index': GObject.Object.Notify;
             'notify::subtitle': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::total-results': GObject.Object.Notify;
-            'notify::total-results': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -29859,30 +29494,20 @@ export namespace GData {
             'notify::latitude': GObject.Object.Notify;
             'notify::license': GObject.Object.Notify;
             'notify::location-radius': GObject.Object.Notify;
-            'notify::location-radius': GObject.Object.Notify;
             'notify::longitude': GObject.Object.Notify;
             'notify::order-by': GObject.Object.Notify;
-            'notify::order-by': GObject.Object.Notify;
             'notify::restriction': GObject.Object.Notify;
-            'notify::safe-search': GObject.Object.Notify;
             'notify::safe-search': GObject.Object.Notify;
             'notify::author': GObject.Object.Notify;
             'notify::categories': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::is-strict': GObject.Object.Notify;
-            'notify::is-strict': GObject.Object.Notify;
-            'notify::max-results': GObject.Object.Notify;
             'notify::max-results': GObject.Object.Notify;
             'notify::published-max': GObject.Object.Notify;
-            'notify::published-max': GObject.Object.Notify;
-            'notify::published-min': GObject.Object.Notify;
             'notify::published-min': GObject.Object.Notify;
             'notify::q': GObject.Object.Notify;
             'notify::start-index': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
             'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-min': GObject.Object.Notify;
             'notify::updated-min': GObject.Object.Notify;
         }
 
@@ -30130,10 +29755,8 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Service.SignalSignatures {
             'notify::developer-key': GObject.Object.Notify;
-            'notify::developer-key': GObject.Object.Notify;
             'notify::authorizer': GObject.Object.Notify;
             'notify::locale': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
         }
@@ -31037,12 +30660,9 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
             'notify::help-uri': GObject.Object.Notify;
-            'notify::help-uri': GObject.Object.Notify;
             'notify::message': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::reason-code': GObject.Object.Notify;
-            'notify::reason-code': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 
@@ -31163,46 +30783,34 @@ export namespace GData {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
             'notify::aspect-ratio': GObject.Object.Notify;
-            'notify::aspect-ratio': GObject.Object.Notify;
-            'notify::average-rating': GObject.Object.Notify;
             'notify::average-rating': GObject.Object.Notify;
             'notify::category': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::favorite-count': GObject.Object.Notify;
-            'notify::favorite-count': GObject.Object.Notify;
-            'notify::is-private': GObject.Object.Notify;
             'notify::is-private': GObject.Object.Notify;
             'notify::keywords': GObject.Object.Notify;
             'notify::latitude': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::longitude': GObject.Object.Notify;
             'notify::max-rating': GObject.Object.Notify;
-            'notify::max-rating': GObject.Object.Notify;
-            'notify::min-rating': GObject.Object.Notify;
             'notify::min-rating': GObject.Object.Notify;
             'notify::player-uri': GObject.Object.Notify;
-            'notify::player-uri': GObject.Object.Notify;
-            'notify::rating-count': GObject.Object.Notify;
             'notify::rating-count': GObject.Object.Notify;
             'notify::recorded': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::uploaded': GObject.Object.Notify;
             'notify::view-count': GObject.Object.Notify;
-            'notify::view-count': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
             'notify::content-uri': GObject.Object.Notify;
             'notify::etag': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
             'notify::is-inserted': GObject.Object.Notify;
             'notify::published': GObject.Object.Notify;
             'notify::rights': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
             'notify::constructed-from-xml': GObject.Object.Notify;
         }
 

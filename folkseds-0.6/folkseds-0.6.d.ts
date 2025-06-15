@@ -33,32 +33,19 @@ export namespace FolksEds {
         interface SignalSignatures extends Folks.PersonaStore.SignalSignatures {
             'notify::source': GObject.Object.Notify;
             'notify::type-id': GObject.Object.Notify;
-            'notify::type-id': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::personas': GObject.Object.Notify;
             'notify::can-add-personas': GObject.Object.Notify;
-            'notify::can-add-personas': GObject.Object.Notify;
-            'notify::can-alias-personas': GObject.Object.Notify;
             'notify::can-alias-personas': GObject.Object.Notify;
             'notify::can-group-personas': GObject.Object.Notify;
-            'notify::can-group-personas': GObject.Object.Notify;
-            'notify::can-remove-personas': GObject.Object.Notify;
             'notify::can-remove-personas': GObject.Object.Notify;
             'notify::is-prepared': GObject.Object.Notify;
-            'notify::is-prepared': GObject.Object.Notify;
-            'notify::is-quiescent': GObject.Object.Notify;
             'notify::is-quiescent': GObject.Object.Notify;
             'notify::is-writeable': GObject.Object.Notify;
-            'notify::is-writeable': GObject.Object.Notify;
-            'notify::trust-level': GObject.Object.Notify;
             'notify::trust-level': GObject.Object.Notify;
             'notify::always-writeable-properties': GObject.Object.Notify;
-            'notify::always-writeable-properties': GObject.Object.Notify;
             'notify::is-primary-store': GObject.Object.Notify;
-            'notify::is-primary-store': GObject.Object.Notify;
-            'notify::is-user-set-default': GObject.Object.Notify;
             'notify::is-user-set-default': GObject.Object.Notify;
         }
 
@@ -121,53 +108,35 @@ export namespace FolksEds {
         interface SignalSignatures extends Folks.Persona.SignalSignatures {
             'notify::contact': GObject.Object.Notify;
             'notify::contact-id': GObject.Object.Notify;
-            'notify::contact-id': GObject.Object.Notify;
             'notify::system-groups': GObject.Object.Notify;
-            'notify::system-groups': GObject.Object.Notify;
-            'notify::in-google-personal-group': GObject.Object.Notify;
             'notify::in-google-personal-group': GObject.Object.Notify;
             'notify::iid': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
             'notify::display-id': GObject.Object.Notify;
-            'notify::display-id': GObject.Object.Notify;
-            'notify::is-user': GObject.Object.Notify;
             'notify::is-user': GObject.Object.Notify;
             'notify::store': GObject.Object.Notify;
             'notify::individual': GObject.Object.Notify;
             'notify::linkable-properties': GObject.Object.Notify;
-            'notify::linkable-properties': GObject.Object.Notify;
             'notify::writeable-properties': GObject.Object.Notify;
-            'notify::writeable-properties': GObject.Object.Notify;
-            'notify::anti-links': GObject.Object.Notify;
             'notify::anti-links': GObject.Object.Notify;
             'notify::avatar': GObject.Object.Notify;
             'notify::birthday': GObject.Object.Notify;
             'notify::calendar-event-id': GObject.Object.Notify;
-            'notify::calendar-event-id': GObject.Object.Notify;
             'notify::email-addresses': GObject.Object.Notify;
-            'notify::email-addresses': GObject.Object.Notify;
-            'notify::is-favourite': GObject.Object.Notify;
             'notify::is-favourite': GObject.Object.Notify;
             'notify::gender': GObject.Object.Notify;
             'notify::groups': GObject.Object.Notify;
             'notify::im-addresses': GObject.Object.Notify;
-            'notify::im-addresses': GObject.Object.Notify;
-            'notify::local-ids': GObject.Object.Notify;
             'notify::local-ids': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::structured-name': GObject.Object.Notify;
-            'notify::structured-name': GObject.Object.Notify;
-            'notify::full-name': GObject.Object.Notify;
             'notify::full-name': GObject.Object.Notify;
             'notify::nickname': GObject.Object.Notify;
             'notify::notes': GObject.Object.Notify;
             'notify::phone-numbers': GObject.Object.Notify;
-            'notify::phone-numbers': GObject.Object.Notify;
             'notify::roles': GObject.Object.Notify;
             'notify::urls': GObject.Object.Notify;
             'notify::postal-addresses': GObject.Object.Notify;
-            'notify::postal-addresses': GObject.Object.Notify;
-            'notify::web-service-addresses': GObject.Object.Notify;
             'notify::web-service-addresses': GObject.Object.Notify;
         }
 

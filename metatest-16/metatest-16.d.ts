@@ -86,7 +86,6 @@ export namespace MetaTest {
             'notify::name': GObject.Object.Notify;
             'notify::nick': GObject.Object.Notify;
             'notify::unsafe-mode': GObject.Object.Notify;
-            'notify::unsafe-mode': GObject.Object.Notify;
         }
 
         // Constructor properties interface

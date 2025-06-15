@@ -109,7 +109,6 @@ export namespace Bamf {
             'notify::starting': GObject.Object.Notify;
             'notify::urgent': GObject.Object.Notify;
             'notify::user-visible': GObject.Object.Notify;
-            'notify::user-visible': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -377,8 +376,6 @@ export namespace Bamf {
         // Signal signatures
         interface SignalSignatures extends View.SignalSignatures {
             'notify::desktop-id': GObject.Object.Notify;
-            'notify::desktop-id': GObject.Object.Notify;
-            'notify::is-foreground-tab': GObject.Object.Notify;
             'notify::is-foreground-tab': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::xid': GObject.Object.Notify;
@@ -387,7 +384,6 @@ export namespace Bamf {
             'notify::running': GObject.Object.Notify;
             'notify::starting': GObject.Object.Notify;
             'notify::urgent': GObject.Object.Notify;
-            'notify::user-visible': GObject.Object.Notify;
             'notify::user-visible': GObject.Object.Notify;
         }
 
@@ -538,7 +534,6 @@ export namespace Bamf {
             'notify::running': GObject.Object.Notify;
             'notify::starting': GObject.Object.Notify;
             'notify::urgent': GObject.Object.Notify;
-            'notify::user-visible': GObject.Object.Notify;
             'notify::user-visible': GObject.Object.Notify;
         }
 
@@ -710,7 +705,6 @@ export namespace Bamf {
             'notify::running': GObject.Object.Notify;
             'notify::starting': GObject.Object.Notify;
             'notify::urgent': GObject.Object.Notify;
-            'notify::user-visible': GObject.Object.Notify;
             'notify::user-visible': GObject.Object.Notify;
         }
 

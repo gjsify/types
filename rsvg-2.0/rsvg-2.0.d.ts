@@ -324,11 +324,8 @@ export namespace Rsvg {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::base-uri': GObject.Object.Notify;
-            'notify::base-uri': GObject.Object.Notify;
             'notify::desc': GObject.Object.Notify;
             'notify::dpi-x': GObject.Object.Notify;
-            'notify::dpi-x': GObject.Object.Notify;
-            'notify::dpi-y': GObject.Object.Notify;
             'notify::dpi-y': GObject.Object.Notify;
             'notify::em': GObject.Object.Notify;
             'notify::ex': GObject.Object.Notify;

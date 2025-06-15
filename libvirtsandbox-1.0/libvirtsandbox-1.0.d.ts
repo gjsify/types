@@ -272,8 +272,6 @@ export namespace LibvirtSandbox {
             'notify::name': GObject.Object.Notify;
             'notify::root': GObject.Object.Notify;
             'notify::security-dynamic': GObject.Object.Notify;
-            'notify::security-dynamic': GObject.Object.Notify;
-            'notify::security-label': GObject.Object.Notify;
             'notify::security-label': GObject.Object.Notify;
             'notify::shell': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
@@ -893,8 +891,6 @@ export namespace LibvirtSandbox {
             'notify::name': GObject.Object.Notify;
             'notify::root': GObject.Object.Notify;
             'notify::security-dynamic': GObject.Object.Notify;
-            'notify::security-dynamic': GObject.Object.Notify;
-            'notify::security-label': GObject.Object.Notify;
             'notify::security-label': GObject.Object.Notify;
             'notify::shell': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
@@ -1703,8 +1699,6 @@ export namespace LibvirtSandbox {
             'notify::name': GObject.Object.Notify;
             'notify::root': GObject.Object.Notify;
             'notify::security-dynamic': GObject.Object.Notify;
-            'notify::security-dynamic': GObject.Object.Notify;
-            'notify::security-label': GObject.Object.Notify;
             'notify::security-label': GObject.Object.Notify;
             'notify::shell': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
@@ -1757,8 +1751,6 @@ export namespace LibvirtSandbox {
             'notify::name': GObject.Object.Notify;
             'notify::root': GObject.Object.Notify;
             'notify::security-dynamic': GObject.Object.Notify;
-            'notify::security-dynamic': GObject.Object.Notify;
-            'notify::security-label': GObject.Object.Notify;
             'notify::security-label': GObject.Object.Notify;
             'notify::shell': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
@@ -1822,8 +1814,6 @@ export namespace LibvirtSandbox {
             'notify::name': GObject.Object.Notify;
             'notify::root': GObject.Object.Notify;
             'notify::security-dynamic': GObject.Object.Notify;
-            'notify::security-dynamic': GObject.Object.Notify;
-            'notify::security-label': GObject.Object.Notify;
             'notify::security-label': GObject.Object.Notify;
             'notify::shell': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;

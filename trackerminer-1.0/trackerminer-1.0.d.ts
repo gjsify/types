@@ -203,20 +203,13 @@ export namespace TrackerMiner {
             finished: Finished;
             'items-available': ItemsAvailable;
             'notify::class-names': GObject.Object.Notify;
-            'notify::class-names': GObject.Object.Notify;
-            'notify::commit-batch-size': GObject.Object.Notify;
             'notify::commit-batch-size': GObject.Object.Notify;
             'notify::data-source': GObject.Object.Notify;
-            'notify::data-source': GObject.Object.Notify;
-            'notify::priority-rdf-types': GObject.Object.Notify;
             'notify::priority-rdf-types': GObject.Object.Notify;
             'notify::introspection-handler': GObject.Object.Notify;
-            'notify::introspection-handler': GObject.Object.Notify;
-            'notify::introspection-xml': GObject.Object.Notify;
             'notify::introspection-xml': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::progress': GObject.Object.Notify;
-            'notify::remaining-time': GObject.Object.Notify;
             'notify::remaining-time': GObject.Object.Notify;
             'notify::status': GObject.Object.Notify;
         }
@@ -916,20 +909,13 @@ export namespace TrackerMiner {
         // Signal signatures
         interface SignalSignatures extends Decorator.SignalSignatures {
             'notify::class-names': GObject.Object.Notify;
-            'notify::class-names': GObject.Object.Notify;
-            'notify::commit-batch-size': GObject.Object.Notify;
             'notify::commit-batch-size': GObject.Object.Notify;
             'notify::data-source': GObject.Object.Notify;
-            'notify::data-source': GObject.Object.Notify;
-            'notify::priority-rdf-types': GObject.Object.Notify;
             'notify::priority-rdf-types': GObject.Object.Notify;
             'notify::introspection-handler': GObject.Object.Notify;
-            'notify::introspection-handler': GObject.Object.Notify;
-            'notify::introspection-xml': GObject.Object.Notify;
             'notify::introspection-xml': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::progress': GObject.Object.Notify;
-            'notify::remaining-time': GObject.Object.Notify;
             'notify::remaining-time': GObject.Object.Notify;
             'notify::status': GObject.Object.Notify;
         }
@@ -1450,7 +1436,6 @@ export namespace TrackerMiner {
             'directory-removed': DirectoryRemoved;
             'directory-updated': DirectoryUpdated;
             'notify::filter-hidden': GObject.Object.Notify;
-            'notify::filter-hidden': GObject.Object.Notify;
             'notify::root': GObject.Object.Notify;
         }
 
@@ -1708,12 +1693,9 @@ export namespace TrackerMiner {
             started: Started;
             stopped: Stopped;
             'notify::introspection-handler': GObject.Object.Notify;
-            'notify::introspection-handler': GObject.Object.Notify;
-            'notify::introspection-xml': GObject.Object.Notify;
             'notify::introspection-xml': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::progress': GObject.Object.Notify;
-            'notify::remaining-time': GObject.Object.Notify;
             'notify::remaining-time': GObject.Object.Notify;
             'notify::status': GObject.Object.Notify;
         }
@@ -2462,24 +2444,16 @@ export namespace TrackerMiner {
             'remove-file': RemoveFile;
             'writeback-file': WritebackFile;
             'notify::data-provider': GObject.Object.Notify;
-            'notify::data-provider': GObject.Object.Notify;
-            'notify::initial-crawling': GObject.Object.Notify;
             'notify::initial-crawling': GObject.Object.Notify;
             'notify::mtime-checking': GObject.Object.Notify;
-            'notify::mtime-checking': GObject.Object.Notify;
             'notify::processing-pool-ready-limit': GObject.Object.Notify;
-            'notify::processing-pool-ready-limit': GObject.Object.Notify;
-            'notify::processing-pool-wait-limit': GObject.Object.Notify;
             'notify::processing-pool-wait-limit': GObject.Object.Notify;
             'notify::root': GObject.Object.Notify;
             'notify::throttle': GObject.Object.Notify;
             'notify::introspection-handler': GObject.Object.Notify;
-            'notify::introspection-handler': GObject.Object.Notify;
-            'notify::introspection-xml': GObject.Object.Notify;
             'notify::introspection-xml': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::progress': GObject.Object.Notify;
-            'notify::remaining-time': GObject.Object.Notify;
             'notify::remaining-time': GObject.Object.Notify;
             'notify::status': GObject.Object.Notify;
         }
@@ -3356,14 +3330,10 @@ export namespace TrackerMiner {
             connected: Connected;
             disconnected: Disconnected;
             'notify::network-type': GObject.Object.Notify;
-            'notify::network-type': GObject.Object.Notify;
             'notify::introspection-handler': GObject.Object.Notify;
-            'notify::introspection-handler': GObject.Object.Notify;
-            'notify::introspection-xml': GObject.Object.Notify;
             'notify::introspection-xml': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::progress': GObject.Object.Notify;
-            'notify::remaining-time': GObject.Object.Notify;
             'notify::remaining-time': GObject.Object.Notify;
             'notify::status': GObject.Object.Notify;
         }

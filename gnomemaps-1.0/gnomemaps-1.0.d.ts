@@ -66,7 +66,6 @@ export namespace GnomeMaps {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::bounding-box': GObject.Object.Notify;
-            'notify::bounding-box': GObject.Object.Notify;
             'notify::icon': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -205,8 +204,6 @@ export namespace GnomeMaps {
         // Signal signatures
         interface SignalSignatures extends Champlain.TileSource.SignalSignatures {
             'notify::max-zoom': GObject.Object.Notify;
-            'notify::max-zoom': GObject.Object.Notify;
-            'notify::min-zoom': GObject.Object.Notify;
             'notify::min-zoom': GObject.Object.Notify;
             'notify::path': GObject.Object.Notify;
             'notify::world': GObject.Object.Notify;
@@ -214,16 +211,11 @@ export namespace GnomeMaps {
             'notify::id': GObject.Object.Notify;
             'notify::license': GObject.Object.Notify;
             'notify::license-uri': GObject.Object.Notify;
-            'notify::license-uri': GObject.Object.Notify;
             'notify::max-zoom-level': GObject.Object.Notify;
-            'notify::max-zoom-level': GObject.Object.Notify;
-            'notify::min-zoom-level': GObject.Object.Notify;
             'notify::min-zoom-level': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::projection': GObject.Object.Notify;
             'notify::tile-size': GObject.Object.Notify;
-            'notify::tile-size': GObject.Object.Notify;
-            'notify::next-source': GObject.Object.Notify;
             'notify::next-source': GObject.Object.Notify;
             'notify::renderer': GObject.Object.Notify;
         }
@@ -310,7 +302,6 @@ export namespace GnomeMaps {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::comment': GObject.Object.Notify;
-            'notify::created-by': GObject.Object.Notify;
             'notify::created-by': GObject.Object.Notify;
         }
 

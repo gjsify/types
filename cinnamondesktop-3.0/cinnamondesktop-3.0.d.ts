@@ -1479,7 +1479,6 @@ export namespace CinnamonDesktop {
             'output-connected': OutputConnected;
             'output-disconnected': OutputDisconnected;
             'notify::gdk-screen': GObject.Object.Notify;
-            'notify::gdk-screen': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2107,7 +2106,6 @@ export namespace CinnamonDesktop {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::clock': GObject.Object.Notify;
-            'notify::format-string': GObject.Object.Notify;
             'notify::format-string': GObject.Object.Notify;
         }
 

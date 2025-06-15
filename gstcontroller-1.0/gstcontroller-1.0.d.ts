@@ -100,12 +100,8 @@ export namespace GstController {
         // Signal signatures
         interface SignalSignatures extends Gst.ControlBinding.SignalSignatures {
             'notify::control-source-a': GObject.Object.Notify;
-            'notify::control-source-a': GObject.Object.Notify;
-            'notify::control-source-b': GObject.Object.Notify;
             'notify::control-source-b': GObject.Object.Notify;
             'notify::control-source-g': GObject.Object.Notify;
-            'notify::control-source-g': GObject.Object.Notify;
-            'notify::control-source-r': GObject.Object.Notify;
             'notify::control-source-r': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::object': GObject.Object.Notify;
@@ -191,7 +187,6 @@ export namespace GstController {
         // Signal signatures
         interface SignalSignatures extends Gst.ControlBinding.SignalSignatures {
             'notify::absolute': GObject.Object.Notify;
-            'notify::control-source': GObject.Object.Notify;
             'notify::control-source': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::object': GObject.Object.Notify;

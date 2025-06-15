@@ -629,14 +629,9 @@ export namespace WebKitWebProcessExtension {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::context': GObject.Object.Notify;
             'notify::image-uri': GObject.Object.Notify;
-            'notify::image-uri': GObject.Object.Notify;
-            'notify::link-label': GObject.Object.Notify;
             'notify::link-label': GObject.Object.Notify;
             'notify::link-title': GObject.Object.Notify;
-            'notify::link-title': GObject.Object.Notify;
             'notify::link-uri': GObject.Object.Notify;
-            'notify::link-uri': GObject.Object.Notify;
-            'notify::media-uri': GObject.Object.Notify;
             'notify::media-uri': GObject.Object.Notify;
         }
 
@@ -986,14 +981,9 @@ export namespace WebKitWebProcessExtension {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::content-length': GObject.Object.Notify;
-            'notify::content-length': GObject.Object.Notify;
-            'notify::http-headers': GObject.Object.Notify;
             'notify::http-headers': GObject.Object.Notify;
             'notify::mime-type': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
             'notify::status-code': GObject.Object.Notify;
-            'notify::status-code': GObject.Object.Notify;
-            'notify::suggested-filename': GObject.Object.Notify;
             'notify::suggested-filename': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
         }
@@ -1144,7 +1134,6 @@ export namespace WebKitWebProcessExtension {
     namespace UserMessage {
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-            'notify::fd-list': GObject.Object.Notify;
             'notify::fd-list': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parameters': GObject.Object.Notify;

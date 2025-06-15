@@ -683,7 +683,6 @@ export namespace ArrowFlight {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::call-context': GObject.Object.Notify;
-            'notify::call-context': GObject.Object.Notify;
         }
 
         // Constructor properties interface

@@ -49,7 +49,6 @@ export namespace GrlNet {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::cache': GObject.Object.Notify;
             'notify::cache-size': GObject.Object.Notify;
-            'notify::cache-size': GObject.Object.Notify;
             'notify::loglevel': GObject.Object.Notify;
             'notify::throttling': GObject.Object.Notify;
         }

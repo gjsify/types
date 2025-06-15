@@ -615,7 +615,6 @@ export namespace JavaScriptCore {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::virtual-machine': GObject.Object.Notify;
-            'notify::virtual-machine': GObject.Object.Notify;
         }
 
         // Constructor properties interface

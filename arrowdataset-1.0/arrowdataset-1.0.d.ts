@@ -135,7 +135,6 @@ export namespace ArrowDataset {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::dataset-factory': GObject.Object.Notify;
-            'notify::dataset-factory': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -293,7 +292,6 @@ export namespace ArrowDataset {
         // Signal signatures
         interface SignalSignatures extends Dataset.SignalSignatures {
             'notify::file-system': GObject.Object.Notify;
-            'notify::file-system': GObject.Object.Notify;
             'notify::format': GObject.Object.Notify;
             'notify::partitioning': GObject.Object.Notify;
             'notify::dataset': GObject.Object.Notify;
@@ -364,12 +362,9 @@ export namespace ArrowDataset {
         // Signal signatures
         interface SignalSignatures extends DatasetFactory.SignalSignatures {
             'notify::file-system': GObject.Object.Notify;
-            'notify::file-system': GObject.Object.Notify;
             'notify::format': GObject.Object.Notify;
             'notify::partition-base-dir': GObject.Object.Notify;
-            'notify::partition-base-dir': GObject.Object.Notify;
             'notify::partitioning': GObject.Object.Notify;
-            'notify::dataset-factory': GObject.Object.Notify;
             'notify::dataset-factory': GObject.Object.Notify;
         }
 
@@ -456,14 +451,9 @@ export namespace ArrowDataset {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::base-dir': GObject.Object.Notify;
-            'notify::base-dir': GObject.Object.Notify;
-            'notify::base-name-template': GObject.Object.Notify;
             'notify::base-name-template': GObject.Object.Notify;
             'notify::file-system': GObject.Object.Notify;
-            'notify::file-system': GObject.Object.Notify;
             'notify::file-write-options': GObject.Object.Notify;
-            'notify::file-write-options': GObject.Object.Notify;
-            'notify::max-partitions': GObject.Object.Notify;
             'notify::max-partitions': GObject.Object.Notify;
             'notify::partitioning': GObject.Object.Notify;
         }
@@ -912,9 +902,7 @@ export namespace ArrowDataset {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::infer-dictionary': GObject.Object.Notify;
-            'notify::infer-dictionary': GObject.Object.Notify;
             'notify::schema': GObject.Object.Notify;
-            'notify::segment-encoding': GObject.Object.Notify;
             'notify::segment-encoding': GObject.Object.Notify;
         }
 
@@ -1048,7 +1036,6 @@ export namespace ArrowDataset {
     namespace ScannerBuilder {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::scanner-builder': GObject.Object.Notify;
             'notify::scanner-builder': GObject.Object.Notify;
         }
 

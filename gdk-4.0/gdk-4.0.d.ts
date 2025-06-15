@@ -4976,11 +4976,8 @@ export namespace Gdk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::color-primaries': GObject.Object.Notify;
-            'notify::color-primaries': GObject.Object.Notify;
-            'notify::matrix-coefficients': GObject.Object.Notify;
             'notify::matrix-coefficients': GObject.Object.Notify;
             'notify::range': GObject.Object.Notify;
-            'notify::transfer-function': GObject.Object.Notify;
             'notify::transfer-function': GObject.Object.Notify;
         }
 
@@ -6212,7 +6209,6 @@ export namespace Gdk {
             'content-changed': ContentChanged;
             'notify::formats': GObject.Object.Notify;
             'notify::storable-formats': GObject.Object.Notify;
-            'notify::storable-formats': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -7105,8 +7101,6 @@ export namespace Gdk {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::fallback': GObject.Object.Notify;
             'notify::hotspot-x': GObject.Object.Notify;
-            'notify::hotspot-x': GObject.Object.Notify;
-            'notify::hotspot-y': GObject.Object.Notify;
             'notify::hotspot-y': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::texture': GObject.Object.Notify;
@@ -7368,34 +7362,22 @@ export namespace Gdk {
             changed: Changed;
             'tool-changed': ToolChanged;
             'notify::active-layout-index': GObject.Object.Notify;
-            'notify::active-layout-index': GObject.Object.Notify;
-            'notify::caps-lock-state': GObject.Object.Notify;
             'notify::caps-lock-state': GObject.Object.Notify;
             'notify::direction': GObject.Object.Notify;
             'notify::display': GObject.Object.Notify;
             'notify::has-bidi-layouts': GObject.Object.Notify;
-            'notify::has-bidi-layouts': GObject.Object.Notify;
-            'notify::has-cursor': GObject.Object.Notify;
             'notify::has-cursor': GObject.Object.Notify;
             'notify::layout-names': GObject.Object.Notify;
-            'notify::layout-names': GObject.Object.Notify;
             'notify::modifier-state': GObject.Object.Notify;
-            'notify::modifier-state': GObject.Object.Notify;
-            'notify::n-axes': GObject.Object.Notify;
             'notify::n-axes': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::num-lock-state': GObject.Object.Notify;
-            'notify::num-lock-state': GObject.Object.Notify;
-            'notify::num-touches': GObject.Object.Notify;
             'notify::num-touches': GObject.Object.Notify;
             'notify::product-id': GObject.Object.Notify;
-            'notify::product-id': GObject.Object.Notify;
-            'notify::scroll-lock-state': GObject.Object.Notify;
             'notify::scroll-lock-state': GObject.Object.Notify;
             'notify::seat': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
             'notify::tool': GObject.Object.Notify;
-            'notify::vendor-id': GObject.Object.Notify;
             'notify::vendor-id': GObject.Object.Notify;
         }
 
@@ -7794,9 +7776,7 @@ export namespace Gdk {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::axes': GObject.Object.Notify;
             'notify::hardware-id': GObject.Object.Notify;
-            'notify::hardware-id': GObject.Object.Notify;
             'notify::serial': GObject.Object.Notify;
-            'notify::tool-type': GObject.Object.Notify;
             'notify::tool-type': GObject.Object.Notify;
         }
 
@@ -7938,11 +7918,8 @@ export namespace Gdk {
             'setting-changed': SettingChanged;
             'notify::composited': GObject.Object.Notify;
             'notify::dmabuf-formats': GObject.Object.Notify;
-            'notify::dmabuf-formats': GObject.Object.Notify;
-            'notify::input-shapes': GObject.Object.Notify;
             'notify::input-shapes': GObject.Object.Notify;
             'notify::rgba': GObject.Object.Notify;
-            'notify::shadow-width': GObject.Object.Notify;
             'notify::shadow-width': GObject.Object.Notify;
         }
 
@@ -8355,7 +8332,6 @@ export namespace Gdk {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'display-opened': DisplayOpened;
             'notify::default-display': GObject.Object.Notify;
-            'notify::default-display': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -8494,7 +8470,6 @@ export namespace Gdk {
     namespace DmabufTexture {
         // Signal signatures
         interface SignalSignatures extends Texture.SignalSignatures {
-            'notify::color-state': GObject.Object.Notify;
             'notify::color-state': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
@@ -9326,17 +9301,13 @@ export namespace Gdk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::color-state': GObject.Object.Notify;
-            'notify::color-state': GObject.Object.Notify;
             'notify::display': GObject.Object.Notify;
             'notify::fourcc': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::modifier': GObject.Object.Notify;
             'notify::n-planes': GObject.Object.Notify;
-            'notify::n-planes': GObject.Object.Notify;
             'notify::premultiplied': GObject.Object.Notify;
             'notify::update-region': GObject.Object.Notify;
-            'notify::update-region': GObject.Object.Notify;
-            'notify::update-texture': GObject.Object.Notify;
             'notify::update-texture': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
         }
@@ -9755,7 +9726,6 @@ export namespace Gdk {
             'notify::device': GObject.Object.Notify;
             'notify::display': GObject.Object.Notify;
             'notify::formats': GObject.Object.Notify;
-            'notify::selected-action': GObject.Object.Notify;
             'notify::selected-action': GObject.Object.Notify;
             'notify::surface': GObject.Object.Notify;
         }
@@ -10818,9 +10788,7 @@ export namespace Gdk {
         // Signal signatures
         interface SignalSignatures extends DrawContext.SignalSignatures {
             'notify::allowed-apis': GObject.Object.Notify;
-            'notify::allowed-apis': GObject.Object.Notify;
             'notify::api': GObject.Object.Notify;
-            'notify::shared-context': GObject.Object.Notify;
             'notify::shared-context': GObject.Object.Notify;
             'notify::display': GObject.Object.Notify;
             'notify::surface': GObject.Object.Notify;
@@ -11141,7 +11109,6 @@ export namespace Gdk {
     namespace GLTexture {
         // Signal signatures
         interface SignalSignatures extends Texture.SignalSignatures {
-            'notify::color-state': GObject.Object.Notify;
             'notify::color-state': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
@@ -11978,17 +11945,13 @@ export namespace Gdk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::color-state': GObject.Object.Notify;
-            'notify::color-state': GObject.Object.Notify;
             'notify::context': GObject.Object.Notify;
             'notify::format': GObject.Object.Notify;
-            'notify::has-mipmap': GObject.Object.Notify;
             'notify::has-mipmap': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::sync': GObject.Object.Notify;
             'notify::update-region': GObject.Object.Notify;
-            'notify::update-region': GObject.Object.Notify;
-            'notify::update-texture': GObject.Object.Notify;
             'notify::update-texture': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
         }
@@ -12443,7 +12406,6 @@ export namespace Gdk {
     namespace MemoryTexture {
         // Signal signatures
         interface SignalSignatures extends Texture.SignalSignatures {
-            'notify::color-state': GObject.Object.Notify;
             'notify::color-state': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
@@ -13279,13 +13241,10 @@ export namespace Gdk {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::bytes': GObject.Object.Notify;
             'notify::color-state': GObject.Object.Notify;
-            'notify::color-state': GObject.Object.Notify;
             'notify::format': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::stride': GObject.Object.Notify;
             'notify::update-region': GObject.Object.Notify;
-            'notify::update-region': GObject.Object.Notify;
-            'notify::update-texture': GObject.Object.Notify;
             'notify::update-texture': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
         }
@@ -13550,18 +13509,13 @@ export namespace Gdk {
             'notify::display': GObject.Object.Notify;
             'notify::geometry': GObject.Object.Notify;
             'notify::height-mm': GObject.Object.Notify;
-            'notify::height-mm': GObject.Object.Notify;
             'notify::manufacturer': GObject.Object.Notify;
             'notify::model': GObject.Object.Notify;
             'notify::refresh-rate': GObject.Object.Notify;
-            'notify::refresh-rate': GObject.Object.Notify;
             'notify::scale': GObject.Object.Notify;
             'notify::scale-factor': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::subpixel-layout': GObject.Object.Notify;
             'notify::subpixel-layout': GObject.Object.Notify;
             'notify::valid': GObject.Object.Notify;
-            'notify::width-mm': GObject.Object.Notify;
             'notify::width-mm': GObject.Object.Notify;
         }
 
@@ -14169,11 +14123,9 @@ export namespace Gdk {
             'notify::cursor': GObject.Object.Notify;
             'notify::display': GObject.Object.Notify;
             'notify::frame-clock': GObject.Object.Notify;
-            'notify::frame-clock': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::mapped': GObject.Object.Notify;
             'notify::scale': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
             'notify::scale-factor': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
         }
@@ -14550,7 +14502,6 @@ export namespace Gdk {
     namespace Texture {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::color-state': GObject.Object.Notify;
             'notify::color-state': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;

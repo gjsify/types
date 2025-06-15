@@ -2173,18 +2173,12 @@ export namespace Gst {
             'notify::async': GObject.Object.Notify;
             'notify::blocksize': GObject.Object.Notify;
             'notify::enable-last-buffer': GObject.Object.Notify;
-            'notify::enable-last-buffer': GObject.Object.Notify;
-            'notify::last-buffer': GObject.Object.Notify;
             'notify::last-buffer': GObject.Object.Notify;
             'notify::max-lateness': GObject.Object.Notify;
-            'notify::max-lateness': GObject.Object.Notify;
-            'notify::preroll-queue-len': GObject.Object.Notify;
             'notify::preroll-queue-len': GObject.Object.Notify;
             'notify::qos': GObject.Object.Notify;
             'notify::render-delay': GObject.Object.Notify;
-            'notify::render-delay': GObject.Object.Notify;
             'notify::sync': GObject.Object.Notify;
-            'notify::ts-offset': GObject.Object.Notify;
             'notify::ts-offset': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
@@ -2344,8 +2338,6 @@ export namespace Gst {
         interface SignalSignatures extends Element.SignalSignatures {
             'notify::blocksize': GObject.Object.Notify;
             'notify::do-timestamp': GObject.Object.Notify;
-            'notify::do-timestamp': GObject.Object.Notify;
-            'notify::num-buffers': GObject.Object.Notify;
             'notify::num-buffers': GObject.Object.Notify;
             'notify::typefind': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -2571,7 +2563,6 @@ export namespace Gst {
             'do-latency': DoLatency;
             'element-added': ElementAdded;
             'element-removed': ElementRemoved;
-            'notify::async-handling': GObject.Object.Notify;
             'notify::async-handling': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
@@ -2873,8 +2864,6 @@ export namespace Gst {
             'notify::stats': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
             'notify::window-size': GObject.Object.Notify;
-            'notify::window-size': GObject.Object.Notify;
-            'notify::window-threshold': GObject.Object.Notify;
             'notify::window-threshold': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
@@ -3080,10 +3069,7 @@ export namespace Gst {
             empty: Empty;
             full: Full;
             'notify::current-level-bytes': GObject.Object.Notify;
-            'notify::current-level-bytes': GObject.Object.Notify;
             'notify::current-level-time': GObject.Object.Notify;
-            'notify::current-level-time': GObject.Object.Notify;
-            'notify::current-level-visible': GObject.Object.Notify;
             'notify::current-level-visible': GObject.Object.Notify;
         }
 
@@ -4346,7 +4332,6 @@ export namespace Gst {
             'notify::caps': GObject.Object.Notify;
             'notify::direction': GObject.Object.Notify;
             'notify::name-template': GObject.Object.Notify;
-            'notify::name-template': GObject.Object.Notify;
             'notify::presence': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
@@ -4453,9 +4438,7 @@ export namespace Gst {
         // Signal signatures
         interface SignalSignatures extends Bin.SignalSignatures {
             'notify::auto-flush-bus': GObject.Object.Notify;
-            'notify::auto-flush-bus': GObject.Object.Notify;
             'notify::delay': GObject.Object.Notify;
-            'notify::async-handling': GObject.Object.Notify;
             'notify::async-handling': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
@@ -4766,8 +4749,6 @@ export namespace Gst {
         interface SignalSignatures extends BaseSrc.SignalSignatures {
             'notify::blocksize': GObject.Object.Notify;
             'notify::do-timestamp': GObject.Object.Notify;
-            'notify::do-timestamp': GObject.Object.Notify;
-            'notify::num-buffers': GObject.Object.Notify;
             'notify::num-buffers': GObject.Object.Notify;
             'notify::typefind': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -4987,12 +4968,9 @@ export namespace Gst {
         // Signal signatures
         interface SignalSignatures extends Clock.SignalSignatures {
             'notify::clock-type': GObject.Object.Notify;
-            'notify::clock-type': GObject.Object.Notify;
             'notify::stats': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
             'notify::window-size': GObject.Object.Notify;
-            'notify::window-size': GObject.Object.Notify;
-            'notify::window-threshold': GObject.Object.Notify;
             'notify::window-threshold': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }

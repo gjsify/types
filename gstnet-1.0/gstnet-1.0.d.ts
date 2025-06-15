@@ -148,23 +148,15 @@ export namespace GstNet {
         interface SignalSignatures extends Gst.SystemClock.SignalSignatures {
             'notify::address': GObject.Object.Notify;
             'notify::base-time': GObject.Object.Notify;
-            'notify::base-time': GObject.Object.Notify;
             'notify::bus': GObject.Object.Notify;
             'notify::internal-clock': GObject.Object.Notify;
-            'notify::internal-clock': GObject.Object.Notify;
-            'notify::minimum-update-interval': GObject.Object.Notify;
             'notify::minimum-update-interval': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
             'notify::qos-dscp': GObject.Object.Notify;
-            'notify::qos-dscp': GObject.Object.Notify;
             'notify::round-trip-limit': GObject.Object.Notify;
-            'notify::round-trip-limit': GObject.Object.Notify;
-            'notify::clock-type': GObject.Object.Notify;
             'notify::clock-type': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
             'notify::window-size': GObject.Object.Notify;
-            'notify::window-size': GObject.Object.Notify;
-            'notify::window-threshold': GObject.Object.Notify;
             'notify::window-threshold': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -284,7 +276,6 @@ export namespace GstNet {
             'notify::address': GObject.Object.Notify;
             'notify::clock': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
-            'notify::qos-dscp': GObject.Object.Notify;
             'notify::qos-dscp': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -888,23 +879,15 @@ export namespace GstNet {
         interface SignalSignatures extends NetClientClock.SignalSignatures {
             'notify::address': GObject.Object.Notify;
             'notify::base-time': GObject.Object.Notify;
-            'notify::base-time': GObject.Object.Notify;
             'notify::bus': GObject.Object.Notify;
             'notify::internal-clock': GObject.Object.Notify;
-            'notify::internal-clock': GObject.Object.Notify;
-            'notify::minimum-update-interval': GObject.Object.Notify;
             'notify::minimum-update-interval': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
             'notify::qos-dscp': GObject.Object.Notify;
-            'notify::qos-dscp': GObject.Object.Notify;
             'notify::round-trip-limit': GObject.Object.Notify;
-            'notify::round-trip-limit': GObject.Object.Notify;
-            'notify::clock-type': GObject.Object.Notify;
             'notify::clock-type': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
             'notify::window-size': GObject.Object.Notify;
-            'notify::window-size': GObject.Object.Notify;
-            'notify::window-threshold': GObject.Object.Notify;
             'notify::window-threshold': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -956,17 +939,11 @@ export namespace GstNet {
         interface SignalSignatures extends Gst.SystemClock.SignalSignatures {
             'notify::domain': GObject.Object.Notify;
             'notify::grandmaster-clock-id': GObject.Object.Notify;
-            'notify::grandmaster-clock-id': GObject.Object.Notify;
-            'notify::internal-clock': GObject.Object.Notify;
             'notify::internal-clock': GObject.Object.Notify;
             'notify::master-clock-id': GObject.Object.Notify;
-            'notify::master-clock-id': GObject.Object.Notify;
-            'notify::clock-type': GObject.Object.Notify;
             'notify::clock-type': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
             'notify::window-size': GObject.Object.Notify;
-            'notify::window-size': GObject.Object.Notify;
-            'notify::window-threshold': GObject.Object.Notify;
             'notify::window-threshold': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;

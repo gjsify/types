@@ -1786,7 +1786,6 @@ export namespace GioUnix {
         // Signal signatures
         interface SignalSignatures extends Gio.SocketControlMessage.SignalSignatures {
             'notify::fd-list': GObject.Object.Notify;
-            'notify::fd-list': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1899,7 +1898,6 @@ export namespace GioUnix {
     namespace InputStream {
         // Signal signatures
         interface SignalSignatures extends Gio.InputStream.SignalSignatures {
-            'notify::close-fd': GObject.Object.Notify;
             'notify::close-fd': GObject.Object.Notify;
             'notify::fd': GObject.Object.Notify;
         }
@@ -3396,7 +3394,6 @@ export namespace GioUnix {
     namespace OutputStream {
         // Signal signatures
         interface SignalSignatures extends Gio.OutputStream.SignalSignatures {
-            'notify::close-fd': GObject.Object.Notify;
             'notify::close-fd': GObject.Object.Notify;
             'notify::fd': GObject.Object.Notify;
         }

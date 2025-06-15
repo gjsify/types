@@ -151,11 +151,8 @@ export namespace Lfb {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'feedback-ended': FeedbackEnded;
             'notify::app-id': GObject.Object.Notify;
-            'notify::app-id': GObject.Object.Notify;
-            'notify::end-reason': GObject.Object.Notify;
             'notify::end-reason': GObject.Object.Notify;
             'notify::event': GObject.Object.Notify;
-            'notify::feedback-profile': GObject.Object.Notify;
             'notify::feedback-profile': GObject.Object.Notify;
             'notify::important': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
@@ -479,22 +476,13 @@ export namespace Lfb {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
             'notify::profile': GObject.Object.Notify;
         }
@@ -1584,7 +1572,6 @@ export namespace Lfb {
     namespace GdbusFeedbackSkeleton {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::profile': GObject.Object.Notify;
         }

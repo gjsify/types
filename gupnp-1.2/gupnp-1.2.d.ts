@@ -322,32 +322,21 @@ export namespace GUPnP {
         interface SignalSignatures extends GSSDP.Client.SignalSignatures {
             'notify::acl': GObject.Object.Notify;
             'notify::default-language': GObject.Object.Notify;
-            'notify::default-language': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
             'notify::server': GObject.Object.Notify;
             'notify::session': GObject.Object.Notify;
             'notify::subscription-timeout': GObject.Object.Notify;
-            'notify::subscription-timeout': GObject.Object.Notify;
             'notify::active': GObject.Object.Notify;
             'notify::address-family': GObject.Object.Notify;
-            'notify::address-family': GObject.Object.Notify;
-            'notify::boot-id': GObject.Object.Notify;
             'notify::boot-id': GObject.Object.Notify;
             'notify::config-id': GObject.Object.Notify;
-            'notify::config-id': GObject.Object.Notify;
             'notify::host-ip': GObject.Object.Notify;
-            'notify::host-ip': GObject.Object.Notify;
-            'notify::host-mask': GObject.Object.Notify;
             'notify::host-mask': GObject.Object.Notify;
             'notify::interface': GObject.Object.Notify;
             'notify::msearch-port': GObject.Object.Notify;
-            'notify::msearch-port': GObject.Object.Notify;
             'notify::network': GObject.Object.Notify;
             'notify::server-id': GObject.Object.Notify;
-            'notify::server-id': GObject.Object.Notify;
             'notify::socket-ttl': GObject.Object.Notify;
-            'notify::socket-ttl': GObject.Object.Notify;
-            'notify::uda-version': GObject.Object.Notify;
             'notify::uda-version': GObject.Object.Notify;
         }
 
@@ -1211,10 +1200,8 @@ export namespace GUPnP {
             'context-available': ContextAvailable;
             'context-unavailable': ContextUnavailable;
             'notify::context-filter': GObject.Object.Notify;
-            'notify::context-filter': GObject.Object.Notify;
             'notify::family': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
-            'notify::uda-version': GObject.Object.Notify;
             'notify::uda-version': GObject.Object.Notify;
         }
 
@@ -1394,7 +1381,6 @@ export namespace GUPnP {
             'service-proxy-available': ServiceProxyAvailable;
             'service-proxy-unavailable': ServiceProxyUnavailable;
             'notify::resource-factory': GObject.Object.Notify;
-            'notify::resource-factory': GObject.Object.Notify;
             'notify::active': GObject.Object.Notify;
             'notify::client': GObject.Object.Notify;
             'notify::mx': GObject.Object.Notify;
@@ -1488,17 +1474,13 @@ export namespace GUPnP {
         // Signal signatures
         interface SignalSignatures extends DeviceInfo.SignalSignatures {
             'notify::root-device': GObject.Object.Notify;
-            'notify::root-device': GObject.Object.Notify;
             'notify::context': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::resource-factory': GObject.Object.Notify;
-            'notify::resource-factory': GObject.Object.Notify;
             'notify::udn': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
             'notify::url-base': GObject.Object.Notify;
         }
 
@@ -1550,14 +1532,11 @@ export namespace GUPnP {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::context': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::resource-factory': GObject.Object.Notify;
-            'notify::resource-factory': GObject.Object.Notify;
             'notify::udn': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
             'notify::url-base': GObject.Object.Notify;
         }
 
@@ -1847,14 +1826,11 @@ export namespace GUPnP {
         interface SignalSignatures extends DeviceInfo.SignalSignatures {
             'notify::context': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::resource-factory': GObject.Object.Notify;
-            'notify::resource-factory': GObject.Object.Notify;
             'notify::udn': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
             'notify::url-base': GObject.Object.Notify;
         }
 
@@ -1985,23 +1961,16 @@ export namespace GUPnP {
         interface SignalSignatures extends Device.SignalSignatures {
             'notify::available': GObject.Object.Notify;
             'notify::description-dir': GObject.Object.Notify;
-            'notify::description-dir': GObject.Object.Notify;
-            'notify::description-doc': GObject.Object.Notify;
             'notify::description-doc': GObject.Object.Notify;
             'notify::description-path': GObject.Object.Notify;
-            'notify::description-path': GObject.Object.Notify;
-            'notify::root-device': GObject.Object.Notify;
             'notify::root-device': GObject.Object.Notify;
             'notify::context': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::resource-factory': GObject.Object.Notify;
-            'notify::resource-factory': GObject.Object.Notify;
             'notify::udn': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
             'notify::url-base': GObject.Object.Notify;
         }
 
@@ -2677,37 +2646,28 @@ export namespace GUPnP {
             'notify-failed': NotifyFailed;
             'query-variable': QueryVariable;
             'notify::root-device': GObject.Object.Notify;
-            'notify::root-device': GObject.Object.Notify;
             'notify::context': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::service-type': GObject.Object.Notify;
-            'notify::service-type': GObject.Object.Notify;
             'notify::udn': GObject.Object.Notify;
             'notify::url-base': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
-            'action-invoked::root-device': ActionInvoked;
             'action-invoked::root-device': ActionInvoked;
             'action-invoked::context': ActionInvoked;
             'action-invoked::document': ActionInvoked;
             'action-invoked::element': ActionInvoked;
             'action-invoked::location': ActionInvoked;
             'action-invoked::service-type': ActionInvoked;
-            'action-invoked::service-type': ActionInvoked;
             'action-invoked::udn': ActionInvoked;
             'action-invoked::url-base': ActionInvoked;
-            'action-invoked::url-base': ActionInvoked;
-            'query-variable::root-device': QueryVariable;
             'query-variable::root-device': QueryVariable;
             'query-variable::context': QueryVariable;
             'query-variable::document': QueryVariable;
             'query-variable::element': QueryVariable;
             'query-variable::location': QueryVariable;
             'query-variable::service-type': QueryVariable;
-            'query-variable::service-type': QueryVariable;
             'query-variable::udn': QueryVariable;
-            'query-variable::url-base': QueryVariable;
             'query-variable::url-base': QueryVariable;
         }
 
@@ -2814,9 +2774,7 @@ export namespace GUPnP {
             'notify::element': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::service-type': GObject.Object.Notify;
-            'notify::service-type': GObject.Object.Notify;
             'notify::udn': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
             'notify::url-base': GObject.Object.Notify;
         }
 
@@ -3114,9 +3072,7 @@ export namespace GUPnP {
             'notify::element': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::service-type': GObject.Object.Notify;
-            'notify::service-type': GObject.Object.Notify;
             'notify::udn': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
             'notify::url-base': GObject.Object.Notify;
         }
 

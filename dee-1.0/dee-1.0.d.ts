@@ -479,12 +479,8 @@ export namespace Dee {
         // Signal signatures
         interface SignalSignatures extends Peer.SignalSignatures {
             'notify::bus-address': GObject.Object.Notify;
-            'notify::bus-address': GObject.Object.Notify;
-            'notify::swarm-leader': GObject.Object.Notify;
             'notify::swarm-leader': GObject.Object.Notify;
             'notify::swarm-name': GObject.Object.Notify;
-            'notify::swarm-name': GObject.Object.Notify;
-            'notify::swarm-owner': GObject.Object.Notify;
             'notify::swarm-owner': GObject.Object.Notify;
         }
 
@@ -530,7 +526,6 @@ export namespace Dee {
     namespace FileResourceManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::primary-path': GObject.Object.Notify;
             'notify::primary-path': GObject.Object.Notify;
         }
 
@@ -1102,10 +1097,7 @@ export namespace Dee {
         interface SignalSignatures extends ProxyModel.SignalSignatures {
             'notify::filter': GObject.Object.Notify;
             'notify::back-end': GObject.Object.Notify;
-            'notify::back-end': GObject.Object.Notify;
             'notify::inherit-seqnums': GObject.Object.Notify;
-            'notify::inherit-seqnums': GObject.Object.Notify;
-            'notify::proxy-signals': GObject.Object.Notify;
             'notify::proxy-signals': GObject.Object.Notify;
         }
 
@@ -2448,10 +2440,7 @@ export namespace Dee {
             'peer-found': PeerFound;
             'peer-lost': PeerLost;
             'notify::swarm-leader': GObject.Object.Notify;
-            'notify::swarm-leader': GObject.Object.Notify;
             'notify::swarm-name': GObject.Object.Notify;
-            'notify::swarm-name': GObject.Object.Notify;
-            'notify::swarm-owner': GObject.Object.Notify;
             'notify::swarm-owner': GObject.Object.Notify;
         }
 
@@ -2565,10 +2554,7 @@ export namespace Dee {
         // Signal signatures
         interface SignalSignatures extends SerializableModel.SignalSignatures {
             'notify::back-end': GObject.Object.Notify;
-            'notify::back-end': GObject.Object.Notify;
             'notify::inherit-seqnums': GObject.Object.Notify;
-            'notify::inherit-seqnums': GObject.Object.Notify;
-            'notify::proxy-signals': GObject.Object.Notify;
             'notify::proxy-signals': GObject.Object.Notify;
         }
 
@@ -6035,14 +6021,9 @@ export namespace Dee {
         // Signal signatures
         interface SignalSignatures extends Peer.SignalSignatures {
             'notify::bus-address': GObject.Object.Notify;
-            'notify::bus-address': GObject.Object.Notify;
-            'notify::same-user-only': GObject.Object.Notify;
             'notify::same-user-only': GObject.Object.Notify;
             'notify::swarm-leader': GObject.Object.Notify;
-            'notify::swarm-leader': GObject.Object.Notify;
             'notify::swarm-name': GObject.Object.Notify;
-            'notify::swarm-name': GObject.Object.Notify;
-            'notify::swarm-owner': GObject.Object.Notify;
             'notify::swarm-owner': GObject.Object.Notify;
         }
 
@@ -6123,16 +6104,11 @@ export namespace Dee {
             'begin-transaction': BeginTransaction;
             'end-transaction': EndTransaction;
             'notify::access-mode': GObject.Object.Notify;
-            'notify::access-mode': GObject.Object.Notify;
-            'notify::flush-mode': GObject.Object.Notify;
             'notify::flush-mode': GObject.Object.Notify;
             'notify::peer': GObject.Object.Notify;
             'notify::synchronized': GObject.Object.Notify;
             'notify::back-end': GObject.Object.Notify;
-            'notify::back-end': GObject.Object.Notify;
             'notify::inherit-seqnums': GObject.Object.Notify;
-            'notify::inherit-seqnums': GObject.Object.Notify;
-            'notify::proxy-signals': GObject.Object.Notify;
             'notify::proxy-signals': GObject.Object.Notify;
         }
 

@@ -676,12 +676,8 @@ export namespace Gegl {
         interface SignalSignatures extends TileHandler.SignalSignatures {
             changed: Changed;
             'notify::abyss-height': GObject.Object.Notify;
-            'notify::abyss-height': GObject.Object.Notify;
-            'notify::abyss-width': GObject.Object.Notify;
             'notify::abyss-width': GObject.Object.Notify;
             'notify::abyss-x': GObject.Object.Notify;
-            'notify::abyss-x': GObject.Object.Notify;
-            'notify::abyss-y': GObject.Object.Notify;
             'notify::abyss-y': GObject.Object.Notify;
             'notify::backend': GObject.Object.Notify;
             'notify::format': GObject.Object.Notify;
@@ -689,14 +685,9 @@ export namespace Gegl {
             'notify::path': GObject.Object.Notify;
             'notify::pixels': GObject.Object.Notify;
             'notify::px-size': GObject.Object.Notify;
-            'notify::px-size': GObject.Object.Notify;
-            'notify::shift-x': GObject.Object.Notify;
             'notify::shift-x': GObject.Object.Notify;
             'notify::shift-y': GObject.Object.Notify;
-            'notify::shift-y': GObject.Object.Notify;
             'notify::tile-height': GObject.Object.Notify;
-            'notify::tile-height': GObject.Object.Notify;
-            'notify::tile-width': GObject.Object.Notify;
             'notify::tile-width': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
             'notify::x': GObject.Object.Notify;
@@ -1035,21 +1026,14 @@ export namespace Gegl {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::application-license': GObject.Object.Notify;
-            'notify::application-license': GObject.Object.Notify;
-            'notify::chunk-size': GObject.Object.Notify;
             'notify::chunk-size': GObject.Object.Notify;
             'notify::quality': GObject.Object.Notify;
-            'notify::queue-size': GObject.Object.Notify;
             'notify::queue-size': GObject.Object.Notify;
             'notify::swap': GObject.Object.Notify;
             'notify::threads': GObject.Object.Notify;
             'notify::tile-cache-size': GObject.Object.Notify;
-            'notify::tile-cache-size': GObject.Object.Notify;
-            'notify::tile-height': GObject.Object.Notify;
             'notify::tile-height': GObject.Object.Notify;
             'notify::tile-width': GObject.Object.Notify;
-            'notify::tile-width': GObject.Object.Notify;
-            'notify::use-opencl': GObject.Object.Notify;
             'notify::use-opencl': GObject.Object.Notify;
         }
 
@@ -1236,13 +1220,10 @@ export namespace Gegl {
             invalidated: Invalidated;
             progress: Progress;
             'notify::dont-cache': GObject.Object.Notify;
-            'notify::dont-cache': GObject.Object.Notify;
-            'notify::gegl-operation': GObject.Object.Notify;
             'notify::gegl-operation': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::operation': GObject.Object.Notify;
             'notify::passthrough': GObject.Object.Notify;
-            'notify::use-opencl': GObject.Object.Notify;
             'notify::use-opencl': GObject.Object.Notify;
         }
 
@@ -1821,22 +1802,13 @@ export namespace Gegl {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::swap-busy': GObject.Object.Notify;
-            'notify::swap-busy': GObject.Object.Notify;
-            'notify::swap-file-size': GObject.Object.Notify;
             'notify::swap-file-size': GObject.Object.Notify;
             'notify::swap-total': GObject.Object.Notify;
-            'notify::swap-total': GObject.Object.Notify;
-            'notify::tile-cache-hits': GObject.Object.Notify;
             'notify::tile-cache-hits': GObject.Object.Notify;
             'notify::tile-cache-misses': GObject.Object.Notify;
-            'notify::tile-cache-misses': GObject.Object.Notify;
-            'notify::tile-cache-total': GObject.Object.Notify;
             'notify::tile-cache-total': GObject.Object.Notify;
             'notify::tile-cache-total-max': GObject.Object.Notify;
-            'notify::tile-cache-total-max': GObject.Object.Notify;
             'notify::tile-cache-total-uncloned': GObject.Object.Notify;
-            'notify::tile-cache-total-uncloned': GObject.Object.Notify;
-            'notify::zoom-total': GObject.Object.Notify;
             'notify::zoom-total': GObject.Object.Notify;
         }
 
@@ -1911,15 +1883,10 @@ export namespace Gegl {
         // Signal signatures
         interface SignalSignatures extends TileSource.SignalSignatures {
             'notify::flush-on-destroy': GObject.Object.Notify;
-            'notify::flush-on-destroy': GObject.Object.Notify;
             'notify::format': GObject.Object.Notify;
             'notify::px-size': GObject.Object.Notify;
-            'notify::px-size': GObject.Object.Notify;
-            'notify::tile-height': GObject.Object.Notify;
             'notify::tile-height': GObject.Object.Notify;
             'notify::tile-size': GObject.Object.Notify;
-            'notify::tile-size': GObject.Object.Notify;
-            'notify::tile-width': GObject.Object.Notify;
             'notify::tile-width': GObject.Object.Notify;
         }
 

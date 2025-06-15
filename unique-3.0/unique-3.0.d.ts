@@ -82,10 +82,8 @@ export namespace Unique {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'message-received': MessageReceived;
             'notify::is-running': GObject.Object.Notify;
-            'notify::is-running': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::screen': GObject.Object.Notify;
-            'notify::startup-id': GObject.Object.Notify;
             'notify::startup-id': GObject.Object.Notify;
         }
 

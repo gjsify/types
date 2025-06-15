@@ -252,8 +252,6 @@ export namespace GnomeRR {
             'output-connected': OutputConnected;
             'output-disconnected': OutputDisconnected;
             'notify::dpms-mode': GObject.Object.Notify;
-            'notify::dpms-mode': GObject.Object.Notify;
-            'notify::gdk-display': GObject.Object.Notify;
             'notify::gdk-display': GObject.Object.Notify;
         }
 

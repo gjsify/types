@@ -313,15 +313,10 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
         }
@@ -825,15 +820,10 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -2996,12 +2986,8 @@ export namespace GXml {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::properties': GObject.Object.Notify;
             'notify::ignored-serializable-properties': GObject.Object.Notify;
-            'notify::ignored-serializable-properties': GObject.Object.Notify;
-            'notify::unknown-serializable-properties': GObject.Object.Notify;
             'notify::unknown-serializable-properties': GObject.Object.Notify;
             'notify::unknown-serializable-nodes': GObject.Object.Notify;
-            'notify::unknown-serializable-nodes': GObject.Object.Notify;
-            'notify::serialized-xml-node-value': GObject.Object.Notify;
             'notify::serialized-xml-node-value': GObject.Object.Notify;
         }
 
@@ -3560,36 +3546,22 @@ export namespace GXml {
         interface SignalSignatures extends Gee.TreeMap.SignalSignatures {
             'notify::properties': GObject.Object.Notify;
             'notify::ignored-serializable-properties': GObject.Object.Notify;
-            'notify::ignored-serializable-properties': GObject.Object.Notify;
-            'notify::k-type': GObject.Object.Notify;
             'notify::k-type': GObject.Object.Notify;
             'notify::k-dup-func': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
             'notify::k-destroy-func': GObject.Object.Notify;
             'notify::v-type': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
             'notify::v-dup-func': GObject.Object.Notify;
             'notify::v-destroy-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::ascending-keys': GObject.Object.Notify;
-            'notify::ascending-keys': GObject.Object.Notify;
-            'notify::ascending-entries': GObject.Object.Notify;
             'notify::ascending-entries': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::keys': GObject.Object.Notify;
             'notify::values': GObject.Object.Notify;
             'notify::entries': GObject.Object.Notify;
             'notify::unknown-serializable-properties': GObject.Object.Notify;
-            'notify::unknown-serializable-properties': GObject.Object.Notify;
             'notify::unknown-serializable-nodes': GObject.Object.Notify;
-            'notify::unknown-serializable-nodes': GObject.Object.Notify;
-            'notify::serialized-xml-node-value': GObject.Object.Notify;
             'notify::serialized-xml-node-value': GObject.Object.Notify;
         }
 
@@ -4162,32 +4134,20 @@ export namespace GXml {
         interface SignalSignatures extends Gee.HashMap.SignalSignatures {
             'notify::properties': GObject.Object.Notify;
             'notify::ignored-serializable-properties': GObject.Object.Notify;
-            'notify::ignored-serializable-properties': GObject.Object.Notify;
-            'notify::k-type': GObject.Object.Notify;
             'notify::k-type': GObject.Object.Notify;
             'notify::k-dup-func': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
             'notify::k-destroy-func': GObject.Object.Notify;
             'notify::v-type': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
             'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
             'notify::v-destroy-func': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::keys': GObject.Object.Notify;
             'notify::values': GObject.Object.Notify;
             'notify::entries': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::unknown-serializable-properties': GObject.Object.Notify;
             'notify::unknown-serializable-properties': GObject.Object.Notify;
             'notify::unknown-serializable-nodes': GObject.Object.Notify;
-            'notify::unknown-serializable-nodes': GObject.Object.Notify;
-            'notify::serialized-xml-node-value': GObject.Object.Notify;
             'notify::serialized-xml-node-value': GObject.Object.Notify;
         }
 
@@ -4759,22 +4719,14 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::value-type': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
-            'notify::primary-key-type': GObject.Object.Notify;
             'notify::primary-key-type': GObject.Object.Notify;
             'notify::secondary-key-type': GObject.Object.Notify;
-            'notify::secondary-key-type': GObject.Object.Notify;
-            'notify::primary-keys': GObject.Object.Notify;
             'notify::primary-keys': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::properties': GObject.Object.Notify;
             'notify::ignored-serializable-properties': GObject.Object.Notify;
-            'notify::ignored-serializable-properties': GObject.Object.Notify;
-            'notify::unknown-serializable-properties': GObject.Object.Notify;
             'notify::unknown-serializable-properties': GObject.Object.Notify;
             'notify::unknown-serializable-nodes': GObject.Object.Notify;
-            'notify::unknown-serializable-nodes': GObject.Object.Notify;
-            'notify::serialized-xml-node-value': GObject.Object.Notify;
             'notify::serialized-xml-node-value': GObject.Object.Notify;
         }
 
@@ -5410,23 +5362,14 @@ export namespace GXml {
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
             'notify::properties': GObject.Object.Notify;
             'notify::ignored-serializable-properties': GObject.Object.Notify;
-            'notify::ignored-serializable-properties': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
             'notify::g-type': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::unknown-serializable-properties': GObject.Object.Notify;
             'notify::unknown-serializable-properties': GObject.Object.Notify;
             'notify::unknown-serializable-nodes': GObject.Object.Notify;
-            'notify::unknown-serializable-nodes': GObject.Object.Notify;
-            'notify::serialized-xml-node-value': GObject.Object.Notify;
             'notify::serialized-xml-node-value': GObject.Object.Notify;
         }
 
@@ -5999,7 +5942,6 @@ export namespace GXml {
         interface SignalSignatures extends SerializableObjectModel.SignalSignatures {
             'notify::properties': GObject.Object.Notify;
             'notify::ignored-serializable-properties': GObject.Object.Notify;
-            'notify::ignored-serializable-properties': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -6048,11 +5990,9 @@ export namespace GXml {
         interface SignalSignatures extends TNode.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -6556,11 +6496,9 @@ export namespace GXml {
         interface SignalSignatures extends TNode.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -7053,11 +6991,9 @@ export namespace GXml {
         interface SignalSignatures extends TNode.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -7544,18 +7480,14 @@ export namespace GXml {
         interface SignalSignatures extends TNode.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::indent': GObject.Object.Notify;
             'notify::ns-top': GObject.Object.Notify;
-            'notify::ns-top': GObject.Object.Notify;
-            'notify::prefix-default-ns': GObject.Object.Notify;
             'notify::prefix-default-ns': GObject.Object.Notify;
             'notify::backup': GObject.Object.Notify;
             'notify::root': GObject.Object.Notify;
@@ -8136,15 +8068,12 @@ export namespace GXml {
         interface SignalSignatures extends TNode.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::tag-name': GObject.Object.Notify;
             'notify::tag-name': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
         }
@@ -8653,11 +8582,9 @@ export namespace GXml {
         interface SignalSignatures extends TNode.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -9154,11 +9081,9 @@ export namespace GXml {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -9703,15 +9628,10 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends Gee.AbstractBidirList.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -9755,11 +9675,9 @@ export namespace GXml {
         interface SignalSignatures extends TNode.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -10240,11 +10158,9 @@ export namespace GXml {
         interface SignalSignatures extends TNode.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -10733,14 +10649,11 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GDocument.SignalSignatures {
             'notify::default-options': GObject.Object.Notify;
-            'notify::default-options': GObject.Object.Notify;
             'notify::attrs': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
@@ -10806,19 +10719,15 @@ export namespace GXml {
         interface SignalSignatures extends GNode.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::namespace': GObject.Object.Notify;
             'notify::prefix': GObject.Object.Notify;
             'notify::namespace-uri': GObject.Object.Notify;
-            'notify::namespace-uri': GObject.Object.Notify;
-            'notify::local-name': GObject.Object.Notify;
             'notify::local-name': GObject.Object.Notify;
             'notify::specified': GObject.Object.Notify;
         }
@@ -11342,11 +11251,9 @@ export namespace GXml {
         interface SignalSignatures extends GCharacterData.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
@@ -11847,11 +11754,9 @@ export namespace GXml {
         interface SignalSignatures extends GNonDocumentChildNode.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
@@ -12352,11 +12257,9 @@ export namespace GXml {
         interface SignalSignatures extends GNode.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
@@ -12845,17 +12748,13 @@ export namespace GXml {
         interface SignalSignatures extends GChildNode.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::previous-element-sibling': GObject.Object.Notify;
-            'notify::previous-element-sibling': GObject.Object.Notify;
-            'notify::next-element-sibling': GObject.Object.Notify;
             'notify::next-element-sibling': GObject.Object.Notify;
         }
 
@@ -13350,11 +13249,9 @@ export namespace GXml {
         interface SignalSignatures extends GNode.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
@@ -13841,42 +13738,30 @@ export namespace GXml {
         interface SignalSignatures extends GNode.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::indent': GObject.Object.Notify;
             'notify::ns-top': GObject.Object.Notify;
-            'notify::ns-top': GObject.Object.Notify;
-            'notify::prefix-default-ns': GObject.Object.Notify;
             'notify::prefix-default-ns': GObject.Object.Notify;
             'notify::backup': GObject.Object.Notify;
             'notify::root': GObject.Object.Notify;
             'notify::file': GObject.Object.Notify;
             'notify::children': GObject.Object.Notify;
             'notify::first-element-child': GObject.Object.Notify;
-            'notify::first-element-child': GObject.Object.Notify;
             'notify::last-element-child': GObject.Object.Notify;
-            'notify::last-element-child': GObject.Object.Notify;
-            'notify::child-element-count': GObject.Object.Notify;
             'notify::child-element-count': GObject.Object.Notify;
             'notify::implementation': GObject.Object.Notify;
             'notify::url': GObject.Object.Notify;
             'notify::document-uri': GObject.Object.Notify;
-            'notify::document-uri': GObject.Object.Notify;
             'notify::origin': GObject.Object.Notify;
             'notify::compat-mode': GObject.Object.Notify;
-            'notify::compat-mode': GObject.Object.Notify;
             'notify::character-set': GObject.Object.Notify;
-            'notify::character-set': GObject.Object.Notify;
-            'notify::content-type': GObject.Object.Notify;
             'notify::content-type': GObject.Object.Notify;
             'notify::doctype': GObject.Object.Notify;
-            'notify::document-element': GObject.Object.Notify;
             'notify::document-element': GObject.Object.Notify;
         }
 
@@ -15027,17 +14912,13 @@ export namespace GXml {
         interface SignalSignatures extends GChildNode.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::public-id': GObject.Object.Notify;
-            'notify::public-id': GObject.Object.Notify;
-            'notify::system-id': GObject.Object.Notify;
             'notify::system-id': GObject.Object.Notify;
         }
 
@@ -15545,11 +15426,9 @@ export namespace GXml {
         interface SignalSignatures extends GDocument.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
@@ -16039,10 +15918,7 @@ export namespace GXml {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::root': GObject.Object.Notify;
             'notify::reference-node': GObject.Object.Notify;
-            'notify::reference-node': GObject.Object.Notify;
             'notify::pointer-before-reference-node': GObject.Object.Notify;
-            'notify::pointer-before-reference-node': GObject.Object.Notify;
-            'notify::what-to-show': GObject.Object.Notify;
             'notify::what-to-show': GObject.Object.Notify;
             'notify::filter': GObject.Object.Notify;
         }
@@ -16554,9 +16430,7 @@ export namespace GXml {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::root': GObject.Object.Notify;
             'notify::what-to-show': GObject.Object.Notify;
-            'notify::what-to-show': GObject.Object.Notify;
             'notify::filter': GObject.Object.Notify;
-            'notify::current-node': GObject.Object.Notify;
             'notify::current-node': GObject.Object.Notify;
         }
 
@@ -17070,15 +16944,10 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
         }
@@ -17601,15 +17470,10 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GDomTokenList.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
@@ -17694,15 +17558,10 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
         }
@@ -18207,18 +18066,12 @@ export namespace GXml {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::etype': GObject.Object.Notify;
             'notify::event-target': GObject.Object.Notify;
-            'notify::event-target': GObject.Object.Notify;
-            'notify::current-target': GObject.Object.Notify;
             'notify::current-target': GObject.Object.Notify;
             'notify::bubbles': GObject.Object.Notify;
             'notify::cancelable': GObject.Object.Notify;
             'notify::is-trusted': GObject.Object.Notify;
-            'notify::is-trusted': GObject.Object.Notify;
-            'notify::time-stamp': GObject.Object.Notify;
             'notify::time-stamp': GObject.Object.Notify;
             'notify::default-prevented': GObject.Object.Notify;
-            'notify::default-prevented': GObject.Object.Notify;
-            'notify::event-phase': GObject.Object.Notify;
             'notify::event-phase': GObject.Object.Notify;
         }
 
@@ -18794,15 +18647,10 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::start-container': GObject.Object.Notify;
-            'notify::start-container': GObject.Object.Notify;
-            'notify::start-offset': GObject.Object.Notify;
             'notify::start-offset': GObject.Object.Notify;
             'notify::end-container': GObject.Object.Notify;
-            'notify::end-container': GObject.Object.Notify;
-            'notify::end-offset': GObject.Object.Notify;
             'notify::end-offset': GObject.Object.Notify;
             'notify::collapsed': GObject.Object.Notify;
-            'notify::common-ancestor-container': GObject.Object.Notify;
             'notify::common-ancestor-container': GObject.Object.Notify;
         }
 
@@ -19351,32 +19199,22 @@ export namespace GXml {
         interface SignalSignatures extends GNonDocumentChildNode.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::children': GObject.Object.Notify;
             'notify::first-element-child': GObject.Object.Notify;
-            'notify::first-element-child': GObject.Object.Notify;
-            'notify::last-element-child': GObject.Object.Notify;
             'notify::last-element-child': GObject.Object.Notify;
             'notify::child-element-count': GObject.Object.Notify;
-            'notify::child-element-count': GObject.Object.Notify;
-            'notify::namespace-uri': GObject.Object.Notify;
             'notify::namespace-uri': GObject.Object.Notify;
             'notify::prefix': GObject.Object.Notify;
             'notify::local-name': GObject.Object.Notify;
-            'notify::local-name': GObject.Object.Notify;
-            'notify::tag-name': GObject.Object.Notify;
             'notify::tag-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::class-name': GObject.Object.Notify;
-            'notify::class-name': GObject.Object.Notify;
-            'notify::class-list': GObject.Object.Notify;
             'notify::class-list': GObject.Object.Notify;
             'notify::attributes': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
@@ -20470,39 +20308,24 @@ export namespace GXml {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::node-type': GObject.Object.Notify;
-            'notify::node-type': GObject.Object.Notify;
-            'notify::node-name': GObject.Object.Notify;
             'notify::node-name': GObject.Object.Notify;
             'notify::base-uri': GObject.Object.Notify;
-            'notify::base-uri': GObject.Object.Notify;
-            'notify::owner-document': GObject.Object.Notify;
             'notify::owner-document': GObject.Object.Notify;
             'notify::parent-node': GObject.Object.Notify;
-            'notify::parent-node': GObject.Object.Notify;
-            'notify::parent-element': GObject.Object.Notify;
             'notify::parent-element': GObject.Object.Notify;
             'notify::child-nodes': GObject.Object.Notify;
-            'notify::child-nodes': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::node-value': GObject.Object.Notify;
-            'notify::node-value': GObject.Object.Notify;
-            'notify::text-content': GObject.Object.Notify;
             'notify::text-content': GObject.Object.Notify;
         }
 
@@ -21151,11 +20974,9 @@ export namespace GXml {
         interface SignalSignatures extends GCharacterData.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
@@ -21656,16 +21477,13 @@ export namespace GXml {
         interface SignalSignatures extends GCharacterData.SignalSignatures {
             'notify::attrs': GObject.Object.Notify;
             'notify::children-nodes': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
             'notify::namespaces': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::type-node': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::str': GObject.Object.Notify;
-            'notify::whole-text': GObject.Object.Notify;
             'notify::whole-text': GObject.Object.Notify;
             'notify::data': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
@@ -22165,24 +21983,16 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends Gee.AbstractMap.SignalSignatures {
             'notify::k-type': GObject.Object.Notify;
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
             'notify::v-type': GObject.Object.Notify;
             'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
             'notify::v-destroy-func': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::keys': GObject.Object.Notify;
             'notify::values': GObject.Object.Notify;
             'notify::entries': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
         }
@@ -22688,20 +22498,13 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends Gee.MapEntry.SignalSignatures {
             'notify::k-type': GObject.Object.Notify;
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
             'notify::v-type': GObject.Object.Notify;
             'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
             'notify::v-destroy-func': GObject.Object.Notify;
             'notify::key': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -22745,7 +22548,6 @@ export namespace GXml {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::valid': GObject.Object.Notify;
             'notify::mutable': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -23257,15 +23059,10 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends Gee.AbstractBidirList.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
         }
@@ -23776,7 +23573,6 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::valid': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -24331,15 +24127,10 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends Gee.AbstractList.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -24382,7 +24173,6 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::valid': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -24965,15 +24755,10 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
         }
@@ -25645,16 +25430,11 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::child-list': GObject.Object.Notify;
-            'notify::child-list': GObject.Object.Notify;
             'notify::attributes': GObject.Object.Notify;
-            'notify::character-data': GObject.Object.Notify;
             'notify::character-data': GObject.Object.Notify;
             'notify::subtree': GObject.Object.Notify;
             'notify::attribute-old-value': GObject.Object.Notify;
-            'notify::attribute-old-value': GObject.Object.Notify;
             'notify::character-data-old-value': GObject.Object.Notify;
-            'notify::character-data-old-value': GObject.Object.Notify;
-            'notify::attribute-filter': GObject.Object.Notify;
             'notify::attribute-filter': GObject.Object.Notify;
         }
 
@@ -25798,12 +25578,8 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::object-type': GObject.Object.Notify;
-            'notify::object-type': GObject.Object.Notify;
-            'notify::boolean-value': GObject.Object.Notify;
             'notify::boolean-value': GObject.Object.Notify;
             'notify::string-value': GObject.Object.Notify;
-            'notify::string-value': GObject.Object.Notify;
-            'notify::number-value': GObject.Object.Notify;
             'notify::number-value': GObject.Object.Notify;
             'notify::nodeset': GObject.Object.Notify;
         }
@@ -26310,24 +26086,16 @@ export namespace GXml {
         interface SignalSignatures extends GomNode.SignalSignatures {
             'notify::children': GObject.Object.Notify;
             'notify::first-element-child': GObject.Object.Notify;
-            'notify::first-element-child': GObject.Object.Notify;
             'notify::last-element-child': GObject.Object.Notify;
-            'notify::last-element-child': GObject.Object.Notify;
-            'notify::child-element-count': GObject.Object.Notify;
             'notify::child-element-count': GObject.Object.Notify;
             'notify::implementation': GObject.Object.Notify;
             'notify::url': GObject.Object.Notify;
             'notify::document-uri': GObject.Object.Notify;
-            'notify::document-uri': GObject.Object.Notify;
             'notify::origin': GObject.Object.Notify;
             'notify::compat-mode': GObject.Object.Notify;
-            'notify::compat-mode': GObject.Object.Notify;
             'notify::character-set': GObject.Object.Notify;
-            'notify::character-set': GObject.Object.Notify;
-            'notify::content-type': GObject.Object.Notify;
             'notify::content-type': GObject.Object.Notify;
             'notify::doctype': GObject.Object.Notify;
-            'notify::document-element': GObject.Object.Notify;
             'notify::document-element': GObject.Object.Notify;
         }
 
@@ -27410,35 +27178,20 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GomNode.SignalSignatures {
             'notify::node-type': GObject.Object.Notify;
-            'notify::node-type': GObject.Object.Notify;
-            'notify::node-name': GObject.Object.Notify;
             'notify::node-name': GObject.Object.Notify;
             'notify::base-uri': GObject.Object.Notify;
-            'notify::base-uri': GObject.Object.Notify;
-            'notify::owner-document': GObject.Object.Notify;
             'notify::owner-document': GObject.Object.Notify;
             'notify::parent-node': GObject.Object.Notify;
-            'notify::parent-node': GObject.Object.Notify;
-            'notify::parent-element': GObject.Object.Notify;
             'notify::parent-element': GObject.Object.Notify;
             'notify::child-nodes': GObject.Object.Notify;
-            'notify::child-nodes': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::node-value': GObject.Object.Notify;
-            'notify::node-value': GObject.Object.Notify;
-            'notify::text-content': GObject.Object.Notify;
             'notify::text-content': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::public-id': GObject.Object.Notify;
-            'notify::public-id': GObject.Object.Notify;
-            'notify::system-id': GObject.Object.Notify;
             'notify::system-id': GObject.Object.Notify;
         }
 
@@ -28036,10 +27789,7 @@ export namespace GXml {
         interface SignalSignatures extends GomNode.SignalSignatures {
             'notify::children': GObject.Object.Notify;
             'notify::first-element-child': GObject.Object.Notify;
-            'notify::first-element-child': GObject.Object.Notify;
             'notify::last-element-child': GObject.Object.Notify;
-            'notify::last-element-child': GObject.Object.Notify;
-            'notify::child-element-count': GObject.Object.Notify;
             'notify::child-element-count': GObject.Object.Notify;
         }
 
@@ -28555,30 +28305,19 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GomNode.SignalSignatures {
             'notify::parse-children': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
             'notify::previous-element-sibling': GObject.Object.Notify;
-            'notify::previous-element-sibling': GObject.Object.Notify;
-            'notify::next-element-sibling': GObject.Object.Notify;
             'notify::next-element-sibling': GObject.Object.Notify;
             'notify::children': GObject.Object.Notify;
             'notify::first-element-child': GObject.Object.Notify;
-            'notify::first-element-child': GObject.Object.Notify;
-            'notify::last-element-child': GObject.Object.Notify;
             'notify::last-element-child': GObject.Object.Notify;
             'notify::child-element-count': GObject.Object.Notify;
-            'notify::child-element-count': GObject.Object.Notify;
-            'notify::namespace-uri': GObject.Object.Notify;
             'notify::namespace-uri': GObject.Object.Notify;
             'notify::prefix': GObject.Object.Notify;
             'notify::local-name': GObject.Object.Notify;
-            'notify::local-name': GObject.Object.Notify;
-            'notify::tag-name': GObject.Object.Notify;
             'notify::tag-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::class-name': GObject.Object.Notify;
-            'notify::class-name': GObject.Object.Notify;
-            'notify::class-list': GObject.Object.Notify;
             'notify::class-list': GObject.Object.Notify;
             'notify::attributes': GObject.Object.Notify;
         }
@@ -29229,24 +28968,16 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends Gee.HashMap.SignalSignatures {
             'notify::k-type': GObject.Object.Notify;
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
             'notify::v-type': GObject.Object.Notify;
             'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
             'notify::v-destroy-func': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::keys': GObject.Object.Notify;
             'notify::values': GObject.Object.Notify;
             'notify::entries': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
         }
@@ -29755,9 +29486,7 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GomNode.SignalSignatures {
             'notify::namespace-uri': GObject.Object.Notify;
-            'notify::namespace-uri': GObject.Object.Notify;
             'notify::prefix': GObject.Object.Notify;
-            'notify::local-name': GObject.Object.Notify;
             'notify::local-name': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
@@ -30277,30 +30006,17 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::node-type': GObject.Object.Notify;
-            'notify::node-type': GObject.Object.Notify;
-            'notify::node-name': GObject.Object.Notify;
             'notify::node-name': GObject.Object.Notify;
             'notify::base-uri': GObject.Object.Notify;
-            'notify::base-uri': GObject.Object.Notify;
-            'notify::owner-document': GObject.Object.Notify;
             'notify::owner-document': GObject.Object.Notify;
             'notify::parent-node': GObject.Object.Notify;
-            'notify::parent-node': GObject.Object.Notify;
-            'notify::parent-element': GObject.Object.Notify;
             'notify::parent-element': GObject.Object.Notify;
             'notify::child-nodes': GObject.Object.Notify;
-            'notify::child-nodes': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::node-value': GObject.Object.Notify;
-            'notify::node-value': GObject.Object.Notify;
-            'notify::text-content': GObject.Object.Notify;
             'notify::text-content': GObject.Object.Notify;
         }
 
@@ -30882,15 +30598,10 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
         }
@@ -31384,8 +31095,6 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GomNode.SignalSignatures {
             'notify::previous-element-sibling': GObject.Object.Notify;
-            'notify::previous-element-sibling': GObject.Object.Notify;
-            'notify::next-element-sibling': GObject.Object.Notify;
             'notify::next-element-sibling': GObject.Object.Notify;
             'notify::data': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
@@ -31887,7 +31596,6 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GomCharacterData.SignalSignatures {
             'notify::whole-text': GObject.Object.Notify;
-            'notify::whole-text': GObject.Object.Notify;
             'notify::data': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
         }
@@ -32108,10 +31816,7 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::items-name': GObject.Object.Notify;
-            'notify::items-name': GObject.Object.Notify;
             'notify::items-type': GObject.Object.Notify;
-            'notify::items-type': GObject.Object.Notify;
-            'notify::nodes-index': GObject.Object.Notify;
             'notify::nodes-index': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
         }
@@ -32192,10 +31897,7 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends BaseCollection.SignalSignatures {
             'notify::items-name': GObject.Object.Notify;
-            'notify::items-name': GObject.Object.Notify;
             'notify::items-type': GObject.Object.Notify;
-            'notify::items-type': GObject.Object.Notify;
-            'notify::nodes-index': GObject.Object.Notify;
             'notify::nodes-index': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
@@ -32720,12 +32422,8 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends BaseCollection.SignalSignatures {
             'notify::attribute-key': GObject.Object.Notify;
-            'notify::attribute-key': GObject.Object.Notify;
-            'notify::items-name': GObject.Object.Notify;
             'notify::items-name': GObject.Object.Notify;
             'notify::items-type': GObject.Object.Notify;
-            'notify::items-type': GObject.Object.Notify;
-            'notify::nodes-index': GObject.Object.Notify;
             'notify::nodes-index': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
@@ -33270,14 +32968,9 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends BaseCollection.SignalSignatures {
             'notify::attribute-primary-key': GObject.Object.Notify;
-            'notify::attribute-primary-key': GObject.Object.Notify;
-            'notify::attribute-secondary-key': GObject.Object.Notify;
             'notify::attribute-secondary-key': GObject.Object.Notify;
             'notify::items-name': GObject.Object.Notify;
-            'notify::items-name': GObject.Object.Notify;
             'notify::items-type': GObject.Object.Notify;
-            'notify::items-type': GObject.Object.Notify;
-            'notify::nodes-index': GObject.Object.Notify;
             'notify::nodes-index': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
@@ -33841,16 +33534,10 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends BaseCollection.SignalSignatures {
             'notify::attribute-primary-key': GObject.Object.Notify;
-            'notify::attribute-primary-key': GObject.Object.Notify;
-            'notify::attribute-secondary-key': GObject.Object.Notify;
             'notify::attribute-secondary-key': GObject.Object.Notify;
             'notify::attribute-third-key': GObject.Object.Notify;
-            'notify::attribute-third-key': GObject.Object.Notify;
-            'notify::items-name': GObject.Object.Notify;
             'notify::items-name': GObject.Object.Notify;
             'notify::items-type': GObject.Object.Notify;
-            'notify::items-type': GObject.Object.Notify;
-            'notify::nodes-index': GObject.Object.Notify;
             'notify::nodes-index': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
@@ -35012,7 +34699,6 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GomArrayString.SignalSignatures {
             'notify::simple-type': GObject.Object.Notify;
-            'notify::simple-type': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
         }
@@ -35259,7 +34945,6 @@ export namespace GXml {
     namespace GomEnum {
         // Signal signatures
         interface SignalSignatures extends GomBaseProperty.SignalSignatures {
-            'notify::enum-type': GObject.Object.Notify;
             'notify::enum-type': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
         }
@@ -35947,12 +35632,8 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GomElement.SignalSignatures {
             'notify::element-definitions': GObject.Object.Notify;
-            'notify::element-definitions': GObject.Object.Notify;
-            'notify::simple-type-definitions': GObject.Object.Notify;
             'notify::simple-type-definitions': GObject.Object.Notify;
             'notify::complex-type-definitions': GObject.Object.Notify;
-            'notify::complex-type-definitions': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
@@ -36032,7 +35713,6 @@ export namespace GXml {
             'notify::list': GObject.Object.Notify;
             'notify::union': GObject.Object.Notify;
             'notify::restriction': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
@@ -36114,7 +35794,6 @@ export namespace GXml {
         interface SignalSignatures extends GomElement.SignalSignatures {
             'notify::annotation': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
 
@@ -36170,7 +35849,6 @@ export namespace GXml {
         interface SignalSignatures extends GomXsdTypeDefinition.SignalSignatures {
             'notify::annotation': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
 
@@ -36213,7 +35891,6 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GomXsdTypeDefinition.SignalSignatures {
             'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
@@ -36258,12 +35935,9 @@ export namespace GXml {
         interface SignalSignatures extends GomXsdTypeDefinition.SignalSignatures {
             'notify::base': GObject.Object.Notify;
             'notify::simple-type': GObject.Object.Notify;
-            'notify::simple-type': GObject.Object.Notify;
             'notify::enumerations': GObject.Object.Notify;
             'notify::white-spaces': GObject.Object.Notify;
-            'notify::white-spaces': GObject.Object.Notify;
             'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
@@ -36341,7 +36015,6 @@ export namespace GXml {
         interface SignalSignatures extends GomElement.SignalSignatures {
             'notify::annotation': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
 
@@ -36397,7 +36070,6 @@ export namespace GXml {
         interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
             'notify::annotation': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
 
@@ -36440,7 +36112,6 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
             'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
@@ -36485,7 +36156,6 @@ export namespace GXml {
         interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
             'notify::annotation': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
 
@@ -36528,7 +36198,6 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
             'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
@@ -36573,7 +36242,6 @@ export namespace GXml {
         interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
             'notify::annotation': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
 
@@ -36616,7 +36284,6 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
             'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
@@ -36663,7 +36330,6 @@ export namespace GXml {
         interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
             'notify::annotation': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
 
@@ -36706,7 +36372,6 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
             'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
@@ -36751,7 +36416,6 @@ export namespace GXml {
         interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
             'notify::annotation': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
 
@@ -36795,7 +36459,6 @@ export namespace GXml {
         interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
             'notify::value': GObject.Object.Notify;
             'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
@@ -36853,7 +36516,6 @@ export namespace GXml {
             'notify::fixed': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
             'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
@@ -36958,7 +36620,6 @@ export namespace GXml {
         interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
             'notify::annotation': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
 
@@ -37002,7 +36663,6 @@ export namespace GXml {
         interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
             'notify::annotation': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
 
@@ -37045,7 +36705,6 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
             'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
@@ -37096,15 +36755,10 @@ export namespace GXml {
             'notify::mixed': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::default-attributes-apply': GObject.Object.Notify;
-            'notify::default-attributes-apply': GObject.Object.Notify;
-            'notify::content-type': GObject.Object.Notify;
             'notify::content-type': GObject.Object.Notify;
             'notify::type-attributes': GObject.Object.Notify;
-            'notify::type-attributes': GObject.Object.Notify;
-            'notify::group-attributes': GObject.Object.Notify;
             'notify::group-attributes': GObject.Object.Notify;
             'notify::anotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
@@ -37207,7 +36861,6 @@ export namespace GXml {
         interface SignalSignatures extends GomElement.SignalSignatures {
             'notify::base': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
 
@@ -37268,24 +36921,16 @@ export namespace GXml {
             'notify::fixed': GObject.Object.Notify;
             'notify::form': GObject.Object.Notify;
             'notify::max-occurs': GObject.Object.Notify;
-            'notify::max-occurs': GObject.Object.Notify;
-            'notify::min-occurs': GObject.Object.Notify;
             'notify::min-occurs': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::nillable': GObject.Object.Notify;
             'notify::ref': GObject.Object.Notify;
             'notify::substitution-group': GObject.Object.Notify;
-            'notify::substitution-group': GObject.Object.Notify;
             'notify::target-namespace': GObject.Object.Notify;
-            'notify::target-namespace': GObject.Object.Notify;
-            'notify::object-type': GObject.Object.Notify;
             'notify::object-type': GObject.Object.Notify;
             'notify::anotation': GObject.Object.Notify;
             'notify::simple-type': GObject.Object.Notify;
-            'notify::simple-type': GObject.Object.Notify;
             'notify::complex-type': GObject.Object.Notify;
-            'notify::complex-type': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
@@ -37442,7 +37087,6 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GomElement.SignalSignatures {
             'notify::parse-children': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
 
@@ -37485,7 +37129,6 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GomElement.SignalSignatures {
             'notify::anotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
@@ -37542,7 +37185,6 @@ export namespace GXml {
         interface SignalSignatures extends GomElement.SignalSignatures {
             'notify::anotation': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
 
@@ -37598,7 +37240,6 @@ export namespace GXml {
         interface SignalSignatures extends GomXsdBaseContent.SignalSignatures {
             'notify::anotation': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
 
@@ -37641,7 +37282,6 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GomXsdBaseContent.SignalSignatures {
             'notify::anotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
@@ -37686,7 +37326,6 @@ export namespace GXml {
         interface SignalSignatures extends GomXsdBaseContent.SignalSignatures {
             'notify::anotation': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
 
@@ -37729,7 +37368,6 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GomElement.SignalSignatures {
             'notify::anotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
@@ -37786,7 +37424,6 @@ export namespace GXml {
         interface SignalSignatures extends GomXsdBaseAttribute.SignalSignatures {
             'notify::anotation': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
 
@@ -37829,7 +37466,6 @@ export namespace GXml {
         // Signal signatures
         interface SignalSignatures extends GomXsdBaseAttribute.SignalSignatures {
             'notify::anotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
             'notify::parse-children': GObject.Object.Notify;
             'notify::unparsed': GObject.Object.Notify;
         }
@@ -37874,10 +37510,7 @@ export namespace GXml {
         interface SignalSignatures extends GomArrayList.SignalSignatures {
             'notify::length': GObject.Object.Notify;
             'notify::items-name': GObject.Object.Notify;
-            'notify::items-name': GObject.Object.Notify;
             'notify::items-type': GObject.Object.Notify;
-            'notify::items-type': GObject.Object.Notify;
-            'notify::nodes-index': GObject.Object.Notify;
             'notify::nodes-index': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
         }
@@ -37934,10 +37567,7 @@ export namespace GXml {
         interface SignalSignatures extends GomXsdList.SignalSignatures {
             'notify::length': GObject.Object.Notify;
             'notify::items-name': GObject.Object.Notify;
-            'notify::items-name': GObject.Object.Notify;
             'notify::items-type': GObject.Object.Notify;
-            'notify::items-type': GObject.Object.Notify;
-            'notify::nodes-index': GObject.Object.Notify;
             'notify::nodes-index': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
         }
@@ -37982,10 +37612,7 @@ export namespace GXml {
         interface SignalSignatures extends GomXsdList.SignalSignatures {
             'notify::length': GObject.Object.Notify;
             'notify::items-name': GObject.Object.Notify;
-            'notify::items-name': GObject.Object.Notify;
             'notify::items-type': GObject.Object.Notify;
-            'notify::items-type': GObject.Object.Notify;
-            'notify::nodes-index': GObject.Object.Notify;
             'notify::nodes-index': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
         }
@@ -38030,10 +37657,7 @@ export namespace GXml {
         interface SignalSignatures extends GomXsdList.SignalSignatures {
             'notify::length': GObject.Object.Notify;
             'notify::items-name': GObject.Object.Notify;
-            'notify::items-name': GObject.Object.Notify;
             'notify::items-type': GObject.Object.Notify;
-            'notify::items-type': GObject.Object.Notify;
-            'notify::nodes-index': GObject.Object.Notify;
             'notify::nodes-index': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
         }
@@ -38078,10 +37702,7 @@ export namespace GXml {
         interface SignalSignatures extends GomXsdList.SignalSignatures {
             'notify::length': GObject.Object.Notify;
             'notify::items-name': GObject.Object.Notify;
-            'notify::items-name': GObject.Object.Notify;
             'notify::items-type': GObject.Object.Notify;
-            'notify::items-type': GObject.Object.Notify;
-            'notify::nodes-index': GObject.Object.Notify;
             'notify::nodes-index': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
         }
@@ -38128,10 +37749,7 @@ export namespace GXml {
         interface SignalSignatures extends GomXsdList.SignalSignatures {
             'notify::length': GObject.Object.Notify;
             'notify::items-name': GObject.Object.Notify;
-            'notify::items-name': GObject.Object.Notify;
             'notify::items-type': GObject.Object.Notify;
-            'notify::items-type': GObject.Object.Notify;
-            'notify::nodes-index': GObject.Object.Notify;
             'notify::nodes-index': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
         }

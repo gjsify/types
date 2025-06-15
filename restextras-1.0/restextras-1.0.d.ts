@@ -36,22 +36,14 @@ export namespace RestExtras {
         // Signal signatures
         interface SignalSignatures extends Rest.Proxy.SignalSignatures {
             'notify::api-key': GObject.Object.Notify;
-            'notify::api-key': GObject.Object.Notify;
-            'notify::shared-secret': GObject.Object.Notify;
             'notify::shared-secret': GObject.Object.Notify;
             'notify::token': GObject.Object.Notify;
             'notify::binding-required': GObject.Object.Notify;
-            'notify::binding-required': GObject.Object.Notify;
-            'notify::disable-cookies': GObject.Object.Notify;
             'notify::disable-cookies': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::ssl-ca-file': GObject.Object.Notify;
-            'notify::ssl-ca-file': GObject.Object.Notify;
-            'notify::ssl-strict': GObject.Object.Notify;
             'notify::ssl-strict': GObject.Object.Notify;
             'notify::url-format': GObject.Object.Notify;
-            'notify::url-format': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
             'notify::user-agent': GObject.Object.Notify;
             'notify::username': GObject.Object.Notify;
         }
@@ -221,22 +213,14 @@ export namespace RestExtras {
         // Signal signatures
         interface SignalSignatures extends Rest.Proxy.SignalSignatures {
             'notify::api-key': GObject.Object.Notify;
-            'notify::api-key': GObject.Object.Notify;
             'notify::secret': GObject.Object.Notify;
             'notify::session-key': GObject.Object.Notify;
-            'notify::session-key': GObject.Object.Notify;
             'notify::binding-required': GObject.Object.Notify;
-            'notify::binding-required': GObject.Object.Notify;
-            'notify::disable-cookies': GObject.Object.Notify;
             'notify::disable-cookies': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::ssl-ca-file': GObject.Object.Notify;
-            'notify::ssl-ca-file': GObject.Object.Notify;
-            'notify::ssl-strict': GObject.Object.Notify;
             'notify::ssl-strict': GObject.Object.Notify;
             'notify::url-format': GObject.Object.Notify;
-            'notify::url-format': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
             'notify::user-agent': GObject.Object.Notify;
             'notify::username': GObject.Object.Notify;
         }
@@ -377,21 +361,13 @@ export namespace RestExtras {
         // Signal signatures
         interface SignalSignatures extends Rest.Proxy.SignalSignatures {
             'notify::developer-key': GObject.Object.Notify;
-            'notify::developer-key': GObject.Object.Notify;
-            'notify::user-auth': GObject.Object.Notify;
             'notify::user-auth': GObject.Object.Notify;
             'notify::binding-required': GObject.Object.Notify;
-            'notify::binding-required': GObject.Object.Notify;
-            'notify::disable-cookies': GObject.Object.Notify;
             'notify::disable-cookies': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::ssl-ca-file': GObject.Object.Notify;
-            'notify::ssl-ca-file': GObject.Object.Notify;
-            'notify::ssl-strict': GObject.Object.Notify;
             'notify::ssl-strict': GObject.Object.Notify;
             'notify::url-format': GObject.Object.Notify;
-            'notify::url-format': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
             'notify::user-agent': GObject.Object.Notify;
             'notify::username': GObject.Object.Notify;
         }

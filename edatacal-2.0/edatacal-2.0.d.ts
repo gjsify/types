@@ -92,18 +92,14 @@ export namespace EDataCal {
             closed: Closed;
             shutdown: Shutdown;
             'notify::cache-dir': GObject.Object.Notify;
-            'notify::cache-dir': GObject.Object.Notify;
             'notify::kind': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
             'notify::registry': GObject.Object.Notify;
             'notify::writable': GObject.Object.Notify;
             'notify::connectable': GObject.Object.Notify;
             'notify::main-context': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
             'notify::online': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
-            'notify::user-prompter': GObject.Object.Notify;
             'notify::user-prompter': GObject.Object.Notify;
         }
 
@@ -2092,18 +2088,14 @@ export namespace EDataCal {
         // Signal signatures
         interface SignalSignatures extends CalBackend.SignalSignatures {
             'notify::cache-dir': GObject.Object.Notify;
-            'notify::cache-dir': GObject.Object.Notify;
             'notify::kind': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
             'notify::registry': GObject.Object.Notify;
             'notify::writable': GObject.Object.Notify;
             'notify::connectable': GObject.Object.Notify;
             'notify::main-context': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
             'notify::online': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
-            'notify::user-prompter': GObject.Object.Notify;
             'notify::user-prompter': GObject.Object.Notify;
         }
 
@@ -3782,18 +3774,14 @@ export namespace EDataCal {
             'source-changed': SourceChanged;
             'notify::cache': GObject.Object.Notify;
             'notify::cache-dir': GObject.Object.Notify;
-            'notify::cache-dir': GObject.Object.Notify;
             'notify::kind': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
             'notify::registry': GObject.Object.Notify;
             'notify::writable': GObject.Object.Notify;
             'notify::connectable': GObject.Object.Notify;
             'notify::main-context': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
             'notify::online': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
-            'notify::user-prompter': GObject.Object.Notify;
             'notify::user-prompter': GObject.Object.Notify;
         }
 
@@ -4953,7 +4941,6 @@ export namespace EDataCal {
             'notify::backend': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5682,9 +5669,7 @@ export namespace EDataCal {
         // Signal signatures
         interface SignalSignatures extends EBackend.DataFactory.SignalSignatures {
             'notify::backend-per-process': GObject.Object.Notify;
-            'notify::backend-per-process': GObject.Object.Notify;
             'notify::registry': GObject.Object.Notify;
-            'notify::reload-supported': GObject.Object.Notify;
             'notify::reload-supported': GObject.Object.Notify;
         }
 
@@ -6257,7 +6242,6 @@ export namespace EDataCal {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::backend': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
             'notify::sexp': GObject.Object.Notify;
         }

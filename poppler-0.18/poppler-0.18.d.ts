@@ -2448,44 +2448,30 @@ export namespace Poppler {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::author': GObject.Object.Notify;
             'notify::creation-date': GObject.Object.Notify;
-            'notify::creation-date': GObject.Object.Notify;
-            'notify::creation-datetime': GObject.Object.Notify;
             'notify::creation-datetime': GObject.Object.Notify;
             'notify::creator': GObject.Object.Notify;
             'notify::format': GObject.Object.Notify;
             'notify::format-major': GObject.Object.Notify;
-            'notify::format-major': GObject.Object.Notify;
-            'notify::format-minor': GObject.Object.Notify;
             'notify::format-minor': GObject.Object.Notify;
             'notify::keywords': GObject.Object.Notify;
             'notify::linearized': GObject.Object.Notify;
             'notify::metadata': GObject.Object.Notify;
             'notify::mod-date': GObject.Object.Notify;
-            'notify::mod-date': GObject.Object.Notify;
-            'notify::mod-datetime': GObject.Object.Notify;
             'notify::mod-datetime': GObject.Object.Notify;
             'notify::page-layout': GObject.Object.Notify;
-            'notify::page-layout': GObject.Object.Notify;
-            'notify::page-mode': GObject.Object.Notify;
             'notify::page-mode': GObject.Object.Notify;
             'notify::permissions': GObject.Object.Notify;
             'notify::print-duplex': GObject.Object.Notify;
-            'notify::print-duplex': GObject.Object.Notify;
             'notify::print-n-copies': GObject.Object.Notify;
             'notify::print-ncopies': GObject.Object.Notify;
-            'notify::print-scaling': GObject.Object.Notify;
             'notify::print-scaling': GObject.Object.Notify;
             'notify::producer': GObject.Object.Notify;
             'notify::subject': GObject.Object.Notify;
             'notify::subtype': GObject.Object.Notify;
             'notify::subtype-conformance': GObject.Object.Notify;
-            'notify::subtype-conformance': GObject.Object.Notify;
             'notify::subtype-part': GObject.Object.Notify;
-            'notify::subtype-part': GObject.Object.Notify;
-            'notify::subtype-string': GObject.Object.Notify;
             'notify::subtype-string': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
-            'notify::viewer-preferences': GObject.Object.Notify;
             'notify::viewer-preferences': GObject.Object.Notify;
         }
 

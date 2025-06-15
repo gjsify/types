@@ -442,47 +442,31 @@ export namespace GUPnPAV {
         // Signal signatures
         interface SignalSignatures extends DIDLLiteObject.SignalSignatures {
             'notify::child-count': GObject.Object.Notify;
-            'notify::child-count': GObject.Object.Notify;
-            'notify::container-update-id': GObject.Object.Notify;
             'notify::container-update-id': GObject.Object.Notify;
             'notify::searchable': GObject.Object.Notify;
             'notify::storage-used': GObject.Object.Notify;
-            'notify::storage-used': GObject.Object.Notify;
-            'notify::total-deleted-child-count': GObject.Object.Notify;
             'notify::total-deleted-child-count': GObject.Object.Notify;
             'notify::album': GObject.Object.Notify;
-            'notify::album-art': GObject.Object.Notify;
             'notify::album-art': GObject.Object.Notify;
             'notify::artist': GObject.Object.Notify;
             'notify::author': GObject.Object.Notify;
             'notify::creator': GObject.Object.Notify;
             'notify::date': GObject.Object.Notify;
             'notify::dc-namespace': GObject.Object.Notify;
-            'notify::dc-namespace': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::dlna-managed': GObject.Object.Notify;
-            'notify::dlna-managed': GObject.Object.Notify;
-            'notify::dlna-namespace': GObject.Object.Notify;
             'notify::dlna-namespace': GObject.Object.Notify;
             'notify::genre': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::parent-id': GObject.Object.Notify;
-            'notify::parent-id': GObject.Object.Notify;
-            'notify::pv-namespace': GObject.Object.Notify;
             'notify::pv-namespace': GObject.Object.Notify;
             'notify::restricted': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::track-number': GObject.Object.Notify;
-            'notify::track-number': GObject.Object.Notify;
-            'notify::update-id': GObject.Object.Notify;
             'notify::update-id': GObject.Object.Notify;
             'notify::upnp-class': GObject.Object.Notify;
-            'notify::upnp-class': GObject.Object.Notify;
-            'notify::upnp-namespace': GObject.Object.Notify;
             'notify::upnp-namespace': GObject.Object.Notify;
             'notify::write-status': GObject.Object.Notify;
-            'notify::write-status': GObject.Object.Notify;
-            'notify::xml-node': GObject.Object.Notify;
             'notify::xml-node': GObject.Object.Notify;
         }
 
@@ -693,7 +677,6 @@ export namespace GUPnPAV {
             'notify::name': GObject.Object.Notify;
             'notify::role': GObject.Object.Notify;
             'notify::xml-node': GObject.Object.Notify;
-            'notify::xml-node': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -788,10 +771,7 @@ export namespace GUPnPAV {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::content': GObject.Object.Notify;
             'notify::friendly-name': GObject.Object.Notify;
-            'notify::friendly-name': GObject.Object.Notify;
             'notify::include-derived': GObject.Object.Notify;
-            'notify::include-derived': GObject.Object.Notify;
-            'notify::xml-node': GObject.Object.Notify;
             'notify::xml-node': GObject.Object.Notify;
         }
 
@@ -916,10 +896,7 @@ export namespace GUPnPAV {
             'notify::content': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::metadata-type': GObject.Object.Notify;
-            'notify::metadata-type': GObject.Object.Notify;
             'notify::name-space': GObject.Object.Notify;
-            'notify::name-space': GObject.Object.Notify;
-            'notify::xml-node': GObject.Object.Notify;
             'notify::xml-node': GObject.Object.Notify;
         }
 
@@ -1061,40 +1038,27 @@ export namespace GUPnPAV {
         interface SignalSignatures extends DIDLLiteObject.SignalSignatures {
             'notify::lifetime': GObject.Object.Notify;
             'notify::ref-id': GObject.Object.Notify;
-            'notify::ref-id': GObject.Object.Notify;
             'notify::album': GObject.Object.Notify;
-            'notify::album-art': GObject.Object.Notify;
             'notify::album-art': GObject.Object.Notify;
             'notify::artist': GObject.Object.Notify;
             'notify::author': GObject.Object.Notify;
             'notify::creator': GObject.Object.Notify;
             'notify::date': GObject.Object.Notify;
             'notify::dc-namespace': GObject.Object.Notify;
-            'notify::dc-namespace': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::dlna-managed': GObject.Object.Notify;
-            'notify::dlna-managed': GObject.Object.Notify;
-            'notify::dlna-namespace': GObject.Object.Notify;
             'notify::dlna-namespace': GObject.Object.Notify;
             'notify::genre': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::parent-id': GObject.Object.Notify;
-            'notify::parent-id': GObject.Object.Notify;
-            'notify::pv-namespace': GObject.Object.Notify;
             'notify::pv-namespace': GObject.Object.Notify;
             'notify::restricted': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::track-number': GObject.Object.Notify;
-            'notify::track-number': GObject.Object.Notify;
-            'notify::update-id': GObject.Object.Notify;
             'notify::update-id': GObject.Object.Notify;
             'notify::upnp-class': GObject.Object.Notify;
-            'notify::upnp-class': GObject.Object.Notify;
-            'notify::upnp-namespace': GObject.Object.Notify;
             'notify::upnp-namespace': GObject.Object.Notify;
             'notify::write-status': GObject.Object.Notify;
-            'notify::write-status': GObject.Object.Notify;
-            'notify::xml-node': GObject.Object.Notify;
             'notify::xml-node': GObject.Object.Notify;
         }
 
@@ -1173,37 +1137,25 @@ export namespace GUPnPAV {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::album': GObject.Object.Notify;
             'notify::album-art': GObject.Object.Notify;
-            'notify::album-art': GObject.Object.Notify;
             'notify::artist': GObject.Object.Notify;
             'notify::author': GObject.Object.Notify;
             'notify::creator': GObject.Object.Notify;
             'notify::date': GObject.Object.Notify;
             'notify::dc-namespace': GObject.Object.Notify;
-            'notify::dc-namespace': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::dlna-managed': GObject.Object.Notify;
-            'notify::dlna-managed': GObject.Object.Notify;
-            'notify::dlna-namespace': GObject.Object.Notify;
             'notify::dlna-namespace': GObject.Object.Notify;
             'notify::genre': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::parent-id': GObject.Object.Notify;
-            'notify::parent-id': GObject.Object.Notify;
-            'notify::pv-namespace': GObject.Object.Notify;
             'notify::pv-namespace': GObject.Object.Notify;
             'notify::restricted': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::track-number': GObject.Object.Notify;
-            'notify::track-number': GObject.Object.Notify;
-            'notify::update-id': GObject.Object.Notify;
             'notify::update-id': GObject.Object.Notify;
             'notify::upnp-class': GObject.Object.Notify;
-            'notify::upnp-class': GObject.Object.Notify;
-            'notify::upnp-namespace': GObject.Object.Notify;
             'notify::upnp-namespace': GObject.Object.Notify;
             'notify::write-status': GObject.Object.Notify;
-            'notify::write-status': GObject.Object.Notify;
-            'notify::xml-node': GObject.Object.Notify;
             'notify::xml-node': GObject.Object.Notify;
         }
 
@@ -1868,40 +1820,26 @@ export namespace GUPnPAV {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::audio-channels': GObject.Object.Notify;
-            'notify::audio-channels': GObject.Object.Notify;
             'notify::bitrate': GObject.Object.Notify;
             'notify::bits-per-sample': GObject.Object.Notify;
-            'notify::bits-per-sample': GObject.Object.Notify;
-            'notify::cleartext-size': GObject.Object.Notify;
             'notify::cleartext-size': GObject.Object.Notify;
             'notify::color-depth': GObject.Object.Notify;
-            'notify::color-depth': GObject.Object.Notify;
-            'notify::dlna-namespace': GObject.Object.Notify;
             'notify::dlna-namespace': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::import-uri': GObject.Object.Notify;
-            'notify::import-uri': GObject.Object.Notify;
             'notify::protection': GObject.Object.Notify;
             'notify::protocol-info': GObject.Object.Notify;
-            'notify::protocol-info': GObject.Object.Notify;
             'notify::pv-namespace': GObject.Object.Notify;
-            'notify::pv-namespace': GObject.Object.Notify;
-            'notify::sample-freq': GObject.Object.Notify;
             'notify::sample-freq': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::size64': GObject.Object.Notify;
             'notify::subtitle-file-type': GObject.Object.Notify;
-            'notify::subtitle-file-type': GObject.Object.Notify;
-            'notify::subtitle-file-uri': GObject.Object.Notify;
             'notify::subtitle-file-uri': GObject.Object.Notify;
             'notify::track-total': GObject.Object.Notify;
-            'notify::track-total': GObject.Object.Notify;
-            'notify::update-count': GObject.Object.Notify;
             'notify::update-count': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
-            'notify::xml-node': GObject.Object.Notify;
             'notify::xml-node': GObject.Object.Notify;
         }
 
@@ -2385,7 +2323,6 @@ export namespace GUPnPAV {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::language': GObject.Object.Notify;
             'notify::xml-node': GObject.Object.Notify;
-            'notify::xml-node': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2488,7 +2425,6 @@ export namespace GUPnPAV {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::name': GObject.Object.Notify;
-            'notify::object-ids': GObject.Object.Notify;
             'notify::object-ids': GObject.Object.Notify;
             'notify::version': GObject.Object.Notify;
         }
@@ -2750,17 +2686,11 @@ export namespace GUPnPAV {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::dlna-conversion': GObject.Object.Notify;
-            'notify::dlna-conversion': GObject.Object.Notify;
-            'notify::dlna-flags': GObject.Object.Notify;
             'notify::dlna-flags': GObject.Object.Notify;
             'notify::dlna-operation': GObject.Object.Notify;
-            'notify::dlna-operation': GObject.Object.Notify;
             'notify::dlna-profile': GObject.Object.Notify;
-            'notify::dlna-profile': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
             'notify::mime-type': GObject.Object.Notify;
             'notify::network': GObject.Object.Notify;
-            'notify::play-speeds': GObject.Object.Notify;
             'notify::play-speeds': GObject.Object.Notify;
             'notify::protocol': GObject.Object.Notify;
         }

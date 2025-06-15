@@ -163,16 +163,12 @@ export namespace GstTranscoder {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'notify::avoid-reencoding': GObject.Object.Notify;
-            'notify::avoid-reencoding': GObject.Object.Notify;
-            'notify::dest-uri': GObject.Object.Notify;
             'notify::dest-uri': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::pipeline': GObject.Object.Notify;
             'notify::position': GObject.Object.Notify;
             'notify::position-update-interval': GObject.Object.Notify;
-            'notify::position-update-interval': GObject.Object.Notify;
             'notify::profile': GObject.Object.Notify;
-            'notify::src-uri': GObject.Object.Notify;
             'notify::src-uri': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;

@@ -434,17 +434,13 @@ export namespace EDataBook {
             closed: Closed;
             shutdown: Shutdown;
             'notify::cache-dir': GObject.Object.Notify;
-            'notify::cache-dir': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
             'notify::registry': GObject.Object.Notify;
             'notify::writable': GObject.Object.Notify;
             'notify::connectable': GObject.Object.Notify;
             'notify::main-context': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
             'notify::online': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
-            'notify::user-prompter': GObject.Object.Notify;
             'notify::user-prompter': GObject.Object.Notify;
         }
 
@@ -1694,17 +1690,13 @@ export namespace EDataBook {
         // Signal signatures
         interface SignalSignatures extends BookBackend.SignalSignatures {
             'notify::cache-dir': GObject.Object.Notify;
-            'notify::cache-dir': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
             'notify::registry': GObject.Object.Notify;
             'notify::writable': GObject.Object.Notify;
             'notify::connectable': GObject.Object.Notify;
             'notify::main-context': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
             'notify::online': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
-            'notify::user-prompter': GObject.Object.Notify;
             'notify::user-prompter': GObject.Object.Notify;
         }
 
@@ -2864,17 +2856,13 @@ export namespace EDataBook {
             'source-changed': SourceChanged;
             'notify::cache': GObject.Object.Notify;
             'notify::cache-dir': GObject.Object.Notify;
-            'notify::cache-dir': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
             'notify::registry': GObject.Object.Notify;
             'notify::writable': GObject.Object.Notify;
             'notify::connectable': GObject.Object.Notify;
             'notify::main-context': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
             'notify::online': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
-            'notify::user-prompter': GObject.Object.Notify;
             'notify::user-prompter': GObject.Object.Notify;
         }
 
@@ -4422,7 +4410,6 @@ export namespace EDataBook {
             'notify::backend': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5336,7 +5323,6 @@ export namespace EDataBook {
         // Signal signatures
         interface SignalSignatures extends DataBookCursor.SignalSignatures {
             'notify::book-cache': GObject.Object.Notify;
-            'notify::book-cache': GObject.Object.Notify;
             'notify::cursor': GObject.Object.Notify;
             'notify::backend': GObject.Object.Notify;
             'notify::position': GObject.Object.Notify;
@@ -5401,7 +5387,6 @@ export namespace EDataBook {
         interface SignalSignatures extends DataBookCursor.SignalSignatures {
             'notify::cursor': GObject.Object.Notify;
             'notify::ebsql': GObject.Object.Notify;
-            'notify::revision-key': GObject.Object.Notify;
             'notify::revision-key': GObject.Object.Notify;
             'notify::backend': GObject.Object.Notify;
             'notify::position': GObject.Object.Notify;
@@ -5516,9 +5501,7 @@ export namespace EDataBook {
         // Signal signatures
         interface SignalSignatures extends EBackend.DataFactory.SignalSignatures {
             'notify::backend-per-process': GObject.Object.Notify;
-            'notify::backend-per-process': GObject.Object.Notify;
             'notify::registry': GObject.Object.Notify;
-            'notify::reload-supported': GObject.Object.Notify;
             'notify::reload-supported': GObject.Object.Notify;
         }
 
@@ -6110,8 +6093,6 @@ export namespace EDataBook {
             'notify::connection': GObject.Object.Notify;
             'notify::indices': GObject.Object.Notify;
             'notify::n-total': GObject.Object.Notify;
-            'notify::n-total': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
             'notify::sexp': GObject.Object.Notify;
         }

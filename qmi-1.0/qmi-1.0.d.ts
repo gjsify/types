@@ -18900,16 +18900,10 @@ export namespace Qmi {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -19054,16 +19048,10 @@ export namespace Qmi {
         interface SignalSignatures extends Client.SignalSignatures {
             received: Received;
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -19170,16 +19158,10 @@ export namespace Qmi {
         interface SignalSignatures extends Client.SignalSignatures {
             'event-report': EventReport;
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -22634,16 +22616,10 @@ export namespace Qmi {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -22805,16 +22781,10 @@ export namespace Qmi {
         interface SignalSignatures extends Client.SignalSignatures {
             'system-status': SystemStatus;
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -23079,16 +23049,10 @@ export namespace Qmi {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -23188,16 +23152,10 @@ export namespace Qmi {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -23462,16 +23420,10 @@ export namespace Qmi {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -23713,16 +23665,10 @@ export namespace Qmi {
             'set-operation-mode': SetOperationMode;
             'set-server': SetServer;
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -24629,16 +24575,10 @@ export namespace Qmi {
             'signal-info': SignalInfo;
             'system-info': SystemInfo;
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -26361,16 +26301,10 @@ export namespace Qmi {
         interface SignalSignatures extends Client.SignalSignatures {
             'event-report': EventReport;
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -26855,16 +26789,10 @@ export namespace Qmi {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -27116,16 +27044,10 @@ export namespace Qmi {
             refresh: Refresh;
             'set-selected-config': SetSelectedConfig;
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -27897,16 +27819,10 @@ export namespace Qmi {
             'event-report': EventReport;
             'gps-ready': GpsReady;
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -28513,16 +28429,10 @@ export namespace Qmi {
             'flow-status': FlowStatus;
             'network-status': NetworkStatus;
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -28787,16 +28697,10 @@ export namespace Qmi {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -28968,16 +28872,10 @@ export namespace Qmi {
             refresh: Refresh;
             'slot-status': SlotStatus;
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -30259,16 +30157,10 @@ export namespace Qmi {
             'supplementary-service': SupplementaryService;
             ussd: Ussd;
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -31251,16 +31143,10 @@ export namespace Qmi {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -31497,16 +31383,10 @@ export namespace Qmi {
             'profile-changed': ProfileChanged;
             'set-lte-attach-pdn-list': SetLteAttachPdnList;
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -33509,16 +33389,10 @@ export namespace Qmi {
             'event-report': EventReport;
             'smsc-address': SmscAddress;
             'notify::client-cid': GObject.Object.Notify;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
             'notify::client-device': GObject.Object.Notify;
             'notify::client-service': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
             'notify::client-valid': GObject.Object.Notify;
             'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
             'notify::client-version-minor': GObject.Object.Notify;
         }
 
@@ -34345,16 +34219,10 @@ export namespace Qmi {
             'device-removed': DeviceRemoved;
             indication: Indication;
             'notify::device-consecutive-timeouts': GObject.Object.Notify;
-            'notify::device-consecutive-timeouts': GObject.Object.Notify;
-            'notify::device-file': GObject.Object.Notify;
             'notify::device-file': GObject.Object.Notify;
             'notify::device-no-file-check': GObject.Object.Notify;
-            'notify::device-no-file-check': GObject.Object.Notify;
-            'notify::device-node': GObject.Object.Notify;
             'notify::device-node': GObject.Object.Notify;
             'notify::device-proxy-path': GObject.Object.Notify;
-            'notify::device-proxy-path': GObject.Object.Notify;
-            'notify::device-wwan-iface': GObject.Object.Notify;
             'notify::device-wwan-iface': GObject.Object.Notify;
         }
 

@@ -43,14 +43,11 @@ export namespace GFBGraph {
         interface SignalSignatures extends Node.SignalSignatures {
             'notify::count': GObject.Object.Notify;
             'notify::cover-photo': GObject.Object.Notify;
-            'notify::cover-photo': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::created-time': GObject.Object.Notify;
-            'notify::created-time': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::link': GObject.Object.Notify;
-            'notify::updated-time': GObject.Object.Notify;
             'notify::updated-time': GObject.Object.Notify;
         }
 
@@ -827,10 +824,8 @@ export namespace GFBGraph {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::created-time': GObject.Object.Notify;
-            'notify::created-time': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::link': GObject.Object.Notify;
-            'notify::updated-time': GObject.Object.Notify;
             'notify::updated-time': GObject.Object.Notify;
         }
 
@@ -1004,10 +999,8 @@ export namespace GFBGraph {
             'notify::source': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
             'notify::created-time': GObject.Object.Notify;
-            'notify::created-time': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::link': GObject.Object.Notify;
-            'notify::updated-time': GObject.Object.Notify;
             'notify::updated-time': GObject.Object.Notify;
         }
 
@@ -1860,7 +1853,6 @@ export namespace GFBGraph {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::access-token': GObject.Object.Notify;
-            'notify::access-token': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2402,10 +2394,8 @@ export namespace GFBGraph {
             'notify::email': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::created-time': GObject.Object.Notify;
-            'notify::created-time': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::link': GObject.Object.Notify;
-            'notify::updated-time': GObject.Object.Notify;
             'notify::updated-time': GObject.Object.Notify;
         }
 

@@ -211,13 +211,9 @@ export namespace Folks {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::t-type': GObject.Object.Notify;
-            'notify::t-type': GObject.Object.Notify;
             'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
             'notify::t-destroy-func': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
             'notify::value-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::parameters': GObject.Object.Notify;
@@ -394,8 +390,6 @@ export namespace Folks {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'backend-available': BackendAvailable;
             'notify::enabled-backends': GObject.Object.Notify;
-            'notify::enabled-backends': GObject.Object.Notify;
-            'notify::is-prepared': GObject.Object.Notify;
             'notify::is-prepared': GObject.Object.Notify;
         }
 
@@ -496,11 +490,8 @@ export namespace Folks {
             'persona-store-added': PersonaStoreAdded;
             'persona-store-removed': PersonaStoreRemoved;
             'notify::is-prepared': GObject.Object.Notify;
-            'notify::is-prepared': GObject.Object.Notify;
-            'notify::is-quiescent': GObject.Object.Notify;
             'notify::is-quiescent': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
-            'notify::persona-stores': GObject.Object.Notify;
             'notify::persona-stores': GObject.Object.Notify;
         }
 
@@ -595,8 +586,6 @@ export namespace Folks {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'print-status': PrintStatus;
             'notify::colour-enabled': GObject.Object.Notify;
-            'notify::colour-enabled': GObject.Object.Notify;
-            'notify::debug-output-enabled': GObject.Object.Notify;
             'notify::debug-output-enabled': GObject.Object.Notify;
         }
 
@@ -662,13 +651,9 @@ export namespace Folks {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
             'notify::t-type': GObject.Object.Notify;
-            'notify::t-type': GObject.Object.Notify;
             'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
             'notify::t-destroy-func': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
             'notify::value-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::parameters': GObject.Object.Notify;
@@ -713,13 +698,9 @@ export namespace Folks {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
             'notify::t-type': GObject.Object.Notify;
-            'notify::t-type': GObject.Object.Notify;
             'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
             'notify::t-destroy-func': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
             'notify::value-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::parameters': GObject.Object.Notify;
@@ -764,13 +745,9 @@ export namespace Folks {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
             'notify::t-type': GObject.Object.Notify;
-            'notify::t-type': GObject.Object.Notify;
             'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
             'notify::t-destroy-func': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
             'notify::value-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::parameters': GObject.Object.Notify;
@@ -834,12 +811,8 @@ export namespace Folks {
             'individuals-changed': IndividualsChanged;
             'individuals-changed-detailed': IndividualsChangedDetailed;
             'notify::is-prepared': GObject.Object.Notify;
-            'notify::is-prepared': GObject.Object.Notify;
-            'notify::is-quiescent': GObject.Object.Notify;
             'notify::is-quiescent': GObject.Object.Notify;
             'notify::primary-store': GObject.Object.Notify;
-            'notify::primary-store': GObject.Object.Notify;
-            'notify::backend-store': GObject.Object.Notify;
             'notify::backend-store': GObject.Object.Notify;
             'notify::individuals': GObject.Object.Notify;
             'notify::user': GObject.Object.Notify;
@@ -998,58 +971,37 @@ export namespace Folks {
             removed: Removed;
             'personas-changed': PersonasChanged;
             'notify::trust-level': GObject.Object.Notify;
-            'notify::trust-level': GObject.Object.Notify;
-            'notify::is-user': GObject.Object.Notify;
             'notify::is-user': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
             'notify::personas': GObject.Object.Notify;
             'notify::alias': GObject.Object.Notify;
             'notify::avatar': GObject.Object.Notify;
             'notify::birthday': GObject.Object.Notify;
             'notify::calendar-event-id': GObject.Object.Notify;
-            'notify::calendar-event-id': GObject.Object.Notify;
             'notify::email-addresses': GObject.Object.Notify;
-            'notify::email-addresses': GObject.Object.Notify;
-            'notify::is-favourite': GObject.Object.Notify;
             'notify::is-favourite': GObject.Object.Notify;
             'notify::gender': GObject.Object.Notify;
             'notify::groups': GObject.Object.Notify;
             'notify::im-addresses': GObject.Object.Notify;
-            'notify::im-addresses': GObject.Object.Notify;
-            'notify::im-interaction-count': GObject.Object.Notify;
             'notify::im-interaction-count': GObject.Object.Notify;
             'notify::last-im-interaction-datetime': GObject.Object.Notify;
-            'notify::last-im-interaction-datetime': GObject.Object.Notify;
-            'notify::call-interaction-count': GObject.Object.Notify;
             'notify::call-interaction-count': GObject.Object.Notify;
             'notify::last-call-interaction-datetime': GObject.Object.Notify;
-            'notify::last-call-interaction-datetime': GObject.Object.Notify;
-            'notify::local-ids': GObject.Object.Notify;
             'notify::local-ids': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::structured-name': GObject.Object.Notify;
-            'notify::structured-name': GObject.Object.Notify;
-            'notify::full-name': GObject.Object.Notify;
             'notify::full-name': GObject.Object.Notify;
             'notify::nickname': GObject.Object.Notify;
             'notify::notes': GObject.Object.Notify;
             'notify::presence-type': GObject.Object.Notify;
-            'notify::presence-type': GObject.Object.Notify;
-            'notify::presence-message': GObject.Object.Notify;
             'notify::presence-message': GObject.Object.Notify;
             'notify::client-types': GObject.Object.Notify;
-            'notify::client-types': GObject.Object.Notify;
-            'notify::presence-status': GObject.Object.Notify;
             'notify::presence-status': GObject.Object.Notify;
             'notify::phone-numbers': GObject.Object.Notify;
-            'notify::phone-numbers': GObject.Object.Notify;
-            'notify::postal-addresses': GObject.Object.Notify;
             'notify::postal-addresses': GObject.Object.Notify;
             'notify::roles': GObject.Object.Notify;
             'notify::urls': GObject.Object.Notify;
-            'notify::web-service-addresses': GObject.Object.Notify;
             'notify::web-service-addresses': GObject.Object.Notify;
         }
 
@@ -2025,10 +1977,7 @@ export namespace Folks {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::family-name': GObject.Object.Notify;
-            'notify::family-name': GObject.Object.Notify;
             'notify::given-name': GObject.Object.Notify;
-            'notify::given-name': GObject.Object.Notify;
-            'notify::additional-names': GObject.Object.Notify;
             'notify::additional-names': GObject.Object.Notify;
             'notify::prefixes': GObject.Object.Notify;
             'notify::suffixes': GObject.Object.Notify;
@@ -2127,13 +2076,9 @@ export namespace Folks {
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
             'notify::uid': GObject.Object.Notify;
             'notify::t-type': GObject.Object.Notify;
-            'notify::t-type': GObject.Object.Notify;
             'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
             'notify::t-destroy-func': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
             'notify::value-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::parameters': GObject.Object.Notify;
@@ -2190,12 +2135,8 @@ export namespace Folks {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::t-type': GObject.Object.Notify;
-            'notify::t-type': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
             'notify::t-dup-func': GObject.Object.Notify;
             'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::type-id': GObject.Object.Notify;
             'notify::type-id': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
         }
@@ -2310,32 +2251,19 @@ export namespace Folks {
             'personas-changed': PersonasChanged;
             removed: Removed;
             'notify::type-id': GObject.Object.Notify;
-            'notify::type-id': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::personas': GObject.Object.Notify;
             'notify::can-add-personas': GObject.Object.Notify;
-            'notify::can-add-personas': GObject.Object.Notify;
-            'notify::can-alias-personas': GObject.Object.Notify;
             'notify::can-alias-personas': GObject.Object.Notify;
             'notify::can-group-personas': GObject.Object.Notify;
-            'notify::can-group-personas': GObject.Object.Notify;
-            'notify::can-remove-personas': GObject.Object.Notify;
             'notify::can-remove-personas': GObject.Object.Notify;
             'notify::is-prepared': GObject.Object.Notify;
-            'notify::is-prepared': GObject.Object.Notify;
-            'notify::is-quiescent': GObject.Object.Notify;
             'notify::is-quiescent': GObject.Object.Notify;
             'notify::is-writeable': GObject.Object.Notify;
-            'notify::is-writeable': GObject.Object.Notify;
-            'notify::trust-level': GObject.Object.Notify;
             'notify::trust-level': GObject.Object.Notify;
             'notify::always-writeable-properties': GObject.Object.Notify;
-            'notify::always-writeable-properties': GObject.Object.Notify;
             'notify::is-primary-store': GObject.Object.Notify;
-            'notify::is-primary-store': GObject.Object.Notify;
-            'notify::is-user-set-default': GObject.Object.Notify;
             'notify::is-user-set-default': GObject.Object.Notify;
         }
 
@@ -2524,14 +2452,10 @@ export namespace Folks {
             'notify::iid': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
             'notify::display-id': GObject.Object.Notify;
-            'notify::display-id': GObject.Object.Notify;
-            'notify::is-user': GObject.Object.Notify;
             'notify::is-user': GObject.Object.Notify;
             'notify::store': GObject.Object.Notify;
             'notify::individual': GObject.Object.Notify;
             'notify::linkable-properties': GObject.Object.Notify;
-            'notify::linkable-properties': GObject.Object.Notify;
-            'notify::writeable-properties': GObject.Object.Notify;
             'notify::writeable-properties': GObject.Object.Notify;
         }
 
@@ -2625,13 +2549,9 @@ export namespace Folks {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
             'notify::t-type': GObject.Object.Notify;
-            'notify::t-type': GObject.Object.Notify;
             'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
             'notify::t-destroy-func': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
             'notify::value-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::parameters': GObject.Object.Notify;
@@ -2680,15 +2600,12 @@ export namespace Folks {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::po-box': GObject.Object.Notify;
-            'notify::po-box': GObject.Object.Notify;
             'notify::extension': GObject.Object.Notify;
             'notify::street': GObject.Object.Notify;
             'notify::locality': GObject.Object.Notify;
             'notify::region': GObject.Object.Notify;
             'notify::postal-code': GObject.Object.Notify;
-            'notify::postal-code': GObject.Object.Notify;
             'notify::country': GObject.Object.Notify;
-            'notify::address-format': GObject.Object.Notify;
             'notify::address-format': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
         }
@@ -2806,13 +2723,9 @@ export namespace Folks {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
             'notify::t-type': GObject.Object.Notify;
-            'notify::t-type': GObject.Object.Notify;
             'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
             'notify::t-destroy-func': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
             'notify::value-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::parameters': GObject.Object.Notify;
@@ -2904,7 +2817,6 @@ export namespace Folks {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::match-fields': GObject.Object.Notify;
-            'notify::match-fields': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2955,7 +2867,6 @@ export namespace Folks {
     namespace Role {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::organisation-name': GObject.Object.Notify;
             'notify::organisation-name': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::role': GObject.Object.Notify;
@@ -3032,13 +2943,9 @@ export namespace Folks {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
             'notify::t-type': GObject.Object.Notify;
-            'notify::t-type': GObject.Object.Notify;
             'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
             'notify::t-destroy-func': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
             'notify::value-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::parameters': GObject.Object.Notify;
@@ -3093,8 +3000,6 @@ export namespace Folks {
             'notify::query': GObject.Object.Notify;
             'notify::individuals': GObject.Object.Notify;
             'notify::is-prepared': GObject.Object.Notify;
-            'notify::is-prepared': GObject.Object.Notify;
-            'notify::is-quiescent': GObject.Object.Notify;
             'notify::is-quiescent': GObject.Object.Notify;
         }
 
@@ -3177,10 +3082,7 @@ export namespace Folks {
         // Signal signatures
         interface SignalSignatures extends Query.SignalSignatures {
             'notify::query-string': GObject.Object.Notify;
-            'notify::query-string': GObject.Object.Notify;
             'notify::query-locale': GObject.Object.Notify;
-            'notify::query-locale': GObject.Object.Notify;
-            'notify::match-fields': GObject.Object.Notify;
             'notify::match-fields': GObject.Object.Notify;
         }
 
@@ -3246,13 +3148,9 @@ export namespace Folks {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
             'notify::t-type': GObject.Object.Notify;
-            'notify::t-type': GObject.Object.Notify;
             'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
             'notify::t-destroy-func': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
             'notify::value-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::parameters': GObject.Object.Notify;
@@ -3337,13 +3235,9 @@ export namespace Folks {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
             'notify::t-type': GObject.Object.Notify;
-            'notify::t-type': GObject.Object.Notify;
             'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
             'notify::t-destroy-func': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
             'notify::value-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::parameters': GObject.Object.Notify;

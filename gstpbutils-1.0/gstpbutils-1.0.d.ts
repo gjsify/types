@@ -964,7 +964,6 @@ export namespace GstPbutils {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
             'notify::shade-amount': GObject.Object.Notify;
-            'notify::shade-amount': GObject.Object.Notify;
             'notify::shader': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -1066,7 +1065,6 @@ export namespace GstPbutils {
             'source-setup': SourceSetup;
             starting: Starting;
             'notify::timeout': GObject.Object.Notify;
-            'notify::use-cache': GObject.Object.Notify;
             'notify::use-cache': GObject.Object.Notify;
         }
 
@@ -1567,8 +1565,6 @@ export namespace GstPbutils {
         // Signal signatures
         interface SignalSignatures extends EncodingProfile.SignalSignatures {
             'notify::element-properties': GObject.Object.Notify;
-            'notify::element-properties': GObject.Object.Notify;
-            'notify::restriction-caps': GObject.Object.Notify;
             'notify::restriction-caps': GObject.Object.Notify;
         }
 
@@ -1619,8 +1615,6 @@ export namespace GstPbutils {
         // Signal signatures
         interface SignalSignatures extends EncodingProfile.SignalSignatures {
             'notify::element-properties': GObject.Object.Notify;
-            'notify::element-properties': GObject.Object.Notify;
-            'notify::restriction-caps': GObject.Object.Notify;
             'notify::restriction-caps': GObject.Object.Notify;
         }
 
@@ -1691,8 +1685,6 @@ export namespace GstPbutils {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::element-properties': GObject.Object.Notify;
-            'notify::element-properties': GObject.Object.Notify;
-            'notify::restriction-caps': GObject.Object.Notify;
             'notify::restriction-caps': GObject.Object.Notify;
         }
 
@@ -2007,8 +1999,6 @@ export namespace GstPbutils {
         // Signal signatures
         interface SignalSignatures extends EncodingProfile.SignalSignatures {
             'notify::element-properties': GObject.Object.Notify;
-            'notify::element-properties': GObject.Object.Notify;
-            'notify::restriction-caps': GObject.Object.Notify;
             'notify::restriction-caps': GObject.Object.Notify;
         }
 

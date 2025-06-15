@@ -666,7 +666,6 @@ export namespace SpiceClientGLib {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::main-context': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
             'notify::session': GObject.Object.Notify;
         }
 
@@ -771,13 +770,9 @@ export namespace SpiceClientGLib {
             'channel-event': ChannelEvent;
             'open-fd': OpenFd;
             'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
             'notify::channel-type': GObject.Object.Notify;
             'notify::socket': GObject.Object.Notify;
             'notify::spice-session': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
             'notify::total-read-bytes': GObject.Object.Notify;
         }
 
@@ -997,13 +992,9 @@ export namespace SpiceClientGLib {
             'cursor-set': CursorSet;
             'notify::cursor': GObject.Object.Notify;
             'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
             'notify::channel-type': GObject.Object.Notify;
             'notify::socket': GObject.Object.Notify;
             'notify::spice-session': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
             'notify::total-read-bytes': GObject.Object.Notify;
         }
 
@@ -1103,20 +1094,14 @@ export namespace SpiceClientGLib {
             'gst-video-overlay': GstVideoOverlay;
             'streaming-mode': StreamingMode;
             'notify::gl-scanout': GObject.Object.Notify;
-            'notify::gl-scanout': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::monitors': GObject.Object.Notify;
             'notify::monitors-max': GObject.Object.Notify;
-            'notify::monitors-max': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
             'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
             'notify::channel-type': GObject.Object.Notify;
             'notify::socket': GObject.Object.Notify;
             'notify::spice-session': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
             'notify::total-read-bytes': GObject.Object.Notify;
         }
 
@@ -1244,8 +1229,6 @@ export namespace SpiceClientGLib {
             'notify::id': GObject.Object.Notify;
             'notify::progress': GObject.Object.Notify;
             'notify::total-bytes': GObject.Object.Notify;
-            'notify::total-bytes': GObject.Object.Notify;
-            'notify::transferred-bytes': GObject.Object.Notify;
             'notify::transferred-bytes': GObject.Object.Notify;
         }
 
@@ -1323,15 +1306,10 @@ export namespace SpiceClientGLib {
         interface SignalSignatures extends Channel.SignalSignatures {
             'inputs-modifiers': InputsModifiers;
             'notify::key-modifiers': GObject.Object.Notify;
-            'notify::key-modifiers': GObject.Object.Notify;
             'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
             'notify::channel-type': GObject.Object.Notify;
             'notify::socket': GObject.Object.Notify;
             'notify::spice-session': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
             'notify::total-read-bytes': GObject.Object.Notify;
         }
 
@@ -1492,31 +1470,18 @@ export namespace SpiceClientGLib {
             'notify::agent-caps-0': GObject.Object.Notify;
             'notify::agent-caps0': GObject.Object.Notify;
             'notify::agent-connected': GObject.Object.Notify;
-            'notify::agent-connected': GObject.Object.Notify;
-            'notify::color-depth': GObject.Object.Notify;
             'notify::color-depth': GObject.Object.Notify;
             'notify::disable-animation': GObject.Object.Notify;
-            'notify::disable-animation': GObject.Object.Notify;
-            'notify::disable-display-align': GObject.Object.Notify;
             'notify::disable-display-align': GObject.Object.Notify;
             'notify::disable-display-position': GObject.Object.Notify;
-            'notify::disable-display-position': GObject.Object.Notify;
-            'notify::disable-font-smooth': GObject.Object.Notify;
             'notify::disable-font-smooth': GObject.Object.Notify;
             'notify::disable-wallpaper': GObject.Object.Notify;
-            'notify::disable-wallpaper': GObject.Object.Notify;
-            'notify::max-clipboard': GObject.Object.Notify;
             'notify::max-clipboard': GObject.Object.Notify;
             'notify::mouse-mode': GObject.Object.Notify;
-            'notify::mouse-mode': GObject.Object.Notify;
             'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
             'notify::channel-type': GObject.Object.Notify;
             'notify::socket': GObject.Object.Notify;
             'notify::spice-session': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
             'notify::total-read-bytes': GObject.Object.Notify;
         }
 
@@ -1862,18 +1827,13 @@ export namespace SpiceClientGLib {
             'playback-start': PlaybackStart;
             'playback-stop': PlaybackStop;
             'notify::min-latency': GObject.Object.Notify;
-            'notify::min-latency': GObject.Object.Notify;
             'notify::mute': GObject.Object.Notify;
             'notify::nchannels': GObject.Object.Notify;
             'notify::volume': GObject.Object.Notify;
             'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
             'notify::channel-type': GObject.Object.Notify;
             'notify::socket': GObject.Object.Notify;
             'notify::spice-session': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
             'notify::total-read-bytes': GObject.Object.Notify;
         }
 
@@ -1957,17 +1917,11 @@ export namespace SpiceClientGLib {
             'port-data': PortData;
             'port-event': PortEvent;
             'notify::port-name': GObject.Object.Notify;
-            'notify::port-name': GObject.Object.Notify;
-            'notify::port-opened': GObject.Object.Notify;
             'notify::port-opened': GObject.Object.Notify;
             'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
             'notify::channel-type': GObject.Object.Notify;
             'notify::socket': GObject.Object.Notify;
             'notify::spice-session': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
             'notify::total-read-bytes': GObject.Object.Notify;
         }
 
@@ -2214,13 +2168,9 @@ export namespace SpiceClientGLib {
             'notify::nchannels': GObject.Object.Notify;
             'notify::volume': GObject.Object.Notify;
             'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
             'notify::channel-type': GObject.Object.Notify;
             'notify::socket': GObject.Object.Notify;
             'notify::spice-session': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
             'notify::total-read-bytes': GObject.Object.Notify;
         }
 
@@ -2311,32 +2261,19 @@ export namespace SpiceClientGLib {
             'mm-time-reset': MmTimeReset;
             'notify::ca': GObject.Object.Notify;
             'notify::ca-file': GObject.Object.Notify;
-            'notify::ca-file': GObject.Object.Notify;
             'notify::cache-size': GObject.Object.Notify;
-            'notify::cache-size': GObject.Object.Notify;
-            'notify::cert-subject': GObject.Object.Notify;
             'notify::cert-subject': GObject.Object.Notify;
             'notify::ciphers': GObject.Object.Notify;
             'notify::client-sockets': GObject.Object.Notify;
-            'notify::client-sockets': GObject.Object.Notify;
-            'notify::color-depth': GObject.Object.Notify;
             'notify::color-depth': GObject.Object.Notify;
             'notify::disable-effects': GObject.Object.Notify;
-            'notify::disable-effects': GObject.Object.Notify;
-            'notify::enable-audio': GObject.Object.Notify;
             'notify::enable-audio': GObject.Object.Notify;
             'notify::enable-smartcard': GObject.Object.Notify;
-            'notify::enable-smartcard': GObject.Object.Notify;
-            'notify::enable-usbredir': GObject.Object.Notify;
             'notify::enable-usbredir': GObject.Object.Notify;
             'notify::gl-scanout': GObject.Object.Notify;
-            'notify::gl-scanout': GObject.Object.Notify;
-            'notify::glz-window-size': GObject.Object.Notify;
             'notify::glz-window-size': GObject.Object.Notify;
             'notify::host': GObject.Object.Notify;
             'notify::inhibit-keyboard-grab': GObject.Object.Notify;
-            'notify::inhibit-keyboard-grab': GObject.Object.Notify;
-            'notify::migration-state': GObject.Object.Notify;
             'notify::migration-state': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
@@ -2345,20 +2282,12 @@ export namespace SpiceClientGLib {
             'notify::proxy': GObject.Object.Notify;
             'notify::pubkey': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::secure-channels': GObject.Object.Notify;
             'notify::secure-channels': GObject.Object.Notify;
             'notify::share-dir-ro': GObject.Object.Notify;
-            'notify::share-dir-ro': GObject.Object.Notify;
-            'notify::shared-dir': GObject.Object.Notify;
             'notify::shared-dir': GObject.Object.Notify;
             'notify::smartcard-certificates': GObject.Object.Notify;
-            'notify::smartcard-certificates': GObject.Object.Notify;
-            'notify::smartcard-db': GObject.Object.Notify;
             'notify::smartcard-db': GObject.Object.Notify;
             'notify::tls-port': GObject.Object.Notify;
-            'notify::tls-port': GObject.Object.Notify;
-            'notify::unix-path': GObject.Object.Notify;
             'notify::unix-path': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
             'notify::username': GObject.Object.Notify;
@@ -2817,13 +2746,9 @@ export namespace SpiceClientGLib {
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
             'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
             'notify::channel-type': GObject.Object.Notify;
             'notify::socket': GObject.Object.Notify;
             'notify::spice-session': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
             'notify::total-read-bytes': GObject.Object.Notify;
         }
 
@@ -3061,12 +2986,8 @@ export namespace SpiceClientGLib {
             'device-error': DeviceError;
             'device-removed': DeviceRemoved;
             'notify::auto-connect': GObject.Object.Notify;
-            'notify::auto-connect': GObject.Object.Notify;
-            'notify::auto-connect-filter': GObject.Object.Notify;
             'notify::auto-connect-filter': GObject.Object.Notify;
             'notify::free-channels': GObject.Object.Notify;
-            'notify::free-channels': GObject.Object.Notify;
-            'notify::redirect-on-connect': GObject.Object.Notify;
             'notify::redirect-on-connect': GObject.Object.Notify;
             'notify::session': GObject.Object.Notify;
         }
@@ -3878,13 +3799,9 @@ export namespace SpiceClientGLib {
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
             'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
             'notify::channel-type': GObject.Object.Notify;
             'notify::socket': GObject.Object.Notify;
             'notify::spice-session': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
             'notify::total-read-bytes': GObject.Object.Notify;
         }
 
@@ -3923,17 +3840,11 @@ export namespace SpiceClientGLib {
         // Signal signatures
         interface SignalSignatures extends PortChannel.SignalSignatures {
             'notify::port-name': GObject.Object.Notify;
-            'notify::port-name': GObject.Object.Notify;
-            'notify::port-opened': GObject.Object.Notify;
             'notify::port-opened': GObject.Object.Notify;
             'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
             'notify::channel-type': GObject.Object.Notify;
             'notify::socket': GObject.Object.Notify;
             'notify::spice-session': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
             'notify::total-read-bytes': GObject.Object.Notify;
         }
 

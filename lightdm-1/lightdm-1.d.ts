@@ -253,34 +253,19 @@ export namespace LightDM {
             'show-message': ShowMessage;
             'show-prompt': ShowPrompt;
             'notify::authentication-user': GObject.Object.Notify;
-            'notify::authentication-user': GObject.Object.Notify;
-            'notify::autologin-guest-hint': GObject.Object.Notify;
             'notify::autologin-guest-hint': GObject.Object.Notify;
             'notify::autologin-session-hint': GObject.Object.Notify;
-            'notify::autologin-session-hint': GObject.Object.Notify;
-            'notify::autologin-timeout-hint': GObject.Object.Notify;
             'notify::autologin-timeout-hint': GObject.Object.Notify;
             'notify::autologin-user-hint': GObject.Object.Notify;
-            'notify::autologin-user-hint': GObject.Object.Notify;
-            'notify::default-session-hint': GObject.Object.Notify;
             'notify::default-session-hint': GObject.Object.Notify;
             'notify::has-guest-account-hint': GObject.Object.Notify;
-            'notify::has-guest-account-hint': GObject.Object.Notify;
-            'notify::hide-users-hint': GObject.Object.Notify;
             'notify::hide-users-hint': GObject.Object.Notify;
             'notify::in-authentication': GObject.Object.Notify;
-            'notify::in-authentication': GObject.Object.Notify;
-            'notify::is-authenticated': GObject.Object.Notify;
             'notify::is-authenticated': GObject.Object.Notify;
             'notify::lock-hint': GObject.Object.Notify;
-            'notify::lock-hint': GObject.Object.Notify;
-            'notify::select-guest-hint': GObject.Object.Notify;
             'notify::select-guest-hint': GObject.Object.Notify;
             'notify::select-user-hint': GObject.Object.Notify;
-            'notify::select-user-hint': GObject.Object.Notify;
             'notify::show-manual-login-hint': GObject.Object.Notify;
-            'notify::show-manual-login-hint': GObject.Object.Notify;
-            'notify::show-remote-login-hint': GObject.Object.Notify;
             'notify::show-remote-login-hint': GObject.Object.Notify;
         }
 
@@ -795,7 +780,6 @@ export namespace LightDM {
             'notify::description': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::short-description': GObject.Object.Notify;
-            'notify::short-description': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -946,21 +930,15 @@ export namespace LightDM {
             changed: Changed;
             'notify::background': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
             'notify::has-messages': GObject.Object.Notify;
-            'notify::has-messages': GObject.Object.Notify;
-            'notify::home-directory': GObject.Object.Notify;
             'notify::home-directory': GObject.Object.Notify;
             'notify::image': GObject.Object.Notify;
-            'notify::is-locked': GObject.Object.Notify;
             'notify::is-locked': GObject.Object.Notify;
             'notify::language': GObject.Object.Notify;
             'notify::layout': GObject.Object.Notify;
             'notify::layouts': GObject.Object.Notify;
             'notify::logged-in': GObject.Object.Notify;
-            'notify::logged-in': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
-            'notify::real-name': GObject.Object.Notify;
             'notify::real-name': GObject.Object.Notify;
             'notify::session': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
@@ -1139,7 +1117,6 @@ export namespace LightDM {
             'user-changed': UserChanged;
             'user-removed': UserRemoved;
             'notify::length': GObject.Object.Notify;
-            'notify::num-users': GObject.Object.Notify;
             'notify::num-users': GObject.Object.Notify;
         }
 

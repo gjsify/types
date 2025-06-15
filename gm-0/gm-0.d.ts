@@ -257,14 +257,11 @@ export namespace Gm {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::border-radius': GObject.Object.Notify;
-            'notify::border-radius': GObject.Object.Notify;
             'notify::cutouts': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
             'notify::x-res': GObject.Object.Notify;
-            'notify::x-res': GObject.Object.Notify;
-            'notify::y-res': GObject.Object.Notify;
             'notify::y-res': GObject.Object.Notify;
         }
 

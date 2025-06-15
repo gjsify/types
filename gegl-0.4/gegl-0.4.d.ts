@@ -802,12 +802,8 @@ export namespace Gegl {
         interface SignalSignatures extends TileHandler.SignalSignatures {
             changed: Changed;
             'notify::abyss-height': GObject.Object.Notify;
-            'notify::abyss-height': GObject.Object.Notify;
-            'notify::abyss-width': GObject.Object.Notify;
             'notify::abyss-width': GObject.Object.Notify;
             'notify::abyss-x': GObject.Object.Notify;
-            'notify::abyss-x': GObject.Object.Notify;
-            'notify::abyss-y': GObject.Object.Notify;
             'notify::abyss-y': GObject.Object.Notify;
             'notify::backend': GObject.Object.Notify;
             'notify::format': GObject.Object.Notify;
@@ -816,14 +812,9 @@ export namespace Gegl {
             'notify::path': GObject.Object.Notify;
             'notify::pixels': GObject.Object.Notify;
             'notify::px-size': GObject.Object.Notify;
-            'notify::px-size': GObject.Object.Notify;
-            'notify::shift-x': GObject.Object.Notify;
             'notify::shift-x': GObject.Object.Notify;
             'notify::shift-y': GObject.Object.Notify;
-            'notify::shift-y': GObject.Object.Notify;
             'notify::tile-height': GObject.Object.Notify;
-            'notify::tile-height': GObject.Object.Notify;
-            'notify::tile-width': GObject.Object.Notify;
             'notify::tile-width': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
             'notify::x': GObject.Object.Notify;
@@ -1268,25 +1259,16 @@ export namespace Gegl {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::application-license': GObject.Object.Notify;
-            'notify::application-license': GObject.Object.Notify;
             'notify::chunk-size': GObject.Object.Notify;
-            'notify::chunk-size': GObject.Object.Notify;
-            'notify::mipmap-rendering': GObject.Object.Notify;
             'notify::mipmap-rendering': GObject.Object.Notify;
             'notify::quality': GObject.Object.Notify;
             'notify::queue-size': GObject.Object.Notify;
-            'notify::queue-size': GObject.Object.Notify;
             'notify::swap': GObject.Object.Notify;
-            'notify::swap-compression': GObject.Object.Notify;
             'notify::swap-compression': GObject.Object.Notify;
             'notify::threads': GObject.Object.Notify;
             'notify::tile-cache-size': GObject.Object.Notify;
-            'notify::tile-cache-size': GObject.Object.Notify;
-            'notify::tile-height': GObject.Object.Notify;
             'notify::tile-height': GObject.Object.Notify;
             'notify::tile-width': GObject.Object.Notify;
-            'notify::tile-width': GObject.Object.Notify;
-            'notify::use-opencl': GObject.Object.Notify;
             'notify::use-opencl': GObject.Object.Notify;
         }
 
@@ -1473,12 +1455,8 @@ export namespace Gegl {
             'notify::description': GObject.Object.Notify;
             'notify::disclaimer': GObject.Object.Notify;
             'notify::file-module-name': GObject.Object.Notify;
-            'notify::file-module-name': GObject.Object.Notify;
-            'notify::resolution-unit': GObject.Object.Notify;
             'notify::resolution-unit': GObject.Object.Notify;
             'notify::resolution-x': GObject.Object.Notify;
-            'notify::resolution-x': GObject.Object.Notify;
-            'notify::resolution-y': GObject.Object.Notify;
             'notify::resolution-y': GObject.Object.Notify;
             'notify::software': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
@@ -2139,12 +2117,8 @@ export namespace Gegl {
             'notify::description': GObject.Object.Notify;
             'notify::disclaimer': GObject.Object.Notify;
             'notify::file-module-name': GObject.Object.Notify;
-            'notify::file-module-name': GObject.Object.Notify;
-            'notify::resolution-unit': GObject.Object.Notify;
             'notify::resolution-unit': GObject.Object.Notify;
             'notify::resolution-x': GObject.Object.Notify;
-            'notify::resolution-x': GObject.Object.Notify;
-            'notify::resolution-y': GObject.Object.Notify;
             'notify::resolution-y': GObject.Object.Notify;
             'notify::software': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
@@ -2157,12 +2131,8 @@ export namespace Gegl {
             'changed::description': Changed;
             'changed::disclaimer': Changed;
             'changed::file-module-name': Changed;
-            'changed::file-module-name': Changed;
-            'changed::resolution-unit': Changed;
             'changed::resolution-unit': Changed;
             'changed::resolution-x': Changed;
-            'changed::resolution-x': Changed;
-            'changed::resolution-y': Changed;
             'changed::resolution-y': Changed;
             'changed::software': Changed;
             'changed::source': Changed;
@@ -2175,12 +2145,8 @@ export namespace Gegl {
             'generate-value::description': GenerateValue;
             'generate-value::disclaimer': GenerateValue;
             'generate-value::file-module-name': GenerateValue;
-            'generate-value::file-module-name': GenerateValue;
-            'generate-value::resolution-unit': GenerateValue;
             'generate-value::resolution-unit': GenerateValue;
             'generate-value::resolution-x': GenerateValue;
-            'generate-value::resolution-x': GenerateValue;
-            'generate-value::resolution-y': GenerateValue;
             'generate-value::resolution-y': GenerateValue;
             'generate-value::software': GenerateValue;
             'generate-value::source': GenerateValue;
@@ -2193,12 +2159,8 @@ export namespace Gegl {
             'parse-value::description': ParseValue;
             'parse-value::disclaimer': ParseValue;
             'parse-value::file-module-name': ParseValue;
-            'parse-value::file-module-name': ParseValue;
-            'parse-value::resolution-unit': ParseValue;
             'parse-value::resolution-unit': ParseValue;
             'parse-value::resolution-x': ParseValue;
-            'parse-value::resolution-x': ParseValue;
-            'parse-value::resolution-y': ParseValue;
             'parse-value::resolution-y': ParseValue;
             'parse-value::software': ParseValue;
             'parse-value::source': ParseValue;
@@ -3192,15 +3154,11 @@ export namespace Gegl {
             invalidated: Invalidated;
             progress: Progress;
             'notify::cache-policy': GObject.Object.Notify;
-            'notify::cache-policy': GObject.Object.Notify;
             'notify::dont-cache': GObject.Object.Notify;
-            'notify::dont-cache': GObject.Object.Notify;
-            'notify::gegl-operation': GObject.Object.Notify;
             'notify::gegl-operation': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::operation': GObject.Object.Notify;
             'notify::passthrough': GObject.Object.Notify;
-            'notify::use-opencl': GObject.Object.Notify;
             'notify::use-opencl': GObject.Object.Notify;
         }
 
@@ -3815,46 +3773,25 @@ export namespace Gegl {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::active-threads': GObject.Object.Notify;
-            'notify::active-threads': GObject.Object.Notify;
-            'notify::assigned-threads': GObject.Object.Notify;
             'notify::assigned-threads': GObject.Object.Notify;
             'notify::scratch-total': GObject.Object.Notify;
-            'notify::scratch-total': GObject.Object.Notify;
-            'notify::swap-busy': GObject.Object.Notify;
             'notify::swap-busy': GObject.Object.Notify;
             'notify::swap-file-size': GObject.Object.Notify;
-            'notify::swap-file-size': GObject.Object.Notify;
-            'notify::swap-queue-full': GObject.Object.Notify;
             'notify::swap-queue-full': GObject.Object.Notify;
             'notify::swap-queue-stalls': GObject.Object.Notify;
-            'notify::swap-queue-stalls': GObject.Object.Notify;
-            'notify::swap-queued-total': GObject.Object.Notify;
             'notify::swap-queued-total': GObject.Object.Notify;
             'notify::swap-read-total': GObject.Object.Notify;
-            'notify::swap-read-total': GObject.Object.Notify;
-            'notify::swap-reading': GObject.Object.Notify;
             'notify::swap-reading': GObject.Object.Notify;
             'notify::swap-total': GObject.Object.Notify;
-            'notify::swap-total': GObject.Object.Notify;
-            'notify::swap-total-uncompressed': GObject.Object.Notify;
             'notify::swap-total-uncompressed': GObject.Object.Notify;
             'notify::swap-write-total': GObject.Object.Notify;
-            'notify::swap-write-total': GObject.Object.Notify;
-            'notify::swap-writing': GObject.Object.Notify;
             'notify::swap-writing': GObject.Object.Notify;
             'notify::tile-alloc-total': GObject.Object.Notify;
-            'notify::tile-alloc-total': GObject.Object.Notify;
-            'notify::tile-cache-hits': GObject.Object.Notify;
             'notify::tile-cache-hits': GObject.Object.Notify;
             'notify::tile-cache-misses': GObject.Object.Notify;
-            'notify::tile-cache-misses': GObject.Object.Notify;
-            'notify::tile-cache-total': GObject.Object.Notify;
             'notify::tile-cache-total': GObject.Object.Notify;
             'notify::tile-cache-total-max': GObject.Object.Notify;
-            'notify::tile-cache-total-max': GObject.Object.Notify;
             'notify::tile-cache-total-uncompressed': GObject.Object.Notify;
-            'notify::tile-cache-total-uncompressed': GObject.Object.Notify;
-            'notify::zoom-total': GObject.Object.Notify;
             'notify::zoom-total': GObject.Object.Notify;
         }
 
@@ -3977,15 +3914,10 @@ export namespace Gegl {
         // Signal signatures
         interface SignalSignatures extends TileSource.SignalSignatures {
             'notify::flush-on-destroy': GObject.Object.Notify;
-            'notify::flush-on-destroy': GObject.Object.Notify;
             'notify::format': GObject.Object.Notify;
             'notify::px-size': GObject.Object.Notify;
-            'notify::px-size': GObject.Object.Notify;
-            'notify::tile-height': GObject.Object.Notify;
             'notify::tile-height': GObject.Object.Notify;
             'notify::tile-size': GObject.Object.Notify;
-            'notify::tile-size': GObject.Object.Notify;
-            'notify::tile-width': GObject.Object.Notify;
             'notify::tile-width': GObject.Object.Notify;
         }
 

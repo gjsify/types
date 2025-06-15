@@ -676,7 +676,6 @@ export namespace Json {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::indent': GObject.Object.Notify;
             'notify::indent-char': GObject.Object.Notify;
-            'notify::indent-char': GObject.Object.Notify;
             'notify::pretty': GObject.Object.Notify;
             'notify::root': GObject.Object.Notify;
         }

@@ -230,7 +230,6 @@ export namespace Epc {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::collision-handling': GObject.Object.Notify;
-            'notify::collision-handling': GObject.Object.Notify;
             'notify::cookie': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
@@ -306,21 +305,13 @@ export namespace Epc {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::application': GObject.Object.Notify;
             'notify::auth-flags': GObject.Object.Notify;
-            'notify::auth-flags': GObject.Object.Notify;
-            'notify::certificate-file': GObject.Object.Notify;
             'notify::certificate-file': GObject.Object.Notify;
             'notify::collision-handling': GObject.Object.Notify;
-            'notify::collision-handling': GObject.Object.Notify;
             'notify::contents-path': GObject.Object.Notify;
-            'notify::contents-path': GObject.Object.Notify;
-            'notify::private-key-file': GObject.Object.Notify;
             'notify::private-key-file': GObject.Object.Notify;
             'notify::protocol': GObject.Object.Notify;
             'notify::service-cookie': GObject.Object.Notify;
-            'notify::service-cookie': GObject.Object.Notify;
             'notify::service-domain': GObject.Object.Notify;
-            'notify::service-domain': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
         }
 
@@ -475,8 +466,6 @@ export namespace Epc {
             'notify::application': GObject.Object.Notify;
             'notify::domain': GObject.Object.Notify;
             'notify::service-types': GObject.Object.Notify;
-            'notify::service-types': GObject.Object.Notify;
-            'notify::skip-our-own': GObject.Object.Notify;
             'notify::skip-our-own': GObject.Object.Notify;
         }
 

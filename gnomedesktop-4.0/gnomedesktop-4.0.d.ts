@@ -1123,8 +1123,6 @@ export namespace GnomeDesktop {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::clock': GObject.Object.Notify;
             'notify::force-seconds': GObject.Object.Notify;
-            'notify::force-seconds': GObject.Object.Notify;
-            'notify::time-only': GObject.Object.Notify;
             'notify::time-only': GObject.Object.Notify;
             'notify::timezone': GObject.Object.Notify;
         }

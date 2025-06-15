@@ -78,7 +78,6 @@ export namespace ArrowCUDA {
         interface SignalSignatures extends Arrow.BufferInputStream.SignalSignatures {
             'notify::buffer': GObject.Object.Notify;
             'notify::input-stream': GObject.Object.Notify;
-            'notify::input-stream': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -563,7 +562,6 @@ export namespace ArrowCUDA {
     namespace BufferOutputStream {
         // Signal signatures
         interface SignalSignatures extends Arrow.OutputStream.SignalSignatures {
-            'notify::output-stream': GObject.Object.Notify;
             'notify::output-stream': GObject.Object.Notify;
         }
 
@@ -1201,7 +1199,6 @@ export namespace ArrowCUDA {
     namespace IPCMemoryHandle {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::ipc-memory-handle': GObject.Object.Notify;
             'notify::ipc-memory-handle': GObject.Object.Notify;
         }
 

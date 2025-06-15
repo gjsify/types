@@ -151,7 +151,6 @@ export namespace Zpj {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::scope': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1246,19 +1245,14 @@ export namespace Zpj {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::created-time': GObject.Object.Notify;
-            'notify::created-time': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::from-id': GObject.Object.Notify;
-            'notify::from-id': GObject.Object.Notify;
-            'notify::from-name': GObject.Object.Notify;
             'notify::from-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::json': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent-id': GObject.Object.Notify;
-            'notify::parent-id': GObject.Object.Notify;
             'notify::type': GObject.Object.Notify;
-            'notify::updated-time': GObject.Object.Notify;
             'notify::updated-time': GObject.Object.Notify;
         }
 
@@ -1410,19 +1404,14 @@ export namespace Zpj {
         interface SignalSignatures extends SkydriveEntry.SignalSignatures {
             'notify::size': GObject.Object.Notify;
             'notify::created-time': GObject.Object.Notify;
-            'notify::created-time': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::from-id': GObject.Object.Notify;
-            'notify::from-id': GObject.Object.Notify;
-            'notify::from-name': GObject.Object.Notify;
             'notify::from-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::json': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent-id': GObject.Object.Notify;
-            'notify::parent-id': GObject.Object.Notify;
             'notify::type': GObject.Object.Notify;
-            'notify::updated-time': GObject.Object.Notify;
             'notify::updated-time': GObject.Object.Notify;
         }
 
@@ -1485,19 +1474,14 @@ export namespace Zpj {
         // Signal signatures
         interface SignalSignatures extends SkydriveEntry.SignalSignatures {
             'notify::created-time': GObject.Object.Notify;
-            'notify::created-time': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::from-id': GObject.Object.Notify;
-            'notify::from-id': GObject.Object.Notify;
-            'notify::from-name': GObject.Object.Notify;
             'notify::from-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::json': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent-id': GObject.Object.Notify;
-            'notify::parent-id': GObject.Object.Notify;
             'notify::type': GObject.Object.Notify;
-            'notify::updated-time': GObject.Object.Notify;
             'notify::updated-time': GObject.Object.Notify;
         }
 
@@ -1545,19 +1529,14 @@ export namespace Zpj {
         interface SignalSignatures extends SkydriveFile.SignalSignatures {
             'notify::size': GObject.Object.Notify;
             'notify::created-time': GObject.Object.Notify;
-            'notify::created-time': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::from-id': GObject.Object.Notify;
-            'notify::from-id': GObject.Object.Notify;
-            'notify::from-name': GObject.Object.Notify;
             'notify::from-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::json': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent-id': GObject.Object.Notify;
-            'notify::parent-id': GObject.Object.Notify;
             'notify::type': GObject.Object.Notify;
-            'notify::updated-time': GObject.Object.Notify;
             'notify::updated-time': GObject.Object.Notify;
         }
 
@@ -1609,19 +1588,14 @@ export namespace Zpj {
             'notify::width': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::created-time': GObject.Object.Notify;
-            'notify::created-time': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::from-id': GObject.Object.Notify;
-            'notify::from-id': GObject.Object.Notify;
-            'notify::from-name': GObject.Object.Notify;
             'notify::from-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::json': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent-id': GObject.Object.Notify;
-            'notify::parent-id': GObject.Object.Notify;
             'notify::type': GObject.Object.Notify;
-            'notify::updated-time': GObject.Object.Notify;
             'notify::updated-time': GObject.Object.Notify;
         }
 

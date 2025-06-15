@@ -42,7 +42,6 @@ export namespace Parquet {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::arrow-file-reader': GObject.Object.Notify;
-            'notify::arrow-file-reader': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -102,7 +101,6 @@ export namespace Parquet {
     namespace ArrowFileWriter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::arrow-file-writer': GObject.Object.Notify;
             'notify::arrow-file-writer': GObject.Object.Notify;
         }
 

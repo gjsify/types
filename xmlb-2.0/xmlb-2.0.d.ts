@@ -1537,7 +1537,6 @@ export namespace Xmlb {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::enable-node-cache': GObject.Object.Notify;
-            'notify::enable-node-cache': GObject.Object.Notify;
             'notify::guid': GObject.Object.Notify;
             'notify::valid': GObject.Object.Notify;
         }

@@ -1172,11 +1172,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -1233,11 +1230,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -1302,11 +1296,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -1366,11 +1357,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -1794,11 +1782,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -1868,11 +1853,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -2005,11 +1987,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -2078,11 +2057,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -2245,11 +2221,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -2599,11 +2572,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -2691,11 +2661,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -2786,11 +2753,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -4413,11 +4377,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -4480,11 +4441,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -4859,11 +4817,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -4935,11 +4890,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -5266,11 +5218,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -5366,11 +5315,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -5581,11 +5527,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }
@@ -5664,11 +5607,8 @@ export namespace ICalGLib {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::always-destroy': GObject.Object.Notify;
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
             'notify::is-global-memory': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
             'notify::native-destroy-func': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
         }

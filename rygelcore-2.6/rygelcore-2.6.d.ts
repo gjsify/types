@@ -112,15 +112,12 @@ export namespace RygelCore {
         // Signal signatures
         interface SignalSignatures extends GUPnP.Service.SignalSignatures {
             'notify::root-device': GObject.Object.Notify;
-            'notify::root-device': GObject.Object.Notify;
             'notify::context': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::service-type': GObject.Object.Notify;
-            'notify::service-type': GObject.Object.Notify;
             'notify::udn': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
             'notify::url-base': GObject.Object.Notify;
         }
 
@@ -180,17 +177,13 @@ export namespace RygelCore {
         // Signal signatures
         interface SignalSignatures extends GUPnP.Service.SignalSignatures {
             'notify::max-history-size': GObject.Object.Notify;
-            'notify::max-history-size': GObject.Object.Notify;
-            'notify::root-device': GObject.Object.Notify;
             'notify::root-device': GObject.Object.Notify;
             'notify::context': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::service-type': GObject.Object.Notify;
-            'notify::service-type': GObject.Object.Notify;
             'notify::udn': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
             'notify::url-base': GObject.Object.Notify;
         }
 
@@ -357,15 +350,12 @@ export namespace RygelCore {
         // Signal signatures
         interface SignalSignatures extends GUPnP.Service.SignalSignatures {
             'notify::root-device': GObject.Object.Notify;
-            'notify::root-device': GObject.Object.Notify;
             'notify::context': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::service-type': GObject.Object.Notify;
-            'notify::service-type': GObject.Object.Notify;
             'notify::udn': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
             'notify::url-base': GObject.Object.Notify;
         }
 
@@ -410,23 +400,16 @@ export namespace RygelCore {
             'notify::services': GObject.Object.Notify;
             'notify::available': GObject.Object.Notify;
             'notify::description-dir': GObject.Object.Notify;
-            'notify::description-dir': GObject.Object.Notify;
-            'notify::description-doc': GObject.Object.Notify;
             'notify::description-doc': GObject.Object.Notify;
             'notify::description-path': GObject.Object.Notify;
-            'notify::description-path': GObject.Object.Notify;
-            'notify::root-device': GObject.Object.Notify;
             'notify::root-device': GObject.Object.Notify;
             'notify::context': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::resource-factory': GObject.Object.Notify;
-            'notify::resource-factory': GObject.Object.Notify;
             'notify::udn': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
             'notify::url-base': GObject.Object.Notify;
         }
 
@@ -2167,7 +2150,6 @@ export namespace RygelCore {
         interface SignalSignatures extends RecursiveModuleLoader.SignalSignatures {
             'plugin-available': PluginAvailable;
             'notify::base-path': GObject.Object.Notify;
-            'notify::base-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2215,7 +2197,6 @@ export namespace RygelCore {
     namespace RecursiveModuleLoader {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::base-path': GObject.Object.Notify;
             'notify::base-path': GObject.Object.Notify;
         }
 
@@ -2284,13 +2265,9 @@ export namespace RygelCore {
             'notify::title': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::desc-path': GObject.Object.Notify;
-            'notify::desc-path': GObject.Object.Notify;
             'notify::active': GObject.Object.Notify;
             'notify::resource-infos': GObject.Object.Notify;
-            'notify::resource-infos': GObject.Object.Notify;
             'notify::icon-infos': GObject.Object.Notify;
-            'notify::icon-infos': GObject.Object.Notify;
-            'notify::default-icons': GObject.Object.Notify;
             'notify::default-icons': GObject.Object.Notify;
         }
 
@@ -4610,8 +4587,6 @@ export namespace RygelCore {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::device-type': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::service-types': GObject.Object.Notify;
             'notify::service-types': GObject.Object.Notify;
         }
 
@@ -4827,10 +4802,8 @@ export namespace RygelCore {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::module-path': GObject.Object.Notify;
-            'notify::module-path': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::conflicts': GObject.Object.Notify;
-            'notify::module-loaded': GObject.Object.Notify;
             'notify::module-loaded': GObject.Object.Notify;
         }
 

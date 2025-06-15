@@ -381,64 +381,35 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::attention-needed': GObject.Object.Notify;
             'notify::attention-needed': GObject.Object.Notify;
             'notify::calendar-disabled': GObject.Object.Notify;
-            'notify::calendar-disabled': GObject.Object.Notify;
-            'notify::chat-disabled': GObject.Object.Notify;
             'notify::chat-disabled': GObject.Object.Notify;
             'notify::contacts-disabled': GObject.Object.Notify;
-            'notify::contacts-disabled': GObject.Object.Notify;
             'notify::documents-disabled': GObject.Object.Notify;
-            'notify::documents-disabled': GObject.Object.Notify;
-            'notify::files-disabled': GObject.Object.Notify;
             'notify::files-disabled': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::identity': GObject.Object.Notify;
             'notify::is-locked': GObject.Object.Notify;
-            'notify::is-locked': GObject.Object.Notify;
-            'notify::is-temporary': GObject.Object.Notify;
             'notify::is-temporary': GObject.Object.Notify;
             'notify::mail-disabled': GObject.Object.Notify;
-            'notify::mail-disabled': GObject.Object.Notify;
-            'notify::maps-disabled': GObject.Object.Notify;
             'notify::maps-disabled': GObject.Object.Notify;
             'notify::music-disabled': GObject.Object.Notify;
-            'notify::music-disabled': GObject.Object.Notify;
-            'notify::photos-disabled': GObject.Object.Notify;
             'notify::photos-disabled': GObject.Object.Notify;
             'notify::presentation-identity': GObject.Object.Notify;
-            'notify::presentation-identity': GObject.Object.Notify;
-            'notify::printers-disabled': GObject.Object.Notify;
             'notify::printers-disabled': GObject.Object.Notify;
             'notify::provider-icon': GObject.Object.Notify;
-            'notify::provider-icon': GObject.Object.Notify;
-            'notify::provider-name': GObject.Object.Notify;
             'notify::provider-name': GObject.Object.Notify;
             'notify::provider-type': GObject.Object.Notify;
-            'notify::provider-type': GObject.Object.Notify;
-            'notify::read-later-disabled': GObject.Object.Notify;
             'notify::read-later-disabled': GObject.Object.Notify;
             'notify::ticketing-disabled': GObject.Object.Notify;
-            'notify::ticketing-disabled': GObject.Object.Notify;
-            'notify::todo-disabled': GObject.Object.Notify;
             'notify::todo-disabled': GObject.Object.Notify;
         }
 
@@ -1747,48 +1718,27 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::attention-needed': GObject.Object.Notify;
             'notify::attention-needed': GObject.Object.Notify;
             'notify::calendar-disabled': GObject.Object.Notify;
-            'notify::calendar-disabled': GObject.Object.Notify;
-            'notify::chat-disabled': GObject.Object.Notify;
             'notify::chat-disabled': GObject.Object.Notify;
             'notify::contacts-disabled': GObject.Object.Notify;
-            'notify::contacts-disabled': GObject.Object.Notify;
             'notify::documents-disabled': GObject.Object.Notify;
-            'notify::documents-disabled': GObject.Object.Notify;
-            'notify::files-disabled': GObject.Object.Notify;
             'notify::files-disabled': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::identity': GObject.Object.Notify;
             'notify::is-locked': GObject.Object.Notify;
-            'notify::is-locked': GObject.Object.Notify;
-            'notify::is-temporary': GObject.Object.Notify;
             'notify::is-temporary': GObject.Object.Notify;
             'notify::mail-disabled': GObject.Object.Notify;
-            'notify::mail-disabled': GObject.Object.Notify;
-            'notify::maps-disabled': GObject.Object.Notify;
             'notify::maps-disabled': GObject.Object.Notify;
             'notify::music-disabled': GObject.Object.Notify;
-            'notify::music-disabled': GObject.Object.Notify;
-            'notify::photos-disabled': GObject.Object.Notify;
             'notify::photos-disabled': GObject.Object.Notify;
             'notify::presentation-identity': GObject.Object.Notify;
-            'notify::presentation-identity': GObject.Object.Notify;
-            'notify::printers-disabled': GObject.Object.Notify;
             'notify::printers-disabled': GObject.Object.Notify;
             'notify::provider-icon': GObject.Object.Notify;
-            'notify::provider-icon': GObject.Object.Notify;
-            'notify::provider-name': GObject.Object.Notify;
             'notify::provider-name': GObject.Object.Notify;
             'notify::provider-type': GObject.Object.Notify;
-            'notify::provider-type': GObject.Object.Notify;
-            'notify::read-later-disabled': GObject.Object.Notify;
             'notify::read-later-disabled': GObject.Object.Notify;
             'notify::ticketing-disabled': GObject.Object.Notify;
-            'notify::ticketing-disabled': GObject.Object.Notify;
-            'notify::todo-disabled': GObject.Object.Notify;
             'notify::todo-disabled': GObject.Object.Notify;
         }
 
@@ -2728,24 +2678,14 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::accept-ssl-errors': GObject.Object.Notify;
             'notify::accept-ssl-errors': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
         }
@@ -3662,8 +3602,6 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::accept-ssl-errors': GObject.Object.Notify;
             'notify::accept-ssl-errors': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
         }
@@ -4211,22 +4149,13 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -5116,7 +5045,6 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5655,7 +5583,6 @@ export namespace Goa {
             'account-added': AccountAdded;
             'account-changed': AccountChanged;
             'account-removed': AccountRemoved;
-            'notify::object-manager': GObject.Object.Notify;
             'notify::object-manager': GObject.Object.Notify;
         }
 
@@ -6486,24 +6413,14 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::accept-ssl-errors': GObject.Object.Notify;
             'notify::accept-ssl-errors': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
         }
@@ -7420,8 +7337,6 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::accept-ssl-errors': GObject.Object.Notify;
             'notify::accept-ssl-errors': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
         }
@@ -7969,22 +7884,13 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -8877,7 +8783,6 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -9400,24 +9305,14 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::accept-ssl-errors': GObject.Object.Notify;
             'notify::accept-ssl-errors': GObject.Object.Notify;
             'notify::host': GObject.Object.Notify;
         }
@@ -10334,8 +10229,6 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::accept-ssl-errors': GObject.Object.Notify;
             'notify::accept-ssl-errors': GObject.Object.Notify;
             'notify::host': GObject.Object.Notify;
         }
@@ -10883,24 +10776,14 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::accept-ssl-errors': GObject.Object.Notify;
             'notify::accept-ssl-errors': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
         }
@@ -11817,8 +11700,6 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::accept-ssl-errors': GObject.Object.Notify;
             'notify::accept-ssl-errors': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
         }
@@ -12366,57 +12247,31 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::email-address': GObject.Object.Notify;
             'notify::email-address': GObject.Object.Notify;
             'notify::imap-accept-ssl-errors': GObject.Object.Notify;
-            'notify::imap-accept-ssl-errors': GObject.Object.Notify;
-            'notify::imap-host': GObject.Object.Notify;
             'notify::imap-host': GObject.Object.Notify;
             'notify::imap-supported': GObject.Object.Notify;
-            'notify::imap-supported': GObject.Object.Notify;
-            'notify::imap-use-ssl': GObject.Object.Notify;
             'notify::imap-use-ssl': GObject.Object.Notify;
             'notify::imap-use-tls': GObject.Object.Notify;
-            'notify::imap-use-tls': GObject.Object.Notify;
-            'notify::imap-user-name': GObject.Object.Notify;
             'notify::imap-user-name': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::smtp-accept-ssl-errors': GObject.Object.Notify;
-            'notify::smtp-accept-ssl-errors': GObject.Object.Notify;
-            'notify::smtp-auth-login': GObject.Object.Notify;
             'notify::smtp-auth-login': GObject.Object.Notify;
             'notify::smtp-auth-plain': GObject.Object.Notify;
-            'notify::smtp-auth-plain': GObject.Object.Notify;
-            'notify::smtp-auth-xoauth2': GObject.Object.Notify;
             'notify::smtp-auth-xoauth2': GObject.Object.Notify;
             'notify::smtp-host': GObject.Object.Notify;
-            'notify::smtp-host': GObject.Object.Notify;
-            'notify::smtp-supported': GObject.Object.Notify;
             'notify::smtp-supported': GObject.Object.Notify;
             'notify::smtp-use-auth': GObject.Object.Notify;
-            'notify::smtp-use-auth': GObject.Object.Notify;
-            'notify::smtp-use-ssl': GObject.Object.Notify;
             'notify::smtp-use-ssl': GObject.Object.Notify;
             'notify::smtp-use-tls': GObject.Object.Notify;
-            'notify::smtp-use-tls': GObject.Object.Notify;
-            'notify::smtp-user-name': GObject.Object.Notify;
             'notify::smtp-user-name': GObject.Object.Notify;
         }
 
@@ -13553,41 +13408,23 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::email-address': GObject.Object.Notify;
             'notify::email-address': GObject.Object.Notify;
             'notify::imap-accept-ssl-errors': GObject.Object.Notify;
-            'notify::imap-accept-ssl-errors': GObject.Object.Notify;
-            'notify::imap-host': GObject.Object.Notify;
             'notify::imap-host': GObject.Object.Notify;
             'notify::imap-supported': GObject.Object.Notify;
-            'notify::imap-supported': GObject.Object.Notify;
-            'notify::imap-use-ssl': GObject.Object.Notify;
             'notify::imap-use-ssl': GObject.Object.Notify;
             'notify::imap-use-tls': GObject.Object.Notify;
-            'notify::imap-use-tls': GObject.Object.Notify;
-            'notify::imap-user-name': GObject.Object.Notify;
             'notify::imap-user-name': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::smtp-accept-ssl-errors': GObject.Object.Notify;
-            'notify::smtp-accept-ssl-errors': GObject.Object.Notify;
-            'notify::smtp-auth-login': GObject.Object.Notify;
             'notify::smtp-auth-login': GObject.Object.Notify;
             'notify::smtp-auth-plain': GObject.Object.Notify;
-            'notify::smtp-auth-plain': GObject.Object.Notify;
-            'notify::smtp-auth-xoauth2': GObject.Object.Notify;
             'notify::smtp-auth-xoauth2': GObject.Object.Notify;
             'notify::smtp-host': GObject.Object.Notify;
-            'notify::smtp-host': GObject.Object.Notify;
-            'notify::smtp-supported': GObject.Object.Notify;
             'notify::smtp-supported': GObject.Object.Notify;
             'notify::smtp-use-auth': GObject.Object.Notify;
-            'notify::smtp-use-auth': GObject.Object.Notify;
-            'notify::smtp-use-ssl': GObject.Object.Notify;
             'notify::smtp-use-ssl': GObject.Object.Notify;
             'notify::smtp-use-tls': GObject.Object.Notify;
-            'notify::smtp-use-tls': GObject.Object.Notify;
-            'notify::smtp-user-name': GObject.Object.Notify;
             'notify::smtp-user-name': GObject.Object.Notify;
         }
 
@@ -14358,22 +14195,13 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -15456,7 +15284,6 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -16169,22 +15996,13 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -17074,7 +16892,6 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -17597,24 +17414,14 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::dlna-supported': GObject.Object.Notify;
             'notify::dlna-supported': GObject.Object.Notify;
             'notify::udn': GObject.Object.Notify;
         }
@@ -18531,8 +18338,6 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::dlna-supported': GObject.Object.Notify;
             'notify::dlna-supported': GObject.Object.Notify;
             'notify::udn': GObject.Object.Notify;
         }
@@ -19080,22 +18885,13 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -19988,7 +19784,6 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -20511,26 +20306,15 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::client-id': GObject.Object.Notify;
-            'notify::client-id': GObject.Object.Notify;
-            'notify::client-secret': GObject.Object.Notify;
             'notify::client-secret': GObject.Object.Notify;
         }
 
@@ -21513,10 +21297,7 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::client-id': GObject.Object.Notify;
-            'notify::client-id': GObject.Object.Notify;
-            'notify::client-secret': GObject.Object.Notify;
             'notify::client-secret': GObject.Object.Notify;
         }
 
@@ -22130,26 +21911,15 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::consumer-key': GObject.Object.Notify;
-            'notify::consumer-key': GObject.Object.Notify;
-            'notify::consumer-secret': GObject.Object.Notify;
             'notify::consumer-secret': GObject.Object.Notify;
         }
 
@@ -23138,10 +22908,7 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::consumer-key': GObject.Object.Notify;
-            'notify::consumer-key': GObject.Object.Notify;
-            'notify::consumer-secret': GObject.Object.Notify;
             'notify::consumer-secret': GObject.Object.Notify;
         }
 
@@ -23761,19 +23528,13 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusObjectManagerClient.SignalSignatures {
             'notify::bus-type': GObject.Object.Notify;
-            'notify::bus-type': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::flags': GObject.Object.Notify;
             'notify::get-proxy-type-destroy-notify': GObject.Object.Notify;
-            'notify::get-proxy-type-destroy-notify': GObject.Object.Notify;
             'notify::get-proxy-type-func': GObject.Object.Notify;
-            'notify::get-proxy-type-func': GObject.Object.Notify;
-            'notify::get-proxy-type-user-data': GObject.Object.Notify;
             'notify::get-proxy-type-user-data': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::name-owner': GObject.Object.Notify;
-            'notify::name-owner': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 
@@ -24710,8 +24471,6 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusObjectProxy.SignalSignatures {
             'notify::g-connection': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
             'notify::account': GObject.Object.Notify;
             'notify::calendar': GObject.Object.Notify;
@@ -24724,17 +24483,12 @@ export namespace Goa {
             'notify::manager': GObject.Object.Notify;
             'notify::maps': GObject.Object.Notify;
             'notify::media-server': GObject.Object.Notify;
-            'notify::media-server': GObject.Object.Notify;
             'notify::music': GObject.Object.Notify;
             'notify::oauth-based': GObject.Object.Notify;
-            'notify::oauth-based': GObject.Object.Notify;
             'notify::oauth2-based': GObject.Object.Notify;
-            'notify::oauth2-based': GObject.Object.Notify;
-            'notify::password-based': GObject.Object.Notify;
             'notify::password-based': GObject.Object.Notify;
             'notify::photos': GObject.Object.Notify;
             'notify::printers': GObject.Object.Notify;
-            'notify::read-later': GObject.Object.Notify;
             'notify::read-later': GObject.Object.Notify;
             'notify::ticketing': GObject.Object.Notify;
             'notify::todo': GObject.Object.Notify;
@@ -25544,7 +25298,6 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusObjectSkeleton.SignalSignatures {
             'notify::g-object-path': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::account': GObject.Object.Notify;
             'notify::calendar': GObject.Object.Notify;
             'notify::chat': GObject.Object.Notify;
@@ -25556,17 +25309,12 @@ export namespace Goa {
             'notify::manager': GObject.Object.Notify;
             'notify::maps': GObject.Object.Notify;
             'notify::media-server': GObject.Object.Notify;
-            'notify::media-server': GObject.Object.Notify;
             'notify::music': GObject.Object.Notify;
             'notify::oauth-based': GObject.Object.Notify;
-            'notify::oauth-based': GObject.Object.Notify;
             'notify::oauth2-based': GObject.Object.Notify;
-            'notify::oauth2-based': GObject.Object.Notify;
-            'notify::password-based': GObject.Object.Notify;
             'notify::password-based': GObject.Object.Notify;
             'notify::photos': GObject.Object.Notify;
             'notify::printers': GObject.Object.Notify;
-            'notify::read-later': GObject.Object.Notify;
             'notify::read-later': GObject.Object.Notify;
             'notify::ticketing': GObject.Object.Notify;
             'notify::todo': GObject.Object.Notify;
@@ -26479,22 +26227,13 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -27456,7 +27195,6 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -28048,22 +27786,13 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -28956,7 +28685,6 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -29479,22 +29207,13 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -30387,7 +30106,6 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -30910,22 +30628,13 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -31818,7 +31527,6 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -32341,22 +32049,13 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
             'notify::details': GObject.Object.Notify;
         }
@@ -33317,7 +33016,6 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::details': GObject.Object.Notify;
         }
 
@@ -33908,22 +33606,13 @@ export namespace Goa {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -34812,7 +34501,6 @@ export namespace Goa {
     namespace TodoSkeleton {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
         }
 

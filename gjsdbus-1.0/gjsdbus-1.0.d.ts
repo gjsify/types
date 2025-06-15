@@ -41,8 +41,6 @@ export namespace GjsDBus {
             'handle-property-get': HandlePropertyGet;
             'handle-property-set': HandlePropertySet;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
         }
 

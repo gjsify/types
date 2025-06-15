@@ -106,7 +106,6 @@ export namespace SocialWebClient {
             'contacts-changed': ContactsChanged;
             'contacts-removed': ContactsRemoved;
             'notify::object-path': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -177,7 +176,6 @@ export namespace SocialWebClient {
             'items-added': ItemsAdded;
             'items-changed': ItemsChanged;
             'items-removed': ItemsRemoved;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 

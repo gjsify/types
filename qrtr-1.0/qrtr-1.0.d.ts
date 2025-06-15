@@ -93,7 +93,6 @@ export namespace Qrtr {
             'node-added': NodeAdded;
             'node-removed': NodeRemoved;
             'notify::lookup-timeout': GObject.Object.Notify;
-            'notify::lookup-timeout': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -898,8 +897,6 @@ export namespace Qrtr {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'client-message': ClientMessage;
             'notify::client-node': GObject.Object.Notify;
-            'notify::client-node': GObject.Object.Notify;
-            'notify::client-port': GObject.Object.Notify;
             'notify::client-port': GObject.Object.Notify;
         }
 
@@ -1521,7 +1518,6 @@ export namespace Qrtr {
             'service-added': ServiceAdded;
             'service-removed': ServiceRemoved;
             'notify::bus': GObject.Object.Notify;
-            'notify::node-id': GObject.Object.Notify;
             'notify::node-id': GObject.Object.Notify;
         }
 

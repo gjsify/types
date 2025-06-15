@@ -264,28 +264,17 @@ export namespace Liferea {
         // Signal signatures
         interface SignalSignatures extends Gtk.Application.SignalSignatures {
             'notify::active-window': GObject.Object.Notify;
-            'notify::active-window': GObject.Object.Notify;
-            'notify::app-menu': GObject.Object.Notify;
             'notify::app-menu': GObject.Object.Notify;
             'notify::menubar': GObject.Object.Notify;
             'notify::register-session': GObject.Object.Notify;
-            'notify::register-session': GObject.Object.Notify;
-            'notify::screensaver-active': GObject.Object.Notify;
             'notify::screensaver-active': GObject.Object.Notify;
             'notify::action-group': GObject.Object.Notify;
-            'notify::action-group': GObject.Object.Notify;
-            'notify::application-id': GObject.Object.Notify;
             'notify::application-id': GObject.Object.Notify;
             'notify::flags': GObject.Object.Notify;
             'notify::inactivity-timeout': GObject.Object.Notify;
-            'notify::inactivity-timeout': GObject.Object.Notify;
-            'notify::is-busy': GObject.Object.Notify;
             'notify::is-busy': GObject.Object.Notify;
             'notify::is-registered': GObject.Object.Notify;
-            'notify::is-registered': GObject.Object.Notify;
             'notify::is-remote': GObject.Object.Notify;
-            'notify::is-remote': GObject.Object.Notify;
-            'notify::resource-base-path': GObject.Object.Notify;
             'notify::resource-base-path': GObject.Object.Notify;
             'notify::version': GObject.Object.Notify;
         }
@@ -902,7 +891,6 @@ export namespace Liferea {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::head-lines': GObject.Object.Notify;
-            'notify::head-lines': GObject.Object.Notify;
             'notify::notebook': GObject.Object.Notify;
         }
 
@@ -1238,8 +1226,6 @@ export namespace Liferea {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::html-view': GObject.Object.Notify;
-            'notify::html-view': GObject.Object.Notify;
-            'notify::item-list-view': GObject.Object.Notify;
             'notify::item-list-view': GObject.Object.Notify;
         }
 
@@ -1418,13 +1404,9 @@ export namespace Liferea {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::browser-tabs': GObject.Object.Notify;
-            'notify::browser-tabs': GObject.Object.Notify;
             'notify::builder': GObject.Object.Notify;
             'notify::feed-list': GObject.Object.Notify;
-            'notify::feed-list': GObject.Object.Notify;
             'notify::item-list': GObject.Object.Notify;
-            'notify::item-list': GObject.Object.Notify;
-            'notify::item-view': GObject.Object.Notify;
             'notify::item-view': GObject.Object.Notify;
         }
 

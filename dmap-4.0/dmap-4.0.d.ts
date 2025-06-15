@@ -452,11 +452,8 @@ export namespace Dmap {
         // Signal signatures
         interface SignalSignatures extends Connection.SignalSignatures {
             'notify::base-uri': GObject.Object.Notify;
-            'notify::base-uri': GObject.Object.Notify;
-            'notify::database-id': GObject.Object.Notify;
             'notify::database-id': GObject.Object.Notify;
             'notify::db': GObject.Object.Notify;
-            'notify::dmap-version': GObject.Object.Notify;
             'notify::dmap-version': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::host': GObject.Object.Notify;
@@ -464,8 +461,6 @@ export namespace Dmap {
             'notify::password': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
             'notify::revision-number': GObject.Object.Notify;
-            'notify::revision-number': GObject.Object.Notify;
-            'notify::session-id': GObject.Object.Notify;
             'notify::session-id': GObject.Object.Notify;
             'notify::username': GObject.Object.Notify;
         }
@@ -513,18 +508,13 @@ export namespace Dmap {
         // Signal signatures
         interface SignalSignatures extends Share.SignalSignatures {
             'notify::auth-method': GObject.Object.Notify;
-            'notify::auth-method': GObject.Object.Notify;
-            'notify::container-db': GObject.Object.Notify;
             'notify::container-db': GObject.Object.Notify;
             'notify::db': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::revision-number': GObject.Object.Notify;
-            'notify::revision-number': GObject.Object.Notify;
             'notify::server': GObject.Object.Notify;
             'notify::transcode-mimetype': GObject.Object.Notify;
-            'notify::transcode-mimetype': GObject.Object.Notify;
-            'notify::txt-records': GObject.Object.Notify;
             'notify::txt-records': GObject.Object.Notify;
         }
 
@@ -606,11 +596,8 @@ export namespace Dmap {
             error: Error;
             'operation-done': OperationDone;
             'notify::base-uri': GObject.Object.Notify;
-            'notify::base-uri': GObject.Object.Notify;
-            'notify::database-id': GObject.Object.Notify;
             'notify::database-id': GObject.Object.Notify;
             'notify::db': GObject.Object.Notify;
-            'notify::dmap-version': GObject.Object.Notify;
             'notify::dmap-version': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::host': GObject.Object.Notify;
@@ -618,8 +605,6 @@ export namespace Dmap {
             'notify::password': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
             'notify::revision-number': GObject.Object.Notify;
-            'notify::revision-number': GObject.Object.Notify;
-            'notify::session-id': GObject.Object.Notify;
             'notify::session-id': GObject.Object.Notify;
             'notify::username': GObject.Object.Notify;
         }
@@ -754,11 +739,8 @@ export namespace Dmap {
         // Signal signatures
         interface SignalSignatures extends Connection.SignalSignatures {
             'notify::base-uri': GObject.Object.Notify;
-            'notify::base-uri': GObject.Object.Notify;
-            'notify::database-id': GObject.Object.Notify;
             'notify::database-id': GObject.Object.Notify;
             'notify::db': GObject.Object.Notify;
-            'notify::dmap-version': GObject.Object.Notify;
             'notify::dmap-version': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::host': GObject.Object.Notify;
@@ -766,8 +748,6 @@ export namespace Dmap {
             'notify::password': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
             'notify::revision-number': GObject.Object.Notify;
-            'notify::revision-number': GObject.Object.Notify;
-            'notify::session-id': GObject.Object.Notify;
             'notify::session-id': GObject.Object.Notify;
             'notify::username': GObject.Object.Notify;
         }
@@ -842,21 +822,15 @@ export namespace Dmap {
             'remote-lost': RemoteLost;
             'remote-paired': RemotePaired;
             'notify::library-name': GObject.Object.Notify;
-            'notify::library-name': GObject.Object.Notify;
             'notify::player': GObject.Object.Notify;
             'notify::auth-method': GObject.Object.Notify;
-            'notify::auth-method': GObject.Object.Notify;
-            'notify::container-db': GObject.Object.Notify;
             'notify::container-db': GObject.Object.Notify;
             'notify::db': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::revision-number': GObject.Object.Notify;
-            'notify::revision-number': GObject.Object.Notify;
             'notify::server': GObject.Object.Notify;
             'notify::transcode-mimetype': GObject.Object.Notify;
-            'notify::transcode-mimetype': GObject.Object.Notify;
-            'notify::txt-records': GObject.Object.Notify;
             'notify::txt-records': GObject.Object.Notify;
         }
 
@@ -947,11 +921,8 @@ export namespace Dmap {
         // Signal signatures
         interface SignalSignatures extends Connection.SignalSignatures {
             'notify::base-uri': GObject.Object.Notify;
-            'notify::base-uri': GObject.Object.Notify;
-            'notify::database-id': GObject.Object.Notify;
             'notify::database-id': GObject.Object.Notify;
             'notify::db': GObject.Object.Notify;
-            'notify::dmap-version': GObject.Object.Notify;
             'notify::dmap-version': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::host': GObject.Object.Notify;
@@ -959,8 +930,6 @@ export namespace Dmap {
             'notify::password': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
             'notify::revision-number': GObject.Object.Notify;
-            'notify::revision-number': GObject.Object.Notify;
-            'notify::session-id': GObject.Object.Notify;
             'notify::session-id': GObject.Object.Notify;
             'notify::username': GObject.Object.Notify;
         }
@@ -1008,18 +977,13 @@ export namespace Dmap {
         // Signal signatures
         interface SignalSignatures extends Share.SignalSignatures {
             'notify::auth-method': GObject.Object.Notify;
-            'notify::auth-method': GObject.Object.Notify;
-            'notify::container-db': GObject.Object.Notify;
             'notify::container-db': GObject.Object.Notify;
             'notify::db': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::revision-number': GObject.Object.Notify;
-            'notify::revision-number': GObject.Object.Notify;
             'notify::server': GObject.Object.Notify;
             'notify::transcode-mimetype': GObject.Object.Notify;
-            'notify::transcode-mimetype': GObject.Object.Notify;
-            'notify::txt-records': GObject.Object.Notify;
             'notify::txt-records': GObject.Object.Notify;
         }
 
@@ -1224,11 +1188,8 @@ export namespace Dmap {
             'notify::name': GObject.Object.Notify;
             'notify::pair': GObject.Object.Notify;
             'notify::password-protected': GObject.Object.Notify;
-            'notify::password-protected': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
-            'notify::transport-protocol': GObject.Object.Notify;
             'notify::transport-protocol': GObject.Object.Notify;
         }
 
@@ -1314,18 +1275,13 @@ export namespace Dmap {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             error: Error;
             'notify::auth-method': GObject.Object.Notify;
-            'notify::auth-method': GObject.Object.Notify;
-            'notify::container-db': GObject.Object.Notify;
             'notify::container-db': GObject.Object.Notify;
             'notify::db': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::revision-number': GObject.Object.Notify;
-            'notify::revision-number': GObject.Object.Notify;
             'notify::server': GObject.Object.Notify;
             'notify::transcode-mimetype': GObject.Object.Notify;
-            'notify::transcode-mimetype': GObject.Object.Notify;
-            'notify::txt-records': GObject.Object.Notify;
             'notify::txt-records': GObject.Object.Notify;
         }
 

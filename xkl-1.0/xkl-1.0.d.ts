@@ -530,16 +530,11 @@ export namespace Xkl {
             'new-toplevel-window': NewToplevelWindow;
             'notify::backend-name': GObject.Object.Notify;
             'notify::default-group': GObject.Object.Notify;
-            'notify::default-group': GObject.Object.Notify;
             'notify::display': GObject.Object.Notify;
             'notify::features': GObject.Object.Notify;
             'notify::indicators-handling': GObject.Object.Notify;
-            'notify::indicators-handling': GObject.Object.Notify;
-            'notify::max-num-groups': GObject.Object.Notify;
             'notify::max-num-groups': GObject.Object.Notify;
             'notify::num-groups': GObject.Object.Notify;
-            'notify::num-groups': GObject.Object.Notify;
-            'notify::secondary-groups-mask': GObject.Object.Notify;
             'notify::secondary-groups-mask': GObject.Object.Notify;
         }
 

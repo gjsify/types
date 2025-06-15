@@ -4052,7 +4052,6 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::expire-enabled': GObject.Object.Notify;
-            'notify::expire-enabled': GObject.Object.Notify;
             'notify::path': GObject.Object.Notify;
         }
 
@@ -5002,8 +5001,6 @@ export namespace Camel {
         interface SignalSignatures extends Gio.FilterInputStream.SignalSignatures {
             'notify::filter': GObject.Object.Notify;
             'notify::base-stream': GObject.Object.Notify;
-            'notify::base-stream': GObject.Object.Notify;
-            'notify::close-base-stream': GObject.Object.Notify;
             'notify::close-base-stream': GObject.Object.Notify;
         }
 
@@ -5061,8 +5058,6 @@ export namespace Camel {
         interface SignalSignatures extends Gio.FilterOutputStream.SignalSignatures {
             'notify::filter': GObject.Object.Notify;
             'notify::base-stream': GObject.Object.Notify;
-            'notify::base-stream': GObject.Object.Notify;
-            'notify::close-base-stream': GObject.Object.Notify;
             'notify::close-base-stream': GObject.Object.Notify;
         }
 
@@ -5137,16 +5132,10 @@ export namespace Camel {
             renamed: Renamed;
             'notify::description': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::full-name': GObject.Object.Notify;
             'notify::full-name': GObject.Object.Notify;
             'notify::mark-seen': GObject.Object.Notify;
-            'notify::mark-seen': GObject.Object.Notify;
-            'notify::mark-seen-timeout': GObject.Object.Notify;
             'notify::mark-seen-timeout': GObject.Object.Notify;
             'notify::parent-store': GObject.Object.Notify;
-            'notify::parent-store': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
             'notify::state-filename': GObject.Object.Notify;
         }
 
@@ -6514,17 +6503,11 @@ export namespace Camel {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
             'notify::deleted-count': GObject.Object.Notify;
-            'notify::deleted-count': GObject.Object.Notify;
             'notify::folder': GObject.Object.Notify;
             'notify::junk-count': GObject.Object.Notify;
-            'notify::junk-count': GObject.Object.Notify;
-            'notify::junk-not-deleted-count': GObject.Object.Notify;
             'notify::junk-not-deleted-count': GObject.Object.Notify;
             'notify::saved-count': GObject.Object.Notify;
-            'notify::saved-count': GObject.Object.Notify;
             'notify::unread-count': GObject.Object.Notify;
-            'notify::unread-count': GObject.Object.Notify;
-            'notify::visible-count': GObject.Object.Notify;
             'notify::visible-count': GObject.Object.Notify;
         }
 
@@ -6911,10 +6894,7 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends CipherContext.SignalSignatures {
             'notify::always-trust': GObject.Object.Notify;
-            'notify::always-trust': GObject.Object.Notify;
             'notify::locate-keys': GObject.Object.Notify;
-            'notify::locate-keys': GObject.Object.Notify;
-            'notify::prefer-inline': GObject.Object.Notify;
             'notify::prefer-inline': GObject.Object.Notify;
             'notify::session': GObject.Object.Notify;
         }
@@ -7532,15 +7512,10 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends StoreSettings.SignalSignatures {
             'notify::filter-all': GObject.Object.Notify;
-            'notify::filter-all': GObject.Object.Notify;
             'notify::filter-junk': GObject.Object.Notify;
-            'notify::filter-junk': GObject.Object.Notify;
-            'notify::maildir-alt-flag-sep': GObject.Object.Notify;
             'notify::maildir-alt-flag-sep': GObject.Object.Notify;
             'notify::path': GObject.Object.Notify;
             'notify::filter-inbox': GObject.Object.Notify;
-            'notify::filter-inbox': GObject.Object.Notify;
-            'notify::store-changes-interval': GObject.Object.Notify;
             'notify::store-changes-interval': GObject.Object.Notify;
         }
 
@@ -7826,21 +7801,15 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::abort-notifications': GObject.Object.Notify;
-            'notify::abort-notifications': GObject.Object.Notify;
             'notify::cc': GObject.Object.Notify;
             'notify::date-received': GObject.Object.Notify;
-            'notify::date-received': GObject.Object.Notify;
-            'notify::date-sent': GObject.Object.Notify;
             'notify::date-sent': GObject.Object.Notify;
             'notify::dirty': GObject.Object.Notify;
             'notify::flags': GObject.Object.Notify;
             'notify::folder-flagged': GObject.Object.Notify;
-            'notify::folder-flagged': GObject.Object.Notify;
-            'notify::folder-flagged-stamp': GObject.Object.Notify;
             'notify::folder-flagged-stamp': GObject.Object.Notify;
             'notify::from': GObject.Object.Notify;
             'notify::headers': GObject.Object.Notify;
-            'notify::message-id': GObject.Object.Notify;
             'notify::message-id': GObject.Object.Notify;
             'notify::mlist': GObject.Object.Notify;
             'notify::preview': GObject.Object.Notify;
@@ -7851,10 +7820,7 @@ export namespace Camel {
             'notify::to': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
             'notify::user-flags': GObject.Object.Notify;
-            'notify::user-flags': GObject.Object.Notify;
             'notify::user-headers': GObject.Object.Notify;
-            'notify::user-headers': GObject.Object.Notify;
-            'notify::user-tags': GObject.Object.Notify;
             'notify::user-tags': GObject.Object.Notify;
         }
 
@@ -8866,21 +8832,15 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends MessageInfo.SignalSignatures {
             'notify::abort-notifications': GObject.Object.Notify;
-            'notify::abort-notifications': GObject.Object.Notify;
             'notify::cc': GObject.Object.Notify;
             'notify::date-received': GObject.Object.Notify;
-            'notify::date-received': GObject.Object.Notify;
-            'notify::date-sent': GObject.Object.Notify;
             'notify::date-sent': GObject.Object.Notify;
             'notify::dirty': GObject.Object.Notify;
             'notify::flags': GObject.Object.Notify;
             'notify::folder-flagged': GObject.Object.Notify;
-            'notify::folder-flagged': GObject.Object.Notify;
-            'notify::folder-flagged-stamp': GObject.Object.Notify;
             'notify::folder-flagged-stamp': GObject.Object.Notify;
             'notify::from': GObject.Object.Notify;
             'notify::headers': GObject.Object.Notify;
-            'notify::message-id': GObject.Object.Notify;
             'notify::message-id': GObject.Object.Notify;
             'notify::mlist': GObject.Object.Notify;
             'notify::preview': GObject.Object.Notify;
@@ -8891,10 +8851,7 @@ export namespace Camel {
             'notify::to': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
             'notify::user-flags': GObject.Object.Notify;
-            'notify::user-flags': GObject.Object.Notify;
             'notify::user-headers': GObject.Object.Notify;
-            'notify::user-headers': GObject.Object.Notify;
-            'notify::user-tags': GObject.Object.Notify;
             'notify::user-tags': GObject.Object.Notify;
         }
 
@@ -9796,8 +9753,6 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends MimePart.SignalSignatures {
             'notify::content-id': GObject.Object.Notify;
-            'notify::content-id': GObject.Object.Notify;
-            'notify::content-md5': GObject.Object.Notify;
             'notify::content-md5': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::disposition': GObject.Object.Notify;
@@ -10264,8 +10219,6 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends Medium.SignalSignatures {
             'notify::content-id': GObject.Object.Notify;
-            'notify::content-id': GObject.Object.Notify;
-            'notify::content-md5': GObject.Object.Notify;
             'notify::content-md5': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::disposition': GObject.Object.Notify;
@@ -10830,7 +10783,6 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::state-filename': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -10914,19 +10866,12 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends Folder.SignalSignatures {
             'notify::offline-sync': GObject.Object.Notify;
-            'notify::offline-sync': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::full-name': GObject.Object.Notify;
             'notify::full-name': GObject.Object.Notify;
             'notify::mark-seen': GObject.Object.Notify;
-            'notify::mark-seen': GObject.Object.Notify;
-            'notify::mark-seen-timeout': GObject.Object.Notify;
             'notify::mark-seen-timeout': GObject.Object.Notify;
             'notify::parent-store': GObject.Object.Notify;
-            'notify::parent-store': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
             'notify::state-filename': GObject.Object.Notify;
         }
 
@@ -11069,16 +11014,10 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends StoreSettings.SignalSignatures {
             'notify::limit-by-age': GObject.Object.Notify;
-            'notify::limit-by-age': GObject.Object.Notify;
-            'notify::limit-unit': GObject.Object.Notify;
             'notify::limit-unit': GObject.Object.Notify;
             'notify::limit-value': GObject.Object.Notify;
-            'notify::limit-value': GObject.Object.Notify;
-            'notify::stay-synchronized': GObject.Object.Notify;
             'notify::stay-synchronized': GObject.Object.Notify;
             'notify::filter-inbox': GObject.Object.Notify;
-            'notify::filter-inbox': GObject.Object.Notify;
-            'notify::store-changes-interval': GObject.Object.Notify;
             'notify::store-changes-interval': GObject.Object.Notify;
         }
 
@@ -11203,17 +11142,13 @@ export namespace Camel {
         interface SignalSignatures extends Store.SignalSignatures {
             'notify::online': GObject.Object.Notify;
             'notify::connection-status': GObject.Object.Notify;
-            'notify::connection-status': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::provider': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::session': GObject.Object.Notify;
             'notify::settings': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
             'notify::state-filename': GObject.Object.Notify;
         }
 
@@ -12094,7 +12029,6 @@ export namespace Camel {
             'notify::mechanism': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -12369,7 +12303,6 @@ export namespace Camel {
             'notify::mechanism': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -12417,7 +12350,6 @@ export namespace Camel {
             'notify::mechanism': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -12460,7 +12392,6 @@ export namespace Camel {
             'notify::mechanism': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -12502,7 +12433,6 @@ export namespace Camel {
             'notify::authenticated': GObject.Object.Notify;
             'notify::mechanism': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
         }
 
@@ -12561,7 +12491,6 @@ export namespace Camel {
             'notify::mechanism': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -12601,7 +12530,6 @@ export namespace Camel {
             'notify::mechanism': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -12640,7 +12568,6 @@ export namespace Camel {
             'notify::authenticated': GObject.Object.Notify;
             'notify::mechanism': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
         }
 
@@ -12684,7 +12611,6 @@ export namespace Camel {
             'notify::mechanism': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -12723,7 +12649,6 @@ export namespace Camel {
             'notify::authenticated': GObject.Object.Notify;
             'notify::mechanism': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
         }
 
@@ -12767,7 +12692,6 @@ export namespace Camel {
             'notify::mechanism': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -12809,7 +12733,6 @@ export namespace Camel {
             'notify::authenticated': GObject.Object.Notify;
             'notify::mechanism': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
         }
 
@@ -12853,7 +12776,6 @@ export namespace Camel {
             'notify::mechanism': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -12893,17 +12815,13 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::connection-status': GObject.Object.Notify;
-            'notify::connection-status': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::provider': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::session': GObject.Object.Notify;
             'notify::settings': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
             'notify::state-filename': GObject.Object.Notify;
         }
 
@@ -14046,15 +13964,10 @@ export namespace Camel {
             'job-started': JobStarted;
             'user-alert': UserAlert;
             'notify::junk-filter': GObject.Object.Notify;
-            'notify::junk-filter': GObject.Object.Notify;
             'notify::main-context': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
-            'notify::network-monitor': GObject.Object.Notify;
             'notify::network-monitor': GObject.Object.Notify;
             'notify::online': GObject.Object.Notify;
             'notify::user-cache-dir': GObject.Object.Notify;
-            'notify::user-cache-dir': GObject.Object.Notify;
-            'notify::user-data-dir': GObject.Object.Notify;
             'notify::user-data-dir': GObject.Object.Notify;
         }
 
@@ -14941,17 +14854,13 @@ export namespace Camel {
             'folder-opened': FolderOpened;
             'folder-renamed': FolderRenamed;
             'notify::connection-status': GObject.Object.Notify;
-            'notify::connection-status': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::provider': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::session': GObject.Object.Notify;
             'notify::settings': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
             'notify::state-filename': GObject.Object.Notify;
         }
 
@@ -16450,8 +16359,6 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends Settings.SignalSignatures {
             'notify::filter-inbox': GObject.Object.Notify;
-            'notify::filter-inbox': GObject.Object.Notify;
-            'notify::store-changes-interval': GObject.Object.Notify;
             'notify::store-changes-interval': GObject.Object.Notify;
         }
 
@@ -16688,7 +16595,6 @@ export namespace Camel {
     namespace Stream {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::base-stream': GObject.Object.Notify;
             'notify::base-stream': GObject.Object.Notify;
         }
 
@@ -17372,7 +17278,6 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends Stream.SignalSignatures {
             'notify::base-stream': GObject.Object.Notify;
-            'notify::base-stream': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -17989,7 +17894,6 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends Stream.SignalSignatures {
             'notify::base-stream': GObject.Object.Notify;
-            'notify::base-stream': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -18593,7 +18497,6 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends Stream.SignalSignatures {
             'notify::base-stream': GObject.Object.Notify;
-            'notify::base-stream': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -19177,7 +19080,6 @@ export namespace Camel {
     namespace StreamMem {
         // Signal signatures
         interface SignalSignatures extends Stream.SignalSignatures {
-            'notify::base-stream': GObject.Object.Notify;
             'notify::base-stream': GObject.Object.Notify;
         }
 
@@ -19787,7 +19689,6 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends Stream.SignalSignatures {
             'notify::base-stream': GObject.Object.Notify;
-            'notify::base-stream': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -20373,7 +20274,6 @@ export namespace Camel {
     namespace StreamProcess {
         // Signal signatures
         interface SignalSignatures extends Stream.SignalSignatures {
-            'notify::base-stream': GObject.Object.Notify;
             'notify::base-stream': GObject.Object.Notify;
         }
 
@@ -21120,17 +21020,13 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends Service.SignalSignatures {
             'notify::connection-status': GObject.Object.Notify;
-            'notify::connection-status': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::provider': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::session': GObject.Object.Notify;
             'notify::settings': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
             'notify::state-filename': GObject.Object.Notify;
         }
 
@@ -21813,19 +21709,12 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends VeeFolder.SignalSignatures {
             'notify::auto-update': GObject.Object.Notify;
-            'notify::auto-update': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::full-name': GObject.Object.Notify;
             'notify::full-name': GObject.Object.Notify;
             'notify::mark-seen': GObject.Object.Notify;
-            'notify::mark-seen': GObject.Object.Notify;
-            'notify::mark-seen-timeout': GObject.Object.Notify;
             'notify::mark-seen-timeout': GObject.Object.Notify;
             'notify::parent-store': GObject.Object.Notify;
-            'notify::parent-store': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
             'notify::state-filename': GObject.Object.Notify;
         }
 
@@ -21974,19 +21863,12 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends Folder.SignalSignatures {
             'notify::auto-update': GObject.Object.Notify;
-            'notify::auto-update': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::full-name': GObject.Object.Notify;
             'notify::full-name': GObject.Object.Notify;
             'notify::mark-seen': GObject.Object.Notify;
-            'notify::mark-seen': GObject.Object.Notify;
-            'notify::mark-seen-timeout': GObject.Object.Notify;
             'notify::mark-seen-timeout': GObject.Object.Notify;
             'notify::parent-store': GObject.Object.Notify;
-            'notify::parent-store': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
             'notify::state-filename': GObject.Object.Notify;
         }
 
@@ -22171,21 +22053,15 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends MessageInfo.SignalSignatures {
             'notify::abort-notifications': GObject.Object.Notify;
-            'notify::abort-notifications': GObject.Object.Notify;
             'notify::cc': GObject.Object.Notify;
             'notify::date-received': GObject.Object.Notify;
-            'notify::date-received': GObject.Object.Notify;
-            'notify::date-sent': GObject.Object.Notify;
             'notify::date-sent': GObject.Object.Notify;
             'notify::dirty': GObject.Object.Notify;
             'notify::flags': GObject.Object.Notify;
             'notify::folder-flagged': GObject.Object.Notify;
-            'notify::folder-flagged': GObject.Object.Notify;
-            'notify::folder-flagged-stamp': GObject.Object.Notify;
             'notify::folder-flagged-stamp': GObject.Object.Notify;
             'notify::from': GObject.Object.Notify;
             'notify::headers': GObject.Object.Notify;
-            'notify::message-id': GObject.Object.Notify;
             'notify::message-id': GObject.Object.Notify;
             'notify::mlist': GObject.Object.Notify;
             'notify::preview': GObject.Object.Notify;
@@ -22196,10 +22072,7 @@ export namespace Camel {
             'notify::to': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
             'notify::user-flags': GObject.Object.Notify;
-            'notify::user-flags': GObject.Object.Notify;
             'notify::user-headers': GObject.Object.Notify;
-            'notify::user-headers': GObject.Object.Notify;
-            'notify::user-tags': GObject.Object.Notify;
             'notify::user-tags': GObject.Object.Notify;
         }
 
@@ -22299,19 +22172,14 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends Store.SignalSignatures {
             'notify::unmatched-enabled': GObject.Object.Notify;
-            'notify::unmatched-enabled': GObject.Object.Notify;
             'notify::connection-status': GObject.Object.Notify;
-            'notify::connection-status': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::provider': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::session': GObject.Object.Notify;
             'notify::settings': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
             'notify::state-filename': GObject.Object.Notify;
         }
 
@@ -22899,17 +22767,11 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends FolderSummary.SignalSignatures {
             'notify::deleted-count': GObject.Object.Notify;
-            'notify::deleted-count': GObject.Object.Notify;
             'notify::folder': GObject.Object.Notify;
             'notify::junk-count': GObject.Object.Notify;
-            'notify::junk-count': GObject.Object.Notify;
-            'notify::junk-not-deleted-count': GObject.Object.Notify;
             'notify::junk-not-deleted-count': GObject.Object.Notify;
             'notify::saved-count': GObject.Object.Notify;
-            'notify::saved-count': GObject.Object.Notify;
             'notify::unread-count': GObject.Object.Notify;
-            'notify::unread-count': GObject.Object.Notify;
-            'notify::visible-count': GObject.Object.Notify;
             'notify::visible-count': GObject.Object.Notify;
         }
 

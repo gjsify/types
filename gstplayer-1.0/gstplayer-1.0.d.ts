@@ -201,31 +201,21 @@ export namespace GstPlayer {
             'volume-changed': VolumeChanged;
             warning: Warning;
             'notify::audio-video-offset': GObject.Object.Notify;
-            'notify::audio-video-offset': GObject.Object.Notify;
-            'notify::current-audio-track': GObject.Object.Notify;
             'notify::current-audio-track': GObject.Object.Notify;
             'notify::current-subtitle-track': GObject.Object.Notify;
-            'notify::current-subtitle-track': GObject.Object.Notify;
-            'notify::current-video-track': GObject.Object.Notify;
             'notify::current-video-track': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
-            'notify::media-info': GObject.Object.Notify;
             'notify::media-info': GObject.Object.Notify;
             'notify::mute': GObject.Object.Notify;
             'notify::pipeline': GObject.Object.Notify;
             'notify::position': GObject.Object.Notify;
             'notify::rate': GObject.Object.Notify;
             'notify::signal-dispatcher': GObject.Object.Notify;
-            'notify::signal-dispatcher': GObject.Object.Notify;
-            'notify::subtitle-video-offset': GObject.Object.Notify;
             'notify::subtitle-video-offset': GObject.Object.Notify;
             'notify::suburi': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
             'notify::video-multiview-flags': GObject.Object.Notify;
-            'notify::video-multiview-flags': GObject.Object.Notify;
             'notify::video-multiview-mode': GObject.Object.Notify;
-            'notify::video-multiview-mode': GObject.Object.Notify;
-            'notify::video-renderer': GObject.Object.Notify;
             'notify::video-renderer': GObject.Object.Notify;
             'notify::volume': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -656,7 +646,6 @@ export namespace GstPlayer {
     namespace PlayerGMainContextSignalDispatcher {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::application-context': GObject.Object.Notify;
             'notify::application-context': GObject.Object.Notify;
         }
 
@@ -1382,8 +1371,6 @@ export namespace GstPlayer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::video-sink': GObject.Object.Notify;
-            'notify::video-sink': GObject.Object.Notify;
-            'notify::window-handle': GObject.Object.Notify;
             'notify::window-handle': GObject.Object.Notify;
         }
 

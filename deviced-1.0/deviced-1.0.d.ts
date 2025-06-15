@@ -53,9 +53,7 @@ export namespace Deviced {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::commit-id': GObject.Object.Notify;
-            'notify::commit-id': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::installed-size': GObject.Object.Notify;
             'notify::installed-size': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::provider': GObject.Object.Notify;
@@ -133,8 +131,6 @@ export namespace Deviced {
             'device-removed': DeviceRemoved;
             'notify::certificate': GObject.Object.Notify;
             'notify::enable-ipv4': GObject.Object.Notify;
-            'notify::enable-ipv4': GObject.Object.Notify;
-            'notify::enable-ipv6': GObject.Object.Notify;
             'notify::enable-ipv6': GObject.Object.Notify;
         }
 
@@ -895,10 +891,8 @@ export namespace Deviced {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::icon-name': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::kind': GObject.Object.Notify;
-            'notify::machine-id': GObject.Object.Notify;
             'notify::machine-id': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
@@ -1166,10 +1160,8 @@ export namespace Deviced {
             'notify::address': GObject.Object.Notify;
             'notify::certificate': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::kind': GObject.Object.Notify;
-            'notify::machine-id': GObject.Object.Notify;
             'notify::machine-id': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }

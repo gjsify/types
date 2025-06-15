@@ -66,8 +66,6 @@ export namespace GstInsertBin {
             prepend: Prepend;
             remove: Remove;
             'notify::async-handling': GObject.Object.Notify;
-            'notify::async-handling': GObject.Object.Notify;
-            'notify::message-forward': GObject.Object.Notify;
             'notify::message-forward': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;

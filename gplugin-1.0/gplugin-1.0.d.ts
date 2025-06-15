@@ -1061,32 +1061,23 @@ export namespace GPlugin {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::abi-version': GObject.Object.Notify;
-            'notify::abi-version': GObject.Object.Notify;
             'notify::authors': GObject.Object.Notify;
             'notify::auto-load': GObject.Object.Notify;
-            'notify::auto-load': GObject.Object.Notify;
-            'notify::bind-global': GObject.Object.Notify;
             'notify::bind-global': GObject.Object.Notify;
             'notify::category': GObject.Object.Notify;
             'notify::dependencies': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::discriminator': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::internal': GObject.Object.Notify;
             'notify::license-id': GObject.Object.Notify;
-            'notify::license-id': GObject.Object.Notify;
-            'notify::license-text': GObject.Object.Notify;
             'notify::license-text': GObject.Object.Notify;
             'notify::license-url': GObject.Object.Notify;
-            'notify::license-url': GObject.Object.Notify;
-            'notify::load-on-query': GObject.Object.Notify;
             'notify::load-on-query': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::priority': GObject.Object.Notify;
             'notify::provides': GObject.Object.Notify;
-            'notify::settings-schema': GObject.Object.Notify;
             'notify::settings-schema': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::unloadable': GObject.Object.Notify;

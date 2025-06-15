@@ -72,16 +72,10 @@ export namespace Jsonrpc {
             'handle-call': HandleCall;
             notification: Notification;
             'notify::io-stream': GObject.Object.Notify;
-            'notify::io-stream': GObject.Object.Notify;
-            'notify::use-gvariant': GObject.Object.Notify;
             'notify::use-gvariant': GObject.Object.Notify;
             'handle-call::io-stream': HandleCall;
-            'handle-call::io-stream': HandleCall;
-            'handle-call::use-gvariant': HandleCall;
             'handle-call::use-gvariant': HandleCall;
             'notification::io-stream': Notification;
-            'notification::io-stream': Notification;
-            'notification::use-gvariant': Notification;
             'notification::use-gvariant': Notification;
         }
 
@@ -541,14 +535,9 @@ export namespace Jsonrpc {
         // Signal signatures
         interface SignalSignatures extends Gio.DataInputStream.SignalSignatures {
             'notify::byte-order': GObject.Object.Notify;
-            'notify::byte-order': GObject.Object.Notify;
-            'notify::newline-type': GObject.Object.Notify;
             'notify::newline-type': GObject.Object.Notify;
             'notify::buffer-size': GObject.Object.Notify;
-            'notify::buffer-size': GObject.Object.Notify;
             'notify::base-stream': GObject.Object.Notify;
-            'notify::base-stream': GObject.Object.Notify;
-            'notify::close-base-stream': GObject.Object.Notify;
             'notify::close-base-stream': GObject.Object.Notify;
         }
 
@@ -1043,12 +1032,8 @@ export namespace Jsonrpc {
         // Signal signatures
         interface SignalSignatures extends Gio.DataOutputStream.SignalSignatures {
             'notify::use-gvariant': GObject.Object.Notify;
-            'notify::use-gvariant': GObject.Object.Notify;
-            'notify::byte-order': GObject.Object.Notify;
             'notify::byte-order': GObject.Object.Notify;
             'notify::base-stream': GObject.Object.Notify;
-            'notify::base-stream': GObject.Object.Notify;
-            'notify::close-base-stream': GObject.Object.Notify;
             'notify::close-base-stream': GObject.Object.Notify;
         }
 

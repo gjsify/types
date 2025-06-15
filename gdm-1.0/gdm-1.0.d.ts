@@ -61,22 +61,13 @@ export namespace Gdm {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -934,7 +925,6 @@ export namespace Gdm {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1728,22 +1718,13 @@ export namespace Gdm {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -2690,7 +2671,6 @@ export namespace Gdm {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3322,22 +3302,13 @@ export namespace Gdm {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
             'notify::version': GObject.Object.Notify;
         }
@@ -4241,7 +4212,6 @@ export namespace Gdm {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::version': GObject.Object.Notify;
         }
 
@@ -4830,22 +4800,13 @@ export namespace Gdm {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -5688,7 +5649,6 @@ export namespace Gdm {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -6216,22 +6176,13 @@ export namespace Gdm {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -7099,7 +7050,6 @@ export namespace Gdm {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -7651,22 +7601,13 @@ export namespace Gdm {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -8619,7 +8560,6 @@ export namespace Gdm {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -9257,22 +9197,13 @@ export namespace Gdm {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -10251,7 +10182,6 @@ export namespace Gdm {
     namespace WorkerManagerSkeleton {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
         }
 

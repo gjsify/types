@@ -32,8 +32,6 @@ export namespace Vpg {
             'notify::status': GObject.Object.Notify;
             'notify::parameters': GObject.Object.Notify;
             'notify::is-opened': GObject.Object.Notify;
-            'notify::is-opened': GObject.Object.Notify;
-            'notify::connection-string': GObject.Object.Notify;
             'notify::connection-string': GObject.Object.Notify;
         }
 

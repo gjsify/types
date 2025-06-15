@@ -4121,9 +4121,7 @@ export namespace WebKit {
             finished: Finished;
             'received-data': ReceivedData;
             'notify::allow-overwrite': GObject.Object.Notify;
-            'notify::allow-overwrite': GObject.Object.Notify;
             'notify::destination': GObject.Object.Notify;
-            'notify::estimated-progress': GObject.Object.Notify;
             'notify::estimated-progress': GObject.Object.Notify;
             'notify::response': GObject.Object.Notify;
         }
@@ -4329,7 +4327,6 @@ export namespace WebKit {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
-            'notify::typing-attributes': GObject.Object.Notify;
             'notify::typing-attributes': GObject.Object.Notify;
         }
 
@@ -4561,10 +4558,7 @@ export namespace WebKit {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::filter': GObject.Object.Notify;
             'notify::mime-types': GObject.Object.Notify;
-            'notify::mime-types': GObject.Object.Notify;
             'notify::select-multiple': GObject.Object.Notify;
-            'notify::select-multiple': GObject.Object.Notify;
-            'notify::selected-files': GObject.Object.Notify;
             'notify::selected-files': GObject.Object.Notify;
         }
 
@@ -4766,10 +4760,8 @@ export namespace WebKit {
             'failed-to-find-text': FailedToFindText;
             'found-text': FoundText;
             'notify::max-match-count': GObject.Object.Notify;
-            'notify::max-match-count': GObject.Object.Notify;
             'notify::options': GObject.Object.Notify;
             'notify::text': GObject.Object.Notify;
-            'notify::web-view': GObject.Object.Notify;
             'notify::web-view': GObject.Object.Notify;
         }
 
@@ -5038,7 +5030,6 @@ export namespace WebKit {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             start: Start;
             stop: Stop;
-            'notify::enable-high-accuracy': GObject.Object.Notify;
             'notify::enable-high-accuracy': GObject.Object.Notify;
         }
 
@@ -5646,14 +5637,9 @@ export namespace WebKit {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::context': GObject.Object.Notify;
             'notify::image-uri': GObject.Object.Notify;
-            'notify::image-uri': GObject.Object.Notify;
-            'notify::link-label': GObject.Object.Notify;
             'notify::link-label': GObject.Object.Notify;
             'notify::link-title': GObject.Object.Notify;
-            'notify::link-title': GObject.Object.Notify;
             'notify::link-uri': GObject.Object.Notify;
-            'notify::link-uri': GObject.Object.Notify;
-            'notify::media-uri': GObject.Object.Notify;
             'notify::media-uri': GObject.Object.Notify;
         }
 
@@ -5882,8 +5868,6 @@ export namespace WebKit {
             'preedit-finished': PreeditFinished;
             'preedit-started': PreeditStarted;
             'notify::input-hints': GObject.Object.Notify;
-            'notify::input-hints': GObject.Object.Notify;
-            'notify::input-purpose': GObject.Object.Notify;
             'notify::input-purpose': GObject.Object.Notify;
         }
 
@@ -6607,7 +6591,6 @@ export namespace WebKit {
         // Signal signatures
         interface SignalSignatures extends PolicyDecision.SignalSignatures {
             'notify::navigation-action': GObject.Object.Notify;
-            'notify::navigation-action': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -6683,10 +6666,7 @@ export namespace WebKit {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'download-started': DownloadStarted;
             'notify::cache-directory': GObject.Object.Notify;
-            'notify::cache-directory': GObject.Object.Notify;
             'notify::data-directory': GObject.Object.Notify;
-            'notify::data-directory': GObject.Object.Notify;
-            'notify::is-ephemeral': GObject.Object.Notify;
             'notify::is-ephemeral': GObject.Object.Notify;
         }
 
@@ -8249,10 +8229,7 @@ export namespace WebKit {
             failed: Failed;
             finished: Finished;
             'notify::page-setup': GObject.Object.Notify;
-            'notify::page-setup': GObject.Object.Notify;
             'notify::print-settings': GObject.Object.Notify;
-            'notify::print-settings': GObject.Object.Notify;
-            'notify::web-view': GObject.Object.Notify;
             'notify::web-view': GObject.Object.Notify;
         }
 
@@ -8658,118 +8635,62 @@ export namespace WebKit {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::allow-file-access-from-file-urls': GObject.Object.Notify;
-            'notify::allow-file-access-from-file-urls': GObject.Object.Notify;
-            'notify::allow-modal-dialogs': GObject.Object.Notify;
             'notify::allow-modal-dialogs': GObject.Object.Notify;
             'notify::allow-top-navigation-to-data-urls': GObject.Object.Notify;
-            'notify::allow-top-navigation-to-data-urls': GObject.Object.Notify;
-            'notify::allow-universal-access-from-file-urls': GObject.Object.Notify;
             'notify::allow-universal-access-from-file-urls': GObject.Object.Notify;
             'notify::auto-load-images': GObject.Object.Notify;
-            'notify::auto-load-images': GObject.Object.Notify;
-            'notify::cursive-font-family': GObject.Object.Notify;
             'notify::cursive-font-family': GObject.Object.Notify;
             'notify::default-charset': GObject.Object.Notify;
-            'notify::default-charset': GObject.Object.Notify;
-            'notify::default-font-family': GObject.Object.Notify;
             'notify::default-font-family': GObject.Object.Notify;
             'notify::default-font-size': GObject.Object.Notify;
-            'notify::default-font-size': GObject.Object.Notify;
-            'notify::default-monospace-font-size': GObject.Object.Notify;
             'notify::default-monospace-font-size': GObject.Object.Notify;
             'notify::disable-web-security': GObject.Object.Notify;
-            'notify::disable-web-security': GObject.Object.Notify;
-            'notify::draw-compositing-indicators': GObject.Object.Notify;
             'notify::draw-compositing-indicators': GObject.Object.Notify;
             'notify::enable-2d-canvas-acceleration': GObject.Object.Notify;
             'notify::enable2d-canvas-acceleration': GObject.Object.Notify;
             'notify::enable-back-forward-navigation-gestures': GObject.Object.Notify;
-            'notify::enable-back-forward-navigation-gestures': GObject.Object.Notify;
-            'notify::enable-caret-browsing': GObject.Object.Notify;
             'notify::enable-caret-browsing': GObject.Object.Notify;
             'notify::enable-developer-extras': GObject.Object.Notify;
-            'notify::enable-developer-extras': GObject.Object.Notify;
-            'notify::enable-dns-prefetching': GObject.Object.Notify;
             'notify::enable-dns-prefetching': GObject.Object.Notify;
             'notify::enable-encrypted-media': GObject.Object.Notify;
-            'notify::enable-encrypted-media': GObject.Object.Notify;
-            'notify::enable-fullscreen': GObject.Object.Notify;
             'notify::enable-fullscreen': GObject.Object.Notify;
             'notify::enable-html5-database': GObject.Object.Notify;
-            'notify::enable-html5-database': GObject.Object.Notify;
-            'notify::enable-html5-local-storage': GObject.Object.Notify;
             'notify::enable-html5-local-storage': GObject.Object.Notify;
             'notify::enable-hyperlink-auditing': GObject.Object.Notify;
-            'notify::enable-hyperlink-auditing': GObject.Object.Notify;
-            'notify::enable-javascript': GObject.Object.Notify;
             'notify::enable-javascript': GObject.Object.Notify;
             'notify::enable-javascript-markup': GObject.Object.Notify;
-            'notify::enable-javascript-markup': GObject.Object.Notify;
-            'notify::enable-media': GObject.Object.Notify;
             'notify::enable-media': GObject.Object.Notify;
             'notify::enable-media-capabilities': GObject.Object.Notify;
-            'notify::enable-media-capabilities': GObject.Object.Notify;
-            'notify::enable-media-stream': GObject.Object.Notify;
             'notify::enable-media-stream': GObject.Object.Notify;
             'notify::enable-mediasource': GObject.Object.Notify;
-            'notify::enable-mediasource': GObject.Object.Notify;
-            'notify::enable-mock-capture-devices': GObject.Object.Notify;
             'notify::enable-mock-capture-devices': GObject.Object.Notify;
             'notify::enable-offline-web-application-cache': GObject.Object.Notify;
-            'notify::enable-offline-web-application-cache': GObject.Object.Notify;
-            'notify::enable-page-cache': GObject.Object.Notify;
             'notify::enable-page-cache': GObject.Object.Notify;
             'notify::enable-resizable-text-areas': GObject.Object.Notify;
-            'notify::enable-resizable-text-areas': GObject.Object.Notify;
-            'notify::enable-site-specific-quirks': GObject.Object.Notify;
             'notify::enable-site-specific-quirks': GObject.Object.Notify;
             'notify::enable-smooth-scrolling': GObject.Object.Notify;
-            'notify::enable-smooth-scrolling': GObject.Object.Notify;
-            'notify::enable-spatial-navigation': GObject.Object.Notify;
             'notify::enable-spatial-navigation': GObject.Object.Notify;
             'notify::enable-tabs-to-links': GObject.Object.Notify;
-            'notify::enable-tabs-to-links': GObject.Object.Notify;
-            'notify::enable-webaudio': GObject.Object.Notify;
             'notify::enable-webaudio': GObject.Object.Notify;
             'notify::enable-webgl': GObject.Object.Notify;
-            'notify::enable-webgl': GObject.Object.Notify;
-            'notify::enable-webrtc': GObject.Object.Notify;
             'notify::enable-webrtc': GObject.Object.Notify;
             'notify::enable-write-console-messages-to-stdout': GObject.Object.Notify;
-            'notify::enable-write-console-messages-to-stdout': GObject.Object.Notify;
-            'notify::fantasy-font-family': GObject.Object.Notify;
             'notify::fantasy-font-family': GObject.Object.Notify;
             'notify::hardware-acceleration-policy': GObject.Object.Notify;
-            'notify::hardware-acceleration-policy': GObject.Object.Notify;
-            'notify::javascript-can-access-clipboard': GObject.Object.Notify;
             'notify::javascript-can-access-clipboard': GObject.Object.Notify;
             'notify::javascript-can-open-windows-automatically': GObject.Object.Notify;
-            'notify::javascript-can-open-windows-automatically': GObject.Object.Notify;
-            'notify::load-icons-ignoring-image-load-setting': GObject.Object.Notify;
             'notify::load-icons-ignoring-image-load-setting': GObject.Object.Notify;
             'notify::media-content-types-requiring-hardware-support': GObject.Object.Notify;
-            'notify::media-content-types-requiring-hardware-support': GObject.Object.Notify;
-            'notify::media-playback-allows-inline': GObject.Object.Notify;
             'notify::media-playback-allows-inline': GObject.Object.Notify;
             'notify::media-playback-requires-user-gesture': GObject.Object.Notify;
-            'notify::media-playback-requires-user-gesture': GObject.Object.Notify;
-            'notify::minimum-font-size': GObject.Object.Notify;
             'notify::minimum-font-size': GObject.Object.Notify;
             'notify::monospace-font-family': GObject.Object.Notify;
-            'notify::monospace-font-family': GObject.Object.Notify;
-            'notify::pictograph-font-family': GObject.Object.Notify;
             'notify::pictograph-font-family': GObject.Object.Notify;
             'notify::print-backgrounds': GObject.Object.Notify;
-            'notify::print-backgrounds': GObject.Object.Notify;
-            'notify::sans-serif-font-family': GObject.Object.Notify;
             'notify::sans-serif-font-family': GObject.Object.Notify;
             'notify::serif-font-family': GObject.Object.Notify;
-            'notify::serif-font-family': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
             'notify::user-agent': GObject.Object.Notify;
             'notify::webrtc-udp-ports-range': GObject.Object.Notify;
-            'notify::webrtc-udp-ports-range': GObject.Object.Notify;
-            'notify::zoom-text-only': GObject.Object.Notify;
             'notify::zoom-text-only': GObject.Object.Notify;
         }
 
@@ -10527,14 +10448,9 @@ export namespace WebKit {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::content-length': GObject.Object.Notify;
-            'notify::content-length': GObject.Object.Notify;
-            'notify::http-headers': GObject.Object.Notify;
             'notify::http-headers': GObject.Object.Notify;
             'notify::mime-type': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
             'notify::status-code': GObject.Object.Notify;
-            'notify::status-code': GObject.Object.Notify;
-            'notify::suggested-filename': GObject.Object.Notify;
             'notify::suggested-filename': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
         }
@@ -10790,7 +10706,6 @@ export namespace WebKit {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::stream': GObject.Object.Notify;
-            'notify::stream-length': GObject.Object.Notify;
             'notify::stream-length': GObject.Object.Notify;
         }
 
@@ -11455,8 +11370,6 @@ export namespace WebKit {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::is-for-audio-device': GObject.Object.Notify;
-            'notify::is-for-audio-device': GObject.Object.Notify;
-            'notify::is-for-video-device': GObject.Object.Notify;
             'notify::is-for-video-device': GObject.Object.Notify;
         }
 
@@ -11988,7 +11901,6 @@ export namespace WebKit {
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
             'notify::fd-list': GObject.Object.Notify;
-            'notify::fd-list': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parameters': GObject.Object.Notify;
         }
@@ -12123,8 +12035,6 @@ export namespace WebKit {
             'initialize-web-process-extensions': InitializeWebProcessExtensions;
             'user-message-received': UserMessageReceived;
             'notify::memory-pressure-settings': GObject.Object.Notify;
-            'notify::memory-pressure-settings': GObject.Object.Notify;
-            'notify::time-zone-override': GObject.Object.Notify;
             'notify::time-zone-override': GObject.Object.Notify;
         }
 
@@ -12505,10 +12415,7 @@ export namespace WebKit {
             detach: Detach;
             'open-window': OpenWindow;
             'notify::attached-height': GObject.Object.Notify;
-            'notify::attached-height': GObject.Object.Notify;
             'notify::can-attach': GObject.Object.Notify;
-            'notify::can-attach': GObject.Object.Notify;
-            'notify::inspected-uri': GObject.Object.Notify;
             'notify::inspected-uri': GObject.Object.Notify;
         }
 
@@ -12986,104 +12893,63 @@ export namespace WebKit {
             'user-message-received': UserMessageReceived;
             'web-process-terminated': WebProcessTerminated;
             'notify::automation-presentation-type': GObject.Object.Notify;
-            'notify::automation-presentation-type': GObject.Object.Notify;
-            'notify::camera-capture-state': GObject.Object.Notify;
             'notify::camera-capture-state': GObject.Object.Notify;
             'notify::default-content-security-policy': GObject.Object.Notify;
-            'notify::default-content-security-policy': GObject.Object.Notify;
-            'notify::display-capture-state': GObject.Object.Notify;
             'notify::display-capture-state': GObject.Object.Notify;
             'notify::editable': GObject.Object.Notify;
             'notify::estimated-load-progress': GObject.Object.Notify;
-            'notify::estimated-load-progress': GObject.Object.Notify;
             'notify::favicon': GObject.Object.Notify;
             'notify::is-controlled-by-automation': GObject.Object.Notify;
-            'notify::is-controlled-by-automation': GObject.Object.Notify;
-            'notify::is-loading': GObject.Object.Notify;
             'notify::is-loading': GObject.Object.Notify;
             'notify::is-muted': GObject.Object.Notify;
-            'notify::is-muted': GObject.Object.Notify;
-            'notify::is-playing-audio': GObject.Object.Notify;
             'notify::is-playing-audio': GObject.Object.Notify;
             'notify::is-web-process-responsive': GObject.Object.Notify;
-            'notify::is-web-process-responsive': GObject.Object.Notify;
-            'notify::microphone-capture-state': GObject.Object.Notify;
             'notify::microphone-capture-state': GObject.Object.Notify;
             'notify::network-session': GObject.Object.Notify;
-            'notify::network-session': GObject.Object.Notify;
             'notify::page-id': GObject.Object.Notify;
-            'notify::page-id': GObject.Object.Notify;
-            'notify::related-view': GObject.Object.Notify;
             'notify::related-view': GObject.Object.Notify;
             'notify::settings': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
             'notify::user-content-manager': GObject.Object.Notify;
-            'notify::user-content-manager': GObject.Object.Notify;
-            'notify::web-context': GObject.Object.Notify;
             'notify::web-context': GObject.Object.Notify;
             'notify::web-extension-mode': GObject.Object.Notify;
-            'notify::web-extension-mode': GObject.Object.Notify;
-            'notify::website-policies': GObject.Object.Notify;
             'notify::website-policies': GObject.Object.Notify;
             'notify::zoom-level': GObject.Object.Notify;
-            'notify::zoom-level': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
             'notify::can-focus': GObject.Object.Notify;
             'notify::can-target': GObject.Object.Notify;
-            'notify::can-target': GObject.Object.Notify;
             'notify::css-classes': GObject.Object.Notify;
-            'notify::css-classes': GObject.Object.Notify;
-            'notify::css-name': GObject.Object.Notify;
             'notify::css-name': GObject.Object.Notify;
             'notify::cursor': GObject.Object.Notify;
-            'notify::focus-on-click': GObject.Object.Notify;
             'notify::focus-on-click': GObject.Object.Notify;
             'notify::focusable': GObject.Object.Notify;
             'notify::halign': GObject.Object.Notify;
             'notify::has-default': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
             'notify::has-focus': GObject.Object.Notify;
             'notify::has-tooltip': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
             'notify::height-request': GObject.Object.Notify;
             'notify::hexpand': GObject.Object.Notify;
             'notify::hexpand-set': GObject.Object.Notify;
-            'notify::hexpand-set': GObject.Object.Notify;
-            'notify::layout-manager': GObject.Object.Notify;
             'notify::layout-manager': GObject.Object.Notify;
             'notify::limit-events': GObject.Object.Notify;
-            'notify::limit-events': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
             'notify::margin-bottom': GObject.Object.Notify;
             'notify::margin-end': GObject.Object.Notify;
-            'notify::margin-end': GObject.Object.Notify;
             'notify::margin-start': GObject.Object.Notify;
-            'notify::margin-start': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
             'notify::margin-top': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
             'notify::overflow': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::receives-default': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
             'notify::root': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
             'notify::scale-factor': GObject.Object.Notify;
             'notify::sensitive': GObject.Object.Notify;
             'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
             'notify::tooltip-text': GObject.Object.Notify;
             'notify::valign': GObject.Object.Notify;
             'notify::vexpand': GObject.Object.Notify;
             'notify::vexpand-set': GObject.Object.Notify;
-            'notify::vexpand-set': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
             'notify::width-request': GObject.Object.Notify;
         }
 
@@ -15284,63 +15150,40 @@ export namespace WebKit {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
             'notify::can-focus': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::can-target': GObject.Object.Notify;
             'notify::can-target': GObject.Object.Notify;
             'notify::css-classes': GObject.Object.Notify;
-            'notify::css-classes': GObject.Object.Notify;
-            'notify::css-name': GObject.Object.Notify;
             'notify::css-name': GObject.Object.Notify;
             'notify::cursor': GObject.Object.Notify;
-            'notify::focus-on-click': GObject.Object.Notify;
             'notify::focus-on-click': GObject.Object.Notify;
             'notify::focusable': GObject.Object.Notify;
             'notify::halign': GObject.Object.Notify;
             'notify::has-default': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
             'notify::has-focus': GObject.Object.Notify;
             'notify::has-tooltip': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
             'notify::height-request': GObject.Object.Notify;
             'notify::hexpand': GObject.Object.Notify;
             'notify::hexpand-set': GObject.Object.Notify;
-            'notify::hexpand-set': GObject.Object.Notify;
-            'notify::layout-manager': GObject.Object.Notify;
             'notify::layout-manager': GObject.Object.Notify;
             'notify::limit-events': GObject.Object.Notify;
-            'notify::limit-events': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
             'notify::margin-bottom': GObject.Object.Notify;
             'notify::margin-end': GObject.Object.Notify;
-            'notify::margin-end': GObject.Object.Notify;
             'notify::margin-start': GObject.Object.Notify;
-            'notify::margin-start': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
             'notify::margin-top': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
             'notify::overflow': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::receives-default': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
             'notify::root': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
             'notify::scale-factor': GObject.Object.Notify;
             'notify::sensitive': GObject.Object.Notify;
             'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
             'notify::tooltip-text': GObject.Object.Notify;
             'notify::valign': GObject.Object.Notify;
             'notify::vexpand': GObject.Object.Notify;
             'notify::vexpand-set': GObject.Object.Notify;
-            'notify::vexpand-set': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
             'notify::width-request': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
-            'notify::accessible-role': GObject.Object.Notify;
             'notify::accessible-role': GObject.Object.Notify;
         }
 
@@ -16627,14 +16470,9 @@ export namespace WebKit {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::base-cache-directory': GObject.Object.Notify;
-            'notify::base-cache-directory': GObject.Object.Notify;
-            'notify::base-data-directory': GObject.Object.Notify;
             'notify::base-data-directory': GObject.Object.Notify;
             'notify::is-ephemeral': GObject.Object.Notify;
-            'notify::is-ephemeral': GObject.Object.Notify;
             'notify::origin-storage-ratio': GObject.Object.Notify;
-            'notify::origin-storage-ratio': GObject.Object.Notify;
-            'notify::total-storage-ratio': GObject.Object.Notify;
             'notify::total-storage-ratio': GObject.Object.Notify;
         }
 
@@ -17079,15 +16917,10 @@ export namespace WebKit {
             'notify::fullscreen': GObject.Object.Notify;
             'notify::geometry': GObject.Object.Notify;
             'notify::locationbar-visible': GObject.Object.Notify;
-            'notify::locationbar-visible': GObject.Object.Notify;
-            'notify::menubar-visible': GObject.Object.Notify;
             'notify::menubar-visible': GObject.Object.Notify;
             'notify::resizable': GObject.Object.Notify;
             'notify::scrollbars-visible': GObject.Object.Notify;
-            'notify::scrollbars-visible': GObject.Object.Notify;
             'notify::statusbar-visible': GObject.Object.Notify;
-            'notify::statusbar-visible': GObject.Object.Notify;
-            'notify::toolbar-visible': GObject.Object.Notify;
             'notify::toolbar-visible': GObject.Object.Notify;
         }
 

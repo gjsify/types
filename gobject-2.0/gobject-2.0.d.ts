@@ -2980,9 +2980,7 @@ export namespace GObject {
             'notify::flags': Object.Notify;
             'notify::source': Object.Notify;
             'notify::source-property': Object.Notify;
-            'notify::source-property': Object.Notify;
             'notify::target': Object.Notify;
-            'notify::target-property': Object.Notify;
             'notify::target-property': Object.Notify;
         }
 
@@ -4471,7 +4469,6 @@ export namespace GObject {
             bind: Bind;
             unbind: Unbind;
             'notify::target': Object.Notify;
-            'notify::target-type': Object.Notify;
             'notify::target-type': Object.Notify;
         }
 

@@ -1239,19 +1239,13 @@ export namespace NMClient {
             'notify::flags': GObject.Object.Notify;
             'notify::frequency': GObject.Object.Notify;
             'notify::hw-address': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
             'notify::last-seen': GObject.Object.Notify;
-            'notify::last-seen': GObject.Object.Notify;
-            'notify::max-bitrate': GObject.Object.Notify;
             'notify::max-bitrate': GObject.Object.Notify;
             'notify::mode': GObject.Object.Notify;
-            'notify::rsn-flags': GObject.Object.Notify;
             'notify::rsn-flags': GObject.Object.Notify;
             'notify::ssid': GObject.Object.Notify;
             'notify::strength': GObject.Object.Notify;
             'notify::wpa-flags': GObject.Object.Notify;
-            'notify::wpa-flags': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -2200,22 +2194,16 @@ export namespace NMClient {
             'notify::default6': GObject.Object.Notify;
             'notify::devices': GObject.Object.Notify;
             'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
             'notify::dhcp6-config': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
             'notify::ip6-config': GObject.Object.Notify;
             'notify::master': GObject.Object.Notify;
-            'notify::specific-object': GObject.Object.Notify;
             'notify::specific-object': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::type': GObject.Object.Notify;
             'notify::uuid': GObject.Object.Notify;
             'notify::vpn': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -3200,35 +3188,22 @@ export namespace NMClient {
             'device-removed': DeviceRemoved;
             'permission-changed': PermissionChanged;
             'notify::activating-connection': GObject.Object.Notify;
-            'notify::activating-connection': GObject.Object.Notify;
             'notify::active-connections': GObject.Object.Notify;
-            'notify::active-connections': GObject.Object.Notify;
-            'notify::all-devices': GObject.Object.Notify;
             'notify::all-devices': GObject.Object.Notify;
             'notify::connectivity': GObject.Object.Notify;
             'notify::devices': GObject.Object.Notify;
             'notify::manager-running': GObject.Object.Notify;
-            'notify::manager-running': GObject.Object.Notify;
             'notify::networking-enabled': GObject.Object.Notify;
-            'notify::networking-enabled': GObject.Object.Notify;
-            'notify::primary-connection': GObject.Object.Notify;
             'notify::primary-connection': GObject.Object.Notify;
             'notify::startup': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::version': GObject.Object.Notify;
             'notify::wimax-enabled': GObject.Object.Notify;
-            'notify::wimax-enabled': GObject.Object.Notify;
-            'notify::wimax-hardware-enabled': GObject.Object.Notify;
             'notify::wimax-hardware-enabled': GObject.Object.Notify;
             'notify::wireless-enabled': GObject.Object.Notify;
-            'notify::wireless-enabled': GObject.Object.Notify;
-            'notify::wireless-hardware-enabled': GObject.Object.Notify;
             'notify::wireless-hardware-enabled': GObject.Object.Notify;
             'notify::wwan-enabled': GObject.Object.Notify;
-            'notify::wwan-enabled': GObject.Object.Notify;
             'notify::wwan-hardware-enabled': GObject.Object.Notify;
-            'notify::wwan-hardware-enabled': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -4460,7 +4435,6 @@ export namespace NMClient {
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::options': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5253,7 +5227,6 @@ export namespace NMClient {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::options': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -6054,41 +6027,28 @@ export namespace NMClient {
         interface SignalSignatures extends Object.SignalSignatures {
             'state-changed': StateChanged;
             'notify::active-connection': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
             'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
             'notify::available-connections': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
             'notify::dhcp6-config': GObject.Object.Notify;
             'notify::driver': GObject.Object.Notify;
             'notify::driver-version': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
             'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
             'notify::firmware-version': GObject.Object.Notify;
             'notify::interface': GObject.Object.Notify;
             'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
             'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
             'notify::ip6-config': GObject.Object.Notify;
             'notify::managed': GObject.Object.Notify;
             'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
             'notify::physical-port-id': GObject.Object.Notify;
             'notify::product': GObject.Object.Notify;
             'notify::real': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::udi': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -7322,41 +7282,28 @@ export namespace NMClient {
         interface SignalSignatures extends Device.SignalSignatures {
             'notify::carrier': GObject.Object.Notify;
             'notify::active-connection': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
             'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
             'notify::available-connections': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
             'notify::dhcp6-config': GObject.Object.Notify;
             'notify::driver': GObject.Object.Notify;
             'notify::driver-version': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
             'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
             'notify::firmware-version': GObject.Object.Notify;
             'notify::interface': GObject.Object.Notify;
             'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
             'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
             'notify::ip6-config': GObject.Object.Notify;
             'notify::managed': GObject.Object.Notify;
             'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
             'notify::physical-port-id': GObject.Object.Notify;
             'notify::product': GObject.Object.Notify;
             'notify::real': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::udi': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -8062,44 +8009,30 @@ export namespace NMClient {
         interface SignalSignatures extends Device.SignalSignatures {
             'notify::carrier': GObject.Object.Notify;
             'notify::hw-address': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
             'notify::slaves': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
             'notify::active-connection': GObject.Object.Notify;
             'notify::autoconnect': GObject.Object.Notify;
             'notify::available-connections': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
             'notify::dhcp6-config': GObject.Object.Notify;
             'notify::driver': GObject.Object.Notify;
             'notify::driver-version': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
             'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
             'notify::firmware-version': GObject.Object.Notify;
             'notify::interface': GObject.Object.Notify;
             'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
             'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
             'notify::ip6-config': GObject.Object.Notify;
             'notify::managed': GObject.Object.Notify;
             'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
             'notify::physical-port-id': GObject.Object.Notify;
             'notify::product': GObject.Object.Notify;
             'notify::real': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::udi': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -8830,44 +8763,30 @@ export namespace NMClient {
         interface SignalSignatures extends Device.SignalSignatures {
             'notify::carrier': GObject.Object.Notify;
             'notify::hw-address': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
             'notify::slaves': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
             'notify::active-connection': GObject.Object.Notify;
             'notify::autoconnect': GObject.Object.Notify;
             'notify::available-connections': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
             'notify::dhcp6-config': GObject.Object.Notify;
             'notify::driver': GObject.Object.Notify;
             'notify::driver-version': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
             'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
             'notify::firmware-version': GObject.Object.Notify;
             'notify::interface': GObject.Object.Notify;
             'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
             'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
             'notify::ip6-config': GObject.Object.Notify;
             'notify::managed': GObject.Object.Notify;
             'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
             'notify::physical-port-id': GObject.Object.Notify;
             'notify::product': GObject.Object.Notify;
             'notify::real': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::udi': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -9597,46 +9516,31 @@ export namespace NMClient {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
             'notify::bt-capabilities': GObject.Object.Notify;
-            'notify::bt-capabilities': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
             'notify::hw-address': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::active-connection': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
             'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
             'notify::available-connections': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
             'notify::dhcp6-config': GObject.Object.Notify;
             'notify::driver': GObject.Object.Notify;
             'notify::driver-version': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
             'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
             'notify::firmware-version': GObject.Object.Notify;
             'notify::interface': GObject.Object.Notify;
             'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
             'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
             'notify::ip6-config': GObject.Object.Notify;
             'notify::managed': GObject.Object.Notify;
             'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
             'notify::physical-port-id': GObject.Object.Notify;
             'notify::product': GObject.Object.Notify;
             'notify::real': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::udi': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -10371,46 +10275,31 @@ export namespace NMClient {
         interface SignalSignatures extends Device.SignalSignatures {
             'notify::carrier': GObject.Object.Notify;
             'notify::hw-address': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::perm-hw-address': GObject.Object.Notify;
             'notify::perm-hw-address': GObject.Object.Notify;
             'notify::speed': GObject.Object.Notify;
             'notify::active-connection': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
             'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
             'notify::available-connections': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
             'notify::dhcp6-config': GObject.Object.Notify;
             'notify::driver': GObject.Object.Notify;
             'notify::driver-version': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
             'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
             'notify::firmware-version': GObject.Object.Notify;
             'notify::interface': GObject.Object.Notify;
             'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
             'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
             'notify::ip6-config': GObject.Object.Notify;
             'notify::managed': GObject.Object.Notify;
             'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
             'notify::physical-port-id': GObject.Object.Notify;
             'notify::product': GObject.Object.Notify;
             'notify::real': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::udi': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -11155,45 +11044,30 @@ export namespace NMClient {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
             'notify::hw-address': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
             'notify::type-description': GObject.Object.Notify;
-            'notify::type-description': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
             'notify::active-connection': GObject.Object.Notify;
             'notify::autoconnect': GObject.Object.Notify;
             'notify::available-connections': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
             'notify::dhcp6-config': GObject.Object.Notify;
             'notify::driver': GObject.Object.Notify;
             'notify::driver-version': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
             'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
             'notify::firmware-version': GObject.Object.Notify;
             'notify::interface': GObject.Object.Notify;
             'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
             'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
             'notify::ip6-config': GObject.Object.Notify;
             'notify::managed': GObject.Object.Notify;
             'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
             'notify::physical-port-id': GObject.Object.Notify;
             'notify::product': GObject.Object.Notify;
             'notify::real': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::udi': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -11916,43 +11790,29 @@ export namespace NMClient {
         interface SignalSignatures extends Device.SignalSignatures {
             'notify::carrier': GObject.Object.Notify;
             'notify::hw-address': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
             'notify::active-connection': GObject.Object.Notify;
             'notify::autoconnect': GObject.Object.Notify;
             'notify::available-connections': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
             'notify::dhcp6-config': GObject.Object.Notify;
             'notify::driver': GObject.Object.Notify;
             'notify::driver-version': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
             'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
             'notify::firmware-version': GObject.Object.Notify;
             'notify::interface': GObject.Object.Notify;
             'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
             'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
             'notify::ip6-config': GObject.Object.Notify;
             'notify::managed': GObject.Object.Notify;
             'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
             'notify::physical-port-id': GObject.Object.Notify;
             'notify::product': GObject.Object.Notify;
             'notify::real': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::udi': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -12672,45 +12532,30 @@ export namespace NMClient {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
             'notify::current-capabilities': GObject.Object.Notify;
-            'notify::current-capabilities': GObject.Object.Notify;
             'notify::modem-capabilities': GObject.Object.Notify;
-            'notify::modem-capabilities': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
             'notify::active-connection': GObject.Object.Notify;
             'notify::autoconnect': GObject.Object.Notify;
             'notify::available-connections': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
             'notify::dhcp6-config': GObject.Object.Notify;
             'notify::driver': GObject.Object.Notify;
             'notify::driver-version': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
             'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
             'notify::firmware-version': GObject.Object.Notify;
             'notify::interface': GObject.Object.Notify;
             'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
             'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
             'notify::ip6-config': GObject.Object.Notify;
             'notify::managed': GObject.Object.Notify;
             'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
             'notify::physical-port-id': GObject.Object.Notify;
             'notify::product': GObject.Object.Notify;
             'notify::real': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::udi': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -13445,46 +13290,31 @@ export namespace NMClient {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
             'notify::active-channel': GObject.Object.Notify;
-            'notify::active-channel': GObject.Object.Notify;
             'notify::companion': GObject.Object.Notify;
             'notify::hw-address': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
             'notify::active-connection': GObject.Object.Notify;
             'notify::autoconnect': GObject.Object.Notify;
             'notify::available-connections': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
             'notify::dhcp6-config': GObject.Object.Notify;
             'notify::driver': GObject.Object.Notify;
             'notify::driver-version': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
             'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
             'notify::firmware-version': GObject.Object.Notify;
             'notify::interface': GObject.Object.Notify;
             'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
             'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
             'notify::ip6-config': GObject.Object.Notify;
             'notify::managed': GObject.Object.Notify;
             'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
             'notify::physical-port-id': GObject.Object.Notify;
             'notify::product': GObject.Object.Notify;
             'notify::real': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::udi': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -14220,44 +14050,30 @@ export namespace NMClient {
         interface SignalSignatures extends Device.SignalSignatures {
             'notify::carrier': GObject.Object.Notify;
             'notify::hw-address': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
             'notify::slaves': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
             'notify::active-connection': GObject.Object.Notify;
             'notify::autoconnect': GObject.Object.Notify;
             'notify::available-connections': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
             'notify::dhcp6-config': GObject.Object.Notify;
             'notify::driver': GObject.Object.Notify;
             'notify::driver-version': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
             'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
             'notify::firmware-version': GObject.Object.Notify;
             'notify::interface': GObject.Object.Notify;
             'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
             'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
             'notify::ip6-config': GObject.Object.Notify;
             'notify::managed': GObject.Object.Notify;
             'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
             'notify::physical-port-id': GObject.Object.Notify;
             'notify::product': GObject.Object.Notify;
             'notify::real': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::udi': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -14988,46 +14804,31 @@ export namespace NMClient {
         interface SignalSignatures extends Device.SignalSignatures {
             'notify::carrier': GObject.Object.Notify;
             'notify::hw-address': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::vlan-id': GObject.Object.Notify;
-            'notify::vlan-id': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
             'notify::active-connection': GObject.Object.Notify;
             'notify::autoconnect': GObject.Object.Notify;
             'notify::available-connections': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
             'notify::dhcp6-config': GObject.Object.Notify;
             'notify::driver': GObject.Object.Notify;
             'notify::driver-version': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
             'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
             'notify::firmware-version': GObject.Object.Notify;
             'notify::interface': GObject.Object.Notify;
             'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
             'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
             'notify::ip6-config': GObject.Object.Notify;
             'notify::managed': GObject.Object.Notify;
             'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
             'notify::physical-port-id': GObject.Object.Notify;
             'notify::product': GObject.Object.Notify;
             'notify::real': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::udi': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -15776,53 +15577,35 @@ export namespace NMClient {
             'access-point-added': AccessPointAdded;
             'access-point-removed': AccessPointRemoved;
             'notify::access-points': GObject.Object.Notify;
-            'notify::access-points': GObject.Object.Notify;
-            'notify::active-access-point': GObject.Object.Notify;
             'notify::active-access-point': GObject.Object.Notify;
             'notify::bitrate': GObject.Object.Notify;
             'notify::hw-address': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
             'notify::mode': GObject.Object.Notify;
             'notify::perm-hw-address': GObject.Object.Notify;
-            'notify::perm-hw-address': GObject.Object.Notify;
             'notify::wireless-capabilities': GObject.Object.Notify;
-            'notify::wireless-capabilities': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
             'notify::active-connection': GObject.Object.Notify;
             'notify::autoconnect': GObject.Object.Notify;
             'notify::available-connections': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
             'notify::dhcp6-config': GObject.Object.Notify;
             'notify::driver': GObject.Object.Notify;
             'notify::driver-version': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
             'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
             'notify::firmware-version': GObject.Object.Notify;
             'notify::interface': GObject.Object.Notify;
             'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
             'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
             'notify::ip6-config': GObject.Object.Notify;
             'notify::managed': GObject.Object.Notify;
             'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
             'notify::physical-port-id': GObject.Object.Notify;
             'notify::product': GObject.Object.Notify;
             'notify::real': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::udi': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -16644,53 +16427,36 @@ export namespace NMClient {
             'nsp-added': NspAdded;
             'nsp-removed': NspRemoved;
             'notify::active-nsp': GObject.Object.Notify;
-            'notify::active-nsp': GObject.Object.Notify;
             'notify::bsid': GObject.Object.Notify;
             'notify::center-frequency': GObject.Object.Notify;
-            'notify::center-frequency': GObject.Object.Notify;
             'notify::cinr': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
             'notify::hw-address': GObject.Object.Notify;
             'notify::nsps': GObject.Object.Notify;
             'notify::rssi': GObject.Object.Notify;
             'notify::tx-power': GObject.Object.Notify;
-            'notify::tx-power': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
             'notify::active-connection': GObject.Object.Notify;
             'notify::autoconnect': GObject.Object.Notify;
             'notify::available-connections': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::device-type': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
             'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
             'notify::dhcp6-config': GObject.Object.Notify;
             'notify::driver': GObject.Object.Notify;
             'notify::driver-version': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
             'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
             'notify::firmware-version': GObject.Object.Notify;
             'notify::interface': GObject.Object.Notify;
             'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
             'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
             'notify::ip6-config': GObject.Object.Notify;
             'notify::managed': GObject.Object.Notify;
             'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
             'notify::physical-port-id': GObject.Object.Notify;
             'notify::product': GObject.Object.Notify;
             'notify::real': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::udi': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -17525,8 +17291,6 @@ export namespace NMClient {
             'notify::routes': GObject.Object.Notify;
             'notify::searches': GObject.Object.Notify;
             'notify::wins-servers': GObject.Object.Notify;
-            'notify::wins-servers': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -18382,7 +18146,6 @@ export namespace NMClient {
             'notify::routes': GObject.Object.Notify;
             'notify::searches': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -19234,7 +18997,6 @@ export namespace NMClient {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'object-creation-failed': ObjectCreationFailed;
             'notify::dbus-path': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -20037,7 +19799,6 @@ export namespace NMClient {
             removed: Removed;
             updated: Updated;
             visible: Visible;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
             'notify::unsaved': GObject.Object.Notify;
             'notify::path': GObject.Object.Notify;
@@ -20882,9 +20643,7 @@ export namespace NMClient {
             'connections-read': ConnectionsRead;
             'new-connection': NewConnection;
             'notify::can-modify': GObject.Object.Notify;
-            'notify::can-modify': GObject.Object.Notify;
             'notify::hostname': GObject.Object.Notify;
-            'notify::service-running': GObject.Object.Notify;
             'notify::service-running': GObject.Object.Notify;
         }
 
@@ -21800,7 +21559,6 @@ export namespace NMClient {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'registration-result': RegistrationResult;
             'notify::auto-register': GObject.Object.Notify;
-            'notify::auto-register': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::identifier': GObject.Object.Notify;
             'notify::registered': GObject.Object.Notify;
@@ -22004,28 +21762,21 @@ export namespace NMClient {
             'vpn-state-changed': VpnStateChanged;
             'notify::banner': GObject.Object.Notify;
             'notify::vpn-state': GObject.Object.Notify;
-            'notify::vpn-state': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::default': GObject.Object.Notify;
             'notify::default6': GObject.Object.Notify;
             'notify::devices': GObject.Object.Notify;
             'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
             'notify::dhcp6-config': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
             'notify::ip6-config': GObject.Object.Notify;
             'notify::master': GObject.Object.Notify;
-            'notify::specific-object': GObject.Object.Notify;
             'notify::specific-object': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::type': GObject.Object.Notify;
             'notify::uuid': GObject.Object.Notify;
             'notify::vpn': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 
@@ -22751,10 +22502,7 @@ export namespace NMClient {
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::name': GObject.Object.Notify;
             'notify::network-type': GObject.Object.Notify;
-            'notify::network-type': GObject.Object.Notify;
             'notify::signal-quality': GObject.Object.Notify;
-            'notify::signal-quality': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
             'notify::dbus-path': GObject.Object.Notify;
         }
 

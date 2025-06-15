@@ -910,8 +910,6 @@ export namespace OSTree {
         interface SignalSignatures extends Gio.FilterInputStream.SignalSignatures {
             'notify::checksum': GObject.Object.Notify;
             'notify::base-stream': GObject.Object.Notify;
-            'notify::base-stream': GObject.Object.Notify;
-            'notify::close-base-stream': GObject.Object.Notify;
             'notify::close-base-stream': GObject.Object.Notify;
         }
 
@@ -1791,8 +1789,6 @@ export namespace OSTree {
             'gpg-verify-result': GpgVerifyResult;
             'notify::path': GObject.Object.Notify;
             'notify::remotes-config-dir': GObject.Object.Notify;
-            'notify::remotes-config-dir': GObject.Object.Notify;
-            'notify::sysroot-path': GObject.Object.Notify;
             'notify::sysroot-path': GObject.Object.Notify;
         }
 

@@ -124,8 +124,6 @@ export namespace Cheese {
             'notify::device': GObject.Object.Notify;
             'notify::format': GObject.Object.Notify;
             'notify::num-camera-devices': GObject.Object.Notify;
-            'notify::num-camera-devices': GObject.Object.Notify;
-            'notify::video-texture': GObject.Object.Notify;
             'notify::video-texture': GObject.Object.Notify;
         }
 
@@ -1779,9 +1777,7 @@ export namespace Cheese {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::control-valve': GObject.Object.Notify;
-            'notify::control-valve': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
-            'notify::pipeline-desc': GObject.Object.Notify;
             'notify::pipeline-desc': GObject.Object.Notify;
         }
 

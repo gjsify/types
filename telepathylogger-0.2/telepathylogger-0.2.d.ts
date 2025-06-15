@@ -89,16 +89,11 @@ export namespace TelepathyLogger {
         // Signal signatures
         interface SignalSignatures extends Event.SignalSignatures {
             'notify::detailed-end-reason': GObject.Object.Notify;
-            'notify::detailed-end-reason': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::end-actor': GObject.Object.Notify;
-            'notify::end-actor': GObject.Object.Notify;
-            'notify::end-reason': GObject.Object.Notify;
             'notify::end-reason': GObject.Object.Notify;
             'notify::account': GObject.Object.Notify;
             'notify::account-path': GObject.Object.Notify;
-            'notify::account-path': GObject.Object.Notify;
-            'notify::channel-path': GObject.Object.Notify;
             'notify::channel-path': GObject.Object.Notify;
             'notify::receiver': GObject.Object.Notify;
             'notify::sender': GObject.Object.Notify;
@@ -167,7 +162,6 @@ export namespace TelepathyLogger {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::alias': GObject.Object.Notify;
-            'notify::avatar-token': GObject.Object.Notify;
             'notify::avatar-token': GObject.Object.Notify;
             'notify::identifier': GObject.Object.Notify;
             'notify::type': GObject.Object.Notify;
@@ -250,8 +244,6 @@ export namespace TelepathyLogger {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::account': GObject.Object.Notify;
             'notify::account-path': GObject.Object.Notify;
-            'notify::account-path': GObject.Object.Notify;
-            'notify::channel-path': GObject.Object.Notify;
             'notify::channel-path': GObject.Object.Notify;
             'notify::receiver': GObject.Object.Notify;
             'notify::sender': GObject.Object.Notify;
@@ -621,7 +613,6 @@ export namespace TelepathyLogger {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::filter': GObject.Object.Notify;
             'notify::filter-data': GObject.Object.Notify;
-            'notify::filter-data': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -726,18 +717,12 @@ export namespace TelepathyLogger {
         // Signal signatures
         interface SignalSignatures extends Event.SignalSignatures {
             'notify::edit-timestamp': GObject.Object.Notify;
-            'notify::edit-timestamp': GObject.Object.Notify;
             'notify::message': GObject.Object.Notify;
             'notify::message-token': GObject.Object.Notify;
-            'notify::message-token': GObject.Object.Notify;
             'notify::message-type': GObject.Object.Notify;
-            'notify::message-type': GObject.Object.Notify;
-            'notify::supersedes-token': GObject.Object.Notify;
             'notify::supersedes-token': GObject.Object.Notify;
             'notify::account': GObject.Object.Notify;
             'notify::account-path': GObject.Object.Notify;
-            'notify::account-path': GObject.Object.Notify;
-            'notify::channel-path': GObject.Object.Notify;
             'notify::channel-path': GObject.Object.Notify;
             'notify::receiver': GObject.Object.Notify;
             'notify::sender': GObject.Object.Notify;

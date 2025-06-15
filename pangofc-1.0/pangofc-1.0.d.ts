@@ -323,8 +323,6 @@ export namespace PangoFc {
         // Signal signatures
         interface SignalSignatures extends Pango.FontMap.SignalSignatures {
             'notify::item-type': GObject.Object.Notify;
-            'notify::item-type': GObject.Object.Notify;
-            'notify::n-items': GObject.Object.Notify;
             'notify::n-items': GObject.Object.Notify;
         }
 

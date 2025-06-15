@@ -249,16 +249,10 @@ export namespace Xfconf {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'property-changed': PropertyChanged;
             'notify::channel-name': GObject.Object.Notify;
-            'notify::channel-name': GObject.Object.Notify;
-            'notify::is-singleton': GObject.Object.Notify;
             'notify::is-singleton': GObject.Object.Notify;
             'notify::property-base': GObject.Object.Notify;
-            'notify::property-base': GObject.Object.Notify;
-            'property-changed::channel-name': PropertyChanged;
             'property-changed::channel-name': PropertyChanged;
             'property-changed::is-singleton': PropertyChanged;
-            'property-changed::is-singleton': PropertyChanged;
-            'property-changed::property-base': PropertyChanged;
             'property-changed::property-base': PropertyChanged;
         }
 

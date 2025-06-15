@@ -158,13 +158,9 @@ export namespace GUPnPDLNA {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::audio-information': GObject.Object.Notify;
-            'notify::audio-information': GObject.Object.Notify;
             'notify::container-information': GObject.Object.Notify;
-            'notify::container-information': GObject.Object.Notify;
-            'notify::image-information': GObject.Object.Notify;
             'notify::image-information': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
-            'notify::video-information': GObject.Object.Notify;
             'notify::video-information': GObject.Object.Notify;
         }
 
@@ -396,15 +392,11 @@ export namespace GUPnPDLNA {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::audio-restrictions': GObject.Object.Notify;
-            'notify::audio-restrictions': GObject.Object.Notify;
-            'notify::container-restrictions': GObject.Object.Notify;
             'notify::container-restrictions': GObject.Object.Notify;
             'notify::extended': GObject.Object.Notify;
             'notify::image-restrictions': GObject.Object.Notify;
-            'notify::image-restrictions': GObject.Object.Notify;
             'notify::mime': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
-            'notify::video-restrictions': GObject.Object.Notify;
             'notify::video-restrictions': GObject.Object.Notify;
         }
 
@@ -514,8 +506,6 @@ export namespace GUPnPDLNA {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             done: Done;
             'notify::extended-mode': GObject.Object.Notify;
-            'notify::extended-mode': GObject.Object.Notify;
-            'notify::relaxed-mode': GObject.Object.Notify;
             'notify::relaxed-mode': GObject.Object.Notify;
         }
 

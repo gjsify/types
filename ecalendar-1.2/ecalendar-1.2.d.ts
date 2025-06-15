@@ -685,7 +685,6 @@ export namespace ECalendar {
             'free-busy-data': FreeBusyData;
             'notify::capabilities': GObject.Object.Notify;
             'notify::main-context': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
             'notify::online': GObject.Object.Notify;
             'notify::opened': GObject.Object.Notify;
             'notify::readonly': GObject.Object.Notify;

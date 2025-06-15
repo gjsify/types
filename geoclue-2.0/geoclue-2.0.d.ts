@@ -84,32 +84,19 @@ export namespace Geoclue {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
             'notify::active': GObject.Object.Notify;
             'notify::desktop-id': GObject.Object.Notify;
-            'notify::desktop-id': GObject.Object.Notify;
-            'notify::distance-threshold': GObject.Object.Notify;
             'notify::distance-threshold': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::requested-accuracy-level': GObject.Object.Notify;
-            'notify::requested-accuracy-level': GObject.Object.Notify;
-            'notify::time-threshold': GObject.Object.Notify;
             'notify::time-threshold': GObject.Object.Notify;
         }
 
@@ -1278,16 +1265,11 @@ export namespace Geoclue {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::active': GObject.Object.Notify;
             'notify::desktop-id': GObject.Object.Notify;
-            'notify::desktop-id': GObject.Object.Notify;
-            'notify::distance-threshold': GObject.Object.Notify;
             'notify::distance-threshold': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::requested-accuracy-level': GObject.Object.Notify;
-            'notify::requested-accuracy-level': GObject.Object.Notify;
-            'notify::time-threshold': GObject.Object.Notify;
             'notify::time-threshold': GObject.Object.Notify;
         }
 
@@ -1998,22 +1980,13 @@ export namespace Geoclue {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
             'notify::accuracy': GObject.Object.Notify;
             'notify::altitude': GObject.Object.Notify;
@@ -2972,7 +2945,6 @@ export namespace Geoclue {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::accuracy': GObject.Object.Notify;
             'notify::altitude': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
@@ -3561,26 +3533,15 @@ export namespace Geoclue {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::available-accuracy-level': GObject.Object.Notify;
-            'notify::available-accuracy-level': GObject.Object.Notify;
-            'notify::in-use': GObject.Object.Notify;
             'notify::in-use': GObject.Object.Notify;
         }
 
@@ -4739,10 +4700,7 @@ export namespace Geoclue {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::available-accuracy-level': GObject.Object.Notify;
-            'notify::available-accuracy-level': GObject.Object.Notify;
-            'notify::in-use': GObject.Object.Notify;
             'notify::in-use': GObject.Object.Notify;
         }
 
@@ -5532,14 +5490,10 @@ export namespace Geoclue {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::accuracy-level': GObject.Object.Notify;
-            'notify::accuracy-level': GObject.Object.Notify;
             'notify::client': GObject.Object.Notify;
             'notify::desktop-id': GObject.Object.Notify;
-            'notify::desktop-id': GObject.Object.Notify;
-            'notify::distance-threshold': GObject.Object.Notify;
             'notify::distance-threshold': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
-            'notify::time-threshold': GObject.Object.Notify;
             'notify::time-threshold': GObject.Object.Notify;
         }
 

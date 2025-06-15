@@ -6986,8 +6986,6 @@ export namespace Gst {
             'element-added': ElementAdded;
             'element-removed': ElementRemoved;
             'notify::async-handling': GObject.Object.Notify;
-            'notify::async-handling': GObject.Object.Notify;
-            'notify::message-forward': GObject.Object.Notify;
             'notify::message-forward': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -8302,14 +8300,11 @@ export namespace Gst {
             message: Message;
             'sync-message': SyncMessage;
             'notify::enable-async': GObject.Object.Notify;
-            'notify::enable-async': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'message::enable-async': Message;
-            'message::enable-async': Message;
             'message::name': Message;
             'message::parent': Message;
-            'sync-message::enable-async': SyncMessage;
             'sync-message::enable-async': SyncMessage;
             'sync-message::name': SyncMessage;
             'sync-message::parent': SyncMessage;
@@ -8694,8 +8689,6 @@ export namespace Gst {
             synced: Synced;
             'notify::timeout': GObject.Object.Notify;
             'notify::window-size': GObject.Object.Notify;
-            'notify::window-size': GObject.Object.Notify;
-            'notify::window-threshold': GObject.Object.Notify;
             'notify::window-threshold': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -9429,8 +9422,6 @@ export namespace Gst {
             removed: Removed;
             'notify::caps': GObject.Object.Notify;
             'notify::device-class': GObject.Object.Notify;
-            'notify::device-class': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
             'notify::properties': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -9565,7 +9556,6 @@ export namespace Gst {
     namespace DeviceMonitor {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::show-all': GObject.Object.Notify;
             'notify::show-all': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -13126,7 +13116,6 @@ export namespace Gst {
             'notify::direction': GObject.Object.Notify;
             'notify::gtype': GObject.Object.Notify;
             'notify::name-template': GObject.Object.Notify;
-            'notify::name-template': GObject.Object.Notify;
             'notify::presence': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -13322,12 +13311,9 @@ export namespace Gst {
         // Signal signatures
         interface SignalSignatures extends Bin.SignalSignatures {
             'notify::auto-flush-bus': GObject.Object.Notify;
-            'notify::auto-flush-bus': GObject.Object.Notify;
             'notify::delay': GObject.Object.Notify;
             'notify::latency': GObject.Object.Notify;
             'notify::async-handling': GObject.Object.Notify;
-            'notify::async-handling': GObject.Object.Notify;
-            'notify::message-forward': GObject.Object.Notify;
             'notify::message-forward': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -14903,10 +14889,7 @@ export namespace Gst {
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::caps': GObject.Object.Notify;
             'notify::stream-flags': GObject.Object.Notify;
-            'notify::stream-flags': GObject.Object.Notify;
             'notify::stream-id': GObject.Object.Notify;
-            'notify::stream-id': GObject.Object.Notify;
-            'notify::stream-type': GObject.Object.Notify;
             'notify::stream-type': GObject.Object.Notify;
             'notify::tags': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -15061,10 +15044,8 @@ export namespace Gst {
         interface SignalSignatures extends Object.SignalSignatures {
             'stream-notify': StreamNotify;
             'notify::upstream-id': GObject.Object.Notify;
-            'notify::upstream-id': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'stream-notify::upstream-id': StreamNotify;
             'stream-notify::upstream-id': StreamNotify;
             'stream-notify::name': StreamNotify;
             'stream-notify::parent': StreamNotify;
@@ -15179,11 +15160,8 @@ export namespace Gst {
         // Signal signatures
         interface SignalSignatures extends Clock.SignalSignatures {
             'notify::clock-type': GObject.Object.Notify;
-            'notify::clock-type': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
             'notify::window-size': GObject.Object.Notify;
-            'notify::window-size': GObject.Object.Notify;
-            'notify::window-threshold': GObject.Object.Notify;
             'notify::window-threshold': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;

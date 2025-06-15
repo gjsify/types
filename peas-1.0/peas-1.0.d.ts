@@ -76,10 +76,7 @@ export namespace Peas {
             'load-plugin': LoadPlugin;
             'unload-plugin': UnloadPlugin;
             'notify::loaded-plugins': GObject.Object.Notify;
-            'notify::loaded-plugins': GObject.Object.Notify;
             'notify::nonglobal-loaders': GObject.Object.Notify;
-            'notify::nonglobal-loaders': GObject.Object.Notify;
-            'notify::plugin-list': GObject.Object.Notify;
             'notify::plugin-list': GObject.Object.Notify;
         }
 
@@ -373,8 +370,6 @@ export namespace Peas {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::data-dir': GObject.Object.Notify;
-            'notify::data-dir': GObject.Object.Notify;
-            'notify::plugin-info': GObject.Object.Notify;
             'notify::plugin-info': GObject.Object.Notify;
         }
 
@@ -476,9 +471,7 @@ export namespace Peas {
             'extension-added': ExtensionAdded;
             'extension-removed': ExtensionRemoved;
             'notify::construct-properties': GObject.Object.Notify;
-            'notify::construct-properties': GObject.Object.Notify;
             'notify::engine': GObject.Object.Notify;
-            'notify::extension-type': GObject.Object.Notify;
             'notify::extension-type': GObject.Object.Notify;
         }
 
@@ -1103,8 +1096,6 @@ export namespace Peas {
         // Signal signatures
         interface SignalSignatures extends GObject.TypeModule.SignalSignatures {
             'notify::local-linkage': GObject.Object.Notify;
-            'notify::local-linkage': GObject.Object.Notify;
-            'notify::module-name': GObject.Object.Notify;
             'notify::module-name': GObject.Object.Notify;
             'notify::path': GObject.Object.Notify;
             'notify::resident': GObject.Object.Notify;

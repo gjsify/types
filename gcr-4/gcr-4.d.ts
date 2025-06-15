@@ -1584,7 +1584,6 @@ export namespace Gcr {
         // Signal signatures
         interface SignalSignatures extends CertificateExtension.SignalSignatures {
             'notify::n-items': GObject.Object.Notify;
-            'notify::n-items': GObject.Object.Notify;
             'notify::critical': GObject.Object.Notify;
             'notify::oid': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
@@ -2342,7 +2341,6 @@ export namespace Gcr {
         // Signal signatures
         interface SignalSignatures extends CertificateExtension.SignalSignatures {
             'notify::n-items': GObject.Object.Notify;
-            'notify::n-items': GObject.Object.Notify;
             'notify::critical': GObject.Object.Notify;
             'notify::oid': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
@@ -2955,7 +2953,6 @@ export namespace Gcr {
     namespace CertificateExtensionCrlDistributionPoints {
         // Signal signatures
         interface SignalSignatures extends CertificateExtension.SignalSignatures {
-            'notify::n-items': GObject.Object.Notify;
             'notify::n-items': GObject.Object.Notify;
             'notify::critical': GObject.Object.Notify;
             'notify::oid': GObject.Object.Notify;
@@ -3694,7 +3691,6 @@ export namespace Gcr {
     namespace CertificateExtensionList {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::n-items': GObject.Object.Notify;
             'notify::n-items': GObject.Object.Notify;
         }
 
@@ -5689,7 +5685,6 @@ export namespace Gcr {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::private-key': GObject.Object.Notify;
-            'notify::private-key': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -6650,10 +6645,7 @@ export namespace Gcr {
             authenticate: Authenticate;
             parsed: Parsed;
             'notify::parsed-attributes': GObject.Object.Notify;
-            'notify::parsed-attributes': GObject.Object.Notify;
             'notify::parsed-description': GObject.Object.Notify;
-            'notify::parsed-description': GObject.Object.Notify;
-            'notify::parsed-label': GObject.Object.Notify;
             'notify::parsed-label': GObject.Object.Notify;
         }
 
@@ -6917,11 +6909,8 @@ export namespace Gcr {
             'notify::session': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::expiry-date': GObject.Object.Notify;
-            'notify::expiry-date': GObject.Object.Notify;
-            'notify::issuer-name': GObject.Object.Notify;
             'notify::issuer-name': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
-            'notify::subject-name': GObject.Object.Notify;
             'notify::subject-name': GObject.Object.Notify;
         }
 
@@ -7872,11 +7861,8 @@ export namespace Gcr {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::description': GObject.Object.Notify;
             'notify::expiry-date': GObject.Object.Notify;
-            'notify::expiry-date': GObject.Object.Notify;
-            'notify::issuer-name': GObject.Object.Notify;
             'notify::issuer-name': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
-            'notify::subject-name': GObject.Object.Notify;
             'notify::subject-name': GObject.Object.Notify;
         }
 
@@ -8660,26 +8646,16 @@ export namespace Gcr {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::secret-exchange': GObject.Object.Notify;
             'notify::secret-exchange': GObject.Object.Notify;
             'notify::timeout-seconds': GObject.Object.Notify;
-            'notify::timeout-seconds': GObject.Object.Notify;
-            'notify::caller-window': GObject.Object.Notify;
             'notify::caller-window': GObject.Object.Notify;
             'notify::cancel-label': GObject.Object.Notify;
-            'notify::cancel-label': GObject.Object.Notify;
-            'notify::choice-chosen': GObject.Object.Notify;
             'notify::choice-chosen': GObject.Object.Notify;
             'notify::choice-label': GObject.Object.Notify;
-            'notify::choice-label': GObject.Object.Notify;
-            'notify::continue-label': GObject.Object.Notify;
             'notify::continue-label': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::message': GObject.Object.Notify;
             'notify::password-new': GObject.Object.Notify;
-            'notify::password-new': GObject.Object.Notify;
-            'notify::password-strength': GObject.Object.Notify;
             'notify::password-strength': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::warning': GObject.Object.Notify;
@@ -10190,7 +10166,6 @@ export namespace Gcr {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'new-prompt': NewPrompt;
-            'notify::prompt-type': GObject.Object.Notify;
             'notify::prompt-type': GObject.Object.Notify;
             'notify::prompting': GObject.Object.Notify;
         }

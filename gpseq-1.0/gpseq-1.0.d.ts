@@ -317,14 +317,9 @@ export namespace Gpseq {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::estimated-size': GObject.Object.Notify;
-            'notify::estimated-size': GObject.Object.Notify;
-            'notify::is-size-known': GObject.Object.Notify;
             'notify::is-size-known': GObject.Object.Notify;
         }
 
@@ -849,24 +844,17 @@ export namespace Gpseq {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::root': GObject.Object.Notify;
             'notify::is-root': GObject.Object.Notify;
-            'notify::is-root': GObject.Object.Notify;
             'notify::threshold': GObject.Object.Notify;
-            'notify::max-depth': GObject.Object.Notify;
             'notify::max-depth': GObject.Object.Notify;
             'notify::depth': GObject.Object.Notify;
             'notify::executor': GObject.Object.Notify;
             'notify::promise': GObject.Object.Notify;
             'notify::shared-result': GObject.Object.Notify;
-            'notify::shared-result': GObject.Object.Notify;
-            'notify::is-cancelled': GObject.Object.Notify;
             'notify::is-cancelled': GObject.Object.Notify;
             'notify::future': GObject.Object.Notify;
         }
@@ -1468,10 +1456,7 @@ export namespace Gpseq {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
             'notify::future': GObject.Object.Notify;
         }
@@ -1977,10 +1962,7 @@ export namespace Gpseq {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
             'notify::ready': GObject.Object.Notify;
         }
@@ -2538,14 +2520,9 @@ export namespace Gpseq {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::estimated-size': GObject.Object.Notify;
-            'notify::estimated-size': GObject.Object.Notify;
-            'notify::is-size-known': GObject.Object.Notify;
             'notify::is-size-known': GObject.Object.Notify;
         }
 
@@ -3070,14 +3047,9 @@ export namespace Gpseq {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::estimated-size': GObject.Object.Notify;
-            'notify::estimated-size': GObject.Object.Notify;
-            'notify::is-size-known': GObject.Object.Notify;
             'notify::is-size-known': GObject.Object.Notify;
         }
 
@@ -3608,14 +3580,9 @@ export namespace Gpseq {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::estimated-size': GObject.Object.Notify;
-            'notify::estimated-size': GObject.Object.Notify;
-            'notify::is-size-known': GObject.Object.Notify;
             'notify::is-size-known': GObject.Object.Notify;
         }
 
@@ -4140,15 +4107,10 @@ export namespace Gpseq {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
             'notify::value-type': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
-            'notify::is-present': GObject.Object.Notify;
             'notify::is-present': GObject.Object.Notify;
         }
 
@@ -4272,18 +4234,11 @@ export namespace Gpseq {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
             'notify::element-type': GObject.Object.Notify;
             'notify::task-env': GObject.Object.Notify;
-            'notify::task-env': GObject.Object.Notify;
             'notify::is-closed': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
-            'notify::is-parallel': GObject.Object.Notify;
             'notify::is-parallel': GObject.Object.Notify;
         }
 
@@ -4481,41 +4436,26 @@ export namespace Gpseq {
         // Signal signatures
         interface SignalSignatures extends ForkJoinTask.SignalSignatures {
             'notify::r-type': GObject.Object.Notify;
-            'notify::r-type': GObject.Object.Notify;
-            'notify::r-dup-func': GObject.Object.Notify;
             'notify::r-dup-func': GObject.Object.Notify;
             'notify::r-destroy-func': GObject.Object.Notify;
-            'notify::r-destroy-func': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
             'notify::g-type': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
             'notify::spliterator': GObject.Object.Notify;
             'notify::left-child': GObject.Object.Notify;
-            'notify::left-child': GObject.Object.Notify;
-            'notify::right-child': GObject.Object.Notify;
             'notify::right-child': GObject.Object.Notify;
             'notify::is-leaf': GObject.Object.Notify;
-            'notify::is-leaf': GObject.Object.Notify;
             'notify::is-leftmost': GObject.Object.Notify;
-            'notify::is-leftmost': GObject.Object.Notify;
-            'notify::empty-result': GObject.Object.Notify;
             'notify::empty-result': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::root': GObject.Object.Notify;
             'notify::is-root': GObject.Object.Notify;
-            'notify::is-root': GObject.Object.Notify;
             'notify::threshold': GObject.Object.Notify;
-            'notify::max-depth': GObject.Object.Notify;
             'notify::max-depth': GObject.Object.Notify;
             'notify::depth': GObject.Object.Notify;
             'notify::executor': GObject.Object.Notify;
             'notify::promise': GObject.Object.Notify;
             'notify::shared-result': GObject.Object.Notify;
-            'notify::shared-result': GObject.Object.Notify;
-            'notify::is-cancelled': GObject.Object.Notify;
             'notify::is-cancelled': GObject.Object.Notify;
         }
 
@@ -4626,10 +4566,7 @@ export namespace Gpseq {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
         }
@@ -5178,14 +5115,9 @@ export namespace Gpseq {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::estimated-size': GObject.Object.Notify;
-            'notify::estimated-size': GObject.Object.Notify;
-            'notify::is-size-known': GObject.Object.Notify;
             'notify::is-size-known': GObject.Object.Notify;
         }
 
@@ -5710,14 +5642,9 @@ export namespace Gpseq {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::estimated-size': GObject.Object.Notify;
-            'notify::estimated-size': GObject.Object.Notify;
-            'notify::is-size-known': GObject.Object.Notify;
             'notify::is-size-known': GObject.Object.Notify;
         }
 
@@ -6348,15 +6275,10 @@ export namespace Gpseq {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::max-threads': GObject.Object.Notify;
-            'notify::max-threads': GObject.Object.Notify;
-            'notify::num-threads': GObject.Object.Notify;
             'notify::num-threads': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::is-terminating': GObject.Object.Notify;
-            'notify::is-terminating': GObject.Object.Notify;
             'notify::is-terminated': GObject.Object.Notify;
-            'notify::is-terminated': GObject.Object.Notify;
-            'notify::is-terminating-started': GObject.Object.Notify;
             'notify::is-terminating-started': GObject.Object.Notify;
             'notify::parallels': GObject.Object.Notify;
         }
@@ -6899,10 +6821,7 @@ export namespace Gpseq {
             'notify::pool': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::is-started': GObject.Object.Notify;
-            'notify::is-started': GObject.Object.Notify;
             'notify::is-terminated': GObject.Object.Notify;
-            'notify::is-terminated': GObject.Object.Notify;
-            'notify::is-alive': GObject.Object.Notify;
             'notify::is-alive': GObject.Object.Notify;
         }
 
@@ -6984,13 +6903,9 @@ export namespace Gpseq {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
             'notify::value-type': GObject.Object.Notify;
         }
 

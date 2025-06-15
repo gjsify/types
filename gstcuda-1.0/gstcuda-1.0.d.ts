@@ -357,10 +357,7 @@ export namespace GstCuda {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'notify::cuda-device-id': GObject.Object.Notify;
-            'notify::cuda-device-id': GObject.Object.Notify;
             'notify::os-handle': GObject.Object.Notify;
-            'notify::os-handle': GObject.Object.Notify;
-            'notify::virtual-memory': GObject.Object.Notify;
             'notify::virtual-memory': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;

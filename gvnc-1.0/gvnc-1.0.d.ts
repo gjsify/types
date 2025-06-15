@@ -740,11 +740,8 @@ export namespace GVnc {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::buffer': GObject.Object.Notify;
             'notify::color-map': GObject.Object.Notify;
-            'notify::color-map': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::local-format': GObject.Object.Notify;
-            'notify::local-format': GObject.Object.Notify;
-            'notify::remote-format': GObject.Object.Notify;
             'notify::remote-format': GObject.Object.Notify;
             'notify::rowstride': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;

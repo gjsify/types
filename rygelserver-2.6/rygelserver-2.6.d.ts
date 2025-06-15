@@ -151,36 +151,26 @@ export namespace RygelServer {
             'notify::duration': GObject.Object.Notify;
             'notify::bitrate': GObject.Object.Notify;
             'notify::sample-freq': GObject.Object.Notify;
-            'notify::sample-freq': GObject.Object.Notify;
-            'notify::bits-per-sample': GObject.Object.Notify;
             'notify::bits-per-sample': GObject.Object.Notify;
             'notify::channels': GObject.Object.Notify;
             'notify::album': GObject.Object.Notify;
             'notify::mime-type': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
-            'notify::dlna-profile': GObject.Object.Notify;
             'notify::dlna-profile': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::place-holder': GObject.Object.Notify;
             'notify::place-holder': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::ref-id': GObject.Object.Notify;
-            'notify::ref-id': GObject.Object.Notify;
-            'notify::upnp-class': GObject.Object.Notify;
             'notify::upnp-class': GObject.Object.Notify;
             'notify::date': GObject.Object.Notify;
             'notify::creator': GObject.Object.Notify;
             'notify::modified': GObject.Object.Notify;
             'notify::object-update-id': GObject.Object.Notify;
-            'notify::object-update-id': GObject.Object.Notify;
             'notify::artist': GObject.Object.Notify;
             'notify::genre': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::parent-ref': GObject.Object.Notify;
-            'notify::parent-ref': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
-            'notify::ocm-flags': GObject.Object.Notify;
             'notify::ocm-flags': GObject.Object.Notify;
         }
 
@@ -263,34 +253,25 @@ export namespace RygelServer {
         // Signal signatures
         interface SignalSignatures extends MediaFileItem.SignalSignatures {
             'notify::mime-type': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
-            'notify::dlna-profile': GObject.Object.Notify;
             'notify::dlna-profile': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::place-holder': GObject.Object.Notify;
             'notify::place-holder': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::ref-id': GObject.Object.Notify;
-            'notify::ref-id': GObject.Object.Notify;
-            'notify::upnp-class': GObject.Object.Notify;
             'notify::upnp-class': GObject.Object.Notify;
             'notify::date': GObject.Object.Notify;
             'notify::creator': GObject.Object.Notify;
             'notify::modified': GObject.Object.Notify;
             'notify::object-update-id': GObject.Object.Notify;
-            'notify::object-update-id': GObject.Object.Notify;
             'notify::artist': GObject.Object.Notify;
             'notify::genre': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::parent-ref': GObject.Object.Notify;
-            'notify::parent-ref': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
-            'notify::ocm-flags': GObject.Object.Notify;
             'notify::ocm-flags': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
-            'notify::color-depth': GObject.Object.Notify;
             'notify::color-depth': GObject.Object.Notify;
             'notify::thumbnails': GObject.Object.Notify;
         }
@@ -476,15 +457,10 @@ export namespace RygelServer {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -531,42 +507,30 @@ export namespace RygelServer {
         // Signal signatures
         interface SignalSignatures extends AudioItem.SignalSignatures {
             'notify::track-number': GObject.Object.Notify;
-            'notify::track-number': GObject.Object.Notify;
-            'notify::album-art': GObject.Object.Notify;
             'notify::album-art': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::bitrate': GObject.Object.Notify;
             'notify::sample-freq': GObject.Object.Notify;
-            'notify::sample-freq': GObject.Object.Notify;
-            'notify::bits-per-sample': GObject.Object.Notify;
             'notify::bits-per-sample': GObject.Object.Notify;
             'notify::channels': GObject.Object.Notify;
             'notify::album': GObject.Object.Notify;
             'notify::mime-type': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
-            'notify::dlna-profile': GObject.Object.Notify;
             'notify::dlna-profile': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::place-holder': GObject.Object.Notify;
             'notify::place-holder': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::ref-id': GObject.Object.Notify;
-            'notify::ref-id': GObject.Object.Notify;
-            'notify::upnp-class': GObject.Object.Notify;
             'notify::upnp-class': GObject.Object.Notify;
             'notify::date': GObject.Object.Notify;
             'notify::creator': GObject.Object.Notify;
             'notify::modified': GObject.Object.Notify;
             'notify::object-update-id': GObject.Object.Notify;
-            'notify::object-update-id': GObject.Object.Notify;
             'notify::artist': GObject.Object.Notify;
             'notify::genre': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::parent-ref': GObject.Object.Notify;
-            'notify::parent-ref': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
-            'notify::ocm-flags': GObject.Object.Notify;
             'notify::ocm-flags': GObject.Object.Notify;
         }
 
@@ -630,30 +594,22 @@ export namespace RygelServer {
         // Signal signatures
         interface SignalSignatures extends ImageItem.SignalSignatures {
             'notify::mime-type': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
-            'notify::dlna-profile': GObject.Object.Notify;
             'notify::dlna-profile': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::place-holder': GObject.Object.Notify;
             'notify::place-holder': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::ref-id': GObject.Object.Notify;
-            'notify::ref-id': GObject.Object.Notify;
-            'notify::upnp-class': GObject.Object.Notify;
             'notify::upnp-class': GObject.Object.Notify;
             'notify::date': GObject.Object.Notify;
             'notify::creator': GObject.Object.Notify;
             'notify::modified': GObject.Object.Notify;
             'notify::object-update-id': GObject.Object.Notify;
-            'notify::object-update-id': GObject.Object.Notify;
             'notify::artist': GObject.Object.Notify;
             'notify::genre': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::parent-ref': GObject.Object.Notify;
-            'notify::parent-ref': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
-            'notify::ocm-flags': GObject.Object.Notify;
             'notify::ocm-flags': GObject.Object.Notify;
         }
 
@@ -732,34 +688,23 @@ export namespace RygelServer {
         // Signal signatures
         interface SignalSignatures extends MediaContainer.SignalSignatures {
             'notify::child-count': GObject.Object.Notify;
-            'notify::child-count': GObject.Object.Notify;
-            'notify::empty-child-count': GObject.Object.Notify;
             'notify::empty-child-count': GObject.Object.Notify;
             'notify::all-child-count': GObject.Object.Notify;
-            'notify::all-child-count': GObject.Object.Notify;
             'notify::create-mode-enabled': GObject.Object.Notify;
-            'notify::create-mode-enabled': GObject.Object.Notify;
-            'notify::sort-criteria': GObject.Object.Notify;
             'notify::sort-criteria': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::ref-id': GObject.Object.Notify;
-            'notify::ref-id': GObject.Object.Notify;
-            'notify::upnp-class': GObject.Object.Notify;
             'notify::upnp-class': GObject.Object.Notify;
             'notify::date': GObject.Object.Notify;
             'notify::creator': GObject.Object.Notify;
             'notify::modified': GObject.Object.Notify;
             'notify::object-update-id': GObject.Object.Notify;
-            'notify::object-update-id': GObject.Object.Notify;
             'notify::artist': GObject.Object.Notify;
             'notify::genre': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::parent-ref': GObject.Object.Notify;
-            'notify::parent-ref': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::ocm-flags': GObject.Object.Notify;
-            'notify::ocm-flags': GObject.Object.Notify;
-            'notify::search-classes': GObject.Object.Notify;
             'notify::search-classes': GObject.Object.Notify;
         }
 
@@ -1057,40 +1002,29 @@ export namespace RygelServer {
             'notify::duration': GObject.Object.Notify;
             'notify::bitrate': GObject.Object.Notify;
             'notify::sample-freq': GObject.Object.Notify;
-            'notify::sample-freq': GObject.Object.Notify;
-            'notify::bits-per-sample': GObject.Object.Notify;
             'notify::bits-per-sample': GObject.Object.Notify;
             'notify::channels': GObject.Object.Notify;
             'notify::album': GObject.Object.Notify;
             'notify::mime-type': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
-            'notify::dlna-profile': GObject.Object.Notify;
             'notify::dlna-profile': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::place-holder': GObject.Object.Notify;
             'notify::place-holder': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::ref-id': GObject.Object.Notify;
-            'notify::ref-id': GObject.Object.Notify;
-            'notify::upnp-class': GObject.Object.Notify;
             'notify::upnp-class': GObject.Object.Notify;
             'notify::date': GObject.Object.Notify;
             'notify::creator': GObject.Object.Notify;
             'notify::modified': GObject.Object.Notify;
             'notify::object-update-id': GObject.Object.Notify;
-            'notify::object-update-id': GObject.Object.Notify;
             'notify::artist': GObject.Object.Notify;
             'notify::genre': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::parent-ref': GObject.Object.Notify;
-            'notify::parent-ref': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
-            'notify::ocm-flags': GObject.Object.Notify;
             'notify::ocm-flags': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
-            'notify::color-depth': GObject.Object.Notify;
             'notify::color-depth': GObject.Object.Notify;
             'notify::thumbnails': GObject.Object.Notify;
         }
@@ -1236,32 +1170,22 @@ export namespace RygelServer {
             'container-updated': ContainerUpdated;
             'sub-tree-updates-finished': SubTreeUpdatesFinished;
             'notify::child-count': GObject.Object.Notify;
-            'notify::child-count': GObject.Object.Notify;
-            'notify::empty-child-count': GObject.Object.Notify;
             'notify::empty-child-count': GObject.Object.Notify;
             'notify::all-child-count': GObject.Object.Notify;
-            'notify::all-child-count': GObject.Object.Notify;
             'notify::create-mode-enabled': GObject.Object.Notify;
-            'notify::create-mode-enabled': GObject.Object.Notify;
-            'notify::sort-criteria': GObject.Object.Notify;
             'notify::sort-criteria': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::ref-id': GObject.Object.Notify;
-            'notify::ref-id': GObject.Object.Notify;
-            'notify::upnp-class': GObject.Object.Notify;
             'notify::upnp-class': GObject.Object.Notify;
             'notify::date': GObject.Object.Notify;
             'notify::creator': GObject.Object.Notify;
             'notify::modified': GObject.Object.Notify;
             'notify::object-update-id': GObject.Object.Notify;
-            'notify::object-update-id': GObject.Object.Notify;
             'notify::artist': GObject.Object.Notify;
             'notify::genre': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::parent-ref': GObject.Object.Notify;
-            'notify::parent-ref': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
-            'notify::ocm-flags': GObject.Object.Notify;
             'notify::ocm-flags': GObject.Object.Notify;
         }
 
@@ -1409,21 +1333,16 @@ export namespace RygelServer {
             'notify::description': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::ref-id': GObject.Object.Notify;
-            'notify::ref-id': GObject.Object.Notify;
-            'notify::upnp-class': GObject.Object.Notify;
             'notify::upnp-class': GObject.Object.Notify;
             'notify::date': GObject.Object.Notify;
             'notify::creator': GObject.Object.Notify;
             'notify::modified': GObject.Object.Notify;
             'notify::object-update-id': GObject.Object.Notify;
-            'notify::object-update-id': GObject.Object.Notify;
             'notify::artist': GObject.Object.Notify;
             'notify::genre': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::parent-ref': GObject.Object.Notify;
-            'notify::parent-ref': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
-            'notify::ocm-flags': GObject.Object.Notify;
             'notify::ocm-flags': GObject.Object.Notify;
         }
 
@@ -1473,30 +1392,22 @@ export namespace RygelServer {
         // Signal signatures
         interface SignalSignatures extends MediaItem.SignalSignatures {
             'notify::mime-type': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
-            'notify::dlna-profile': GObject.Object.Notify;
             'notify::dlna-profile': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::place-holder': GObject.Object.Notify;
             'notify::place-holder': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::ref-id': GObject.Object.Notify;
-            'notify::ref-id': GObject.Object.Notify;
-            'notify::upnp-class': GObject.Object.Notify;
             'notify::upnp-class': GObject.Object.Notify;
             'notify::date': GObject.Object.Notify;
             'notify::creator': GObject.Object.Notify;
             'notify::modified': GObject.Object.Notify;
             'notify::object-update-id': GObject.Object.Notify;
-            'notify::object-update-id': GObject.Object.Notify;
             'notify::artist': GObject.Object.Notify;
             'notify::genre': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::parent-ref': GObject.Object.Notify;
-            'notify::parent-ref': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
-            'notify::ocm-flags': GObject.Object.Notify;
             'notify::ocm-flags': GObject.Object.Notify;
         }
 
@@ -1594,21 +1505,16 @@ export namespace RygelServer {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::id': GObject.Object.Notify;
             'notify::ref-id': GObject.Object.Notify;
-            'notify::ref-id': GObject.Object.Notify;
-            'notify::upnp-class': GObject.Object.Notify;
             'notify::upnp-class': GObject.Object.Notify;
             'notify::date': GObject.Object.Notify;
             'notify::creator': GObject.Object.Notify;
             'notify::modified': GObject.Object.Notify;
             'notify::object-update-id': GObject.Object.Notify;
-            'notify::object-update-id': GObject.Object.Notify;
             'notify::artist': GObject.Object.Notify;
             'notify::genre': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::parent-ref': GObject.Object.Notify;
-            'notify::parent-ref': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
-            'notify::ocm-flags': GObject.Object.Notify;
             'notify::ocm-flags': GObject.Object.Notify;
         }
 
@@ -1780,34 +1686,23 @@ export namespace RygelServer {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::uri': GObject.Object.Notify;
             'notify::import-uri': GObject.Object.Notify;
-            'notify::import-uri': GObject.Object.Notify;
             'notify::extension': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::cleartext-size': GObject.Object.Notify;
             'notify::cleartext-size': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::bitrate': GObject.Object.Notify;
             'notify::bits-per-sample': GObject.Object.Notify;
-            'notify::bits-per-sample': GObject.Object.Notify;
-            'notify::color-depth': GObject.Object.Notify;
             'notify::color-depth': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::audio-channels': GObject.Object.Notify;
-            'notify::audio-channels': GObject.Object.Notify;
-            'notify::sample-freq': GObject.Object.Notify;
             'notify::sample-freq': GObject.Object.Notify;
             'notify::protocol': GObject.Object.Notify;
             'notify::mime-type': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
-            'notify::dlna-profile': GObject.Object.Notify;
             'notify::dlna-profile': GObject.Object.Notify;
             'notify::network': GObject.Object.Notify;
             'notify::dlna-conversion': GObject.Object.Notify;
-            'notify::dlna-conversion': GObject.Object.Notify;
             'notify::dlna-flags': GObject.Object.Notify;
-            'notify::dlna-flags': GObject.Object.Notify;
-            'notify::dlna-operation': GObject.Object.Notify;
             'notify::dlna-operation': GObject.Object.Notify;
         }
 
@@ -2023,25 +1918,17 @@ export namespace RygelServer {
         // Signal signatures
         interface SignalSignatures extends RygelCore.Plugin.SignalSignatures {
             'notify::root-container': GObject.Object.Notify;
-            'notify::root-container': GObject.Object.Notify;
-            'notify::search-caps': GObject.Object.Notify;
             'notify::search-caps': GObject.Object.Notify;
             'notify::upload-profiles': GObject.Object.Notify;
-            'notify::upload-profiles': GObject.Object.Notify;
-            'notify::supported-profiles': GObject.Object.Notify;
             'notify::supported-profiles': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::desc-path': GObject.Object.Notify;
-            'notify::desc-path': GObject.Object.Notify;
             'notify::active': GObject.Object.Notify;
             'notify::resource-infos': GObject.Object.Notify;
-            'notify::resource-infos': GObject.Object.Notify;
             'notify::icon-infos': GObject.Object.Notify;
-            'notify::icon-infos': GObject.Object.Notify;
-            'notify::default-icons': GObject.Object.Notify;
             'notify::default-icons': GObject.Object.Notify;
         }
 
@@ -2166,7 +2053,6 @@ export namespace RygelServer {
     namespace MediaServer {
         // Signal signatures
         interface SignalSignatures extends RygelCore.MediaDevice.SignalSignatures {
-            'notify::root-container': GObject.Object.Notify;
             'notify::root-container': GObject.Object.Notify;
             'notify::plugin': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
@@ -2342,30 +2228,22 @@ export namespace RygelServer {
         // Signal signatures
         interface SignalSignatures extends MediaFileItem.SignalSignatures {
             'notify::mime-type': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
-            'notify::dlna-profile': GObject.Object.Notify;
             'notify::dlna-profile': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::place-holder': GObject.Object.Notify;
             'notify::place-holder': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::ref-id': GObject.Object.Notify;
-            'notify::ref-id': GObject.Object.Notify;
-            'notify::upnp-class': GObject.Object.Notify;
             'notify::upnp-class': GObject.Object.Notify;
             'notify::date': GObject.Object.Notify;
             'notify::creator': GObject.Object.Notify;
             'notify::modified': GObject.Object.Notify;
             'notify::object-update-id': GObject.Object.Notify;
-            'notify::object-update-id': GObject.Object.Notify;
             'notify::artist': GObject.Object.Notify;
             'notify::genre': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::parent-ref': GObject.Object.Notify;
-            'notify::parent-ref': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
-            'notify::ocm-flags': GObject.Object.Notify;
             'notify::ocm-flags': GObject.Object.Notify;
         }
 
@@ -2408,15 +2286,12 @@ export namespace RygelServer {
         // Signal signatures
         interface SignalSignatures extends GUPnP.Service.SignalSignatures {
             'notify::root-device': GObject.Object.Notify;
-            'notify::root-device': GObject.Object.Notify;
             'notify::context': GObject.Object.Notify;
             'notify::document': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::service-type': GObject.Object.Notify;
-            'notify::service-type': GObject.Object.Notify;
             'notify::udn': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
             'notify::url-base': GObject.Object.Notify;
         }
 
@@ -2467,12 +2342,8 @@ export namespace RygelServer {
         // Signal signatures
         interface SignalSignatures extends HTTPSeekRequest.SignalSignatures {
             'notify::start-byte': GObject.Object.Notify;
-            'notify::start-byte': GObject.Object.Notify;
-            'notify::end-byte': GObject.Object.Notify;
             'notify::end-byte': GObject.Object.Notify;
             'notify::range-length': GObject.Object.Notify;
-            'notify::range-length': GObject.Object.Notify;
-            'notify::total-size': GObject.Object.Notify;
             'notify::total-size': GObject.Object.Notify;
         }
 
@@ -2558,12 +2429,8 @@ export namespace RygelServer {
         // Signal signatures
         interface SignalSignatures extends HTTPResponseElement.SignalSignatures {
             'notify::start-byte': GObject.Object.Notify;
-            'notify::start-byte': GObject.Object.Notify;
-            'notify::end-byte': GObject.Object.Notify;
             'notify::end-byte': GObject.Object.Notify;
             'notify::range-length': GObject.Object.Notify;
-            'notify::range-length': GObject.Object.Notify;
-            'notify::total-size': GObject.Object.Notify;
             'notify::total-size': GObject.Object.Notify;
         }
 
@@ -2760,14 +2627,9 @@ export namespace RygelServer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::item-id': GObject.Object.Notify;
-            'notify::item-id': GObject.Object.Notify;
-            'notify::thumbnail-index': GObject.Object.Notify;
             'notify::thumbnail-index': GObject.Object.Notify;
             'notify::subtitle-index': GObject.Object.Notify;
-            'notify::subtitle-index': GObject.Object.Notify;
             'notify::resource-name': GObject.Object.Notify;
-            'notify::resource-name': GObject.Object.Notify;
-            'notify::http-server': GObject.Object.Notify;
             'notify::http-server': GObject.Object.Notify;
             'notify::extension': GObject.Object.Notify;
         }
@@ -3970,8 +3832,6 @@ export namespace RygelServer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::path-root': GObject.Object.Notify;
-            'notify::path-root': GObject.Object.Notify;
-            'notify::server-name': GObject.Object.Notify;
             'notify::server-name': GObject.Object.Notify;
             'notify::cancellable': GObject.Object.Notify;
         }
@@ -4561,20 +4421,12 @@ export namespace RygelServer {
         // Signal signatures
         interface SignalSignatures extends HTTPResponseElement.SignalSignatures {
             'notify::start-time': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
-            'notify::end-time': GObject.Object.Notify;
             'notify::end-time': GObject.Object.Notify;
             'notify::range-duration': GObject.Object.Notify;
-            'notify::range-duration': GObject.Object.Notify;
-            'notify::total-duration': GObject.Object.Notify;
             'notify::total-duration': GObject.Object.Notify;
             'notify::start-byte': GObject.Object.Notify;
-            'notify::start-byte': GObject.Object.Notify;
-            'notify::end-byte': GObject.Object.Notify;
             'notify::end-byte': GObject.Object.Notify;
             'notify::response-length': GObject.Object.Notify;
-            'notify::response-length': GObject.Object.Notify;
-            'notify::total-size': GObject.Object.Notify;
             'notify::total-size': GObject.Object.Notify;
         }
 
@@ -4700,7 +4552,6 @@ export namespace RygelServer {
     namespace Serializer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::serializer-type': GObject.Object.Notify;
             'notify::serializer-type': GObject.Object.Notify;
         }
 
@@ -4915,12 +4766,8 @@ export namespace RygelServer {
         // Signal signatures
         interface SignalSignatures extends HTTPSeekRequest.SignalSignatures {
             'notify::start-byte': GObject.Object.Notify;
-            'notify::start-byte': GObject.Object.Notify;
-            'notify::end-byte': GObject.Object.Notify;
             'notify::end-byte': GObject.Object.Notify;
             'notify::range-length': GObject.Object.Notify;
-            'notify::range-length': GObject.Object.Notify;
-            'notify::total-size': GObject.Object.Notify;
             'notify::total-size': GObject.Object.Notify;
         }
 
@@ -5003,14 +4850,9 @@ export namespace RygelServer {
         // Signal signatures
         interface SignalSignatures extends HTTPResponseElement.SignalSignatures {
             'notify::start-byte': GObject.Object.Notify;
-            'notify::start-byte': GObject.Object.Notify;
-            'notify::end-byte': GObject.Object.Notify;
             'notify::end-byte': GObject.Object.Notify;
             'notify::range-length': GObject.Object.Notify;
-            'notify::range-length': GObject.Object.Notify;
             'notify::total-size': GObject.Object.Notify;
-            'notify::total-size': GObject.Object.Notify;
-            'notify::encrypted-length': GObject.Object.Notify;
             'notify::encrypted-length': GObject.Object.Notify;
         }
 
@@ -5146,14 +4988,9 @@ export namespace RygelServer {
         interface SignalSignatures extends HTTPResponseElement.SignalSignatures {
             'notify::mode': GObject.Object.Notify;
             'notify::start-time': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
-            'notify::end-time': GObject.Object.Notify;
             'notify::end-time': GObject.Object.Notify;
             'notify::start-byte': GObject.Object.Notify;
-            'notify::start-byte': GObject.Object.Notify;
             'notify::end-byte': GObject.Object.Notify;
-            'notify::end-byte': GObject.Object.Notify;
-            'notify::range-length': GObject.Object.Notify;
             'notify::range-length': GObject.Object.Notify;
         }
 

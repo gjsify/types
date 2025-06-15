@@ -2350,7 +2350,6 @@ export namespace Cogl {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             destroy: Destroy;
             'notify::driver-config': GObject.Object.Notify;
-            'notify::driver-config': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
         }
@@ -3162,7 +3161,6 @@ export namespace Cogl {
         // Signal signatures
         interface SignalSignatures extends Framebuffer.SignalSignatures {
             'notify::driver-config': GObject.Object.Notify;
-            'notify::driver-config': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
         }
@@ -3202,7 +3200,6 @@ export namespace Cogl {
     namespace Onscreen {
         // Signal signatures
         interface SignalSignatures extends Framebuffer.SignalSignatures {
-            'notify::driver-config': GObject.Object.Notify;
             'notify::driver-config': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;

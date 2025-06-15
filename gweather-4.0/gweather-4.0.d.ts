@@ -633,10 +633,7 @@ export namespace GWeather {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             updated: Updated;
             'notify::application-id': GObject.Object.Notify;
-            'notify::application-id': GObject.Object.Notify;
             'notify::contact-info': GObject.Object.Notify;
-            'notify::contact-info': GObject.Object.Notify;
-            'notify::enabled-providers': GObject.Object.Notify;
             'notify::enabled-providers': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
         }

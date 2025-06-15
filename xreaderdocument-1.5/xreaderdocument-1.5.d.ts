@@ -616,12 +616,9 @@ export namespace XreaderDocument {
             'notify::page': GObject.Object.Notify;
             'notify::rgba': GObject.Object.Notify;
             'notify::can-have-popup': GObject.Object.Notify;
-            'notify::can-have-popup': GObject.Object.Notify;
-            'notify::has-popup': GObject.Object.Notify;
             'notify::has-popup': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
-            'notify::popup-is-open': GObject.Object.Notify;
             'notify::popup-is-open': GObject.Object.Notify;
             'notify::rectangle': GObject.Object.Notify;
         }
@@ -834,7 +831,6 @@ export namespace XreaderDocument {
         interface SignalSignatures extends Annotation.SignalSignatures {
             'notify::icon': GObject.Object.Notify;
             'notify::is-open': GObject.Object.Notify;
-            'notify::is-open': GObject.Object.Notify;
             'notify::area': GObject.Object.Notify;
             'notify::color': GObject.Object.Notify;
             'notify::contents': GObject.Object.Notify;
@@ -843,12 +839,9 @@ export namespace XreaderDocument {
             'notify::page': GObject.Object.Notify;
             'notify::rgba': GObject.Object.Notify;
             'notify::can-have-popup': GObject.Object.Notify;
-            'notify::can-have-popup': GObject.Object.Notify;
-            'notify::has-popup': GObject.Object.Notify;
             'notify::has-popup': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
-            'notify::popup-is-open': GObject.Object.Notify;
             'notify::popup-is-open': GObject.Object.Notify;
             'notify::rectangle': GObject.Object.Notify;
         }
@@ -1076,12 +1069,9 @@ export namespace XreaderDocument {
             'notify::page': GObject.Object.Notify;
             'notify::rgba': GObject.Object.Notify;
             'notify::can-have-popup': GObject.Object.Notify;
-            'notify::can-have-popup': GObject.Object.Notify;
-            'notify::has-popup': GObject.Object.Notify;
             'notify::has-popup': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
-            'notify::popup-is-open': GObject.Object.Notify;
             'notify::popup-is-open': GObject.Object.Notify;
             'notify::rectangle': GObject.Object.Notify;
         }
@@ -1927,12 +1917,9 @@ export namespace XreaderDocument {
             'notify::dest': GObject.Object.Notify;
             'notify::filename': GObject.Object.Notify;
             'notify::hide-list': GObject.Object.Notify;
-            'notify::hide-list': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::params': GObject.Object.Notify;
             'notify::show-list': GObject.Object.Notify;
-            'notify::show-list': GObject.Object.Notify;
-            'notify::toggle-list': GObject.Object.Notify;
             'notify::toggle-list': GObject.Object.Notify;
             'notify::type': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
@@ -2026,7 +2013,6 @@ export namespace XreaderDocument {
             'notify::left': GObject.Object.Notify;
             'notify::named': GObject.Object.Notify;
             'notify::page': GObject.Object.Notify;
-            'notify::page-label': GObject.Object.Notify;
             'notify::page-label': GObject.Object.Notify;
             'notify::right': GObject.Object.Notify;
             'notify::top': GObject.Object.Notify;

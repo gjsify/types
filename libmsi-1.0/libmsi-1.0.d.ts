@@ -429,7 +429,6 @@ export namespace Libmsi {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::database': GObject.Object.Notify;
             'notify::update-count': GObject.Object.Notify;
-            'notify::update-count': GObject.Object.Notify;
         }
 
         // Constructor properties interface

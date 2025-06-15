@@ -58,8 +58,6 @@ export namespace MateMenu {
             changed: Changed;
             'notify::flags': GObject.Object.Notify;
             'notify::menu-basename': GObject.Object.Notify;
-            'notify::menu-basename': GObject.Object.Notify;
-            'notify::menu-path': GObject.Object.Notify;
             'notify::menu-path': GObject.Object.Notify;
         }
 

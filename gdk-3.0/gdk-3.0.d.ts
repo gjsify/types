@@ -6622,7 +6622,6 @@ export namespace Gdk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::cursor-type': GObject.Object.Notify;
-            'notify::cursor-type': GObject.Object.Notify;
             'notify::display': GObject.Object.Notify;
         }
 
@@ -6733,28 +6732,19 @@ export namespace Gdk {
             changed: Changed;
             'tool-changed': ToolChanged;
             'notify::associated-device': GObject.Object.Notify;
-            'notify::associated-device': GObject.Object.Notify;
             'notify::axes': GObject.Object.Notify;
-            'notify::device-manager': GObject.Object.Notify;
             'notify::device-manager': GObject.Object.Notify;
             'notify::display': GObject.Object.Notify;
             'notify::has-cursor': GObject.Object.Notify;
-            'notify::has-cursor': GObject.Object.Notify;
-            'notify::input-mode': GObject.Object.Notify;
             'notify::input-mode': GObject.Object.Notify;
             'notify::input-source': GObject.Object.Notify;
-            'notify::input-source': GObject.Object.Notify;
-            'notify::n-axes': GObject.Object.Notify;
             'notify::n-axes': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::num-touches': GObject.Object.Notify;
-            'notify::num-touches': GObject.Object.Notify;
-            'notify::product-id': GObject.Object.Notify;
             'notify::product-id': GObject.Object.Notify;
             'notify::seat': GObject.Object.Notify;
             'notify::tool': GObject.Object.Notify;
             'notify::type': GObject.Object.Notify;
-            'notify::vendor-id': GObject.Object.Notify;
             'notify::vendor-id': GObject.Object.Notify;
         }
 
@@ -7400,9 +7390,7 @@ export namespace Gdk {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::axes': GObject.Object.Notify;
             'notify::hardware-id': GObject.Object.Notify;
-            'notify::hardware-id': GObject.Object.Notify;
             'notify::serial': GObject.Object.Notify;
-            'notify::tool-type': GObject.Object.Notify;
             'notify::tool-type': GObject.Object.Notify;
         }
 
@@ -7917,7 +7905,6 @@ export namespace Gdk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'display-opened': DisplayOpened;
-            'notify::default-display': GObject.Object.Notify;
             'notify::default-display': GObject.Object.Notify;
         }
 
@@ -8482,7 +8469,6 @@ export namespace Gdk {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::display': GObject.Object.Notify;
             'notify::shared-context': GObject.Object.Notify;
-            'notify::shared-context': GObject.Object.Notify;
             'notify::window': GObject.Object.Notify;
         }
 
@@ -8988,16 +8974,11 @@ export namespace Gdk {
             'notify::display': GObject.Object.Notify;
             'notify::geometry': GObject.Object.Notify;
             'notify::height-mm': GObject.Object.Notify;
-            'notify::height-mm': GObject.Object.Notify;
             'notify::manufacturer': GObject.Object.Notify;
             'notify::model': GObject.Object.Notify;
             'notify::refresh-rate': GObject.Object.Notify;
-            'notify::refresh-rate': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
             'notify::scale-factor': GObject.Object.Notify;
             'notify::subpixel-layout': GObject.Object.Notify;
-            'notify::subpixel-layout': GObject.Object.Notify;
-            'notify::width-mm': GObject.Object.Notify;
             'notify::width-mm': GObject.Object.Notify;
             'notify::workarea': GObject.Object.Notify;
         }
@@ -9181,7 +9162,6 @@ export namespace Gdk {
             'composited-changed': CompositedChanged;
             'monitors-changed': MonitorsChanged;
             'size-changed': SizeChanged;
-            'notify::font-options': GObject.Object.Notify;
             'notify::font-options': GObject.Object.Notify;
             'notify::resolution': GObject.Object.Notify;
         }

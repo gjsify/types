@@ -340,20 +340,13 @@ export namespace GnomeAutoar {
             error: Error;
             progress: Progress;
             'notify::completed-files': GObject.Object.Notify;
-            'notify::completed-files': GObject.Object.Notify;
             'notify::completed-size': GObject.Object.Notify;
-            'notify::completed-size': GObject.Object.Notify;
-            'notify::create-top-level-directory': GObject.Object.Notify;
             'notify::create-top-level-directory': GObject.Object.Notify;
             'notify::files': GObject.Object.Notify;
             'notify::notify-interval': GObject.Object.Notify;
-            'notify::notify-interval': GObject.Object.Notify;
             'notify::output-file': GObject.Object.Notify;
-            'notify::output-file': GObject.Object.Notify;
-            'notify::output-is-dest': GObject.Object.Notify;
             'notify::output-is-dest': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::source-files': GObject.Object.Notify;
             'notify::source-files': GObject.Object.Notify;
         }
 
@@ -599,22 +592,13 @@ export namespace GnomeAutoar {
             'request-passphrase': RequestPassphrase;
             scanned: Scanned;
             'notify::completed-files': GObject.Object.Notify;
-            'notify::completed-files': GObject.Object.Notify;
-            'notify::completed-size': GObject.Object.Notify;
             'notify::completed-size': GObject.Object.Notify;
             'notify::delete-after-extraction': GObject.Object.Notify;
-            'notify::delete-after-extraction': GObject.Object.Notify;
-            'notify::notify-interval': GObject.Object.Notify;
             'notify::notify-interval': GObject.Object.Notify;
             'notify::output-file': GObject.Object.Notify;
-            'notify::output-file': GObject.Object.Notify;
-            'notify::output-is-dest': GObject.Object.Notify;
             'notify::output-is-dest': GObject.Object.Notify;
             'notify::source-file': GObject.Object.Notify;
-            'notify::source-file': GObject.Object.Notify;
             'notify::total-files': GObject.Object.Notify;
-            'notify::total-files': GObject.Object.Notify;
-            'notify::total-size': GObject.Object.Notify;
             'notify::total-size': GObject.Object.Notify;
         }
 

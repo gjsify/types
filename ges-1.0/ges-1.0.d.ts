@@ -1234,10 +1234,8 @@ export namespace GES {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::extractable-type': GObject.Object.Notify;
-            'notify::extractable-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::proxy': GObject.Object.Notify;
-            'notify::proxy-target': GObject.Object.Notify;
             'notify::proxy-target': GObject.Object.Notify;
         }
 
@@ -2763,16 +2761,11 @@ export namespace GES {
         interface SignalSignatures extends Source.SignalSignatures {
             'notify::active': GObject.Object.Notify;
             'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
             'notify::has-internal-source': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -3273,16 +3266,11 @@ export namespace GES {
         interface SignalSignatures extends AudioSource.SignalSignatures {
             'notify::active': GObject.Object.Notify;
             'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
             'notify::has-internal-source': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -3805,12 +3793,8 @@ export namespace GES {
             'notify::id': GObject.Object.Notify;
             'notify::mixing': GObject.Object.Notify;
             'notify::restriction-caps': GObject.Object.Notify;
-            'notify::restriction-caps': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
             'notify::async-handling': GObject.Object.Notify;
-            'notify::async-handling': GObject.Object.Notify;
-            'notify::message-forward': GObject.Object.Notify;
             'notify::message-forward': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -4695,16 +4679,11 @@ export namespace GES {
         interface SignalSignatures extends Transition.SignalSignatures {
             'notify::active': GObject.Object.Notify;
             'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
             'notify::has-internal-source': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -5199,16 +5178,11 @@ export namespace GES {
             'notify::uri': GObject.Object.Notify;
             'notify::active': GObject.Object.Notify;
             'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
             'notify::has-internal-source': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -5714,16 +5688,11 @@ export namespace GES {
         interface SignalSignatures extends Operation.SignalSignatures {
             'notify::active': GObject.Object.Notify;
             'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
             'notify::has-internal-source': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -6319,15 +6288,11 @@ export namespace GES {
         // Signal signatures
         interface SignalSignatures extends OperationClip.SignalSignatures {
             'notify::duration-limit': GObject.Object.Notify;
-            'notify::duration-limit': GObject.Object.Notify;
             'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
             'notify::supported-formats': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -6832,15 +6797,11 @@ export namespace GES {
         // Signal signatures
         interface SignalSignatures extends OperationClip.SignalSignatures {
             'notify::duration-limit': GObject.Object.Notify;
-            'notify::duration-limit': GObject.Object.Notify;
             'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
             'notify::supported-formats': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -7428,15 +7389,11 @@ export namespace GES {
         // Signal signatures
         interface SignalSignatures extends Container.SignalSignatures {
             'notify::duration-limit': GObject.Object.Notify;
-            'notify::duration-limit': GObject.Object.Notify;
             'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
             'notify::supported-formats': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -8514,12 +8471,9 @@ export namespace GES {
         // Signal signatures
         interface SignalSignatures extends Asset.SignalSignatures {
             'notify::supported-formats': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
-            'notify::extractable-type': GObject.Object.Notify;
             'notify::extractable-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::proxy': GObject.Object.Notify;
-            'notify::proxy-target': GObject.Object.Notify;
             'notify::proxy-target': GObject.Object.Notify;
         }
 
@@ -9834,8 +9788,6 @@ export namespace GES {
             'notify::height': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -10934,7 +10886,6 @@ export namespace GES {
             'source-setup': SourceSetup;
             'notify::timeout': GObject.Object.Notify;
             'notify::use-cache': GObject.Object.Notify;
-            'notify::use-cache': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -11009,19 +10960,13 @@ export namespace GES {
         // Signal signatures
         interface SignalSignatures extends BaseEffect.SignalSignatures {
             'notify::bin-description': GObject.Object.Notify;
-            'notify::bin-description': GObject.Object.Notify;
             'notify::active': GObject.Object.Notify;
             'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
             'notify::has-internal-source': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -11555,12 +11500,9 @@ export namespace GES {
         // Signal signatures
         interface SignalSignatures extends TrackElementAsset.SignalSignatures {
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::extractable-type': GObject.Object.Notify;
             'notify::extractable-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::proxy': GObject.Object.Notify;
-            'notify::proxy-target': GObject.Object.Notify;
             'notify::proxy-target': GObject.Object.Notify;
         }
 
@@ -12249,19 +12191,13 @@ export namespace GES {
         // Signal signatures
         interface SignalSignatures extends BaseEffectClip.SignalSignatures {
             'notify::audio-bin-description': GObject.Object.Notify;
-            'notify::audio-bin-description': GObject.Object.Notify;
             'notify::video-bin-description': GObject.Object.Notify;
-            'notify::video-bin-description': GObject.Object.Notify;
-            'notify::duration-limit': GObject.Object.Notify;
             'notify::duration-limit': GObject.Object.Notify;
             'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
             'notify::supported-formats': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -12965,8 +12901,6 @@ export namespace GES {
         interface SignalSignatures extends Container.SignalSignatures {
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::priority': GObject.Object.Notify;
             'notify::start': GObject.Object.Notify;
@@ -13550,16 +13484,11 @@ export namespace GES {
             'notify::uri': GObject.Object.Notify;
             'notify::active': GObject.Object.Notify;
             'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
             'notify::has-internal-source': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -14080,7 +14009,6 @@ export namespace GES {
             'active-changed': ActiveChanged;
             'clip-added': ClipAdded;
             'clip-removed': ClipRemoved;
-            'notify::auto-transition': GObject.Object.Notify;
             'notify::auto-transition': GObject.Object.Notify;
             'notify::priority': GObject.Object.Notify;
         }
@@ -16151,16 +16079,11 @@ export namespace GES {
             'notify::uri': GObject.Object.Notify;
             'notify::active': GObject.Object.Notify;
             'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
             'notify::has-internal-source': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -16680,16 +16603,11 @@ export namespace GES {
         interface SignalSignatures extends TrackElement.SignalSignatures {
             'notify::active': GObject.Object.Notify;
             'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
             'notify::has-internal-source': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -17180,15 +17098,11 @@ export namespace GES {
         // Signal signatures
         interface SignalSignatures extends Clip.SignalSignatures {
             'notify::duration-limit': GObject.Object.Notify;
-            'notify::duration-limit': GObject.Object.Notify;
             'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
             'notify::supported-formats': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -17682,15 +17596,11 @@ export namespace GES {
         // Signal signatures
         interface SignalSignatures extends OperationClip.SignalSignatures {
             'notify::duration-limit': GObject.Object.Notify;
-            'notify::duration-limit': GObject.Object.Notify;
             'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
             'notify::supported-formats': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -18189,22 +18099,15 @@ export namespace GES {
         // Signal signatures
         interface SignalSignatures extends Gst.Pipeline.SignalSignatures {
             'notify::audio-filter': GObject.Object.Notify;
-            'notify::audio-filter': GObject.Object.Notify;
-            'notify::audio-sink': GObject.Object.Notify;
             'notify::audio-sink': GObject.Object.Notify;
             'notify::mode': GObject.Object.Notify;
             'notify::timeline': GObject.Object.Notify;
             'notify::video-filter': GObject.Object.Notify;
-            'notify::video-filter': GObject.Object.Notify;
             'notify::video-sink': GObject.Object.Notify;
-            'notify::video-sink': GObject.Object.Notify;
-            'notify::auto-flush-bus': GObject.Object.Notify;
             'notify::auto-flush-bus': GObject.Object.Notify;
             'notify::delay': GObject.Object.Notify;
             'notify::latency': GObject.Object.Notify;
             'notify::async-handling': GObject.Object.Notify;
-            'notify::async-handling': GObject.Object.Notify;
-            'notify::message-forward': GObject.Object.Notify;
             'notify::message-forward': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -19119,10 +19022,8 @@ export namespace GES {
             'missing-uri': MissingUri;
             'notify::uri': GObject.Object.Notify;
             'notify::extractable-type': GObject.Object.Notify;
-            'notify::extractable-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::proxy': GObject.Object.Notify;
-            'notify::proxy-target': GObject.Object.Notify;
             'notify::proxy-target': GObject.Object.Notify;
         }
 
@@ -20409,16 +20310,11 @@ export namespace GES {
         interface SignalSignatures extends TrackElement.SignalSignatures {
             'notify::active': GObject.Object.Notify;
             'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
             'notify::has-internal-source': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -20920,15 +20816,11 @@ export namespace GES {
         // Signal signatures
         interface SignalSignatures extends Clip.SignalSignatures {
             'notify::duration-limit': GObject.Object.Notify;
-            'notify::duration-limit': GObject.Object.Notify;
             'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
             'notify::supported-formats': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -21431,12 +21323,9 @@ export namespace GES {
         // Signal signatures
         interface SignalSignatures extends ClipAsset.SignalSignatures {
             'notify::supported-formats': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
-            'notify::extractable-type': GObject.Object.Notify;
             'notify::extractable-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::proxy': GObject.Object.Notify;
-            'notify::proxy-target': GObject.Object.Notify;
             'notify::proxy-target': GObject.Object.Notify;
         }
 
@@ -22128,15 +22017,11 @@ export namespace GES {
             'notify::volume': GObject.Object.Notify;
             'notify::vpattern': GObject.Object.Notify;
             'notify::duration-limit': GObject.Object.Notify;
-            'notify::duration-limit': GObject.Object.Notify;
             'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
             'notify::supported-formats': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -22714,16 +22599,11 @@ export namespace GES {
         interface SignalSignatures extends Operation.SignalSignatures {
             'notify::active': GObject.Object.Notify;
             'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
             'notify::has-internal-source': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -23291,22 +23171,17 @@ export namespace GES {
         interface SignalSignatures extends OverlayClip.SignalSignatures {
             'notify::color': GObject.Object.Notify;
             'notify::font-desc': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
             'notify::halignment': GObject.Object.Notify;
             'notify::text': GObject.Object.Notify;
             'notify::valignment': GObject.Object.Notify;
             'notify::xpos': GObject.Object.Notify;
             'notify::ypos': GObject.Object.Notify;
             'notify::duration-limit': GObject.Object.Notify;
-            'notify::duration-limit': GObject.Object.Notify;
             'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
             'notify::supported-formats': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -23984,13 +23859,9 @@ export namespace GES {
             'track-added': TrackAdded;
             'track-removed': TrackRemoved;
             'notify::auto-transition': GObject.Object.Notify;
-            'notify::auto-transition': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::snapping-distance': GObject.Object.Notify;
-            'notify::snapping-distance': GObject.Object.Notify;
             'notify::async-handling': GObject.Object.Notify;
-            'notify::async-handling': GObject.Object.Notify;
-            'notify::message-forward': GObject.Object.Notify;
             'notify::message-forward': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -25432,8 +25303,6 @@ export namespace GES {
             'deep-notify': DeepNotify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -25443,8 +25312,6 @@ export namespace GES {
             'notify::timeline': GObject.Object.Notify;
             'deep-notify::duration': DeepNotify;
             'deep-notify::in-point': DeepNotify;
-            'deep-notify::in-point': DeepNotify;
-            'deep-notify::max-duration': DeepNotify;
             'deep-notify::max-duration': DeepNotify;
             'deep-notify::name': DeepNotify;
             'deep-notify::parent': DeepNotify;
@@ -27181,22 +27048,17 @@ export namespace GES {
             'notify::background': GObject.Object.Notify;
             'notify::color': GObject.Object.Notify;
             'notify::font-desc': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
             'notify::halignment': GObject.Object.Notify;
             'notify::text': GObject.Object.Notify;
             'notify::valignment': GObject.Object.Notify;
             'notify::xpos': GObject.Object.Notify;
             'notify::ypos': GObject.Object.Notify;
             'notify::duration-limit': GObject.Object.Notify;
-            'notify::duration-limit': GObject.Object.Notify;
             'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
             'notify::supported-formats': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -27832,16 +27694,11 @@ export namespace GES {
         interface SignalSignatures extends VideoSource.SignalSignatures {
             'notify::active': GObject.Object.Notify;
             'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
             'notify::has-internal-source': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -28441,12 +28298,8 @@ export namespace GES {
             'notify::id': GObject.Object.Notify;
             'notify::mixing': GObject.Object.Notify;
             'notify::restriction-caps': GObject.Object.Notify;
-            'notify::restriction-caps': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
             'notify::async-handling': GObject.Object.Notify;
-            'notify::async-handling': GObject.Object.Notify;
-            'notify::message-forward': GObject.Object.Notify;
             'notify::message-forward': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -29634,16 +29487,11 @@ export namespace GES {
             'control-binding-removed': ControlBindingRemoved;
             'notify::active': GObject.Object.Notify;
             'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
             'notify::has-internal-source': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -30943,12 +30791,9 @@ export namespace GES {
         // Signal signatures
         interface SignalSignatures extends Asset.SignalSignatures {
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::extractable-type': GObject.Object.Notify;
             'notify::extractable-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::proxy': GObject.Object.Notify;
-            'notify::proxy-target': GObject.Object.Notify;
             'notify::proxy-target': GObject.Object.Notify;
         }
 
@@ -32126,16 +31971,11 @@ export namespace GES {
         interface SignalSignatures extends Operation.SignalSignatures {
             'notify::active': GObject.Object.Notify;
             'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
             'notify::has-internal-source': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -32630,15 +32470,11 @@ export namespace GES {
         interface SignalSignatures extends BaseTransitionClip.SignalSignatures {
             'notify::vtype': GObject.Object.Notify;
             'notify::duration-limit': GObject.Object.Notify;
-            'notify::duration-limit': GObject.Object.Notify;
             'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
             'notify::supported-formats': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -33157,19 +32993,14 @@ export namespace GES {
         // Signal signatures
         interface SignalSignatures extends SourceClip.SignalSignatures {
             'notify::is-image': GObject.Object.Notify;
-            'notify::is-image': GObject.Object.Notify;
             'notify::mute': GObject.Object.Notify;
             'notify::supported-formats': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
-            'notify::duration-limit': GObject.Object.Notify;
             'notify::duration-limit': GObject.Object.Notify;
             'notify::layer': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -33722,14 +33553,10 @@ export namespace GES {
         interface SignalSignatures extends SourceClipAsset.SignalSignatures {
             'notify::duration': GObject.Object.Notify;
             'notify::is-nested-timeline': GObject.Object.Notify;
-            'notify::is-nested-timeline': GObject.Object.Notify;
             'notify::supported-formats': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
-            'notify::extractable-type': GObject.Object.Notify;
             'notify::extractable-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::proxy': GObject.Object.Notify;
-            'notify::proxy-target': GObject.Object.Notify;
             'notify::proxy-target': GObject.Object.Notify;
         }
 
@@ -34520,12 +34347,9 @@ export namespace GES {
         // Signal signatures
         interface SignalSignatures extends TrackElementAsset.SignalSignatures {
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::extractable-type': GObject.Object.Notify;
             'notify::extractable-type': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::proxy': GObject.Object.Notify;
-            'notify::proxy-target': GObject.Object.Notify;
             'notify::proxy-target': GObject.Object.Notify;
         }
 
@@ -35239,16 +35063,11 @@ export namespace GES {
         interface SignalSignatures extends Source.SignalSignatures {
             'notify::active': GObject.Object.Notify;
             'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
             'notify::has-internal-source': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -35757,16 +35576,11 @@ export namespace GES {
         interface SignalSignatures extends VideoSource.SignalSignatures {
             'notify::active': GObject.Object.Notify;
             'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
             'notify::has-internal-source': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -36279,12 +36093,8 @@ export namespace GES {
             'notify::id': GObject.Object.Notify;
             'notify::mixing': GObject.Object.Notify;
             'notify::restriction-caps': GObject.Object.Notify;
-            'notify::restriction-caps': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
             'notify::async-handling': GObject.Object.Notify;
-            'notify::async-handling': GObject.Object.Notify;
-            'notify::message-forward': GObject.Object.Notify;
             'notify::message-forward': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -37169,19 +36979,13 @@ export namespace GES {
             'notify::border': GObject.Object.Notify;
             'notify::invert': GObject.Object.Notify;
             'notify::transition-type': GObject.Object.Notify;
-            'notify::transition-type': GObject.Object.Notify;
             'notify::active': GObject.Object.Notify;
             'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
             'notify::has-internal-source': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -37740,16 +37544,11 @@ export namespace GES {
             'notify::uri': GObject.Object.Notify;
             'notify::active': GObject.Object.Notify;
             'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
             'notify::has-internal-source': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::track-type': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::in-point': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
             'notify::max-duration': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;

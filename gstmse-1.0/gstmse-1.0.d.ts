@@ -200,12 +200,9 @@ export namespace GstMse {
             'on-source-ended': OnSourceEnded;
             'on-source-open': OnSourceOpen;
             'notify::active-source-buffers': GObject.Object.Notify;
-            'notify::active-source-buffers': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::position': GObject.Object.Notify;
             'notify::ready-state': GObject.Object.Notify;
-            'notify::ready-state': GObject.Object.Notify;
-            'notify::source-buffers': GObject.Object.Notify;
             'notify::source-buffers': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -457,13 +454,9 @@ export namespace GstMse {
         interface SignalSignatures extends Gst.Element.SignalSignatures {
             'notify::duration': GObject.Object.Notify;
             'notify::n-audio': GObject.Object.Notify;
-            'notify::n-audio': GObject.Object.Notify;
             'notify::n-text': GObject.Object.Notify;
-            'notify::n-text': GObject.Object.Notify;
-            'notify::n-video': GObject.Object.Notify;
             'notify::n-video': GObject.Object.Notify;
             'notify::position': GObject.Object.Notify;
-            'notify::ready-state': GObject.Object.Notify;
             'notify::ready-state': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -1153,15 +1146,10 @@ export namespace GstMse {
             'on-update-end': OnUpdateEnd;
             'on-update-start': OnUpdateStart;
             'notify::append-mode': GObject.Object.Notify;
-            'notify::append-mode': GObject.Object.Notify;
             'notify::append-window-end': GObject.Object.Notify;
-            'notify::append-window-end': GObject.Object.Notify;
-            'notify::append-window-start': GObject.Object.Notify;
             'notify::append-window-start': GObject.Object.Notify;
             'notify::buffered': GObject.Object.Notify;
             'notify::content-type': GObject.Object.Notify;
-            'notify::content-type': GObject.Object.Notify;
-            'notify::timestamp-offset': GObject.Object.Notify;
             'notify::timestamp-offset': GObject.Object.Notify;
             'notify::updating': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;

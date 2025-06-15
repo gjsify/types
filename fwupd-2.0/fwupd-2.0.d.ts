@@ -1109,16 +1109,11 @@ export namespace Fwupd {
             'device-removed': DeviceRemoved;
             'status-changed': StatusChanged;
             'notify::daemon-version': GObject.Object.Notify;
-            'notify::daemon-version': GObject.Object.Notify;
-            'notify::host-machine-id': GObject.Object.Notify;
             'notify::host-machine-id': GObject.Object.Notify;
             'notify::host-product': GObject.Object.Notify;
-            'notify::host-product': GObject.Object.Notify;
-            'notify::host-security-id': GObject.Object.Notify;
             'notify::host-security-id': GObject.Object.Notify;
             'notify::interactive': GObject.Object.Notify;
             'notify::percentage': GObject.Object.Notify;
-            'notify::soup-session': GObject.Object.Notify;
             'notify::soup-session': GObject.Object.Notify;
             'notify::status': GObject.Object.Notify;
             'notify::tainted': GObject.Object.Notify;
@@ -3316,8 +3311,6 @@ export namespace Fwupd {
             'notify::protocol': GObject.Object.Notify;
             'notify::status': GObject.Object.Notify;
             'notify::update-state': GObject.Object.Notify;
-            'notify::update-state': GObject.Object.Notify;
-            'notify::version-format': GObject.Object.Notify;
             'notify::version-format': GObject.Object.Notify;
         }
 
@@ -4412,10 +4405,7 @@ export namespace Fwupd {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::approval-required': GObject.Object.Notify;
-            'notify::approval-required': GObject.Object.Notify;
             'notify::automatic-reports': GObject.Object.Notify;
-            'notify::automatic-reports': GObject.Object.Notify;
-            'notify::automatic-security-reports': GObject.Object.Notify;
             'notify::automatic-security-reports': GObject.Object.Notify;
             'notify::enabled': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;

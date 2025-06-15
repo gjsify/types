@@ -913,13 +913,9 @@ export namespace GstBase {
         interface SignalSignatures extends Gst.Element.SignalSignatures {
             'samples-selected': SamplesSelected;
             'notify::emit-signals': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
             'notify::latency': GObject.Object.Notify;
             'notify::min-upstream-latency': GObject.Object.Notify;
-            'notify::min-upstream-latency': GObject.Object.Notify;
             'notify::start-time': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
-            'notify::start-time-selection': GObject.Object.Notify;
             'notify::start-time-selection': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -1396,7 +1392,6 @@ export namespace GstBase {
         interface SignalSignatures extends Gst.Pad.SignalSignatures {
             'buffer-consumed': BufferConsumed;
             'notify::emit-signals': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
             'notify::caps': GObject.Object.Notify;
             'notify::direction': GObject.Object.Notify;
             'notify::offset': GObject.Object.Notify;
@@ -1508,7 +1503,6 @@ export namespace GstBase {
     namespace BaseParse {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
-            'notify::disable-passthrough': GObject.Object.Notify;
             'notify::disable-passthrough': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -1997,23 +1991,15 @@ export namespace GstBase {
             'notify::async': GObject.Object.Notify;
             'notify::blocksize': GObject.Object.Notify;
             'notify::enable-last-sample': GObject.Object.Notify;
-            'notify::enable-last-sample': GObject.Object.Notify;
-            'notify::last-sample': GObject.Object.Notify;
             'notify::last-sample': GObject.Object.Notify;
             'notify::max-bitrate': GObject.Object.Notify;
-            'notify::max-bitrate': GObject.Object.Notify;
             'notify::max-lateness': GObject.Object.Notify;
-            'notify::max-lateness': GObject.Object.Notify;
-            'notify::processing-deadline': GObject.Object.Notify;
             'notify::processing-deadline': GObject.Object.Notify;
             'notify::qos': GObject.Object.Notify;
-            'notify::render-delay': GObject.Object.Notify;
             'notify::render-delay': GObject.Object.Notify;
             'notify::stats': GObject.Object.Notify;
             'notify::sync': GObject.Object.Notify;
             'notify::throttle-time': GObject.Object.Notify;
-            'notify::throttle-time': GObject.Object.Notify;
-            'notify::ts-offset': GObject.Object.Notify;
             'notify::ts-offset': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -2713,11 +2699,8 @@ export namespace GstBase {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
             'notify::automatic-eos': GObject.Object.Notify;
-            'notify::automatic-eos': GObject.Object.Notify;
             'notify::blocksize': GObject.Object.Notify;
             'notify::do-timestamp': GObject.Object.Notify;
-            'notify::do-timestamp': GObject.Object.Notify;
-            'notify::num-buffers': GObject.Object.Notify;
             'notify::num-buffers': GObject.Object.Notify;
             'notify::typefind': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -4067,10 +4050,7 @@ export namespace GstBase {
             empty: Empty;
             full: Full;
             'notify::current-level-bytes': GObject.Object.Notify;
-            'notify::current-level-bytes': GObject.Object.Notify;
             'notify::current-level-time': GObject.Object.Notify;
-            'notify::current-level-time': GObject.Object.Notify;
-            'notify::current-level-visible': GObject.Object.Notify;
             'notify::current-level-visible': GObject.Object.Notify;
         }
 
@@ -4138,11 +4118,8 @@ export namespace GstBase {
         // Signal signatures
         interface SignalSignatures extends BaseSrc.SignalSignatures {
             'notify::automatic-eos': GObject.Object.Notify;
-            'notify::automatic-eos': GObject.Object.Notify;
             'notify::blocksize': GObject.Object.Notify;
             'notify::do-timestamp': GObject.Object.Notify;
-            'notify::do-timestamp': GObject.Object.Notify;
-            'notify::num-buffers': GObject.Object.Notify;
             'notify::num-buffers': GObject.Object.Notify;
             'notify::typefind': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;

@@ -84,8 +84,6 @@ export namespace GstBadAudio {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
             'notify::current-subsong': GObject.Object.Notify;
-            'notify::current-subsong': GObject.Object.Notify;
-            'notify::num-loops': GObject.Object.Notify;
             'notify::num-loops': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;

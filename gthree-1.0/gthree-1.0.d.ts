@@ -326,13 +326,9 @@ export namespace Gthree {
             'notify::color': GObject.Object.Notify;
             'notify::intensity': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -722,13 +718,9 @@ export namespace Gthree {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -768,13 +760,9 @@ export namespace Gthree {
             'notify::far': GObject.Object.Notify;
             'notify::near': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -1022,13 +1010,9 @@ export namespace Gthree {
             'notify::color': GObject.Object.Notify;
             'notify::intensity': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -1437,13 +1421,9 @@ export namespace Gthree {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -1481,17 +1461,12 @@ export namespace Gthree {
         // Signal signatures
         interface SignalSignatures extends Light.SignalSignatures {
             'notify::ground-color': GObject.Object.Notify;
-            'notify::ground-color': GObject.Object.Notify;
             'notify::color': GObject.Object.Notify;
             'notify::intensity': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -1695,13 +1670,9 @@ export namespace Gthree {
             'notify::color': GObject.Object.Notify;
             'notify::intensity': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -1809,13 +1780,9 @@ export namespace Gthree {
             'notify::geometry': GObject.Object.Notify;
             'notify::material': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -1865,15 +1832,11 @@ export namespace Gthree {
         interface SignalSignatures extends Material.SignalSignatures {
             'notify::color': GObject.Object.Notify;
             'notify::line-width': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
             'notify::alpha-test': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
             'notify::clip-intersection': GObject.Object.Notify;
             'notify::fog': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
             'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
             'notify::vertex-colors': GObject.Object.Notify;
         }
 
@@ -1938,13 +1901,9 @@ export namespace Gthree {
             'notify::geometry': GObject.Object.Notify;
             'notify::material': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -2071,13 +2030,10 @@ export namespace Gthree {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::alpha-test': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
             'notify::clip-intersection': GObject.Object.Notify;
             'notify::fog': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
             'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
             'notify::vertex-colors': GObject.Object.Notify;
         }
 
@@ -2196,13 +2152,9 @@ export namespace Gthree {
             'notify::geometry': GObject.Object.Notify;
             'notify::materials': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -2263,27 +2215,19 @@ export namespace Gthree {
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
             'notify::color': GObject.Object.Notify;
             'notify::env-map': GObject.Object.Notify;
-            'notify::env-map': GObject.Object.Notify;
             'notify::map': GObject.Object.Notify;
             'notify::reflectivity': GObject.Object.Notify;
             'notify::refraction-ratio': GObject.Object.Notify;
-            'notify::refraction-ratio': GObject.Object.Notify;
             'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
             'notify::morph-targets': GObject.Object.Notify;
             'notify::skinning': GObject.Object.Notify;
             'notify::wireframe': GObject.Object.Notify;
             'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
             'notify::alpha-test': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
             'notify::clip-intersection': GObject.Object.Notify;
             'notify::fog': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
             'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
             'notify::vertex-colors': GObject.Object.Notify;
         }
 
@@ -2364,21 +2308,15 @@ export namespace Gthree {
         // Signal signatures
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
             'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
             'notify::morph-targets': GObject.Object.Notify;
             'notify::skinning': GObject.Object.Notify;
             'notify::wireframe': GObject.Object.Notify;
             'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
             'notify::alpha-test': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
             'notify::clip-intersection': GObject.Object.Notify;
             'notify::fog': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
             'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
             'notify::vertex-colors': GObject.Object.Notify;
         }
 
@@ -2426,21 +2364,15 @@ export namespace Gthree {
         // Signal signatures
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
             'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
             'notify::morph-targets': GObject.Object.Notify;
             'notify::skinning': GObject.Object.Notify;
             'notify::wireframe': GObject.Object.Notify;
             'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
             'notify::alpha-test': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
             'notify::clip-intersection': GObject.Object.Notify;
             'notify::fog': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
             'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
             'notify::vertex-colors': GObject.Object.Notify;
         }
 
@@ -2493,29 +2425,20 @@ export namespace Gthree {
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
             'notify::color': GObject.Object.Notify;
             'notify::emissive-color': GObject.Object.Notify;
-            'notify::emissive-color': GObject.Object.Notify;
-            'notify::env-map': GObject.Object.Notify;
             'notify::env-map': GObject.Object.Notify;
             'notify::map': GObject.Object.Notify;
             'notify::reflectivity': GObject.Object.Notify;
             'notify::refraction-ratio': GObject.Object.Notify;
-            'notify::refraction-ratio': GObject.Object.Notify;
             'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
             'notify::morph-targets': GObject.Object.Notify;
             'notify::skinning': GObject.Object.Notify;
             'notify::wireframe': GObject.Object.Notify;
             'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
             'notify::alpha-test': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
             'notify::clip-intersection': GObject.Object.Notify;
             'notify::fog': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
             'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
             'notify::vertex-colors': GObject.Object.Notify;
         }
 
@@ -2604,21 +2527,15 @@ export namespace Gthree {
         // Signal signatures
         interface SignalSignatures extends Material.SignalSignatures {
             'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
             'notify::morph-targets': GObject.Object.Notify;
             'notify::skinning': GObject.Object.Notify;
             'notify::wireframe': GObject.Object.Notify;
             'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
             'notify::alpha-test': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
             'notify::clip-intersection': GObject.Object.Notify;
             'notify::fog': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
             'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
             'notify::vertex-colors': GObject.Object.Notify;
         }
 
@@ -2700,21 +2617,15 @@ export namespace Gthree {
         // Signal signatures
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
             'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
             'notify::morph-targets': GObject.Object.Notify;
             'notify::skinning': GObject.Object.Notify;
             'notify::wireframe': GObject.Object.Notify;
             'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
             'notify::alpha-test': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
             'notify::clip-intersection': GObject.Object.Notify;
             'notify::fog': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
             'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
             'notify::vertex-colors': GObject.Object.Notify;
         }
 
@@ -2763,40 +2674,26 @@ export namespace Gthree {
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
             'notify::color': GObject.Object.Notify;
             'notify::emissive-color': GObject.Object.Notify;
-            'notify::emissive-color': GObject.Object.Notify;
             'notify::env-map': GObject.Object.Notify;
-            'notify::env-map': GObject.Object.Notify;
-            'notify::flat-shading': GObject.Object.Notify;
             'notify::flat-shading': GObject.Object.Notify;
             'notify::map': GObject.Object.Notify;
             'notify::normal-map': GObject.Object.Notify;
-            'notify::normal-map': GObject.Object.Notify;
-            'notify::normal-scale': GObject.Object.Notify;
             'notify::normal-scale': GObject.Object.Notify;
             'notify::reflectivity': GObject.Object.Notify;
             'notify::refraction-ratio': GObject.Object.Notify;
-            'notify::refraction-ratio': GObject.Object.Notify;
             'notify::shininess': GObject.Object.Notify;
             'notify::specular-color': GObject.Object.Notify;
-            'notify::specular-color': GObject.Object.Notify;
-            'notify::specular-map': GObject.Object.Notify;
             'notify::specular-map': GObject.Object.Notify;
             'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
             'notify::morph-targets': GObject.Object.Notify;
             'notify::skinning': GObject.Object.Notify;
             'notify::wireframe': GObject.Object.Notify;
             'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
             'notify::alpha-test': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
             'notify::clip-intersection': GObject.Object.Notify;
             'notify::fog': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
             'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
             'notify::vertex-colors': GObject.Object.Notify;
         }
 
@@ -2930,66 +2827,39 @@ export namespace Gthree {
         // Signal signatures
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
             'notify::alpha-map': GObject.Object.Notify;
-            'notify::alpha-map': GObject.Object.Notify;
-            'notify::ao-map': GObject.Object.Notify;
             'notify::ao-map': GObject.Object.Notify;
             'notify::ao-map-intensity': GObject.Object.Notify;
-            'notify::ao-map-intensity': GObject.Object.Notify;
             'notify::bump-map': GObject.Object.Notify;
-            'notify::bump-map': GObject.Object.Notify;
-            'notify::bump-scale': GObject.Object.Notify;
             'notify::bump-scale': GObject.Object.Notify;
             'notify::color': GObject.Object.Notify;
             'notify::displacement-bias': GObject.Object.Notify;
-            'notify::displacement-bias': GObject.Object.Notify;
-            'notify::displacement-map': GObject.Object.Notify;
             'notify::displacement-map': GObject.Object.Notify;
             'notify::displacement-scale': GObject.Object.Notify;
-            'notify::displacement-scale': GObject.Object.Notify;
-            'notify::emissive-color': GObject.Object.Notify;
             'notify::emissive-color': GObject.Object.Notify;
             'notify::emissive-intensity': GObject.Object.Notify;
-            'notify::emissive-intensity': GObject.Object.Notify;
-            'notify::emissive-map': GObject.Object.Notify;
             'notify::emissive-map': GObject.Object.Notify;
             'notify::env-map': GObject.Object.Notify;
-            'notify::env-map': GObject.Object.Notify;
-            'notify::env-map-intensity': GObject.Object.Notify;
             'notify::env-map-intensity': GObject.Object.Notify;
             'notify::glossiness': GObject.Object.Notify;
             'notify::glossiness-map': GObject.Object.Notify;
-            'notify::glossiness-map': GObject.Object.Notify;
             'notify::light-map': GObject.Object.Notify;
-            'notify::light-map': GObject.Object.Notify;
-            'notify::light-map-intensity': GObject.Object.Notify;
             'notify::light-map-intensity': GObject.Object.Notify;
             'notify::map': GObject.Object.Notify;
             'notify::normal-map': GObject.Object.Notify;
-            'notify::normal-map': GObject.Object.Notify;
-            'notify::normal-scale': GObject.Object.Notify;
             'notify::normal-scale': GObject.Object.Notify;
             'notify::refraction-ratio': GObject.Object.Notify;
-            'notify::refraction-ratio': GObject.Object.Notify;
-            'notify::specular-factor': GObject.Object.Notify;
             'notify::specular-factor': GObject.Object.Notify;
             'notify::specular-map': GObject.Object.Notify;
-            'notify::specular-map': GObject.Object.Notify;
             'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
             'notify::morph-targets': GObject.Object.Notify;
             'notify::skinning': GObject.Object.Notify;
             'notify::wireframe': GObject.Object.Notify;
             'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
             'notify::alpha-test': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
             'notify::clip-intersection': GObject.Object.Notify;
             'notify::fog': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
             'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
             'notify::vertex-colors': GObject.Object.Notify;
         }
 
@@ -3213,65 +3083,39 @@ export namespace Gthree {
         // Signal signatures
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
             'notify::alpha-map': GObject.Object.Notify;
-            'notify::alpha-map': GObject.Object.Notify;
-            'notify::ao-map': GObject.Object.Notify;
             'notify::ao-map': GObject.Object.Notify;
             'notify::ao-map-intensity': GObject.Object.Notify;
-            'notify::ao-map-intensity': GObject.Object.Notify;
             'notify::bump-map': GObject.Object.Notify;
-            'notify::bump-map': GObject.Object.Notify;
-            'notify::bump-scale': GObject.Object.Notify;
             'notify::bump-scale': GObject.Object.Notify;
             'notify::color': GObject.Object.Notify;
             'notify::displacement-bias': GObject.Object.Notify;
-            'notify::displacement-bias': GObject.Object.Notify;
-            'notify::displacement-map': GObject.Object.Notify;
             'notify::displacement-map': GObject.Object.Notify;
             'notify::displacement-scale': GObject.Object.Notify;
-            'notify::displacement-scale': GObject.Object.Notify;
-            'notify::emissive-color': GObject.Object.Notify;
             'notify::emissive-color': GObject.Object.Notify;
             'notify::emissive-intensity': GObject.Object.Notify;
-            'notify::emissive-intensity': GObject.Object.Notify;
-            'notify::emissive-map': GObject.Object.Notify;
             'notify::emissive-map': GObject.Object.Notify;
             'notify::env-map': GObject.Object.Notify;
-            'notify::env-map': GObject.Object.Notify;
-            'notify::env-map-intensity': GObject.Object.Notify;
             'notify::env-map-intensity': GObject.Object.Notify;
             'notify::light-map': GObject.Object.Notify;
-            'notify::light-map': GObject.Object.Notify;
-            'notify::light-map-intensity': GObject.Object.Notify;
             'notify::light-map-intensity': GObject.Object.Notify;
             'notify::map': GObject.Object.Notify;
             'notify::metalness': GObject.Object.Notify;
             'notify::metalness-map': GObject.Object.Notify;
-            'notify::metalness-map': GObject.Object.Notify;
-            'notify::normal-map': GObject.Object.Notify;
             'notify::normal-map': GObject.Object.Notify;
             'notify::normal-scale': GObject.Object.Notify;
-            'notify::normal-scale': GObject.Object.Notify;
-            'notify::refraction-ratio': GObject.Object.Notify;
             'notify::refraction-ratio': GObject.Object.Notify;
             'notify::roughness': GObject.Object.Notify;
             'notify::roughness-map': GObject.Object.Notify;
-            'notify::roughness-map': GObject.Object.Notify;
             'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
             'notify::morph-targets': GObject.Object.Notify;
             'notify::skinning': GObject.Object.Notify;
             'notify::wireframe': GObject.Object.Notify;
             'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
             'notify::alpha-test': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
             'notify::clip-intersection': GObject.Object.Notify;
             'notify::fog': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
             'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
             'notify::vertex-colors': GObject.Object.Notify;
         }
 
@@ -3492,55 +3336,33 @@ export namespace Gthree {
         // Signal signatures
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
             'notify::alpha-map': GObject.Object.Notify;
-            'notify::alpha-map': GObject.Object.Notify;
-            'notify::ao-map': GObject.Object.Notify;
             'notify::ao-map': GObject.Object.Notify;
             'notify::ao-map-intensity': GObject.Object.Notify;
-            'notify::ao-map-intensity': GObject.Object.Notify;
             'notify::bump-map': GObject.Object.Notify;
-            'notify::bump-map': GObject.Object.Notify;
-            'notify::bump-scale': GObject.Object.Notify;
             'notify::bump-scale': GObject.Object.Notify;
             'notify::color': GObject.Object.Notify;
             'notify::displacement-bias': GObject.Object.Notify;
-            'notify::displacement-bias': GObject.Object.Notify;
-            'notify::displacement-map': GObject.Object.Notify;
             'notify::displacement-map': GObject.Object.Notify;
             'notify::displacement-scale': GObject.Object.Notify;
-            'notify::displacement-scale': GObject.Object.Notify;
-            'notify::emissive-color': GObject.Object.Notify;
             'notify::emissive-color': GObject.Object.Notify;
             'notify::emissive-intensity': GObject.Object.Notify;
-            'notify::emissive-intensity': GObject.Object.Notify;
-            'notify::emissive-map': GObject.Object.Notify;
             'notify::emissive-map': GObject.Object.Notify;
             'notify::gradient-map': GObject.Object.Notify;
-            'notify::gradient-map': GObject.Object.Notify;
             'notify::light-map': GObject.Object.Notify;
-            'notify::light-map': GObject.Object.Notify;
-            'notify::light-map-intensity': GObject.Object.Notify;
             'notify::light-map-intensity': GObject.Object.Notify;
             'notify::map': GObject.Object.Notify;
             'notify::normal-map': GObject.Object.Notify;
-            'notify::normal-map': GObject.Object.Notify;
-            'notify::normal-scale': GObject.Object.Notify;
             'notify::normal-scale': GObject.Object.Notify;
             'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
             'notify::morph-targets': GObject.Object.Notify;
             'notify::skinning': GObject.Object.Notify;
             'notify::wireframe': GObject.Object.Notify;
             'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
             'notify::alpha-test': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
             'notify::clip-intersection': GObject.Object.Notify;
             'notify::fog': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
             'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
             'notify::vertex-colors': GObject.Object.Notify;
         }
 
@@ -3772,13 +3594,9 @@ export namespace Gthree {
             destroy: Destroy;
             'parent-set': ParentSet;
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -3923,13 +3741,9 @@ export namespace Gthree {
             'notify::far': GObject.Object.Notify;
             'notify::near': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -4080,13 +3894,9 @@ export namespace Gthree {
             'notify::far': GObject.Object.Notify;
             'notify::near': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -4153,13 +3963,9 @@ export namespace Gthree {
             'notify::plane': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -4232,13 +4038,9 @@ export namespace Gthree {
             'notify::color': GObject.Object.Notify;
             'notify::intensity': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -4304,13 +4106,9 @@ export namespace Gthree {
             'notify::geometry': GObject.Object.Notify;
             'notify::material': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -4367,15 +4165,11 @@ export namespace Gthree {
             'notify::map': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::size-attenuation': GObject.Object.Notify;
-            'notify::size-attenuation': GObject.Object.Notify;
             'notify::alpha-test': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
             'notify::clip-intersection': GObject.Object.Notify;
             'notify::fog': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
             'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
             'notify::vertex-colors': GObject.Object.Notify;
         }
 
@@ -4838,13 +4632,9 @@ export namespace Gthree {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -4934,20 +4724,13 @@ export namespace Gthree {
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
             'notify::shader': GObject.Object.Notify;
             'notify::use-lights': GObject.Object.Notify;
-            'notify::use-lights': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
             'notify::vertex-colors': GObject.Object.Notify;
             'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
             'notify::morph-targets': GObject.Object.Notify;
             'notify::skinning': GObject.Object.Notify;
             'notify::wireframe': GObject.Object.Notify;
             'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
             'notify::alpha-test': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
             'notify::clip-intersection': GObject.Object.Notify;
             'notify::fog': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
@@ -5104,13 +4887,9 @@ export namespace Gthree {
             'notify::geometry': GObject.Object.Notify;
             'notify::material': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -5165,13 +4944,9 @@ export namespace Gthree {
             'notify::geometry': GObject.Object.Notify;
             'notify::materials': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -5234,13 +5009,9 @@ export namespace Gthree {
             'notify::color': GObject.Object.Notify;
             'notify::intensity': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -5359,13 +5130,9 @@ export namespace Gthree {
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::material': GObject.Object.Notify;
             'notify::first-child': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
             'notify::last-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
             'notify::next-sibling': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
             'notify::previous-sibling': GObject.Object.Notify;
             'notify::visible': GObject.Object.Notify;
         }
@@ -5422,15 +5189,11 @@ export namespace Gthree {
             'notify::map': GObject.Object.Notify;
             'notify::rotation': GObject.Object.Notify;
             'notify::size-attenuation': GObject.Object.Notify;
-            'notify::size-attenuation': GObject.Object.Notify;
             'notify::alpha-test': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
             'notify::clip-intersection': GObject.Object.Notify;
             'notify::fog': GObject.Object.Notify;
             'notify::opacity': GObject.Object.Notify;
             'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
             'notify::vertex-colors': GObject.Object.Notify;
         }
 

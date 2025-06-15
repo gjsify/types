@@ -47,12 +47,8 @@ export namespace RygelRendererGst {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::playbin': GObject.Object.Notify;
             'notify::supported-profiles': GObject.Object.Notify;
-            'notify::supported-profiles': GObject.Object.Notify;
-            'notify::playback-state': GObject.Object.Notify;
             'notify::playback-state': GObject.Object.Notify;
             'notify::allowed-playback-speeds': GObject.Object.Notify;
-            'notify::allowed-playback-speeds': GObject.Object.Notify;
-            'notify::playback-speed': GObject.Object.Notify;
             'notify::playback-speed': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
             'notify::volume': GObject.Object.Notify;
@@ -60,17 +56,11 @@ export namespace RygelRendererGst {
             'notify::size': GObject.Object.Notify;
             'notify::metadata': GObject.Object.Notify;
             'notify::mime-type': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
-            'notify::can-seek': GObject.Object.Notify;
             'notify::can-seek': GObject.Object.Notify;
             'notify::can-seek-bytes': GObject.Object.Notify;
-            'notify::can-seek-bytes': GObject.Object.Notify;
-            'notify::content-features': GObject.Object.Notify;
             'notify::content-features': GObject.Object.Notify;
             'notify::position': GObject.Object.Notify;
             'notify::byte-position': GObject.Object.Notify;
-            'notify::byte-position': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
             'notify::user-agent': GObject.Object.Notify;
         }
 

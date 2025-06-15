@@ -3907,7 +3907,6 @@ export namespace Vips {
             'notify::disc': GObject.Object.Notify;
             'notify::fail': GObject.Object.Notify;
             'notify::fail-on': GObject.Object.Notify;
-            'notify::fail-on': GObject.Object.Notify;
             'notify::flags': GObject.Object.Notify;
             'notify::memory': GObject.Object.Notify;
             'notify::out': GObject.Object.Notify;
@@ -4005,7 +4004,6 @@ export namespace Vips {
             'notify::background': GObject.Object.Notify;
             'notify::in': GObject.Object.Notify;
             'notify::keep': GObject.Object.Notify;
-            'notify::page-height': GObject.Object.Notify;
             'notify::page-height': GObject.Object.Notify;
             'notify::profile': GObject.Object.Notify;
             'notify::strip': GObject.Object.Notify;
@@ -4116,13 +4114,11 @@ export namespace Vips {
             'notify::demand': GObject.Object.Notify;
             'notify::filename': GObject.Object.Notify;
             'notify::foreign-buffer': GObject.Object.Notify;
-            'notify::foreign-buffer': GObject.Object.Notify;
             'notify::format': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::interpretation': GObject.Object.Notify;
             'notify::kill': GObject.Object.Notify;
             'notify::mode': GObject.Object.Notify;
-            'notify::sizeof-header': GObject.Object.Notify;
             'notify::sizeof-header': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
             'notify::xoffset': GObject.Object.Notify;

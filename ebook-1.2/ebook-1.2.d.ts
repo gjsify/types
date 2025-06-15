@@ -92,7 +92,6 @@ export namespace EBook {
             'notify::locale': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::main-context': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
             'notify::online': GObject.Object.Notify;
             'notify::opened': GObject.Object.Notify;
             'notify::readonly': GObject.Object.Notify;
@@ -1886,9 +1885,7 @@ export namespace EBook {
             'notify::connection': GObject.Object.Notify;
             'notify::context': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::position': GObject.Object.Notify;
-            'notify::sort-fields': GObject.Object.Notify;
             'notify::sort-fields': GObject.Object.Notify;
             'notify::total': GObject.Object.Notify;
         }
@@ -2941,8 +2938,6 @@ export namespace EBook {
             'notify::connection': GObject.Object.Notify;
             'notify::indices': GObject.Object.Notify;
             'notify::n-total': GObject.Object.Notify;
-            'notify::n-total': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 

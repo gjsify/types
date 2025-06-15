@@ -2195,8 +2195,6 @@ export namespace Skk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::kana-mode': GObject.Object.Notify;
-            'notify::kana-mode': GObject.Object.Notify;
-            'notify::period-style': GObject.Object.Notify;
             'notify::period-style': GObject.Object.Notify;
             'notify::output': GObject.Object.Notify;
             'notify::preedit': GObject.Object.Notify;
@@ -2278,7 +2276,6 @@ export namespace Skk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2342,7 +2339,6 @@ export namespace Skk {
         // Signal signatures
         interface SignalSignatures extends Dict.SignalSignatures {
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2380,7 +2376,6 @@ export namespace Skk {
     namespace FileDict {
         // Signal signatures
         interface SignalSignatures extends Dict.SignalSignatures {
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -2420,7 +2415,6 @@ export namespace Skk {
         // Signal signatures
         interface SignalSignatures extends Dict.SignalSignatures {
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2459,7 +2453,6 @@ export namespace Skk {
         // Signal signatures
         interface SignalSignatures extends Dict.SignalSignatures {
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2497,7 +2490,6 @@ export namespace Skk {
     namespace SkkServ {
         // Signal signatures
         interface SignalSignatures extends Dict.SignalSignatures {
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -2729,16 +2721,10 @@ export namespace Skk {
             'delete-surrounding-text': DeleteSurroundingText;
             'notify::candidates': GObject.Object.Notify;
             'notify::input-mode': GObject.Object.Notify;
-            'notify::input-mode': GObject.Object.Notify;
-            'notify::auto-start-henkan-keywords': GObject.Object.Notify;
             'notify::auto-start-henkan-keywords': GObject.Object.Notify;
             'notify::egg-like-newline': GObject.Object.Notify;
-            'notify::egg-like-newline': GObject.Object.Notify;
-            'notify::period-style': GObject.Object.Notify;
             'notify::period-style': GObject.Object.Notify;
             'notify::typing-rule': GObject.Object.Notify;
-            'notify::typing-rule': GObject.Object.Notify;
-            'notify::key-event-filter': GObject.Object.Notify;
             'notify::key-event-filter': GObject.Object.Notify;
             'notify::preedit': GObject.Object.Notify;
         }
@@ -2942,13 +2928,9 @@ export namespace Skk {
             populated: Populated;
             selected: Selected;
             'notify::cursor-pos': GObject.Object.Notify;
-            'notify::cursor-pos': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::page-start': GObject.Object.Notify;
-            'notify::page-start': GObject.Object.Notify;
             'notify::page-size': GObject.Object.Notify;
-            'notify::page-size': GObject.Object.Notify;
-            'notify::page-visible': GObject.Object.Notify;
             'notify::page-visible': GObject.Object.Notify;
         }
 

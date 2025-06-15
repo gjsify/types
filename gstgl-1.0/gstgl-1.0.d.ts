@@ -1164,15 +1164,10 @@ export namespace GstGL {
         interface SignalSignatures extends GstVideo.VideoAggregator.SignalSignatures {
             'notify::context': GObject.Object.Notify;
             'notify::force-live': GObject.Object.Notify;
-            'notify::force-live': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
             'notify::emit-signals': GObject.Object.Notify;
             'notify::latency': GObject.Object.Notify;
             'notify::min-upstream-latency': GObject.Object.Notify;
-            'notify::min-upstream-latency': GObject.Object.Notify;
             'notify::start-time': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
-            'notify::start-time-selection': GObject.Object.Notify;
             'notify::start-time-selection': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -1248,11 +1243,8 @@ export namespace GstGL {
         // Signal signatures
         interface SignalSignatures extends GstVideo.VideoAggregatorPad.SignalSignatures {
             'notify::max-last-buffer-repeat': GObject.Object.Notify;
-            'notify::max-last-buffer-repeat': GObject.Object.Notify;
-            'notify::repeat-after-eos': GObject.Object.Notify;
             'notify::repeat-after-eos': GObject.Object.Notify;
             'notify::zorder': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
             'notify::emit-signals': GObject.Object.Notify;
             'notify::caps': GObject.Object.Notify;
             'notify::direction': GObject.Object.Notify;
@@ -1299,13 +1291,9 @@ export namespace GstGL {
         // Signal signatures
         interface SignalSignatures extends GstBase.PushSrc.SignalSignatures {
             'notify::timestamp-offset': GObject.Object.Notify;
-            'notify::timestamp-offset': GObject.Object.Notify;
-            'notify::automatic-eos': GObject.Object.Notify;
             'notify::automatic-eos': GObject.Object.Notify;
             'notify::blocksize': GObject.Object.Notify;
             'notify::do-timestamp': GObject.Object.Notify;
-            'notify::do-timestamp': GObject.Object.Notify;
-            'notify::num-buffers': GObject.Object.Notify;
             'notify::num-buffers': GObject.Object.Notify;
             'notify::typefind': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -2376,15 +2364,10 @@ export namespace GstGL {
         interface SignalSignatures extends GLBaseMixer.SignalSignatures {
             'notify::context': GObject.Object.Notify;
             'notify::force-live': GObject.Object.Notify;
-            'notify::force-live': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
             'notify::emit-signals': GObject.Object.Notify;
             'notify::latency': GObject.Object.Notify;
             'notify::min-upstream-latency': GObject.Object.Notify;
-            'notify::min-upstream-latency': GObject.Object.Notify;
             'notify::start-time': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
-            'notify::start-time-selection': GObject.Object.Notify;
             'notify::start-time-selection': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -2459,11 +2442,8 @@ export namespace GstGL {
         // Signal signatures
         interface SignalSignatures extends GLBaseMixerPad.SignalSignatures {
             'notify::max-last-buffer-repeat': GObject.Object.Notify;
-            'notify::max-last-buffer-repeat': GObject.Object.Notify;
-            'notify::repeat-after-eos': GObject.Object.Notify;
             'notify::repeat-after-eos': GObject.Object.Notify;
             'notify::zorder': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
             'notify::emit-signals': GObject.Object.Notify;
             'notify::caps': GObject.Object.Notify;
             'notify::direction': GObject.Object.Notify;
@@ -3125,14 +3105,9 @@ export namespace GstGL {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'notify::downmix-mode': GObject.Object.Notify;
-            'notify::downmix-mode': GObject.Object.Notify;
-            'notify::input-flags-override': GObject.Object.Notify;
             'notify::input-flags-override': GObject.Object.Notify;
             'notify::input-mode-override': GObject.Object.Notify;
-            'notify::input-mode-override': GObject.Object.Notify;
             'notify::output-flags-override': GObject.Object.Notify;
-            'notify::output-flags-override': GObject.Object.Notify;
-            'notify::output-mode-override': GObject.Object.Notify;
             'notify::output-mode-override': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;

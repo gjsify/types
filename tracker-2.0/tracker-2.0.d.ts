@@ -1425,7 +1425,6 @@ export namespace Tracker {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::connection': GObject.Object.Notify;
             'notify::n-columns': GObject.Object.Notify;
-            'notify::n-columns': GObject.Object.Notify;
         }
 
         // Constructor properties interface

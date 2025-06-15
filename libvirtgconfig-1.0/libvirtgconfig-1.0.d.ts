@@ -1087,7 +1087,6 @@ export namespace LibvirtGConfig {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::current-memory': GObject.Object.Notify;
-            'notify::current-memory': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::features': GObject.Object.Notify;
             'notify::memory': GObject.Object.Notify;

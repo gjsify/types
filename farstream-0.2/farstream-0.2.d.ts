@@ -525,8 +525,6 @@ export namespace Farstream {
         // Signal signatures
         interface SignalSignatures extends Gst.Bin.SignalSignatures {
             'notify::async-handling': GObject.Object.Notify;
-            'notify::async-handling': GObject.Object.Notify;
-            'notify::message-forward': GObject.Object.Notify;
             'notify::message-forward': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -1776,23 +1774,15 @@ export namespace Farstream {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             error: Error;
             'notify::allowed-sink-caps': GObject.Object.Notify;
-            'notify::allowed-sink-caps': GObject.Object.Notify;
             'notify::allowed-src-caps': GObject.Object.Notify;
-            'notify::allowed-src-caps': GObject.Object.Notify;
-            'notify::codec-preferences': GObject.Object.Notify;
             'notify::codec-preferences': GObject.Object.Notify;
             'notify::codecs': GObject.Object.Notify;
             'notify::codecs-without-config': GObject.Object.Notify;
-            'notify::codecs-without-config': GObject.Object.Notify;
             'notify::conference': GObject.Object.Notify;
             'notify::current-send-codec': GObject.Object.Notify;
-            'notify::current-send-codec': GObject.Object.Notify;
-            'notify::encryption-parameters': GObject.Object.Notify;
             'notify::encryption-parameters': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::media-type': GObject.Object.Notify;
-            'notify::media-type': GObject.Object.Notify;
-            'notify::sink-pad': GObject.Object.Notify;
             'notify::sink-pad': GObject.Object.Notify;
             'notify::tos': GObject.Object.Notify;
         }
@@ -2292,14 +2282,10 @@ export namespace Farstream {
             error: Error;
             'src-pad-added': SrcPadAdded;
             'notify::current-recv-codecs': GObject.Object.Notify;
-            'notify::current-recv-codecs': GObject.Object.Notify;
-            'notify::decryption-parameters': GObject.Object.Notify;
             'notify::decryption-parameters': GObject.Object.Notify;
             'notify::direction': GObject.Object.Notify;
             'notify::negotiated-codecs': GObject.Object.Notify;
-            'notify::negotiated-codecs': GObject.Object.Notify;
             'notify::participant': GObject.Object.Notify;
-            'notify::remote-codecs': GObject.Object.Notify;
             'notify::remote-codecs': GObject.Object.Notify;
             'notify::session': GObject.Object.Notify;
         }
@@ -2667,8 +2653,6 @@ export namespace Farstream {
             'new-local-candidate': NewLocalCandidate;
             'state-changed': StateChanged;
             'notify::associate-on-source': GObject.Object.Notify;
-            'notify::associate-on-source': GObject.Object.Notify;
-            'notify::preferred-local-candidates': GObject.Object.Notify;
             'notify::preferred-local-candidates': GObject.Object.Notify;
             'notify::sending': GObject.Object.Notify;
         }
@@ -2809,10 +2793,7 @@ export namespace Farstream {
             error: Error;
             'notify::components': GObject.Object.Notify;
             'notify::do-timestamp': GObject.Object.Notify;
-            'notify::do-timestamp': GObject.Object.Notify;
             'notify::gst-sink': GObject.Object.Notify;
-            'notify::gst-sink': GObject.Object.Notify;
-            'notify::gst-src': GObject.Object.Notify;
             'notify::gst-src': GObject.Object.Notify;
             'notify::tos': GObject.Object.Notify;
         }

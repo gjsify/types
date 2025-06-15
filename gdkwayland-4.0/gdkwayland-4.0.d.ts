@@ -34,34 +34,22 @@ export namespace GdkWayland {
         // Signal signatures
         interface SignalSignatures extends Gdk.Device.SignalSignatures {
             'notify::active-layout-index': GObject.Object.Notify;
-            'notify::active-layout-index': GObject.Object.Notify;
-            'notify::caps-lock-state': GObject.Object.Notify;
             'notify::caps-lock-state': GObject.Object.Notify;
             'notify::direction': GObject.Object.Notify;
             'notify::display': GObject.Object.Notify;
             'notify::has-bidi-layouts': GObject.Object.Notify;
-            'notify::has-bidi-layouts': GObject.Object.Notify;
-            'notify::has-cursor': GObject.Object.Notify;
             'notify::has-cursor': GObject.Object.Notify;
             'notify::layout-names': GObject.Object.Notify;
-            'notify::layout-names': GObject.Object.Notify;
             'notify::modifier-state': GObject.Object.Notify;
-            'notify::modifier-state': GObject.Object.Notify;
-            'notify::n-axes': GObject.Object.Notify;
             'notify::n-axes': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::num-lock-state': GObject.Object.Notify;
-            'notify::num-lock-state': GObject.Object.Notify;
-            'notify::num-touches': GObject.Object.Notify;
             'notify::num-touches': GObject.Object.Notify;
             'notify::product-id': GObject.Object.Notify;
-            'notify::product-id': GObject.Object.Notify;
-            'notify::scroll-lock-state': GObject.Object.Notify;
             'notify::scroll-lock-state': GObject.Object.Notify;
             'notify::seat': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
             'notify::tool': GObject.Object.Notify;
-            'notify::vendor-id': GObject.Object.Notify;
             'notify::vendor-id': GObject.Object.Notify;
         }
 
@@ -132,11 +120,8 @@ export namespace GdkWayland {
         interface SignalSignatures extends Gdk.Display.SignalSignatures {
             'notify::composited': GObject.Object.Notify;
             'notify::dmabuf-formats': GObject.Object.Notify;
-            'notify::dmabuf-formats': GObject.Object.Notify;
-            'notify::input-shapes': GObject.Object.Notify;
             'notify::input-shapes': GObject.Object.Notify;
             'notify::rgba': GObject.Object.Notify;
-            'notify::shadow-width': GObject.Object.Notify;
             'notify::shadow-width': GObject.Object.Notify;
         }
 
@@ -228,9 +213,7 @@ export namespace GdkWayland {
         // Signal signatures
         interface SignalSignatures extends Gdk.GLContext.SignalSignatures {
             'notify::allowed-apis': GObject.Object.Notify;
-            'notify::allowed-apis': GObject.Object.Notify;
             'notify::api': GObject.Object.Notify;
-            'notify::shared-context': GObject.Object.Notify;
             'notify::shared-context': GObject.Object.Notify;
             'notify::display': GObject.Object.Notify;
             'notify::surface': GObject.Object.Notify;
@@ -280,18 +263,13 @@ export namespace GdkWayland {
             'notify::display': GObject.Object.Notify;
             'notify::geometry': GObject.Object.Notify;
             'notify::height-mm': GObject.Object.Notify;
-            'notify::height-mm': GObject.Object.Notify;
             'notify::manufacturer': GObject.Object.Notify;
             'notify::model': GObject.Object.Notify;
             'notify::refresh-rate': GObject.Object.Notify;
-            'notify::refresh-rate': GObject.Object.Notify;
             'notify::scale': GObject.Object.Notify;
             'notify::scale-factor': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::subpixel-layout': GObject.Object.Notify;
             'notify::subpixel-layout': GObject.Object.Notify;
             'notify::valid': GObject.Object.Notify;
-            'notify::width-mm': GObject.Object.Notify;
             'notify::width-mm': GObject.Object.Notify;
         }
 
@@ -341,11 +319,9 @@ export namespace GdkWayland {
             'notify::cursor': GObject.Object.Notify;
             'notify::display': GObject.Object.Notify;
             'notify::frame-clock': GObject.Object.Notify;
-            'notify::frame-clock': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::mapped': GObject.Object.Notify;
             'notify::scale': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
             'notify::scale-factor': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
             'notify::autohide': GObject.Object.Notify;
@@ -817,11 +793,9 @@ export namespace GdkWayland {
             'notify::cursor': GObject.Object.Notify;
             'notify::display': GObject.Object.Notify;
             'notify::frame-clock': GObject.Object.Notify;
-            'notify::frame-clock': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::mapped': GObject.Object.Notify;
             'notify::scale': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
             'notify::scale-factor': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
         }
@@ -879,27 +853,20 @@ export namespace GdkWayland {
             'notify::cursor': GObject.Object.Notify;
             'notify::display': GObject.Object.Notify;
             'notify::frame-clock': GObject.Object.Notify;
-            'notify::frame-clock': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::mapped': GObject.Object.Notify;
             'notify::scale': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
             'notify::scale-factor': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
             'notify::decorated': GObject.Object.Notify;
             'notify::deletable': GObject.Object.Notify;
             'notify::fullscreen-mode': GObject.Object.Notify;
-            'notify::fullscreen-mode': GObject.Object.Notify;
-            'notify::icon-list': GObject.Object.Notify;
             'notify::icon-list': GObject.Object.Notify;
             'notify::modal': GObject.Object.Notify;
             'notify::shortcuts-inhibited': GObject.Object.Notify;
-            'notify::shortcuts-inhibited': GObject.Object.Notify;
-            'notify::startup-id': GObject.Object.Notify;
             'notify::startup-id': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
-            'notify::transient-for': GObject.Object.Notify;
             'notify::transient-for': GObject.Object.Notify;
         }
 

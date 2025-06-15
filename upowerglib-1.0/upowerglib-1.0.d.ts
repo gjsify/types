@@ -169,12 +169,8 @@ export namespace UPowerGlib {
             'device-added': DeviceAdded;
             'device-removed': DeviceRemoved;
             'notify::daemon-version': GObject.Object.Notify;
-            'notify::daemon-version': GObject.Object.Notify;
-            'notify::lid-is-closed': GObject.Object.Notify;
             'notify::lid-is-closed': GObject.Object.Notify;
             'notify::lid-is-present': GObject.Object.Notify;
-            'notify::lid-is-present': GObject.Object.Notify;
-            'notify::on-battery': GObject.Object.Notify;
             'notify::on-battery': GObject.Object.Notify;
         }
 
@@ -299,30 +295,17 @@ export namespace UPowerGlib {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::daemon-version': GObject.Object.Notify;
             'notify::daemon-version': GObject.Object.Notify;
             'notify::lid-is-closed': GObject.Object.Notify;
-            'notify::lid-is-closed': GObject.Object.Notify;
             'notify::lid-is-present': GObject.Object.Notify;
-            'notify::lid-is-present': GObject.Object.Notify;
-            'notify::on-battery': GObject.Object.Notify;
             'notify::on-battery': GObject.Object.Notify;
         }
 
@@ -1459,14 +1442,9 @@ export namespace UPowerGlib {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::daemon-version': GObject.Object.Notify;
             'notify::daemon-version': GObject.Object.Notify;
             'notify::lid-is-closed': GObject.Object.Notify;
-            'notify::lid-is-closed': GObject.Object.Notify;
             'notify::lid-is-present': GObject.Object.Notify;
-            'notify::lid-is-present': GObject.Object.Notify;
-            'notify::on-battery': GObject.Object.Notify;
             'notify::on-battery': GObject.Object.Notify;
         }
 
@@ -2236,45 +2214,30 @@ export namespace UPowerGlib {
             'notify::capacity': GObject.Object.Notify;
             'notify::energy': GObject.Object.Notify;
             'notify::energy-empty': GObject.Object.Notify;
-            'notify::energy-empty': GObject.Object.Notify;
-            'notify::energy-full': GObject.Object.Notify;
             'notify::energy-full': GObject.Object.Notify;
             'notify::energy-full-design': GObject.Object.Notify;
-            'notify::energy-full-design': GObject.Object.Notify;
-            'notify::energy-rate': GObject.Object.Notify;
             'notify::energy-rate': GObject.Object.Notify;
             'notify::has-history': GObject.Object.Notify;
-            'notify::has-history': GObject.Object.Notify;
-            'notify::has-statistics': GObject.Object.Notify;
             'notify::has-statistics': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::is-present': GObject.Object.Notify;
-            'notify::is-present': GObject.Object.Notify;
-            'notify::is-rechargeable': GObject.Object.Notify;
             'notify::is-rechargeable': GObject.Object.Notify;
             'notify::kind': GObject.Object.Notify;
             'notify::luminosity': GObject.Object.Notify;
             'notify::model': GObject.Object.Notify;
             'notify::native-path': GObject.Object.Notify;
-            'notify::native-path': GObject.Object.Notify;
             'notify::online': GObject.Object.Notify;
             'notify::percentage': GObject.Object.Notify;
-            'notify::power-supply': GObject.Object.Notify;
             'notify::power-supply': GObject.Object.Notify;
             'notify::serial': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::technology': GObject.Object.Notify;
             'notify::temperature': GObject.Object.Notify;
             'notify::time-to-empty': GObject.Object.Notify;
-            'notify::time-to-empty': GObject.Object.Notify;
             'notify::time-to-full': GObject.Object.Notify;
-            'notify::time-to-full': GObject.Object.Notify;
-            'notify::update-time': GObject.Object.Notify;
             'notify::update-time': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
             'notify::voltage': GObject.Object.Notify;
-            'notify::warning-level': GObject.Object.Notify;
             'notify::warning-level': GObject.Object.Notify;
         }
 
@@ -2671,65 +2634,41 @@ export namespace UPowerGlib {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
             'notify::capacity': GObject.Object.Notify;
             'notify::energy': GObject.Object.Notify;
             'notify::energy-empty': GObject.Object.Notify;
-            'notify::energy-empty': GObject.Object.Notify;
-            'notify::energy-full': GObject.Object.Notify;
             'notify::energy-full': GObject.Object.Notify;
             'notify::energy-full-design': GObject.Object.Notify;
-            'notify::energy-full-design': GObject.Object.Notify;
-            'notify::energy-rate': GObject.Object.Notify;
             'notify::energy-rate': GObject.Object.Notify;
             'notify::has-history': GObject.Object.Notify;
-            'notify::has-history': GObject.Object.Notify;
-            'notify::has-statistics': GObject.Object.Notify;
             'notify::has-statistics': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::is-present': GObject.Object.Notify;
-            'notify::is-present': GObject.Object.Notify;
-            'notify::is-rechargeable': GObject.Object.Notify;
             'notify::is-rechargeable': GObject.Object.Notify;
             'notify::luminosity': GObject.Object.Notify;
             'notify::model': GObject.Object.Notify;
             'notify::native-path': GObject.Object.Notify;
-            'notify::native-path': GObject.Object.Notify;
             'notify::online': GObject.Object.Notify;
             'notify::percentage': GObject.Object.Notify;
-            'notify::power-supply': GObject.Object.Notify;
             'notify::power-supply': GObject.Object.Notify;
             'notify::serial': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::technology': GObject.Object.Notify;
             'notify::temperature': GObject.Object.Notify;
             'notify::time-to-empty': GObject.Object.Notify;
-            'notify::time-to-empty': GObject.Object.Notify;
-            'notify::time-to-full': GObject.Object.Notify;
             'notify::time-to-full': GObject.Object.Notify;
             'notify::type': GObject.Object.Notify;
             'notify::update-time': GObject.Object.Notify;
-            'notify::update-time': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
             'notify::voltage': GObject.Object.Notify;
-            'notify::warning-level': GObject.Object.Notify;
             'notify::warning-level': GObject.Object.Notify;
         }
 
@@ -4134,49 +4073,33 @@ export namespace UPowerGlib {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::capacity': GObject.Object.Notify;
             'notify::energy': GObject.Object.Notify;
             'notify::energy-empty': GObject.Object.Notify;
-            'notify::energy-empty': GObject.Object.Notify;
-            'notify::energy-full': GObject.Object.Notify;
             'notify::energy-full': GObject.Object.Notify;
             'notify::energy-full-design': GObject.Object.Notify;
-            'notify::energy-full-design': GObject.Object.Notify;
-            'notify::energy-rate': GObject.Object.Notify;
             'notify::energy-rate': GObject.Object.Notify;
             'notify::has-history': GObject.Object.Notify;
-            'notify::has-history': GObject.Object.Notify;
-            'notify::has-statistics': GObject.Object.Notify;
             'notify::has-statistics': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::is-present': GObject.Object.Notify;
-            'notify::is-present': GObject.Object.Notify;
-            'notify::is-rechargeable': GObject.Object.Notify;
             'notify::is-rechargeable': GObject.Object.Notify;
             'notify::luminosity': GObject.Object.Notify;
             'notify::model': GObject.Object.Notify;
             'notify::native-path': GObject.Object.Notify;
-            'notify::native-path': GObject.Object.Notify;
             'notify::online': GObject.Object.Notify;
             'notify::percentage': GObject.Object.Notify;
-            'notify::power-supply': GObject.Object.Notify;
             'notify::power-supply': GObject.Object.Notify;
             'notify::serial': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::technology': GObject.Object.Notify;
             'notify::temperature': GObject.Object.Notify;
             'notify::time-to-empty': GObject.Object.Notify;
-            'notify::time-to-empty': GObject.Object.Notify;
-            'notify::time-to-full': GObject.Object.Notify;
             'notify::time-to-full': GObject.Object.Notify;
             'notify::type': GObject.Object.Notify;
             'notify::update-time': GObject.Object.Notify;
-            'notify::update-time': GObject.Object.Notify;
             'notify::vendor': GObject.Object.Notify;
             'notify::voltage': GObject.Object.Notify;
-            'notify::warning-level': GObject.Object.Notify;
             'notify::warning-level': GObject.Object.Notify;
         }
 
@@ -5384,7 +5307,6 @@ export namespace UPowerGlib {
             'notify::details': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::is-userspace': GObject.Object.Notify;
-            'notify::is-userspace': GObject.Object.Notify;
             'notify::old': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
         }
@@ -5596,24 +5518,14 @@ export namespace UPowerGlib {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::has-capability': GObject.Object.Notify;
             'notify::has-capability': GObject.Object.Notify;
         }
 
@@ -6643,8 +6555,6 @@ export namespace UPowerGlib {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             'notify::g-flags': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::has-capability': GObject.Object.Notify;
             'notify::has-capability': GObject.Object.Notify;
         }
 

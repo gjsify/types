@@ -73,7 +73,6 @@ export namespace Caja {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::attribute': GObject.Object.Notify;
             'notify::attribute-q': GObject.Object.Notify;
-            'notify::attribute-q': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;

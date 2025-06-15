@@ -287,8 +287,6 @@ export namespace Zeitgeist {
             'source-enabled': SourceEnabled;
             'source-registered': SourceRegistered;
             'notify::proxy-created': GObject.Object.Notify;
-            'notify::proxy-created': GObject.Object.Notify;
-            'notify::is-connected': GObject.Object.Notify;
             'notify::is-connected': GObject.Object.Notify;
         }
 
@@ -383,8 +381,6 @@ export namespace Zeitgeist {
         // Signal signatures
         interface SignalSignatures extends QueuedProxyWrapper.SignalSignatures {
             'notify::proxy-created': GObject.Object.Notify;
-            'notify::proxy-created': GObject.Object.Notify;
-            'notify::is-connected': GObject.Object.Notify;
             'notify::is-connected': GObject.Object.Notify;
         }
 
@@ -487,8 +483,6 @@ export namespace Zeitgeist {
         // Signal signatures
         interface SignalSignatures extends QueuedProxyWrapper.SignalSignatures {
             'notify::proxy-created': GObject.Object.Notify;
-            'notify::proxy-created': GObject.Object.Notify;
-            'notify::is-connected': GObject.Object.Notify;
             'notify::is-connected': GObject.Object.Notify;
         }
 
@@ -690,8 +684,6 @@ export namespace Zeitgeist {
             'events-inserted': EventsInserted;
             'events-deleted': EventsDeleted;
             'notify::time-range': GObject.Object.Notify;
-            'notify::time-range': GObject.Object.Notify;
-            'notify::event-templates': GObject.Object.Notify;
             'notify::event-templates': GObject.Object.Notify;
         }
 
@@ -1233,8 +1225,6 @@ export namespace Zeitgeist {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::proxy-created': GObject.Object.Notify;
-            'notify::proxy-created': GObject.Object.Notify;
-            'notify::is-connected': GObject.Object.Notify;
             'notify::is-connected': GObject.Object.Notify;
         }
 
@@ -1352,10 +1342,8 @@ export namespace Zeitgeist {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::unique-id': GObject.Object.Notify;
-            'notify::unique-id': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
-            'notify::event-templates': GObject.Object.Notify;
             'notify::event-templates': GObject.Object.Notify;
             'notify::enabled': GObject.Object.Notify;
             'notify::running': GObject.Object.Notify;
@@ -1557,8 +1545,6 @@ export namespace Zeitgeist {
             'notify::text': GObject.Object.Notify;
             'notify::storage': GObject.Object.Notify;
             'notify::current-uri': GObject.Object.Notify;
-            'notify::current-uri': GObject.Object.Notify;
-            'notify::current-origin': GObject.Object.Notify;
             'notify::current-origin': GObject.Object.Notify;
             'notify::mimetype': GObject.Object.Notify;
             'notify::interpretation': GObject.Object.Notify;

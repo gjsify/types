@@ -382,10 +382,8 @@ export namespace EBackend {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::connectable': GObject.Object.Notify;
             'notify::main-context': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
             'notify::online': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
-            'notify::user-prompter': GObject.Object.Notify;
             'notify::user-prompter': GObject.Object.Notify;
         }
 
@@ -1273,10 +1271,7 @@ export namespace EBackend {
             changed: Changed;
             'notify::cache': GObject.Object.Notify;
             'notify::key-column-name': GObject.Object.Notify;
-            'notify::key-column-name': GObject.Object.Notify;
             'notify::table-name': GObject.Object.Notify;
-            'notify::table-name': GObject.Object.Notify;
-            'notify::value-column-name': GObject.Object.Notify;
             'notify::value-column-name': GObject.Object.Notify;
         }
 
@@ -1997,14 +1992,11 @@ export namespace EBackend {
             'child-added': ChildAdded;
             'child-removed': ChildRemoved;
             'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::server': GObject.Object.Notify;
             'notify::connectable': GObject.Object.Notify;
             'notify::main-context': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
             'notify::online': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
-            'notify::user-prompter': GObject.Object.Notify;
             'notify::user-prompter': GObject.Object.Notify;
         }
 
@@ -3202,9 +3194,7 @@ export namespace EBackend {
         // Signal signatures
         interface SignalSignatures extends DBusServer.SignalSignatures {
             'notify::backend-per-process': GObject.Object.Notify;
-            'notify::backend-per-process': GObject.Object.Notify;
             'notify::registry': GObject.Object.Notify;
-            'notify::reload-supported': GObject.Object.Notify;
             'notify::reload-supported': GObject.Object.Notify;
         }
 
@@ -4036,22 +4026,15 @@ export namespace EBackend {
             'notify::exported': GObject.Object.Notify;
             'notify::file': GObject.Object.Notify;
             'notify::oauth2-support': GObject.Object.Notify;
-            'notify::oauth2-support': GObject.Object.Notify;
             'notify::remote-creatable': GObject.Object.Notify;
-            'notify::remote-creatable': GObject.Object.Notify;
-            'notify::remote-deletable': GObject.Object.Notify;
             'notify::remote-deletable': GObject.Object.Notify;
             'notify::removable': GObject.Object.Notify;
             'notify::server': GObject.Object.Notify;
             'notify::writable': GObject.Object.Notify;
             'notify::write-directory': GObject.Object.Notify;
-            'notify::write-directory': GObject.Object.Notify;
             'notify::connection-status': GObject.Object.Notify;
-            'notify::connection-status': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
             'notify::enabled': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
             'notify::main-context': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
@@ -5504,9 +5487,7 @@ export namespace EBackend {
             'source-removed': SourceRemoved;
             'tweak-key-file': TweakKeyFile;
             'notify::backend-per-process': GObject.Object.Notify;
-            'notify::backend-per-process': GObject.Object.Notify;
             'notify::registry': GObject.Object.Notify;
-            'notify::reload-supported': GObject.Object.Notify;
             'notify::reload-supported': GObject.Object.Notify;
         }
 
@@ -7944,14 +7925,11 @@ export namespace EBackend {
         // Signal signatures
         interface SignalSignatures extends CollectionBackend.SignalSignatures {
             'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::server': GObject.Object.Notify;
             'notify::connectable': GObject.Object.Notify;
             'notify::main-context': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
             'notify::online': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
-            'notify::user-prompter': GObject.Object.Notify;
             'notify::user-prompter': GObject.Object.Notify;
         }
 

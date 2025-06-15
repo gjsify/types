@@ -333,14 +333,10 @@ export namespace GdkPixbuf {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::bits-per-sample': GObject.Object.Notify;
-            'notify::bits-per-sample': GObject.Object.Notify;
             'notify::colorspace': GObject.Object.Notify;
-            'notify::has-alpha': GObject.Object.Notify;
             'notify::has-alpha': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::n-channels': GObject.Object.Notify;
-            'notify::n-channels': GObject.Object.Notify;
-            'notify::pixel-bytes': GObject.Object.Notify;
             'notify::pixel-bytes': GObject.Object.Notify;
             'notify::pixels': GObject.Object.Notify;
             'notify::rowstride': GObject.Object.Notify;

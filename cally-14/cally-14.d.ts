@@ -54,38 +54,21 @@ export namespace Cally {
         // Signal signatures
         interface SignalSignatures extends Atk.GObjectAccessible.SignalSignatures {
             'notify::accessible-component-layer': GObject.Object.Notify;
-            'notify::accessible-component-layer': GObject.Object.Notify;
-            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
             'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
             'notify::accessible-description': GObject.Object.Notify;
-            'notify::accessible-description': GObject.Object.Notify;
-            'notify::accessible-help-text': GObject.Object.Notify;
             'notify::accessible-help-text': GObject.Object.Notify;
             'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
-            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
-            'notify::accessible-id': GObject.Object.Notify;
             'notify::accessible-id': GObject.Object.Notify;
             'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-parent': GObject.Object.Notify;
             'notify::accessible-parent': GObject.Object.Notify;
             'notify::accessible-role': GObject.Object.Notify;
-            'notify::accessible-role': GObject.Object.Notify;
-            'notify::accessible-table-caption': GObject.Object.Notify;
             'notify::accessible-table-caption': GObject.Object.Notify;
             'notify::accessible-table-caption-object': GObject.Object.Notify;
-            'notify::accessible-table-caption-object': GObject.Object.Notify;
-            'notify::accessible-table-column-description': GObject.Object.Notify;
             'notify::accessible-table-column-description': GObject.Object.Notify;
             'notify::accessible-table-column-header': GObject.Object.Notify;
-            'notify::accessible-table-column-header': GObject.Object.Notify;
-            'notify::accessible-table-row-description': GObject.Object.Notify;
             'notify::accessible-table-row-description': GObject.Object.Notify;
             'notify::accessible-table-row-header': GObject.Object.Notify;
-            'notify::accessible-table-row-header': GObject.Object.Notify;
             'notify::accessible-table-summary': GObject.Object.Notify;
-            'notify::accessible-table-summary': GObject.Object.Notify;
-            'notify::accessible-value': GObject.Object.Notify;
             'notify::accessible-value': GObject.Object.Notify;
         }
 
@@ -997,38 +980,21 @@ export namespace Cally {
         // Signal signatures
         interface SignalSignatures extends Actor.SignalSignatures {
             'notify::accessible-component-layer': GObject.Object.Notify;
-            'notify::accessible-component-layer': GObject.Object.Notify;
-            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
             'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
             'notify::accessible-description': GObject.Object.Notify;
-            'notify::accessible-description': GObject.Object.Notify;
-            'notify::accessible-help-text': GObject.Object.Notify;
             'notify::accessible-help-text': GObject.Object.Notify;
             'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
-            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
-            'notify::accessible-id': GObject.Object.Notify;
             'notify::accessible-id': GObject.Object.Notify;
             'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-parent': GObject.Object.Notify;
             'notify::accessible-parent': GObject.Object.Notify;
             'notify::accessible-role': GObject.Object.Notify;
-            'notify::accessible-role': GObject.Object.Notify;
-            'notify::accessible-table-caption': GObject.Object.Notify;
             'notify::accessible-table-caption': GObject.Object.Notify;
             'notify::accessible-table-caption-object': GObject.Object.Notify;
-            'notify::accessible-table-caption-object': GObject.Object.Notify;
-            'notify::accessible-table-column-description': GObject.Object.Notify;
             'notify::accessible-table-column-description': GObject.Object.Notify;
             'notify::accessible-table-column-header': GObject.Object.Notify;
-            'notify::accessible-table-column-header': GObject.Object.Notify;
-            'notify::accessible-table-row-description': GObject.Object.Notify;
             'notify::accessible-table-row-description': GObject.Object.Notify;
             'notify::accessible-table-row-header': GObject.Object.Notify;
-            'notify::accessible-table-row-header': GObject.Object.Notify;
             'notify::accessible-table-summary': GObject.Object.Notify;
-            'notify::accessible-table-summary': GObject.Object.Notify;
-            'notify::accessible-value': GObject.Object.Notify;
             'notify::accessible-value': GObject.Object.Notify;
         }
 
@@ -1912,38 +1878,21 @@ export namespace Cally {
         // Signal signatures
         interface SignalSignatures extends Atk.GObjectAccessible.SignalSignatures {
             'notify::accessible-component-layer': GObject.Object.Notify;
-            'notify::accessible-component-layer': GObject.Object.Notify;
-            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
             'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
             'notify::accessible-description': GObject.Object.Notify;
-            'notify::accessible-description': GObject.Object.Notify;
-            'notify::accessible-help-text': GObject.Object.Notify;
             'notify::accessible-help-text': GObject.Object.Notify;
             'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
-            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
-            'notify::accessible-id': GObject.Object.Notify;
             'notify::accessible-id': GObject.Object.Notify;
             'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-parent': GObject.Object.Notify;
             'notify::accessible-parent': GObject.Object.Notify;
             'notify::accessible-role': GObject.Object.Notify;
-            'notify::accessible-role': GObject.Object.Notify;
-            'notify::accessible-table-caption': GObject.Object.Notify;
             'notify::accessible-table-caption': GObject.Object.Notify;
             'notify::accessible-table-caption-object': GObject.Object.Notify;
-            'notify::accessible-table-caption-object': GObject.Object.Notify;
-            'notify::accessible-table-column-description': GObject.Object.Notify;
             'notify::accessible-table-column-description': GObject.Object.Notify;
             'notify::accessible-table-column-header': GObject.Object.Notify;
-            'notify::accessible-table-column-header': GObject.Object.Notify;
-            'notify::accessible-table-row-description': GObject.Object.Notify;
             'notify::accessible-table-row-description': GObject.Object.Notify;
             'notify::accessible-table-row-header': GObject.Object.Notify;
-            'notify::accessible-table-row-header': GObject.Object.Notify;
             'notify::accessible-table-summary': GObject.Object.Notify;
-            'notify::accessible-table-summary': GObject.Object.Notify;
-            'notify::accessible-value': GObject.Object.Notify;
             'notify::accessible-value': GObject.Object.Notify;
         }
 
@@ -1992,38 +1941,21 @@ export namespace Cally {
         // Signal signatures
         interface SignalSignatures extends Actor.SignalSignatures {
             'notify::accessible-component-layer': GObject.Object.Notify;
-            'notify::accessible-component-layer': GObject.Object.Notify;
-            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
             'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
             'notify::accessible-description': GObject.Object.Notify;
-            'notify::accessible-description': GObject.Object.Notify;
-            'notify::accessible-help-text': GObject.Object.Notify;
             'notify::accessible-help-text': GObject.Object.Notify;
             'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
-            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
-            'notify::accessible-id': GObject.Object.Notify;
             'notify::accessible-id': GObject.Object.Notify;
             'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-parent': GObject.Object.Notify;
             'notify::accessible-parent': GObject.Object.Notify;
             'notify::accessible-role': GObject.Object.Notify;
-            'notify::accessible-role': GObject.Object.Notify;
-            'notify::accessible-table-caption': GObject.Object.Notify;
             'notify::accessible-table-caption': GObject.Object.Notify;
             'notify::accessible-table-caption-object': GObject.Object.Notify;
-            'notify::accessible-table-caption-object': GObject.Object.Notify;
-            'notify::accessible-table-column-description': GObject.Object.Notify;
             'notify::accessible-table-column-description': GObject.Object.Notify;
             'notify::accessible-table-column-header': GObject.Object.Notify;
-            'notify::accessible-table-column-header': GObject.Object.Notify;
-            'notify::accessible-table-row-description': GObject.Object.Notify;
             'notify::accessible-table-row-description': GObject.Object.Notify;
             'notify::accessible-table-row-header': GObject.Object.Notify;
-            'notify::accessible-table-row-header': GObject.Object.Notify;
             'notify::accessible-table-summary': GObject.Object.Notify;
-            'notify::accessible-table-summary': GObject.Object.Notify;
-            'notify::accessible-value': GObject.Object.Notify;
             'notify::accessible-value': GObject.Object.Notify;
         }
 
@@ -3251,38 +3183,21 @@ export namespace Cally {
         // Signal signatures
         interface SignalSignatures extends Actor.SignalSignatures {
             'notify::accessible-component-layer': GObject.Object.Notify;
-            'notify::accessible-component-layer': GObject.Object.Notify;
-            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
             'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
             'notify::accessible-description': GObject.Object.Notify;
-            'notify::accessible-description': GObject.Object.Notify;
-            'notify::accessible-help-text': GObject.Object.Notify;
             'notify::accessible-help-text': GObject.Object.Notify;
             'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
-            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
-            'notify::accessible-id': GObject.Object.Notify;
             'notify::accessible-id': GObject.Object.Notify;
             'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-parent': GObject.Object.Notify;
             'notify::accessible-parent': GObject.Object.Notify;
             'notify::accessible-role': GObject.Object.Notify;
-            'notify::accessible-role': GObject.Object.Notify;
-            'notify::accessible-table-caption': GObject.Object.Notify;
             'notify::accessible-table-caption': GObject.Object.Notify;
             'notify::accessible-table-caption-object': GObject.Object.Notify;
-            'notify::accessible-table-caption-object': GObject.Object.Notify;
-            'notify::accessible-table-column-description': GObject.Object.Notify;
             'notify::accessible-table-column-description': GObject.Object.Notify;
             'notify::accessible-table-column-header': GObject.Object.Notify;
-            'notify::accessible-table-column-header': GObject.Object.Notify;
-            'notify::accessible-table-row-description': GObject.Object.Notify;
             'notify::accessible-table-row-description': GObject.Object.Notify;
             'notify::accessible-table-row-header': GObject.Object.Notify;
-            'notify::accessible-table-row-header': GObject.Object.Notify;
             'notify::accessible-table-summary': GObject.Object.Notify;
-            'notify::accessible-table-summary': GObject.Object.Notify;
-            'notify::accessible-value': GObject.Object.Notify;
             'notify::accessible-value': GObject.Object.Notify;
         }
 

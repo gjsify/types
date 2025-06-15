@@ -2273,8 +2273,6 @@ export namespace Ags {
             'notify::config': GObject.Object.Notify;
             'notify::file': GObject.Object.Notify;
             'notify::main-loop': GObject.Object.Notify;
-            'notify::main-loop': GObject.Object.Notify;
-            'notify::task-launcher': GObject.Object.Notify;
             'notify::task-launcher': GObject.Object.Notify;
         }
 
@@ -3447,7 +3445,6 @@ export namespace Ags {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::context-path': GObject.Object.Notify;
-            'notify::context-path': GObject.Object.Notify;
             'notify::server': GObject.Object.Notify;
         }
 
@@ -3643,7 +3640,6 @@ export namespace Ags {
         interface SignalSignatures extends WorkerThread.SignalSignatures {
             'notify::delay': GObject.Object.Notify;
             'notify::frequency': GObject.Object.Notify;
-            'notify::max-precision': GObject.Object.Notify;
             'notify::max-precision': GObject.Object.Notify;
         }
 
@@ -4191,12 +4187,9 @@ export namespace Ags {
             'write-concurrent': WriteConcurrent;
             'write-resolve': WriteResolve;
             'notify::audio-encoding': GObject.Object.Notify;
-            'notify::audio-encoding': GObject.Object.Notify;
-            'notify::audio-format': GObject.Object.Notify;
             'notify::audio-format': GObject.Object.Notify;
             'notify::encoding': GObject.Object.Notify;
             'notify::filename': GObject.Object.Notify;
-            'notify::xml-doc': GObject.Object.Notify;
             'notify::xml-doc': GObject.Object.Notify;
         }
 
@@ -5439,7 +5432,6 @@ export namespace Ags {
         interface SignalSignatures extends Controller.SignalSignatures {
             'do-request': DoRequest;
             'notify::context-path': GObject.Object.Notify;
-            'notify::context-path': GObject.Object.Notify;
             'notify::server': GObject.Object.Notify;
         }
 
@@ -5527,10 +5519,7 @@ export namespace Ags {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::normalized-function': GObject.Object.Notify;
-            'notify::normalized-function': GObject.Object.Notify;
             'notify::pivot-table': GObject.Object.Notify;
-            'notify::pivot-table': GObject.Object.Notify;
-            'notify::source-function': GObject.Object.Notify;
             'notify::source-function': GObject.Object.Notify;
         }
 
@@ -5639,7 +5628,6 @@ export namespace Ags {
         interface SignalSignatures extends Thread.SignalSignatures {
             'notify::delay': GObject.Object.Notify;
             'notify::frequency': GObject.Object.Notify;
-            'notify::max-precision': GObject.Object.Notify;
             'notify::max-precision': GObject.Object.Notify;
         }
 
@@ -6499,7 +6487,6 @@ export namespace Ags {
             'notify::recipient': GObject.Object.Notify;
             'notify::sender': GObject.Object.Notify;
             'notify::xml-doc': GObject.Object.Notify;
-            'notify::xml-doc': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -6610,8 +6597,6 @@ export namespace Ags {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::recipient-namespace': GObject.Object.Notify;
-            'notify::recipient-namespace': GObject.Object.Notify;
-            'notify::sender-namespace': GObject.Object.Notify;
             'notify::sender-namespace': GObject.Object.Notify;
         }
 
@@ -7009,10 +6994,8 @@ export namespace Ags {
         interface SignalSignatures extends Thread.SignalSignatures {
             'safe-run': SafeRun;
             'notify::thread-pool': GObject.Object.Notify;
-            'notify::thread-pool': GObject.Object.Notify;
             'notify::delay': GObject.Object.Notify;
             'notify::frequency': GObject.Object.Notify;
-            'notify::max-precision': GObject.Object.Notify;
             'notify::max-precision': GObject.Object.Notify;
         }
 
@@ -7775,12 +7758,10 @@ export namespace Ags {
             'notify::controller': GObject.Object.Notify;
             'notify::domain': GObject.Object.Notify;
             'notify::front-controller': GObject.Object.Notify;
-            'notify::front-controller': GObject.Object.Notify;
             'notify::ip4': GObject.Object.Notify;
             'notify::ip6': GObject.Object.Notify;
             'notify::path': GObject.Object.Notify;
             'notify::realm': GObject.Object.Notify;
-            'notify::server-port': GObject.Object.Notify;
             'notify::server-port': GObject.Object.Notify;
         }
 
@@ -7956,8 +7937,6 @@ export namespace Ags {
             'notify::config': GObject.Object.Notify;
             'notify::file': GObject.Object.Notify;
             'notify::main-loop': GObject.Object.Notify;
-            'notify::main-loop': GObject.Object.Notify;
-            'notify::task-launcher': GObject.Object.Notify;
             'notify::task-launcher': GObject.Object.Notify;
         }
 
@@ -9267,12 +9246,8 @@ export namespace Ags {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::column-count': GObject.Object.Notify;
-            'notify::column-count': GObject.Object.Notify;
-            'notify::row-count': GObject.Object.Notify;
             'notify::row-count': GObject.Object.Notify;
             'notify::solver-path': GObject.Object.Notify;
-            'notify::solver-path': GObject.Object.Notify;
-            'notify::source-function': GObject.Object.Notify;
             'notify::source-function': GObject.Object.Notify;
         }
 
@@ -9422,9 +9397,7 @@ export namespace Ags {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::coefficient': GObject.Object.Notify;
             'notify::coefficient-value': GObject.Object.Notify;
-            'notify::coefficient-value': GObject.Object.Notify;
             'notify::exponent': GObject.Object.Notify;
-            'notify::exponent-value': GObject.Object.Notify;
             'notify::exponent-value': GObject.Object.Notify;
             'notify::polynomial': GObject.Object.Notify;
             'notify::symbol': GObject.Object.Notify;
@@ -9617,8 +9590,6 @@ export namespace Ags {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::polynomial-count': GObject.Object.Notify;
-            'notify::polynomial-count': GObject.Object.Notify;
-            'notify::source-polynomial': GObject.Object.Notify;
             'notify::source-polynomial': GObject.Object.Notify;
         }
 
@@ -9734,7 +9705,6 @@ export namespace Ags {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             failure: Failure;
             launch: Launch;
-            'notify::task-launcher': GObject.Object.Notify;
             'notify::task-launcher': GObject.Object.Notify;
         }
 
@@ -11148,7 +11118,6 @@ export namespace Ags {
             'notify::delay': GObject.Object.Notify;
             'notify::frequency': GObject.Object.Notify;
             'notify::max-precision': GObject.Object.Notify;
-            'notify::max-precision': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -12015,12 +11984,9 @@ export namespace Ags {
         // Signal signatures
         interface SignalSignatures extends ApplicationContext.SignalSignatures {
             'notify::thread-pool': GObject.Object.Notify;
-            'notify::thread-pool': GObject.Object.Notify;
             'notify::config': GObject.Object.Notify;
             'notify::file': GObject.Object.Notify;
             'notify::main-loop': GObject.Object.Notify;
-            'notify::main-loop': GObject.Object.Notify;
-            'notify::task-launcher': GObject.Object.Notify;
             'notify::task-launcher': GObject.Object.Notify;
         }
 
@@ -12720,8 +12686,6 @@ export namespace Ags {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             start: Start;
             'notify::max-threads': GObject.Object.Notify;
-            'notify::max-threads': GObject.Object.Notify;
-            'notify::max-unused-threads': GObject.Object.Notify;
             'notify::max-unused-threads': GObject.Object.Notify;
         }
 
@@ -12903,7 +12867,6 @@ export namespace Ags {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::filename': GObject.Object.Notify;
-            'notify::xml-doc': GObject.Object.Notify;
             'notify::xml-doc': GObject.Object.Notify;
         }
 
@@ -13396,7 +13359,6 @@ export namespace Ags {
             'do-poll': DoPoll;
             'notify::delay': GObject.Object.Notify;
             'notify::frequency': GObject.Object.Notify;
-            'notify::max-precision': GObject.Object.Notify;
             'notify::max-precision': GObject.Object.Notify;
         }
 

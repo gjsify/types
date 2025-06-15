@@ -292,7 +292,6 @@ export namespace TotemPlParser {
             'playlist-started': PlaylistStarted;
             'notify::debug': GObject.Object.Notify;
             'notify::disable-unsafe': GObject.Object.Notify;
-            'notify::disable-unsafe': GObject.Object.Notify;
             'notify::force': GObject.Object.Notify;
             'notify::recurse': GObject.Object.Notify;
         }

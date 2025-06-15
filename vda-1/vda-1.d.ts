@@ -3617,24 +3617,16 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends Gee.HashMap.SignalSignatures {
             'notify::k-type': GObject.Object.Notify;
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
             'notify::v-type': GObject.Object.Notify;
             'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
             'notify::v-destroy-func': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::keys': GObject.Object.Notify;
             'notify::values': GObject.Object.Notify;
             'notify::entries': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
         }
 
@@ -3690,15 +3682,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -4298,17 +4285,11 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends Expression.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::table-ref': GObject.Object.Notify;
             'notify::table-ref': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::allias': GObject.Object.Notify;
@@ -4823,17 +4804,11 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends Expression.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::operator-type': GObject.Object.Notify;
             'notify::operator-type': GObject.Object.Notify;
         }
 
@@ -5424,15 +5399,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -5923,15 +5893,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -6422,15 +6387,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorMultiterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -6921,15 +6881,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorMultiterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -7420,15 +7375,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -7919,15 +7869,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -8418,15 +8363,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -8917,15 +8857,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -9416,15 +9351,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -9915,15 +9845,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -10414,15 +10339,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -10913,15 +10833,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -11412,15 +11327,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -11911,15 +11821,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -12410,15 +12315,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -12909,15 +12809,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -13408,15 +13303,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -13907,15 +13797,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -14406,15 +14291,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -14905,15 +14785,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -15404,15 +15279,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -15903,15 +15773,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -16402,15 +16267,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -16901,15 +16761,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -17400,15 +17255,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryUnaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -17899,15 +17749,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryUnaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -18398,15 +18243,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -18899,15 +18739,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorInitialUnaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -19398,15 +19233,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -19897,15 +19727,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorFinalUnaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -20396,15 +20221,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -20895,15 +20715,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -21394,15 +21209,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -21893,15 +21703,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -22392,15 +22197,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -22891,15 +22691,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -23390,15 +23185,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -23889,15 +23679,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -24388,15 +24173,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -24887,15 +24667,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -25386,15 +25161,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsDistinct.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -25885,15 +25655,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsDistinct.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -26384,15 +26149,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsNotDistinct.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -26885,15 +26645,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -27384,15 +27139,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorThreeterm.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -27883,15 +27633,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBetween.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -28382,15 +28127,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBetween.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -28881,15 +28621,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorNotBetween.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -29380,15 +29115,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBetween.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -29881,15 +29611,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBetweenSymmetric.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -30382,15 +30107,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBetweenSymmetric.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -30883,15 +30603,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorNotBetweenSymmetric.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -31384,15 +31099,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends Expression.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
@@ -31901,15 +31611,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends ExpressionValue.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::parameters': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -32425,15 +32130,10 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -34534,24 +34234,16 @@ export namespace Vda {
         // Signal signatures
         interface SignalSignatures extends Gee.HashMap.SignalSignatures {
             'notify::k-type': GObject.Object.Notify;
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
             'notify::v-type': GObject.Object.Notify;
             'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
             'notify::v-destroy-func': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::keys': GObject.Object.Notify;
             'notify::values': GObject.Object.Notify;
             'notify::entries': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
         }
 

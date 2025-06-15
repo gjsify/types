@@ -175,15 +175,10 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractList.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -300,15 +295,10 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractSortedSet.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -421,25 +411,15 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractSortedMap.SignalSignatures {
             'notify::k-type': GObject.Object.Notify;
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
             'notify::v-type': GObject.Object.Notify;
             'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
             'notify::v-destroy-func': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::ascending-keys': GObject.Object.Notify;
-            'notify::ascending-keys': GObject.Object.Notify;
-            'notify::ascending-entries': GObject.Object.Notify;
             'notify::ascending-entries': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::keys': GObject.Object.Notify;
             'notify::values': GObject.Object.Notify;
@@ -565,15 +545,10 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
         }
 
@@ -1183,15 +1158,10 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractCollection.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -1349,24 +1319,16 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::k-type': GObject.Object.Notify;
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
             'notify::v-type': GObject.Object.Notify;
             'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
             'notify::v-destroy-func': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::keys': GObject.Object.Notify;
             'notify::values': GObject.Object.Notify;
             'notify::entries': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
         }
 
@@ -1993,19 +1955,12 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::k-type': GObject.Object.Notify;
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
             'notify::v-type': GObject.Object.Notify;
             'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
             'notify::v-destroy-func': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -2575,15 +2530,10 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractCollection.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
         }
 
@@ -2715,20 +2665,13 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractCollection.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
             'notify::capacity': GObject.Object.Notify;
             'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::is-full': GObject.Object.Notify;
             'notify::is-full': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
         }
 
@@ -2884,15 +2827,10 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractCollection.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -3026,25 +2964,15 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractMap.SignalSignatures {
             'notify::k-type': GObject.Object.Notify;
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
             'notify::v-type': GObject.Object.Notify;
             'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
             'notify::v-destroy-func': GObject.Object.Notify;
             'notify::ascending-keys': GObject.Object.Notify;
-            'notify::ascending-keys': GObject.Object.Notify;
             'notify::ascending-entries': GObject.Object.Notify;
-            'notify::ascending-entries': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::keys': GObject.Object.Notify;
             'notify::values': GObject.Object.Notify;
@@ -3216,15 +3144,10 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractSet.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -3333,15 +3256,10 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractBidirList.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -3413,22 +3331,14 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractQueue.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
             'notify::is-empty': GObject.Object.Notify;
             'notify::capacity': GObject.Object.Notify;
             'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::is-full': GObject.Object.Notify;
             'notify::is-full': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
         }
 
@@ -3539,17 +3449,11 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractList.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::is-empty': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -3621,15 +3525,10 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractSortedSet.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -3692,24 +3591,16 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractMap.SignalSignatures {
             'notify::k-type': GObject.Object.Notify;
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
             'notify::v-type': GObject.Object.Notify;
             'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
             'notify::v-destroy-func': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::keys': GObject.Object.Notify;
             'notify::values': GObject.Object.Notify;
             'notify::entries': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
         }
 
@@ -3791,16 +3682,10 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractMultiMap.SignalSignatures {
             'notify::k-type': GObject.Object.Notify;
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
             'notify::v-type': GObject.Object.Notify;
             'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
             'notify::v-destroy-func': GObject.Object.Notify;
         }
 
@@ -3887,15 +3772,10 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractMultiSet.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
         }
 
@@ -3971,15 +3851,10 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractSet.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -4085,20 +3960,13 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractBidirList.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::capacity': GObject.Object.Notify;
             'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::is-full': GObject.Object.Notify;
             'notify::is-full': GObject.Object.Notify;
         }
 
@@ -4213,20 +4081,13 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractQueue.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
             'notify::capacity': GObject.Object.Notify;
             'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::is-full': GObject.Object.Notify;
             'notify::is-full': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
         }
 
@@ -4335,25 +4196,15 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractBidirSortedMap.SignalSignatures {
             'notify::k-type': GObject.Object.Notify;
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
             'notify::v-type': GObject.Object.Notify;
             'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
             'notify::v-destroy-func': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::ascending-keys': GObject.Object.Notify;
-            'notify::ascending-keys': GObject.Object.Notify;
-            'notify::ascending-entries': GObject.Object.Notify;
             'notify::ascending-entries': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::keys': GObject.Object.Notify;
             'notify::values': GObject.Object.Notify;
@@ -4436,16 +4287,10 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractMultiMap.SignalSignatures {
             'notify::k-type': GObject.Object.Notify;
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
             'notify::v-type': GObject.Object.Notify;
             'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
             'notify::v-destroy-func': GObject.Object.Notify;
         }
 
@@ -4528,15 +4373,10 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractMultiSet.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
         }
 
@@ -4603,15 +4443,10 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractBidirSortedSet.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -4675,20 +4510,13 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractBidirList.SignalSignatures {
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::capacity': GObject.Object.Notify;
             'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::is-full': GObject.Object.Notify;
             'notify::is-full': GObject.Object.Notify;
         }
 
@@ -4801,20 +4629,13 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::k-type': GObject.Object.Notify;
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
             'notify::v-type': GObject.Object.Notify;
             'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
             'notify::v-destroy-func': GObject.Object.Notify;
             'notify::key': GObject.Object.Notify;
             'notify::value': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 

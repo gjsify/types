@@ -27,10 +27,7 @@ export namespace Gee {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::size': GObject.Object.Notify;
             'notify::is-empty': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
             'notify::element-type': GObject.Object.Notify;
         }
 
@@ -559,11 +556,8 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractCollection.SignalSignatures {
             'notify::read-only-view': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::is-empty': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
             'notify::element-type': GObject.Object.Notify;
         }
 
@@ -672,17 +666,12 @@ export namespace Gee {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::size': GObject.Object.Notify;
             'notify::is-empty': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
             'notify::keys': GObject.Object.Notify;
             'notify::values': GObject.Object.Notify;
             'notify::entries': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
             'notify::element-type': GObject.Object.Notify;
             'notify::key-type': GObject.Object.Notify;
-            'notify::key-type': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
             'notify::value-type': GObject.Object.Notify;
         }
 
@@ -1739,10 +1728,7 @@ export namespace Gee {
         interface SignalSignatures extends AbstractCollection.SignalSignatures {
             'notify::size': GObject.Object.Notify;
             'notify::is-empty': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
             'notify::element-type': GObject.Object.Notify;
         }
 
@@ -1817,15 +1803,10 @@ export namespace Gee {
         interface SignalSignatures extends AbstractCollection.SignalSignatures {
             'notify::capacity': GObject.Object.Notify;
             'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::is-full': GObject.Object.Notify;
             'notify::is-full': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::is-empty': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
             'notify::element-type': GObject.Object.Notify;
         }
 
@@ -1925,11 +1906,8 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractCollection.SignalSignatures {
             'notify::read-only-view': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::is-empty': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
             'notify::element-type': GObject.Object.Notify;
         }
 
@@ -2007,11 +1985,8 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractList.SignalSignatures {
             'notify::equal-func': GObject.Object.Notify;
-            'notify::equal-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
             'notify::is-empty': GObject.Object.Notify;
         }
 
@@ -2065,18 +2040,13 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractMap.SignalSignatures {
             'notify::key-hash-func': GObject.Object.Notify;
-            'notify::key-hash-func': GObject.Object.Notify;
             'notify::key-equal-func': GObject.Object.Notify;
-            'notify::key-equal-func': GObject.Object.Notify;
-            'notify::value-equal-func': GObject.Object.Notify;
             'notify::value-equal-func': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
             'notify::is-empty': GObject.Object.Notify;
             'notify::keys': GObject.Object.Notify;
             'notify::values': GObject.Object.Notify;
             'notify::entries': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
         }
 
@@ -2142,12 +2112,8 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractMultiMap.SignalSignatures {
             'notify::key-hash-func': GObject.Object.Notify;
-            'notify::key-hash-func': GObject.Object.Notify;
-            'notify::key-equal-func': GObject.Object.Notify;
             'notify::key-equal-func': GObject.Object.Notify;
             'notify::value-hash-func': GObject.Object.Notify;
-            'notify::value-hash-func': GObject.Object.Notify;
-            'notify::value-equal-func': GObject.Object.Notify;
             'notify::value-equal-func': GObject.Object.Notify;
         }
 
@@ -2219,13 +2185,9 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractMultiSet.SignalSignatures {
             'notify::hash-func': GObject.Object.Notify;
-            'notify::hash-func': GObject.Object.Notify;
-            'notify::equal-func': GObject.Object.Notify;
             'notify::equal-func': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::is-empty': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
         }
 
@@ -2280,13 +2242,9 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractSet.SignalSignatures {
             'notify::hash-func': GObject.Object.Notify;
-            'notify::hash-func': GObject.Object.Notify;
             'notify::equal-func': GObject.Object.Notify;
-            'notify::equal-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
             'notify::is-empty': GObject.Object.Notify;
         }
 
@@ -2342,16 +2300,11 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractList.SignalSignatures {
             'notify::equal-func': GObject.Object.Notify;
-            'notify::equal-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::is-empty': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
             'notify::capacity': GObject.Object.Notify;
             'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::is-full': GObject.Object.Notify;
             'notify::is-full': GObject.Object.Notify;
         }
 
@@ -2444,16 +2397,11 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractQueue.SignalSignatures {
             'notify::compare-func': GObject.Object.Notify;
-            'notify::compare-func': GObject.Object.Notify;
             'notify::capacity': GObject.Object.Notify;
             'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::is-full': GObject.Object.Notify;
             'notify::is-full': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::is-empty': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
         }
 
@@ -2506,16 +2454,12 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractMap.SignalSignatures {
             'notify::key-compare-func': GObject.Object.Notify;
-            'notify::key-compare-func': GObject.Object.Notify;
-            'notify::value-equal-func': GObject.Object.Notify;
             'notify::value-equal-func': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
             'notify::is-empty': GObject.Object.Notify;
             'notify::keys': GObject.Object.Notify;
             'notify::values': GObject.Object.Notify;
             'notify::entries': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
         }
 
@@ -2571,8 +2515,6 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractMultiMap.SignalSignatures {
             'notify::key-compare-func': GObject.Object.Notify;
-            'notify::key-compare-func': GObject.Object.Notify;
-            'notify::value-compare-func': GObject.Object.Notify;
             'notify::value-compare-func': GObject.Object.Notify;
         }
 
@@ -2629,11 +2571,8 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractMultiSet.SignalSignatures {
             'notify::compare-func': GObject.Object.Notify;
-            'notify::compare-func': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::is-empty': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
         }
 
@@ -2684,11 +2623,8 @@ export namespace Gee {
         // Signal signatures
         interface SignalSignatures extends AbstractSet.SignalSignatures {
             'notify::compare-func': GObject.Object.Notify;
-            'notify::compare-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
             'notify::is-empty': GObject.Object.Notify;
         }
 

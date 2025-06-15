@@ -538,12 +538,8 @@ export namespace GstInterfaces {
             'notify::index': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::max-volume': GObject.Object.Notify;
-            'notify::max-volume': GObject.Object.Notify;
-            'notify::min-volume': GObject.Object.Notify;
             'notify::min-volume': GObject.Object.Notify;
             'notify::num-channels': GObject.Object.Notify;
-            'notify::num-channels': GObject.Object.Notify;
-            'notify::untranslated-label': GObject.Object.Notify;
             'notify::untranslated-label': GObject.Object.Notify;
         }
 
@@ -591,12 +587,8 @@ export namespace GstInterfaces {
             'notify::index': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::max-volume': GObject.Object.Notify;
-            'notify::max-volume': GObject.Object.Notify;
-            'notify::min-volume': GObject.Object.Notify;
             'notify::min-volume': GObject.Object.Notify;
             'notify::num-channels': GObject.Object.Notify;
-            'notify::num-channels': GObject.Object.Notify;
-            'notify::untranslated-label': GObject.Object.Notify;
             'notify::untranslated-label': GObject.Object.Notify;
         }
 

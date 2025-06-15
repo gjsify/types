@@ -1758,13 +1758,9 @@ export namespace Soup {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::authority': GObject.Object.Notify;
             'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-authenticated': GObject.Object.Notify;
             'notify::is-cancelled': GObject.Object.Notify;
-            'notify::is-cancelled': GObject.Object.Notify;
-            'notify::is-for-proxy': GObject.Object.Notify;
             'notify::is-for-proxy': GObject.Object.Notify;
             'notify::realm': GObject.Object.Notify;
-            'notify::scheme-name': GObject.Object.Notify;
             'notify::scheme-name': GObject.Object.Notify;
         }
 
@@ -2021,13 +2017,9 @@ export namespace Soup {
         interface SignalSignatures extends Auth.SignalSignatures {
             'notify::authority': GObject.Object.Notify;
             'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-authenticated': GObject.Object.Notify;
             'notify::is-cancelled': GObject.Object.Notify;
-            'notify::is-cancelled': GObject.Object.Notify;
-            'notify::is-for-proxy': GObject.Object.Notify;
             'notify::is-for-proxy': GObject.Object.Notify;
             'notify::realm': GObject.Object.Notify;
-            'notify::scheme-name': GObject.Object.Notify;
             'notify::scheme-name': GObject.Object.Notify;
         }
 
@@ -2073,13 +2065,9 @@ export namespace Soup {
         interface SignalSignatures extends Auth.SignalSignatures {
             'notify::authority': GObject.Object.Notify;
             'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-authenticated': GObject.Object.Notify;
             'notify::is-cancelled': GObject.Object.Notify;
-            'notify::is-cancelled': GObject.Object.Notify;
-            'notify::is-for-proxy': GObject.Object.Notify;
             'notify::is-for-proxy': GObject.Object.Notify;
             'notify::realm': GObject.Object.Notify;
-            'notify::scheme-name': GObject.Object.Notify;
             'notify::scheme-name': GObject.Object.Notify;
         }
 
@@ -2128,10 +2116,7 @@ export namespace Soup {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::filter': GObject.Object.Notify;
             'notify::filter-data': GObject.Object.Notify;
-            'notify::filter-data': GObject.Object.Notify;
             'notify::generic-auth-callback': GObject.Object.Notify;
-            'notify::generic-auth-callback': GObject.Object.Notify;
-            'notify::generic-auth-data': GObject.Object.Notify;
             'notify::generic-auth-data': GObject.Object.Notify;
             'notify::proxy': GObject.Object.Notify;
             'notify::realm': GObject.Object.Notify;
@@ -2395,15 +2380,10 @@ export namespace Soup {
         // Signal signatures
         interface SignalSignatures extends AuthDomain.SignalSignatures {
             'notify::auth-callback': GObject.Object.Notify;
-            'notify::auth-callback': GObject.Object.Notify;
-            'notify::auth-data': GObject.Object.Notify;
             'notify::auth-data': GObject.Object.Notify;
             'notify::filter': GObject.Object.Notify;
             'notify::filter-data': GObject.Object.Notify;
-            'notify::filter-data': GObject.Object.Notify;
             'notify::generic-auth-callback': GObject.Object.Notify;
-            'notify::generic-auth-callback': GObject.Object.Notify;
-            'notify::generic-auth-data': GObject.Object.Notify;
             'notify::generic-auth-data': GObject.Object.Notify;
             'notify::proxy': GObject.Object.Notify;
             'notify::realm': GObject.Object.Notify;
@@ -2498,15 +2478,10 @@ export namespace Soup {
         // Signal signatures
         interface SignalSignatures extends AuthDomain.SignalSignatures {
             'notify::auth-callback': GObject.Object.Notify;
-            'notify::auth-callback': GObject.Object.Notify;
-            'notify::auth-data': GObject.Object.Notify;
             'notify::auth-data': GObject.Object.Notify;
             'notify::filter': GObject.Object.Notify;
             'notify::filter-data': GObject.Object.Notify;
-            'notify::filter-data': GObject.Object.Notify;
             'notify::generic-auth-callback': GObject.Object.Notify;
-            'notify::generic-auth-callback': GObject.Object.Notify;
-            'notify::generic-auth-data': GObject.Object.Notify;
             'notify::generic-auth-data': GObject.Object.Notify;
             'notify::proxy': GObject.Object.Notify;
             'notify::realm': GObject.Object.Notify;
@@ -3145,13 +3120,9 @@ export namespace Soup {
         interface SignalSignatures extends Auth.SignalSignatures {
             'notify::authority': GObject.Object.Notify;
             'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-authenticated': GObject.Object.Notify;
             'notify::is-cancelled': GObject.Object.Notify;
-            'notify::is-cancelled': GObject.Object.Notify;
-            'notify::is-for-proxy': GObject.Object.Notify;
             'notify::is-for-proxy': GObject.Object.Notify;
             'notify::realm': GObject.Object.Notify;
-            'notify::scheme-name': GObject.Object.Notify;
             'notify::scheme-name': GObject.Object.Notify;
         }
 
@@ -3197,13 +3168,9 @@ export namespace Soup {
         interface SignalSignatures extends Auth.SignalSignatures {
             'notify::authority': GObject.Object.Notify;
             'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-authenticated': GObject.Object.Notify;
             'notify::is-cancelled': GObject.Object.Notify;
-            'notify::is-cancelled': GObject.Object.Notify;
-            'notify::is-for-proxy': GObject.Object.Notify;
             'notify::is-for-proxy': GObject.Object.Notify;
             'notify::realm': GObject.Object.Notify;
-            'notify::scheme-name': GObject.Object.Notify;
             'notify::scheme-name': GObject.Object.Notify;
         }
 
@@ -3267,8 +3234,6 @@ export namespace Soup {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::cache-dir': GObject.Object.Notify;
-            'notify::cache-dir': GObject.Object.Notify;
-            'notify::cache-type': GObject.Object.Notify;
             'notify::cache-type': GObject.Object.Notify;
         }
 
@@ -4838,8 +4803,6 @@ export namespace Soup {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
             'notify::accept-policy': GObject.Object.Notify;
-            'notify::accept-policy': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -5530,8 +5493,6 @@ export namespace Soup {
         interface SignalSignatures extends CookieJar.SignalSignatures {
             'notify::filename': GObject.Object.Notify;
             'notify::accept-policy': GObject.Object.Notify;
-            'notify::accept-policy': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -6038,8 +5999,6 @@ export namespace Soup {
         interface SignalSignatures extends CookieJar.SignalSignatures {
             'notify::filename': GObject.Object.Notify;
             'notify::accept-policy': GObject.Object.Notify;
-            'notify::accept-policy': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -7619,7 +7578,6 @@ export namespace Soup {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::level': GObject.Object.Notify;
             'notify::max-body-size': GObject.Object.Notify;
-            'notify::max-body-size': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -8312,35 +8270,21 @@ export namespace Soup {
             'wrote-body-data': WroteBodyData;
             'wrote-headers': WroteHeaders;
             'notify::first-party': GObject.Object.Notify;
-            'notify::first-party': GObject.Object.Notify;
             'notify::flags': GObject.Object.Notify;
             'notify::http-version': GObject.Object.Notify;
-            'notify::http-version': GObject.Object.Notify;
             'notify::is-options-ping': GObject.Object.Notify;
-            'notify::is-options-ping': GObject.Object.Notify;
-            'notify::is-top-level-navigation': GObject.Object.Notify;
             'notify::is-top-level-navigation': GObject.Object.Notify;
             'notify::method': GObject.Object.Notify;
             'notify::priority': GObject.Object.Notify;
             'notify::reason-phrase': GObject.Object.Notify;
-            'notify::reason-phrase': GObject.Object.Notify;
-            'notify::remote-address': GObject.Object.Notify;
             'notify::remote-address': GObject.Object.Notify;
             'notify::request-headers': GObject.Object.Notify;
-            'notify::request-headers': GObject.Object.Notify;
-            'notify::response-headers': GObject.Object.Notify;
             'notify::response-headers': GObject.Object.Notify;
             'notify::site-for-cookies': GObject.Object.Notify;
-            'notify::site-for-cookies': GObject.Object.Notify;
-            'notify::status-code': GObject.Object.Notify;
             'notify::status-code': GObject.Object.Notify;
             'notify::tls-ciphersuite-name': GObject.Object.Notify;
-            'notify::tls-ciphersuite-name': GObject.Object.Notify;
-            'notify::tls-peer-certificate': GObject.Object.Notify;
             'notify::tls-peer-certificate': GObject.Object.Notify;
             'notify::tls-peer-certificate-errors': GObject.Object.Notify;
-            'notify::tls-peer-certificate-errors': GObject.Object.Notify;
-            'notify::tls-protocol-version': GObject.Object.Notify;
             'notify::tls-protocol-version': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
         }
@@ -8910,8 +8854,6 @@ export namespace Soup {
         interface SignalSignatures extends Gio.FilterInputStream.SignalSignatures {
             'notify::message': GObject.Object.Notify;
             'notify::base-stream': GObject.Object.Notify;
-            'notify::base-stream': GObject.Object.Notify;
-            'notify::close-base-stream': GObject.Object.Notify;
             'notify::close-base-stream': GObject.Object.Notify;
         }
 
@@ -9945,14 +9887,9 @@ export namespace Soup {
             'request-read': RequestRead;
             'request-started': RequestStarted;
             'notify::raw-paths': GObject.Object.Notify;
-            'notify::raw-paths': GObject.Object.Notify;
-            'notify::server-header': GObject.Object.Notify;
             'notify::server-header': GObject.Object.Notify;
             'notify::tls-auth-mode': GObject.Object.Notify;
-            'notify::tls-auth-mode': GObject.Object.Notify;
             'notify::tls-certificate': GObject.Object.Notify;
-            'notify::tls-certificate': GObject.Object.Notify;
-            'notify::tls-database': GObject.Object.Notify;
             'notify::tls-database': GObject.Object.Notify;
         }
 
@@ -10598,8 +10535,6 @@ export namespace Soup {
             'wrote-headers': WroteHeaders;
             'wrote-informational': WroteInformational;
             'notify::tls-peer-certificate': GObject.Object.Notify;
-            'notify::tls-peer-certificate': GObject.Object.Notify;
-            'notify::tls-peer-certificate-errors': GObject.Object.Notify;
             'notify::tls-peer-certificate-errors': GObject.Object.Notify;
         }
 
@@ -10852,27 +10787,16 @@ export namespace Soup {
             'request-queued': RequestQueued;
             'request-unqueued': RequestUnqueued;
             'notify::accept-language': GObject.Object.Notify;
-            'notify::accept-language': GObject.Object.Notify;
-            'notify::accept-language-auto': GObject.Object.Notify;
             'notify::accept-language-auto': GObject.Object.Notify;
             'notify::idle-timeout': GObject.Object.Notify;
-            'notify::idle-timeout': GObject.Object.Notify;
-            'notify::local-address': GObject.Object.Notify;
             'notify::local-address': GObject.Object.Notify;
             'notify::max-conns': GObject.Object.Notify;
-            'notify::max-conns': GObject.Object.Notify;
-            'notify::max-conns-per-host': GObject.Object.Notify;
             'notify::max-conns-per-host': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::remote-connectable': GObject.Object.Notify;
             'notify::remote-connectable': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
             'notify::tls-database': GObject.Object.Notify;
-            'notify::tls-database': GObject.Object.Notify;
             'notify::tls-interaction': GObject.Object.Notify;
-            'notify::tls-interaction': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
             'notify::user-agent': GObject.Object.Notify;
         }
 
@@ -11894,15 +11818,10 @@ export namespace Soup {
             message: Message;
             pong: Pong;
             'notify::connection-type': GObject.Object.Notify;
-            'notify::connection-type': GObject.Object.Notify;
             'notify::extensions': GObject.Object.Notify;
             'notify::io-stream': GObject.Object.Notify;
-            'notify::io-stream': GObject.Object.Notify;
-            'notify::keepalive-interval': GObject.Object.Notify;
             'notify::keepalive-interval': GObject.Object.Notify;
             'notify::keepalive-pong-timeout': GObject.Object.Notify;
-            'notify::keepalive-pong-timeout': GObject.Object.Notify;
-            'notify::max-incoming-payload-size': GObject.Object.Notify;
             'notify::max-incoming-payload-size': GObject.Object.Notify;
             'notify::origin': GObject.Object.Notify;
             'notify::protocol': GObject.Object.Notify;

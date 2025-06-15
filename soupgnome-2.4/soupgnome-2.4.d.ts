@@ -28,8 +28,6 @@ export namespace SoupGNOME {
         interface SignalSignatures extends Soup.CookieJarDB.SignalSignatures {
             'notify::filename': GObject.Object.Notify;
             'notify::accept-policy': GObject.Object.Notify;
-            'notify::accept-policy': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -1067,7 +1065,6 @@ export namespace SoupGNOME {
     namespace ProxyResolverGNOME {
         // Signal signatures
         interface SignalSignatures extends Soup.ProxyResolverDefault.SignalSignatures {
-            'notify::gproxy-resolver': GObject.Object.Notify;
             'notify::gproxy-resolver': GObject.Object.Notify;
         }
 

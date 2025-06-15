@@ -911,9 +911,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -1011,7 +1009,6 @@ export namespace Arrow {
     namespace ArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -1196,7 +1193,6 @@ export namespace Arrow {
         interface SignalSignatures extends Scalar.SignalSignatures {
             'notify::value': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
 
@@ -1250,7 +1246,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
             'notify::value': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -1308,9 +1303,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -1365,7 +1358,6 @@ export namespace Arrow {
     namespace BinaryArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -1422,7 +1414,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends DataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1463,7 +1454,6 @@ export namespace Arrow {
     namespace BinaryDictionaryArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -1527,7 +1517,6 @@ export namespace Arrow {
         interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {
             'notify::value': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
 
@@ -1573,9 +1562,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -1626,7 +1613,6 @@ export namespace Arrow {
     namespace BooleanArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -1682,7 +1668,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FixedWidthDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1723,7 +1708,6 @@ export namespace Arrow {
     namespace BooleanScalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -1835,7 +1819,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends SeekableInputStream.SignalSignatures {
             'notify::buffer': GObject.Object.Notify;
-            'notify::input-stream': GObject.Object.Notify;
             'notify::input-stream': GObject.Object.Notify;
         }
 
@@ -2332,7 +2315,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends OutputStream.SignalSignatures {
             'notify::output-stream': GObject.Object.Notify;
-            'notify::output-stream': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2828,31 +2810,18 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::allow-newlines-in-values': GObject.Object.Notify;
-            'notify::allow-newlines-in-values': GObject.Object.Notify;
-            'notify::allow-null-strings': GObject.Object.Notify;
             'notify::allow-null-strings': GObject.Object.Notify;
             'notify::block-size': GObject.Object.Notify;
-            'notify::block-size': GObject.Object.Notify;
-            'notify::check-utf8': GObject.Object.Notify;
             'notify::check-utf8': GObject.Object.Notify;
             'notify::delimiter': GObject.Object.Notify;
             'notify::escape-character': GObject.Object.Notify;
-            'notify::escape-character': GObject.Object.Notify;
-            'notify::generate-column-names': GObject.Object.Notify;
             'notify::generate-column-names': GObject.Object.Notify;
             'notify::ignore-empty-lines': GObject.Object.Notify;
-            'notify::ignore-empty-lines': GObject.Object.Notify;
-            'notify::is-double-quoted': GObject.Object.Notify;
             'notify::is-double-quoted': GObject.Object.Notify;
             'notify::is-escaped': GObject.Object.Notify;
-            'notify::is-escaped': GObject.Object.Notify;
-            'notify::is-quoted': GObject.Object.Notify;
             'notify::is-quoted': GObject.Object.Notify;
             'notify::n-skip-rows': GObject.Object.Notify;
-            'notify::n-skip-rows': GObject.Object.Notify;
             'notify::quote-character': GObject.Object.Notify;
-            'notify::quote-character': GObject.Object.Notify;
-            'notify::use-threads': GObject.Object.Notify;
             'notify::use-threads': GObject.Object.Notify;
         }
 
@@ -3099,7 +3068,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::csv-table-reader': GObject.Object.Notify;
-            'notify::csv-table-reader': GObject.Object.Notify;
             'notify::input': GObject.Object.Notify;
         }
 
@@ -3192,18 +3160,11 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FunctionOptions.SignalSignatures {
             'notify::allow-decimal-truncate': GObject.Object.Notify;
-            'notify::allow-decimal-truncate': GObject.Object.Notify;
-            'notify::allow-float-truncate': GObject.Object.Notify;
             'notify::allow-float-truncate': GObject.Object.Notify;
             'notify::allow-int-overflow': GObject.Object.Notify;
-            'notify::allow-int-overflow': GObject.Object.Notify;
-            'notify::allow-invalid-utf8': GObject.Object.Notify;
             'notify::allow-invalid-utf8': GObject.Object.Notify;
             'notify::allow-time-overflow': GObject.Object.Notify;
-            'notify::allow-time-overflow': GObject.Object.Notify;
             'notify::allow-time-truncate': GObject.Object.Notify;
-            'notify::allow-time-truncate': GObject.Object.Notify;
-            'notify::to-data-type': GObject.Object.Notify;
             'notify::to-data-type': GObject.Object.Notify;
         }
 
@@ -3334,8 +3295,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::chunked-array': GObject.Object.Notify;
-            'notify::chunked-array': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
         }
 
@@ -3508,7 +3467,6 @@ export namespace Arrow {
         interface SignalSignatures extends InputStream.SignalSignatures {
             'notify::codec': GObject.Object.Notify;
             'notify::raw': GObject.Object.Notify;
-            'notify::input-stream': GObject.Object.Notify;
             'notify::input-stream': GObject.Object.Notify;
         }
 
@@ -4014,7 +3972,6 @@ export namespace Arrow {
         interface SignalSignatures extends OutputStream.SignalSignatures {
             'notify::codec': GObject.Object.Notify;
             'notify::raw': GObject.Object.Notify;
-            'notify::output-stream': GObject.Object.Notify;
             'notify::output-stream': GObject.Object.Notify;
         }
 
@@ -4567,7 +4524,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4627,9 +4583,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -4676,7 +4630,6 @@ export namespace Arrow {
     namespace Date32ArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -4732,7 +4685,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends TemporalDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4773,7 +4725,6 @@ export namespace Arrow {
     namespace Date32Scalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -4824,9 +4775,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -4873,7 +4822,6 @@ export namespace Arrow {
     namespace Date64ArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -4929,7 +4877,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends TemporalDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4970,7 +4917,6 @@ export namespace Arrow {
     namespace Date64Scalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -5132,9 +5078,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -5181,7 +5125,6 @@ export namespace Arrow {
     namespace DayTimeIntervalArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -5236,7 +5179,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends IntervalDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5277,7 +5219,6 @@ export namespace Arrow {
     namespace DayTimeIntervalScalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -5404,9 +5345,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -5453,7 +5392,6 @@ export namespace Arrow {
     namespace Decimal128ArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends FixedSizeBinaryArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -5513,7 +5451,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends DecimalDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5562,7 +5499,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
             'notify::value': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -5696,9 +5632,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -5745,7 +5679,6 @@ export namespace Arrow {
     namespace Decimal256ArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends FixedSizeBinaryArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -5804,7 +5737,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends DecimalDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5853,7 +5785,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
             'notify::value': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -5910,7 +5841,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FixedSizeBinaryDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5960,16 +5890,12 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends UnionArray.SignalSignatures {
             'notify::value-offsets': GObject.Object.Notify;
-            'notify::value-offsets': GObject.Object.Notify;
-            'notify::type-ids': GObject.Object.Notify;
             'notify::type-ids': GObject.Object.Notify;
             'notify::array': GObject.Object.Notify;
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -6031,7 +5957,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends UnionArrayBuilder.SignalSignatures {
             'notify::array-builder': GObject.Object.Notify;
-            'notify::array-builder': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -6072,7 +5997,6 @@ export namespace Arrow {
     namespace DenseUnionDataType {
         // Signal signatures
         interface SignalSignatures extends UnionDataType.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
         }
 
@@ -6115,7 +6039,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends UnionScalar.SignalSignatures {
             'notify::value': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -6164,9 +6087,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -6223,7 +6144,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FixedWidthDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -6274,9 +6194,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -6324,7 +6242,6 @@ export namespace Arrow {
     namespace DoubleArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -6380,7 +6297,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FloatingPointDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -6421,7 +6337,6 @@ export namespace Arrow {
     namespace DoubleScalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -6469,9 +6384,7 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::absolute-tolerance': GObject.Object.Notify;
-            'notify::absolute-tolerance': GObject.Object.Notify;
             'notify::approx': GObject.Object.Notify;
-            'notify::nans-equal': GObject.Object.Notify;
             'notify::nans-equal': GObject.Object.Notify;
         }
 
@@ -6851,9 +6764,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -6904,8 +6815,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends DataType.SignalSignatures {
             'notify::storage-data-type': GObject.Object.Notify;
-            'notify::storage-data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
         }
 
@@ -7049,7 +6958,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
 
@@ -7089,7 +6997,6 @@ export namespace Arrow {
     namespace FeatherFileReader {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::feather-reader': GObject.Object.Notify;
             'notify::feather-reader': GObject.Object.Notify;
         }
 
@@ -7205,7 +7112,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::field': GObject.Object.Notify;
         }
 
@@ -7312,8 +7218,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::base-name': GObject.Object.Notify;
-            'notify::base-name': GObject.Object.Notify;
-            'notify::dir-name': GObject.Object.Notify;
             'notify::dir-name': GObject.Object.Notify;
             'notify::extension': GObject.Object.Notify;
             'notify::mtime': GObject.Object.Notify;
@@ -7418,7 +7322,6 @@ export namespace Arrow {
     namespace FileInputStream {
         // Signal signatures
         interface SignalSignatures extends SeekableInputStream.SignalSignatures {
-            'notify::input-stream': GObject.Object.Notify;
             'notify::input-stream': GObject.Object.Notify;
         }
 
@@ -7910,7 +7813,6 @@ export namespace Arrow {
     namespace FileOutputStream {
         // Signal signatures
         interface SignalSignatures extends OutputStream.SignalSignatures {
-            'notify::output-stream': GObject.Object.Notify;
             'notify::output-stream': GObject.Object.Notify;
         }
 
@@ -8407,10 +8309,7 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::allow-not-found': GObject.Object.Notify;
-            'notify::allow-not-found': GObject.Object.Notify;
             'notify::base-dir': GObject.Object.Notify;
-            'notify::base-dir': GObject.Object.Notify;
-            'notify::max-recursion': GObject.Object.Notify;
             'notify::max-recursion': GObject.Object.Notify;
             'notify::recursive': GObject.Object.Notify;
         }
@@ -8503,7 +8402,6 @@ export namespace Arrow {
     namespace FileSystem {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::file-system': GObject.Object.Notify;
             'notify::file-system': GObject.Object.Notify;
         }
 
@@ -8716,7 +8614,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FunctionOptions.SignalSignatures {
             'notify::null-selection-behavior': GObject.Object.Notify;
-            'notify::null-selection-behavior': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -8777,9 +8674,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -8833,7 +8728,6 @@ export namespace Arrow {
     namespace FixedSizeBinaryArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -8900,7 +8794,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FixedWidthDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -8947,7 +8840,6 @@ export namespace Arrow {
         interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {
             'notify::value': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
 
@@ -8989,7 +8881,6 @@ export namespace Arrow {
     namespace FixedWidthDataType {
         // Signal signatures
         interface SignalSignatures extends DataType.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
         }
 
@@ -9037,9 +8928,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -9087,7 +8976,6 @@ export namespace Arrow {
     namespace FloatArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -9143,7 +9031,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FloatingPointDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -9184,7 +9071,6 @@ export namespace Arrow {
     namespace FloatScalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -9231,7 +9117,6 @@ export namespace Arrow {
     namespace FloatingPointDataType {
         // Signal signatures
         interface SignalSignatures extends NumericDataType.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
         }
 
@@ -9423,7 +9308,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FileSystem.SignalSignatures {
             'notify::file-system': GObject.Object.Notify;
-            'notify::file-system': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -9463,7 +9347,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends SeekableInputStream.SignalSignatures {
             'notify::raw': GObject.Object.Notify;
-            'notify::input-stream': GObject.Object.Notify;
             'notify::input-stream': GObject.Object.Notify;
         }
 
@@ -9960,7 +9843,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends OutputStream.SignalSignatures {
             'notify::raw': GObject.Object.Notify;
-            'notify::output-stream': GObject.Object.Notify;
             'notify::output-stream': GObject.Object.Notify;
         }
 
@@ -10467,7 +10349,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FileSystem.SignalSignatures {
             'notify::file-system': GObject.Object.Notify;
-            'notify::file-system': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -10510,9 +10391,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -10559,7 +10438,6 @@ export namespace Arrow {
     namespace HalfFloatArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -10614,7 +10492,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FloatingPointDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -10655,7 +10532,6 @@ export namespace Arrow {
     namespace HalfFloatScalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -10840,7 +10716,6 @@ export namespace Arrow {
     namespace InputStream {
         // Signal signatures
         interface SignalSignatures extends Gio.InputStream.SignalSignatures {
-            'notify::input-stream': GObject.Object.Notify;
             'notify::input-stream': GObject.Object.Notify;
         }
 
@@ -11353,9 +11228,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -11403,7 +11276,6 @@ export namespace Arrow {
     namespace Int16ArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -11459,7 +11331,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends IntegerDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -11500,7 +11371,6 @@ export namespace Arrow {
     namespace Int16Scalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -11551,9 +11421,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -11601,7 +11469,6 @@ export namespace Arrow {
     namespace Int32ArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -11657,7 +11524,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends IntegerDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -11698,7 +11564,6 @@ export namespace Arrow {
     namespace Int32Scalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -11749,9 +11614,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -11799,7 +11662,6 @@ export namespace Arrow {
     namespace Int64ArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -11855,7 +11717,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends IntegerDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -11896,7 +11757,6 @@ export namespace Arrow {
     namespace Int64Scalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -11947,9 +11807,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -11994,7 +11852,6 @@ export namespace Arrow {
     namespace Int8ArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -12050,7 +11907,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends IntegerDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -12091,7 +11947,6 @@ export namespace Arrow {
     namespace Int8Scalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -12138,7 +11993,6 @@ export namespace Arrow {
     namespace IntArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -12194,7 +12048,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends NumericDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -12237,7 +12090,6 @@ export namespace Arrow {
     namespace IntervalDataType {
         // Signal signatures
         interface SignalSignatures extends TemporalDataType.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
         }
 
@@ -12282,13 +12134,9 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::allow-newlines-in-values': GObject.Object.Notify;
-            'notify::allow-newlines-in-values': GObject.Object.Notify;
-            'notify::block-size': GObject.Object.Notify;
             'notify::block-size': GObject.Object.Notify;
             'notify::schema': GObject.Object.Notify;
             'notify::unexpected-field-behavior': GObject.Object.Notify;
-            'notify::unexpected-field-behavior': GObject.Object.Notify;
-            'notify::use-threads': GObject.Object.Notify;
             'notify::use-threads': GObject.Object.Notify;
         }
 
@@ -12394,7 +12242,6 @@ export namespace Arrow {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::input': GObject.Object.Notify;
             'notify::json-table-reader': GObject.Object.Notify;
-            'notify::json-table-reader': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -12453,9 +12300,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -12511,7 +12356,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
             'notify::array-builder': GObject.Object.Notify;
-            'notify::array-builder': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -12566,7 +12410,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends DataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -12608,7 +12451,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {
             'notify::value': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -12652,14 +12494,11 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends Array.SignalSignatures {
             'notify::raw-values': GObject.Object.Notify;
-            'notify::raw-values': GObject.Object.Notify;
             'notify::array': GObject.Object.Notify;
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -12728,7 +12567,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
             'notify::array-builder': GObject.Object.Notify;
-            'notify::array-builder': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -12774,7 +12612,6 @@ export namespace Arrow {
     namespace LargeListDataType {
         // Signal signatures
         interface SignalSignatures extends DataType.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
         }
 
@@ -12822,7 +12659,6 @@ export namespace Arrow {
         interface SignalSignatures extends BaseListScalar.SignalSignatures {
             'notify::value': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
 
@@ -12868,9 +12704,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -12922,7 +12756,6 @@ export namespace Arrow {
     namespace LargeStringArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends LargeBinaryArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -12978,7 +12811,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends DataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -13020,7 +12852,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {
             'notify::value': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -13064,14 +12895,11 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends Array.SignalSignatures {
             'notify::raw-values': GObject.Object.Notify;
-            'notify::raw-values': GObject.Object.Notify;
             'notify::array': GObject.Object.Notify;
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -13137,7 +12965,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
             'notify::array-builder': GObject.Object.Notify;
-            'notify::array-builder': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -13185,7 +13012,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends DataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -13232,7 +13058,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends BaseListScalar.SignalSignatures {
             'notify::value': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -13315,7 +13140,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FileSystem.SignalSignatures {
             'notify::file-system': GObject.Object.Notify;
-            'notify::file-system': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -13356,7 +13180,6 @@ export namespace Arrow {
     namespace LocalFileSystemOptions {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::use-mmap': GObject.Object.Notify;
             'notify::use-mmap': GObject.Object.Notify;
         }
 
@@ -13420,14 +13243,11 @@ export namespace Arrow {
             'notify::keys': GObject.Object.Notify;
             'notify::offsets': GObject.Object.Notify;
             'notify::raw-values': GObject.Object.Notify;
-            'notify::raw-values': GObject.Object.Notify;
             'notify::array': GObject.Object.Notify;
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -13485,7 +13305,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
             'notify::array-builder': GObject.Object.Notify;
-            'notify::array-builder': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -13542,7 +13361,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends ListDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -13593,7 +13411,6 @@ export namespace Arrow {
         interface SignalSignatures extends BaseListScalar.SignalSignatures {
             'notify::value': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
 
@@ -13632,7 +13449,6 @@ export namespace Arrow {
     namespace MatchSubstringOptions {
         // Signal signatures
         interface SignalSignatures extends FunctionOptions.SignalSignatures {
-            'notify::ignore-case': GObject.Object.Notify;
             'notify::ignore-case': GObject.Object.Notify;
             'notify::pattern': GObject.Object.Notify;
         }
@@ -13698,7 +13514,6 @@ export namespace Arrow {
     namespace MemoryMappedInputStream {
         // Signal signatures
         interface SignalSignatures extends SeekableInputStream.SignalSignatures {
-            'notify::input-stream': GObject.Object.Notify;
             'notify::input-stream': GObject.Object.Notify;
         }
 
@@ -14185,7 +14000,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::memory-pool': GObject.Object.Notify;
-            'notify::memory-pool': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -14246,7 +14060,6 @@ export namespace Arrow {
     namespace MockFileSystem {
         // Signal signatures
         interface SignalSignatures extends FileSystem.SignalSignatures {
-            'notify::file-system': GObject.Object.Notify;
             'notify::file-system': GObject.Object.Notify;
         }
 
@@ -14359,9 +14172,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -14413,7 +14224,6 @@ export namespace Arrow {
     namespace MonthDayNanoIntervalArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -14468,7 +14278,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends IntervalDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -14509,7 +14318,6 @@ export namespace Arrow {
     namespace MonthDayNanoIntervalScalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -14560,9 +14368,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -14609,7 +14415,6 @@ export namespace Arrow {
     namespace MonthIntervalArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -14664,7 +14469,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends IntervalDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -14705,7 +14509,6 @@ export namespace Arrow {
     namespace MonthIntervalScalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -14808,9 +14611,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -14849,7 +14650,6 @@ export namespace Arrow {
     namespace NullArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -14892,7 +14692,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends DataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -14933,7 +14732,6 @@ export namespace Arrow {
     namespace NullScalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -14980,9 +14778,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -15027,7 +14823,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FixedWidthDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -15067,7 +14862,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::input': GObject.Object.Notify;
-            'notify::orc-file-reader': GObject.Object.Notify;
             'notify::orc-file-reader': GObject.Object.Notify;
         }
 
@@ -15131,7 +14925,6 @@ export namespace Arrow {
     namespace OutputStream {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::output-stream': GObject.Object.Notify;
             'notify::output-stream': GObject.Object.Notify;
         }
 
@@ -15643,9 +15436,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -15733,8 +15524,6 @@ export namespace Arrow {
         interface SignalSignatures extends FunctionOptions.SignalSignatures {
             'notify::interpolation': GObject.Object.Notify;
             'notify::min-count': GObject.Object.Notify;
-            'notify::min-count': GObject.Object.Notify;
-            'notify::skip-nulls': GObject.Object.Notify;
             'notify::skip-nulls': GObject.Object.Notify;
         }
 
@@ -15820,7 +15609,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FunctionOptions.SignalSignatures {
             'notify::null-placement': GObject.Object.Notify;
-            'notify::null-placement': GObject.Object.Notify;
             'notify::tiebreaker': GObject.Object.Notify;
         }
 
@@ -15902,8 +15690,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::max-recursion-depth': GObject.Object.Notify;
-            'notify::max-recursion-depth': GObject.Object.Notify;
-            'notify::use-threads': GObject.Object.Notify;
             'notify::use-threads': GObject.Object.Notify;
         }
 
@@ -15979,7 +15765,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::record-batch': GObject.Object.Notify;
-            'notify::record-batch': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -16051,7 +15836,6 @@ export namespace Arrow {
     namespace RecordBatchBuilder {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::record-batch-builder': GObject.Object.Notify;
             'notify::record-batch-builder': GObject.Object.Notify;
         }
 
@@ -16161,7 +15945,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::record-batch-file-reader': GObject.Object.Notify;
-            'notify::record-batch-file-reader': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -16218,7 +16001,6 @@ export namespace Arrow {
     namespace RecordBatchFileWriter {
         // Signal signatures
         interface SignalSignatures extends RecordBatchStreamWriter.SignalSignatures {
-            'notify::record-batch-writer': GObject.Object.Notify;
             'notify::record-batch-writer': GObject.Object.Notify;
         }
 
@@ -16314,7 +16096,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::record-batch-reader': GObject.Object.Notify;
-            'notify::record-batch-reader': GObject.Object.Notify;
             'notify::sources': GObject.Object.Notify;
         }
 
@@ -16381,7 +16162,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends RecordBatchReader.SignalSignatures {
             'notify::record-batch-reader': GObject.Object.Notify;
-            'notify::record-batch-reader': GObject.Object.Notify;
             'notify::sources': GObject.Object.Notify;
         }
 
@@ -16427,7 +16207,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends RecordBatchWriter.SignalSignatures {
             'notify::record-batch-writer': GObject.Object.Notify;
-            'notify::record-batch-writer': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -16468,7 +16247,6 @@ export namespace Arrow {
     namespace RecordBatchWriter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::record-batch-writer': GObject.Object.Notify;
             'notify::record-batch-writer': GObject.Object.Notify;
         }
 
@@ -16574,7 +16352,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FunctionOptions.SignalSignatures {
             'notify::mode': GObject.Object.Notify;
-            'notify::n-digits': GObject.Object.Notify;
             'notify::n-digits': GObject.Object.Notify;
         }
 
@@ -16702,7 +16479,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FunctionOptions.SignalSignatures {
             'notify::run-end-data-type': GObject.Object.Notify;
-            'notify::run-end-data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -16760,15 +16536,12 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends Array.SignalSignatures {
             'notify::run-ends': GObject.Object.Notify;
-            'notify::run-ends': GObject.Object.Notify;
             'notify::values': GObject.Object.Notify;
             'notify::array': GObject.Object.Notify;
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -16837,7 +16610,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FixedWidthDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -16884,7 +16656,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FileSystem.SignalSignatures {
             'notify::file-system': GObject.Object.Notify;
-            'notify::file-system': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -16923,7 +16694,6 @@ export namespace Arrow {
     namespace S3GlobalOptions {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::log-level': GObject.Object.Notify;
             'notify::log-level': GObject.Object.Notify;
         }
 
@@ -16981,7 +16751,6 @@ export namespace Arrow {
     namespace Scalar {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -17046,8 +16815,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FunctionOptions.SignalSignatures {
             'notify::min-count': GObject.Object.Notify;
-            'notify::min-count': GObject.Object.Notify;
-            'notify::skip-nulls': GObject.Object.Notify;
             'notify::skip-nulls': GObject.Object.Notify;
         }
 
@@ -17228,7 +16995,6 @@ export namespace Arrow {
     namespace SeekableInputStream {
         // Signal signatures
         interface SignalSignatures extends InputStream.SignalSignatures {
-            'notify::input-stream': GObject.Object.Notify;
             'notify::input-stream': GObject.Object.Notify;
         }
 
@@ -17731,8 +17497,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FunctionOptions.SignalSignatures {
             'notify::skip-nulls': GObject.Object.Notify;
-            'notify::skip-nulls': GObject.Object.Notify;
-            'notify::value-set': GObject.Object.Notify;
             'notify::value-set': GObject.Object.Notify;
         }
 
@@ -17848,8 +17612,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FileSystem.SignalSignatures {
             'notify::base-file-system': GObject.Object.Notify;
-            'notify::base-file-system': GObject.Object.Notify;
-            'notify::file-system': GObject.Object.Notify;
             'notify::file-system': GObject.Object.Notify;
         }
 
@@ -18024,7 +17786,6 @@ export namespace Arrow {
         interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {
             'notify::reader': GObject.Object.Notify;
             'notify::record-batch': GObject.Object.Notify;
-            'notify::record-batch': GObject.Object.Notify;
             'notify::options': GObject.Object.Notify;
         }
 
@@ -18081,14 +17842,11 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends UnionArray.SignalSignatures {
             'notify::type-ids': GObject.Object.Notify;
-            'notify::type-ids': GObject.Object.Notify;
             'notify::array': GObject.Object.Notify;
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -18133,7 +17891,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends UnionArrayBuilder.SignalSignatures {
             'notify::array-builder': GObject.Object.Notify;
-            'notify::array-builder': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -18174,7 +17931,6 @@ export namespace Arrow {
     namespace SparseUnionDataType {
         // Signal signatures
         interface SignalSignatures extends UnionDataType.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
         }
 
@@ -18218,7 +17974,6 @@ export namespace Arrow {
         interface SignalSignatures extends UnionScalar.SignalSignatures {
             'notify::value': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
 
@@ -18260,7 +18015,6 @@ export namespace Arrow {
     namespace SplitPatternOptions {
         // Signal signatures
         interface SignalSignatures extends FunctionOptions.SignalSignatures {
-            'notify::max-splits': GObject.Object.Notify;
             'notify::max-splits': GObject.Object.Notify;
             'notify::pattern': GObject.Object.Notify;
             'notify::reverse': GObject.Object.Notify;
@@ -18389,9 +18143,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -18443,7 +18195,6 @@ export namespace Arrow {
     namespace StringArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends BinaryArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -18502,7 +18253,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends DataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -18543,7 +18293,6 @@ export namespace Arrow {
     namespace StringDictionaryArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -18606,7 +18355,6 @@ export namespace Arrow {
         interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {
             'notify::value': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
 
@@ -18648,7 +18396,6 @@ export namespace Arrow {
     namespace StrptimeOptions {
         // Signal signatures
         interface SignalSignatures extends FunctionOptions.SignalSignatures {
-            'notify::error-is-null': GObject.Object.Notify;
             'notify::error-is-null': GObject.Object.Notify;
             'notify::format': GObject.Object.Notify;
             'notify::unit': GObject.Object.Notify;
@@ -18769,9 +18516,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -18826,7 +18571,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
             'notify::array-builder': GObject.Object.Notify;
-            'notify::array-builder': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -18874,7 +18618,6 @@ export namespace Arrow {
     namespace StructDataType {
         // Signal signatures
         interface SignalSignatures extends DataType.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
         }
 
@@ -18924,7 +18667,6 @@ export namespace Arrow {
     namespace StructFieldOptions {
         // Signal signatures
         interface SignalSignatures extends FunctionOptions.SignalSignatures {
-            'notify::field-ref': GObject.Object.Notify;
             'notify::field-ref': GObject.Object.Notify;
         }
 
@@ -18979,7 +18721,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
 
@@ -19026,8 +18767,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FileSystem.SignalSignatures {
             'notify::base-file-system': GObject.Object.Notify;
-            'notify::base-file-system': GObject.Object.Notify;
-            'notify::file-system': GObject.Object.Notify;
             'notify::file-system': GObject.Object.Notify;
         }
 
@@ -19151,7 +18890,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends RecordBatchReader.SignalSignatures {
             'notify::record-batch-reader': GObject.Object.Notify;
-            'notify::record-batch-reader': GObject.Object.Notify;
             'notify::sources': GObject.Object.Notify;
         }
 
@@ -19208,8 +18946,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::promote-nullability': GObject.Object.Notify;
-            'notify::promote-nullability': GObject.Object.Notify;
-            'notify::unify-schemas': GObject.Object.Notify;
             'notify::unify-schemas': GObject.Object.Notify;
         }
 
@@ -19389,7 +19125,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends FixedWidthDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -19498,9 +19233,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -19553,7 +19286,6 @@ export namespace Arrow {
     namespace Time32ArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -19609,7 +19341,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends TimeDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -19650,7 +19381,6 @@ export namespace Arrow {
     namespace Time32Scalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -19701,9 +19431,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -19756,7 +19484,6 @@ export namespace Arrow {
     namespace Time64ArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -19812,7 +19539,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends TimeDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -19853,7 +19579,6 @@ export namespace Arrow {
     namespace Time64Scalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -19901,7 +19626,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends TemporalDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -19948,9 +19672,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -20003,7 +19725,6 @@ export namespace Arrow {
     namespace TimestampArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -20059,8 +19780,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends TemporalDataType.SignalSignatures {
             'notify::time-zone': GObject.Object.Notify;
-            'notify::time-zone': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
         }
 
@@ -20170,7 +19889,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
 
@@ -20220,9 +19938,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -20270,7 +19986,6 @@ export namespace Arrow {
     namespace UInt16ArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -20326,7 +20041,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends IntegerDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -20367,7 +20081,6 @@ export namespace Arrow {
     namespace UInt16Scalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -20418,9 +20131,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -20468,7 +20179,6 @@ export namespace Arrow {
     namespace UInt32ArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -20524,7 +20234,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends IntegerDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -20565,7 +20274,6 @@ export namespace Arrow {
     namespace UInt32Scalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -20616,9 +20324,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -20666,7 +20372,6 @@ export namespace Arrow {
     namespace UInt64ArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -20722,7 +20427,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends IntegerDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -20763,7 +20467,6 @@ export namespace Arrow {
     namespace UInt64Scalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -20814,9 +20517,7 @@ export namespace Arrow {
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -20864,7 +20565,6 @@ export namespace Arrow {
     namespace UInt8ArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -20920,7 +20620,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends IntegerDataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -20961,7 +20660,6 @@ export namespace Arrow {
     namespace UInt8Scalar {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -21008,7 +20706,6 @@ export namespace Arrow {
     namespace UIntArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -21115,14 +20812,11 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends Array.SignalSignatures {
             'notify::type-ids': GObject.Object.Notify;
-            'notify::type-ids': GObject.Object.Notify;
             'notify::array': GObject.Object.Notify;
             'notify::buffer1': GObject.Object.Notify;
             'notify::buffer2': GObject.Object.Notify;
             'notify::null-bitmap': GObject.Object.Notify;
-            'notify::null-bitmap': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
-            'notify::value-data-type': GObject.Object.Notify;
             'notify::value-data-type': GObject.Object.Notify;
         }
 
@@ -21176,7 +20870,6 @@ export namespace Arrow {
     namespace UnionArrayBuilder {
         // Signal signatures
         interface SignalSignatures extends ArrayBuilder.SignalSignatures {
-            'notify::array-builder': GObject.Object.Notify;
             'notify::array-builder': GObject.Object.Notify;
         }
 
@@ -21236,7 +20929,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends DataType.SignalSignatures {
             'notify::data-type': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -21283,7 +20975,6 @@ export namespace Arrow {
         // Signal signatures
         interface SignalSignatures extends Scalar.SignalSignatures {
             'notify::value': GObject.Object.Notify;
-            'notify::data-type': GObject.Object.Notify;
             'notify::data-type': GObject.Object.Notify;
             'notify::scalar': GObject.Object.Notify;
         }
@@ -21340,8 +21031,6 @@ export namespace Arrow {
         interface SignalSignatures extends FunctionOptions.SignalSignatures {
             'notify::ddof': GObject.Object.Notify;
             'notify::min-count': GObject.Object.Notify;
-            'notify::min-count': GObject.Object.Notify;
-            'notify::skip-nulls': GObject.Object.Notify;
             'notify::skip-nulls': GObject.Object.Notify;
         }
 
@@ -21422,10 +21111,7 @@ export namespace Arrow {
             'notify::allow64bit': GObject.Object.Notify;
             'notify::codec': GObject.Object.Notify;
             'notify::max-recursion-depth': GObject.Object.Notify;
-            'notify::max-recursion-depth': GObject.Object.Notify;
             'notify::use-threads': GObject.Object.Notify;
-            'notify::use-threads': GObject.Object.Notify;
-            'notify::write-legacy-ipc-format': GObject.Object.Notify;
             'notify::write-legacy-ipc-format': GObject.Object.Notify;
         }
 

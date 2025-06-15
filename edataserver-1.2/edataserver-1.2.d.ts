@@ -2670,7 +2670,6 @@ export namespace EDataServer {
             opened: Opened;
             'notify::capabilities': GObject.Object.Notify;
             'notify::main-context': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
             'notify::online': GObject.Object.Notify;
             'notify::opened': GObject.Object.Notify;
             'notify::readonly': GObject.Object.Notify;
@@ -3526,30 +3525,18 @@ export namespace EDataServer {
         interface SignalSignatures extends SoupSession.SignalSignatures {
             'notify::credentials': GObject.Object.Notify;
             'notify::force-http1': GObject.Object.Notify;
-            'notify::force-http1': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
             'notify::accept-language': GObject.Object.Notify;
-            'notify::accept-language': GObject.Object.Notify;
-            'notify::accept-language-auto': GObject.Object.Notify;
             'notify::accept-language-auto': GObject.Object.Notify;
             'notify::idle-timeout': GObject.Object.Notify;
-            'notify::idle-timeout': GObject.Object.Notify;
-            'notify::local-address': GObject.Object.Notify;
             'notify::local-address': GObject.Object.Notify;
             'notify::max-conns': GObject.Object.Notify;
-            'notify::max-conns': GObject.Object.Notify;
-            'notify::max-conns-per-host': GObject.Object.Notify;
             'notify::max-conns-per-host': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::remote-connectable': GObject.Object.Notify;
             'notify::remote-connectable': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
             'notify::tls-database': GObject.Object.Notify;
-            'notify::tls-database': GObject.Object.Notify;
             'notify::tls-interaction': GObject.Object.Notify;
-            'notify::tls-interaction': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
             'notify::user-agent': GObject.Object.Notify;
         }
 
@@ -4336,11 +4323,8 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::gio-name': GObject.Object.Notify;
-            'notify::gio-name': GObject.Object.Notify;
             'notify::connectivity': GObject.Object.Notify;
             'notify::network-available': GObject.Object.Notify;
-            'notify::network-available': GObject.Object.Notify;
-            'notify::network-metered': GObject.Object.Notify;
             'notify::network-metered': GObject.Object.Notify;
         }
 
@@ -8592,13 +8576,9 @@ export namespace EDataServer {
         interface SignalSignatures extends Soup.Auth.SignalSignatures {
             'notify::authority': GObject.Object.Notify;
             'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-authenticated': GObject.Object.Notify;
             'notify::is-cancelled': GObject.Object.Notify;
-            'notify::is-cancelled': GObject.Object.Notify;
-            'notify::is-for-proxy': GObject.Object.Notify;
             'notify::is-for-proxy': GObject.Object.Notify;
             'notify::realm': GObject.Object.Notify;
-            'notify::scheme-name': GObject.Object.Notify;
             'notify::scheme-name': GObject.Object.Notify;
         }
 
@@ -8659,30 +8639,18 @@ export namespace EDataServer {
         interface SignalSignatures extends Soup.Session.SignalSignatures {
             'notify::credentials': GObject.Object.Notify;
             'notify::force-http1': GObject.Object.Notify;
-            'notify::force-http1': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
             'notify::accept-language': GObject.Object.Notify;
-            'notify::accept-language': GObject.Object.Notify;
-            'notify::accept-language-auto': GObject.Object.Notify;
             'notify::accept-language-auto': GObject.Object.Notify;
             'notify::idle-timeout': GObject.Object.Notify;
-            'notify::idle-timeout': GObject.Object.Notify;
-            'notify::local-address': GObject.Object.Notify;
             'notify::local-address': GObject.Object.Notify;
             'notify::max-conns': GObject.Object.Notify;
-            'notify::max-conns': GObject.Object.Notify;
-            'notify::max-conns-per-host': GObject.Object.Notify;
             'notify::max-conns-per-host': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::remote-connectable': GObject.Object.Notify;
             'notify::remote-connectable': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
             'notify::tls-database': GObject.Object.Notify;
-            'notify::tls-database': GObject.Object.Notify;
             'notify::tls-interaction': GObject.Object.Notify;
-            'notify::tls-interaction': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
             'notify::user-agent': GObject.Object.Notify;
         }
 
@@ -9091,16 +9059,11 @@ export namespace EDataServer {
             changed: Changed;
             'credentials-required': CredentialsRequired;
             'notify::connection-status': GObject.Object.Notify;
-            'notify::connection-status': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
             'notify::enabled': GObject.Object.Notify;
             'notify::main-context': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::remote-creatable': GObject.Object.Notify;
-            'notify::remote-creatable': GObject.Object.Notify;
-            'notify::remote-deletable': GObject.Object.Notify;
             'notify::remote-deletable': GObject.Object.Notify;
             'notify::removable': GObject.Object.Notify;
             'notify::uid': GObject.Object.Notify;
@@ -11411,7 +11374,6 @@ export namespace EDataServer {
         interface SignalSignatures extends SourceBackend.SignalSignatures {
             'notify::order': GObject.Object.Notify;
             'notify::backend-name': GObject.Object.Notify;
-            'notify::backend-name': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
 
@@ -11472,8 +11434,6 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceExtension.SignalSignatures {
             'notify::include-me': GObject.Object.Notify;
-            'notify::include-me': GObject.Object.Notify;
-            'notify::last-notified': GObject.Object.Notify;
             'notify::last-notified': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
@@ -11587,15 +11547,11 @@ export namespace EDataServer {
         interface SignalSignatures extends SourceExtension.SignalSignatures {
             'notify::connectable': GObject.Object.Notify;
             'notify::credential-name': GObject.Object.Notify;
-            'notify::credential-name': GObject.Object.Notify;
             'notify::host': GObject.Object.Notify;
-            'notify::is-external': GObject.Object.Notify;
             'notify::is-external': GObject.Object.Notify;
             'notify::method': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
             'notify::proxy-uid': GObject.Object.Notify;
-            'notify::proxy-uid': GObject.Object.Notify;
-            'notify::remember-password': GObject.Object.Notify;
             'notify::remember-password': GObject.Object.Notify;
             'notify::user': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
@@ -11859,7 +11815,6 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceExtension.SignalSignatures {
             'notify::include-me': GObject.Object.Notify;
-            'notify::include-me': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
 
@@ -12020,7 +11975,6 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceExtension.SignalSignatures {
             'notify::backend-name': GObject.Object.Notify;
-            'notify::backend-name': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
 
@@ -12102,7 +12056,6 @@ export namespace EDataServer {
             'notify::color': GObject.Object.Notify;
             'notify::order': GObject.Object.Notify;
             'notify::selected': GObject.Object.Notify;
-            'notify::backend-name': GObject.Object.Notify;
             'notify::backend-name': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
@@ -12257,19 +12210,12 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceBackend.SignalSignatures {
             'notify::allow-sources-rename': GObject.Object.Notify;
-            'notify::allow-sources-rename': GObject.Object.Notify;
-            'notify::calendar-enabled': GObject.Object.Notify;
             'notify::calendar-enabled': GObject.Object.Notify;
             'notify::calendar-url': GObject.Object.Notify;
-            'notify::calendar-url': GObject.Object.Notify;
             'notify::contacts-enabled': GObject.Object.Notify;
-            'notify::contacts-enabled': GObject.Object.Notify;
-            'notify::contacts-url': GObject.Object.Notify;
             'notify::contacts-url': GObject.Object.Notify;
             'notify::identity': GObject.Object.Notify;
             'notify::mail-enabled': GObject.Object.Notify;
-            'notify::mail-enabled': GObject.Object.Notify;
-            'notify::backend-name': GObject.Object.Notify;
             'notify::backend-name': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
@@ -12508,7 +12454,6 @@ export namespace EDataServer {
     namespace SourceContacts {
         // Signal signatures
         interface SignalSignatures extends SourceExtension.SignalSignatures {
-            'notify::include-me': GObject.Object.Notify;
             'notify::include-me': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
@@ -13678,11 +13623,8 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceExtension.SignalSignatures {
             'notify::account-id': GObject.Object.Notify;
-            'notify::account-id': GObject.Object.Notify;
             'notify::address': GObject.Object.Notify;
             'notify::calendar-url': GObject.Object.Notify;
-            'notify::calendar-url': GObject.Object.Notify;
-            'notify::contacts-url': GObject.Object.Notify;
             'notify::contacts-url': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
@@ -13882,10 +13824,8 @@ export namespace EDataServer {
         interface SignalSignatures extends SourceExtension.SignalSignatures {
             'notify::authentication': GObject.Object.Notify;
             'notify::can-browse': GObject.Object.Notify;
-            'notify::can-browse': GObject.Object.Notify;
             'notify::filter': GObject.Object.Notify;
             'notify::limit': GObject.Object.Notify;
-            'notify::root-dn': GObject.Object.Notify;
             'notify::root-dn': GObject.Object.Notify;
             'notify::scope': GObject.Object.Notify;
             'notify::security': GObject.Object.Notify;
@@ -13979,8 +13919,6 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceExtension.SignalSignatures {
             'notify::custom-file': GObject.Object.Notify;
-            'notify::custom-file': GObject.Object.Notify;
-            'notify::email-address': GObject.Object.Notify;
             'notify::email-address': GObject.Object.Notify;
             'notify::writable': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
@@ -14098,7 +14036,6 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceExtension.SignalSignatures {
             'notify::response-policy': GObject.Object.Notify;
-            'notify::response-policy': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
 
@@ -14165,17 +14102,11 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceBackend.SignalSignatures {
             'notify::archive-folder': GObject.Object.Notify;
-            'notify::archive-folder': GObject.Object.Notify;
             'notify::builtin': GObject.Object.Notify;
             'notify::identity-uid': GObject.Object.Notify;
-            'notify::identity-uid': GObject.Object.Notify;
-            'notify::mark-seen': GObject.Object.Notify;
             'notify::mark-seen': GObject.Object.Notify;
             'notify::mark-seen-timeout': GObject.Object.Notify;
-            'notify::mark-seen-timeout': GObject.Object.Notify;
             'notify::needs-initial-setup': GObject.Object.Notify;
-            'notify::needs-initial-setup': GObject.Object.Notify;
-            'notify::backend-name': GObject.Object.Notify;
             'notify::backend-name': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
@@ -14345,17 +14276,11 @@ export namespace EDataServer {
             'notify::bcc': GObject.Object.Notify;
             'notify::cc': GObject.Object.Notify;
             'notify::drafts-folder': GObject.Object.Notify;
-            'notify::drafts-folder': GObject.Object.Notify;
             'notify::language': GObject.Object.Notify;
             'notify::reply-style': GObject.Object.Notify;
-            'notify::reply-style': GObject.Object.Notify;
-            'notify::sign-imip': GObject.Object.Notify;
             'notify::sign-imip': GObject.Object.Notify;
             'notify::start-bottom': GObject.Object.Notify;
-            'notify::start-bottom': GObject.Object.Notify;
             'notify::templates-folder': GObject.Object.Notify;
-            'notify::templates-folder': GObject.Object.Notify;
-            'notify::top-signature': GObject.Object.Notify;
             'notify::top-signature': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
@@ -14632,8 +14557,6 @@ export namespace EDataServer {
             'notify::name': GObject.Object.Notify;
             'notify::organization': GObject.Object.Notify;
             'notify::reply-to': GObject.Object.Notify;
-            'notify::reply-to': GObject.Object.Notify;
-            'notify::signature-uid': GObject.Object.Notify;
             'notify::signature-uid': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
@@ -14867,7 +14790,6 @@ export namespace EDataServer {
         interface SignalSignatures extends SourceExtension.SignalSignatures {
             'notify::file': GObject.Object.Notify;
             'notify::mime-type': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
 
@@ -14966,12 +14888,8 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceExtension.SignalSignatures {
             'notify::replies-to-origin-folder': GObject.Object.Notify;
-            'notify::replies-to-origin-folder': GObject.Object.Notify;
-            'notify::sent-folder': GObject.Object.Notify;
             'notify::sent-folder': GObject.Object.Notify;
             'notify::transport-uid': GObject.Object.Notify;
-            'notify::transport-uid': GObject.Object.Notify;
-            'notify::use-sent-folder': GObject.Object.Notify;
             'notify::use-sent-folder': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
@@ -15110,7 +15028,6 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceBackend.SignalSignatures {
             'notify::backend-name': GObject.Object.Notify;
-            'notify::backend-name': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
 
@@ -15158,7 +15075,6 @@ export namespace EDataServer {
             'notify::order': GObject.Object.Notify;
             'notify::selected': GObject.Object.Notify;
             'notify::backend-name': GObject.Object.Notify;
-            'notify::backend-name': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
 
@@ -15202,7 +15118,6 @@ export namespace EDataServer {
     namespace SourceOffline {
         // Signal signatures
         interface SignalSignatures extends SourceExtension.SignalSignatures {
-            'notify::stay-synchronized': GObject.Object.Notify;
             'notify::stay-synchronized': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
@@ -15275,24 +15190,14 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceExtension.SignalSignatures {
             'notify::always-trust': GObject.Object.Notify;
-            'notify::always-trust': GObject.Object.Notify;
-            'notify::encrypt-by-default': GObject.Object.Notify;
             'notify::encrypt-by-default': GObject.Object.Notify;
             'notify::encrypt-to-self': GObject.Object.Notify;
-            'notify::encrypt-to-self': GObject.Object.Notify;
-            'notify::key-id': GObject.Object.Notify;
             'notify::key-id': GObject.Object.Notify;
             'notify::locate-keys': GObject.Object.Notify;
-            'notify::locate-keys': GObject.Object.Notify;
-            'notify::prefer-inline': GObject.Object.Notify;
             'notify::prefer-inline': GObject.Object.Notify;
             'notify::send-prefer-encrypt': GObject.Object.Notify;
-            'notify::send-prefer-encrypt': GObject.Object.Notify;
-            'notify::send-public-key': GObject.Object.Notify;
             'notify::send-public-key': GObject.Object.Notify;
             'notify::sign-by-default': GObject.Object.Notify;
-            'notify::sign-by-default': GObject.Object.Notify;
-            'notify::signing-algorithm': GObject.Object.Notify;
             'notify::signing-algorithm': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
@@ -15544,31 +15449,18 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceExtension.SignalSignatures {
             'notify::autoconfig-url': GObject.Object.Notify;
-            'notify::autoconfig-url': GObject.Object.Notify;
-            'notify::ftp-host': GObject.Object.Notify;
             'notify::ftp-host': GObject.Object.Notify;
             'notify::ftp-port': GObject.Object.Notify;
-            'notify::ftp-port': GObject.Object.Notify;
-            'notify::http-auth-password': GObject.Object.Notify;
             'notify::http-auth-password': GObject.Object.Notify;
             'notify::http-auth-user': GObject.Object.Notify;
-            'notify::http-auth-user': GObject.Object.Notify;
-            'notify::http-host': GObject.Object.Notify;
             'notify::http-host': GObject.Object.Notify;
             'notify::http-port': GObject.Object.Notify;
-            'notify::http-port': GObject.Object.Notify;
-            'notify::http-use-auth': GObject.Object.Notify;
             'notify::http-use-auth': GObject.Object.Notify;
             'notify::https-host': GObject.Object.Notify;
-            'notify::https-host': GObject.Object.Notify;
             'notify::https-port': GObject.Object.Notify;
-            'notify::https-port': GObject.Object.Notify;
-            'notify::ignore-hosts': GObject.Object.Notify;
             'notify::ignore-hosts': GObject.Object.Notify;
             'notify::method': GObject.Object.Notify;
             'notify::socks-host': GObject.Object.Notify;
-            'notify::socks-host': GObject.Object.Notify;
-            'notify::socks-port': GObject.Object.Notify;
             'notify::socks-port': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
@@ -15958,8 +15850,6 @@ export namespace EDataServer {
         interface SignalSignatures extends SourceExtension.SignalSignatures {
             'notify::enabled': GObject.Object.Notify;
             'notify::enabled-on-metered-network': GObject.Object.Notify;
-            'notify::enabled-on-metered-network': GObject.Object.Notify;
-            'notify::interval-minutes': GObject.Object.Notify;
             'notify::interval-minutes': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
@@ -16116,16 +16006,10 @@ export namespace EDataServer {
             'source-enabled': SourceEnabled;
             'source-removed': SourceRemoved;
             'notify::default-address-book': GObject.Object.Notify;
-            'notify::default-address-book': GObject.Object.Notify;
-            'notify::default-calendar': GObject.Object.Notify;
             'notify::default-calendar': GObject.Object.Notify;
             'notify::default-mail-account': GObject.Object.Notify;
-            'notify::default-mail-account': GObject.Object.Notify;
-            'notify::default-mail-identity': GObject.Object.Notify;
             'notify::default-mail-identity': GObject.Object.Notify;
             'notify::default-memo-list': GObject.Object.Notify;
-            'notify::default-memo-list': GObject.Object.Notify;
-            'notify::default-task-list': GObject.Object.Notify;
             'notify::default-task-list': GObject.Object.Notify;
         }
 
@@ -17589,7 +17473,6 @@ export namespace EDataServer {
             disappeared: Disappeared;
             filter: Filter;
             'notify::extension-name': GObject.Object.Notify;
-            'notify::extension-name': GObject.Object.Notify;
             'notify::registry': GObject.Object.Notify;
         }
 
@@ -17826,16 +17709,10 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceExtension.SignalSignatures {
             'notify::encrypt-by-default': GObject.Object.Notify;
-            'notify::encrypt-by-default': GObject.Object.Notify;
-            'notify::encrypt-to-self': GObject.Object.Notify;
             'notify::encrypt-to-self': GObject.Object.Notify;
             'notify::encryption-certificate': GObject.Object.Notify;
-            'notify::encryption-certificate': GObject.Object.Notify;
-            'notify::sign-by-default': GObject.Object.Notify;
             'notify::sign-by-default': GObject.Object.Notify;
             'notify::signing-algorithm': GObject.Object.Notify;
-            'notify::signing-algorithm': GObject.Object.Notify;
-            'notify::signing-certificate': GObject.Object.Notify;
             'notify::signing-certificate': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
@@ -18127,7 +18004,6 @@ export namespace EDataServer {
             'notify::order': GObject.Object.Notify;
             'notify::selected': GObject.Object.Notify;
             'notify::backend-name': GObject.Object.Notify;
-            'notify::backend-name': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
 
@@ -18242,7 +18118,6 @@ export namespace EDataServer {
             'notify::order': GObject.Object.Notify;
             'notify::selected': GObject.Object.Notify;
             'notify::backend-name': GObject.Object.Notify;
-            'notify::backend-name': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
 
@@ -18286,7 +18161,6 @@ export namespace EDataServer {
     namespace SourceUoa {
         // Signal signatures
         interface SignalSignatures extends SourceExtension.SignalSignatures {
-            'notify::account-id': GObject.Object.Notify;
             'notify::account-id': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
@@ -18413,7 +18287,6 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceExtension.SignalSignatures {
             'notify::default-ext': GObject.Object.Notify;
-            'notify::default-ext': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
         }
 
@@ -18493,20 +18366,13 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceExtension.SignalSignatures {
             'notify::avoid-ifmatch': GObject.Object.Notify;
-            'notify::avoid-ifmatch': GObject.Object.Notify;
-            'notify::calendar-auto-schedule': GObject.Object.Notify;
             'notify::calendar-auto-schedule': GObject.Object.Notify;
             'notify::color': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::email-address': GObject.Object.Notify;
             'notify::email-address': GObject.Object.Notify;
             'notify::order': GObject.Object.Notify;
             'notify::resource-path': GObject.Object.Notify;
-            'notify::resource-path': GObject.Object.Notify;
             'notify::resource-query': GObject.Object.Notify;
-            'notify::resource-query': GObject.Object.Notify;
-            'notify::ssl-trust': GObject.Object.Notify;
             'notify::ssl-trust': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
@@ -18860,30 +18726,18 @@ export namespace EDataServer {
         interface SignalSignatures extends SoupSession.SignalSignatures {
             'notify::credentials': GObject.Object.Notify;
             'notify::force-http1': GObject.Object.Notify;
-            'notify::force-http1': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
             'notify::accept-language': GObject.Object.Notify;
-            'notify::accept-language': GObject.Object.Notify;
-            'notify::accept-language-auto': GObject.Object.Notify;
             'notify::accept-language-auto': GObject.Object.Notify;
             'notify::idle-timeout': GObject.Object.Notify;
-            'notify::idle-timeout': GObject.Object.Notify;
-            'notify::local-address': GObject.Object.Notify;
             'notify::local-address': GObject.Object.Notify;
             'notify::max-conns': GObject.Object.Notify;
-            'notify::max-conns': GObject.Object.Notify;
-            'notify::max-conns-per-host': GObject.Object.Notify;
             'notify::max-conns-per-host': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::remote-connectable': GObject.Object.Notify;
             'notify::remote-connectable': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
             'notify::tls-database': GObject.Object.Notify;
-            'notify::tls-database': GObject.Object.Notify;
             'notify::tls-interaction': GObject.Object.Notify;
-            'notify::tls-interaction': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
             'notify::user-agent': GObject.Object.Notify;
         }
 

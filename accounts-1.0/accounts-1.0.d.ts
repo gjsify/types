@@ -150,7 +150,6 @@ export namespace Accounts {
             'display-name-changed': DisplayNameChanged;
             enabled: Enabled;
             'notify::display-name': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
             'notify::enabled': GObject.Object.Notify;
             'notify::foreign': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
@@ -1158,12 +1157,8 @@ export namespace Accounts {
             'account-updated': AccountUpdated;
             'enabled-event': EnabledEvent;
             'notify::abort-on-db-timeout': GObject.Object.Notify;
-            'notify::abort-on-db-timeout': GObject.Object.Notify;
-            'notify::db-timeout': GObject.Object.Notify;
             'notify::db-timeout': GObject.Object.Notify;
             'notify::service-type': GObject.Object.Notify;
-            'notify::service-type': GObject.Object.Notify;
-            'notify::use-dbus': GObject.Object.Notify;
             'notify::use-dbus': GObject.Object.Notify;
         }
 

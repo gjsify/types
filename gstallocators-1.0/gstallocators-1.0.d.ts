@@ -126,8 +126,6 @@ export namespace GstAllocators {
         // Signal signatures
         interface SignalSignatures extends Gst.Allocator.SignalSignatures {
             'notify::drm-device-path': GObject.Object.Notify;
-            'notify::drm-device-path': GObject.Object.Notify;
-            'notify::drm-fd': GObject.Object.Notify;
             'notify::drm-fd': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;

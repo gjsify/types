@@ -133,13 +133,10 @@ export namespace Cvc {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::human-profile': GObject.Object.Notify;
-            'notify::human-profile': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::index': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
-            'notify::pa-context': GObject.Object.Notify;
             'notify::pa-context': GObject.Object.Notify;
             'notify::profile': GObject.Object.Notify;
         }
@@ -399,33 +396,22 @@ export namespace Cvc {
         interface SignalSignatures extends MixerStream.SignalSignatures {
             'notify::device': GObject.Object.Notify;
             'notify::application-id': GObject.Object.Notify;
-            'notify::application-id': GObject.Object.Notify;
-            'notify::can-decibel': GObject.Object.Notify;
             'notify::can-decibel': GObject.Object.Notify;
             'notify::card-index': GObject.Object.Notify;
-            'notify::card-index': GObject.Object.Notify;
-            'notify::channel-map': GObject.Object.Notify;
             'notify::channel-map': GObject.Object.Notify;
             'notify::decibel': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::form-factor': GObject.Object.Notify;
-            'notify::form-factor': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::index': GObject.Object.Notify;
             'notify::is-event-stream': GObject.Object.Notify;
-            'notify::is-event-stream': GObject.Object.Notify;
             'notify::is-muted': GObject.Object.Notify;
-            'notify::is-muted': GObject.Object.Notify;
-            'notify::is-virtual': GObject.Object.Notify;
             'notify::is-virtual': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::pa-context': GObject.Object.Notify;
-            'notify::pa-context': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
-            'notify::sysfs-path': GObject.Object.Notify;
             'notify::sysfs-path': GObject.Object.Notify;
             'notify::volume': GObject.Object.Notify;
         }
@@ -474,33 +460,22 @@ export namespace Cvc {
         // Signal signatures
         interface SignalSignatures extends MixerStream.SignalSignatures {
             'notify::application-id': GObject.Object.Notify;
-            'notify::application-id': GObject.Object.Notify;
-            'notify::can-decibel': GObject.Object.Notify;
             'notify::can-decibel': GObject.Object.Notify;
             'notify::card-index': GObject.Object.Notify;
-            'notify::card-index': GObject.Object.Notify;
-            'notify::channel-map': GObject.Object.Notify;
             'notify::channel-map': GObject.Object.Notify;
             'notify::decibel': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::form-factor': GObject.Object.Notify;
-            'notify::form-factor': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::index': GObject.Object.Notify;
             'notify::is-event-stream': GObject.Object.Notify;
-            'notify::is-event-stream': GObject.Object.Notify;
             'notify::is-muted': GObject.Object.Notify;
-            'notify::is-muted': GObject.Object.Notify;
-            'notify::is-virtual': GObject.Object.Notify;
             'notify::is-virtual': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::pa-context': GObject.Object.Notify;
-            'notify::pa-context': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
-            'notify::sysfs-path': GObject.Object.Notify;
             'notify::sysfs-path': GObject.Object.Notify;
             'notify::volume': GObject.Object.Notify;
         }
@@ -539,33 +514,22 @@ export namespace Cvc {
         // Signal signatures
         interface SignalSignatures extends MixerStream.SignalSignatures {
             'notify::application-id': GObject.Object.Notify;
-            'notify::application-id': GObject.Object.Notify;
-            'notify::can-decibel': GObject.Object.Notify;
             'notify::can-decibel': GObject.Object.Notify;
             'notify::card-index': GObject.Object.Notify;
-            'notify::card-index': GObject.Object.Notify;
-            'notify::channel-map': GObject.Object.Notify;
             'notify::channel-map': GObject.Object.Notify;
             'notify::decibel': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::form-factor': GObject.Object.Notify;
-            'notify::form-factor': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::index': GObject.Object.Notify;
             'notify::is-event-stream': GObject.Object.Notify;
-            'notify::is-event-stream': GObject.Object.Notify;
             'notify::is-muted': GObject.Object.Notify;
-            'notify::is-muted': GObject.Object.Notify;
-            'notify::is-virtual': GObject.Object.Notify;
             'notify::is-virtual': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::pa-context': GObject.Object.Notify;
-            'notify::pa-context': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
-            'notify::sysfs-path': GObject.Object.Notify;
             'notify::sysfs-path': GObject.Object.Notify;
             'notify::volume': GObject.Object.Notify;
         }
@@ -607,33 +571,22 @@ export namespace Cvc {
         // Signal signatures
         interface SignalSignatures extends MixerStream.SignalSignatures {
             'notify::application-id': GObject.Object.Notify;
-            'notify::application-id': GObject.Object.Notify;
-            'notify::can-decibel': GObject.Object.Notify;
             'notify::can-decibel': GObject.Object.Notify;
             'notify::card-index': GObject.Object.Notify;
-            'notify::card-index': GObject.Object.Notify;
-            'notify::channel-map': GObject.Object.Notify;
             'notify::channel-map': GObject.Object.Notify;
             'notify::decibel': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::form-factor': GObject.Object.Notify;
-            'notify::form-factor': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::index': GObject.Object.Notify;
             'notify::is-event-stream': GObject.Object.Notify;
-            'notify::is-event-stream': GObject.Object.Notify;
             'notify::is-muted': GObject.Object.Notify;
-            'notify::is-muted': GObject.Object.Notify;
-            'notify::is-virtual': GObject.Object.Notify;
             'notify::is-virtual': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::pa-context': GObject.Object.Notify;
-            'notify::pa-context': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
-            'notify::sysfs-path': GObject.Object.Notify;
             'notify::sysfs-path': GObject.Object.Notify;
             'notify::volume': GObject.Object.Notify;
         }
@@ -675,33 +628,22 @@ export namespace Cvc {
         // Signal signatures
         interface SignalSignatures extends MixerStream.SignalSignatures {
             'notify::application-id': GObject.Object.Notify;
-            'notify::application-id': GObject.Object.Notify;
-            'notify::can-decibel': GObject.Object.Notify;
             'notify::can-decibel': GObject.Object.Notify;
             'notify::card-index': GObject.Object.Notify;
-            'notify::card-index': GObject.Object.Notify;
-            'notify::channel-map': GObject.Object.Notify;
             'notify::channel-map': GObject.Object.Notify;
             'notify::decibel': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::form-factor': GObject.Object.Notify;
-            'notify::form-factor': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::index': GObject.Object.Notify;
             'notify::is-event-stream': GObject.Object.Notify;
-            'notify::is-event-stream': GObject.Object.Notify;
             'notify::is-muted': GObject.Object.Notify;
-            'notify::is-muted': GObject.Object.Notify;
-            'notify::is-virtual': GObject.Object.Notify;
             'notify::is-virtual': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::pa-context': GObject.Object.Notify;
-            'notify::pa-context': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
-            'notify::sysfs-path': GObject.Object.Notify;
             'notify::sysfs-path': GObject.Object.Notify;
             'notify::volume': GObject.Object.Notify;
         }
@@ -755,33 +697,22 @@ export namespace Cvc {
             'monitor-suspend': MonitorSuspend;
             'monitor-update': MonitorUpdate;
             'notify::application-id': GObject.Object.Notify;
-            'notify::application-id': GObject.Object.Notify;
-            'notify::can-decibel': GObject.Object.Notify;
             'notify::can-decibel': GObject.Object.Notify;
             'notify::card-index': GObject.Object.Notify;
-            'notify::card-index': GObject.Object.Notify;
-            'notify::channel-map': GObject.Object.Notify;
             'notify::channel-map': GObject.Object.Notify;
             'notify::decibel': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::form-factor': GObject.Object.Notify;
-            'notify::form-factor': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::index': GObject.Object.Notify;
             'notify::is-event-stream': GObject.Object.Notify;
-            'notify::is-event-stream': GObject.Object.Notify;
             'notify::is-muted': GObject.Object.Notify;
-            'notify::is-muted': GObject.Object.Notify;
-            'notify::is-virtual': GObject.Object.Notify;
             'notify::is-virtual': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::pa-context': GObject.Object.Notify;
-            'notify::pa-context': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
-            'notify::sysfs-path': GObject.Object.Notify;
             'notify::sysfs-path': GObject.Object.Notify;
             'notify::volume': GObject.Object.Notify;
         }
@@ -968,13 +899,9 @@ export namespace Cvc {
             'notify::card': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::origin': GObject.Object.Notify;
             'notify::port-available': GObject.Object.Notify;
-            'notify::port-available': GObject.Object.Notify;
             'notify::port-name': GObject.Object.Notify;
-            'notify::port-name': GObject.Object.Notify;
-            'notify::stream-id': GObject.Object.Notify;
             'notify::stream-id': GObject.Object.Notify;
             'notify::type': GObject.Object.Notify;
         }

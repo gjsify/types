@@ -64,7 +64,6 @@ export namespace GtkSpell {
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
             'language-changed': LanguageChanged;
             'notify::decode-language-codes': GObject.Object.Notify;
-            'notify::decode-language-codes': GObject.Object.Notify;
         }
 
         // Constructor properties interface

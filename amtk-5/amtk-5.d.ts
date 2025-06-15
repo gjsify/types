@@ -414,7 +414,6 @@ export namespace Amtk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::application-window': GObject.Object.Notify;
-            'notify::application-window': GObject.Object.Notify;
             'notify::statusbar': GObject.Object.Notify;
         }
 
@@ -546,7 +545,6 @@ export namespace Amtk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::application': GObject.Object.Notify;
-            'notify::default-flags': GObject.Object.Notify;
             'notify::default-flags': GObject.Object.Notify;
         }
 
@@ -783,7 +781,6 @@ export namespace Amtk {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'menu-item-deselected': MenuItemDeselected;
             'menu-item-selected': MenuItemSelected;
-            'notify::menu-shell': GObject.Object.Notify;
             'notify::menu-shell': GObject.Object.Notify;
         }
 

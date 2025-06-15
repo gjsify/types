@@ -1326,11 +1326,9 @@ export namespace Gck {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'discard-handle': DiscardHandle;
             'notify::app-data': GObject.Object.Notify;
-            'notify::app-data': GObject.Object.Notify;
             'notify::handle': GObject.Object.Notify;
             'notify::interaction': GObject.Object.Notify;
             'notify::module': GObject.Object.Notify;
-            'notify::opening-flags': GObject.Object.Notify;
             'notify::opening-flags': GObject.Object.Notify;
             'notify::options': GObject.Object.Notify;
             'notify::slot': GObject.Object.Notify;

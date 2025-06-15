@@ -76,8 +76,6 @@ export namespace Nautilus {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::attribute': GObject.Object.Notify;
             'notify::attribute-q': GObject.Object.Notify;
-            'notify::attribute-q': GObject.Object.Notify;
-            'notify::default-sort-order': GObject.Object.Notify;
             'notify::default-sort-order': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;

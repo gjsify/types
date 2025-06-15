@@ -187,7 +187,6 @@ export namespace GitgExt {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::object-path': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::method': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
         }
@@ -401,12 +400,8 @@ export namespace GitgExt {
             'notify::title': GObject.Object.Notify;
             'notify::message': GObject.Object.Notify;
             'notify::message-type': GObject.Object.Notify;
-            'notify::message-type': GObject.Object.Notify;
-            'notify::default-response': GObject.Object.Notify;
             'notify::default-response': GObject.Object.Notify;
             'notify::default-is-destructive': GObject.Object.Notify;
-            'notify::default-is-destructive': GObject.Object.Notify;
-            'notify::message-use-markup': GObject.Object.Notify;
             'notify::message-use-markup': GObject.Object.Notify;
         }
 

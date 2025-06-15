@@ -175,13 +175,9 @@ export namespace Notify {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             closed: Closed;
             'notify::app-icon': GObject.Object.Notify;
-            'notify::app-icon': GObject.Object.Notify;
-            'notify::app-name': GObject.Object.Notify;
             'notify::app-name': GObject.Object.Notify;
             'notify::body': GObject.Object.Notify;
             'notify::closed-reason': GObject.Object.Notify;
-            'notify::closed-reason': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;

@@ -270,14 +270,9 @@ export namespace Clapper {
             'notify::channels': GObject.Object.Notify;
             'notify::codec': GObject.Object.Notify;
             'notify::lang-code': GObject.Object.Notify;
-            'notify::lang-code': GObject.Object.Notify;
-            'notify::lang-name': GObject.Object.Notify;
             'notify::lang-name': GObject.Object.Notify;
             'notify::sample-format': GObject.Object.Notify;
-            'notify::sample-format': GObject.Object.Notify;
             'notify::sample-rate': GObject.Object.Notify;
-            'notify::sample-rate': GObject.Object.Notify;
-            'notify::stream-type': GObject.Object.Notify;
             'notify::stream-type': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -423,7 +418,6 @@ export namespace Clapper {
     namespace Discoverer {
         // Signal signatures
         interface SignalSignatures extends Feature.SignalSignatures {
-            'notify::discovery-mode': GObject.Object.Notify;
             'notify::discovery-mode': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -758,7 +752,6 @@ export namespace Clapper {
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'notify::end': GObject.Object.Notify;
             'notify::marker-type': GObject.Object.Notify;
-            'notify::marker-type': GObject.Object.Notify;
             'notify::start': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -888,8 +881,6 @@ export namespace Clapper {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'notify::cache-location': GObject.Object.Notify;
-            'notify::cache-location': GObject.Object.Notify;
-            'notify::container-format': GObject.Object.Notify;
             'notify::container-format': GObject.Object.Notify;
             'notify::duration': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
@@ -1051,13 +1042,9 @@ export namespace Clapper {
         // Signal signatures
         interface SignalSignatures extends Feature.SignalSignatures {
             'notify::desktop-entry': GObject.Object.Notify;
-            'notify::desktop-entry': GObject.Object.Notify;
-            'notify::fallback-art-url': GObject.Object.Notify;
             'notify::fallback-art-url': GObject.Object.Notify;
             'notify::identity': GObject.Object.Notify;
             'notify::own-name': GObject.Object.Notify;
-            'notify::own-name': GObject.Object.Notify;
-            'notify::queue-controllable': GObject.Object.Notify;
             'notify::queue-controllable': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -1224,31 +1211,18 @@ export namespace Clapper {
             'seek-done': SeekDone;
             warning: Warning;
             'notify::adaptive-bandwidth': GObject.Object.Notify;
-            'notify::adaptive-bandwidth': GObject.Object.Notify;
-            'notify::adaptive-max-bitrate': GObject.Object.Notify;
             'notify::adaptive-max-bitrate': GObject.Object.Notify;
             'notify::adaptive-min-bitrate': GObject.Object.Notify;
-            'notify::adaptive-min-bitrate': GObject.Object.Notify;
-            'notify::adaptive-start-bitrate': GObject.Object.Notify;
             'notify::adaptive-start-bitrate': GObject.Object.Notify;
             'notify::audio-enabled': GObject.Object.Notify;
-            'notify::audio-enabled': GObject.Object.Notify;
-            'notify::audio-filter': GObject.Object.Notify;
             'notify::audio-filter': GObject.Object.Notify;
             'notify::audio-offset': GObject.Object.Notify;
-            'notify::audio-offset': GObject.Object.Notify;
             'notify::audio-sink': GObject.Object.Notify;
-            'notify::audio-sink': GObject.Object.Notify;
-            'notify::audio-streams': GObject.Object.Notify;
             'notify::audio-streams': GObject.Object.Notify;
             'notify::autoplay': GObject.Object.Notify;
             'notify::current-audio-decoder': GObject.Object.Notify;
-            'notify::current-audio-decoder': GObject.Object.Notify;
-            'notify::current-video-decoder': GObject.Object.Notify;
             'notify::current-video-decoder': GObject.Object.Notify;
             'notify::download-dir': GObject.Object.Notify;
-            'notify::download-dir': GObject.Object.Notify;
-            'notify::download-enabled': GObject.Object.Notify;
             'notify::download-enabled': GObject.Object.Notify;
             'notify::mute': GObject.Object.Notify;
             'notify::position': GObject.Object.Notify;
@@ -1256,20 +1230,12 @@ export namespace Clapper {
             'notify::speed': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::subtitle-font-desc': GObject.Object.Notify;
-            'notify::subtitle-font-desc': GObject.Object.Notify;
-            'notify::subtitle-offset': GObject.Object.Notify;
             'notify::subtitle-offset': GObject.Object.Notify;
             'notify::subtitle-streams': GObject.Object.Notify;
-            'notify::subtitle-streams': GObject.Object.Notify;
-            'notify::subtitles-enabled': GObject.Object.Notify;
             'notify::subtitles-enabled': GObject.Object.Notify;
             'notify::video-enabled': GObject.Object.Notify;
-            'notify::video-enabled': GObject.Object.Notify;
-            'notify::video-filter': GObject.Object.Notify;
             'notify::video-filter': GObject.Object.Notify;
             'notify::video-sink': GObject.Object.Notify;
-            'notify::video-sink': GObject.Object.Notify;
-            'notify::video-streams': GObject.Object.Notify;
             'notify::video-streams': GObject.Object.Notify;
             'notify::volume': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -2024,14 +1990,10 @@ export namespace Clapper {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'notify::current-index': GObject.Object.Notify;
-            'notify::current-index': GObject.Object.Notify;
-            'notify::current-item': GObject.Object.Notify;
             'notify::current-item': GObject.Object.Notify;
             'notify::gapless': GObject.Object.Notify;
             'notify::instant': GObject.Object.Notify;
             'notify::n-items': GObject.Object.Notify;
-            'notify::n-items': GObject.Object.Notify;
-            'notify::progression-mode': GObject.Object.Notify;
             'notify::progression-mode': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -2832,7 +2794,6 @@ export namespace Clapper {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'notify::stream-type': GObject.Object.Notify;
-            'notify::stream-type': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -2917,10 +2878,7 @@ export namespace Clapper {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'notify::current-index': GObject.Object.Notify;
-            'notify::current-index': GObject.Object.Notify;
             'notify::current-stream': GObject.Object.Notify;
-            'notify::current-stream': GObject.Object.Notify;
-            'notify::n-streams': GObject.Object.Notify;
             'notify::n-streams': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -3583,10 +3541,7 @@ export namespace Clapper {
         // Signal signatures
         interface SignalSignatures extends Stream.SignalSignatures {
             'notify::lang-code': GObject.Object.Notify;
-            'notify::lang-code': GObject.Object.Notify;
             'notify::lang-name': GObject.Object.Notify;
-            'notify::lang-name': GObject.Object.Notify;
-            'notify::stream-type': GObject.Object.Notify;
             'notify::stream-type': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -3741,7 +3696,6 @@ export namespace Clapper {
     namespace Timeline {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::n-markers': GObject.Object.Notify;
             'notify::n-markers': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -4375,9 +4329,7 @@ export namespace Clapper {
             'notify::fps': GObject.Object.Notify;
             'notify::height': GObject.Object.Notify;
             'notify::pixel-format': GObject.Object.Notify;
-            'notify::pixel-format': GObject.Object.Notify;
             'notify::width': GObject.Object.Notify;
-            'notify::stream-type': GObject.Object.Notify;
             'notify::stream-type': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;

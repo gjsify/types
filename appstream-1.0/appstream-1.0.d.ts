@@ -3375,8 +3375,6 @@ export namespace AppStream {
             'notify::name': GObject.Object.Notify;
             'notify::pkgnames': GObject.Object.Notify;
             'notify::project-group': GObject.Object.Notify;
-            'notify::project-group': GObject.Object.Notify;
-            'notify::project-license': GObject.Object.Notify;
             'notify::project-license': GObject.Object.Notify;
             'notify::screenshots': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
@@ -6183,8 +6181,6 @@ export namespace AppStream {
             'notify::priority': GObject.Object.Notify;
             'notify::rating': GObject.Object.Notify;
             'notify::reviewer-id': GObject.Object.Notify;
-            'notify::reviewer-id': GObject.Object.Notify;
-            'notify::reviewer-name': GObject.Object.Notify;
             'notify::reviewer-name': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::version': GObject.Object.Notify;

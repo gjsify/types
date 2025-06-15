@@ -664,7 +664,6 @@ export namespace GstVulkan {
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'notify::instance': GObject.Object.Notify;
             'notify::physical-device': GObject.Object.Notify;
-            'notify::physical-device': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
         }
@@ -1244,7 +1243,6 @@ export namespace GstVulkan {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'notify::device-index': GObject.Object.Notify;
-            'notify::device-index': GObject.Object.Notify;
             'notify::instance': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -1398,8 +1396,6 @@ export namespace GstVulkan {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'notify::force-aspect-ratio': GObject.Object.Notify;
-            'notify::force-aspect-ratio': GObject.Object.Notify;
-            'notify::pixel-aspect-ratio': GObject.Object.Notify;
             'notify::pixel-aspect-ratio': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;

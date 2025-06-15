@@ -4240,7 +4240,6 @@ export namespace Atspi {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::app-id': GObject.Object.Notify;
-            'notify::app-id': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4493,7 +4492,6 @@ export namespace Atspi {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
             'notify::app-id': GObject.Object.Notify;
-            'notify::app-id': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4536,7 +4534,6 @@ export namespace Atspi {
     namespace DeviceLegacy {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::app-id': GObject.Object.Notify;
             'notify::app-id': GObject.Object.Notify;
         }
 
@@ -4642,7 +4639,6 @@ export namespace Atspi {
     namespace DeviceX11 {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::app-id': GObject.Object.Notify;
             'notify::app-id': GObject.Object.Notify;
         }
 

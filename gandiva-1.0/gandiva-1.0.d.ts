@@ -70,7 +70,6 @@ export namespace Gandiva {
         interface SignalSignatures extends BooleanNode.SignalSignatures {
             'notify::node': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -109,7 +108,6 @@ export namespace Gandiva {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
             'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
         }
 
@@ -159,7 +157,6 @@ export namespace Gandiva {
         interface SignalSignatures extends LiteralNode.SignalSignatures {
             'notify::node': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -206,7 +203,6 @@ export namespace Gandiva {
         interface SignalSignatures extends Node.SignalSignatures {
             'notify::node': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -250,7 +246,6 @@ export namespace Gandiva {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
             'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
         }
 
@@ -298,8 +293,6 @@ export namespace Gandiva {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::expression': GObject.Object.Notify;
             'notify::result-field': GObject.Object.Notify;
-            'notify::result-field': GObject.Object.Notify;
-            'notify::root-node': GObject.Object.Notify;
             'notify::root-node': GObject.Object.Notify;
         }
 
@@ -362,7 +355,6 @@ export namespace Gandiva {
             'notify::field': GObject.Object.Notify;
             'notify::node': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -407,7 +399,6 @@ export namespace Gandiva {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
             'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
         }
 
@@ -455,7 +446,6 @@ export namespace Gandiva {
         interface SignalSignatures extends Node.SignalSignatures {
             'notify::name': GObject.Object.Notify;
             'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
         }
 
@@ -552,7 +542,6 @@ export namespace Gandiva {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::function-signature': GObject.Object.Notify;
-            'notify::function-signature': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -614,13 +603,9 @@ export namespace Gandiva {
         // Signal signatures
         interface SignalSignatures extends Node.SignalSignatures {
             'notify::condition-node': GObject.Object.Notify;
-            'notify::condition-node': GObject.Object.Notify;
             'notify::else-node': GObject.Object.Notify;
-            'notify::else-node': GObject.Object.Notify;
-            'notify::then-node': GObject.Object.Notify;
             'notify::then-node': GObject.Object.Notify;
             'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
         }
 
@@ -674,7 +659,6 @@ export namespace Gandiva {
         interface SignalSignatures extends LiteralNode.SignalSignatures {
             'notify::node': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -720,7 +704,6 @@ export namespace Gandiva {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
             'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
         }
 
@@ -768,7 +751,6 @@ export namespace Gandiva {
         interface SignalSignatures extends LiteralNode.SignalSignatures {
             'notify::node': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -814,7 +796,6 @@ export namespace Gandiva {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
             'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
         }
 
@@ -862,7 +843,6 @@ export namespace Gandiva {
         interface SignalSignatures extends Node.SignalSignatures {
             'notify::node': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -901,7 +881,6 @@ export namespace Gandiva {
     namespace NativeFunction {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::native-function': GObject.Object.Notify;
             'notify::native-function': GObject.Object.Notify;
         }
 
@@ -961,7 +940,6 @@ export namespace Gandiva {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::node': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1010,7 +988,6 @@ export namespace Gandiva {
         interface SignalSignatures extends LiteralNode.SignalSignatures {
             'notify::node': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1052,7 +1029,6 @@ export namespace Gandiva {
         // Signal signatures
         interface SignalSignatures extends BooleanNode.SignalSignatures {
             'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
         }
 
@@ -1138,7 +1114,6 @@ export namespace Gandiva {
         interface SignalSignatures extends LiteralNode.SignalSignatures {
             'notify::node': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1184,7 +1159,6 @@ export namespace Gandiva {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
             'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
         }
 
@@ -1232,7 +1206,6 @@ export namespace Gandiva {
         interface SignalSignatures extends LiteralNode.SignalSignatures {
             'notify::node': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1279,7 +1252,6 @@ export namespace Gandiva {
         interface SignalSignatures extends LiteralNode.SignalSignatures {
             'notify::node': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1325,7 +1297,6 @@ export namespace Gandiva {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
             'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
             'notify::return-type': GObject.Object.Notify;
         }
 

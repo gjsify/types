@@ -83,19 +83,12 @@ export namespace GoVirt {
         interface SignalSignatures extends Rest.Proxy.SignalSignatures {
             'notify::admin': GObject.Object.Notify;
             'notify::ca-cert': GObject.Object.Notify;
-            'notify::ca-cert': GObject.Object.Notify;
             'notify::binding-required': GObject.Object.Notify;
-            'notify::binding-required': GObject.Object.Notify;
-            'notify::disable-cookies': GObject.Object.Notify;
             'notify::disable-cookies': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::ssl-ca-file': GObject.Object.Notify;
-            'notify::ssl-ca-file': GObject.Object.Notify;
-            'notify::ssl-strict': GObject.Object.Notify;
             'notify::ssl-strict': GObject.Object.Notify;
             'notify::url-format': GObject.Object.Notify;
-            'notify::url-format': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
             'notify::user-agent': GObject.Object.Notify;
             'notify::username': GObject.Object.Notify;
         }
@@ -269,9 +262,7 @@ export namespace GoVirt {
             'notify::address': GObject.Object.Notify;
             'notify::expiry': GObject.Object.Notify;
             'notify::monitor-count': GObject.Object.Notify;
-            'notify::monitor-count': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
-            'notify::secure-port': GObject.Object.Notify;
             'notify::secure-port': GObject.Object.Notify;
             'notify::ticket': GObject.Object.Notify;
             'notify::type': GObject.Object.Notify;

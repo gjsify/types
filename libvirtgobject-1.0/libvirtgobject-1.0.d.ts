@@ -2013,8 +2013,6 @@ export namespace LibvirtGObject {
             'notify::handle': GObject.Object.Notify;
             'notify::closed': GObject.Object.Notify;
             'notify::input-stream': GObject.Object.Notify;
-            'notify::input-stream': GObject.Object.Notify;
-            'notify::output-stream': GObject.Object.Notify;
             'notify::output-stream': GObject.Object.Notify;
         }
 

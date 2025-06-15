@@ -238,10 +238,7 @@ export namespace Caribou {
             'group-added': GroupAdded;
             'group-removed': GroupRemoved;
             'notify::active-group': GObject.Object.Notify;
-            'notify::active-group': GObject.Object.Notify;
             'notify::keyboard-type': GObject.Object.Notify;
-            'notify::keyboard-type': GObject.Object.Notify;
-            'notify::keyboard-file': GObject.Object.Notify;
             'notify::keyboard-file': GObject.Object.Notify;
         }
 
@@ -808,7 +805,6 @@ export namespace Caribou {
     namespace GroupModel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::active-level': GObject.Object.Notify;
             'notify::active-level': GObject.Object.Notify;
         }
 
@@ -1826,8 +1822,6 @@ export namespace Caribou {
         // Signal signatures
         interface SignalSignatures extends ScannableGroup.SignalSignatures {
             'notify::scan-stepping': GObject.Object.Notify;
-            'notify::scan-stepping': GObject.Object.Notify;
-            'notify::scan-selected': GObject.Object.Notify;
             'notify::scan-selected': GObject.Object.Notify;
         }
 
@@ -2353,16 +2347,12 @@ export namespace Caribou {
             'notify::toggle': GObject.Object.Notify;
             'notify::repeatable': GObject.Object.Notify;
             'notify::is-modifier': GObject.Object.Notify;
-            'notify::is-modifier': GObject.Object.Notify;
-            'notify::show-subkeys': GObject.Object.Notify;
             'notify::show-subkeys': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::keyval': GObject.Object.Notify;
             'notify::text': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::scan-stepping': GObject.Object.Notify;
-            'notify::scan-stepping': GObject.Object.Notify;
-            'notify::scan-selected': GObject.Object.Notify;
             'notify::scan-selected': GObject.Object.Notify;
         }
 
@@ -2935,8 +2925,6 @@ export namespace Caribou {
         // Signal signatures
         interface SignalSignatures extends ScannableGroup.SignalSignatures {
             'notify::scan-stepping': GObject.Object.Notify;
-            'notify::scan-stepping': GObject.Object.Notify;
-            'notify::scan-selected': GObject.Object.Notify;
             'notify::scan-selected': GObject.Object.Notify;
         }
 
@@ -3450,23 +3438,14 @@ export namespace Caribou {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::bind-settings': GObject.Object.Notify;
-            'notify::bind-settings': GObject.Object.Notify;
-            'notify::scan-grouping': GObject.Object.Notify;
             'notify::scan-grouping': GObject.Object.Notify;
             'notify::scan-enabled': GObject.Object.Notify;
-            'notify::scan-enabled': GObject.Object.Notify;
-            'notify::step-time': GObject.Object.Notify;
             'notify::step-time': GObject.Object.Notify;
             'notify::switch-device': GObject.Object.Notify;
-            'notify::switch-device': GObject.Object.Notify;
-            'notify::keyboard-key': GObject.Object.Notify;
             'notify::keyboard-key': GObject.Object.Notify;
             'notify::mouse-button': GObject.Object.Notify;
-            'notify::mouse-button': GObject.Object.Notify;
-            'notify::scan-cycles': GObject.Object.Notify;
             'notify::scan-cycles': GObject.Object.Notify;
             'notify::autorestart': GObject.Object.Notify;
-            'notify::inverse-scanning': GObject.Object.Notify;
             'notify::inverse-scanning': GObject.Object.Notify;
         }
 
@@ -3588,7 +3567,6 @@ export namespace Caribou {
     namespace ScannableGroup {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::scan-grouping': GObject.Object.Notify;
             'notify::scan-grouping': GObject.Object.Notify;
         }
 

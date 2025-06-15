@@ -410,10 +410,7 @@ export namespace Dbusmenu {
             'new-menuitem': NewMenuitem;
             'root-changed': RootChanged;
             'notify::dbus-name': GObject.Object.Notify;
-            'notify::dbus-name': GObject.Object.Notify;
             'notify::dbus-object': GObject.Object.Notify;
-            'notify::dbus-object': GObject.Object.Notify;
-            'notify::group-events': GObject.Object.Notify;
             'notify::group-events': GObject.Object.Notify;
         }
 
@@ -984,7 +981,6 @@ export namespace Dbusmenu {
         // Signal signatures
         interface SignalSignatures extends Menuitem.SignalSignatures {
             'notify::menu-item': GObject.Object.Notify;
-            'notify::menu-item': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
         }
 
@@ -1072,8 +1068,6 @@ export namespace Dbusmenu {
             'item-updated': ItemUpdated;
             'layout-updated': LayoutUpdated;
             'notify::dbus-object': GObject.Object.Notify;
-            'notify::dbus-object': GObject.Object.Notify;
-            'notify::root-node': GObject.Object.Notify;
             'notify::root-node': GObject.Object.Notify;
             'notify::version': GObject.Object.Notify;
         }

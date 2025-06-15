@@ -1558,11 +1558,8 @@ export namespace ECal {
         interface SignalSignatures extends EDataServer.Client.SignalSignatures {
             'free-busy-data': FreeBusyData;
             'notify::default-timezone': GObject.Object.Notify;
-            'notify::default-timezone': GObject.Object.Notify;
-            'notify::source-type': GObject.Object.Notify;
             'notify::source-type': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
             'notify::main-context': GObject.Object.Notify;
             'notify::online': GObject.Object.Notify;
             'notify::opened': GObject.Object.Notify;
@@ -4038,7 +4035,6 @@ export namespace ECal {
             'notify::client': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5406,9 +5402,7 @@ export namespace ECal {
             'format-time': FormatTime;
             triggered: Triggered;
             'notify::default-zone': GObject.Object.Notify;
-            'notify::default-zone': GObject.Object.Notify;
             'notify::registry': GObject.Object.Notify;
-            'notify::timers-enabled': GObject.Object.Notify;
             'notify::timers-enabled': GObject.Object.Notify;
         }
 

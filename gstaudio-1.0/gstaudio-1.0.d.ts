@@ -1676,25 +1676,15 @@ export namespace GstAudio {
         // Signal signatures
         interface SignalSignatures extends GstBase.Aggregator.SignalSignatures {
             'notify::alignment-threshold': GObject.Object.Notify;
-            'notify::alignment-threshold': GObject.Object.Notify;
-            'notify::discont-wait': GObject.Object.Notify;
             'notify::discont-wait': GObject.Object.Notify;
             'notify::force-live': GObject.Object.Notify;
-            'notify::force-live': GObject.Object.Notify;
-            'notify::ignore-inactive-pads': GObject.Object.Notify;
             'notify::ignore-inactive-pads': GObject.Object.Notify;
             'notify::output-buffer-duration': GObject.Object.Notify;
-            'notify::output-buffer-duration': GObject.Object.Notify;
             'notify::output-buffer-duration-fraction': GObject.Object.Notify;
-            'notify::output-buffer-duration-fraction': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
             'notify::emit-signals': GObject.Object.Notify;
             'notify::latency': GObject.Object.Notify;
             'notify::min-upstream-latency': GObject.Object.Notify;
-            'notify::min-upstream-latency': GObject.Object.Notify;
             'notify::start-time': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
-            'notify::start-time-selection': GObject.Object.Notify;
             'notify::start-time-selection': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -1875,10 +1865,7 @@ export namespace GstAudio {
         // Signal signatures
         interface SignalSignatures extends AudioAggregatorPad.SignalSignatures {
             'notify::converter-config': GObject.Object.Notify;
-            'notify::converter-config': GObject.Object.Notify;
             'notify::qos-messages': GObject.Object.Notify;
-            'notify::qos-messages': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
             'notify::emit-signals': GObject.Object.Notify;
             'notify::caps': GObject.Object.Notify;
             'notify::direction': GObject.Object.Notify;
@@ -1940,8 +1927,6 @@ export namespace GstAudio {
         // Signal signatures
         interface SignalSignatures extends GstBase.AggregatorPad.SignalSignatures {
             'notify::qos-messages': GObject.Object.Notify;
-            'notify::qos-messages': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
             'notify::emit-signals': GObject.Object.Notify;
             'notify::caps': GObject.Object.Notify;
             'notify::direction': GObject.Object.Notify;
@@ -2012,41 +1997,25 @@ export namespace GstAudio {
         // Signal signatures
         interface SignalSignatures extends GstBase.BaseSink.SignalSignatures {
             'notify::alignment-threshold': GObject.Object.Notify;
-            'notify::alignment-threshold': GObject.Object.Notify;
-            'notify::buffer-time': GObject.Object.Notify;
             'notify::buffer-time': GObject.Object.Notify;
             'notify::can-activate-pull': GObject.Object.Notify;
-            'notify::can-activate-pull': GObject.Object.Notify;
-            'notify::discont-wait': GObject.Object.Notify;
             'notify::discont-wait': GObject.Object.Notify;
             'notify::drift-tolerance': GObject.Object.Notify;
-            'notify::drift-tolerance': GObject.Object.Notify;
-            'notify::latency-time': GObject.Object.Notify;
             'notify::latency-time': GObject.Object.Notify;
             'notify::provide-clock': GObject.Object.Notify;
-            'notify::provide-clock': GObject.Object.Notify;
-            'notify::slave-method': GObject.Object.Notify;
             'notify::slave-method': GObject.Object.Notify;
             'notify::async': GObject.Object.Notify;
             'notify::blocksize': GObject.Object.Notify;
             'notify::enable-last-sample': GObject.Object.Notify;
-            'notify::enable-last-sample': GObject.Object.Notify;
-            'notify::last-sample': GObject.Object.Notify;
             'notify::last-sample': GObject.Object.Notify;
             'notify::max-bitrate': GObject.Object.Notify;
-            'notify::max-bitrate': GObject.Object.Notify;
             'notify::max-lateness': GObject.Object.Notify;
-            'notify::max-lateness': GObject.Object.Notify;
-            'notify::processing-deadline': GObject.Object.Notify;
             'notify::processing-deadline': GObject.Object.Notify;
             'notify::qos': GObject.Object.Notify;
-            'notify::render-delay': GObject.Object.Notify;
             'notify::render-delay': GObject.Object.Notify;
             'notify::stats': GObject.Object.Notify;
             'notify::sync': GObject.Object.Notify;
             'notify::throttle-time': GObject.Object.Notify;
-            'notify::throttle-time': GObject.Object.Notify;
-            'notify::ts-offset': GObject.Object.Notify;
             'notify::ts-offset': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -2264,23 +2233,14 @@ export namespace GstAudio {
         // Signal signatures
         interface SignalSignatures extends GstBase.PushSrc.SignalSignatures {
             'notify::actual-buffer-time': GObject.Object.Notify;
-            'notify::actual-buffer-time': GObject.Object.Notify;
-            'notify::actual-latency-time': GObject.Object.Notify;
             'notify::actual-latency-time': GObject.Object.Notify;
             'notify::buffer-time': GObject.Object.Notify;
-            'notify::buffer-time': GObject.Object.Notify;
-            'notify::latency-time': GObject.Object.Notify;
             'notify::latency-time': GObject.Object.Notify;
             'notify::provide-clock': GObject.Object.Notify;
-            'notify::provide-clock': GObject.Object.Notify;
             'notify::slave-method': GObject.Object.Notify;
-            'notify::slave-method': GObject.Object.Notify;
-            'notify::automatic-eos': GObject.Object.Notify;
             'notify::automatic-eos': GObject.Object.Notify;
             'notify::blocksize': GObject.Object.Notify;
             'notify::do-timestamp': GObject.Object.Notify;
-            'notify::do-timestamp': GObject.Object.Notify;
-            'notify::num-buffers': GObject.Object.Notify;
             'notify::num-buffers': GObject.Object.Notify;
             'notify::typefind': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -2429,11 +2389,8 @@ export namespace GstAudio {
             'notify::mode': GObject.Object.Notify;
             'notify::track': GObject.Object.Notify;
             'notify::automatic-eos': GObject.Object.Notify;
-            'notify::automatic-eos': GObject.Object.Notify;
             'notify::blocksize': GObject.Object.Notify;
             'notify::do-timestamp': GObject.Object.Notify;
-            'notify::do-timestamp': GObject.Object.Notify;
-            'notify::num-buffers': GObject.Object.Notify;
             'notify::num-buffers': GObject.Object.Notify;
             'notify::typefind': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -3031,11 +2988,8 @@ export namespace GstAudio {
         // Signal signatures
         interface SignalSignatures extends Gst.SystemClock.SignalSignatures {
             'notify::clock-type': GObject.Object.Notify;
-            'notify::clock-type': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
             'notify::window-size': GObject.Object.Notify;
-            'notify::window-size': GObject.Object.Notify;
-            'notify::window-threshold': GObject.Object.Notify;
             'notify::window-threshold': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -3125,8 +3079,6 @@ export namespace GstAudio {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
             'notify::max-errors': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-latency': GObject.Object.Notify;
             'notify::min-latency': GObject.Object.Notify;
             'notify::plc': GObject.Object.Notify;
             'notify::tolerance': GObject.Object.Notify;
@@ -3544,10 +3496,7 @@ export namespace GstAudio {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
             'notify::hard-resync': GObject.Object.Notify;
-            'notify::hard-resync': GObject.Object.Notify;
             'notify::mark-granule': GObject.Object.Notify;
-            'notify::mark-granule': GObject.Object.Notify;
-            'notify::perfect-timestamp': GObject.Object.Notify;
             'notify::perfect-timestamp': GObject.Object.Notify;
             'notify::tolerance': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -4961,41 +4910,25 @@ export namespace GstAudio {
         // Signal signatures
         interface SignalSignatures extends AudioBaseSink.SignalSignatures {
             'notify::alignment-threshold': GObject.Object.Notify;
-            'notify::alignment-threshold': GObject.Object.Notify;
-            'notify::buffer-time': GObject.Object.Notify;
             'notify::buffer-time': GObject.Object.Notify;
             'notify::can-activate-pull': GObject.Object.Notify;
-            'notify::can-activate-pull': GObject.Object.Notify;
-            'notify::discont-wait': GObject.Object.Notify;
             'notify::discont-wait': GObject.Object.Notify;
             'notify::drift-tolerance': GObject.Object.Notify;
-            'notify::drift-tolerance': GObject.Object.Notify;
-            'notify::latency-time': GObject.Object.Notify;
             'notify::latency-time': GObject.Object.Notify;
             'notify::provide-clock': GObject.Object.Notify;
-            'notify::provide-clock': GObject.Object.Notify;
-            'notify::slave-method': GObject.Object.Notify;
             'notify::slave-method': GObject.Object.Notify;
             'notify::async': GObject.Object.Notify;
             'notify::blocksize': GObject.Object.Notify;
             'notify::enable-last-sample': GObject.Object.Notify;
-            'notify::enable-last-sample': GObject.Object.Notify;
-            'notify::last-sample': GObject.Object.Notify;
             'notify::last-sample': GObject.Object.Notify;
             'notify::max-bitrate': GObject.Object.Notify;
-            'notify::max-bitrate': GObject.Object.Notify;
             'notify::max-lateness': GObject.Object.Notify;
-            'notify::max-lateness': GObject.Object.Notify;
-            'notify::processing-deadline': GObject.Object.Notify;
             'notify::processing-deadline': GObject.Object.Notify;
             'notify::qos': GObject.Object.Notify;
-            'notify::render-delay': GObject.Object.Notify;
             'notify::render-delay': GObject.Object.Notify;
             'notify::stats': GObject.Object.Notify;
             'notify::sync': GObject.Object.Notify;
             'notify::throttle-time': GObject.Object.Notify;
-            'notify::throttle-time': GObject.Object.Notify;
-            'notify::ts-offset': GObject.Object.Notify;
             'notify::ts-offset': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -5083,23 +5016,14 @@ export namespace GstAudio {
         // Signal signatures
         interface SignalSignatures extends AudioBaseSrc.SignalSignatures {
             'notify::actual-buffer-time': GObject.Object.Notify;
-            'notify::actual-buffer-time': GObject.Object.Notify;
-            'notify::actual-latency-time': GObject.Object.Notify;
             'notify::actual-latency-time': GObject.Object.Notify;
             'notify::buffer-time': GObject.Object.Notify;
-            'notify::buffer-time': GObject.Object.Notify;
-            'notify::latency-time': GObject.Object.Notify;
             'notify::latency-time': GObject.Object.Notify;
             'notify::provide-clock': GObject.Object.Notify;
-            'notify::provide-clock': GObject.Object.Notify;
             'notify::slave-method': GObject.Object.Notify;
-            'notify::slave-method': GObject.Object.Notify;
-            'notify::automatic-eos': GObject.Object.Notify;
             'notify::automatic-eos': GObject.Object.Notify;
             'notify::blocksize': GObject.Object.Notify;
             'notify::do-timestamp': GObject.Object.Notify;
-            'notify::do-timestamp': GObject.Object.Notify;
-            'notify::num-buffers': GObject.Object.Notify;
             'notify::num-buffers': GObject.Object.Notify;
             'notify::typefind': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;

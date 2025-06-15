@@ -346,14 +346,9 @@ export namespace GstCodecs {
         // Signal signatures
         interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
             'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
             'notify::automatic-request-sync-points': GObject.Object.Notify;
             'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
             'notify::max-errors': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
             'notify::min-force-key-unit-interval': GObject.Object.Notify;
             'notify::qos': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -453,14 +448,9 @@ export namespace GstCodecs {
         interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
             'notify::compliance': GObject.Object.Notify;
             'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
             'notify::automatic-request-sync-points': GObject.Object.Notify;
             'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
             'notify::max-errors': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
             'notify::min-force-key-unit-interval': GObject.Object.Notify;
             'notify::qos': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -602,14 +592,9 @@ export namespace GstCodecs {
         // Signal signatures
         interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
             'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
             'notify::automatic-request-sync-points': GObject.Object.Notify;
             'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
             'notify::max-errors': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
             'notify::min-force-key-unit-interval': GObject.Object.Notify;
             'notify::qos': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -719,14 +704,9 @@ export namespace GstCodecs {
         // Signal signatures
         interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
             'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
             'notify::automatic-request-sync-points': GObject.Object.Notify;
             'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
             'notify::max-errors': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
             'notify::min-force-key-unit-interval': GObject.Object.Notify;
             'notify::qos': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -832,14 +812,9 @@ export namespace GstCodecs {
         // Signal signatures
         interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
             'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
             'notify::automatic-request-sync-points': GObject.Object.Notify;
             'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
             'notify::max-errors': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
             'notify::min-force-key-unit-interval': GObject.Object.Notify;
             'notify::qos': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -899,14 +874,9 @@ export namespace GstCodecs {
         // Signal signatures
         interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
             'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
             'notify::automatic-request-sync-points': GObject.Object.Notify;
             'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
             'notify::max-errors': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
             'notify::min-force-key-unit-interval': GObject.Object.Notify;
             'notify::qos': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;

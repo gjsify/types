@@ -656,7 +656,6 @@ export namespace Msg {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::goa-object': GObject.Object.Notify;
-            'notify::goa-object': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1966,10 +1965,7 @@ export namespace Msg {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::client-id': GObject.Object.Notify;
-            'notify::client-id': GObject.Object.Notify;
             'notify::redirect-uri': GObject.Object.Notify;
-            'notify::redirect-uri': GObject.Object.Notify;
-            'notify::refresh-token': GObject.Object.Notify;
             'notify::refresh-token': GObject.Object.Notify;
         }
 

@@ -5773,12 +5773,8 @@ export namespace Mbim {
             'device-indicate-status': DeviceIndicateStatus;
             'device-removed': DeviceRemoved;
             'notify::device-consecutive-timeouts': GObject.Object.Notify;
-            'notify::device-consecutive-timeouts': GObject.Object.Notify;
-            'notify::device-file': GObject.Object.Notify;
             'notify::device-file': GObject.Object.Notify;
             'notify::device-in-session': GObject.Object.Notify;
-            'notify::device-in-session': GObject.Object.Notify;
-            'notify::device-transaction-id': GObject.Object.Notify;
             'notify::device-transaction-id': GObject.Object.Notify;
         }
 

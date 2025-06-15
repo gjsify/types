@@ -286,33 +286,19 @@ export namespace Rest {
         // Signal signatures
         interface SignalSignatures extends Proxy.SignalSignatures {
             'notify::access-token': GObject.Object.Notify;
-            'notify::access-token': GObject.Object.Notify;
-            'notify::auth-url': GObject.Object.Notify;
             'notify::auth-url': GObject.Object.Notify;
             'notify::client-id': GObject.Object.Notify;
-            'notify::client-id': GObject.Object.Notify;
-            'notify::client-secret': GObject.Object.Notify;
             'notify::client-secret': GObject.Object.Notify;
             'notify::expiration-date': GObject.Object.Notify;
-            'notify::expiration-date': GObject.Object.Notify;
-            'notify::redirect-uri': GObject.Object.Notify;
             'notify::redirect-uri': GObject.Object.Notify;
             'notify::refresh-token': GObject.Object.Notify;
-            'notify::refresh-token': GObject.Object.Notify;
-            'notify::token-url': GObject.Object.Notify;
             'notify::token-url': GObject.Object.Notify;
             'notify::binding-required': GObject.Object.Notify;
-            'notify::binding-required': GObject.Object.Notify;
-            'notify::disable-cookies': GObject.Object.Notify;
             'notify::disable-cookies': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::ssl-ca-file': GObject.Object.Notify;
-            'notify::ssl-ca-file': GObject.Object.Notify;
-            'notify::ssl-strict': GObject.Object.Notify;
             'notify::ssl-strict': GObject.Object.Notify;
             'notify::url-format': GObject.Object.Notify;
-            'notify::url-format': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
             'notify::user-agent': GObject.Object.Notify;
             'notify::username': GObject.Object.Notify;
         }
@@ -510,17 +496,11 @@ export namespace Rest {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::binding-required': GObject.Object.Notify;
-            'notify::binding-required': GObject.Object.Notify;
-            'notify::disable-cookies': GObject.Object.Notify;
             'notify::disable-cookies': GObject.Object.Notify;
             'notify::password': GObject.Object.Notify;
             'notify::ssl-ca-file': GObject.Object.Notify;
-            'notify::ssl-ca-file': GObject.Object.Notify;
-            'notify::ssl-strict': GObject.Object.Notify;
             'notify::ssl-strict': GObject.Object.Notify;
             'notify::url-format': GObject.Object.Notify;
-            'notify::url-format': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
             'notify::user-agent': GObject.Object.Notify;
             'notify::username': GObject.Object.Notify;
         }

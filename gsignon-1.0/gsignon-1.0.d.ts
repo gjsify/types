@@ -637,7 +637,6 @@ export namespace gSignon {
             removed: Removed;
             signout: Signout;
             'notify::app-ctx': GObject.Object.Notify;
-            'notify::app-ctx': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
         }
 

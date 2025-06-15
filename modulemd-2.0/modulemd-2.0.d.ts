@@ -551,7 +551,6 @@ export namespace Modulemd {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::rpm-macros': GObject.Object.Notify;
-            'notify::rpm-macros': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -801,7 +800,6 @@ export namespace Modulemd {
             'notify::ref': GObject.Object.Notify;
             'notify::repository': GObject.Object.Notify;
             'notify::srpm-buildroot': GObject.Object.Notify;
-            'notify::srpm-buildroot': GObject.Object.Notify;
             'notify::buildonly': GObject.Object.Notify;
             'notify::buildorder': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -916,7 +914,6 @@ export namespace Modulemd {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::mdversion': GObject.Object.Notify;
             'notify::module-name': GObject.Object.Notify;
-            'notify::module-name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -983,7 +980,6 @@ export namespace Modulemd {
         // Signal signatures
         interface SignalSignatures extends Defaults.SignalSignatures {
             'notify::mdversion': GObject.Object.Notify;
-            'notify::module-name': GObject.Object.Notify;
             'notify::module-name': GObject.Object.Notify;
         }
 
@@ -1156,7 +1152,6 @@ export namespace Modulemd {
     namespace Module {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::module-name': GObject.Object.Notify;
             'notify::module-name': GObject.Object.Notify;
         }
 
@@ -1487,8 +1482,6 @@ export namespace Modulemd {
             'notify::context': GObject.Object.Notify;
             'notify::mdversion': GObject.Object.Notify;
             'notify::module-name': GObject.Object.Notify;
-            'notify::module-name': GObject.Object.Notify;
-            'notify::stream-name': GObject.Object.Notify;
             'notify::stream-name': GObject.Object.Notify;
             'notify::version': GObject.Object.Notify;
         }
@@ -1686,8 +1679,6 @@ export namespace Modulemd {
             'notify::context': GObject.Object.Notify;
             'notify::mdversion': GObject.Object.Notify;
             'notify::module-name': GObject.Object.Notify;
-            'notify::module-name': GObject.Object.Notify;
-            'notify::stream-name': GObject.Object.Notify;
             'notify::stream-name': GObject.Object.Notify;
             'notify::version': GObject.Object.Notify;
         }
@@ -1945,13 +1936,10 @@ export namespace Modulemd {
             'notify::community': GObject.Object.Notify;
             'notify::documentation': GObject.Object.Notify;
             'notify::static-context': GObject.Object.Notify;
-            'notify::static-context': GObject.Object.Notify;
             'notify::tracker': GObject.Object.Notify;
             'notify::context': GObject.Object.Notify;
             'notify::mdversion': GObject.Object.Notify;
             'notify::module-name': GObject.Object.Notify;
-            'notify::module-name': GObject.Object.Notify;
-            'notify::stream-name': GObject.Object.Notify;
             'notify::stream-name': GObject.Object.Notify;
             'notify::version': GObject.Object.Notify;
         }
@@ -2220,21 +2208,14 @@ export namespace Modulemd {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::eol-date': GObject.Object.Notify;
-            'notify::eol-date': GObject.Object.Notify;
             'notify::mdversion': GObject.Object.Notify;
             'notify::message': GObject.Object.Notify;
             'notify::modified': GObject.Object.Notify;
             'notify::module-context': GObject.Object.Notify;
-            'notify::module-context': GObject.Object.Notify;
-            'notify::module-name': GObject.Object.Notify;
             'notify::module-name': GObject.Object.Notify;
             'notify::module-stream': GObject.Object.Notify;
-            'notify::module-stream': GObject.Object.Notify;
-            'notify::obsoleted-by-module-name': GObject.Object.Notify;
             'notify::obsoleted-by-module-name': GObject.Object.Notify;
             'notify::obsoleted-by-module-stream': GObject.Object.Notify;
-            'notify::obsoleted-by-module-stream': GObject.Object.Notify;
-            'notify::override-previous': GObject.Object.Notify;
             'notify::override-previous': GObject.Object.Notify;
         }
 
@@ -2842,8 +2823,6 @@ export namespace Modulemd {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::modified': GObject.Object.Notify;
             'notify::module-name': GObject.Object.Notify;
-            'notify::module-name': GObject.Object.Notify;
-            'notify::module-stream': GObject.Object.Notify;
             'notify::module-stream': GObject.Object.Notify;
             'notify::version': GObject.Object.Notify;
         }

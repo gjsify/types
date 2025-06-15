@@ -5446,8 +5446,6 @@ export namespace AppStreamGlib {
             'notify::locale': GObject.Object.Notify;
             'notify::rating': GObject.Object.Notify;
             'notify::reviewer-id': GObject.Object.Notify;
-            'notify::reviewer-id': GObject.Object.Notify;
-            'notify::reviewer-name': GObject.Object.Notify;
             'notify::reviewer-name': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::version': GObject.Object.Notify;

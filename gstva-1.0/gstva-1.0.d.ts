@@ -303,7 +303,6 @@ export namespace GstVa {
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'notify::description': GObject.Object.Notify;
             'notify::va-display': GObject.Object.Notify;
-            'notify::va-display': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
         }
@@ -399,7 +398,6 @@ export namespace GstVa {
             'notify::path': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::va-display': GObject.Object.Notify;
-            'notify::va-display': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
         }
@@ -452,7 +450,6 @@ export namespace GstVa {
         // Signal signatures
         interface SignalSignatures extends VaDisplay.SignalSignatures {
             'notify::description': GObject.Object.Notify;
-            'notify::va-display': GObject.Object.Notify;
             'notify::va-display': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;

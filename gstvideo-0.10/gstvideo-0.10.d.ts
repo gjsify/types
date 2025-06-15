@@ -195,22 +195,15 @@ export namespace GstVideo {
         // Signal signatures
         interface SignalSignatures extends GstBase.Sink.SignalSignatures {
             'notify::show-preroll-frame': GObject.Object.Notify;
-            'notify::show-preroll-frame': GObject.Object.Notify;
             'notify::async': GObject.Object.Notify;
             'notify::blocksize': GObject.Object.Notify;
             'notify::enable-last-buffer': GObject.Object.Notify;
-            'notify::enable-last-buffer': GObject.Object.Notify;
-            'notify::last-buffer': GObject.Object.Notify;
             'notify::last-buffer': GObject.Object.Notify;
             'notify::max-lateness': GObject.Object.Notify;
-            'notify::max-lateness': GObject.Object.Notify;
-            'notify::preroll-queue-len': GObject.Object.Notify;
             'notify::preroll-queue-len': GObject.Object.Notify;
             'notify::qos': GObject.Object.Notify;
             'notify::render-delay': GObject.Object.Notify;
-            'notify::render-delay': GObject.Object.Notify;
             'notify::sync': GObject.Object.Notify;
-            'notify::ts-offset': GObject.Object.Notify;
             'notify::ts-offset': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }

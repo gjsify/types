@@ -3798,12 +3798,8 @@ export namespace Pango {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::is-monospace': GObject.Object.Notify;
-            'notify::is-monospace': GObject.Object.Notify;
-            'notify::is-variable': GObject.Object.Notify;
             'notify::is-variable': GObject.Object.Notify;
             'notify::item-type': GObject.Object.Notify;
-            'notify::item-type': GObject.Object.Notify;
-            'notify::n-items': GObject.Object.Notify;
             'notify::n-items': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
@@ -4526,8 +4522,6 @@ export namespace Pango {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::item-type': GObject.Object.Notify;
-            'notify::item-type': GObject.Object.Notify;
-            'notify::n-items': GObject.Object.Notify;
             'notify::n-items': GObject.Object.Notify;
         }
 

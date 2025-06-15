@@ -2983,7 +2983,6 @@ export namespace Kkc {
         // Signal signatures
         interface SignalSignatures extends MetadataFile.SignalSignatures {
             'notify::model-type': GObject.Object.Notify;
-            'notify::model-type': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
@@ -3809,7 +3808,6 @@ export namespace Kkc {
         // Signal signatures
         interface SignalSignatures extends LanguageModel.SignalSignatures {
             'notify::min-cost': GObject.Object.Notify;
-            'notify::min-cost': GObject.Object.Notify;
             'notify::metadata': GObject.Object.Notify;
             'notify::bos': GObject.Object.Notify;
             'notify::eos': GObject.Object.Notify;
@@ -3902,7 +3900,6 @@ export namespace Kkc {
     namespace SortedTrigramLanguageModel {
         // Signal signatures
         interface SignalSignatures extends SortedBigramLanguageModel.SignalSignatures {
-            'notify::min-cost': GObject.Object.Notify;
             'notify::min-cost': GObject.Object.Notify;
             'notify::metadata': GObject.Object.Notify;
             'notify::bos': GObject.Object.Notify;
@@ -4138,7 +4135,6 @@ export namespace Kkc {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::cursor-pos': GObject.Object.Notify;
-            'notify::cursor-pos': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
         }
 
@@ -4283,14 +4279,10 @@ export namespace Kkc {
             populated: Populated;
             selected: Selected;
             'notify::cursor-pos': GObject.Object.Notify;
-            'notify::cursor-pos': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::page-start': GObject.Object.Notify;
-            'notify::page-start': GObject.Object.Notify;
-            'notify::page-size': GObject.Object.Notify;
             'notify::page-size': GObject.Object.Notify;
             'notify::round': GObject.Object.Notify;
-            'notify::page-visible': GObject.Object.Notify;
             'notify::page-visible': GObject.Object.Notify;
         }
 
@@ -4775,14 +4767,9 @@ export namespace Kkc {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::kana-mode': GObject.Object.Notify;
-            'notify::kana-mode': GObject.Object.Notify;
-            'notify::punctuation-style': GObject.Object.Notify;
             'notify::punctuation-style': GObject.Object.Notify;
             'notify::auto-correct': GObject.Object.Notify;
-            'notify::auto-correct': GObject.Object.Notify;
             'notify::pending-output': GObject.Object.Notify;
-            'notify::pending-output': GObject.Object.Notify;
-            'notify::pending-input': GObject.Object.Notify;
             'notify::pending-input': GObject.Object.Notify;
             'notify::produced': GObject.Object.Notify;
         }
@@ -5592,18 +5579,11 @@ export namespace Kkc {
             'notify::segments': GObject.Object.Notify;
             'notify::input': GObject.Object.Notify;
             'notify::input-cursor-pos': GObject.Object.Notify;
-            'notify::input-cursor-pos': GObject.Object.Notify;
-            'notify::input-cursor-width': GObject.Object.Notify;
             'notify::input-cursor-width': GObject.Object.Notify;
             'notify::input-mode': GObject.Object.Notify;
-            'notify::input-mode': GObject.Object.Notify;
-            'notify::punctuation-style': GObject.Object.Notify;
             'notify::punctuation-style': GObject.Object.Notify;
             'notify::auto-correct': GObject.Object.Notify;
-            'notify::auto-correct': GObject.Object.Notify;
             'notify::typing-rule': GObject.Object.Notify;
-            'notify::typing-rule': GObject.Object.Notify;
-            'notify::key-event-filter': GObject.Object.Notify;
             'notify::key-event-filter': GObject.Object.Notify;
         }
 
@@ -8271,14 +8251,10 @@ export namespace Kkc {
             populated: Populated;
             selected: Selected;
             'notify::cursor-pos': GObject.Object.Notify;
-            'notify::cursor-pos': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::page-start': GObject.Object.Notify;
-            'notify::page-start': GObject.Object.Notify;
-            'notify::page-size': GObject.Object.Notify;
             'notify::page-size': GObject.Object.Notify;
             'notify::round': GObject.Object.Notify;
-            'notify::page-visible': GObject.Object.Notify;
             'notify::page-visible': GObject.Object.Notify;
         }
 
@@ -8368,7 +8344,6 @@ export namespace Kkc {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::cursor-pos': GObject.Object.Notify;
-            'notify::cursor-pos': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
         }
 
@@ -8434,12 +8409,8 @@ export namespace Kkc {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::input': GObject.Object.Notify;
             'notify::input-cursor-pos': GObject.Object.Notify;
-            'notify::input-cursor-pos': GObject.Object.Notify;
-            'notify::input-mode': GObject.Object.Notify;
             'notify::input-mode': GObject.Object.Notify;
             'notify::punctuation-style': GObject.Object.Notify;
-            'notify::punctuation-style': GObject.Object.Notify;
-            'notify::auto-correct': GObject.Object.Notify;
             'notify::auto-correct': GObject.Object.Notify;
         }
 

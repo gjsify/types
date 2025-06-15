@@ -519,12 +519,9 @@ export namespace GstValidate {
         // Signal signatures
         interface SignalSignatures extends ElementMonitor.SignalSignatures {
             'notify::handles-states': GObject.Object.Notify;
-            'notify::handles-states': GObject.Object.Notify;
             'notify::object': GObject.Object.Notify;
             'notify::pipeline': GObject.Object.Notify;
             'notify::validate-parent': GObject.Object.Notify;
-            'notify::validate-parent': GObject.Object.Notify;
-            'notify::validate-runner': GObject.Object.Notify;
             'notify::validate-runner': GObject.Object.Notify;
             'notify::verbosity': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -1037,8 +1034,6 @@ export namespace GstValidate {
             'notify::object': GObject.Object.Notify;
             'notify::pipeline': GObject.Object.Notify;
             'notify::validate-parent': GObject.Object.Notify;
-            'notify::validate-parent': GObject.Object.Notify;
-            'notify::validate-runner': GObject.Object.Notify;
             'notify::validate-runner': GObject.Object.Notify;
             'notify::verbosity': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -1582,7 +1577,6 @@ export namespace GstValidate {
     namespace MediaDescriptor {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::validate-runner': GObject.Object.Notify;
             'notify::validate-runner': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -2131,7 +2125,6 @@ export namespace GstValidate {
         // Signal signatures
         interface SignalSignatures extends MediaDescriptor.SignalSignatures {
             'notify::validate-runner': GObject.Object.Notify;
-            'notify::validate-runner': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
         }
@@ -2678,7 +2671,6 @@ export namespace GstValidate {
     namespace MediaDescriptorWriter {
         // Signal signatures
         interface SignalSignatures extends MediaDescriptor.SignalSignatures {
-            'notify::validate-runner': GObject.Object.Notify;
             'notify::validate-runner': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
@@ -3239,8 +3231,6 @@ export namespace GstValidate {
             'notify::object': GObject.Object.Notify;
             'notify::pipeline': GObject.Object.Notify;
             'notify::validate-parent': GObject.Object.Notify;
-            'notify::validate-parent': GObject.Object.Notify;
-            'notify::validate-runner': GObject.Object.Notify;
             'notify::validate-runner': GObject.Object.Notify;
             'notify::verbosity': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -3828,7 +3818,6 @@ export namespace GstValidate {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'notify::validate-runner': GObject.Object.Notify;
-            'notify::validate-runner': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
         }
@@ -4386,8 +4375,6 @@ export namespace GstValidate {
             'notify::object': GObject.Object.Notify;
             'notify::pipeline': GObject.Object.Notify;
             'notify::validate-parent': GObject.Object.Notify;
-            'notify::validate-parent': GObject.Object.Notify;
-            'notify::validate-runner': GObject.Object.Notify;
             'notify::validate-runner': GObject.Object.Notify;
             'notify::verbosity': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -4943,12 +4930,9 @@ export namespace GstValidate {
         // Signal signatures
         interface SignalSignatures extends BinMonitor.SignalSignatures {
             'notify::handles-states': GObject.Object.Notify;
-            'notify::handles-states': GObject.Object.Notify;
             'notify::object': GObject.Object.Notify;
             'notify::pipeline': GObject.Object.Notify;
             'notify::validate-parent': GObject.Object.Notify;
-            'notify::validate-parent': GObject.Object.Notify;
-            'notify::validate-runner': GObject.Object.Notify;
             'notify::validate-runner': GObject.Object.Notify;
             'notify::verbosity': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -5538,10 +5522,7 @@ export namespace GstValidate {
             'action-done': ActionDone;
             done: Done;
             'notify::execute-on-idle': GObject.Object.Notify;
-            'notify::execute-on-idle': GObject.Object.Notify;
             'notify::handles-states': GObject.Object.Notify;
-            'notify::handles-states': GObject.Object.Notify;
-            'notify::validate-runner': GObject.Object.Notify;
             'notify::validate-runner': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;

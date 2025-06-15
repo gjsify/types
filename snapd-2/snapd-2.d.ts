@@ -883,8 +883,6 @@ export namespace Snapd {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::app-auto': GObject.Object.Notify;
-            'notify::app-auto': GObject.Object.Notify;
-            'notify::app-manual': GObject.Object.Notify;
             'notify::app-manual': GObject.Object.Notify;
             'notify::command': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -990,10 +988,7 @@ export namespace Snapd {
             'notify::active': GObject.Object.Notify;
             'notify::aliases': GObject.Object.Notify;
             'notify::common-id': GObject.Object.Notify;
-            'notify::common-id': GObject.Object.Notify;
             'notify::daemon-type': GObject.Object.Notify;
-            'notify::daemon-type': GObject.Object.Notify;
-            'notify::desktop-file': GObject.Object.Notify;
             'notify::desktop-file': GObject.Object.Notify;
             'notify::enabled': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -1369,8 +1364,6 @@ export namespace Snapd {
             'notify::kind': GObject.Object.Notify;
             'notify::ready': GObject.Object.Notify;
             'notify::ready-time': GObject.Object.Notify;
-            'notify::ready-time': GObject.Object.Notify;
-            'notify::spawn-time': GObject.Object.Notify;
             'notify::spawn-time': GObject.Object.Notify;
             'notify::status': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
@@ -1487,7 +1480,6 @@ export namespace Snapd {
             'notify::confinement': GObject.Object.Notify;
             'notify::epoch': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
-            'notify::released-at': GObject.Object.Notify;
             'notify::released-at': GObject.Object.Notify;
             'notify::revision': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
@@ -5187,9 +5179,7 @@ export namespace Snapd {
             'notify::name': GObject.Object.Notify;
             'notify::plug': GObject.Object.Notify;
             'notify::plug-attrs': GObject.Object.Notify;
-            'notify::plug-attrs': GObject.Object.Notify;
             'notify::slot': GObject.Object.Notify;
-            'notify::slot-attrs': GObject.Object.Notify;
             'notify::slot-attrs': GObject.Object.Notify;
             'notify::snap': GObject.Object.Notify;
         }
@@ -5333,7 +5323,6 @@ export namespace Snapd {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::data': GObject.Object.Notify;
             'notify::mime-type': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5394,7 +5383,6 @@ export namespace Snapd {
     namespace Interface {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::doc-url': GObject.Object.Notify;
             'notify::doc-url': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::plugs': GObject.Object.Notify;
@@ -5627,7 +5615,6 @@ export namespace Snapd {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::children': GObject.Object.Notify;
-            'notify::node-type': GObject.Object.Notify;
             'notify::node-type': GObject.Object.Notify;
             'notify::text': GObject.Object.Notify;
         }
@@ -6315,47 +6302,35 @@ export namespace Snapd {
             'notify::channel': GObject.Object.Notify;
             'notify::channels': GObject.Object.Notify;
             'notify::common-ids': GObject.Object.Notify;
-            'notify::common-ids': GObject.Object.Notify;
             'notify::confinement': GObject.Object.Notify;
             'notify::contact': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::developer': GObject.Object.Notify;
             'notify::devmode': GObject.Object.Notify;
             'notify::download-size': GObject.Object.Notify;
-            'notify::download-size': GObject.Object.Notify;
             'notify::hold': GObject.Object.Notify;
             'notify::icon': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::install-date': GObject.Object.Notify;
-            'notify::install-date': GObject.Object.Notify;
-            'notify::installed-size': GObject.Object.Notify;
             'notify::installed-size': GObject.Object.Notify;
             'notify::jailmode': GObject.Object.Notify;
             'notify::license': GObject.Object.Notify;
             'notify::media': GObject.Object.Notify;
             'notify::mounted-from': GObject.Object.Notify;
-            'notify::mounted-from': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::prices': GObject.Object.Notify;
             'notify::private': GObject.Object.Notify;
             'notify::publisher-display-name': GObject.Object.Notify;
-            'notify::publisher-display-name': GObject.Object.Notify;
-            'notify::publisher-id': GObject.Object.Notify;
             'notify::publisher-id': GObject.Object.Notify;
             'notify::publisher-username': GObject.Object.Notify;
-            'notify::publisher-username': GObject.Object.Notify;
-            'notify::publisher-validation': GObject.Object.Notify;
             'notify::publisher-validation': GObject.Object.Notify;
             'notify::revision': GObject.Object.Notify;
             'notify::screenshots': GObject.Object.Notify;
             'notify::snap-type': GObject.Object.Notify;
-            'notify::snap-type': GObject.Object.Notify;
             'notify::status': GObject.Object.Notify;
-            'notify::store-url': GObject.Object.Notify;
             'notify::store-url': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
             'notify::title': GObject.Object.Notify;
-            'notify::tracking-channel': GObject.Object.Notify;
             'notify::tracking-channel': GObject.Object.Notify;
             'notify::tracks': GObject.Object.Notify;
             'notify::trymode': GObject.Object.Notify;
@@ -6730,32 +6705,19 @@ export namespace Snapd {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::architecture': GObject.Object.Notify;
             'notify::binaries-directory': GObject.Object.Notify;
-            'notify::binaries-directory': GObject.Object.Notify;
-            'notify::build-id': GObject.Object.Notify;
             'notify::build-id': GObject.Object.Notify;
             'notify::confinement': GObject.Object.Notify;
             'notify::kernel-version': GObject.Object.Notify;
-            'notify::kernel-version': GObject.Object.Notify;
             'notify::managed': GObject.Object.Notify;
             'notify::mount-directory': GObject.Object.Notify;
-            'notify::mount-directory': GObject.Object.Notify;
-            'notify::on-classic': GObject.Object.Notify;
             'notify::on-classic': GObject.Object.Notify;
             'notify::os-id': GObject.Object.Notify;
-            'notify::os-id': GObject.Object.Notify;
-            'notify::os-version': GObject.Object.Notify;
             'notify::os-version': GObject.Object.Notify;
             'notify::refresh-hold': GObject.Object.Notify;
-            'notify::refresh-hold': GObject.Object.Notify;
-            'notify::refresh-last': GObject.Object.Notify;
             'notify::refresh-last': GObject.Object.Notify;
             'notify::refresh-next': GObject.Object.Notify;
-            'notify::refresh-next': GObject.Object.Notify;
-            'notify::refresh-schedule': GObject.Object.Notify;
             'notify::refresh-schedule': GObject.Object.Notify;
             'notify::refresh-timer': GObject.Object.Notify;
-            'notify::refresh-timer': GObject.Object.Notify;
-            'notify::sandbox-features': GObject.Object.Notify;
             'notify::sandbox-features': GObject.Object.Notify;
             'notify::series': GObject.Object.Notify;
             'notify::store': GObject.Object.Notify;
@@ -6972,15 +6934,10 @@ export namespace Snapd {
             'notify::id': GObject.Object.Notify;
             'notify::kind': GObject.Object.Notify;
             'notify::progress-done': GObject.Object.Notify;
-            'notify::progress-done': GObject.Object.Notify;
             'notify::progress-label': GObject.Object.Notify;
-            'notify::progress-label': GObject.Object.Notify;
-            'notify::progress-total': GObject.Object.Notify;
             'notify::progress-total': GObject.Object.Notify;
             'notify::ready': GObject.Object.Notify;
             'notify::ready-time': GObject.Object.Notify;
-            'notify::ready-time': GObject.Object.Notify;
-            'notify::spawn-time': GObject.Object.Notify;
             'notify::spawn-time': GObject.Object.Notify;
             'notify::status': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
@@ -7107,10 +7064,8 @@ export namespace Snapd {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::auth-data': GObject.Object.Notify;
-            'notify::auth-data': GObject.Object.Notify;
             'notify::email': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
-            'notify::ssh-keys': GObject.Object.Notify;
             'notify::ssh-keys': GObject.Object.Notify;
             'notify::username': GObject.Object.Notify;
         }

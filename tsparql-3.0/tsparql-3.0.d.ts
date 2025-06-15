@@ -596,11 +596,8 @@ export namespace Tsparql {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::allowed-graphs': GObject.Object.Notify;
-            'notify::allowed-graphs': GObject.Object.Notify;
-            'notify::allowed-services': GObject.Object.Notify;
             'notify::allowed-services': GObject.Object.Notify;
             'notify::readonly': GObject.Object.Notify;
-            'notify::sparql-connection': GObject.Object.Notify;
             'notify::sparql-connection': GObject.Object.Notify;
         }
 
@@ -801,15 +798,10 @@ export namespace Tsparql {
         interface SignalSignatures extends Endpoint.SignalSignatures {
             'block-call': BlockCall;
             'notify::dbus-connection': GObject.Object.Notify;
-            'notify::dbus-connection': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
             'notify::allowed-graphs': GObject.Object.Notify;
-            'notify::allowed-graphs': GObject.Object.Notify;
-            'notify::allowed-services': GObject.Object.Notify;
             'notify::allowed-services': GObject.Object.Notify;
             'notify::readonly': GObject.Object.Notify;
-            'notify::sparql-connection': GObject.Object.Notify;
             'notify::sparql-connection': GObject.Object.Notify;
         }
 
@@ -1457,15 +1449,10 @@ export namespace Tsparql {
         interface SignalSignatures extends Endpoint.SignalSignatures {
             'block-remote-address': BlockRemoteAddress;
             'notify::http-certificate': GObject.Object.Notify;
-            'notify::http-certificate': GObject.Object.Notify;
-            'notify::http-port': GObject.Object.Notify;
             'notify::http-port': GObject.Object.Notify;
             'notify::allowed-graphs': GObject.Object.Notify;
-            'notify::allowed-graphs': GObject.Object.Notify;
-            'notify::allowed-services': GObject.Object.Notify;
             'notify::allowed-services': GObject.Object.Notify;
             'notify::readonly': GObject.Object.Notify;
-            'notify::sparql-connection': GObject.Object.Notify;
             'notify::sparql-connection': GObject.Object.Notify;
         }
 
@@ -3649,7 +3636,6 @@ export namespace Tsparql {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::connection': GObject.Object.Notify;
-            'notify::n-columns': GObject.Object.Notify;
             'notify::n-columns': GObject.Object.Notify;
         }
 

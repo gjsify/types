@@ -3506,11 +3506,8 @@ export namespace Soup {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::host': GObject.Object.Notify;
             'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-for-proxy': GObject.Object.Notify;
             'notify::is-for-proxy': GObject.Object.Notify;
             'notify::realm': GObject.Object.Notify;
-            'notify::scheme-name': GObject.Object.Notify;
             'notify::scheme-name': GObject.Object.Notify;
         }
 
@@ -3709,11 +3706,8 @@ export namespace Soup {
         interface SignalSignatures extends Auth.SignalSignatures {
             'notify::host': GObject.Object.Notify;
             'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-for-proxy': GObject.Object.Notify;
             'notify::is-for-proxy': GObject.Object.Notify;
             'notify::realm': GObject.Object.Notify;
-            'notify::scheme-name': GObject.Object.Notify;
             'notify::scheme-name': GObject.Object.Notify;
         }
 
@@ -3752,11 +3746,8 @@ export namespace Soup {
         interface SignalSignatures extends Auth.SignalSignatures {
             'notify::host': GObject.Object.Notify;
             'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-for-proxy': GObject.Object.Notify;
             'notify::is-for-proxy': GObject.Object.Notify;
             'notify::realm': GObject.Object.Notify;
-            'notify::scheme-name': GObject.Object.Notify;
             'notify::scheme-name': GObject.Object.Notify;
         }
 
@@ -3797,17 +3788,12 @@ export namespace Soup {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::add-path': GObject.Object.Notify;
-            'notify::add-path': GObject.Object.Notify;
             'notify::filter': GObject.Object.Notify;
             'notify::filter-data': GObject.Object.Notify;
-            'notify::filter-data': GObject.Object.Notify;
             'notify::generic-auth-callback': GObject.Object.Notify;
-            'notify::generic-auth-callback': GObject.Object.Notify;
-            'notify::generic-auth-data': GObject.Object.Notify;
             'notify::generic-auth-data': GObject.Object.Notify;
             'notify::proxy': GObject.Object.Notify;
             'notify::realm': GObject.Object.Notify;
-            'notify::remove-path': GObject.Object.Notify;
             'notify::remove-path': GObject.Object.Notify;
         }
 
@@ -4008,21 +3994,14 @@ export namespace Soup {
         // Signal signatures
         interface SignalSignatures extends AuthDomain.SignalSignatures {
             'notify::auth-callback': GObject.Object.Notify;
-            'notify::auth-callback': GObject.Object.Notify;
             'notify::auth-data': GObject.Object.Notify;
-            'notify::auth-data': GObject.Object.Notify;
-            'notify::add-path': GObject.Object.Notify;
             'notify::add-path': GObject.Object.Notify;
             'notify::filter': GObject.Object.Notify;
             'notify::filter-data': GObject.Object.Notify;
-            'notify::filter-data': GObject.Object.Notify;
             'notify::generic-auth-callback': GObject.Object.Notify;
-            'notify::generic-auth-callback': GObject.Object.Notify;
-            'notify::generic-auth-data': GObject.Object.Notify;
             'notify::generic-auth-data': GObject.Object.Notify;
             'notify::proxy': GObject.Object.Notify;
             'notify::realm': GObject.Object.Notify;
-            'notify::remove-path': GObject.Object.Notify;
             'notify::remove-path': GObject.Object.Notify;
         }
 
@@ -4107,21 +4086,14 @@ export namespace Soup {
         // Signal signatures
         interface SignalSignatures extends AuthDomain.SignalSignatures {
             'notify::auth-callback': GObject.Object.Notify;
-            'notify::auth-callback': GObject.Object.Notify;
             'notify::auth-data': GObject.Object.Notify;
-            'notify::auth-data': GObject.Object.Notify;
-            'notify::add-path': GObject.Object.Notify;
             'notify::add-path': GObject.Object.Notify;
             'notify::filter': GObject.Object.Notify;
             'notify::filter-data': GObject.Object.Notify;
-            'notify::filter-data': GObject.Object.Notify;
             'notify::generic-auth-callback': GObject.Object.Notify;
-            'notify::generic-auth-callback': GObject.Object.Notify;
-            'notify::generic-auth-data': GObject.Object.Notify;
             'notify::generic-auth-data': GObject.Object.Notify;
             'notify::proxy': GObject.Object.Notify;
             'notify::realm': GObject.Object.Notify;
-            'notify::remove-path': GObject.Object.Notify;
             'notify::remove-path': GObject.Object.Notify;
         }
 
@@ -4814,11 +4786,8 @@ export namespace Soup {
         interface SignalSignatures extends Auth.SignalSignatures {
             'notify::host': GObject.Object.Notify;
             'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-for-proxy': GObject.Object.Notify;
             'notify::is-for-proxy': GObject.Object.Notify;
             'notify::realm': GObject.Object.Notify;
-            'notify::scheme-name': GObject.Object.Notify;
             'notify::scheme-name': GObject.Object.Notify;
         }
 
@@ -4857,11 +4826,8 @@ export namespace Soup {
         interface SignalSignatures extends Auth.SignalSignatures {
             'notify::host': GObject.Object.Notify;
             'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-for-proxy': GObject.Object.Notify;
             'notify::is-for-proxy': GObject.Object.Notify;
             'notify::realm': GObject.Object.Notify;
-            'notify::scheme-name': GObject.Object.Notify;
             'notify::scheme-name': GObject.Object.Notify;
         }
 
@@ -4912,8 +4878,6 @@ export namespace Soup {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::cache-dir': GObject.Object.Notify;
-            'notify::cache-dir': GObject.Object.Notify;
-            'notify::cache-type': GObject.Object.Notify;
             'notify::cache-type': GObject.Object.Notify;
         }
 
@@ -6667,8 +6631,6 @@ export namespace Soup {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
             'notify::accept-policy': GObject.Object.Notify;
-            'notify::accept-policy': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -7413,8 +7375,6 @@ export namespace Soup {
         interface SignalSignatures extends CookieJar.SignalSignatures {
             'notify::filename': GObject.Object.Notify;
             'notify::accept-policy': GObject.Object.Notify;
-            'notify::accept-policy': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -7982,8 +7942,6 @@ export namespace Soup {
         interface SignalSignatures extends CookieJar.SignalSignatures {
             'notify::filename': GObject.Object.Notify;
             'notify::accept-policy': GObject.Object.Notify;
-            'notify::accept-policy': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -9750,7 +9708,6 @@ export namespace Soup {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::level': GObject.Object.Notify;
             'notify::max-body-size': GObject.Object.Notify;
-            'notify::max-body-size': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -10439,37 +10396,22 @@ export namespace Soup {
             'wrote-headers': WroteHeaders;
             'wrote-informational': WroteInformational;
             'notify::first-party': GObject.Object.Notify;
-            'notify::first-party': GObject.Object.Notify;
             'notify::flags': GObject.Object.Notify;
             'notify::http-version': GObject.Object.Notify;
-            'notify::http-version': GObject.Object.Notify;
-            'notify::is-top-level-navigation': GObject.Object.Notify;
             'notify::is-top-level-navigation': GObject.Object.Notify;
             'notify::method': GObject.Object.Notify;
             'notify::priority': GObject.Object.Notify;
             'notify::reason-phrase': GObject.Object.Notify;
-            'notify::reason-phrase': GObject.Object.Notify;
-            'notify::request-body': GObject.Object.Notify;
             'notify::request-body': GObject.Object.Notify;
             'notify::request-body-data': GObject.Object.Notify;
-            'notify::request-body-data': GObject.Object.Notify;
-            'notify::request-headers': GObject.Object.Notify;
             'notify::request-headers': GObject.Object.Notify;
             'notify::response-body': GObject.Object.Notify;
-            'notify::response-body': GObject.Object.Notify;
-            'notify::response-body-data': GObject.Object.Notify;
             'notify::response-body-data': GObject.Object.Notify;
             'notify::response-headers': GObject.Object.Notify;
-            'notify::response-headers': GObject.Object.Notify;
-            'notify::server-side': GObject.Object.Notify;
             'notify::server-side': GObject.Object.Notify;
             'notify::site-for-cookies': GObject.Object.Notify;
-            'notify::site-for-cookies': GObject.Object.Notify;
-            'notify::status-code': GObject.Object.Notify;
             'notify::status-code': GObject.Object.Notify;
             'notify::tls-certificate': GObject.Object.Notify;
-            'notify::tls-certificate': GObject.Object.Notify;
-            'notify::tls-errors': GObject.Object.Notify;
             'notify::tls-errors': GObject.Object.Notify;
             'notify::uri': GObject.Object.Notify;
         }
@@ -10935,8 +10877,6 @@ export namespace Soup {
         interface SignalSignatures extends Gio.FilterInputStream.SignalSignatures {
             'notify::message': GObject.Object.Notify;
             'notify::base-stream': GObject.Object.Notify;
-            'notify::base-stream': GObject.Object.Notify;
-            'notify::close-base-stream': GObject.Object.Notify;
             'notify::close-base-stream': GObject.Object.Notify;
         }
 
@@ -11928,7 +11868,6 @@ export namespace Soup {
     namespace ProxyResolverDefault {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::gproxy-resolver': GObject.Object.Notify;
             'notify::gproxy-resolver': GObject.Object.Notify;
         }
 
@@ -15533,22 +15472,14 @@ export namespace Soup {
             'request-read': RequestRead;
             'request-started': RequestStarted;
             'notify::async-context': GObject.Object.Notify;
-            'notify::async-context': GObject.Object.Notify;
             'notify::http-aliases': GObject.Object.Notify;
-            'notify::http-aliases': GObject.Object.Notify;
-            'notify::https-aliases': GObject.Object.Notify;
             'notify::https-aliases': GObject.Object.Notify;
             'notify::interface': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
             'notify::raw-paths': GObject.Object.Notify;
-            'notify::raw-paths': GObject.Object.Notify;
-            'notify::server-header': GObject.Object.Notify;
             'notify::server-header': GObject.Object.Notify;
             'notify::ssl-cert-file': GObject.Object.Notify;
-            'notify::ssl-cert-file': GObject.Object.Notify;
             'notify::ssl-key-file': GObject.Object.Notify;
-            'notify::ssl-key-file': GObject.Object.Notify;
-            'notify::tls-certificate': GObject.Object.Notify;
             'notify::tls-certificate': GObject.Object.Notify;
         }
 
@@ -16208,43 +16139,24 @@ export namespace Soup {
             'request-unqueued': RequestUnqueued;
             tunneling: Tunneling;
             'notify::accept-language': GObject.Object.Notify;
-            'notify::accept-language': GObject.Object.Notify;
-            'notify::accept-language-auto': GObject.Object.Notify;
             'notify::accept-language-auto': GObject.Object.Notify;
             'notify::async-context': GObject.Object.Notify;
-            'notify::async-context': GObject.Object.Notify;
-            'notify::http-aliases': GObject.Object.Notify;
             'notify::http-aliases': GObject.Object.Notify;
             'notify::https-aliases': GObject.Object.Notify;
-            'notify::https-aliases': GObject.Object.Notify;
-            'notify::idle-timeout': GObject.Object.Notify;
             'notify::idle-timeout': GObject.Object.Notify;
             'notify::local-address': GObject.Object.Notify;
-            'notify::local-address': GObject.Object.Notify;
-            'notify::max-conns': GObject.Object.Notify;
             'notify::max-conns': GObject.Object.Notify;
             'notify::max-conns-per-host': GObject.Object.Notify;
-            'notify::max-conns-per-host': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
             'notify::proxy-uri': GObject.Object.Notify;
-            'notify::proxy-uri': GObject.Object.Notify;
-            'notify::ssl-ca-file': GObject.Object.Notify;
             'notify::ssl-ca-file': GObject.Object.Notify;
             'notify::ssl-strict': GObject.Object.Notify;
-            'notify::ssl-strict': GObject.Object.Notify;
-            'notify::ssl-use-system-ca-file': GObject.Object.Notify;
             'notify::ssl-use-system-ca-file': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
             'notify::tls-database': GObject.Object.Notify;
-            'notify::tls-database': GObject.Object.Notify;
-            'notify::tls-interaction': GObject.Object.Notify;
             'notify::tls-interaction': GObject.Object.Notify;
             'notify::use-ntlm': GObject.Object.Notify;
-            'notify::use-ntlm': GObject.Object.Notify;
             'notify::use-thread-context': GObject.Object.Notify;
-            'notify::use-thread-context': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
             'notify::user-agent': GObject.Object.Notify;
         }
 
@@ -17464,43 +17376,24 @@ export namespace Soup {
         // Signal signatures
         interface SignalSignatures extends Session.SignalSignatures {
             'notify::accept-language': GObject.Object.Notify;
-            'notify::accept-language': GObject.Object.Notify;
-            'notify::accept-language-auto': GObject.Object.Notify;
             'notify::accept-language-auto': GObject.Object.Notify;
             'notify::async-context': GObject.Object.Notify;
-            'notify::async-context': GObject.Object.Notify;
-            'notify::http-aliases': GObject.Object.Notify;
             'notify::http-aliases': GObject.Object.Notify;
             'notify::https-aliases': GObject.Object.Notify;
-            'notify::https-aliases': GObject.Object.Notify;
-            'notify::idle-timeout': GObject.Object.Notify;
             'notify::idle-timeout': GObject.Object.Notify;
             'notify::local-address': GObject.Object.Notify;
-            'notify::local-address': GObject.Object.Notify;
-            'notify::max-conns': GObject.Object.Notify;
             'notify::max-conns': GObject.Object.Notify;
             'notify::max-conns-per-host': GObject.Object.Notify;
-            'notify::max-conns-per-host': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
             'notify::proxy-uri': GObject.Object.Notify;
-            'notify::proxy-uri': GObject.Object.Notify;
-            'notify::ssl-ca-file': GObject.Object.Notify;
             'notify::ssl-ca-file': GObject.Object.Notify;
             'notify::ssl-strict': GObject.Object.Notify;
-            'notify::ssl-strict': GObject.Object.Notify;
-            'notify::ssl-use-system-ca-file': GObject.Object.Notify;
             'notify::ssl-use-system-ca-file': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
             'notify::tls-database': GObject.Object.Notify;
-            'notify::tls-database': GObject.Object.Notify;
-            'notify::tls-interaction': GObject.Object.Notify;
             'notify::tls-interaction': GObject.Object.Notify;
             'notify::use-ntlm': GObject.Object.Notify;
-            'notify::use-ntlm': GObject.Object.Notify;
             'notify::use-thread-context': GObject.Object.Notify;
-            'notify::use-thread-context': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
             'notify::user-agent': GObject.Object.Notify;
         }
 
@@ -17543,43 +17436,24 @@ export namespace Soup {
         // Signal signatures
         interface SignalSignatures extends Session.SignalSignatures {
             'notify::accept-language': GObject.Object.Notify;
-            'notify::accept-language': GObject.Object.Notify;
-            'notify::accept-language-auto': GObject.Object.Notify;
             'notify::accept-language-auto': GObject.Object.Notify;
             'notify::async-context': GObject.Object.Notify;
-            'notify::async-context': GObject.Object.Notify;
-            'notify::http-aliases': GObject.Object.Notify;
             'notify::http-aliases': GObject.Object.Notify;
             'notify::https-aliases': GObject.Object.Notify;
-            'notify::https-aliases': GObject.Object.Notify;
-            'notify::idle-timeout': GObject.Object.Notify;
             'notify::idle-timeout': GObject.Object.Notify;
             'notify::local-address': GObject.Object.Notify;
-            'notify::local-address': GObject.Object.Notify;
-            'notify::max-conns': GObject.Object.Notify;
             'notify::max-conns': GObject.Object.Notify;
             'notify::max-conns-per-host': GObject.Object.Notify;
-            'notify::max-conns-per-host': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
             'notify::proxy-resolver': GObject.Object.Notify;
             'notify::proxy-uri': GObject.Object.Notify;
-            'notify::proxy-uri': GObject.Object.Notify;
-            'notify::ssl-ca-file': GObject.Object.Notify;
             'notify::ssl-ca-file': GObject.Object.Notify;
             'notify::ssl-strict': GObject.Object.Notify;
-            'notify::ssl-strict': GObject.Object.Notify;
-            'notify::ssl-use-system-ca-file': GObject.Object.Notify;
             'notify::ssl-use-system-ca-file': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
             'notify::tls-database': GObject.Object.Notify;
-            'notify::tls-database': GObject.Object.Notify;
-            'notify::tls-interaction': GObject.Object.Notify;
             'notify::tls-interaction': GObject.Object.Notify;
             'notify::use-ntlm': GObject.Object.Notify;
-            'notify::use-ntlm': GObject.Object.Notify;
             'notify::use-thread-context': GObject.Object.Notify;
-            'notify::use-thread-context': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
             'notify::user-agent': GObject.Object.Notify;
         }
 
@@ -17649,34 +17523,21 @@ export namespace Soup {
             readable: Readable;
             writable: Writable;
             'notify::async-context': GObject.Object.Notify;
-            'notify::async-context': GObject.Object.Notify;
             'notify::fd': GObject.Object.Notify;
             'notify::gsocket': GObject.Object.Notify;
             'notify::iostream': GObject.Object.Notify;
             'notify::ipv6-only': GObject.Object.Notify;
-            'notify::ipv6-only': GObject.Object.Notify;
-            'notify::is-server': GObject.Object.Notify;
             'notify::is-server': GObject.Object.Notify;
             'notify::local-address': GObject.Object.Notify;
-            'notify::local-address': GObject.Object.Notify;
-            'notify::non-blocking': GObject.Object.Notify;
             'notify::non-blocking': GObject.Object.Notify;
             'notify::remote-address': GObject.Object.Notify;
-            'notify::remote-address': GObject.Object.Notify;
-            'notify::ssl-creds': GObject.Object.Notify;
             'notify::ssl-creds': GObject.Object.Notify;
             'notify::ssl-fallback': GObject.Object.Notify;
-            'notify::ssl-fallback': GObject.Object.Notify;
-            'notify::ssl-strict': GObject.Object.Notify;
             'notify::ssl-strict': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
             'notify::tls-certificate': GObject.Object.Notify;
-            'notify::tls-certificate': GObject.Object.Notify;
-            'notify::tls-errors': GObject.Object.Notify;
             'notify::tls-errors': GObject.Object.Notify;
             'notify::trusted-certificate': GObject.Object.Notify;
-            'notify::trusted-certificate': GObject.Object.Notify;
-            'notify::use-thread-context': GObject.Object.Notify;
             'notify::use-thread-context': GObject.Object.Notify;
         }
 
@@ -18550,13 +18411,9 @@ export namespace Soup {
             message: Message;
             pong: Pong;
             'notify::connection-type': GObject.Object.Notify;
-            'notify::connection-type': GObject.Object.Notify;
             'notify::extensions': GObject.Object.Notify;
             'notify::io-stream': GObject.Object.Notify;
-            'notify::io-stream': GObject.Object.Notify;
             'notify::keepalive-interval': GObject.Object.Notify;
-            'notify::keepalive-interval': GObject.Object.Notify;
-            'notify::max-incoming-payload-size': GObject.Object.Notify;
             'notify::max-incoming-payload-size': GObject.Object.Notify;
             'notify::origin': GObject.Object.Notify;
             'notify::protocol': GObject.Object.Notify;

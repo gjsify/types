@@ -815,12 +815,8 @@ export namespace GstRtspServer {
             'setup-request': SetupRequest;
             'teardown-request': TeardownRequest;
             'notify::drop-backlog': GObject.Object.Notify;
-            'notify::drop-backlog': GObject.Object.Notify;
-            'notify::mount-points': GObject.Object.Notify;
             'notify::mount-points': GObject.Object.Notify;
             'notify::post-session-timeout': GObject.Object.Notify;
-            'notify::post-session-timeout': GObject.Object.Notify;
-            'notify::session-pool': GObject.Object.Notify;
             'notify::session-pool': GObject.Object.Notify;
         }
 
@@ -1140,54 +1136,36 @@ export namespace GstRtspServer {
             'target-state': TargetState;
             unprepared: Unprepared;
             'notify::bind-mcast-address': GObject.Object.Notify;
-            'notify::bind-mcast-address': GObject.Object.Notify;
-            'notify::buffer-size': GObject.Object.Notify;
             'notify::buffer-size': GObject.Object.Notify;
             'notify::clock': GObject.Object.Notify;
             'notify::dscp-qos': GObject.Object.Notify;
-            'notify::dscp-qos': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
             'notify::eos-shutdown': GObject.Object.Notify;
-            'notify::eos-shutdown': GObject.Object.Notify;
             'notify::latency': GObject.Object.Notify;
-            'notify::max-mcast-ttl': GObject.Object.Notify;
             'notify::max-mcast-ttl': GObject.Object.Notify;
             'notify::profiles': GObject.Object.Notify;
             'notify::protocols': GObject.Object.Notify;
             'notify::reusable': GObject.Object.Notify;
             'notify::shared': GObject.Object.Notify;
             'notify::stop-on-disconnect': GObject.Object.Notify;
-            'notify::stop-on-disconnect': GObject.Object.Notify;
-            'notify::suspend-mode': GObject.Object.Notify;
             'notify::suspend-mode': GObject.Object.Notify;
             'notify::time-provider': GObject.Object.Notify;
-            'notify::time-provider': GObject.Object.Notify;
-            'notify::transport-mode': GObject.Object.Notify;
             'notify::transport-mode': GObject.Object.Notify;
             'handle-message::bind-mcast-address': HandleMessage;
-            'handle-message::bind-mcast-address': HandleMessage;
-            'handle-message::buffer-size': HandleMessage;
             'handle-message::buffer-size': HandleMessage;
             'handle-message::clock': HandleMessage;
             'handle-message::dscp-qos': HandleMessage;
-            'handle-message::dscp-qos': HandleMessage;
             'handle-message::element': HandleMessage;
             'handle-message::eos-shutdown': HandleMessage;
-            'handle-message::eos-shutdown': HandleMessage;
             'handle-message::latency': HandleMessage;
-            'handle-message::max-mcast-ttl': HandleMessage;
             'handle-message::max-mcast-ttl': HandleMessage;
             'handle-message::profiles': HandleMessage;
             'handle-message::protocols': HandleMessage;
             'handle-message::reusable': HandleMessage;
             'handle-message::shared': HandleMessage;
             'handle-message::stop-on-disconnect': HandleMessage;
-            'handle-message::stop-on-disconnect': HandleMessage;
-            'handle-message::suspend-mode': HandleMessage;
             'handle-message::suspend-mode': HandleMessage;
             'handle-message::time-provider': HandleMessage;
-            'handle-message::time-provider': HandleMessage;
-            'handle-message::transport-mode': HandleMessage;
             'handle-message::transport-mode': HandleMessage;
         }
 
@@ -1835,28 +1813,19 @@ export namespace GstRtspServer {
             'media-configure': MediaConfigure;
             'media-constructed': MediaConstructed;
             'notify::bind-mcast-address': GObject.Object.Notify;
-            'notify::bind-mcast-address': GObject.Object.Notify;
-            'notify::buffer-size': GObject.Object.Notify;
             'notify::buffer-size': GObject.Object.Notify;
             'notify::clock': GObject.Object.Notify;
             'notify::dscp-qos': GObject.Object.Notify;
-            'notify::dscp-qos': GObject.Object.Notify;
             'notify::enable-rtcp': GObject.Object.Notify;
-            'notify::enable-rtcp': GObject.Object.Notify;
-            'notify::eos-shutdown': GObject.Object.Notify;
             'notify::eos-shutdown': GObject.Object.Notify;
             'notify::latency': GObject.Object.Notify;
             'notify::launch': GObject.Object.Notify;
-            'notify::max-mcast-ttl': GObject.Object.Notify;
             'notify::max-mcast-ttl': GObject.Object.Notify;
             'notify::profiles': GObject.Object.Notify;
             'notify::protocols': GObject.Object.Notify;
             'notify::shared': GObject.Object.Notify;
             'notify::stop-on-disconnect': GObject.Object.Notify;
-            'notify::stop-on-disconnect': GObject.Object.Notify;
             'notify::suspend-mode': GObject.Object.Notify;
-            'notify::suspend-mode': GObject.Object.Notify;
-            'notify::transport-mode': GObject.Object.Notify;
             'notify::transport-mode': GObject.Object.Notify;
         }
 
@@ -2287,30 +2256,20 @@ export namespace GstRtspServer {
         interface SignalSignatures extends RTSPMediaFactory.SignalSignatures {
             'notify::uri': GObject.Object.Notify;
             'notify::use-gstpay': GObject.Object.Notify;
-            'notify::use-gstpay': GObject.Object.Notify;
             'notify::bind-mcast-address': GObject.Object.Notify;
-            'notify::bind-mcast-address': GObject.Object.Notify;
-            'notify::buffer-size': GObject.Object.Notify;
             'notify::buffer-size': GObject.Object.Notify;
             'notify::clock': GObject.Object.Notify;
             'notify::dscp-qos': GObject.Object.Notify;
-            'notify::dscp-qos': GObject.Object.Notify;
             'notify::enable-rtcp': GObject.Object.Notify;
-            'notify::enable-rtcp': GObject.Object.Notify;
-            'notify::eos-shutdown': GObject.Object.Notify;
             'notify::eos-shutdown': GObject.Object.Notify;
             'notify::latency': GObject.Object.Notify;
             'notify::launch': GObject.Object.Notify;
-            'notify::max-mcast-ttl': GObject.Object.Notify;
             'notify::max-mcast-ttl': GObject.Object.Notify;
             'notify::profiles': GObject.Object.Notify;
             'notify::protocols': GObject.Object.Notify;
             'notify::shared': GObject.Object.Notify;
             'notify::stop-on-disconnect': GObject.Object.Notify;
-            'notify::stop-on-disconnect': GObject.Object.Notify;
             'notify::suspend-mode': GObject.Object.Notify;
-            'notify::suspend-mode': GObject.Object.Notify;
-            'notify::transport-mode': GObject.Object.Notify;
             'notify::transport-mode': GObject.Object.Notify;
         }
 
@@ -2467,12 +2426,8 @@ export namespace GstRtspServer {
         // Signal signatures
         interface SignalSignatures extends RTSPClient.SignalSignatures {
             'notify::drop-backlog': GObject.Object.Notify;
-            'notify::drop-backlog': GObject.Object.Notify;
-            'notify::mount-points': GObject.Object.Notify;
             'notify::mount-points': GObject.Object.Notify;
             'notify::post-session-timeout': GObject.Object.Notify;
-            'notify::post-session-timeout': GObject.Object.Notify;
-            'notify::session-pool': GObject.Object.Notify;
             'notify::session-pool': GObject.Object.Notify;
         }
 
@@ -2515,29 +2470,20 @@ export namespace GstRtspServer {
         // Signal signatures
         interface SignalSignatures extends RTSPMedia.SignalSignatures {
             'notify::bind-mcast-address': GObject.Object.Notify;
-            'notify::bind-mcast-address': GObject.Object.Notify;
-            'notify::buffer-size': GObject.Object.Notify;
             'notify::buffer-size': GObject.Object.Notify;
             'notify::clock': GObject.Object.Notify;
             'notify::dscp-qos': GObject.Object.Notify;
-            'notify::dscp-qos': GObject.Object.Notify;
             'notify::element': GObject.Object.Notify;
             'notify::eos-shutdown': GObject.Object.Notify;
-            'notify::eos-shutdown': GObject.Object.Notify;
             'notify::latency': GObject.Object.Notify;
-            'notify::max-mcast-ttl': GObject.Object.Notify;
             'notify::max-mcast-ttl': GObject.Object.Notify;
             'notify::profiles': GObject.Object.Notify;
             'notify::protocols': GObject.Object.Notify;
             'notify::reusable': GObject.Object.Notify;
             'notify::shared': GObject.Object.Notify;
             'notify::stop-on-disconnect': GObject.Object.Notify;
-            'notify::stop-on-disconnect': GObject.Object.Notify;
-            'notify::suspend-mode': GObject.Object.Notify;
             'notify::suspend-mode': GObject.Object.Notify;
             'notify::time-provider': GObject.Object.Notify;
-            'notify::time-provider': GObject.Object.Notify;
-            'notify::transport-mode': GObject.Object.Notify;
             'notify::transport-mode': GObject.Object.Notify;
         }
 
@@ -2603,28 +2549,19 @@ export namespace GstRtspServer {
         // Signal signatures
         interface SignalSignatures extends RTSPMediaFactory.SignalSignatures {
             'notify::bind-mcast-address': GObject.Object.Notify;
-            'notify::bind-mcast-address': GObject.Object.Notify;
-            'notify::buffer-size': GObject.Object.Notify;
             'notify::buffer-size': GObject.Object.Notify;
             'notify::clock': GObject.Object.Notify;
             'notify::dscp-qos': GObject.Object.Notify;
-            'notify::dscp-qos': GObject.Object.Notify;
             'notify::enable-rtcp': GObject.Object.Notify;
-            'notify::enable-rtcp': GObject.Object.Notify;
-            'notify::eos-shutdown': GObject.Object.Notify;
             'notify::eos-shutdown': GObject.Object.Notify;
             'notify::latency': GObject.Object.Notify;
             'notify::launch': GObject.Object.Notify;
-            'notify::max-mcast-ttl': GObject.Object.Notify;
             'notify::max-mcast-ttl': GObject.Object.Notify;
             'notify::profiles': GObject.Object.Notify;
             'notify::protocols': GObject.Object.Notify;
             'notify::shared': GObject.Object.Notify;
             'notify::stop-on-disconnect': GObject.Object.Notify;
-            'notify::stop-on-disconnect': GObject.Object.Notify;
             'notify::suspend-mode': GObject.Object.Notify;
-            'notify::suspend-mode': GObject.Object.Notify;
-            'notify::transport-mode': GObject.Object.Notify;
             'notify::transport-mode': GObject.Object.Notify;
         }
 
@@ -2737,13 +2674,9 @@ export namespace GstRtspServer {
             'notify::address': GObject.Object.Notify;
             'notify::backlog': GObject.Object.Notify;
             'notify::bound-port': GObject.Object.Notify;
-            'notify::bound-port': GObject.Object.Notify;
             'notify::content-length-limit': GObject.Object.Notify;
-            'notify::content-length-limit': GObject.Object.Notify;
-            'notify::mount-points': GObject.Object.Notify;
             'notify::mount-points': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
-            'notify::session-pool': GObject.Object.Notify;
             'notify::session-pool': GObject.Object.Notify;
         }
 
@@ -2795,13 +2728,9 @@ export namespace GstRtspServer {
             'notify::address': GObject.Object.Notify;
             'notify::backlog': GObject.Object.Notify;
             'notify::bound-port': GObject.Object.Notify;
-            'notify::bound-port': GObject.Object.Notify;
             'notify::content-length-limit': GObject.Object.Notify;
-            'notify::content-length-limit': GObject.Object.Notify;
-            'notify::mount-points': GObject.Object.Notify;
             'notify::mount-points': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
-            'notify::session-pool': GObject.Object.Notify;
             'notify::session-pool': GObject.Object.Notify;
         }
 
@@ -3069,10 +2998,8 @@ export namespace GstRtspServer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::extra-timeout': GObject.Object.Notify;
-            'notify::extra-timeout': GObject.Object.Notify;
             'notify::sessionid': GObject.Object.Notify;
             'notify::timeout': GObject.Object.Notify;
-            'notify::timeout-always-visible': GObject.Object.Notify;
             'notify::timeout-always-visible': GObject.Object.Notify;
         }
 
@@ -3365,7 +3292,6 @@ export namespace GstRtspServer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'session-removed': SessionRemoved;
-            'notify::max-sessions': GObject.Object.Notify;
             'notify::max-sessions': GObject.Object.Notify;
         }
 
@@ -4259,7 +4185,6 @@ export namespace GstRtspServer {
     namespace RTSPThreadPool {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::max-threads': GObject.Object.Notify;
             'notify::max-threads': GObject.Object.Notify;
         }
 

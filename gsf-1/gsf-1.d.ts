@@ -1282,8 +1282,6 @@ export namespace Gsf {
         // Signal signatures
         interface SignalSignatures extends Infile.SignalSignatures {
             'notify::compression-level': GObject.Object.Notify;
-            'notify::compression-level': GObject.Object.Notify;
-            'notify::internal-parent': GObject.Object.Notify;
             'notify::internal-parent': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
             'notify::zip64': GObject.Object.Notify;
@@ -1557,7 +1555,6 @@ export namespace Gsf {
             'notify::raw': GObject.Object.Notify;
             'notify::source': GObject.Object.Notify;
             'notify::uncompressed-size': GObject.Object.Notify;
-            'notify::uncompressed-size': GObject.Object.Notify;
             'notify::container': GObject.Object.Notify;
             'notify::eof': GObject.Object.Notify;
             'notify::modtime': GObject.Object.Notify;
@@ -1662,7 +1659,6 @@ export namespace Gsf {
     namespace InputHTTP {
         // Signal signatures
         interface SignalSignatures extends Input.SignalSignatures {
-            'notify::content-type': GObject.Object.Notify;
             'notify::content-type': GObject.Object.Notify;
             'notify::url': GObject.Object.Notify;
             'notify::container': GObject.Object.Notify;
@@ -1940,8 +1936,6 @@ export namespace Gsf {
         // Signal signatures
         interface SignalSignatures extends XMLOut.SignalSignatures {
             'notify::odf-version': GObject.Object.Notify;
-            'notify::odf-version': GObject.Object.Notify;
-            'notify::pretty-print': GObject.Object.Notify;
             'notify::pretty-print': GObject.Object.Notify;
             'notify::sink': GObject.Object.Notify;
         }
@@ -1995,7 +1989,6 @@ export namespace Gsf {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
             'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
             'notify::is-closed': GObject.Object.Notify;
             'notify::modtime': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -2054,12 +2047,9 @@ export namespace Gsf {
         // Signal signatures
         interface SignalSignatures extends Outfile.SignalSignatures {
             'notify::big-block-size': GObject.Object.Notify;
-            'notify::big-block-size': GObject.Object.Notify;
             'notify::sink': GObject.Object.Notify;
             'notify::small-block-size': GObject.Object.Notify;
-            'notify::small-block-size': GObject.Object.Notify;
             'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
             'notify::is-closed': GObject.Object.Notify;
             'notify::modtime': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -2131,12 +2121,9 @@ export namespace Gsf {
         // Signal signatures
         interface SignalSignatures extends Outfile.SignalSignatures {
             'notify::content-type': GObject.Object.Notify;
-            'notify::content-type': GObject.Object.Notify;
-            'notify::is-dir': GObject.Object.Notify;
             'notify::is-dir': GObject.Object.Notify;
             'notify::sink': GObject.Object.Notify;
             'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
             'notify::is-closed': GObject.Object.Notify;
             'notify::modtime': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -2221,7 +2208,6 @@ export namespace Gsf {
         interface SignalSignatures extends Outfile.SignalSignatures {
             'notify::container': GObject.Object.Notify;
             'notify::is-closed': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
             'notify::modtime': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::position': GObject.Object.Notify;
@@ -2267,15 +2253,11 @@ export namespace Gsf {
         // Signal signatures
         interface SignalSignatures extends Outfile.SignalSignatures {
             'notify::compression-level': GObject.Object.Notify;
-            'notify::compression-level': GObject.Object.Notify;
             'notify::deflate-level': GObject.Object.Notify;
-            'notify::deflate-level': GObject.Object.Notify;
-            'notify::entry-name': GObject.Object.Notify;
             'notify::entry-name': GObject.Object.Notify;
             'notify::sink': GObject.Object.Notify;
             'notify::zip64': GObject.Object.Notify;
             'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
             'notify::is-closed': GObject.Object.Notify;
             'notify::modtime': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -2346,7 +2328,6 @@ export namespace Gsf {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
             'notify::is-closed': GObject.Object.Notify;
             'notify::modtime': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -2532,7 +2513,6 @@ export namespace Gsf {
         interface SignalSignatures extends Output.SignalSignatures {
             'notify::container': GObject.Object.Notify;
             'notify::is-closed': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
             'notify::modtime': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::position': GObject.Object.Notify;
@@ -2580,15 +2560,11 @@ export namespace Gsf {
             'notify::eol': GObject.Object.Notify;
             'notify::quote': GObject.Object.Notify;
             'notify::quoting-mode': GObject.Object.Notify;
-            'notify::quoting-mode': GObject.Object.Notify;
             'notify::quoting-on-whitespace': GObject.Object.Notify;
-            'notify::quoting-on-whitespace': GObject.Object.Notify;
-            'notify::quoting-triggers': GObject.Object.Notify;
             'notify::quoting-triggers': GObject.Object.Notify;
             'notify::separator': GObject.Object.Notify;
             'notify::sink': GObject.Object.Notify;
             'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
             'notify::is-closed': GObject.Object.Notify;
             'notify::modtime': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -2678,11 +2654,9 @@ export namespace Gsf {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
             'notify::deflate-level': GObject.Object.Notify;
-            'notify::deflate-level': GObject.Object.Notify;
             'notify::raw': GObject.Object.Notify;
             'notify::sink': GObject.Object.Notify;
             'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
             'notify::is-closed': GObject.Object.Notify;
             'notify::modtime': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -2744,7 +2718,6 @@ export namespace Gsf {
         interface SignalSignatures extends Output.SignalSignatures {
             'notify::container': GObject.Object.Notify;
             'notify::is-closed': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
             'notify::modtime': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::position': GObject.Object.Notify;
@@ -2792,7 +2765,6 @@ export namespace Gsf {
         interface SignalSignatures extends Output.SignalSignatures {
             'notify::container': GObject.Object.Notify;
             'notify::is-closed': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
             'notify::modtime': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::position': GObject.Object.Notify;
@@ -2839,12 +2811,9 @@ export namespace Gsf {
         interface SignalSignatures extends Output.SignalSignatures {
             'notify::fallback': GObject.Object.Notify;
             'notify::input-charset': GObject.Object.Notify;
-            'notify::input-charset': GObject.Object.Notify;
-            'notify::output-charset': GObject.Object.Notify;
             'notify::output-charset': GObject.Object.Notify;
             'notify::sink': GObject.Object.Notify;
             'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
             'notify::is-closed': GObject.Object.Notify;
             'notify::modtime': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -2914,7 +2883,6 @@ export namespace Gsf {
         interface SignalSignatures extends Output.SignalSignatures {
             'notify::container': GObject.Object.Notify;
             'notify::is-closed': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
             'notify::modtime': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::position': GObject.Object.Notify;
@@ -2965,7 +2933,6 @@ export namespace Gsf {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
             'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
             'notify::is-closed': GObject.Object.Notify;
             'notify::modtime': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -3124,7 +3091,6 @@ export namespace Gsf {
     namespace XMLOut {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::pretty-print': GObject.Object.Notify;
             'notify::pretty-print': GObject.Object.Notify;
             'notify::sink': GObject.Object.Notify;
         }

@@ -1637,24 +1637,15 @@ export namespace Ggit {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::ancestor-label': GObject.Object.Notify;
-            'notify::ancestor-label': GObject.Object.Notify;
             'notify::baseline': GObject.Object.Notify;
             'notify::dir-mode': GObject.Object.Notify;
-            'notify::dir-mode': GObject.Object.Notify;
-            'notify::disable-filters': GObject.Object.Notify;
             'notify::disable-filters': GObject.Object.Notify;
             'notify::file-mode': GObject.Object.Notify;
-            'notify::file-mode': GObject.Object.Notify;
-            'notify::file-open-flags': GObject.Object.Notify;
             'notify::file-open-flags': GObject.Object.Notify;
             'notify::notify-flags': GObject.Object.Notify;
-            'notify::notify-flags': GObject.Object.Notify;
-            'notify::our-label': GObject.Object.Notify;
             'notify::our-label': GObject.Object.Notify;
             'notify::strategy': GObject.Object.Notify;
             'notify::target-directory': GObject.Object.Notify;
-            'notify::target-directory': GObject.Object.Notify;
-            'notify::their-label': GObject.Object.Notify;
             'notify::their-label': GObject.Object.Notify;
         }
 
@@ -1910,9 +1901,7 @@ export namespace Ggit {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::checkout-options': GObject.Object.Notify;
-            'notify::checkout-options': GObject.Object.Notify;
             'notify::mainline': GObject.Object.Notify;
-            'notify::merge-options': GObject.Object.Notify;
             'notify::merge-options': GObject.Object.Notify;
         }
 
@@ -4452,14 +4441,10 @@ export namespace Ggit {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::copy-threshold': GObject.Object.Notify;
-            'notify::copy-threshold': GObject.Object.Notify;
             'notify::flags': GObject.Object.Notify;
             'notify::metric': GObject.Object.Notify;
             'notify::rename-from-rewrite-threshold': GObject.Object.Notify;
-            'notify::rename-from-rewrite-threshold': GObject.Object.Notify;
             'notify::rename-limit': GObject.Object.Notify;
-            'notify::rename-limit': GObject.Object.Notify;
-            'notify::rename-threshold': GObject.Object.Notify;
             'notify::rename-threshold': GObject.Object.Notify;
         }
 
@@ -4609,9 +4594,7 @@ export namespace Ggit {
             'notify::flags': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::patch-number': GObject.Object.Notify;
-            'notify::patch-number': GObject.Object.Notify;
             'notify::summary': GObject.Object.Notify;
-            'notify::total-patches': GObject.Object.Notify;
             'notify::total-patches': GObject.Object.Notify;
         }
 
@@ -4759,12 +4742,8 @@ export namespace Ggit {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::flags': GObject.Object.Notify;
             'notify::n-context-lines': GObject.Object.Notify;
-            'notify::n-context-lines': GObject.Object.Notify;
-            'notify::n-interhunk-lines': GObject.Object.Notify;
             'notify::n-interhunk-lines': GObject.Object.Notify;
             'notify::new-prefix': GObject.Object.Notify;
-            'notify::new-prefix': GObject.Object.Notify;
-            'notify::old-prefix': GObject.Object.Notify;
             'notify::old-prefix': GObject.Object.Notify;
             'notify::pathspec': GObject.Object.Notify;
         }
@@ -6494,10 +6473,8 @@ export namespace Ggit {
         // Signal signatures
         interface SignalSignatures extends Native.SignalSignatures {
             'notify::clone-options': GObject.Object.Notify;
-            'notify::clone-options': GObject.Object.Notify;
             'notify::head': GObject.Object.Notify;
             'notify::init': GObject.Object.Notify;
-            'notify::is-bare': GObject.Object.Notify;
             'notify::is-bare': GObject.Object.Notify;
             'notify::location': GObject.Object.Notify;
             'notify::url': GObject.Object.Notify;
@@ -8673,8 +8650,6 @@ export namespace Ggit {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::checkout-options': GObject.Object.Notify;
-            'notify::checkout-options': GObject.Object.Notify;
-            'notify::fetch-options': GObject.Object.Notify;
             'notify::fetch-options': GObject.Object.Notify;
         }
 

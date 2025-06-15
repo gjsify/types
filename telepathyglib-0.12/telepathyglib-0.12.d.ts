@@ -4927,73 +4927,43 @@ export namespace TelepathyGLib {
             'presence-changed': PresenceChanged;
             'status-changed': StatusChanged;
             'notify::automatic-presence-type': GObject.Object.Notify;
-            'notify::automatic-presence-type': GObject.Object.Notify;
-            'notify::automatic-status': GObject.Object.Notify;
             'notify::automatic-status': GObject.Object.Notify;
             'notify::automatic-status-message': GObject.Object.Notify;
-            'notify::automatic-status-message': GObject.Object.Notify;
-            'notify::changing-presence': GObject.Object.Notify;
             'notify::changing-presence': GObject.Object.Notify;
             'notify::cm-name': GObject.Object.Notify;
-            'notify::cm-name': GObject.Object.Notify;
-            'notify::connect-automatically': GObject.Object.Notify;
             'notify::connect-automatically': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::connection-error': GObject.Object.Notify;
-            'notify::connection-error': GObject.Object.Notify;
-            'notify::connection-error-details': GObject.Object.Notify;
             'notify::connection-error-details': GObject.Object.Notify;
             'notify::connection-manager': GObject.Object.Notify;
-            'notify::connection-manager': GObject.Object.Notify;
-            'notify::connection-status': GObject.Object.Notify;
             'notify::connection-status': GObject.Object.Notify;
             'notify::connection-status-reason': GObject.Object.Notify;
-            'notify::connection-status-reason': GObject.Object.Notify;
-            'notify::current-presence-type': GObject.Object.Notify;
             'notify::current-presence-type': GObject.Object.Notify;
             'notify::current-status': GObject.Object.Notify;
-            'notify::current-status': GObject.Object.Notify;
             'notify::current-status-message': GObject.Object.Notify;
-            'notify::current-status-message': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
             'notify::enabled': GObject.Object.Notify;
             'notify::has-been-online': GObject.Object.Notify;
-            'notify::has-been-online': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
             'notify::nickname': GObject.Object.Notify;
             'notify::normalized-name': GObject.Object.Notify;
-            'notify::normalized-name': GObject.Object.Notify;
             'notify::protocol': GObject.Object.Notify;
             'notify::protocol-name': GObject.Object.Notify;
-            'notify::protocol-name': GObject.Object.Notify;
-            'notify::requested-presence-type': GObject.Object.Notify;
             'notify::requested-presence-type': GObject.Object.Notify;
             'notify::requested-status': GObject.Object.Notify;
-            'notify::requested-status': GObject.Object.Notify;
-            'notify::requested-status-message': GObject.Object.Notify;
             'notify::requested-status-message': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
             'notify::storage-identifier': GObject.Object.Notify;
-            'notify::storage-identifier': GObject.Object.Notify;
-            'notify::storage-identifier-variant': GObject.Object.Notify;
             'notify::storage-identifier-variant': GObject.Object.Notify;
             'notify::storage-provider': GObject.Object.Notify;
-            'notify::storage-provider': GObject.Object.Notify;
-            'notify::storage-restrictions': GObject.Object.Notify;
             'notify::storage-restrictions': GObject.Object.Notify;
             'notify::supersedes': GObject.Object.Notify;
             'notify::uri-schemes': GObject.Object.Notify;
-            'notify::uri-schemes': GObject.Object.Notify;
             'notify::valid': GObject.Object.Notify;
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 
@@ -6890,17 +6860,11 @@ export namespace TelepathyGLib {
             're-handled': ReHandled;
             'notify::account': GObject.Object.Notify;
             'notify::channel-request': GObject.Object.Notify;
-            'notify::channel-request': GObject.Object.Notify;
             'notify::request-vardict': GObject.Object.Notify;
-            'notify::request-vardict': GObject.Object.Notify;
-            'notify::user-action-time': GObject.Object.Notify;
             'notify::user-action-time': GObject.Object.Notify;
             're-handled::account': ReHandled;
             're-handled::channel-request': ReHandled;
-            're-handled::channel-request': ReHandled;
             're-handled::request-vardict': ReHandled;
-            're-handled::request-vardict': ReHandled;
-            're-handled::user-action-time': ReHandled;
             're-handled::user-action-time': ReHandled;
         }
 
@@ -7851,12 +7815,9 @@ export namespace TelepathyGLib {
             'account-validity-changed': AccountValidityChanged;
             'most-available-presence-changed': MostAvailablePresenceChanged;
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 
@@ -8180,37 +8141,24 @@ export namespace TelepathyGLib {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::account-manager': GObject.Object.Notify;
-            'notify::account-manager': GObject.Object.Notify;
-            'notify::automatic-presence-type': GObject.Object.Notify;
             'notify::automatic-presence-type': GObject.Object.Notify;
             'notify::automatic-status': GObject.Object.Notify;
-            'notify::automatic-status': GObject.Object.Notify;
-            'notify::automatic-status-message': GObject.Object.Notify;
             'notify::automatic-status-message': GObject.Object.Notify;
             'notify::avatar': GObject.Object.Notify;
             'notify::avatar-mime-type': GObject.Object.Notify;
-            'notify::avatar-mime-type': GObject.Object.Notify;
-            'notify::connect-automatically': GObject.Object.Notify;
             'notify::connect-automatically': GObject.Object.Notify;
             'notify::connection-manager': GObject.Object.Notify;
-            'notify::connection-manager': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
             'notify::display-name': GObject.Object.Notify;
             'notify::enabled': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
             'notify::nickname': GObject.Object.Notify;
             'notify::parameters': GObject.Object.Notify;
             'notify::properties': GObject.Object.Notify;
             'notify::protocol': GObject.Object.Notify;
             'notify::requested-presence-type': GObject.Object.Notify;
-            'notify::requested-presence-type': GObject.Object.Notify;
             'notify::requested-status': GObject.Object.Notify;
-            'notify::requested-status': GObject.Object.Notify;
-            'notify::requested-status-message': GObject.Object.Notify;
             'notify::requested-status-message': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
-            'notify::storage-provider': GObject.Object.Notify;
             'notify::storage-provider': GObject.Object.Notify;
             'notify::supersedes': GObject.Object.Notify;
         }
@@ -8650,7 +8598,6 @@ export namespace TelepathyGLib {
             'notify::channels': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::dispatch-operation': GObject.Object.Notify;
-            'notify::dispatch-operation': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -8764,7 +8711,6 @@ export namespace TelepathyGLib {
     namespace AutomaticClientFactory {
         // Signal signatures
         interface SignalSignatures extends SimpleClientFactory.SignalSignatures {
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
         }
 
@@ -9342,34 +9288,22 @@ export namespace TelepathyGLib {
             'request-added': RequestAdded;
             'request-removed': RequestRemoved;
             'notify::account-manager': GObject.Object.Notify;
-            'notify::account-manager': GObject.Object.Notify;
             'notify::channel-factory': GObject.Object.Notify;
-            'notify::channel-factory': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::uniquify-name': GObject.Object.Notify;
-            'notify::uniquify-name': GObject.Object.Notify;
-            'request-added::account-manager': RequestAdded;
             'request-added::account-manager': RequestAdded;
             'request-added::channel-factory': RequestAdded;
-            'request-added::channel-factory': RequestAdded;
-            'request-added::dbus-daemon': RequestAdded;
             'request-added::dbus-daemon': RequestAdded;
             'request-added::factory': RequestAdded;
             'request-added::name': RequestAdded;
             'request-added::uniquify-name': RequestAdded;
-            'request-added::uniquify-name': RequestAdded;
-            'request-removed::account-manager': RequestRemoved;
             'request-removed::account-manager': RequestRemoved;
             'request-removed::channel-factory': RequestRemoved;
-            'request-removed::channel-factory': RequestRemoved;
-            'request-removed::dbus-daemon': RequestRemoved;
             'request-removed::dbus-daemon': RequestRemoved;
             'request-removed::factory': RequestRemoved;
             'request-removed::name': RequestRemoved;
-            'request-removed::uniquify-name': RequestRemoved;
             'request-removed::uniquify-name': RequestRemoved;
         }
 
@@ -9961,20 +9895,12 @@ export namespace TelepathyGLib {
             'clients-uninterested': ClientsUninterested;
             'shutdown-finished': ShutdownFinished;
             'notify::account-path-suffix': GObject.Object.Notify;
-            'notify::account-path-suffix': GObject.Object.Notify;
-            'notify::has-immortal-handles': GObject.Object.Notify;
             'notify::has-immortal-handles': GObject.Object.Notify;
             'clients-interested::account-path-suffix': ClientsInterested;
-            'clients-interested::account-path-suffix': ClientsInterested;
-            'clients-interested::has-immortal-handles': ClientsInterested;
             'clients-interested::has-immortal-handles': ClientsInterested;
             'clients-uninterested::account-path-suffix': ClientsUninterested;
-            'clients-uninterested::account-path-suffix': ClientsUninterested;
-            'clients-uninterested::has-immortal-handles': ClientsUninterested;
             'clients-uninterested::has-immortal-handles': ClientsUninterested;
             'shutdown-finished::account-path-suffix': ShutdownFinished;
-            'shutdown-finished::account-path-suffix': ShutdownFinished;
-            'shutdown-finished::has-immortal-handles': ShutdownFinished;
             'shutdown-finished::has-immortal-handles': ShutdownFinished;
         }
 
@@ -10794,54 +10720,32 @@ export namespace TelepathyGLib {
             'notify::contents': GObject.Object.Notify;
             'notify::flags': GObject.Object.Notify;
             'notify::hardware-streaming': GObject.Object.Notify;
-            'notify::hardware-streaming': GObject.Object.Notify;
-            'notify::hold-state': GObject.Object.Notify;
             'notify::hold-state': GObject.Object.Notify;
             'notify::hold-state-reason': GObject.Object.Notify;
-            'notify::hold-state-reason': GObject.Object.Notify;
-            'notify::initial-audio': GObject.Object.Notify;
             'notify::initial-audio': GObject.Object.Notify;
             'notify::initial-audio-name': GObject.Object.Notify;
-            'notify::initial-audio-name': GObject.Object.Notify;
-            'notify::initial-video': GObject.Object.Notify;
             'notify::initial-video': GObject.Object.Notify;
             'notify::initial-video-name': GObject.Object.Notify;
-            'notify::initial-video-name': GObject.Object.Notify;
-            'notify::mutable-contents': GObject.Object.Notify;
             'notify::mutable-contents': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::state-details': GObject.Object.Notify;
-            'notify::state-details': GObject.Object.Notify;
             'notify::state-reason': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::channel-ready': GObject.Object.Notify;
             'notify::channel-ready': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::group-flags': GObject.Object.Notify;
-            'notify::group-flags': GObject.Object.Notify;
             'notify::group-self-contact': GObject.Object.Notify;
-            'notify::group-self-contact': GObject.Object.Notify;
-            'notify::group-self-handle': GObject.Object.Notify;
             'notify::group-self-handle': GObject.Object.Notify;
             'notify::identifier': GObject.Object.Notify;
             'notify::initiator-contact': GObject.Object.Notify;
-            'notify::initiator-contact': GObject.Object.Notify;
-            'notify::initiator-handle': GObject.Object.Notify;
             'notify::initiator-handle': GObject.Object.Notify;
             'notify::initiator-identifier': GObject.Object.Notify;
-            'notify::initiator-identifier': GObject.Object.Notify;
-            'notify::password-needed': GObject.Object.Notify;
             'notify::password-needed': GObject.Object.Notify;
             'notify::requested': GObject.Object.Notify;
             'notify::target-contact': GObject.Object.Notify;
-            'notify::target-contact': GObject.Object.Notify;
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 
@@ -11342,16 +11246,12 @@ export namespace TelepathyGLib {
             'notify::connection': GObject.Object.Notify;
             'notify::disposition': GObject.Object.Notify;
             'notify::media-type': GObject.Object.Notify;
-            'notify::media-type': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::streams': GObject.Object.Notify;
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 
@@ -11556,18 +11456,13 @@ export namespace TelepathyGLib {
             'local-sending-state-changed': LocalSendingStateChanged;
             'remote-members-changed': RemoteMembersChanged;
             'notify::can-request-receiving': GObject.Object.Notify;
-            'notify::can-request-receiving': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::content': GObject.Object.Notify;
             'notify::local-sending-state': GObject.Object.Notify;
-            'notify::local-sending-state': GObject.Object.Notify;
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 
@@ -11767,8 +11662,6 @@ export namespace TelepathyGLib {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::channel-classes-variant': GObject.Object.Notify;
-            'notify::channel-classes-variant': GObject.Object.Notify;
-            'notify::contact-specific': GObject.Object.Notify;
             'notify::contact-specific': GObject.Object.Notify;
         }
 
@@ -12103,178 +11996,106 @@ export namespace TelepathyGLib {
             'group-members-changed': GroupMembersChanged;
             'group-members-changed-detailed': GroupMembersChangedDetailed;
             'notify::channel-ready': GObject.Object.Notify;
-            'notify::channel-ready': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::group-flags': GObject.Object.Notify;
-            'notify::group-flags': GObject.Object.Notify;
             'notify::group-self-contact': GObject.Object.Notify;
-            'notify::group-self-contact': GObject.Object.Notify;
-            'notify::group-self-handle': GObject.Object.Notify;
             'notify::group-self-handle': GObject.Object.Notify;
             'notify::identifier': GObject.Object.Notify;
             'notify::initiator-contact': GObject.Object.Notify;
-            'notify::initiator-contact': GObject.Object.Notify;
-            'notify::initiator-handle': GObject.Object.Notify;
             'notify::initiator-handle': GObject.Object.Notify;
             'notify::initiator-identifier': GObject.Object.Notify;
-            'notify::initiator-identifier': GObject.Object.Notify;
-            'notify::password-needed': GObject.Object.Notify;
             'notify::password-needed': GObject.Object.Notify;
             'notify::requested': GObject.Object.Notify;
             'notify::target-contact': GObject.Object.Notify;
-            'notify::target-contact': GObject.Object.Notify;
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
-            'chat-state-changed::channel-ready': ChatStateChanged;
             'chat-state-changed::channel-ready': ChatStateChanged;
             'chat-state-changed::connection': ChatStateChanged;
             'chat-state-changed::group-flags': ChatStateChanged;
-            'chat-state-changed::group-flags': ChatStateChanged;
             'chat-state-changed::group-self-contact': ChatStateChanged;
-            'chat-state-changed::group-self-contact': ChatStateChanged;
-            'chat-state-changed::group-self-handle': ChatStateChanged;
             'chat-state-changed::group-self-handle': ChatStateChanged;
             'chat-state-changed::identifier': ChatStateChanged;
             'chat-state-changed::initiator-contact': ChatStateChanged;
-            'chat-state-changed::initiator-contact': ChatStateChanged;
-            'chat-state-changed::initiator-handle': ChatStateChanged;
             'chat-state-changed::initiator-handle': ChatStateChanged;
             'chat-state-changed::initiator-identifier': ChatStateChanged;
-            'chat-state-changed::initiator-identifier': ChatStateChanged;
-            'chat-state-changed::password-needed': ChatStateChanged;
             'chat-state-changed::password-needed': ChatStateChanged;
             'chat-state-changed::requested': ChatStateChanged;
             'chat-state-changed::target-contact': ChatStateChanged;
-            'chat-state-changed::target-contact': ChatStateChanged;
             'chat-state-changed::bus-name': ChatStateChanged;
-            'chat-state-changed::bus-name': ChatStateChanged;
-            'chat-state-changed::dbus-daemon': ChatStateChanged;
             'chat-state-changed::dbus-daemon': ChatStateChanged;
             'chat-state-changed::factory': ChatStateChanged;
             'chat-state-changed::interfaces': ChatStateChanged;
             'chat-state-changed::object-path': ChatStateChanged;
-            'chat-state-changed::object-path': ChatStateChanged;
-            'group-contacts-changed::channel-ready': GroupContactsChanged;
             'group-contacts-changed::channel-ready': GroupContactsChanged;
             'group-contacts-changed::connection': GroupContactsChanged;
             'group-contacts-changed::group-flags': GroupContactsChanged;
-            'group-contacts-changed::group-flags': GroupContactsChanged;
             'group-contacts-changed::group-self-contact': GroupContactsChanged;
-            'group-contacts-changed::group-self-contact': GroupContactsChanged;
-            'group-contacts-changed::group-self-handle': GroupContactsChanged;
             'group-contacts-changed::group-self-handle': GroupContactsChanged;
             'group-contacts-changed::identifier': GroupContactsChanged;
             'group-contacts-changed::initiator-contact': GroupContactsChanged;
-            'group-contacts-changed::initiator-contact': GroupContactsChanged;
-            'group-contacts-changed::initiator-handle': GroupContactsChanged;
             'group-contacts-changed::initiator-handle': GroupContactsChanged;
             'group-contacts-changed::initiator-identifier': GroupContactsChanged;
-            'group-contacts-changed::initiator-identifier': GroupContactsChanged;
-            'group-contacts-changed::password-needed': GroupContactsChanged;
             'group-contacts-changed::password-needed': GroupContactsChanged;
             'group-contacts-changed::requested': GroupContactsChanged;
             'group-contacts-changed::target-contact': GroupContactsChanged;
-            'group-contacts-changed::target-contact': GroupContactsChanged;
             'group-contacts-changed::bus-name': GroupContactsChanged;
-            'group-contacts-changed::bus-name': GroupContactsChanged;
-            'group-contacts-changed::dbus-daemon': GroupContactsChanged;
             'group-contacts-changed::dbus-daemon': GroupContactsChanged;
             'group-contacts-changed::factory': GroupContactsChanged;
             'group-contacts-changed::interfaces': GroupContactsChanged;
             'group-contacts-changed::object-path': GroupContactsChanged;
-            'group-contacts-changed::object-path': GroupContactsChanged;
-            'group-flags-changed::channel-ready': GroupFlagsChanged;
             'group-flags-changed::channel-ready': GroupFlagsChanged;
             'group-flags-changed::connection': GroupFlagsChanged;
             'group-flags-changed::group-flags': GroupFlagsChanged;
-            'group-flags-changed::group-flags': GroupFlagsChanged;
             'group-flags-changed::group-self-contact': GroupFlagsChanged;
-            'group-flags-changed::group-self-contact': GroupFlagsChanged;
-            'group-flags-changed::group-self-handle': GroupFlagsChanged;
             'group-flags-changed::group-self-handle': GroupFlagsChanged;
             'group-flags-changed::identifier': GroupFlagsChanged;
             'group-flags-changed::initiator-contact': GroupFlagsChanged;
-            'group-flags-changed::initiator-contact': GroupFlagsChanged;
-            'group-flags-changed::initiator-handle': GroupFlagsChanged;
             'group-flags-changed::initiator-handle': GroupFlagsChanged;
             'group-flags-changed::initiator-identifier': GroupFlagsChanged;
-            'group-flags-changed::initiator-identifier': GroupFlagsChanged;
-            'group-flags-changed::password-needed': GroupFlagsChanged;
             'group-flags-changed::password-needed': GroupFlagsChanged;
             'group-flags-changed::requested': GroupFlagsChanged;
             'group-flags-changed::target-contact': GroupFlagsChanged;
-            'group-flags-changed::target-contact': GroupFlagsChanged;
             'group-flags-changed::bus-name': GroupFlagsChanged;
-            'group-flags-changed::bus-name': GroupFlagsChanged;
-            'group-flags-changed::dbus-daemon': GroupFlagsChanged;
             'group-flags-changed::dbus-daemon': GroupFlagsChanged;
             'group-flags-changed::factory': GroupFlagsChanged;
             'group-flags-changed::interfaces': GroupFlagsChanged;
             'group-flags-changed::object-path': GroupFlagsChanged;
-            'group-flags-changed::object-path': GroupFlagsChanged;
-            'group-members-changed::channel-ready': GroupMembersChanged;
             'group-members-changed::channel-ready': GroupMembersChanged;
             'group-members-changed::connection': GroupMembersChanged;
             'group-members-changed::group-flags': GroupMembersChanged;
-            'group-members-changed::group-flags': GroupMembersChanged;
             'group-members-changed::group-self-contact': GroupMembersChanged;
-            'group-members-changed::group-self-contact': GroupMembersChanged;
-            'group-members-changed::group-self-handle': GroupMembersChanged;
             'group-members-changed::group-self-handle': GroupMembersChanged;
             'group-members-changed::identifier': GroupMembersChanged;
             'group-members-changed::initiator-contact': GroupMembersChanged;
-            'group-members-changed::initiator-contact': GroupMembersChanged;
-            'group-members-changed::initiator-handle': GroupMembersChanged;
             'group-members-changed::initiator-handle': GroupMembersChanged;
             'group-members-changed::initiator-identifier': GroupMembersChanged;
-            'group-members-changed::initiator-identifier': GroupMembersChanged;
-            'group-members-changed::password-needed': GroupMembersChanged;
             'group-members-changed::password-needed': GroupMembersChanged;
             'group-members-changed::requested': GroupMembersChanged;
             'group-members-changed::target-contact': GroupMembersChanged;
-            'group-members-changed::target-contact': GroupMembersChanged;
             'group-members-changed::bus-name': GroupMembersChanged;
-            'group-members-changed::bus-name': GroupMembersChanged;
-            'group-members-changed::dbus-daemon': GroupMembersChanged;
             'group-members-changed::dbus-daemon': GroupMembersChanged;
             'group-members-changed::factory': GroupMembersChanged;
             'group-members-changed::interfaces': GroupMembersChanged;
             'group-members-changed::object-path': GroupMembersChanged;
-            'group-members-changed::object-path': GroupMembersChanged;
-            'group-members-changed-detailed::channel-ready': GroupMembersChangedDetailed;
             'group-members-changed-detailed::channel-ready': GroupMembersChangedDetailed;
             'group-members-changed-detailed::connection': GroupMembersChangedDetailed;
             'group-members-changed-detailed::group-flags': GroupMembersChangedDetailed;
-            'group-members-changed-detailed::group-flags': GroupMembersChangedDetailed;
             'group-members-changed-detailed::group-self-contact': GroupMembersChangedDetailed;
-            'group-members-changed-detailed::group-self-contact': GroupMembersChangedDetailed;
-            'group-members-changed-detailed::group-self-handle': GroupMembersChangedDetailed;
             'group-members-changed-detailed::group-self-handle': GroupMembersChangedDetailed;
             'group-members-changed-detailed::identifier': GroupMembersChangedDetailed;
             'group-members-changed-detailed::initiator-contact': GroupMembersChangedDetailed;
-            'group-members-changed-detailed::initiator-contact': GroupMembersChangedDetailed;
-            'group-members-changed-detailed::initiator-handle': GroupMembersChangedDetailed;
             'group-members-changed-detailed::initiator-handle': GroupMembersChangedDetailed;
             'group-members-changed-detailed::initiator-identifier': GroupMembersChangedDetailed;
-            'group-members-changed-detailed::initiator-identifier': GroupMembersChangedDetailed;
-            'group-members-changed-detailed::password-needed': GroupMembersChangedDetailed;
             'group-members-changed-detailed::password-needed': GroupMembersChangedDetailed;
             'group-members-changed-detailed::requested': GroupMembersChangedDetailed;
             'group-members-changed-detailed::target-contact': GroupMembersChangedDetailed;
-            'group-members-changed-detailed::target-contact': GroupMembersChangedDetailed;
             'group-members-changed-detailed::bus-name': GroupMembersChangedDetailed;
-            'group-members-changed-detailed::bus-name': GroupMembersChangedDetailed;
-            'group-members-changed-detailed::dbus-daemon': GroupMembersChangedDetailed;
             'group-members-changed-detailed::dbus-daemon': GroupMembersChangedDetailed;
             'group-members-changed-detailed::factory': GroupMembersChangedDetailed;
             'group-members-changed-detailed::interfaces': GroupMembersChangedDetailed;
-            'group-members-changed-detailed::object-path': GroupMembersChangedDetailed;
             'group-members-changed-detailed::object-path': GroupMembersChangedDetailed;
         }
 
@@ -13213,27 +13034,19 @@ export namespace TelepathyGLib {
             'notify::channels': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::possible-handlers': GObject.Object.Notify;
-            'notify::possible-handlers': GObject.Object.Notify;
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
             'channel-lost::account': ChannelLost;
             'channel-lost::channels': ChannelLost;
             'channel-lost::connection': ChannelLost;
             'channel-lost::possible-handlers': ChannelLost;
-            'channel-lost::possible-handlers': ChannelLost;
             'channel-lost::bus-name': ChannelLost;
-            'channel-lost::bus-name': ChannelLost;
-            'channel-lost::dbus-daemon': ChannelLost;
             'channel-lost::dbus-daemon': ChannelLost;
             'channel-lost::factory': ChannelLost;
             'channel-lost::interfaces': ChannelLost;
-            'channel-lost::object-path': ChannelLost;
             'channel-lost::object-path': ChannelLost;
         }
 
@@ -13881,12 +13694,9 @@ export namespace TelepathyGLib {
         // Signal signatures
         interface SignalSignatures extends Proxy.SignalSignatures {
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 
@@ -14018,60 +13828,36 @@ export namespace TelepathyGLib {
             'succeeded-with-channel': SucceededWithChannel;
             'notify::account': GObject.Object.Notify;
             'notify::channel-factory': GObject.Object.Notify;
-            'notify::channel-factory': GObject.Object.Notify;
-            'notify::hints-vardict': GObject.Object.Notify;
             'notify::hints-vardict': GObject.Object.Notify;
             'notify::immutable-properties-vardict': GObject.Object.Notify;
-            'notify::immutable-properties-vardict': GObject.Object.Notify;
-            'notify::preferred-handler': GObject.Object.Notify;
             'notify::preferred-handler': GObject.Object.Notify;
             'notify::user-action-time': GObject.Object.Notify;
-            'notify::user-action-time': GObject.Object.Notify;
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'succeeded::account': Succeeded;
             'succeeded::channel-factory': Succeeded;
-            'succeeded::channel-factory': Succeeded;
-            'succeeded::hints-vardict': Succeeded;
             'succeeded::hints-vardict': Succeeded;
             'succeeded::immutable-properties-vardict': Succeeded;
-            'succeeded::immutable-properties-vardict': Succeeded;
-            'succeeded::preferred-handler': Succeeded;
             'succeeded::preferred-handler': Succeeded;
             'succeeded::user-action-time': Succeeded;
-            'succeeded::user-action-time': Succeeded;
             'succeeded::bus-name': Succeeded;
-            'succeeded::bus-name': Succeeded;
-            'succeeded::dbus-daemon': Succeeded;
             'succeeded::dbus-daemon': Succeeded;
             'succeeded::factory': Succeeded;
             'succeeded::interfaces': Succeeded;
             'succeeded::object-path': Succeeded;
-            'succeeded::object-path': Succeeded;
             'succeeded-with-channel::account': SucceededWithChannel;
             'succeeded-with-channel::channel-factory': SucceededWithChannel;
-            'succeeded-with-channel::channel-factory': SucceededWithChannel;
-            'succeeded-with-channel::hints-vardict': SucceededWithChannel;
             'succeeded-with-channel::hints-vardict': SucceededWithChannel;
             'succeeded-with-channel::immutable-properties-vardict': SucceededWithChannel;
-            'succeeded-with-channel::immutable-properties-vardict': SucceededWithChannel;
-            'succeeded-with-channel::preferred-handler': SucceededWithChannel;
             'succeeded-with-channel::preferred-handler': SucceededWithChannel;
             'succeeded-with-channel::user-action-time': SucceededWithChannel;
-            'succeeded-with-channel::user-action-time': SucceededWithChannel;
             'succeeded-with-channel::bus-name': SucceededWithChannel;
-            'succeeded-with-channel::bus-name': SucceededWithChannel;
-            'succeeded-with-channel::dbus-daemon': SucceededWithChannel;
             'succeeded-with-channel::dbus-daemon': SucceededWithChannel;
             'succeeded-with-channel::factory': SucceededWithChannel;
             'succeeded-with-channel::interfaces': SucceededWithChannel;
-            'succeeded-with-channel::object-path': SucceededWithChannel;
             'succeeded-with-channel::object-path': SucceededWithChannel;
         }
 
@@ -14394,101 +14180,57 @@ export namespace TelepathyGLib {
             'groups-removed': GroupsRemoved;
             'notify::balance': GObject.Object.Notify;
             'notify::balance-currency': GObject.Object.Notify;
-            'notify::balance-currency': GObject.Object.Notify;
-            'notify::balance-scale': GObject.Object.Notify;
             'notify::balance-scale': GObject.Object.Notify;
             'notify::balance-uri': GObject.Object.Notify;
-            'notify::balance-uri': GObject.Object.Notify;
-            'notify::blocked-contacts': GObject.Object.Notify;
             'notify::blocked-contacts': GObject.Object.Notify;
             'notify::can-change-contact-list': GObject.Object.Notify;
-            'notify::can-change-contact-list': GObject.Object.Notify;
-            'notify::can-report-abusive': GObject.Object.Notify;
             'notify::can-report-abusive': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::cm-name': GObject.Object.Notify;
-            'notify::cm-name': GObject.Object.Notify;
-            'notify::connection-manager-name': GObject.Object.Notify;
             'notify::connection-manager-name': GObject.Object.Notify;
             'notify::connection-ready': GObject.Object.Notify;
-            'notify::connection-ready': GObject.Object.Notify;
-            'notify::contact-groups': GObject.Object.Notify;
             'notify::contact-groups': GObject.Object.Notify;
             'notify::contact-list-persists': GObject.Object.Notify;
-            'notify::contact-list-persists': GObject.Object.Notify;
-            'notify::contact-list-state': GObject.Object.Notify;
             'notify::contact-list-state': GObject.Object.Notify;
             'notify::disjoint-groups': GObject.Object.Notify;
-            'notify::disjoint-groups': GObject.Object.Notify;
-            'notify::group-storage': GObject.Object.Notify;
             'notify::group-storage': GObject.Object.Notify;
             'notify::protocol-name': GObject.Object.Notify;
-            'notify::protocol-name': GObject.Object.Notify;
-            'notify::request-uses-message': GObject.Object.Notify;
             'notify::request-uses-message': GObject.Object.Notify;
             'notify::self-contact': GObject.Object.Notify;
-            'notify::self-contact': GObject.Object.Notify;
-            'notify::self-handle': GObject.Object.Notify;
             'notify::self-handle': GObject.Object.Notify;
             'notify::status': GObject.Object.Notify;
             'notify::status-reason': GObject.Object.Notify;
-            'notify::status-reason': GObject.Object.Notify;
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'balance-changed::balance': BalanceChanged;
             'balance-changed::balance-currency': BalanceChanged;
-            'balance-changed::balance-currency': BalanceChanged;
-            'balance-changed::balance-scale': BalanceChanged;
             'balance-changed::balance-scale': BalanceChanged;
             'balance-changed::balance-uri': BalanceChanged;
-            'balance-changed::balance-uri': BalanceChanged;
-            'balance-changed::blocked-contacts': BalanceChanged;
             'balance-changed::blocked-contacts': BalanceChanged;
             'balance-changed::can-change-contact-list': BalanceChanged;
-            'balance-changed::can-change-contact-list': BalanceChanged;
-            'balance-changed::can-report-abusive': BalanceChanged;
             'balance-changed::can-report-abusive': BalanceChanged;
             'balance-changed::capabilities': BalanceChanged;
             'balance-changed::cm-name': BalanceChanged;
-            'balance-changed::cm-name': BalanceChanged;
-            'balance-changed::connection-manager-name': BalanceChanged;
             'balance-changed::connection-manager-name': BalanceChanged;
             'balance-changed::connection-ready': BalanceChanged;
-            'balance-changed::connection-ready': BalanceChanged;
-            'balance-changed::contact-groups': BalanceChanged;
             'balance-changed::contact-groups': BalanceChanged;
             'balance-changed::contact-list-persists': BalanceChanged;
-            'balance-changed::contact-list-persists': BalanceChanged;
-            'balance-changed::contact-list-state': BalanceChanged;
             'balance-changed::contact-list-state': BalanceChanged;
             'balance-changed::disjoint-groups': BalanceChanged;
-            'balance-changed::disjoint-groups': BalanceChanged;
-            'balance-changed::group-storage': BalanceChanged;
             'balance-changed::group-storage': BalanceChanged;
             'balance-changed::protocol-name': BalanceChanged;
-            'balance-changed::protocol-name': BalanceChanged;
-            'balance-changed::request-uses-message': BalanceChanged;
             'balance-changed::request-uses-message': BalanceChanged;
             'balance-changed::self-contact': BalanceChanged;
-            'balance-changed::self-contact': BalanceChanged;
-            'balance-changed::self-handle': BalanceChanged;
             'balance-changed::self-handle': BalanceChanged;
             'balance-changed::status': BalanceChanged;
             'balance-changed::status-reason': BalanceChanged;
-            'balance-changed::status-reason': BalanceChanged;
             'balance-changed::bus-name': BalanceChanged;
-            'balance-changed::bus-name': BalanceChanged;
-            'balance-changed::dbus-daemon': BalanceChanged;
             'balance-changed::dbus-daemon': BalanceChanged;
             'balance-changed::factory': BalanceChanged;
             'balance-changed::interfaces': BalanceChanged;
-            'balance-changed::object-path': BalanceChanged;
             'balance-changed::object-path': BalanceChanged;
         }
 
@@ -16184,76 +15926,44 @@ export namespace TelepathyGLib {
             exited: Exited;
             'got-info': GotInfo;
             'notify::always-introspect': GObject.Object.Notify;
-            'notify::always-introspect': GObject.Object.Notify;
-            'notify::cm-name': GObject.Object.Notify;
             'notify::cm-name': GObject.Object.Notify;
             'notify::connection-manager': GObject.Object.Notify;
-            'notify::connection-manager': GObject.Object.Notify;
-            'notify::info-source': GObject.Object.Notify;
             'notify::info-source': GObject.Object.Notify;
             'notify::manager-file': GObject.Object.Notify;
-            'notify::manager-file': GObject.Object.Notify;
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
-            'activated::always-introspect': Activated;
             'activated::always-introspect': Activated;
             'activated::cm-name': Activated;
-            'activated::cm-name': Activated;
-            'activated::connection-manager': Activated;
             'activated::connection-manager': Activated;
             'activated::info-source': Activated;
-            'activated::info-source': Activated;
-            'activated::manager-file': Activated;
             'activated::manager-file': Activated;
             'activated::bus-name': Activated;
-            'activated::bus-name': Activated;
-            'activated::dbus-daemon': Activated;
             'activated::dbus-daemon': Activated;
             'activated::factory': Activated;
             'activated::interfaces': Activated;
             'activated::object-path': Activated;
-            'activated::object-path': Activated;
-            'exited::always-introspect': Exited;
             'exited::always-introspect': Exited;
             'exited::cm-name': Exited;
-            'exited::cm-name': Exited;
-            'exited::connection-manager': Exited;
             'exited::connection-manager': Exited;
             'exited::info-source': Exited;
-            'exited::info-source': Exited;
-            'exited::manager-file': Exited;
             'exited::manager-file': Exited;
             'exited::bus-name': Exited;
-            'exited::bus-name': Exited;
-            'exited::dbus-daemon': Exited;
             'exited::dbus-daemon': Exited;
             'exited::factory': Exited;
             'exited::interfaces': Exited;
             'exited::object-path': Exited;
-            'exited::object-path': Exited;
-            'got-info::always-introspect': GotInfo;
             'got-info::always-introspect': GotInfo;
             'got-info::cm-name': GotInfo;
-            'got-info::cm-name': GotInfo;
-            'got-info::connection-manager': GotInfo;
             'got-info::connection-manager': GotInfo;
             'got-info::info-source': GotInfo;
-            'got-info::info-source': GotInfo;
-            'got-info::manager-file': GotInfo;
             'got-info::manager-file': GotInfo;
             'got-info::bus-name': GotInfo;
-            'got-info::bus-name': GotInfo;
-            'got-info::dbus-daemon': GotInfo;
             'got-info::dbus-daemon': GotInfo;
             'got-info::factory': GotInfo;
             'got-info::interfaces': GotInfo;
-            'got-info::object-path': GotInfo;
             'got-info::object-path': GotInfo;
         }
 
@@ -16546,36 +16256,22 @@ export namespace TelepathyGLib {
             'subscription-states-changed': SubscriptionStatesChanged;
             'notify::alias': GObject.Object.Notify;
             'notify::avatar-file': GObject.Object.Notify;
-            'notify::avatar-file': GObject.Object.Notify;
             'notify::avatar-mime-type': GObject.Object.Notify;
-            'notify::avatar-mime-type': GObject.Object.Notify;
-            'notify::avatar-token': GObject.Object.Notify;
             'notify::avatar-token': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::client-types': GObject.Object.Notify;
-            'notify::client-types': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::contact-groups': GObject.Object.Notify;
-            'notify::contact-groups': GObject.Object.Notify;
-            'notify::contact-info': GObject.Object.Notify;
             'notify::contact-info': GObject.Object.Notify;
             'notify::handle': GObject.Object.Notify;
             'notify::identifier': GObject.Object.Notify;
             'notify::is-blocked': GObject.Object.Notify;
-            'notify::is-blocked': GObject.Object.Notify;
-            'notify::location-vardict': GObject.Object.Notify;
             'notify::location-vardict': GObject.Object.Notify;
             'notify::presence-message': GObject.Object.Notify;
-            'notify::presence-message': GObject.Object.Notify;
-            'notify::presence-status': GObject.Object.Notify;
             'notify::presence-status': GObject.Object.Notify;
             'notify::presence-type': GObject.Object.Notify;
-            'notify::presence-type': GObject.Object.Notify;
-            'notify::publish-request': GObject.Object.Notify;
             'notify::publish-request': GObject.Object.Notify;
             'notify::publish-state': GObject.Object.Notify;
-            'notify::publish-state': GObject.Object.Notify;
-            'notify::subscribe-state': GObject.Object.Notify;
             'notify::subscribe-state': GObject.Object.Notify;
         }
 
@@ -18432,12 +18128,9 @@ export namespace TelepathyGLib {
         // Signal signatures
         interface SignalSignatures extends Proxy.SignalSignatures {
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 
@@ -18581,37 +18274,23 @@ export namespace TelepathyGLib {
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
             'notify::parameters-vardict': GObject.Object.Notify;
-            'notify::parameters-vardict': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
-            'notify::channel-ready': GObject.Object.Notify;
             'notify::channel-ready': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::group-flags': GObject.Object.Notify;
-            'notify::group-flags': GObject.Object.Notify;
             'notify::group-self-contact': GObject.Object.Notify;
-            'notify::group-self-contact': GObject.Object.Notify;
-            'notify::group-self-handle': GObject.Object.Notify;
             'notify::group-self-handle': GObject.Object.Notify;
             'notify::identifier': GObject.Object.Notify;
             'notify::initiator-contact': GObject.Object.Notify;
-            'notify::initiator-contact': GObject.Object.Notify;
-            'notify::initiator-handle': GObject.Object.Notify;
             'notify::initiator-handle': GObject.Object.Notify;
             'notify::initiator-identifier': GObject.Object.Notify;
-            'notify::initiator-identifier': GObject.Object.Notify;
-            'notify::password-needed': GObject.Object.Notify;
             'notify::password-needed': GObject.Object.Notify;
             'notify::requested': GObject.Object.Notify;
             'notify::target-contact': GObject.Object.Notify;
-            'notify::target-contact': GObject.Object.Notify;
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 
@@ -18783,12 +18462,9 @@ export namespace TelepathyGLib {
             'new-debug-message': NewDebugMessage;
             'notify::enabled': GObject.Object.Notify;
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 
@@ -19026,43 +18702,27 @@ export namespace TelepathyGLib {
             'notify::file': GObject.Object.Notify;
             'notify::filename': GObject.Object.Notify;
             'notify::initial-offset': GObject.Object.Notify;
-            'notify::initial-offset': GObject.Object.Notify;
             'notify::mime-type': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
             'notify::service-name': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::transferred-bytes': GObject.Object.Notify;
-            'notify::transferred-bytes': GObject.Object.Notify;
-            'notify::channel-ready': GObject.Object.Notify;
             'notify::channel-ready': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::group-flags': GObject.Object.Notify;
-            'notify::group-flags': GObject.Object.Notify;
             'notify::group-self-contact': GObject.Object.Notify;
-            'notify::group-self-contact': GObject.Object.Notify;
-            'notify::group-self-handle': GObject.Object.Notify;
             'notify::group-self-handle': GObject.Object.Notify;
             'notify::identifier': GObject.Object.Notify;
             'notify::initiator-contact': GObject.Object.Notify;
-            'notify::initiator-contact': GObject.Object.Notify;
-            'notify::initiator-handle': GObject.Object.Notify;
             'notify::initiator-handle': GObject.Object.Notify;
             'notify::initiator-identifier': GObject.Object.Notify;
-            'notify::initiator-identifier': GObject.Object.Notify;
-            'notify::password-needed': GObject.Object.Notify;
             'notify::password-needed': GObject.Object.Notify;
             'notify::requested': GObject.Object.Notify;
             'notify::target-contact': GObject.Object.Notify;
-            'notify::target-contact': GObject.Object.Notify;
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 
@@ -19447,15 +19107,11 @@ export namespace TelepathyGLib {
             'notify::channels': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::requests-satisfied': GObject.Object.Notify;
-            'notify::requests-satisfied': GObject.Object.Notify;
-            'notify::user-action-time': GObject.Object.Notify;
             'notify::user-action-time': GObject.Object.Notify;
             'done::account': Done;
             'done::channels': Done;
             'done::connection': Done;
             'done::requests-satisfied': Done;
-            'done::requests-satisfied': Done;
-            'done::user-action-time': Done;
             'done::user-action-time': Done;
         }
 
@@ -19900,7 +19556,6 @@ export namespace TelepathyGLib {
             'notify::channels': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::dispatch-operation': GObject.Object.Notify;
-            'notify::dispatch-operation': GObject.Object.Notify;
             'notify::requests': GObject.Object.Notify;
         }
 
@@ -20037,35 +19692,21 @@ export namespace TelepathyGLib {
         // Signal signatures
         interface SignalSignatures extends Proxy.SignalSignatures {
             'notify::addressable-uri-schemes': GObject.Object.Notify;
-            'notify::addressable-uri-schemes': GObject.Object.Notify;
-            'notify::addressable-vcard-fields': GObject.Object.Notify;
             'notify::addressable-vcard-fields': GObject.Object.Notify;
             'notify::authentication-types': GObject.Object.Notify;
-            'notify::authentication-types': GObject.Object.Notify;
-            'notify::avatar-requirements': GObject.Object.Notify;
             'notify::avatar-requirements': GObject.Object.Notify;
             'notify::capabilities': GObject.Object.Notify;
             'notify::cm-name': GObject.Object.Notify;
-            'notify::cm-name': GObject.Object.Notify;
-            'notify::english-name': GObject.Object.Notify;
             'notify::english-name': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
-            'notify::param-names': GObject.Object.Notify;
             'notify::param-names': GObject.Object.Notify;
             'notify::protocol-name': GObject.Object.Notify;
-            'notify::protocol-name': GObject.Object.Notify;
-            'notify::protocol-properties-vardict': GObject.Object.Notify;
             'notify::protocol-properties-vardict': GObject.Object.Notify;
             'notify::vcard-field': GObject.Object.Notify;
-            'notify::vcard-field': GObject.Object.Notify;
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 
@@ -20639,28 +20280,19 @@ export namespace TelepathyGLib {
             'interface-added': InterfaceAdded;
             invalidated: Invalidated;
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'interface-added::bus-name': InterfaceAdded;
-            'interface-added::bus-name': InterfaceAdded;
-            'interface-added::dbus-daemon': InterfaceAdded;
             'interface-added::dbus-daemon': InterfaceAdded;
             'interface-added::factory': InterfaceAdded;
             'interface-added::interfaces': InterfaceAdded;
             'interface-added::object-path': InterfaceAdded;
-            'interface-added::object-path': InterfaceAdded;
             'invalidated::bus-name': Invalidated;
-            'invalidated::bus-name': Invalidated;
-            'invalidated::dbus-daemon': Invalidated;
             'invalidated::dbus-daemon': Invalidated;
             'invalidated::factory': Invalidated;
             'invalidated::interfaces': Invalidated;
-            'invalidated::object-path': Invalidated;
             'invalidated::object-path': Invalidated;
         }
 
@@ -21910,16 +21542,11 @@ export namespace TelepathyGLib {
             'notify::callback': GObject.Object.Notify;
             'notify::destroy': GObject.Object.Notify;
             'notify::user-data': GObject.Object.Notify;
-            'notify::user-data': GObject.Object.Notify;
-            'notify::account-manager': GObject.Object.Notify;
             'notify::account-manager': GObject.Object.Notify;
             'notify::channel-factory': GObject.Object.Notify;
-            'notify::channel-factory': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
-            'notify::uniquify-name': GObject.Object.Notify;
             'notify::uniquify-name': GObject.Object.Notify;
         }
 
@@ -22011,7 +21638,6 @@ export namespace TelepathyGLib {
     namespace SimpleClientFactory {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
         }
 
@@ -22344,21 +21970,15 @@ export namespace TelepathyGLib {
         // Signal signatures
         interface SignalSignatures extends BaseClient.SignalSignatures {
             'notify::bypass-approval': GObject.Object.Notify;
-            'notify::bypass-approval': GObject.Object.Notify;
             'notify::callback': GObject.Object.Notify;
             'notify::destroy': GObject.Object.Notify;
             'notify::requests': GObject.Object.Notify;
             'notify::user-data': GObject.Object.Notify;
-            'notify::user-data': GObject.Object.Notify;
-            'notify::account-manager': GObject.Object.Notify;
             'notify::account-manager': GObject.Object.Notify;
             'notify::channel-factory': GObject.Object.Notify;
-            'notify::channel-factory': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
-            'notify::uniquify-name': GObject.Object.Notify;
             'notify::uniquify-name': GObject.Object.Notify;
         }
 
@@ -22475,16 +22095,11 @@ export namespace TelepathyGLib {
             'notify::destroy': GObject.Object.Notify;
             'notify::recover': GObject.Object.Notify;
             'notify::user-data': GObject.Object.Notify;
-            'notify::user-data': GObject.Object.Notify;
-            'notify::account-manager': GObject.Object.Notify;
             'notify::account-manager': GObject.Object.Notify;
             'notify::channel-factory': GObject.Object.Notify;
-            'notify::channel-factory': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
-            'notify::uniquify-name': GObject.Object.Notify;
             'notify::uniquify-name': GObject.Object.Notify;
         }
 
@@ -22594,36 +22209,23 @@ export namespace TelepathyGLib {
         interface SignalSignatures extends Channel.SignalSignatures {
             incoming: Incoming;
             'notify::parameters-vardict': GObject.Object.Notify;
-            'notify::parameters-vardict': GObject.Object.Notify;
             'notify::service': GObject.Object.Notify;
-            'notify::channel-ready': GObject.Object.Notify;
             'notify::channel-ready': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::group-flags': GObject.Object.Notify;
-            'notify::group-flags': GObject.Object.Notify;
             'notify::group-self-contact': GObject.Object.Notify;
-            'notify::group-self-contact': GObject.Object.Notify;
-            'notify::group-self-handle': GObject.Object.Notify;
             'notify::group-self-handle': GObject.Object.Notify;
             'notify::identifier': GObject.Object.Notify;
             'notify::initiator-contact': GObject.Object.Notify;
-            'notify::initiator-contact': GObject.Object.Notify;
-            'notify::initiator-handle': GObject.Object.Notify;
             'notify::initiator-handle': GObject.Object.Notify;
             'notify::initiator-identifier': GObject.Object.Notify;
-            'notify::initiator-identifier': GObject.Object.Notify;
-            'notify::password-needed': GObject.Object.Notify;
             'notify::password-needed': GObject.Object.Notify;
             'notify::requested': GObject.Object.Notify;
             'notify::target-contact': GObject.Object.Notify;
-            'notify::target-contact': GObject.Object.Notify;
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 
@@ -22801,7 +22403,6 @@ export namespace TelepathyGLib {
             'notify::channel': GObject.Object.Notify;
             'notify::contact': GObject.Object.Notify;
             'notify::socket-connection': GObject.Object.Notify;
-            'notify::socket-connection': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -22899,18 +22500,13 @@ export namespace TelepathyGLib {
         // Signal signatures
         interface SignalSignatures extends Proxy.SignalSignatures {
             'notify::cert-data': GObject.Object.Notify;
-            'notify::cert-data': GObject.Object.Notify;
-            'notify::cert-type': GObject.Object.Notify;
             'notify::cert-type': GObject.Object.Notify;
             'notify::parent': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 
@@ -23173,7 +22769,6 @@ export namespace TelepathyGLib {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::dbus-error': GObject.Object.Notify;
-            'notify::dbus-error': GObject.Object.Notify;
             'notify::details': GObject.Object.Notify;
             'notify::error': GObject.Object.Notify;
             'notify::reason': GObject.Object.Notify;
@@ -23300,82 +22895,48 @@ export namespace TelepathyGLib {
             'message-sent': MessageSent;
             'pending-message-removed': PendingMessageRemoved;
             'notify::delivery-reporting-support': GObject.Object.Notify;
-            'notify::delivery-reporting-support': GObject.Object.Notify;
-            'notify::is-sms-channel': GObject.Object.Notify;
             'notify::is-sms-channel': GObject.Object.Notify;
             'notify::message-part-support-flags': GObject.Object.Notify;
-            'notify::message-part-support-flags': GObject.Object.Notify;
-            'notify::sms-flash': GObject.Object.Notify;
             'notify::sms-flash': GObject.Object.Notify;
             'notify::supported-content-types': GObject.Object.Notify;
-            'notify::supported-content-types': GObject.Object.Notify;
-            'notify::channel-ready': GObject.Object.Notify;
             'notify::channel-ready': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
             'notify::group-flags': GObject.Object.Notify;
-            'notify::group-flags': GObject.Object.Notify;
             'notify::group-self-contact': GObject.Object.Notify;
-            'notify::group-self-contact': GObject.Object.Notify;
-            'notify::group-self-handle': GObject.Object.Notify;
             'notify::group-self-handle': GObject.Object.Notify;
             'notify::identifier': GObject.Object.Notify;
             'notify::initiator-contact': GObject.Object.Notify;
-            'notify::initiator-contact': GObject.Object.Notify;
-            'notify::initiator-handle': GObject.Object.Notify;
             'notify::initiator-handle': GObject.Object.Notify;
             'notify::initiator-identifier': GObject.Object.Notify;
-            'notify::initiator-identifier': GObject.Object.Notify;
-            'notify::password-needed': GObject.Object.Notify;
             'notify::password-needed': GObject.Object.Notify;
             'notify::requested': GObject.Object.Notify;
             'notify::target-contact': GObject.Object.Notify;
-            'notify::target-contact': GObject.Object.Notify;
             'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::dbus-daemon': GObject.Object.Notify;
             'notify::dbus-daemon': GObject.Object.Notify;
             'notify::factory': GObject.Object.Notify;
             'notify::interfaces': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
-            'contact-chat-state-changed::delivery-reporting-support': ContactChatStateChanged;
             'contact-chat-state-changed::delivery-reporting-support': ContactChatStateChanged;
             'contact-chat-state-changed::is-sms-channel': ContactChatStateChanged;
-            'contact-chat-state-changed::is-sms-channel': ContactChatStateChanged;
-            'contact-chat-state-changed::message-part-support-flags': ContactChatStateChanged;
             'contact-chat-state-changed::message-part-support-flags': ContactChatStateChanged;
             'contact-chat-state-changed::sms-flash': ContactChatStateChanged;
-            'contact-chat-state-changed::sms-flash': ContactChatStateChanged;
             'contact-chat-state-changed::supported-content-types': ContactChatStateChanged;
-            'contact-chat-state-changed::supported-content-types': ContactChatStateChanged;
-            'contact-chat-state-changed::channel-ready': ContactChatStateChanged;
             'contact-chat-state-changed::channel-ready': ContactChatStateChanged;
             'contact-chat-state-changed::connection': ContactChatStateChanged;
             'contact-chat-state-changed::group-flags': ContactChatStateChanged;
-            'contact-chat-state-changed::group-flags': ContactChatStateChanged;
             'contact-chat-state-changed::group-self-contact': ContactChatStateChanged;
-            'contact-chat-state-changed::group-self-contact': ContactChatStateChanged;
-            'contact-chat-state-changed::group-self-handle': ContactChatStateChanged;
             'contact-chat-state-changed::group-self-handle': ContactChatStateChanged;
             'contact-chat-state-changed::identifier': ContactChatStateChanged;
             'contact-chat-state-changed::initiator-contact': ContactChatStateChanged;
-            'contact-chat-state-changed::initiator-contact': ContactChatStateChanged;
-            'contact-chat-state-changed::initiator-handle': ContactChatStateChanged;
             'contact-chat-state-changed::initiator-handle': ContactChatStateChanged;
             'contact-chat-state-changed::initiator-identifier': ContactChatStateChanged;
-            'contact-chat-state-changed::initiator-identifier': ContactChatStateChanged;
-            'contact-chat-state-changed::password-needed': ContactChatStateChanged;
             'contact-chat-state-changed::password-needed': ContactChatStateChanged;
             'contact-chat-state-changed::requested': ContactChatStateChanged;
             'contact-chat-state-changed::target-contact': ContactChatStateChanged;
-            'contact-chat-state-changed::target-contact': ContactChatStateChanged;
             'contact-chat-state-changed::bus-name': ContactChatStateChanged;
-            'contact-chat-state-changed::bus-name': ContactChatStateChanged;
-            'contact-chat-state-changed::dbus-daemon': ContactChatStateChanged;
             'contact-chat-state-changed::dbus-daemon': ContactChatStateChanged;
             'contact-chat-state-changed::factory': ContactChatStateChanged;
             'contact-chat-state-changed::interfaces': ContactChatStateChanged;
-            'contact-chat-state-changed::object-path': ContactChatStateChanged;
             'contact-chat-state-changed::object-path': ContactChatStateChanged;
         }
 

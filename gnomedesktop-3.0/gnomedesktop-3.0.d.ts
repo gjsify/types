@@ -578,10 +578,7 @@ export namespace GnomeDesktop {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::file': GObject.Object.Notify;
             'notify::has-multiple-sizes': GObject.Object.Notify;
-            'notify::has-multiple-sizes': GObject.Object.Notify;
             'notify::start-time': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
-            'notify::total-duration': GObject.Object.Notify;
             'notify::total-duration': GObject.Object.Notify;
         }
 
@@ -1717,8 +1714,6 @@ export namespace GnomeDesktop {
             'output-connected': OutputConnected;
             'output-disconnected': OutputDisconnected;
             'notify::dpms-mode': GObject.Object.Notify;
-            'notify::dpms-mode': GObject.Object.Notify;
-            'notify::gdk-screen': GObject.Object.Notify;
             'notify::gdk-screen': GObject.Object.Notify;
         }
 
@@ -2554,8 +2549,6 @@ export namespace GnomeDesktop {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::clock': GObject.Object.Notify;
             'notify::force-seconds': GObject.Object.Notify;
-            'notify::force-seconds': GObject.Object.Notify;
-            'notify::time-only': GObject.Object.Notify;
             'notify::time-only': GObject.Object.Notify;
             'notify::timezone': GObject.Object.Notify;
         }

@@ -607,7 +607,6 @@ export namespace Jcat {
             'notify::kind': GObject.Object.Notify;
             'notify::method': GObject.Object.Notify;
             'notify::verify-kind': GObject.Object.Notify;
-            'notify::verify-kind': GObject.Object.Notify;
         }
 
         // Constructor properties interface

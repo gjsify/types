@@ -1272,7 +1272,6 @@ export namespace Grl {
         // Signal signatures
         interface SignalSignatures extends Data.SignalSignatures {
             'notify::media-type': GObject.Object.Notify;
-            'notify::media-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2583,20 +2582,13 @@ export namespace Grl {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'content-changed': ContentChanged;
             'notify::auto-split-threshold': GObject.Object.Notify;
-            'notify::auto-split-threshold': GObject.Object.Notify;
             'notify::plugin': GObject.Object.Notify;
             'notify::rank': GObject.Object.Notify;
             'notify::source-desc': GObject.Object.Notify;
-            'notify::source-desc': GObject.Object.Notify;
-            'notify::source-icon': GObject.Object.Notify;
             'notify::source-icon': GObject.Object.Notify;
             'notify::source-id': GObject.Object.Notify;
-            'notify::source-id': GObject.Object.Notify;
-            'notify::source-name': GObject.Object.Notify;
             'notify::source-name': GObject.Object.Notify;
             'notify::source-tags': GObject.Object.Notify;
-            'notify::source-tags': GObject.Object.Notify;
-            'notify::supported-media': GObject.Object.Notify;
             'notify::supported-media': GObject.Object.Notify;
         }
 

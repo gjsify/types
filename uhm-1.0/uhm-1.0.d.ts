@@ -196,14 +196,10 @@ export namespace Uhm {
             'handle-message': HandleMessage;
             'notify::address': GObject.Object.Notify;
             'notify::enable-logging': GObject.Object.Notify;
-            'notify::enable-logging': GObject.Object.Notify;
-            'notify::enable-online': GObject.Object.Notify;
             'notify::enable-online': GObject.Object.Notify;
             'notify::port': GObject.Object.Notify;
             'notify::resolver': GObject.Object.Notify;
             'notify::tls-certificate': GObject.Object.Notify;
-            'notify::tls-certificate': GObject.Object.Notify;
-            'notify::trace-directory': GObject.Object.Notify;
             'notify::trace-directory': GObject.Object.Notify;
         }
 

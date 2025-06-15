@@ -777,9 +777,7 @@ export namespace Garcon {
             'notify::comment': GObject.Object.Notify;
             'notify::file': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
-            'notify::no-display': GObject.Object.Notify;
             'notify::no-display': GObject.Object.Notify;
         }
 
@@ -950,24 +948,16 @@ export namespace Garcon {
             'notify::command': GObject.Object.Notify;
             'notify::comment': GObject.Object.Notify;
             'notify::desktop-id': GObject.Object.Notify;
-            'notify::desktop-id': GObject.Object.Notify;
             'notify::file': GObject.Object.Notify;
-            'notify::generic-name': GObject.Object.Notify;
             'notify::generic-name': GObject.Object.Notify;
             'notify::hidden': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
-            'notify::no-display': GObject.Object.Notify;
             'notify::no-display': GObject.Object.Notify;
             'notify::path': GObject.Object.Notify;
             'notify::prefers-non-default-gpu': GObject.Object.Notify;
-            'notify::prefers-non-default-gpu': GObject.Object.Notify;
-            'notify::requires-terminal': GObject.Object.Notify;
             'notify::requires-terminal': GObject.Object.Notify;
             'notify::supports-startup-notification': GObject.Object.Notify;
-            'notify::supports-startup-notification': GObject.Object.Notify;
-            'notify::try-exec': GObject.Object.Notify;
             'notify::try-exec': GObject.Object.Notify;
         }
 
@@ -1646,7 +1636,6 @@ export namespace Garcon {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::command': GObject.Object.Notify;
             'notify::icon-name': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
 
@@ -1828,7 +1817,6 @@ export namespace Garcon {
     namespace MenuMerger {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::tree-provider': GObject.Object.Notify;
             'notify::tree-provider': GObject.Object.Notify;
         }
 
@@ -2325,7 +2313,6 @@ export namespace Garcon {
     namespace MenuNode {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::node-type': GObject.Object.Notify;
             'notify::node-type': GObject.Object.Notify;
         }
 

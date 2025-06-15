@@ -180,15 +180,10 @@ export namespace GCalc {
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
             'notify::parent': GObject.Object.Notify;
             'notify::g-type': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-dup-func': GObject.Object.Notify;
             'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
         }
 
@@ -798,24 +793,16 @@ export namespace GCalc {
         interface SignalSignatures extends Gee.HashMap.SignalSignatures {
             'notify::parent': GObject.Object.Notify;
             'notify::k-type': GObject.Object.Notify;
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-dup-func': GObject.Object.Notify;
             'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
             'notify::v-type': GObject.Object.Notify;
             'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
             'notify::v-destroy-func': GObject.Object.Notify;
             'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
             'notify::read-only': GObject.Object.Notify;
             'notify::keys': GObject.Object.Notify;
             'notify::values': GObject.Object.Notify;
             'notify::entries': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
             'notify::read-only-view': GObject.Object.Notify;
         }
 
@@ -4408,9 +4395,7 @@ export namespace GCalc {
         // Signal signatures
         interface SignalSignatures extends GExpression.SignalSignatures {
             'notify::param-types': GObject.Object.Notify;
-            'notify::param-types': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
-            'notify::n-params': GObject.Object.Notify;
             'notify::n-params': GObject.Object.Notify;
             'notify::closed': GObject.Object.Notify;
         }
@@ -9331,7 +9316,6 @@ export namespace GCalc {
     namespace GSolver {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::equation-manager': GObject.Object.Notify;
             'notify::equation-manager': GObject.Object.Notify;
         }
 

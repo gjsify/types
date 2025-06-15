@@ -417,26 +417,17 @@ export namespace FPrint {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             removed: Removed;
             'notify::device-id': GObject.Object.Notify;
-            'notify::device-id': GObject.Object.Notify;
             'notify::driver': GObject.Object.Notify;
             'notify::finger-status': GObject.Object.Notify;
-            'notify::finger-status': GObject.Object.Notify;
-            'notify::fpi-driver-data': GObject.Object.Notify;
             'notify::fpi-driver-data': GObject.Object.Notify;
             'notify::fpi-environ': GObject.Object.Notify;
-            'notify::fpi-environ': GObject.Object.Notify;
-            'notify::fpi-udev-data-hidraw': GObject.Object.Notify;
             'notify::fpi-udev-data-hidraw': GObject.Object.Notify;
             'notify::fpi-udev-data-spidev': GObject.Object.Notify;
-            'notify::fpi-udev-data-spidev': GObject.Object.Notify;
-            'notify::fpi-usb-device': GObject.Object.Notify;
             'notify::fpi-usb-device': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::nr-enroll-stages': GObject.Object.Notify;
-            'notify::nr-enroll-stages': GObject.Object.Notify;
             'notify::open': GObject.Object.Notify;
             'notify::removed': GObject.Object.Notify;
-            'notify::scan-type': GObject.Object.Notify;
             'notify::scan-type': GObject.Object.Notify;
             'notify::temperature': GObject.Object.Notify;
         }
@@ -1903,26 +1894,17 @@ export namespace FPrint {
         interface SignalSignatures extends Device.SignalSignatures {
             'fpi-image-device-state-changed': FpiImageDeviceStateChanged;
             'notify::device-id': GObject.Object.Notify;
-            'notify::device-id': GObject.Object.Notify;
             'notify::driver': GObject.Object.Notify;
             'notify::finger-status': GObject.Object.Notify;
-            'notify::finger-status': GObject.Object.Notify;
-            'notify::fpi-driver-data': GObject.Object.Notify;
             'notify::fpi-driver-data': GObject.Object.Notify;
             'notify::fpi-environ': GObject.Object.Notify;
-            'notify::fpi-environ': GObject.Object.Notify;
-            'notify::fpi-udev-data-hidraw': GObject.Object.Notify;
             'notify::fpi-udev-data-hidraw': GObject.Object.Notify;
             'notify::fpi-udev-data-spidev': GObject.Object.Notify;
-            'notify::fpi-udev-data-spidev': GObject.Object.Notify;
-            'notify::fpi-usb-device': GObject.Object.Notify;
             'notify::fpi-usb-device': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::nr-enroll-stages': GObject.Object.Notify;
-            'notify::nr-enroll-stages': GObject.Object.Notify;
             'notify::open': GObject.Object.Notify;
             'notify::removed': GObject.Object.Notify;
-            'notify::scan-type': GObject.Object.Notify;
             'notify::scan-type': GObject.Object.Notify;
             'notify::temperature': GObject.Object.Notify;
         }
@@ -2605,16 +2587,11 @@ export namespace FPrint {
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
             'notify::description': GObject.Object.Notify;
             'notify::device-id': GObject.Object.Notify;
-            'notify::device-id': GObject.Object.Notify;
-            'notify::device-stored': GObject.Object.Notify;
             'notify::device-stored': GObject.Object.Notify;
             'notify::driver': GObject.Object.Notify;
             'notify::enroll-date': GObject.Object.Notify;
-            'notify::enroll-date': GObject.Object.Notify;
             'notify::finger': GObject.Object.Notify;
             'notify::fpi-data': GObject.Object.Notify;
-            'notify::fpi-data': GObject.Object.Notify;
-            'notify::fpi-prints': GObject.Object.Notify;
             'notify::fpi-prints': GObject.Object.Notify;
             'notify::image': GObject.Object.Notify;
             'notify::username': GObject.Object.Notify;

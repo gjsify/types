@@ -329,8 +329,6 @@ export namespace GUsb {
             'device-changed': DeviceChanged;
             'device-removed': DeviceRemoved;
             'notify::debug-level': GObject.Object.Notify;
-            'notify::debug-level': GObject.Object.Notify;
-            'notify::libusb-context': GObject.Object.Notify;
             'notify::libusb-context': GObject.Object.Notify;
         }
 
@@ -1037,8 +1035,6 @@ export namespace GUsb {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::context': GObject.Object.Notify;
             'notify::libusb-device': GObject.Object.Notify;
-            'notify::libusb-device': GObject.Object.Notify;
-            'notify::platform-id': GObject.Object.Notify;
             'notify::platform-id': GObject.Object.Notify;
         }
 

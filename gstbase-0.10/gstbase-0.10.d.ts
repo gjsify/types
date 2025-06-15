@@ -248,10 +248,7 @@ export namespace GstBase {
             empty: Empty;
             full: Full;
             'notify::current-level-bytes': GObject.Object.Notify;
-            'notify::current-level-bytes': GObject.Object.Notify;
             'notify::current-level-time': GObject.Object.Notify;
-            'notify::current-level-time': GObject.Object.Notify;
-            'notify::current-level-visible': GObject.Object.Notify;
             'notify::current-level-visible': GObject.Object.Notify;
         }
 
@@ -343,8 +340,6 @@ export namespace GstBase {
         interface SignalSignatures extends Src.SignalSignatures {
             'notify::blocksize': GObject.Object.Notify;
             'notify::do-timestamp': GObject.Object.Notify;
-            'notify::do-timestamp': GObject.Object.Notify;
-            'notify::num-buffers': GObject.Object.Notify;
             'notify::num-buffers': GObject.Object.Notify;
             'notify::typefind': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
@@ -392,18 +387,12 @@ export namespace GstBase {
             'notify::async': GObject.Object.Notify;
             'notify::blocksize': GObject.Object.Notify;
             'notify::enable-last-buffer': GObject.Object.Notify;
-            'notify::enable-last-buffer': GObject.Object.Notify;
-            'notify::last-buffer': GObject.Object.Notify;
             'notify::last-buffer': GObject.Object.Notify;
             'notify::max-lateness': GObject.Object.Notify;
-            'notify::max-lateness': GObject.Object.Notify;
-            'notify::preroll-queue-len': GObject.Object.Notify;
             'notify::preroll-queue-len': GObject.Object.Notify;
             'notify::qos': GObject.Object.Notify;
             'notify::render-delay': GObject.Object.Notify;
-            'notify::render-delay': GObject.Object.Notify;
             'notify::sync': GObject.Object.Notify;
-            'notify::ts-offset': GObject.Object.Notify;
             'notify::ts-offset': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
@@ -542,8 +531,6 @@ export namespace GstBase {
         interface SignalSignatures extends Gst.Element.SignalSignatures {
             'notify::blocksize': GObject.Object.Notify;
             'notify::do-timestamp': GObject.Object.Notify;
-            'notify::do-timestamp': GObject.Object.Notify;
-            'notify::num-buffers': GObject.Object.Notify;
             'notify::num-buffers': GObject.Object.Notify;
             'notify::typefind': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;

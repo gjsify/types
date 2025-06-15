@@ -91,24 +91,15 @@ export namespace GSSDP {
             'message-received': MessageReceived;
             'notify::active': GObject.Object.Notify;
             'notify::address-family': GObject.Object.Notify;
-            'notify::address-family': GObject.Object.Notify;
-            'notify::boot-id': GObject.Object.Notify;
             'notify::boot-id': GObject.Object.Notify;
             'notify::config-id': GObject.Object.Notify;
-            'notify::config-id': GObject.Object.Notify;
             'notify::host-ip': GObject.Object.Notify;
-            'notify::host-ip': GObject.Object.Notify;
-            'notify::host-mask': GObject.Object.Notify;
             'notify::host-mask': GObject.Object.Notify;
             'notify::interface': GObject.Object.Notify;
             'notify::msearch-port': GObject.Object.Notify;
-            'notify::msearch-port': GObject.Object.Notify;
             'notify::network': GObject.Object.Notify;
             'notify::server-id': GObject.Object.Notify;
-            'notify::server-id': GObject.Object.Notify;
             'notify::socket-ttl': GObject.Object.Notify;
-            'notify::socket-ttl': GObject.Object.Notify;
-            'notify::uda-version': GObject.Object.Notify;
             'notify::uda-version': GObject.Object.Notify;
         }
 
@@ -1099,8 +1090,6 @@ export namespace GSSDP {
             'notify::available': GObject.Object.Notify;
             'notify::client': GObject.Object.Notify;
             'notify::max-age': GObject.Object.Notify;
-            'notify::max-age': GObject.Object.Notify;
-            'notify::message-delay': GObject.Object.Notify;
             'notify::message-delay': GObject.Object.Notify;
         }
 

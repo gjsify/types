@@ -5602,8 +5602,6 @@ export namespace IBus {
             'global-shortcut-key-responded': GlobalShortcutKeyResponded;
             'name-owner-changed': NameOwnerChanged;
             'notify::client-only': GObject.Object.Notify;
-            'notify::client-only': GObject.Object.Notify;
-            'notify::connect-async': GObject.Object.Notify;
             'notify::connect-async': GObject.Object.Notify;
         }
 
@@ -6693,7 +6691,6 @@ export namespace IBus {
         interface SignalSignatures extends Serializable.SignalSignatures {
             'notify::author': GObject.Object.Notify;
             'notify::command-line': GObject.Object.Notify;
-            'notify::command-line': GObject.Object.Notify;
             'notify::description': GObject.Object.Notify;
             'notify::homepage': GObject.Object.Notify;
             'notify::license': GObject.Object.Notify;
@@ -6905,22 +6902,13 @@ export namespace IBus {
         interface SignalSignatures extends Proxy.SignalSignatures {
             'value-changed': ValueChanged;
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -7853,7 +7841,6 @@ export namespace IBus {
         interface SignalSignatures extends Service.SignalSignatures {
             'notify::connection': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -8243,13 +8230,9 @@ export namespace IBus {
             'set-cursor-location': SetCursorLocation;
             'set-surrounding-text': SetSurroundingText;
             'notify::active-surrounding-text': GObject.Object.Notify;
-            'notify::active-surrounding-text': GObject.Object.Notify;
             'notify::engine-name': GObject.Object.Notify;
-            'notify::engine-name': GObject.Object.Notify;
-            'notify::has-focus-id': GObject.Object.Notify;
             'notify::has-focus-id': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 
@@ -8546,12 +8529,9 @@ export namespace IBus {
             'notify::hotkeys': GObject.Object.Notify;
             'notify::icon': GObject.Object.Notify;
             'notify::icon-prop-key': GObject.Object.Notify;
-            'notify::icon-prop-key': GObject.Object.Notify;
             'notify::language': GObject.Object.Notify;
             'notify::layout': GObject.Object.Notify;
             'notify::layout-option': GObject.Object.Notify;
-            'notify::layout-option': GObject.Object.Notify;
-            'notify::layout-variant': GObject.Object.Notify;
             'notify::layout-variant': GObject.Object.Notify;
             'notify::license': GObject.Object.Notify;
             'notify::longname': GObject.Object.Notify;
@@ -8828,13 +8808,9 @@ export namespace IBus {
         // Signal signatures
         interface SignalSignatures extends Engine.SignalSignatures {
             'notify::active-surrounding-text': GObject.Object.Notify;
-            'notify::active-surrounding-text': GObject.Object.Notify;
             'notify::engine-name': GObject.Object.Notify;
-            'notify::engine-name': GObject.Object.Notify;
-            'notify::has-focus-id': GObject.Object.Notify;
             'notify::has-focus-id': GObject.Object.Notify;
             'notify::connection': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 
@@ -8908,8 +8884,6 @@ export namespace IBus {
         // Signal signatures
         interface SignalSignatures extends Serializable.SignalSignatures {
             'notify::is-enabled': GObject.Object.Notify;
-            'notify::is-enabled': GObject.Object.Notify;
-            'notify::is-extension': GObject.Object.Notify;
             'notify::is-extension': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
             'notify::params': GObject.Object.Notify;
@@ -9016,7 +8990,6 @@ export namespace IBus {
         interface SignalSignatures extends Service.SignalSignatures {
             'create-engine': CreateEngine;
             'notify::connection': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
         }
 
@@ -9305,22 +9278,13 @@ export namespace IBus {
             'update-preedit-text-with-mode': UpdatePreeditTextWithMode;
             'update-property': UpdateProperty;
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -10930,7 +10894,6 @@ export namespace IBus {
             'update-property': UpdateProperty;
             'notify::connection': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -11180,10 +11143,8 @@ export namespace IBus {
             'notify::key': GObject.Object.Notify;
             'notify::label': GObject.Object.Notify;
             'notify::prop-type': GObject.Object.Notify;
-            'notify::prop-type': GObject.Object.Notify;
             'notify::sensitive': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
-            'notify::sub-props': GObject.Object.Notify;
             'notify::sub-props': GObject.Object.Notify;
             'notify::symbol': GObject.Object.Notify;
             'notify::tooltip': GObject.Object.Notify;
@@ -11390,22 +11351,13 @@ export namespace IBus {
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             destroy: Destroy;
             'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
             'notify::g-connection': GObject.Object.Notify;
             'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
             'notify::g-flags': GObject.Object.Notify;
             'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-interface-name': GObject.Object.Notify;
             'notify::g-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
             'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
             'notify::g-object-path': GObject.Object.Notify;
         }
 
@@ -12475,7 +12427,6 @@ export namespace IBus {
         interface SignalSignatures extends Object.SignalSignatures {
             'notify::connection': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -12802,7 +12753,6 @@ export namespace IBus {
         interface SignalSignatures extends Serializable.SignalSignatures {
             'notify::alias': GObject.Object.Notify;
             'notify::block-name': GObject.Object.Notify;
-            'notify::block-name': GObject.Object.Notify;
             'notify::code': GObject.Object.Notify;
             'notify::name': GObject.Object.Notify;
         }
@@ -12932,19 +12882,14 @@ export namespace IBus {
         // Signal signatures
         interface SignalSignatures extends Serializable.SignalSignatures {
             'notify::event-type': GObject.Object.Notify;
-            'notify::event-type': GObject.Object.Notify;
             'notify::group': GObject.Object.Notify;
             'notify::hardware-keycode': GObject.Object.Notify;
-            'notify::hardware-keycode': GObject.Object.Notify;
-            'notify::is-modifier': GObject.Object.Notify;
             'notify::is-modifier': GObject.Object.Notify;
             'notify::keyval': GObject.Object.Notify;
             'notify::length': GObject.Object.Notify;
             'notify::purpose': GObject.Object.Notify;
             'notify::root': GObject.Object.Notify;
             'notify::same-screen': GObject.Object.Notify;
-            'notify::same-screen': GObject.Object.Notify;
-            'notify::send-event': GObject.Object.Notify;
             'notify::send-event': GObject.Object.Notify;
             'notify::serial': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
@@ -12955,9 +12900,7 @@ export namespace IBus {
             'notify::window': GObject.Object.Notify;
             'notify::x': GObject.Object.Notify;
             'notify::x-root': GObject.Object.Notify;
-            'notify::x-root': GObject.Object.Notify;
             'notify::y': GObject.Object.Notify;
-            'notify::y-root': GObject.Object.Notify;
             'notify::y-root': GObject.Object.Notify;
         }
 

@@ -1454,12 +1454,8 @@ export namespace Grl {
         interface SignalSignatures extends MetadataSource.SignalSignatures {
             'content-changed': ContentChanged;
             'notify::auto-split-threshold': GObject.Object.Notify;
-            'notify::auto-split-threshold': GObject.Object.Notify;
-            'notify::source-desc': GObject.Object.Notify;
             'notify::source-desc': GObject.Object.Notify;
             'notify::source-id': GObject.Object.Notify;
-            'notify::source-id': GObject.Object.Notify;
-            'notify::source-name': GObject.Object.Notify;
             'notify::source-name': GObject.Object.Notify;
         }
 
@@ -2025,10 +2021,7 @@ export namespace Grl {
         // Signal signatures
         interface SignalSignatures extends MediaPlugin.SignalSignatures {
             'notify::source-desc': GObject.Object.Notify;
-            'notify::source-desc': GObject.Object.Notify;
             'notify::source-id': GObject.Object.Notify;
-            'notify::source-id': GObject.Object.Notify;
-            'notify::source-name': GObject.Object.Notify;
             'notify::source-name': GObject.Object.Notify;
         }
 

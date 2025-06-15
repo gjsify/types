@@ -1050,10 +1050,7 @@ export namespace Colord {
             'sensor-removed': SensorRemoved;
             'notify::connected': GObject.Object.Notify;
             'notify::daemon-version': GObject.Object.Notify;
-            'notify::daemon-version': GObject.Object.Notify;
             'notify::system-model': GObject.Object.Notify;
-            'notify::system-model': GObject.Object.Notify;
-            'notify::system-vendor': GObject.Object.Notify;
             'notify::system-vendor': GObject.Object.Notify;
         }
 
@@ -2039,9 +2036,7 @@ export namespace Colord {
             'notify::model': GObject.Object.Notify;
             'notify::modified': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
-            'notify::profiling-inhibitors': GObject.Object.Notify;
             'notify::profiling-inhibitors': GObject.Object.Notify;
             'notify::scope': GObject.Object.Notify;
             'notify::seat': GObject.Object.Notify;
@@ -2976,7 +2971,6 @@ export namespace Colord {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::blue': GObject.Object.Notify;
             'notify::can-delete': GObject.Object.Notify;
-            'notify::can-delete': GObject.Object.Notify;
             'notify::checksum': GObject.Object.Notify;
             'notify::colorspace': GObject.Object.Notify;
             'notify::filename': GObject.Object.Notify;
@@ -3716,12 +3710,9 @@ export namespace Colord {
             'notify::filename': GObject.Object.Notify;
             'notify::format': GObject.Object.Notify;
             'notify::has-vcgt': GObject.Object.Notify;
-            'notify::has-vcgt': GObject.Object.Notify;
             'notify::id': GObject.Object.Notify;
             'notify::is-system-wide': GObject.Object.Notify;
-            'notify::is-system-wide': GObject.Object.Notify;
             'notify::kind': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
             'notify::owner': GObject.Object.Notify;
             'notify::qualifier': GObject.Object.Notify;
@@ -4164,7 +4155,6 @@ export namespace Colord {
             'notify::mode': GObject.Object.Notify;
             'notify::model': GObject.Object.Notify;
             'notify::native': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
             'notify::object-path': GObject.Object.Notify;
             'notify::serial': GObject.Object.Notify;
             'notify::state': GObject.Object.Notify;
