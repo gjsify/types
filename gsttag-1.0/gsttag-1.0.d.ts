@@ -854,8 +854,8 @@ export namespace GstTag {
     namespace TagDemux {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -896,6 +896,14 @@ export namespace GstTag {
      */
     abstract class TagDemux extends Gst.Element {
         static $gtype: GObject.GType<TagDemux>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TagDemux.SignalSignatures;
 
         // Fields
 
@@ -909,16 +917,19 @@ export namespace GstTag {
 
         // Signals
 
-        connect<K extends keyof TagDemux.SignalSignatures>(signal: K, callback: TagDemux.SignalSignatures[K]): number;
+        connect<K extends keyof TagDemux.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TagDemux.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TagDemux.SignalSignatures>(
             signal: K,
-            callback: TagDemux.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TagDemux.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TagDemux.SignalSignatures>(
             signal: K,
-            ...args: TagDemux.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TagDemux.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -932,8 +943,8 @@ export namespace GstTag {
     namespace TagMux {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -959,6 +970,14 @@ export namespace GstTag {
      */
     abstract class TagMux extends Gst.Element implements Gst.TagSetter {
         static $gtype: GObject.GType<TagMux>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TagMux.SignalSignatures;
 
         // Fields
 
@@ -972,13 +991,19 @@ export namespace GstTag {
 
         // Signals
 
-        connect<K extends keyof TagMux.SignalSignatures>(signal: K, callback: TagMux.SignalSignatures[K]): number;
+        connect<K extends keyof TagMux.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TagMux.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof TagMux.SignalSignatures>(signal: K, callback: TagMux.SignalSignatures[K]): number;
+        connect_after<K extends keyof TagMux.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TagMux.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TagMux.SignalSignatures>(
             signal: K,
-            ...args: TagMux.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TagMux.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

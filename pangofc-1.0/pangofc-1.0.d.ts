@@ -113,6 +113,14 @@ export namespace PangoFc {
      */
     abstract class Decoder extends GObject.Object {
         static $gtype: GObject.GType<Decoder>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Decoder.SignalSignatures;
 
         // Constructors
 
@@ -122,16 +130,19 @@ export namespace PangoFc {
 
         // Signals
 
-        connect<K extends keyof Decoder.SignalSignatures>(signal: K, callback: Decoder.SignalSignatures[K]): number;
+        connect<K extends keyof Decoder.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Decoder.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Decoder.SignalSignatures>(
             signal: K,
-            callback: Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Decoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Decoder.SignalSignatures>(
             signal: K,
-            ...args: Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -191,8 +202,8 @@ export namespace PangoFc {
     namespace Font {
         // Signal signatures
         interface SignalSignatures extends Pango.Font.SignalSignatures {
-            'notify::fontmap': GObject.Object.Notify;
-            'notify::pattern': GObject.Object.Notify;
+            'notify::fontmap': (pspec: GObject.ParamSpec) => void;
+            'notify::pattern': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -226,6 +237,14 @@ export namespace PangoFc {
          * The fontconfig pattern for this font.
          */
         get pattern(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Font.SignalSignatures;
 
         // Fields
 
@@ -243,13 +262,19 @@ export namespace PangoFc {
 
         // Signals
 
-        connect<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
+        connect<K extends keyof Font.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Font.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
+        connect_after<K extends keyof Font.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Font.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Font.SignalSignatures>(
             signal: K,
-            ...args: Font.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Font.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -322,8 +347,8 @@ export namespace PangoFc {
     namespace FontMap {
         // Signal signatures
         interface SignalSignatures extends Pango.FontMap.SignalSignatures {
-            'notify::item-type': GObject.Object.Notify;
-            'notify::n-items': GObject.Object.Notify;
+            'notify::item-type': (pspec: GObject.ParamSpec) => void;
+            'notify::n-items': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -347,6 +372,14 @@ export namespace PangoFc {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<FontMap>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FontMap.SignalSignatures;
 
         // Constructors
 
@@ -356,16 +389,19 @@ export namespace PangoFc {
 
         // Signals
 
-        connect<K extends keyof FontMap.SignalSignatures>(signal: K, callback: FontMap.SignalSignatures[K]): number;
+        connect<K extends keyof FontMap.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, FontMap.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FontMap.SignalSignatures>(
             signal: K,
-            callback: FontMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FontMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FontMap.SignalSignatures>(
             signal: K,
-            ...args: FontMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FontMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

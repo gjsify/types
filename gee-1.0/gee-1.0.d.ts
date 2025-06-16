@@ -25,10 +25,10 @@ export namespace Gee {
     namespace AbstractCollection {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -55,6 +55,14 @@ export namespace Gee {
         get isEmpty(): boolean;
         get read_only_view(): Collection;
         get readOnlyView(): Collection;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AbstractCollection.SignalSignatures;
 
         // Constructors
 
@@ -66,17 +74,17 @@ export namespace Gee {
 
         connect<K extends keyof AbstractCollection.SignalSignatures>(
             signal: K,
-            callback: AbstractCollection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AbstractCollection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractCollection.SignalSignatures>(
             signal: K,
-            callback: AbstractCollection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AbstractCollection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractCollection.SignalSignatures>(
             signal: K,
-            ...args: AbstractCollection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AbstractCollection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -555,10 +563,10 @@ export namespace Gee {
     namespace AbstractList {
         // Signal signatures
         interface SignalSignatures extends AbstractCollection.SignalSignatures {
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -576,6 +584,14 @@ export namespace Gee {
 
         get read_only_view(): List;
         get readOnlyView(): List;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AbstractList.SignalSignatures;
 
         // Constructors
 
@@ -587,17 +603,17 @@ export namespace Gee {
 
         connect<K extends keyof AbstractList.SignalSignatures>(
             signal: K,
-            callback: AbstractList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AbstractList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractList.SignalSignatures>(
             signal: K,
-            callback: AbstractList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AbstractList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractList.SignalSignatures>(
             signal: K,
-            ...args: AbstractList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AbstractList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -664,15 +680,15 @@ export namespace Gee {
     namespace AbstractMap {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
-            'notify::keys': GObject.Object.Notify;
-            'notify::values': GObject.Object.Notify;
-            'notify::entries': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
-            'notify::key-type': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
+            'notify::keys': (pspec: GObject.ParamSpec) => void;
+            'notify::values': (pspec: GObject.ParamSpec) => void;
+            'notify::entries': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            'notify::key-type': (pspec: GObject.ParamSpec) => void;
+            'notify::value-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -705,6 +721,14 @@ export namespace Gee {
         get entries(): Set;
         get read_only_view(): Map;
         get readOnlyView(): Map;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AbstractMap.SignalSignatures;
 
         // Constructors
 
@@ -716,17 +740,17 @@ export namespace Gee {
 
         connect<K extends keyof AbstractMap.SignalSignatures>(
             signal: K,
-            callback: AbstractMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AbstractMap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractMap.SignalSignatures>(
             signal: K,
-            callback: AbstractMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AbstractMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractMap.SignalSignatures>(
             signal: K,
-            ...args: AbstractMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AbstractMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1216,7 +1240,7 @@ export namespace Gee {
     namespace AbstractMultiMap {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::size': GObject.Object.Notify;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1226,6 +1250,14 @@ export namespace Gee {
 
     abstract class AbstractMultiMap extends GObject.Object implements MultiMap {
         static $gtype: GObject.GType<AbstractMultiMap>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AbstractMultiMap.SignalSignatures;
 
         // Constructors
 
@@ -1237,17 +1269,17 @@ export namespace Gee {
 
         connect<K extends keyof AbstractMultiMap.SignalSignatures>(
             signal: K,
-            callback: AbstractMultiMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AbstractMultiMap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractMultiMap.SignalSignatures>(
             signal: K,
-            callback: AbstractMultiMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AbstractMultiMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractMultiMap.SignalSignatures>(
             signal: K,
-            ...args: AbstractMultiMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AbstractMultiMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1726,10 +1758,10 @@ export namespace Gee {
     namespace AbstractMultiSet {
         // Signal signatures
         interface SignalSignatures extends AbstractCollection.SignalSignatures {
-            'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1739,6 +1771,14 @@ export namespace Gee {
 
     abstract class AbstractMultiSet extends AbstractCollection implements MultiSet {
         static $gtype: GObject.GType<AbstractMultiSet>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AbstractMultiSet.SignalSignatures;
 
         // Constructors
 
@@ -1750,17 +1790,17 @@ export namespace Gee {
 
         connect<K extends keyof AbstractMultiSet.SignalSignatures>(
             signal: K,
-            callback: AbstractMultiSet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AbstractMultiSet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractMultiSet.SignalSignatures>(
             signal: K,
-            callback: AbstractMultiSet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AbstractMultiSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractMultiSet.SignalSignatures>(
             signal: K,
-            ...args: AbstractMultiSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AbstractMultiSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1801,13 +1841,13 @@ export namespace Gee {
     namespace AbstractQueue {
         // Signal signatures
         interface SignalSignatures extends AbstractCollection.SignalSignatures {
-            'notify::capacity': GObject.Object.Notify;
-            'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::is-full': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
+            'notify::capacity': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining-capacity': (pspec: GObject.ParamSpec) => void;
+            'notify::is-full': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1831,6 +1871,14 @@ export namespace Gee {
         get remainingCapacity(): number;
         get is_full(): boolean;
         get isFull(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AbstractQueue.SignalSignatures;
 
         // Constructors
 
@@ -1842,17 +1890,17 @@ export namespace Gee {
 
         connect<K extends keyof AbstractQueue.SignalSignatures>(
             signal: K,
-            callback: AbstractQueue.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AbstractQueue.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractQueue.SignalSignatures>(
             signal: K,
-            callback: AbstractQueue.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AbstractQueue.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractQueue.SignalSignatures>(
             signal: K,
-            ...args: AbstractQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AbstractQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1905,10 +1953,10 @@ export namespace Gee {
     namespace AbstractSet {
         // Signal signatures
         interface SignalSignatures extends AbstractCollection.SignalSignatures {
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1926,6 +1974,14 @@ export namespace Gee {
 
         get read_only_view(): Set;
         get readOnlyView(): Set;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AbstractSet.SignalSignatures;
 
         // Constructors
 
@@ -1937,17 +1993,17 @@ export namespace Gee {
 
         connect<K extends keyof AbstractSet.SignalSignatures>(
             signal: K,
-            callback: AbstractSet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AbstractSet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractSet.SignalSignatures>(
             signal: K,
-            callback: AbstractSet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AbstractSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractSet.SignalSignatures>(
             signal: K,
-            ...args: AbstractSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AbstractSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1984,10 +2040,10 @@ export namespace Gee {
     namespace ArrayList {
         // Signal signatures
         interface SignalSignatures extends AbstractList.SignalSignatures {
-            'notify::equal-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
+            'notify::equal-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2007,6 +2063,14 @@ export namespace Gee {
         set equal_func(val: GLib.EqualFunc);
         get equalFunc(): GLib.EqualFunc;
         set equalFunc(val: GLib.EqualFunc);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ArrayList.SignalSignatures;
 
         // Constructors
 
@@ -2018,16 +2082,19 @@ export namespace Gee {
 
         // Signals
 
-        connect<K extends keyof ArrayList.SignalSignatures>(signal: K, callback: ArrayList.SignalSignatures[K]): number;
+        connect<K extends keyof ArrayList.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ArrayList.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ArrayList.SignalSignatures>(
             signal: K,
-            callback: ArrayList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ArrayList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ArrayList.SignalSignatures>(
             signal: K,
-            ...args: ArrayList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ArrayList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2039,15 +2106,15 @@ export namespace Gee {
     namespace HashMap {
         // Signal signatures
         interface SignalSignatures extends AbstractMap.SignalSignatures {
-            'notify::key-hash-func': GObject.Object.Notify;
-            'notify::key-equal-func': GObject.Object.Notify;
-            'notify::value-equal-func': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
-            'notify::keys': GObject.Object.Notify;
-            'notify::values': GObject.Object.Notify;
-            'notify::entries': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
+            'notify::key-hash-func': (pspec: GObject.ParamSpec) => void;
+            'notify::key-equal-func': (pspec: GObject.ParamSpec) => void;
+            'notify::value-equal-func': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
+            'notify::keys': (pspec: GObject.ParamSpec) => void;
+            'notify::values': (pspec: GObject.ParamSpec) => void;
+            'notify::entries': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2079,6 +2146,14 @@ export namespace Gee {
         set value_equal_func(val: GLib.EqualFunc);
         get valueEqualFunc(): GLib.EqualFunc;
         set valueEqualFunc(val: GLib.EqualFunc);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HashMap.SignalSignatures;
 
         // Constructors
 
@@ -2094,16 +2169,19 @@ export namespace Gee {
 
         // Signals
 
-        connect<K extends keyof HashMap.SignalSignatures>(signal: K, callback: HashMap.SignalSignatures[K]): number;
+        connect<K extends keyof HashMap.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, HashMap.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HashMap.SignalSignatures>(
             signal: K,
-            callback: HashMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HashMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HashMap.SignalSignatures>(
             signal: K,
-            ...args: HashMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HashMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2111,10 +2189,10 @@ export namespace Gee {
     namespace HashMultiMap {
         // Signal signatures
         interface SignalSignatures extends AbstractMultiMap.SignalSignatures {
-            'notify::key-hash-func': GObject.Object.Notify;
-            'notify::key-equal-func': GObject.Object.Notify;
-            'notify::value-hash-func': GObject.Object.Notify;
-            'notify::value-equal-func': GObject.Object.Notify;
+            'notify::key-hash-func': (pspec: GObject.ParamSpec) => void;
+            'notify::key-equal-func': (pspec: GObject.ParamSpec) => void;
+            'notify::value-hash-func': (pspec: GObject.ParamSpec) => void;
+            'notify::value-equal-func': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2148,6 +2226,14 @@ export namespace Gee {
         set value_equal_func(val: GLib.EqualFunc);
         get valueEqualFunc(): GLib.EqualFunc;
         set valueEqualFunc(val: GLib.EqualFunc);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HashMultiMap.SignalSignatures;
 
         // Constructors
 
@@ -2166,17 +2252,17 @@ export namespace Gee {
 
         connect<K extends keyof HashMultiMap.SignalSignatures>(
             signal: K,
-            callback: HashMultiMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HashMultiMap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HashMultiMap.SignalSignatures>(
             signal: K,
-            callback: HashMultiMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HashMultiMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HashMultiMap.SignalSignatures>(
             signal: K,
-            ...args: HashMultiMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HashMultiMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2184,11 +2270,11 @@ export namespace Gee {
     namespace HashMultiSet {
         // Signal signatures
         interface SignalSignatures extends AbstractMultiSet.SignalSignatures {
-            'notify::hash-func': GObject.Object.Notify;
-            'notify::equal-func': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
+            'notify::hash-func': (pspec: GObject.ParamSpec) => void;
+            'notify::equal-func': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2210,6 +2296,14 @@ export namespace Gee {
         get hashFunc(): GLib.HashFunc;
         get equal_func(): GLib.EqualFunc;
         get equalFunc(): GLib.EqualFunc;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HashMultiSet.SignalSignatures;
 
         // Constructors
 
@@ -2223,17 +2317,17 @@ export namespace Gee {
 
         connect<K extends keyof HashMultiSet.SignalSignatures>(
             signal: K,
-            callback: HashMultiSet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HashMultiSet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HashMultiSet.SignalSignatures>(
             signal: K,
-            callback: HashMultiSet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HashMultiSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HashMultiSet.SignalSignatures>(
             signal: K,
-            ...args: HashMultiSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HashMultiSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2241,11 +2335,11 @@ export namespace Gee {
     namespace HashSet {
         // Signal signatures
         interface SignalSignatures extends AbstractSet.SignalSignatures {
-            'notify::hash-func': GObject.Object.Notify;
-            'notify::equal-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
+            'notify::hash-func': (pspec: GObject.ParamSpec) => void;
+            'notify::equal-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2271,6 +2365,14 @@ export namespace Gee {
         set equal_func(val: GLib.EqualFunc);
         get equalFunc(): GLib.EqualFunc;
         set equalFunc(val: GLib.EqualFunc);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HashSet.SignalSignatures;
 
         // Constructors
 
@@ -2282,16 +2384,19 @@ export namespace Gee {
 
         // Signals
 
-        connect<K extends keyof HashSet.SignalSignatures>(signal: K, callback: HashSet.SignalSignatures[K]): number;
+        connect<K extends keyof HashSet.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, HashSet.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HashSet.SignalSignatures>(
             signal: K,
-            callback: HashSet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HashSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HashSet.SignalSignatures>(
             signal: K,
-            ...args: HashSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HashSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2299,13 +2404,13 @@ export namespace Gee {
     namespace LinkedList {
         // Signal signatures
         interface SignalSignatures extends AbstractList.SignalSignatures {
-            'notify::equal-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
-            'notify::capacity': GObject.Object.Notify;
-            'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::is-full': GObject.Object.Notify;
+            'notify::equal-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
+            'notify::capacity': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining-capacity': (pspec: GObject.ParamSpec) => void;
+            'notify::is-full': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2332,6 +2437,14 @@ export namespace Gee {
         set equalFunc(val: GLib.EqualFunc);
         get readOnlyView(): LinkedList;
         get read_only_view(): LinkedList;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LinkedList.SignalSignatures;
 
         // Constructors
 
@@ -2345,17 +2458,17 @@ export namespace Gee {
 
         connect<K extends keyof LinkedList.SignalSignatures>(
             signal: K,
-            callback: LinkedList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LinkedList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LinkedList.SignalSignatures>(
             signal: K,
-            callback: LinkedList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LinkedList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LinkedList.SignalSignatures>(
             signal: K,
-            ...args: LinkedList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LinkedList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2396,13 +2509,13 @@ export namespace Gee {
     namespace PriorityQueue {
         // Signal signatures
         interface SignalSignatures extends AbstractQueue.SignalSignatures {
-            'notify::compare-func': GObject.Object.Notify;
-            'notify::capacity': GObject.Object.Notify;
-            'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::is-full': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
+            'notify::compare-func': (pspec: GObject.ParamSpec) => void;
+            'notify::capacity': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining-capacity': (pspec: GObject.ParamSpec) => void;
+            'notify::is-full': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2422,6 +2535,14 @@ export namespace Gee {
         set compare_func(val: GLib.CompareFunc);
         get compareFunc(): GLib.CompareFunc;
         set compareFunc(val: GLib.CompareFunc);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PriorityQueue.SignalSignatures;
 
         // Constructors
 
@@ -2435,17 +2556,17 @@ export namespace Gee {
 
         connect<K extends keyof PriorityQueue.SignalSignatures>(
             signal: K,
-            callback: PriorityQueue.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PriorityQueue.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PriorityQueue.SignalSignatures>(
             signal: K,
-            callback: PriorityQueue.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PriorityQueue.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PriorityQueue.SignalSignatures>(
             signal: K,
-            ...args: PriorityQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PriorityQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2453,14 +2574,14 @@ export namespace Gee {
     namespace TreeMap {
         // Signal signatures
         interface SignalSignatures extends AbstractMap.SignalSignatures {
-            'notify::key-compare-func': GObject.Object.Notify;
-            'notify::value-equal-func': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
-            'notify::keys': GObject.Object.Notify;
-            'notify::values': GObject.Object.Notify;
-            'notify::entries': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
+            'notify::key-compare-func': (pspec: GObject.ParamSpec) => void;
+            'notify::value-equal-func': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
+            'notify::keys': (pspec: GObject.ParamSpec) => void;
+            'notify::values': (pspec: GObject.ParamSpec) => void;
+            'notify::entries': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2486,6 +2607,14 @@ export namespace Gee {
         set value_equal_func(val: GLib.EqualFunc);
         get valueEqualFunc(): GLib.EqualFunc;
         set valueEqualFunc(val: GLib.EqualFunc);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TreeMap.SignalSignatures;
 
         // Constructors
 
@@ -2497,16 +2626,19 @@ export namespace Gee {
 
         // Signals
 
-        connect<K extends keyof TreeMap.SignalSignatures>(signal: K, callback: TreeMap.SignalSignatures[K]): number;
+        connect<K extends keyof TreeMap.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TreeMap.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TreeMap.SignalSignatures>(
             signal: K,
-            callback: TreeMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TreeMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TreeMap.SignalSignatures>(
             signal: K,
-            ...args: TreeMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TreeMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2514,8 +2646,8 @@ export namespace Gee {
     namespace TreeMultiMap {
         // Signal signatures
         interface SignalSignatures extends AbstractMultiMap.SignalSignatures {
-            'notify::key-compare-func': GObject.Object.Notify;
-            'notify::value-compare-func': GObject.Object.Notify;
+            'notify::key-compare-func': (pspec: GObject.ParamSpec) => void;
+            'notify::value-compare-func': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2539,6 +2671,14 @@ export namespace Gee {
         set value_compare_func(val: GLib.CompareFunc);
         get valueCompareFunc(): GLib.CompareFunc;
         set valueCompareFunc(val: GLib.CompareFunc);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TreeMultiMap.SignalSignatures;
 
         // Constructors
 
@@ -2552,17 +2692,17 @@ export namespace Gee {
 
         connect<K extends keyof TreeMultiMap.SignalSignatures>(
             signal: K,
-            callback: TreeMultiMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TreeMultiMap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TreeMultiMap.SignalSignatures>(
             signal: K,
-            callback: TreeMultiMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TreeMultiMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TreeMultiMap.SignalSignatures>(
             signal: K,
-            ...args: TreeMultiMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TreeMultiMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2570,10 +2710,10 @@ export namespace Gee {
     namespace TreeMultiSet {
         // Signal signatures
         interface SignalSignatures extends AbstractMultiSet.SignalSignatures {
-            'notify::compare-func': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
+            'notify::compare-func': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2591,6 +2731,14 @@ export namespace Gee {
 
         get compare_func(): GLib.CompareFunc;
         get compareFunc(): GLib.CompareFunc;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TreeMultiSet.SignalSignatures;
 
         // Constructors
 
@@ -2604,17 +2752,17 @@ export namespace Gee {
 
         connect<K extends keyof TreeMultiSet.SignalSignatures>(
             signal: K,
-            callback: TreeMultiSet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TreeMultiSet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TreeMultiSet.SignalSignatures>(
             signal: K,
-            callback: TreeMultiSet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TreeMultiSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TreeMultiSet.SignalSignatures>(
             signal: K,
-            ...args: TreeMultiSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TreeMultiSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2622,10 +2770,10 @@ export namespace Gee {
     namespace TreeSet {
         // Signal signatures
         interface SignalSignatures extends AbstractSet.SignalSignatures {
-            'notify::compare-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::is-empty': GObject.Object.Notify;
+            'notify::compare-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2645,6 +2793,14 @@ export namespace Gee {
         set compare_func(val: GLib.CompareFunc);
         get compareFunc(): GLib.CompareFunc;
         set compareFunc(val: GLib.CompareFunc);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TreeSet.SignalSignatures;
 
         // Constructors
 
@@ -2656,16 +2812,19 @@ export namespace Gee {
 
         // Signals
 
-        connect<K extends keyof TreeSet.SignalSignatures>(signal: K, callback: TreeSet.SignalSignatures[K]): number;
+        connect<K extends keyof TreeSet.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TreeSet.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TreeSet.SignalSignatures>(
             signal: K,
-            callback: TreeSet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TreeSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TreeSet.SignalSignatures>(
             signal: K,
-            ...args: TreeSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TreeSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2701,8 +2860,8 @@ export namespace Gee {
     namespace MapEntry {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::key': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::key': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2721,6 +2880,14 @@ export namespace Gee {
         get key(): any;
         get value(): any;
         set value(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MapEntry.SignalSignatures;
 
         // Constructors
 
@@ -2730,16 +2897,19 @@ export namespace Gee {
 
         // Signals
 
-        connect<K extends keyof MapEntry.SignalSignatures>(signal: K, callback: MapEntry.SignalSignatures[K]): number;
+        connect<K extends keyof MapEntry.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MapEntry.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MapEntry.SignalSignatures>(
             signal: K,
-            callback: MapEntry.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MapEntry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MapEntry.SignalSignatures>(
             signal: K,
-            ...args: MapEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MapEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

@@ -1799,20 +1799,10 @@ export namespace ColorHug {
         BLUE,
     }
     namespace DeviceQueue {
-        // Signal callback interfaces
-
-        interface DeviceFailed {
-            (_source: DeviceQueue, object: GObject.Object, p0: string): void;
-        }
-
-        interface ProgressChanged {
-            (_source: DeviceQueue, object: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'device-failed': DeviceFailed;
-            'progress-changed': ProgressChanged;
+            'device-failed': (arg0: GObject.Object, arg1: string) => void;
+            'progress-changed': (arg0: number) => void;
         }
 
         // Constructor properties interface
@@ -1822,6 +1812,14 @@ export namespace ColorHug {
 
     class DeviceQueue extends GObject.Object {
         static $gtype: GObject.GType<DeviceQueue>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceQueue.SignalSignatures;
 
         // Constructors
 
@@ -1835,17 +1833,17 @@ export namespace ColorHug {
 
         connect<K extends keyof DeviceQueue.SignalSignatures>(
             signal: K,
-            callback: DeviceQueue.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceQueue.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceQueue.SignalSignatures>(
             signal: K,
-            callback: DeviceQueue.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceQueue.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceQueue.SignalSignatures>(
             signal: K,
-            ...args: DeviceQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

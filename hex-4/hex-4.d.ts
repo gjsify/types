@@ -137,57 +137,19 @@ export namespace Hex {
         IGNORE_CASE,
     }
     namespace Document {
-        // Signal callback interfaces
-
-        interface DocumentChanged {
-            (_source: Document, object: any | null, p0: boolean): void;
-        }
-
-        interface FileLoaded {
-            (_source: Document): void;
-        }
-
-        interface FileNameChanged {
-            (_source: Document): void;
-        }
-
-        interface FileReadStarted {
-            (_source: Document): void;
-        }
-
-        interface FileSaveStarted {
-            (_source: Document): void;
-        }
-
-        interface FileSaved {
-            (_source: Document): void;
-        }
-
-        interface Redo {
-            (_source: Document): void;
-        }
-
-        interface Undo {
-            (_source: Document): void;
-        }
-
-        interface UndoStackForget {
-            (_source: Document): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'document-changed': DocumentChanged;
-            'file-loaded': FileLoaded;
-            'file-name-changed': FileNameChanged;
-            'file-read-started': FileReadStarted;
-            'file-save-started': FileSaveStarted;
-            'file-saved': FileSaved;
-            redo: Redo;
-            undo: Undo;
-            'undo-stack-forget': UndoStackForget;
-            'notify::buffer': GObject.Object.Notify;
-            'notify::file': GObject.Object.Notify;
+            'document-changed': (arg0: any | null, arg1: boolean) => void;
+            'file-loaded': () => void;
+            'file-name-changed': () => void;
+            'file-read-started': () => void;
+            'file-save-started': () => void;
+            'file-saved': () => void;
+            redo: () => void;
+            undo: () => void;
+            'undo-stack-forget': () => void;
+            'notify::buffer': (pspec: GObject.ParamSpec) => void;
+            'notify::file': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -212,6 +174,14 @@ export namespace Hex {
         set buffer(val: Buffer);
         get file(): Gio.File;
         set file(val: Gio.File);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Document.SignalSignatures;
 
         // Constructors
 
@@ -225,16 +195,19 @@ export namespace Hex {
 
         // Signals
 
-        connect<K extends keyof Document.SignalSignatures>(signal: K, callback: Document.SignalSignatures[K]): number;
+        connect<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Document.SignalSignatures>(
             signal: K,
-            callback: Document.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Document.SignalSignatures>(
             signal: K,
-            ...args: Document.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Document.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -626,78 +599,52 @@ export namespace Hex {
     }
 
     namespace Widget {
-        // Signal callback interfaces
-
-        interface CopyClipboard {
-            (_source: Widget): void;
-        }
-
-        interface CursorMoved {
-            (_source: Widget): void;
-        }
-
-        interface CutClipboard {
-            (_source: Widget): void;
-        }
-
-        interface DataChanged {
-            (_source: Widget): void;
-        }
-
-        interface DrawComplete {
-            (_source: Widget): void;
-        }
-
-        interface PasteClipboard {
-            (_source: Widget): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
-            'copy-clipboard': CopyClipboard;
-            'cursor-moved': CursorMoved;
-            'cut-clipboard': CutClipboard;
-            'data-changed': DataChanged;
-            'draw-complete': DrawComplete;
-            'paste-clipboard': PasteClipboard;
-            'notify::document': GObject.Object.Notify;
-            'notify::fade-zeroes': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::can-target': GObject.Object.Notify;
-            'notify::css-classes': GObject.Object.Notify;
-            'notify::css-name': GObject.Object.Notify;
-            'notify::cursor': GObject.Object.Notify;
-            'notify::focus-on-click': GObject.Object.Notify;
-            'notify::focusable': GObject.Object.Notify;
-            'notify::halign': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
-            'notify::hexpand': GObject.Object.Notify;
-            'notify::hexpand-set': GObject.Object.Notify;
-            'notify::layout-manager': GObject.Object.Notify;
-            'notify::limit-events': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-end': GObject.Object.Notify;
-            'notify::margin-start': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::overflow': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
-            'notify::root': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
-            'notify::valign': GObject.Object.Notify;
-            'notify::vexpand': GObject.Object.Notify;
-            'notify::vexpand-set': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
-            'notify::accessible-role': GObject.Object.Notify;
+            'copy-clipboard': () => void;
+            'cursor-moved': () => void;
+            'cut-clipboard': () => void;
+            'data-changed': () => void;
+            'draw-complete': () => void;
+            'paste-clipboard': () => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::fade-zeroes': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::can-target': (pspec: GObject.ParamSpec) => void;
+            'notify::css-classes': (pspec: GObject.ParamSpec) => void;
+            'notify::css-name': (pspec: GObject.ParamSpec) => void;
+            'notify::cursor': (pspec: GObject.ParamSpec) => void;
+            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
+            'notify::focusable': (pspec: GObject.ParamSpec) => void;
+            'notify::halign': (pspec: GObject.ParamSpec) => void;
+            'notify::has-default': (pspec: GObject.ParamSpec) => void;
+            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::height-request': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::limit-events': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::overflow': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
+            'notify::root': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
+            'notify::valign': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -737,6 +684,14 @@ export namespace Hex {
          */
         get fadeZeroes(): boolean;
         set fadeZeroes(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Widget.SignalSignatures;
 
         // Constructors
 
@@ -748,13 +703,19 @@ export namespace Hex {
 
         // Signals
 
-        connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
+        connect<K extends keyof Widget.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Widget.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
+        connect_after<K extends keyof Widget.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Widget.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Widget.SignalSignatures>(
             signal: K,
-            ...args: Widget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Widget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1674,8 +1635,8 @@ export namespace Hex {
     namespace WidgetMark {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::custom-color': GObject.Object.Notify;
-            'notify::have-custom-color': GObject.Object.Notify;
+            'notify::custom-color': (pspec: GObject.ParamSpec) => void;
+            'notify::have-custom-color': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1718,6 +1679,14 @@ export namespace Hex {
          * Whether the `HexWidgetMark` has a custom color.
          */
         get haveCustomColor(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WidgetMark.SignalSignatures;
 
         // Constructors
 
@@ -1729,17 +1698,17 @@ export namespace Hex {
 
         connect<K extends keyof WidgetMark.SignalSignatures>(
             signal: K,
-            callback: WidgetMark.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WidgetMark.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WidgetMark.SignalSignatures>(
             signal: K,
-            callback: WidgetMark.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WidgetMark.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WidgetMark.SignalSignatures>(
             signal: K,
-            ...args: WidgetMark.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WidgetMark.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

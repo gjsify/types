@@ -218,55 +218,29 @@ export namespace LightDM {
      */
     function suspend(): boolean;
     namespace Greeter {
-        // Signal callback interfaces
-
-        interface AuthenticationComplete {
-            (_source: Greeter): void;
-        }
-
-        interface AutologinTimerExpired {
-            (_source: Greeter): void;
-        }
-
-        interface Idle {
-            (_source: Greeter): void;
-        }
-
-        interface Reset {
-            (_source: Greeter): void;
-        }
-
-        interface ShowMessage {
-            (_source: Greeter, text: string, type: MessageType): void;
-        }
-
-        interface ShowPrompt {
-            (_source: Greeter, text: string, type: PromptType): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'authentication-complete': AuthenticationComplete;
-            'autologin-timer-expired': AutologinTimerExpired;
-            idle: Idle;
-            reset: Reset;
-            'show-message': ShowMessage;
-            'show-prompt': ShowPrompt;
-            'notify::authentication-user': GObject.Object.Notify;
-            'notify::autologin-guest-hint': GObject.Object.Notify;
-            'notify::autologin-session-hint': GObject.Object.Notify;
-            'notify::autologin-timeout-hint': GObject.Object.Notify;
-            'notify::autologin-user-hint': GObject.Object.Notify;
-            'notify::default-session-hint': GObject.Object.Notify;
-            'notify::has-guest-account-hint': GObject.Object.Notify;
-            'notify::hide-users-hint': GObject.Object.Notify;
-            'notify::in-authentication': GObject.Object.Notify;
-            'notify::is-authenticated': GObject.Object.Notify;
-            'notify::lock-hint': GObject.Object.Notify;
-            'notify::select-guest-hint': GObject.Object.Notify;
-            'notify::select-user-hint': GObject.Object.Notify;
-            'notify::show-manual-login-hint': GObject.Object.Notify;
-            'notify::show-remote-login-hint': GObject.Object.Notify;
+            'authentication-complete': () => void;
+            'autologin-timer-expired': () => void;
+            idle: () => void;
+            reset: () => void;
+            'show-message': (arg0: string, arg1: MessageType) => void;
+            'show-prompt': (arg0: string, arg1: PromptType) => void;
+            'notify::authentication-user': (pspec: GObject.ParamSpec) => void;
+            'notify::autologin-guest-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::autologin-session-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::autologin-timeout-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::autologin-user-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::default-session-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::has-guest-account-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::hide-users-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::in-authentication': (pspec: GObject.ParamSpec) => void;
+            'notify::is-authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::lock-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::select-guest-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::select-user-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::show-manual-login-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::show-remote-login-hint': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -344,6 +318,14 @@ export namespace LightDM {
         get showManualLoginHint(): boolean;
         get show_remote_login_hint(): boolean;
         get showRemoteLoginHint(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Greeter.SignalSignatures;
 
         // Constructors
 
@@ -355,16 +337,19 @@ export namespace LightDM {
 
         // Signals
 
-        connect<K extends keyof Greeter.SignalSignatures>(signal: K, callback: Greeter.SignalSignatures[K]): number;
+        connect<K extends keyof Greeter.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Greeter.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Greeter.SignalSignatures>(
             signal: K,
-            callback: Greeter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Greeter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Greeter.SignalSignatures>(
             signal: K,
-            ...args: Greeter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Greeter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -701,9 +686,9 @@ export namespace LightDM {
     namespace Language {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::code': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::territory': GObject.Object.Notify;
+            'notify::code': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::territory': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -727,6 +712,14 @@ export namespace LightDM {
         get code(): string;
         get name(): string;
         get territory(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Language.SignalSignatures;
 
         // Constructors
 
@@ -736,16 +729,19 @@ export namespace LightDM {
 
         // Signals
 
-        connect<K extends keyof Language.SignalSignatures>(signal: K, callback: Language.SignalSignatures[K]): number;
+        connect<K extends keyof Language.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Language.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Language.SignalSignatures>(
             signal: K,
-            callback: Language.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Language.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Language.SignalSignatures>(
             signal: K,
-            ...args: Language.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Language.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -777,9 +773,9 @@ export namespace LightDM {
     namespace Layout {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::description': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::short-description': GObject.Object.Notify;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::short-description': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -805,6 +801,14 @@ export namespace LightDM {
         get name(): string;
         get short_description(): string;
         get shortDescription(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Layout.SignalSignatures;
 
         // Constructors
 
@@ -814,13 +818,19 @@ export namespace LightDM {
 
         // Signals
 
-        connect<K extends keyof Layout.SignalSignatures>(signal: K, callback: Layout.SignalSignatures[K]): number;
+        connect<K extends keyof Layout.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Layout.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Layout.SignalSignatures>(signal: K, callback: Layout.SignalSignatures[K]): number;
+        connect_after<K extends keyof Layout.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Layout.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Layout.SignalSignatures>(
             signal: K,
-            ...args: Layout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Layout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -846,9 +856,9 @@ export namespace LightDM {
     namespace Session {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::comment': GObject.Object.Notify;
-            'notify::key': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::comment': (pspec: GObject.ParamSpec) => void;
+            'notify::key': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -872,6 +882,14 @@ export namespace LightDM {
         get comment(): string;
         get key(): string;
         get name(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -881,16 +899,19 @@ export namespace LightDM {
 
         // Signals
 
-        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
-            callback: Session.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -919,29 +940,23 @@ export namespace LightDM {
     }
 
     namespace User {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: User): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            'notify::background': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::has-messages': GObject.Object.Notify;
-            'notify::home-directory': GObject.Object.Notify;
-            'notify::image': GObject.Object.Notify;
-            'notify::is-locked': GObject.Object.Notify;
-            'notify::language': GObject.Object.Notify;
-            'notify::layout': GObject.Object.Notify;
-            'notify::layouts': GObject.Object.Notify;
-            'notify::logged-in': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::real-name': GObject.Object.Notify;
-            'notify::session': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
+            changed: () => void;
+            'notify::background': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::has-messages': (pspec: GObject.ParamSpec) => void;
+            'notify::home-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::image': (pspec: GObject.ParamSpec) => void;
+            'notify::is-locked': (pspec: GObject.ParamSpec) => void;
+            'notify::language': (pspec: GObject.ParamSpec) => void;
+            'notify::layout': (pspec: GObject.ParamSpec) => void;
+            'notify::layouts': (pspec: GObject.ParamSpec) => void;
+            'notify::logged-in': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::real-name': (pspec: GObject.ParamSpec) => void;
+            'notify::session': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -999,6 +1014,14 @@ export namespace LightDM {
         get realName(): string;
         get session(): string;
         get uid(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: User.SignalSignatures;
 
         // Constructors
 
@@ -1008,13 +1031,19 @@ export namespace LightDM {
 
         // Signals
 
-        connect<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
+        connect<K extends keyof User.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, User.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
+        connect_after<K extends keyof User.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, User.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof User.SignalSignatures>(
             signal: K,
-            ...args: User.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<User.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1097,27 +1126,13 @@ export namespace LightDM {
     }
 
     namespace UserList {
-        // Signal callback interfaces
-
-        interface UserAdded {
-            (_source: UserList, user: User): void;
-        }
-
-        interface UserChanged {
-            (_source: UserList, user: User): void;
-        }
-
-        interface UserRemoved {
-            (_source: UserList, user: User): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'user-added': UserAdded;
-            'user-changed': UserChanged;
-            'user-removed': UserRemoved;
-            'notify::length': GObject.Object.Notify;
-            'notify::num-users': GObject.Object.Notify;
+            'user-added': (arg0: User) => void;
+            'user-changed': (arg0: User) => void;
+            'user-removed': (arg0: User) => void;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
+            'notify::num-users': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1141,6 +1156,14 @@ export namespace LightDM {
         get length(): number;
         get num_users(): number;
         get numUsers(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UserList.SignalSignatures;
 
         // Constructors
 
@@ -1150,16 +1173,19 @@ export namespace LightDM {
 
         // Signals
 
-        connect<K extends keyof UserList.SignalSignatures>(signal: K, callback: UserList.SignalSignatures[K]): number;
+        connect<K extends keyof UserList.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, UserList.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserList.SignalSignatures>(
             signal: K,
-            callback: UserList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserList.SignalSignatures>(
             signal: K,
-            ...args: UserList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UserList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -275,7 +275,7 @@ export namespace Vda {
     namespace AffectedRows {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::number': GObject.Object.Notify;
+            'notify::number': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -288,6 +288,14 @@ export namespace Vda {
 
     class AffectedRows extends GObject.Object implements Result, SqlAffectedRows {
         static $gtype: GObject.GType<AffectedRows>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AffectedRows.SignalSignatures;
 
         // Constructors
 
@@ -301,17 +309,17 @@ export namespace Vda {
 
         connect<K extends keyof AffectedRows.SignalSignatures>(
             signal: K,
-            callback: AffectedRows.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AffectedRows.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AffectedRows.SignalSignatures>(
             signal: K,
-            callback: AffectedRows.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AffectedRows.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AffectedRows.SignalSignatures>(
             signal: K,
-            ...args: AffectedRows.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AffectedRows.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -765,11 +773,11 @@ export namespace Vda {
     namespace CommandDelete {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::connection': GObject.Object.Notify;
-            'notify::table': GObject.Object.Notify;
-            'notify::allias': GObject.Object.Notify;
-            'notify::condition': GObject.Object.Notify;
-            'notify::parameters': GObject.Object.Notify;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::table': (pspec: GObject.ParamSpec) => void;
+            'notify::allias': (pspec: GObject.ParamSpec) => void;
+            'notify::condition': (pspec: GObject.ParamSpec) => void;
+            'notify::parameters': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -795,6 +803,14 @@ export namespace Vda {
             SqlCommandDelete
     {
         static $gtype: GObject.GType<CommandDelete>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CommandDelete.SignalSignatures;
 
         // Constructors
 
@@ -808,17 +824,17 @@ export namespace Vda {
 
         connect<K extends keyof CommandDelete.SignalSignatures>(
             signal: K,
-            callback: CommandDelete.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CommandDelete.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CommandDelete.SignalSignatures>(
             signal: K,
-            callback: CommandDelete.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CommandDelete.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CommandDelete.SignalSignatures>(
             signal: K,
-            ...args: CommandDelete.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CommandDelete.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1309,6 +1325,14 @@ export namespace Vda {
 
     class CommandInsert extends CommandModification implements Stringifiable, SqlCommandInsert {
         static $gtype: GObject.GType<CommandInsert>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CommandInsert.SignalSignatures;
 
         // Constructors
 
@@ -1322,17 +1346,17 @@ export namespace Vda {
 
         connect<K extends keyof CommandInsert.SignalSignatures>(
             signal: K,
-            callback: CommandInsert.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CommandInsert.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CommandInsert.SignalSignatures>(
             signal: K,
-            callback: CommandInsert.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CommandInsert.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CommandInsert.SignalSignatures>(
             signal: K,
-            ...args: CommandInsert.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CommandInsert.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1789,12 +1813,12 @@ export namespace Vda {
     namespace CommandModification {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::connection': GObject.Object.Notify;
-            'notify::table': GObject.Object.Notify;
-            'notify::allias': GObject.Object.Notify;
-            'notify::fields': GObject.Object.Notify;
-            'notify::values': GObject.Object.Notify;
-            'notify::parameters': GObject.Object.Notify;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::table': (pspec: GObject.ParamSpec) => void;
+            'notify::allias': (pspec: GObject.ParamSpec) => void;
+            'notify::fields': (pspec: GObject.ParamSpec) => void;
+            'notify::values': (pspec: GObject.ParamSpec) => void;
+            'notify::parameters': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1812,6 +1836,14 @@ export namespace Vda {
         implements SqlCommand, SqlCommandTableRelated, SqlCommandModification, SqlCommandParametrized
     {
         static $gtype: GObject.GType<CommandModification>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CommandModification.SignalSignatures;
 
         // Constructors
 
@@ -1825,17 +1857,19 @@ export namespace Vda {
 
         connect<K extends keyof CommandModification.SignalSignatures>(
             signal: K,
-            callback: CommandModification.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CommandModification.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CommandModification.SignalSignatures>(
             signal: K,
-            callback: CommandModification.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CommandModification.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CommandModification.SignalSignatures>(
             signal: K,
-            ...args: CommandModification.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CommandModification.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2320,11 +2354,11 @@ export namespace Vda {
     namespace CommandSelect {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::connection': GObject.Object.Notify;
-            'notify::condition': GObject.Object.Notify;
-            'notify::parameters': GObject.Object.Notify;
-            'notify::fields': GObject.Object.Notify;
-            'notify::tables': GObject.Object.Notify;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::condition': (pspec: GObject.ParamSpec) => void;
+            'notify::parameters': (pspec: GObject.ParamSpec) => void;
+            'notify::fields': (pspec: GObject.ParamSpec) => void;
+            'notify::tables': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2343,6 +2377,14 @@ export namespace Vda {
         implements SqlCommand, SqlCommandConditional, Stringifiable, SqlCommandParametrized, SqlCommandSelect
     {
         static $gtype: GObject.GType<CommandSelect>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CommandSelect.SignalSignatures;
 
         // Constructors
 
@@ -2356,17 +2398,17 @@ export namespace Vda {
 
         connect<K extends keyof CommandSelect.SignalSignatures>(
             signal: K,
-            callback: CommandSelect.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CommandSelect.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CommandSelect.SignalSignatures>(
             signal: K,
-            callback: CommandSelect.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CommandSelect.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CommandSelect.SignalSignatures>(
             signal: K,
-            ...args: CommandSelect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CommandSelect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2848,7 +2890,7 @@ export namespace Vda {
     namespace CommandUpdate {
         // Signal signatures
         interface SignalSignatures extends CommandModification.SignalSignatures {
-            'notify::condition': GObject.Object.Notify;
+            'notify::condition': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2862,6 +2904,14 @@ export namespace Vda {
 
     class CommandUpdate extends CommandModification implements SqlCommandConditional, Stringifiable, SqlCommandUpdate {
         static $gtype: GObject.GType<CommandUpdate>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CommandUpdate.SignalSignatures;
 
         // Constructors
 
@@ -2875,17 +2925,17 @@ export namespace Vda {
 
         connect<K extends keyof CommandUpdate.SignalSignatures>(
             signal: K,
-            callback: CommandUpdate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CommandUpdate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CommandUpdate.SignalSignatures>(
             signal: K,
-            callback: CommandUpdate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CommandUpdate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CommandUpdate.SignalSignatures>(
             signal: K,
-            ...args: CommandUpdate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CommandUpdate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3347,8 +3397,8 @@ export namespace Vda {
     namespace ConnectionParameter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3368,6 +3418,14 @@ export namespace Vda {
         set name(val: string);
         get value(): string;
         set value(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConnectionParameter.SignalSignatures;
 
         // Constructors
 
@@ -3381,17 +3439,19 @@ export namespace Vda {
 
         connect<K extends keyof ConnectionParameter.SignalSignatures>(
             signal: K,
-            callback: ConnectionParameter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConnectionParameter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConnectionParameter.SignalSignatures>(
             signal: K,
-            callback: ConnectionParameter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConnectionParameter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConnectionParameter.SignalSignatures>(
             signal: K,
-            ...args: ConnectionParameter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConnectionParameter.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3406,8 +3466,8 @@ export namespace Vda {
     namespace ConnectionParameterDbName {
         // Signal signatures
         interface SignalSignatures extends ConnectionParameter.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3417,6 +3477,14 @@ export namespace Vda {
 
     class ConnectionParameterDbName extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterDbName>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConnectionParameterDbName.SignalSignatures;
 
         // Constructors
 
@@ -3430,17 +3498,19 @@ export namespace Vda {
 
         connect<K extends keyof ConnectionParameterDbName.SignalSignatures>(
             signal: K,
-            callback: ConnectionParameterDbName.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConnectionParameterDbName.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConnectionParameterDbName.SignalSignatures>(
             signal: K,
-            callback: ConnectionParameterDbName.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConnectionParameterDbName.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConnectionParameterDbName.SignalSignatures>(
             signal: K,
-            ...args: ConnectionParameterDbName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConnectionParameterDbName.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3448,8 +3518,8 @@ export namespace Vda {
     namespace ConnectionParameterHost {
         // Signal signatures
         interface SignalSignatures extends ConnectionParameter.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3459,6 +3529,14 @@ export namespace Vda {
 
     class ConnectionParameterHost extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterHost>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConnectionParameterHost.SignalSignatures;
 
         // Constructors
 
@@ -3472,17 +3550,19 @@ export namespace Vda {
 
         connect<K extends keyof ConnectionParameterHost.SignalSignatures>(
             signal: K,
-            callback: ConnectionParameterHost.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConnectionParameterHost.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConnectionParameterHost.SignalSignatures>(
             signal: K,
-            callback: ConnectionParameterHost.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConnectionParameterHost.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConnectionParameterHost.SignalSignatures>(
             signal: K,
-            ...args: ConnectionParameterHost.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConnectionParameterHost.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3490,8 +3570,8 @@ export namespace Vda {
     namespace ConnectionParameterPort {
         // Signal signatures
         interface SignalSignatures extends ConnectionParameter.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3501,6 +3581,14 @@ export namespace Vda {
 
     class ConnectionParameterPort extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterPort>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConnectionParameterPort.SignalSignatures;
 
         // Constructors
 
@@ -3514,17 +3602,19 @@ export namespace Vda {
 
         connect<K extends keyof ConnectionParameterPort.SignalSignatures>(
             signal: K,
-            callback: ConnectionParameterPort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConnectionParameterPort.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConnectionParameterPort.SignalSignatures>(
             signal: K,
-            callback: ConnectionParameterPort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConnectionParameterPort.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConnectionParameterPort.SignalSignatures>(
             signal: K,
-            ...args: ConnectionParameterPort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConnectionParameterPort.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3532,8 +3622,8 @@ export namespace Vda {
     namespace ConnectionParameterUserName {
         // Signal signatures
         interface SignalSignatures extends ConnectionParameter.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3543,6 +3633,14 @@ export namespace Vda {
 
     class ConnectionParameterUserName extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterUserName>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConnectionParameterUserName.SignalSignatures;
 
         // Constructors
 
@@ -3556,17 +3654,19 @@ export namespace Vda {
 
         connect<K extends keyof ConnectionParameterUserName.SignalSignatures>(
             signal: K,
-            callback: ConnectionParameterUserName.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConnectionParameterUserName.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConnectionParameterUserName.SignalSignatures>(
             signal: K,
-            callback: ConnectionParameterUserName.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConnectionParameterUserName.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConnectionParameterUserName.SignalSignatures>(
             signal: K,
-            ...args: ConnectionParameterUserName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConnectionParameterUserName.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3574,8 +3674,8 @@ export namespace Vda {
     namespace ConnectionParameterPassword {
         // Signal signatures
         interface SignalSignatures extends ConnectionParameter.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3585,6 +3685,14 @@ export namespace Vda {
 
     class ConnectionParameterPassword extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterPassword>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConnectionParameterPassword.SignalSignatures;
 
         // Constructors
 
@@ -3598,17 +3706,19 @@ export namespace Vda {
 
         connect<K extends keyof ConnectionParameterPassword.SignalSignatures>(
             signal: K,
-            callback: ConnectionParameterPassword.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConnectionParameterPassword.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConnectionParameterPassword.SignalSignatures>(
             signal: K,
-            callback: ConnectionParameterPassword.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConnectionParameterPassword.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConnectionParameterPassword.SignalSignatures>(
             signal: K,
-            ...args: ConnectionParameterPassword.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConnectionParameterPassword.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3616,18 +3726,18 @@ export namespace Vda {
     namespace ConnectionParameters {
         // Signal signatures
         interface SignalSignatures extends Gee.HashMap.SignalSignatures {
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::keys': GObject.Object.Notify;
-            'notify::values': GObject.Object.Notify;
-            'notify::entries': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
+            'notify::k-type': (pspec: GObject.ParamSpec) => void;
+            'notify::k-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::k-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::v-type': (pspec: GObject.ParamSpec) => void;
+            'notify::v-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::v-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            'notify::keys': (pspec: GObject.ParamSpec) => void;
+            'notify::values': (pspec: GObject.ParamSpec) => void;
+            'notify::entries': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3637,6 +3747,14 @@ export namespace Vda {
 
     class ConnectionParameters extends Gee.HashMap {
         static $gtype: GObject.GType<ConnectionParameters>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConnectionParameters.SignalSignatures;
 
         // Constructors
 
@@ -3653,17 +3771,19 @@ export namespace Vda {
 
         connect<K extends keyof ConnectionParameters.SignalSignatures>(
             signal: K,
-            callback: ConnectionParameters.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConnectionParameters.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConnectionParameters.SignalSignatures>(
             signal: K,
-            callback: ConnectionParameters.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConnectionParameters.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConnectionParameters.SignalSignatures>(
             signal: K,
-            ...args: ConnectionParameters.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConnectionParameters.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3681,12 +3801,12 @@ export namespace Vda {
     namespace Expression {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3702,6 +3822,14 @@ export namespace Vda {
         implements Gio.ListModel<A>, SqlExpression
     {
         static $gtype: GObject.GType<Expression>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Expression.SignalSignatures;
 
         // Constructors
 
@@ -3715,17 +3843,17 @@ export namespace Vda {
 
         connect<K extends keyof Expression.SignalSignatures>(
             signal: K,
-            callback: Expression.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Expression.SignalSignatures>(
             signal: K,
-            callback: Expression.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Expression.SignalSignatures>(
             signal: K,
-            ...args: Expression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Expression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4284,15 +4412,15 @@ export namespace Vda {
     namespace ExpressionField {
         // Signal signatures
         interface SignalSignatures extends Expression.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::table-ref': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::allias': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            'notify::table-ref': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::allias': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4307,6 +4435,14 @@ export namespace Vda {
         implements SqlExpressionField
     {
         static $gtype: GObject.GType<ExpressionField>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionField.SignalSignatures;
 
         // Constructors
 
@@ -4320,17 +4456,17 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionField.SignalSignatures>(
             signal: K,
-            callback: ExpressionField.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionField.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionField.SignalSignatures>(
             signal: K,
-            callback: ExpressionField.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionField.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionField.SignalSignatures>(
             signal: K,
-            ...args: ExpressionField.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionField.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4803,13 +4939,13 @@ export namespace Vda {
     namespace ExpressionOperator {
         // Signal signatures
         interface SignalSignatures extends Expression.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::operator-type': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            'notify::operator-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4824,6 +4960,14 @@ export namespace Vda {
         implements SqlExpressionOperator
     {
         static $gtype: GObject.GType<ExpressionOperator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperator.SignalSignatures;
 
         // Constructors
 
@@ -4837,17 +4981,17 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperator.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperator.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperator.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5398,12 +5542,12 @@ export namespace Vda {
     namespace ExpressionOperatorGroup {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5418,6 +5562,14 @@ export namespace Vda {
         implements SqlExpressionOperatorGroup
     {
         static $gtype: GObject.GType<ExpressionOperatorGroup>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorGroup.SignalSignatures;
 
         // Constructors
 
@@ -5431,17 +5583,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorGroup.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorGroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorGroup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorGroup.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorGroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorGroup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorGroup.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorGroup.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5892,12 +6046,12 @@ export namespace Vda {
     namespace ExpressionOperatorMultiterm {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5912,6 +6066,14 @@ export namespace Vda {
         implements SqlExpressionOperatorMultiterm
     {
         static $gtype: GObject.GType<ExpressionOperatorMultiterm>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorMultiterm.SignalSignatures;
 
         // Constructors
 
@@ -5925,17 +6087,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorMultiterm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorMultiterm.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorMultiterm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorMultiterm.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorMultiterm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorMultiterm.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6386,12 +6550,12 @@ export namespace Vda {
     namespace ExpressionOperatorAnd {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorMultiterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6406,6 +6570,14 @@ export namespace Vda {
         implements SqlExpressionOperatorAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorAnd>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorAnd.SignalSignatures;
 
         // Constructors
 
@@ -6419,17 +6591,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorAnd.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorAnd.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorAnd.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorAnd.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorAnd.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorAnd.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorAnd.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorAnd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorAnd.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6880,12 +7054,12 @@ export namespace Vda {
     namespace ExpressionOperatorOr {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorMultiterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6900,6 +7074,14 @@ export namespace Vda {
         implements SqlExpressionOperatorOr
     {
         static $gtype: GObject.GType<ExpressionOperatorOr>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorOr.SignalSignatures;
 
         // Constructors
 
@@ -6913,17 +7095,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorOr.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorOr.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorOr.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorOr.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorOr.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorOr.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorOr.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorOr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorOr.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7374,12 +7558,12 @@ export namespace Vda {
     namespace ExpressionOperatorBinaryterm {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7394,6 +7578,14 @@ export namespace Vda {
         implements SqlExpressionOperatorBinaryterm
     {
         static $gtype: GObject.GType<ExpressionOperatorBinaryterm>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorBinaryterm.SignalSignatures;
 
         // Constructors
 
@@ -7407,17 +7599,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorBinaryterm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorBinaryterm.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorBinaryterm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorBinaryterm.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorBinaryterm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorBinaryterm.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7868,12 +8062,12 @@ export namespace Vda {
     namespace ExpressionOperatorEq {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7888,6 +8082,14 @@ export namespace Vda {
         implements SqlExpressionOperatorEq
     {
         static $gtype: GObject.GType<ExpressionOperatorEq>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorEq.SignalSignatures;
 
         // Constructors
 
@@ -7901,17 +8103,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorEq.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorEq.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorEq.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorEq.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorEq.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorEq.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorEq.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorEq.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorEq.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8362,12 +8566,12 @@ export namespace Vda {
     namespace ExpressionOperatorNotEq {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8382,6 +8586,14 @@ export namespace Vda {
         implements SqlExpressionOperatorNotEq
     {
         static $gtype: GObject.GType<ExpressionOperatorNotEq>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorNotEq.SignalSignatures;
 
         // Constructors
 
@@ -8395,17 +8607,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorNotEq.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorNotEq.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorNotEq.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorNotEq.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorNotEq.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorNotEq.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8856,12 +9070,12 @@ export namespace Vda {
     namespace ExpressionOperatorDiff {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8876,6 +9090,14 @@ export namespace Vda {
         implements SqlExpressionOperatorDiff
     {
         static $gtype: GObject.GType<ExpressionOperatorDiff>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorDiff.SignalSignatures;
 
         // Constructors
 
@@ -8889,17 +9111,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorDiff.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorDiff.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorDiff.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorDiff.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorDiff.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorDiff.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorDiff.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorDiff.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorDiff.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9350,12 +9574,12 @@ export namespace Vda {
     namespace ExpressionOperatorGt {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9370,6 +9594,14 @@ export namespace Vda {
         implements SqlExpressionOperatorGt
     {
         static $gtype: GObject.GType<ExpressionOperatorGt>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorGt.SignalSignatures;
 
         // Constructors
 
@@ -9383,17 +9615,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorGt.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorGt.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorGt.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorGt.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorGt.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorGt.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorGt.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorGt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorGt.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9844,12 +10078,12 @@ export namespace Vda {
     namespace ExpressionOperatorLt {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9864,6 +10098,14 @@ export namespace Vda {
         implements SqlExpressionOperatorLt
     {
         static $gtype: GObject.GType<ExpressionOperatorLt>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorLt.SignalSignatures;
 
         // Constructors
 
@@ -9877,17 +10119,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorLt.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorLt.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorLt.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorLt.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorLt.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorLt.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorLt.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorLt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorLt.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10338,12 +10582,12 @@ export namespace Vda {
     namespace ExpressionOperatorGeq {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10358,6 +10602,14 @@ export namespace Vda {
         implements SqlExpressionOperatorGeq
     {
         static $gtype: GObject.GType<ExpressionOperatorGeq>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorGeq.SignalSignatures;
 
         // Constructors
 
@@ -10371,17 +10623,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorGeq.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorGeq.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorGeq.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorGeq.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorGeq.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorGeq.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorGeq.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorGeq.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorGeq.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10832,12 +11086,12 @@ export namespace Vda {
     namespace ExpressionOperatorLeq {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10852,6 +11106,14 @@ export namespace Vda {
         implements SqlExpressionOperatorLeq
     {
         static $gtype: GObject.GType<ExpressionOperatorLeq>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorLeq.SignalSignatures;
 
         // Constructors
 
@@ -10865,17 +11127,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorLeq.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorLeq.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorLeq.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorLeq.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorLeq.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorLeq.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorLeq.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorLeq.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorLeq.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11326,12 +11590,12 @@ export namespace Vda {
     namespace ExpressionOperatorRegexp {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11346,6 +11610,14 @@ export namespace Vda {
         implements SqlExpressionOperatorRegexp
     {
         static $gtype: GObject.GType<ExpressionOperatorRegexp>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorRegexp.SignalSignatures;
 
         // Constructors
 
@@ -11359,17 +11631,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorRegexp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorRegexp.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorRegexp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorRegexp.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorRegexp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorRegexp.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11820,12 +12094,12 @@ export namespace Vda {
     namespace ExpressionOperatorStar {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11840,6 +12114,14 @@ export namespace Vda {
         implements SqlExpressionOperatorStar
     {
         static $gtype: GObject.GType<ExpressionOperatorStar>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorStar.SignalSignatures;
 
         // Constructors
 
@@ -11853,17 +12135,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorStar.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorStar.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorStar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorStar.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorStar.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorStar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorStar.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorStar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorStar.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12314,12 +12598,12 @@ export namespace Vda {
     namespace ExpressionOperatorDiv {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12334,6 +12618,14 @@ export namespace Vda {
         implements SqlExpressionOperatorDiv
     {
         static $gtype: GObject.GType<ExpressionOperatorDiv>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorDiv.SignalSignatures;
 
         // Constructors
 
@@ -12347,17 +12639,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorDiv.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorDiv.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorDiv.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorDiv.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorDiv.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorDiv.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorDiv.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorDiv.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorDiv.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12808,12 +13102,12 @@ export namespace Vda {
     namespace ExpressionOperatorIn {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12828,6 +13122,14 @@ export namespace Vda {
         implements SqlExpressionOperatorIn
     {
         static $gtype: GObject.GType<ExpressionOperatorIn>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorIn.SignalSignatures;
 
         // Constructors
 
@@ -12841,17 +13143,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorIn.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIn.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIn.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIn.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIn.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIn.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIn.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorIn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorIn.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13302,12 +13606,12 @@ export namespace Vda {
     namespace ExpressionOperatorNotIn {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13322,6 +13626,14 @@ export namespace Vda {
         implements SqlExpressionOperatorNotIn
     {
         static $gtype: GObject.GType<ExpressionOperatorNotIn>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorNotIn.SignalSignatures;
 
         // Constructors
 
@@ -13335,17 +13647,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorNotIn.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorNotIn.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorNotIn.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorNotIn.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorNotIn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorNotIn.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13796,12 +14110,12 @@ export namespace Vda {
     namespace ExpressionOperatorConcatenate {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13816,6 +14130,14 @@ export namespace Vda {
         implements SqlExpressionOperatorConcatenate
     {
         static $gtype: GObject.GType<ExpressionOperatorConcatenate>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorConcatenate.SignalSignatures;
 
         // Constructors
 
@@ -13829,17 +14151,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorConcatenate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorConcatenate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorConcatenate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorConcatenate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorConcatenate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorConcatenate.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14290,12 +14614,12 @@ export namespace Vda {
     namespace ExpressionOperatorSimilarTo {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14310,6 +14634,14 @@ export namespace Vda {
         implements SqlExpressionOperatorSimilarTo
     {
         static $gtype: GObject.GType<ExpressionOperatorSimilarTo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorSimilarTo.SignalSignatures;
 
         // Constructors
 
@@ -14323,17 +14655,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorSimilarTo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorSimilarTo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorSimilarTo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorSimilarTo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorSimilarTo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorSimilarTo.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14784,12 +15118,12 @@ export namespace Vda {
     namespace ExpressionOperatorLike {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14804,6 +15138,14 @@ export namespace Vda {
         implements SqlExpressionOperatorLike
     {
         static $gtype: GObject.GType<ExpressionOperatorLike>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorLike.SignalSignatures;
 
         // Constructors
 
@@ -14817,17 +15159,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorLike.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorLike.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorLike.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorLike.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorLike.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorLike.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorLike.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorLike.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorLike.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -15278,12 +15622,12 @@ export namespace Vda {
     namespace ExpressionOperatorNotLike {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15298,6 +15642,14 @@ export namespace Vda {
         implements SqlExpressionOperatorNotLike
     {
         static $gtype: GObject.GType<ExpressionOperatorNotLike>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorNotLike.SignalSignatures;
 
         // Constructors
 
@@ -15311,17 +15663,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorNotLike.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorNotLike.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorNotLike.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorNotLike.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorNotLike.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorNotLike.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -15772,12 +16126,12 @@ export namespace Vda {
     namespace ExpressionOperatorIlike {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15792,6 +16146,14 @@ export namespace Vda {
         implements SqlExpressionOperatorIlike
     {
         static $gtype: GObject.GType<ExpressionOperatorIlike>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorIlike.SignalSignatures;
 
         // Constructors
 
@@ -15805,17 +16167,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorIlike.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIlike.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIlike.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIlike.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIlike.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIlike.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIlike.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorIlike.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorIlike.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -16266,12 +16630,12 @@ export namespace Vda {
     namespace ExpressionOperatorNotIlike {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -16286,6 +16650,14 @@ export namespace Vda {
         implements SqlExpressionOperatorNotIlike
     {
         static $gtype: GObject.GType<ExpressionOperatorNotIlike>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorNotIlike.SignalSignatures;
 
         // Constructors
 
@@ -16299,17 +16671,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorNotIlike.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorNotIlike.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorNotIlike.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorNotIlike.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorNotIlike.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorNotIlike.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -16760,12 +17134,12 @@ export namespace Vda {
     namespace ExpressionOperatorBinaryUnaryterm {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -16780,6 +17154,14 @@ export namespace Vda {
         implements SqlExpressionOperatorBinaryUnaryterm
     {
         static $gtype: GObject.GType<ExpressionOperatorBinaryUnaryterm>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorBinaryUnaryterm.SignalSignatures;
 
         // Constructors
 
@@ -16793,17 +17175,22 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorBinaryUnaryterm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorBinaryUnaryterm.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorBinaryUnaryterm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorBinaryUnaryterm.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorBinaryUnaryterm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorBinaryUnaryterm.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -17254,12 +17641,12 @@ export namespace Vda {
     namespace ExpressionOperatorMinus {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryUnaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -17274,6 +17661,14 @@ export namespace Vda {
         implements SqlExpressionOperatorMinus
     {
         static $gtype: GObject.GType<ExpressionOperatorMinus>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorMinus.SignalSignatures;
 
         // Constructors
 
@@ -17287,17 +17682,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorMinus.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorMinus.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorMinus.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorMinus.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorMinus.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorMinus.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorMinus.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorMinus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorMinus.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -17748,12 +18145,12 @@ export namespace Vda {
     namespace ExpressionOperatorPlus {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryUnaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -17768,6 +18165,14 @@ export namespace Vda {
         implements SqlExpressionOperatorPlus
     {
         static $gtype: GObject.GType<ExpressionOperatorPlus>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorPlus.SignalSignatures;
 
         // Constructors
 
@@ -17781,17 +18186,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorPlus.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorPlus.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorPlus.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorPlus.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorPlus.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorPlus.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorPlus.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorPlus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorPlus.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -18242,12 +18649,12 @@ export namespace Vda {
     namespace ExpressionOperatorInitialUnaryterm {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -18262,6 +18669,14 @@ export namespace Vda {
         implements SqlExpressionOperatorInitialUnaryterm
     {
         static $gtype: GObject.GType<ExpressionOperatorInitialUnaryterm>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorInitialUnaryterm.SignalSignatures;
 
         // Constructors
 
@@ -18275,18 +18690,21 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorInitialUnaryterm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorInitialUnaryterm.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorInitialUnaryterm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorInitialUnaryterm.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorInitialUnaryterm.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<ExpressionOperatorInitialUnaryterm.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -18738,12 +19156,12 @@ export namespace Vda {
     namespace ExpressionOperatorNot {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorInitialUnaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -18758,6 +19176,14 @@ export namespace Vda {
         implements SqlExpressionOperatorNot
     {
         static $gtype: GObject.GType<ExpressionOperatorNot>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorNot.SignalSignatures;
 
         // Constructors
 
@@ -18771,17 +19197,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorNot.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorNot.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorNot.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorNot.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorNot.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorNot.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorNot.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorNot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorNot.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -19232,12 +19660,12 @@ export namespace Vda {
     namespace ExpressionOperatorFinalUnaryterm {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19252,6 +19680,14 @@ export namespace Vda {
         implements SqlExpressionOperatorFinalUnaryterm
     {
         static $gtype: GObject.GType<ExpressionOperatorFinalUnaryterm>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorFinalUnaryterm.SignalSignatures;
 
         // Constructors
 
@@ -19265,17 +19701,22 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorFinalUnaryterm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorFinalUnaryterm.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorFinalUnaryterm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorFinalUnaryterm.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorFinalUnaryterm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorFinalUnaryterm.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -19726,12 +20167,12 @@ export namespace Vda {
     namespace ExpressionOperatorIs {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorFinalUnaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19746,6 +20187,14 @@ export namespace Vda {
         implements SqlExpressionOperatorIs
     {
         static $gtype: GObject.GType<ExpressionOperatorIs>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorIs.SignalSignatures;
 
         // Constructors
 
@@ -19759,17 +20208,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorIs.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIs.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIs.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIs.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorIs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorIs.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -20220,12 +20671,12 @@ export namespace Vda {
     namespace ExpressionOperatorIsNot {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -20240,6 +20691,14 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNot
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNot>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorIsNot.SignalSignatures;
 
         // Constructors
 
@@ -20253,17 +20712,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsNot.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsNot.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsNot.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsNot.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorIsNot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorIsNot.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -20714,12 +21175,12 @@ export namespace Vda {
     namespace ExpressionOperatorIsNull {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -20734,6 +21195,14 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNull
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNull>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorIsNull.SignalSignatures;
 
         // Constructors
 
@@ -20747,17 +21216,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsNull.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsNull.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsNull.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsNull.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorIsNull.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorIsNull.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21208,12 +21679,12 @@ export namespace Vda {
     namespace ExpressionOperatorIsNotNull {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21228,6 +21699,14 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotNull
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotNull>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorIsNotNull.SignalSignatures;
 
         // Constructors
 
@@ -21241,17 +21720,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsNotNull.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotNull.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsNotNull.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotNull.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorIsNotNull.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorIsNotNull.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21702,12 +22183,12 @@ export namespace Vda {
     namespace ExpressionOperatorIsTrue {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21722,6 +22203,14 @@ export namespace Vda {
         implements SqlExpressionOperatorIsTrue
     {
         static $gtype: GObject.GType<ExpressionOperatorIsTrue>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorIsTrue.SignalSignatures;
 
         // Constructors
 
@@ -21735,17 +22224,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsTrue.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsTrue.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsTrue.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsTrue.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorIsTrue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorIsTrue.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22196,12 +22687,12 @@ export namespace Vda {
     namespace ExpressionOperatorIsNotTrue {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22216,6 +22707,14 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotTrue
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotTrue>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorIsNotTrue.SignalSignatures;
 
         // Constructors
 
@@ -22229,17 +22728,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsNotTrue.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotTrue.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsNotTrue.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotTrue.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorIsNotTrue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorIsNotTrue.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22690,12 +23191,12 @@ export namespace Vda {
     namespace ExpressionOperatorIsFalse {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22710,6 +23211,14 @@ export namespace Vda {
         implements SqlExpressionOperatorIsFalse
     {
         static $gtype: GObject.GType<ExpressionOperatorIsFalse>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorIsFalse.SignalSignatures;
 
         // Constructors
 
@@ -22723,17 +23232,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsFalse.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsFalse.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsFalse.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsFalse.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorIsFalse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorIsFalse.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23184,12 +23695,12 @@ export namespace Vda {
     namespace ExpressionOperatorIsNotFalse {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23204,6 +23715,14 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotFalse
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotFalse>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorIsNotFalse.SignalSignatures;
 
         // Constructors
 
@@ -23217,17 +23736,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsNotFalse.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotFalse.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsNotFalse.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotFalse.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorIsNotFalse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorIsNotFalse.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23678,12 +24199,12 @@ export namespace Vda {
     namespace ExpressionOperatorIsNotUnknown {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23698,6 +24219,14 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotUnknown
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotUnknown>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorIsNotUnknown.SignalSignatures;
 
         // Constructors
 
@@ -23711,17 +24240,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsNotUnknown.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotUnknown.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsNotUnknown.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotUnknown.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorIsNotUnknown.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorIsNotUnknown.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -24172,12 +24703,12 @@ export namespace Vda {
     namespace ExpressionOperatorIsUnknown {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24192,6 +24723,14 @@ export namespace Vda {
         implements SqlExpressionOperatorIsUnknown
     {
         static $gtype: GObject.GType<ExpressionOperatorIsUnknown>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorIsUnknown.SignalSignatures;
 
         // Constructors
 
@@ -24205,17 +24744,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsUnknown.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsUnknown.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsUnknown.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsUnknown.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorIsUnknown.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorIsUnknown.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -24666,12 +25207,12 @@ export namespace Vda {
     namespace ExpressionOperatorIsDistinct {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24686,6 +25227,14 @@ export namespace Vda {
         implements SqlExpressionOperatorIsDistinct
     {
         static $gtype: GObject.GType<ExpressionOperatorIsDistinct>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorIsDistinct.SignalSignatures;
 
         // Constructors
 
@@ -24699,17 +25248,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsDistinct.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsDistinct.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsDistinct.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsDistinct.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorIsDistinct.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorIsDistinct.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -25160,12 +25711,12 @@ export namespace Vda {
     namespace ExpressionOperatorIsNotDistinct {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsDistinct.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25180,6 +25731,14 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotDistinct
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotDistinct>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorIsNotDistinct.SignalSignatures;
 
         // Constructors
 
@@ -25193,17 +25752,22 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsNotDistinct.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotDistinct.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsNotDistinct.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotDistinct.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorIsNotDistinct.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorIsNotDistinct.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -25654,12 +26218,12 @@ export namespace Vda {
     namespace ExpressionOperatorIsDistinctFrom {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsDistinct.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25674,6 +26238,14 @@ export namespace Vda {
         implements SqlExpressionOperatorIsDistinctFrom
     {
         static $gtype: GObject.GType<ExpressionOperatorIsDistinctFrom>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorIsDistinctFrom.SignalSignatures;
 
         // Constructors
 
@@ -25687,17 +26259,22 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsDistinctFrom.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsDistinctFrom.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsDistinctFrom.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsDistinctFrom.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorIsDistinctFrom.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorIsDistinctFrom.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -26148,12 +26725,12 @@ export namespace Vda {
     namespace ExpressionOperatorIsNotDistinctFrom {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsNotDistinct.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -26168,6 +26745,14 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotDistinctFrom
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotDistinctFrom>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorIsNotDistinctFrom.SignalSignatures;
 
         // Constructors
 
@@ -26181,18 +26766,21 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -26644,12 +27232,12 @@ export namespace Vda {
     namespace ExpressionOperatorThreeterm {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -26664,6 +27252,14 @@ export namespace Vda {
         implements SqlExpressionOperatorThreeterm
     {
         static $gtype: GObject.GType<ExpressionOperatorThreeterm>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorThreeterm.SignalSignatures;
 
         // Constructors
 
@@ -26677,17 +27273,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorThreeterm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorThreeterm.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorThreeterm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorThreeterm.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorThreeterm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorThreeterm.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -27138,12 +27736,12 @@ export namespace Vda {
     namespace ExpressionOperatorBetween {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorThreeterm.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -27158,6 +27756,14 @@ export namespace Vda {
         implements SqlExpressionOperatorBetween
     {
         static $gtype: GObject.GType<ExpressionOperatorBetween>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorBetween.SignalSignatures;
 
         // Constructors
 
@@ -27171,17 +27777,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorBetween.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorBetween.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorBetween.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorBetween.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorBetween.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorBetween.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorBetween.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorBetween.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorBetween.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -27632,12 +28240,12 @@ export namespace Vda {
     namespace ExpressionOperatorBetweenAnd {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBetween.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -27652,6 +28260,14 @@ export namespace Vda {
         implements SqlExpressionOperatorBetweenAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorBetweenAnd>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorBetweenAnd.SignalSignatures;
 
         // Constructors
 
@@ -27665,17 +28281,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorBetweenAnd.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorBetweenAnd.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorBetweenAnd.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorBetweenAnd.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorBetweenAnd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorBetweenAnd.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -28126,12 +28744,12 @@ export namespace Vda {
     namespace ExpressionOperatorNotBetween {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBetween.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -28146,6 +28764,14 @@ export namespace Vda {
         implements SqlExpressionOperatorNotBetween
     {
         static $gtype: GObject.GType<ExpressionOperatorNotBetween>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorNotBetween.SignalSignatures;
 
         // Constructors
 
@@ -28159,17 +28785,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorNotBetween.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorNotBetween.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorNotBetween.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorNotBetween.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorNotBetween.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorNotBetween.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -28620,12 +29248,12 @@ export namespace Vda {
     namespace ExpressionOperatorNotBetweenAnd {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorNotBetween.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -28640,6 +29268,14 @@ export namespace Vda {
         implements SqlExpressionOperatorNotBetweenAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenAnd>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorNotBetweenAnd.SignalSignatures;
 
         // Constructors
 
@@ -28653,17 +29289,22 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorNotBetweenAnd.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenAnd.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorNotBetweenAnd.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenAnd.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorNotBetweenAnd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionOperatorNotBetweenAnd.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -29114,12 +29755,12 @@ export namespace Vda {
     namespace ExpressionOperatorBetweenSymmetric {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBetween.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -29134,6 +29775,14 @@ export namespace Vda {
         implements SqlExpressionOperatorBetweenSymmetric
     {
         static $gtype: GObject.GType<ExpressionOperatorBetweenSymmetric>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorBetweenSymmetric.SignalSignatures;
 
         // Constructors
 
@@ -29147,18 +29796,21 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorBetweenSymmetric.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorBetweenSymmetric.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorBetweenSymmetric.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorBetweenSymmetric.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorBetweenSymmetric.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<ExpressionOperatorBetweenSymmetric.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -29610,12 +30262,12 @@ export namespace Vda {
     namespace ExpressionOperatorBetweenSymmetricAnd {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBetweenSymmetric.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -29630,6 +30282,14 @@ export namespace Vda {
         implements SqlExpressionOperatorBetweenSymmetricAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorBetweenSymmetricAnd>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorBetweenSymmetricAnd.SignalSignatures;
 
         // Constructors
 
@@ -29643,18 +30303,21 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -30106,12 +30769,12 @@ export namespace Vda {
     namespace ExpressionOperatorNotBetweenSymmetric {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBetweenSymmetric.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -30126,6 +30789,14 @@ export namespace Vda {
         implements SqlExpressionOperatorNotBetweenSymmetric
     {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenSymmetric>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorNotBetweenSymmetric.SignalSignatures;
 
         // Constructors
 
@@ -30139,18 +30810,21 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -30602,12 +31276,12 @@ export namespace Vda {
     namespace ExpressionOperatorNotBetweenSymmetricAnd {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorNotBetweenSymmetric.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -30622,6 +31296,14 @@ export namespace Vda {
         implements SqlExpressionOperatorNotBetweenSymmetricAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenSymmetricAnd>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures;
 
         // Constructors
 
@@ -30635,18 +31317,21 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(
             signal: K,
-            callback: ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(
             signal: K,
-            ...args: ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -31098,14 +31783,14 @@ export namespace Vda {
     namespace ExpressionValue {
         // Signal signatures
         interface SignalSignatures extends Expression.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::connection': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -31120,6 +31805,14 @@ export namespace Vda {
         implements SqlExpressionValue
     {
         static $gtype: GObject.GType<ExpressionValue>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionValue.SignalSignatures;
 
         // Constructors
 
@@ -31133,17 +31826,17 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionValue.SignalSignatures>(
             signal: K,
-            callback: ExpressionValue.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionValue.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionValue.SignalSignatures>(
             signal: K,
-            callback: ExpressionValue.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionValue.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionValue.SignalSignatures>(
             signal: K,
-            ...args: ExpressionValue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionValue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -31610,15 +32303,15 @@ export namespace Vda {
     namespace ExpressionValueParameter {
         // Signal signatures
         interface SignalSignatures extends ExpressionValue.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::parameters': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::gtype': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            'notify::parameters': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::gtype': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -31633,6 +32326,14 @@ export namespace Vda {
         implements SqlExpressionValueParameter
     {
         static $gtype: GObject.GType<ExpressionValueParameter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExpressionValueParameter.SignalSignatures;
 
         // Constructors
 
@@ -31646,17 +32347,19 @@ export namespace Vda {
 
         connect<K extends keyof ExpressionValueParameter.SignalSignatures>(
             signal: K,
-            callback: ExpressionValueParameter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionValueParameter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionValueParameter.SignalSignatures>(
             signal: K,
-            callback: ExpressionValueParameter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExpressionValueParameter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionValueParameter.SignalSignatures>(
             signal: K,
-            ...args: ExpressionValueParameter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExpressionValueParameter.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -32129,12 +32832,12 @@ export namespace Vda {
     namespace HashList {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -32150,6 +32853,14 @@ export namespace Vda {
         implements Gio.ListModel<A>, HashModel
     {
         static $gtype: GObject.GType<HashList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HashList.SignalSignatures;
 
         // Constructors
 
@@ -32161,16 +32872,19 @@ export namespace Vda {
 
         // Signals
 
-        connect<K extends keyof HashList.SignalSignatures>(signal: K, callback: HashList.SignalSignatures[K]): number;
+        connect<K extends keyof HashList.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, HashList.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HashList.SignalSignatures>(
             signal: K,
-            callback: HashList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HashList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HashList.SignalSignatures>(
             signal: K,
-            ...args: HashList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HashList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -32729,9 +33443,9 @@ export namespace Vda {
     namespace InvalidQuery {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::message': GObject.Object.Notify;
-            'notify::sql': GObject.Object.Notify;
-            'notify::connection': GObject.Object.Notify;
+            'notify::message': (pspec: GObject.ParamSpec) => void;
+            'notify::sql': (pspec: GObject.ParamSpec) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -32748,6 +33462,14 @@ export namespace Vda {
 
         get message(): string;
         set message(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InvalidQuery.SignalSignatures;
 
         // Constructors
 
@@ -32761,17 +33483,17 @@ export namespace Vda {
 
         connect<K extends keyof InvalidQuery.SignalSignatures>(
             signal: K,
-            callback: InvalidQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InvalidQuery.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InvalidQuery.SignalSignatures>(
             signal: K,
-            callback: InvalidQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InvalidQuery.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InvalidQuery.SignalSignatures>(
             signal: K,
-            ...args: InvalidQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InvalidQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -33247,9 +33969,9 @@ export namespace Vda {
     namespace InvalidPreparedQuery {
         // Signal signatures
         interface SignalSignatures extends InvalidQuery.SignalSignatures {
-            'notify::message': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parameters': GObject.Object.Notify;
+            'notify::message': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parameters': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -33259,6 +33981,14 @@ export namespace Vda {
 
     class InvalidPreparedQuery extends InvalidQuery implements PreparedQuery {
         static $gtype: GObject.GType<InvalidPreparedQuery>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InvalidPreparedQuery.SignalSignatures;
 
         // Constructors
 
@@ -33272,17 +34002,19 @@ export namespace Vda {
 
         connect<K extends keyof InvalidPreparedQuery.SignalSignatures>(
             signal: K,
-            callback: InvalidPreparedQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InvalidPreparedQuery.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InvalidPreparedQuery.SignalSignatures>(
             signal: K,
-            callback: InvalidPreparedQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InvalidPreparedQuery.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InvalidPreparedQuery.SignalSignatures>(
             signal: K,
-            ...args: InvalidPreparedQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InvalidPreparedQuery.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -33739,7 +34471,7 @@ export namespace Vda {
     namespace InvalidResult {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::message': GObject.Object.Notify;
+            'notify::message': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -33756,6 +34488,14 @@ export namespace Vda {
 
         get message(): string;
         set message(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InvalidResult.SignalSignatures;
 
         // Constructors
 
@@ -33769,17 +34509,17 @@ export namespace Vda {
 
         connect<K extends keyof InvalidResult.SignalSignatures>(
             signal: K,
-            callback: InvalidResult.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InvalidResult.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InvalidResult.SignalSignatures>(
             signal: K,
-            callback: InvalidResult.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InvalidResult.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InvalidResult.SignalSignatures>(
             signal: K,
-            ...args: InvalidResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InvalidResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -34233,18 +34973,18 @@ export namespace Vda {
     namespace Parameters {
         // Signal signatures
         interface SignalSignatures extends Gee.HashMap.SignalSignatures {
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::keys': GObject.Object.Notify;
-            'notify::values': GObject.Object.Notify;
-            'notify::entries': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
+            'notify::k-type': (pspec: GObject.ParamSpec) => void;
+            'notify::k-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::k-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::v-type': (pspec: GObject.ParamSpec) => void;
+            'notify::v-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::v-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            'notify::keys': (pspec: GObject.ParamSpec) => void;
+            'notify::values': (pspec: GObject.ParamSpec) => void;
+            'notify::entries': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -34254,6 +34994,14 @@ export namespace Vda {
 
     class Parameters extends Gee.HashMap implements SqlParameters {
         static $gtype: GObject.GType<Parameters>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Parameters.SignalSignatures;
 
         // Constructors
 
@@ -34267,17 +35015,17 @@ export namespace Vda {
 
         connect<K extends keyof Parameters.SignalSignatures>(
             signal: K,
-            callback: Parameters.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Parameters.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Parameters.SignalSignatures>(
             signal: K,
-            callback: Parameters.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Parameters.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Parameters.SignalSignatures>(
             signal: K,
-            ...args: Parameters.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Parameters.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -34746,6 +35494,14 @@ export namespace Vda {
 
     class Parser extends GObject.Object implements SqlParser {
         static $gtype: GObject.GType<Parser>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Parser.SignalSignatures;
 
         // Constructors
 
@@ -34757,13 +35513,19 @@ export namespace Vda {
 
         // Signals
 
-        connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect_after<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Parser.SignalSignatures>(
             signal: K,
-            ...args: Parser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Parser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -35214,8 +35976,8 @@ export namespace Vda {
     namespace TableReference {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::allias': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::allias': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -35225,6 +35987,14 @@ export namespace Vda {
 
     class TableReference extends GObject.Object implements SqlTableReference {
         static $gtype: GObject.GType<TableReference>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TableReference.SignalSignatures;
 
         // Constructors
 
@@ -35238,17 +36008,17 @@ export namespace Vda {
 
         connect<K extends keyof TableReference.SignalSignatures>(
             signal: K,
-            callback: TableReference.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TableReference.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TableReference.SignalSignatures>(
             signal: K,
-            callback: TableReference.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TableReference.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TableReference.SignalSignatures>(
             signal: K,
-            ...args: TableReference.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TableReference.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -35711,7 +36481,7 @@ export namespace Vda {
     namespace Value {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -35724,6 +36494,14 @@ export namespace Vda {
 
     class Value extends GObject.Object implements Stringifiable, SqlValue {
         static $gtype: GObject.GType<Value>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Value.SignalSignatures;
 
         // Constructors
 
@@ -35735,13 +36513,19 @@ export namespace Vda {
 
         // Signals
 
-        connect<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
+        connect<K extends keyof Value.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Value.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
+        connect_after<K extends keyof Value.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Value.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Value.SignalSignatures>(
             signal: K,
-            ...args: Value.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Value.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -36227,6 +37011,14 @@ export namespace Vda {
 
     class ValueNull extends Value implements SqlValueNull {
         static $gtype: GObject.GType<ValueNull>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueNull.SignalSignatures;
 
         // Constructors
 
@@ -36238,16 +37030,19 @@ export namespace Vda {
 
         // Signals
 
-        connect<K extends keyof ValueNull.SignalSignatures>(signal: K, callback: ValueNull.SignalSignatures[K]): number;
+        connect<K extends keyof ValueNull.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ValueNull.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueNull.SignalSignatures>(
             signal: K,
-            callback: ValueNull.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueNull.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueNull.SignalSignatures>(
             signal: K,
-            ...args: ValueNull.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueNull.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -36704,6 +37499,14 @@ export namespace Vda {
 
     class ValueString extends Value implements SqlValueString {
         static $gtype: GObject.GType<ValueString>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueString.SignalSignatures;
 
         // Constructors
 
@@ -36717,17 +37520,17 @@ export namespace Vda {
 
         connect<K extends keyof ValueString.SignalSignatures>(
             signal: K,
-            callback: ValueString.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueString.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueString.SignalSignatures>(
             signal: K,
-            callback: ValueString.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueString.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueString.SignalSignatures>(
             signal: K,
-            ...args: ValueString.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueString.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -37176,7 +37979,7 @@ export namespace Vda {
     namespace ValueXml {
         // Signal signatures
         interface SignalSignatures extends ValueString.SignalSignatures {
-            'notify::document': GObject.Object.Notify;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -37186,6 +37989,14 @@ export namespace Vda {
 
     class ValueXml extends ValueString implements SqlValueXml {
         static $gtype: GObject.GType<ValueXml>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueXml.SignalSignatures;
 
         // Constructors
 
@@ -37197,16 +38008,19 @@ export namespace Vda {
 
         // Signals
 
-        connect<K extends keyof ValueXml.SignalSignatures>(signal: K, callback: ValueXml.SignalSignatures[K]): number;
+        connect<K extends keyof ValueXml.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ValueXml.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueXml.SignalSignatures>(
             signal: K,
-            callback: ValueXml.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueXml.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueXml.SignalSignatures>(
             signal: K,
-            ...args: ValueXml.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueXml.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -37660,7 +38474,7 @@ export namespace Vda {
     namespace ValueJson {
         // Signal signatures
         interface SignalSignatures extends ValueString.SignalSignatures {
-            'notify::document': GObject.Object.Notify;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -37670,6 +38484,14 @@ export namespace Vda {
 
     class ValueJson extends ValueString implements SqlValueJson {
         static $gtype: GObject.GType<ValueJson>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueJson.SignalSignatures;
 
         // Constructors
 
@@ -37681,16 +38503,19 @@ export namespace Vda {
 
         // Signals
 
-        connect<K extends keyof ValueJson.SignalSignatures>(signal: K, callback: ValueJson.SignalSignatures[K]): number;
+        connect<K extends keyof ValueJson.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ValueJson.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueJson.SignalSignatures>(
             signal: K,
-            callback: ValueJson.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueJson.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueJson.SignalSignatures>(
             signal: K,
-            ...args: ValueJson.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueJson.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -38152,6 +38977,14 @@ export namespace Vda {
 
     class ValueText extends ValueString implements SqlValueText {
         static $gtype: GObject.GType<ValueText>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueText.SignalSignatures;
 
         // Constructors
 
@@ -38163,16 +38996,19 @@ export namespace Vda {
 
         // Signals
 
-        connect<K extends keyof ValueText.SignalSignatures>(signal: K, callback: ValueText.SignalSignatures[K]): number;
+        connect<K extends keyof ValueText.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ValueText.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueText.SignalSignatures>(
             signal: K,
-            callback: ValueText.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueText.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueText.SignalSignatures>(
             signal: K,
-            ...args: ValueText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -38629,6 +39465,14 @@ export namespace Vda {
 
     class ValueName extends ValueString implements SqlValueName {
         static $gtype: GObject.GType<ValueName>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueName.SignalSignatures;
 
         // Constructors
 
@@ -38640,16 +39484,19 @@ export namespace Vda {
 
         // Signals
 
-        connect<K extends keyof ValueName.SignalSignatures>(signal: K, callback: ValueName.SignalSignatures[K]): number;
+        connect<K extends keyof ValueName.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ValueName.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueName.SignalSignatures>(
             signal: K,
-            callback: ValueName.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueName.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueName.SignalSignatures>(
             signal: K,
-            ...args: ValueName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -39106,6 +39953,14 @@ export namespace Vda {
 
     class ValueBool extends Value implements SqlValueBool {
         static $gtype: GObject.GType<ValueBool>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueBool.SignalSignatures;
 
         // Constructors
 
@@ -39117,16 +39972,19 @@ export namespace Vda {
 
         // Signals
 
-        connect<K extends keyof ValueBool.SignalSignatures>(signal: K, callback: ValueBool.SignalSignatures[K]): number;
+        connect<K extends keyof ValueBool.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ValueBool.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueBool.SignalSignatures>(
             signal: K,
-            callback: ValueBool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueBool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueBool.SignalSignatures>(
             signal: K,
-            ...args: ValueBool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueBool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -39583,6 +40441,14 @@ export namespace Vda {
 
     class ValueBit extends ValueBool implements SqlValueBit {
         static $gtype: GObject.GType<ValueBit>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueBit.SignalSignatures;
 
         // Constructors
 
@@ -39594,16 +40460,19 @@ export namespace Vda {
 
         // Signals
 
-        connect<K extends keyof ValueBit.SignalSignatures>(signal: K, callback: ValueBit.SignalSignatures[K]): number;
+        connect<K extends keyof ValueBit.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ValueBit.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueBit.SignalSignatures>(
             signal: K,
-            callback: ValueBit.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueBit.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueBit.SignalSignatures>(
             signal: K,
-            ...args: ValueBit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueBit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -40052,7 +40921,7 @@ export namespace Vda {
     namespace ValueInteger {
         // Signal signatures
         interface SignalSignatures extends Value.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -40065,6 +40934,14 @@ export namespace Vda {
 
     class ValueInteger extends Value implements SqlValue, SqlValueInteger {
         static $gtype: GObject.GType<ValueInteger>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueInteger.SignalSignatures;
 
         // Constructors
 
@@ -40078,17 +40955,17 @@ export namespace Vda {
 
         connect<K extends keyof ValueInteger.SignalSignatures>(
             signal: K,
-            callback: ValueInteger.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueInteger.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueInteger.SignalSignatures>(
             signal: K,
-            callback: ValueInteger.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueInteger.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueInteger.SignalSignatures>(
             signal: K,
-            ...args: ValueInteger.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueInteger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -40564,6 +41441,14 @@ export namespace Vda {
 
     class ValueByte extends ValueInteger implements SqlValueByte {
         static $gtype: GObject.GType<ValueByte>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueByte.SignalSignatures;
 
         // Constructors
 
@@ -40575,16 +41460,19 @@ export namespace Vda {
 
         // Signals
 
-        connect<K extends keyof ValueByte.SignalSignatures>(signal: K, callback: ValueByte.SignalSignatures[K]): number;
+        connect<K extends keyof ValueByte.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ValueByte.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueByte.SignalSignatures>(
             signal: K,
-            callback: ValueByte.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueByte.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueByte.SignalSignatures>(
             signal: K,
-            ...args: ValueByte.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueByte.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -41041,6 +41929,14 @@ export namespace Vda {
 
     class ValueInt2 extends ValueInteger implements SqlValueInt2 {
         static $gtype: GObject.GType<ValueInt2>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueInt2.SignalSignatures;
 
         // Constructors
 
@@ -41052,16 +41948,19 @@ export namespace Vda {
 
         // Signals
 
-        connect<K extends keyof ValueInt2.SignalSignatures>(signal: K, callback: ValueInt2.SignalSignatures[K]): number;
+        connect<K extends keyof ValueInt2.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ValueInt2.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueInt2.SignalSignatures>(
             signal: K,
-            callback: ValueInt2.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueInt2.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueInt2.SignalSignatures>(
             signal: K,
-            ...args: ValueInt2.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueInt2.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -41518,6 +42417,14 @@ export namespace Vda {
 
     class ValueInt4 extends ValueInteger implements SqlValueInt4 {
         static $gtype: GObject.GType<ValueInt4>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueInt4.SignalSignatures;
 
         // Constructors
 
@@ -41529,16 +42436,19 @@ export namespace Vda {
 
         // Signals
 
-        connect<K extends keyof ValueInt4.SignalSignatures>(signal: K, callback: ValueInt4.SignalSignatures[K]): number;
+        connect<K extends keyof ValueInt4.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ValueInt4.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueInt4.SignalSignatures>(
             signal: K,
-            callback: ValueInt4.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueInt4.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueInt4.SignalSignatures>(
             signal: K,
-            ...args: ValueInt4.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueInt4.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -41995,6 +42905,14 @@ export namespace Vda {
 
     class ValueInt8 extends ValueInteger implements SqlValueInt8 {
         static $gtype: GObject.GType<ValueInt8>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueInt8.SignalSignatures;
 
         // Constructors
 
@@ -42006,16 +42924,19 @@ export namespace Vda {
 
         // Signals
 
-        connect<K extends keyof ValueInt8.SignalSignatures>(signal: K, callback: ValueInt8.SignalSignatures[K]): number;
+        connect<K extends keyof ValueInt8.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ValueInt8.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueInt8.SignalSignatures>(
             signal: K,
-            callback: ValueInt8.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueInt8.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueInt8.SignalSignatures>(
             signal: K,
-            ...args: ValueInt8.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueInt8.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -42464,7 +43385,7 @@ export namespace Vda {
     namespace ValueUnsignedInteger {
         // Signal signatures
         interface SignalSignatures extends Value.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -42477,6 +43398,14 @@ export namespace Vda {
 
     class ValueUnsignedInteger extends Value implements SqlValue, SqlValueUnsignedInteger {
         static $gtype: GObject.GType<ValueUnsignedInteger>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueUnsignedInteger.SignalSignatures;
 
         // Constructors
 
@@ -42490,17 +43419,19 @@ export namespace Vda {
 
         connect<K extends keyof ValueUnsignedInteger.SignalSignatures>(
             signal: K,
-            callback: ValueUnsignedInteger.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueUnsignedInteger.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueUnsignedInteger.SignalSignatures>(
             signal: K,
-            callback: ValueUnsignedInteger.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueUnsignedInteger.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueUnsignedInteger.SignalSignatures>(
             signal: K,
-            ...args: ValueUnsignedInteger.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueUnsignedInteger.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -42978,6 +43909,14 @@ export namespace Vda {
 
     class ValueUnsignedByte extends ValueUnsignedInteger implements SqlValueUnsignedByte {
         static $gtype: GObject.GType<ValueUnsignedByte>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueUnsignedByte.SignalSignatures;
 
         // Constructors
 
@@ -42991,17 +43930,17 @@ export namespace Vda {
 
         connect<K extends keyof ValueUnsignedByte.SignalSignatures>(
             signal: K,
-            callback: ValueUnsignedByte.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueUnsignedByte.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueUnsignedByte.SignalSignatures>(
             signal: K,
-            callback: ValueUnsignedByte.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueUnsignedByte.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueUnsignedByte.SignalSignatures>(
             signal: K,
-            ...args: ValueUnsignedByte.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueUnsignedByte.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -43460,6 +44399,14 @@ export namespace Vda {
 
     class ValueUnsignedInt2 extends ValueUnsignedInteger implements SqlValueUnsignedInt2 {
         static $gtype: GObject.GType<ValueUnsignedInt2>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueUnsignedInt2.SignalSignatures;
 
         // Constructors
 
@@ -43473,17 +44420,17 @@ export namespace Vda {
 
         connect<K extends keyof ValueUnsignedInt2.SignalSignatures>(
             signal: K,
-            callback: ValueUnsignedInt2.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueUnsignedInt2.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueUnsignedInt2.SignalSignatures>(
             signal: K,
-            callback: ValueUnsignedInt2.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueUnsignedInt2.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueUnsignedInt2.SignalSignatures>(
             signal: K,
-            ...args: ValueUnsignedInt2.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueUnsignedInt2.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -43942,6 +44889,14 @@ export namespace Vda {
 
     class ValueUnsignedInt4 extends ValueUnsignedInteger implements SqlValueUnsignedInt4 {
         static $gtype: GObject.GType<ValueUnsignedInt4>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueUnsignedInt4.SignalSignatures;
 
         // Constructors
 
@@ -43955,17 +44910,17 @@ export namespace Vda {
 
         connect<K extends keyof ValueUnsignedInt4.SignalSignatures>(
             signal: K,
-            callback: ValueUnsignedInt4.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueUnsignedInt4.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueUnsignedInt4.SignalSignatures>(
             signal: K,
-            callback: ValueUnsignedInt4.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueUnsignedInt4.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueUnsignedInt4.SignalSignatures>(
             signal: K,
-            ...args: ValueUnsignedInt4.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueUnsignedInt4.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -44424,6 +45379,14 @@ export namespace Vda {
 
     class ValueUnsignedInt8 extends ValueUnsignedInteger implements SqlValueUnsignedInt8 {
         static $gtype: GObject.GType<ValueUnsignedInt8>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueUnsignedInt8.SignalSignatures;
 
         // Constructors
 
@@ -44437,17 +45400,17 @@ export namespace Vda {
 
         connect<K extends keyof ValueUnsignedInt8.SignalSignatures>(
             signal: K,
-            callback: ValueUnsignedInt8.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueUnsignedInt8.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueUnsignedInt8.SignalSignatures>(
             signal: K,
-            callback: ValueUnsignedInt8.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueUnsignedInt8.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueUnsignedInt8.SignalSignatures>(
             signal: K,
-            ...args: ValueUnsignedInt8.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueUnsignedInt8.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -44904,6 +45867,14 @@ export namespace Vda {
 
     class ValueOid extends ValueInteger implements SqlValueOid {
         static $gtype: GObject.GType<ValueOid>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueOid.SignalSignatures;
 
         // Constructors
 
@@ -44915,16 +45886,19 @@ export namespace Vda {
 
         // Signals
 
-        connect<K extends keyof ValueOid.SignalSignatures>(signal: K, callback: ValueOid.SignalSignatures[K]): number;
+        connect<K extends keyof ValueOid.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ValueOid.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueOid.SignalSignatures>(
             signal: K,
-            callback: ValueOid.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueOid.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueOid.SignalSignatures>(
             signal: K,
-            ...args: ValueOid.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueOid.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -45381,6 +46355,14 @@ export namespace Vda {
 
     class ValueNumeric extends Value implements SqlValueNumeric {
         static $gtype: GObject.GType<ValueNumeric>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueNumeric.SignalSignatures;
 
         // Constructors
 
@@ -45394,17 +46376,17 @@ export namespace Vda {
 
         connect<K extends keyof ValueNumeric.SignalSignatures>(
             signal: K,
-            callback: ValueNumeric.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueNumeric.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueNumeric.SignalSignatures>(
             signal: K,
-            callback: ValueNumeric.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueNumeric.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueNumeric.SignalSignatures>(
             signal: K,
-            ...args: ValueNumeric.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueNumeric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -45885,6 +46867,14 @@ export namespace Vda {
 
     class ValueFloat extends ValueNumeric implements SqlValueFloat {
         static $gtype: GObject.GType<ValueFloat>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueFloat.SignalSignatures;
 
         // Constructors
 
@@ -45898,17 +46888,17 @@ export namespace Vda {
 
         connect<K extends keyof ValueFloat.SignalSignatures>(
             signal: K,
-            callback: ValueFloat.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueFloat.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueFloat.SignalSignatures>(
             signal: K,
-            callback: ValueFloat.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueFloat.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueFloat.SignalSignatures>(
             signal: K,
-            ...args: ValueFloat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueFloat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -46367,6 +47357,14 @@ export namespace Vda {
 
     class ValueDouble extends ValueNumeric implements SqlValueDouble {
         static $gtype: GObject.GType<ValueDouble>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueDouble.SignalSignatures;
 
         // Constructors
 
@@ -46380,17 +47378,17 @@ export namespace Vda {
 
         connect<K extends keyof ValueDouble.SignalSignatures>(
             signal: K,
-            callback: ValueDouble.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueDouble.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueDouble.SignalSignatures>(
             signal: K,
-            callback: ValueDouble.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueDouble.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueDouble.SignalSignatures>(
             signal: K,
-            ...args: ValueDouble.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueDouble.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -46847,6 +47845,14 @@ export namespace Vda {
 
     class ValueMoney extends ValueNumeric implements SqlValueMoney {
         static $gtype: GObject.GType<ValueMoney>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueMoney.SignalSignatures;
 
         // Constructors
 
@@ -46860,17 +47866,17 @@ export namespace Vda {
 
         connect<K extends keyof ValueMoney.SignalSignatures>(
             signal: K,
-            callback: ValueMoney.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueMoney.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueMoney.SignalSignatures>(
             signal: K,
-            callback: ValueMoney.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueMoney.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueMoney.SignalSignatures>(
             signal: K,
-            ...args: ValueMoney.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueMoney.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -47335,6 +48341,14 @@ export namespace Vda {
 
     class ValueTimestamp extends Value implements SqlValueTimestamp {
         static $gtype: GObject.GType<ValueTimestamp>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueTimestamp.SignalSignatures;
 
         // Constructors
 
@@ -47348,17 +48362,17 @@ export namespace Vda {
 
         connect<K extends keyof ValueTimestamp.SignalSignatures>(
             signal: K,
-            callback: ValueTimestamp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueTimestamp.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueTimestamp.SignalSignatures>(
             signal: K,
-            callback: ValueTimestamp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueTimestamp.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueTimestamp.SignalSignatures>(
             signal: K,
-            ...args: ValueTimestamp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueTimestamp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -47841,6 +48855,14 @@ export namespace Vda {
 
     class ValueTimestampNtz extends ValueTimestamp implements SqlValueTimestampNtz {
         static $gtype: GObject.GType<ValueTimestampNtz>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueTimestampNtz.SignalSignatures;
 
         // Constructors
 
@@ -47854,17 +48876,17 @@ export namespace Vda {
 
         connect<K extends keyof ValueTimestampNtz.SignalSignatures>(
             signal: K,
-            callback: ValueTimestampNtz.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueTimestampNtz.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueTimestampNtz.SignalSignatures>(
             signal: K,
-            callback: ValueTimestampNtz.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueTimestampNtz.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueTimestampNtz.SignalSignatures>(
             signal: K,
-            ...args: ValueTimestampNtz.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueTimestampNtz.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -48321,6 +49343,14 @@ export namespace Vda {
 
     class ValueTime extends ValueTimestamp implements SqlValueTime {
         static $gtype: GObject.GType<ValueTime>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueTime.SignalSignatures;
 
         // Constructors
 
@@ -48332,16 +49362,19 @@ export namespace Vda {
 
         // Signals
 
-        connect<K extends keyof ValueTime.SignalSignatures>(signal: K, callback: ValueTime.SignalSignatures[K]): number;
+        connect<K extends keyof ValueTime.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ValueTime.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueTime.SignalSignatures>(
             signal: K,
-            callback: ValueTime.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueTime.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueTime.SignalSignatures>(
             signal: K,
-            ...args: ValueTime.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueTime.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -48798,6 +49831,14 @@ export namespace Vda {
 
     class ValueTimeNtz extends ValueTimestampNtz implements SqlValueTimeNtz {
         static $gtype: GObject.GType<ValueTimeNtz>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueTimeNtz.SignalSignatures;
 
         // Constructors
 
@@ -48811,17 +49852,17 @@ export namespace Vda {
 
         connect<K extends keyof ValueTimeNtz.SignalSignatures>(
             signal: K,
-            callback: ValueTimeNtz.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueTimeNtz.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueTimeNtz.SignalSignatures>(
             signal: K,
-            callback: ValueTimeNtz.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueTimeNtz.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueTimeNtz.SignalSignatures>(
             signal: K,
-            ...args: ValueTimeNtz.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueTimeNtz.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -49278,6 +50319,14 @@ export namespace Vda {
 
     class ValueDate extends Value implements SqlValueDate {
         static $gtype: GObject.GType<ValueDate>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueDate.SignalSignatures;
 
         // Fields
 
@@ -49293,16 +50342,19 @@ export namespace Vda {
 
         // Signals
 
-        connect<K extends keyof ValueDate.SignalSignatures>(signal: K, callback: ValueDate.SignalSignatures[K]): number;
+        connect<K extends keyof ValueDate.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ValueDate.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueDate.SignalSignatures>(
             signal: K,
-            callback: ValueDate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueDate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueDate.SignalSignatures>(
             signal: K,
-            ...args: ValueDate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueDate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -49755,7 +50807,7 @@ export namespace Vda {
     namespace ValueBinary {
         // Signal signatures
         interface SignalSignatures extends Value.SignalSignatures {
-            'notify::size': GObject.Object.Notify;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -49765,6 +50817,14 @@ export namespace Vda {
 
     class ValueBinary extends Value implements SqlValueBinary {
         static $gtype: GObject.GType<ValueBinary>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueBinary.SignalSignatures;
 
         // Constructors
 
@@ -49782,17 +50842,17 @@ export namespace Vda {
 
         connect<K extends keyof ValueBinary.SignalSignatures>(
             signal: K,
-            callback: ValueBinary.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueBinary.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueBinary.SignalSignatures>(
             signal: K,
-            callback: ValueBinary.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueBinary.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueBinary.SignalSignatures>(
             signal: K,
-            ...args: ValueBinary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueBinary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -50252,9 +51312,9 @@ export namespace Vda {
     namespace ValueMathExp {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::parameters': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::math': GObject.Object.Notify;
+            'notify::parameters': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::math': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -50275,6 +51335,14 @@ export namespace Vda {
 
         get parameters(): SqlParameters;
         set parameters(val: SqlParameters);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ValueMathExp.SignalSignatures;
 
         // Constructors
 
@@ -50288,17 +51356,17 @@ export namespace Vda {
 
         connect<K extends keyof ValueMathExp.SignalSignatures>(
             signal: K,
-            callback: ValueMathExp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueMathExp.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueMathExp.SignalSignatures>(
             signal: K,
-            callback: ValueMathExp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ValueMathExp.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueMathExp.SignalSignatures>(
             signal: K,
-            ...args: ValueMathExp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ValueMathExp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

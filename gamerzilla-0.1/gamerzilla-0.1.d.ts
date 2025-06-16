@@ -21,9 +21,9 @@ export namespace Gamerzilla {
     namespace GamerzillaGobj {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::password': GObject.Object.Notify;
-            'notify::url': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::url': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -46,6 +46,14 @@ export namespace Gamerzilla {
         set url(val: string);
         get username(): string;
         set username(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GamerzillaGobj.SignalSignatures;
 
         // Constructors
 
@@ -59,17 +67,17 @@ export namespace Gamerzilla {
 
         connect<K extends keyof GamerzillaGobj.SignalSignatures>(
             signal: K,
-            callback: GamerzillaGobj.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GamerzillaGobj.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GamerzillaGobj.SignalSignatures>(
             signal: K,
-            callback: GamerzillaGobj.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GamerzillaGobj.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GamerzillaGobj.SignalSignatures>(
             signal: K,
-            ...args: GamerzillaGobj.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GamerzillaGobj.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -278,6 +278,14 @@ export namespace Amtk {
 
     class ActionInfoCentralStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoCentralStore>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ActionInfoCentralStore.SignalSignatures;
 
         // Constructors
 
@@ -289,17 +297,19 @@ export namespace Amtk {
 
         connect<K extends keyof ActionInfoCentralStore.SignalSignatures>(
             signal: K,
-            callback: ActionInfoCentralStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ActionInfoCentralStore.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ActionInfoCentralStore.SignalSignatures>(
             signal: K,
-            callback: ActionInfoCentralStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ActionInfoCentralStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ActionInfoCentralStore.SignalSignatures>(
             signal: K,
-            ...args: ActionInfoCentralStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ActionInfoCentralStore.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -323,6 +333,14 @@ export namespace Amtk {
 
     class ActionInfoStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoStore>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ActionInfoStore.SignalSignatures;
 
         // Constructors
 
@@ -336,17 +354,17 @@ export namespace Amtk {
 
         connect<K extends keyof ActionInfoStore.SignalSignatures>(
             signal: K,
-            callback: ActionInfoStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ActionInfoStore.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ActionInfoStore.SignalSignatures>(
             signal: K,
-            callback: ActionInfoStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ActionInfoStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ActionInfoStore.SignalSignatures>(
             signal: K,
-            ...args: ActionInfoStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ActionInfoStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -413,8 +431,8 @@ export namespace Amtk {
     namespace ApplicationWindow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::application-window': GObject.Object.Notify;
-            'notify::statusbar': GObject.Object.Notify;
+            'notify::application-window': (pspec: GObject.ParamSpec) => void;
+            'notify::statusbar': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -444,6 +462,14 @@ export namespace Amtk {
          */
         get statusbar(): Gtk.Statusbar;
         set statusbar(val: Gtk.Statusbar);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ApplicationWindow.SignalSignatures;
 
         // Constructors
 
@@ -455,17 +481,17 @@ export namespace Amtk {
 
         connect<K extends keyof ApplicationWindow.SignalSignatures>(
             signal: K,
-            callback: ApplicationWindow.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ApplicationWindow.SignalSignatures>(
             signal: K,
-            callback: ApplicationWindow.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ApplicationWindow.SignalSignatures>(
             signal: K,
-            ...args: ApplicationWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ApplicationWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -544,8 +570,8 @@ export namespace Amtk {
     namespace Factory {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::application': GObject.Object.Notify;
-            'notify::default-flags': GObject.Object.Notify;
+            'notify::application': (pspec: GObject.ParamSpec) => void;
+            'notify::default-flags': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -577,6 +603,14 @@ export namespace Amtk {
          */
         get defaultFlags(): FactoryFlags;
         set defaultFlags(val: FactoryFlags);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Factory.SignalSignatures;
 
         // Constructors
 
@@ -590,16 +624,19 @@ export namespace Amtk {
 
         // Signals
 
-        connect<K extends keyof Factory.SignalSignatures>(signal: K, callback: Factory.SignalSignatures[K]): number;
+        connect<K extends keyof Factory.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Factory.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Factory.SignalSignatures>(
             signal: K,
-            callback: Factory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Factory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Factory.SignalSignatures>(
             signal: K,
-            ...args: Factory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Factory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -767,21 +804,11 @@ export namespace Amtk {
     }
 
     namespace MenuShell {
-        // Signal callback interfaces
-
-        interface MenuItemDeselected {
-            (_source: MenuShell, menu_item: Gtk.MenuItem): void;
-        }
-
-        interface MenuItemSelected {
-            (_source: MenuShell, menu_item: Gtk.MenuItem): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'menu-item-deselected': MenuItemDeselected;
-            'menu-item-selected': MenuItemSelected;
-            'notify::menu-shell': GObject.Object.Notify;
+            'menu-item-deselected': (arg0: Gtk.MenuItem) => void;
+            'menu-item-selected': (arg0: Gtk.MenuItem) => void;
+            'notify::menu-shell': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -805,6 +832,14 @@ export namespace Amtk {
          * The #GtkMenuShell.
          */
         get menuShell(): Gtk.MenuShell;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MenuShell.SignalSignatures;
 
         // Constructors
 
@@ -814,16 +849,19 @@ export namespace Amtk {
 
         // Signals
 
-        connect<K extends keyof MenuShell.SignalSignatures>(signal: K, callback: MenuShell.SignalSignatures[K]): number;
+        connect<K extends keyof MenuShell.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MenuShell.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuShell.SignalSignatures>(
             signal: K,
-            callback: MenuShell.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuShell.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuShell.SignalSignatures>(
             signal: K,
-            ...args: MenuShell.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MenuShell.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

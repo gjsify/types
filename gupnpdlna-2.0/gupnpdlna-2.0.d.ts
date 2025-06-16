@@ -54,6 +54,14 @@ export namespace GUPnPDLNA {
 
     abstract class AudioInformation extends GObject.Object {
         static $gtype: GObject.GType<AudioInformation>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioInformation.SignalSignatures;
 
         // Constructors
 
@@ -65,17 +73,17 @@ export namespace GUPnPDLNA {
 
         connect<K extends keyof AudioInformation.SignalSignatures>(
             signal: K,
-            callback: AudioInformation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioInformation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioInformation.SignalSignatures>(
             signal: K,
-            callback: AudioInformation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioInformation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioInformation.SignalSignatures>(
             signal: K,
-            ...args: AudioInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioInformation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -91,6 +99,14 @@ export namespace GUPnPDLNA {
 
     abstract class ContainerInformation extends GObject.Object {
         static $gtype: GObject.GType<ContainerInformation>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ContainerInformation.SignalSignatures;
 
         // Constructors
 
@@ -102,17 +118,19 @@ export namespace GUPnPDLNA {
 
         connect<K extends keyof ContainerInformation.SignalSignatures>(
             signal: K,
-            callback: ContainerInformation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContainerInformation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContainerInformation.SignalSignatures>(
             signal: K,
-            callback: ContainerInformation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContainerInformation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContainerInformation.SignalSignatures>(
             signal: K,
-            ...args: ContainerInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ContainerInformation.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -128,6 +146,14 @@ export namespace GUPnPDLNA {
 
     abstract class ImageInformation extends GObject.Object {
         static $gtype: GObject.GType<ImageInformation>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ImageInformation.SignalSignatures;
 
         // Constructors
 
@@ -139,17 +165,17 @@ export namespace GUPnPDLNA {
 
         connect<K extends keyof ImageInformation.SignalSignatures>(
             signal: K,
-            callback: ImageInformation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ImageInformation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ImageInformation.SignalSignatures>(
             signal: K,
-            callback: ImageInformation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ImageInformation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ImageInformation.SignalSignatures>(
             signal: K,
-            ...args: ImageInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ImageInformation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -157,11 +183,11 @@ export namespace GUPnPDLNA {
     namespace Information {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::audio-information': GObject.Object.Notify;
-            'notify::container-information': GObject.Object.Notify;
-            'notify::image-information': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
-            'notify::video-information': GObject.Object.Notify;
+            'notify::audio-information': (pspec: GObject.ParamSpec) => void;
+            'notify::container-information': (pspec: GObject.ParamSpec) => void;
+            'notify::image-information': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::video-information': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -220,6 +246,14 @@ export namespace GUPnPDLNA {
          * Video information of a file.
          */
         get videoInformation(): VideoInformation;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Information.SignalSignatures;
 
         // Constructors
 
@@ -231,17 +265,17 @@ export namespace GUPnPDLNA {
 
         connect<K extends keyof Information.SignalSignatures>(
             signal: K,
-            callback: Information.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Information.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Information.SignalSignatures>(
             signal: K,
-            callback: Information.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Information.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Information.SignalSignatures>(
             signal: K,
-            ...args: Information.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Information.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -300,15 +334,9 @@ export namespace GUPnPDLNA {
     }
 
     namespace MetadataExtractor {
-        // Signal callback interfaces
-
-        interface Done {
-            (_source: MetadataExtractor, info: Information, error?: GLib.Error | null): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            done: Done;
+            done: (arg0: Information, arg1: GLib.Error | null) => void;
         }
 
         // Constructor properties interface
@@ -318,6 +346,14 @@ export namespace GUPnPDLNA {
 
     abstract class MetadataExtractor extends GObject.Object {
         static $gtype: GObject.GType<MetadataExtractor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MetadataExtractor.SignalSignatures;
 
         // Constructors
 
@@ -329,17 +365,17 @@ export namespace GUPnPDLNA {
 
         connect<K extends keyof MetadataExtractor.SignalSignatures>(
             signal: K,
-            callback: MetadataExtractor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MetadataExtractor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MetadataExtractor.SignalSignatures>(
             signal: K,
-            callback: MetadataExtractor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MetadataExtractor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MetadataExtractor.SignalSignatures>(
             signal: K,
-            ...args: MetadataExtractor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MetadataExtractor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -391,13 +427,13 @@ export namespace GUPnPDLNA {
     namespace Profile {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::audio-restrictions': GObject.Object.Notify;
-            'notify::container-restrictions': GObject.Object.Notify;
-            'notify::extended': GObject.Object.Notify;
-            'notify::image-restrictions': GObject.Object.Notify;
-            'notify::mime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::video-restrictions': GObject.Object.Notify;
+            'notify::audio-restrictions': (pspec: GObject.ParamSpec) => void;
+            'notify::container-restrictions': (pspec: GObject.ParamSpec) => void;
+            'notify::extended': (pspec: GObject.ParamSpec) => void;
+            'notify::image-restrictions': (pspec: GObject.ParamSpec) => void;
+            'notify::mime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::video-restrictions': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -446,6 +482,14 @@ export namespace GUPnPDLNA {
         get name(): string;
         get video_restrictions(): any;
         get videoRestrictions(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Profile.SignalSignatures;
 
         // Constructors
 
@@ -455,16 +499,19 @@ export namespace GUPnPDLNA {
 
         // Signals
 
-        connect<K extends keyof Profile.SignalSignatures>(signal: K, callback: Profile.SignalSignatures[K]): number;
+        connect<K extends keyof Profile.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Profile.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Profile.SignalSignatures>(
             signal: K,
-            callback: Profile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Profile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Profile.SignalSignatures>(
             signal: K,
-            ...args: Profile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Profile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -496,17 +543,11 @@ export namespace GUPnPDLNA {
     }
 
     namespace ProfileGuesser {
-        // Signal callback interfaces
-
-        interface Done {
-            (_source: ProfileGuesser, info: Information, dlna?: Profile | null, error?: GLib.Error | null): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            done: Done;
-            'notify::extended-mode': GObject.Object.Notify;
-            'notify::relaxed-mode': GObject.Object.Notify;
+            done: (arg0: Information, arg1: Profile | null, arg2: GLib.Error | null) => void;
+            'notify::extended-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::relaxed-mode': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -544,6 +585,14 @@ export namespace GUPnPDLNA {
          * with the DLNA specification.
          */
         get relaxedMode(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ProfileGuesser.SignalSignatures;
 
         // Constructors
 
@@ -557,17 +606,17 @@ export namespace GUPnPDLNA {
 
         connect<K extends keyof ProfileGuesser.SignalSignatures>(
             signal: K,
-            callback: ProfileGuesser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProfileGuesser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProfileGuesser.SignalSignatures>(
             signal: K,
-            callback: ProfileGuesser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProfileGuesser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProfileGuesser.SignalSignatures>(
             signal: K,
-            ...args: ProfileGuesser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ProfileGuesser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -630,6 +679,14 @@ export namespace GUPnPDLNA {
 
     abstract class VideoInformation extends GObject.Object {
         static $gtype: GObject.GType<VideoInformation>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VideoInformation.SignalSignatures;
 
         // Constructors
 
@@ -641,17 +698,17 @@ export namespace GUPnPDLNA {
 
         connect<K extends keyof VideoInformation.SignalSignatures>(
             signal: K,
-            callback: VideoInformation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoInformation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoInformation.SignalSignatures>(
             signal: K,
-            callback: VideoInformation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoInformation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoInformation.SignalSignatures>(
             signal: K,
-            ...args: VideoInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VideoInformation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

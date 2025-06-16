@@ -380,11 +380,11 @@ export namespace EBackend {
     namespace Backend {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::connectable': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
-            'notify::online': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
-            'notify::user-prompter': GObject.Object.Notify;
+            'notify::connectable': (pspec: GObject.ParamSpec) => void;
+            'notify::main-context': (pspec: GObject.ParamSpec) => void;
+            'notify::online': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::user-prompter': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -418,6 +418,14 @@ export namespace EBackend {
         get source(): EDataServer.Source;
         get user_prompter(): UserPrompter;
         get userPrompter(): UserPrompter;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Backend.SignalSignatures;
 
         // Constructors
 
@@ -427,16 +435,19 @@ export namespace EBackend {
 
         // Signals
 
-        connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: Backend.SignalSignatures[K]): number;
+        connect<K extends keyof Backend.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            callback: Backend.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            ...args: Backend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Backend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -769,7 +780,7 @@ export namespace EBackend {
     namespace BackendFactory {
         // Signal signatures
         interface SignalSignatures extends EDataServer.Extension.SignalSignatures {
-            'notify::extensible': GObject.Object.Notify;
+            'notify::extensible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -783,6 +794,14 @@ export namespace EBackend {
      */
     abstract class BackendFactory extends EDataServer.Extension {
         static $gtype: GObject.GType<BackendFactory>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BackendFactory.SignalSignatures;
 
         // Constructors
 
@@ -794,17 +813,17 @@ export namespace EBackend {
 
         connect<K extends keyof BackendFactory.SignalSignatures>(
             signal: K,
-            callback: BackendFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BackendFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BackendFactory.SignalSignatures>(
             signal: K,
-            callback: BackendFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BackendFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BackendFactory.SignalSignatures>(
             signal: K,
-            ...args: BackendFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BackendFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -856,34 +875,19 @@ export namespace EBackend {
     }
 
     namespace Cache {
-        // Signal callback interfaces
-
-        interface BeforePut {
-            (
-                _source: Cache,
-                object: string,
-                p0: string,
-                p1: string,
-                p2: CacheColumnValues,
-                p3: boolean,
-                p4?: Gio.Cancellable | null,
-                p5?: any | null,
-            ): boolean | void;
-        }
-
-        interface BeforeRemove {
-            (_source: Cache, object: string, p0?: Gio.Cancellable | null, p1?: any | null): boolean | void;
-        }
-
-        interface RevisionChanged {
-            (_source: Cache): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'before-put': BeforePut;
-            'before-remove': BeforeRemove;
-            'revision-changed': RevisionChanged;
+            'before-put': (
+                arg0: string,
+                arg1: string,
+                arg2: string,
+                arg3: CacheColumnValues,
+                arg4: boolean,
+                arg5: Gio.Cancellable | null,
+                arg6: any | null,
+            ) => boolean | void;
+            'before-remove': (arg0: string, arg1: Gio.Cancellable | null, arg2: any | null) => boolean | void;
+            'revision-changed': () => void;
         }
 
         // Constructor properties interface
@@ -897,6 +901,14 @@ export namespace EBackend {
      */
     abstract class Cache extends GObject.Object {
         static $gtype: GObject.GType<Cache>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Cache.SignalSignatures;
 
         // Constructors
 
@@ -906,13 +918,19 @@ export namespace EBackend {
 
         // Signals
 
-        connect<K extends keyof Cache.SignalSignatures>(signal: K, callback: Cache.SignalSignatures[K]): number;
+        connect<K extends keyof Cache.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Cache.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Cache.SignalSignatures>(signal: K, callback: Cache.SignalSignatures[K]): number;
+        connect_after<K extends keyof Cache.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Cache.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Cache.SignalSignatures>(
             signal: K,
-            ...args: Cache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Cache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1260,19 +1278,13 @@ export namespace EBackend {
     }
 
     namespace CacheKeys {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: CacheKeys): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            'notify::cache': GObject.Object.Notify;
-            'notify::key-column-name': GObject.Object.Notify;
-            'notify::table-name': GObject.Object.Notify;
-            'notify::value-column-name': GObject.Object.Notify;
+            changed: () => void;
+            'notify::cache': (pspec: GObject.ParamSpec) => void;
+            'notify::key-column-name': (pspec: GObject.ParamSpec) => void;
+            'notify::table-name': (pspec: GObject.ParamSpec) => void;
+            'notify::value-column-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1325,6 +1337,14 @@ export namespace EBackend {
          * The column name for the values.
          */
         get valueColumnName(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CacheKeys.SignalSignatures;
 
         // Constructors
 
@@ -1336,16 +1356,19 @@ export namespace EBackend {
 
         // Signals
 
-        connect<K extends keyof CacheKeys.SignalSignatures>(signal: K, callback: CacheKeys.SignalSignatures[K]): number;
+        connect<K extends keyof CacheKeys.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, CacheKeys.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CacheKeys.SignalSignatures>(
             signal: K,
-            callback: CacheKeys.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CacheKeys.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CacheKeys.SignalSignatures>(
             signal: K,
-            ...args: CacheKeys.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CacheKeys.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1448,7 +1471,7 @@ export namespace EBackend {
     namespace CacheReaper {
         // Signal signatures
         interface SignalSignatures extends EDataServer.Extension.SignalSignatures {
-            'notify::extensible': GObject.Object.Notify;
+            'notify::extensible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1460,6 +1483,14 @@ export namespace EBackend {
 
     class CacheReaper extends EDataServer.Extension implements EDataServer.Extensible {
         static $gtype: GObject.GType<CacheReaper>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CacheReaper.SignalSignatures;
 
         // Constructors
 
@@ -1471,17 +1502,17 @@ export namespace EBackend {
 
         connect<K extends keyof CacheReaper.SignalSignatures>(
             signal: K,
-            callback: CacheReaper.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CacheReaper.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CacheReaper.SignalSignatures>(
             signal: K,
-            callback: CacheReaper.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CacheReaper.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CacheReaper.SignalSignatures>(
             signal: K,
-            ...args: CacheReaper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CacheReaper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1977,27 +2008,17 @@ export namespace EBackend {
     }
 
     namespace CollectionBackend {
-        // Signal callback interfaces
-
-        interface ChildAdded {
-            (_source: CollectionBackend, child_source: ServerSideSource): void;
-        }
-
-        interface ChildRemoved {
-            (_source: CollectionBackend, child_source: ServerSideSource): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Backend.SignalSignatures {
-            'child-added': ChildAdded;
-            'child-removed': ChildRemoved;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::server': GObject.Object.Notify;
-            'notify::connectable': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
-            'notify::online': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
-            'notify::user-prompter': GObject.Object.Notify;
+            'child-added': (arg0: ServerSideSource) => void;
+            'child-removed': (arg0: ServerSideSource) => void;
+            'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::server': (pspec: GObject.ParamSpec) => void;
+            'notify::connectable': (pspec: GObject.ParamSpec) => void;
+            'notify::main-context': (pspec: GObject.ParamSpec) => void;
+            'notify::online': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::user-prompter': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2021,6 +2042,14 @@ export namespace EBackend {
         get proxy_resolver(): Gio.ProxyResolver;
         get proxyResolver(): Gio.ProxyResolver;
         get server(): SourceRegistryServer;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CollectionBackend.SignalSignatures;
 
         // Constructors
 
@@ -2032,17 +2061,17 @@ export namespace EBackend {
 
         connect<K extends keyof CollectionBackend.SignalSignatures>(
             signal: K,
-            callback: CollectionBackend.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CollectionBackend.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CollectionBackend.SignalSignatures>(
             signal: K,
-            callback: CollectionBackend.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CollectionBackend.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CollectionBackend.SignalSignatures>(
             signal: K,
-            ...args: CollectionBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CollectionBackend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2525,7 +2554,7 @@ export namespace EBackend {
     namespace CollectionBackendFactory {
         // Signal signatures
         interface SignalSignatures extends BackendFactory.SignalSignatures {
-            'notify::extensible': GObject.Object.Notify;
+            'notify::extensible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2539,6 +2568,14 @@ export namespace EBackend {
      */
     class CollectionBackendFactory extends BackendFactory {
         static $gtype: GObject.GType<CollectionBackendFactory>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CollectionBackendFactory.SignalSignatures;
 
         // Constructors
 
@@ -2550,17 +2587,19 @@ export namespace EBackend {
 
         connect<K extends keyof CollectionBackendFactory.SignalSignatures>(
             signal: K,
-            callback: CollectionBackendFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CollectionBackendFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CollectionBackendFactory.SignalSignatures>(
             signal: K,
-            callback: CollectionBackendFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CollectionBackendFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CollectionBackendFactory.SignalSignatures>(
             signal: K,
-            ...args: CollectionBackendFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CollectionBackendFactory.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2602,35 +2641,13 @@ export namespace EBackend {
     }
 
     namespace DBusServer {
-        // Signal callback interfaces
-
-        interface BusAcquired {
-            (_source: DBusServer, connection: Gio.DBusConnection): void;
-        }
-
-        interface BusNameAcquired {
-            (_source: DBusServer, connection: Gio.DBusConnection): void;
-        }
-
-        interface BusNameLost {
-            (_source: DBusServer, connection: Gio.DBusConnection): void;
-        }
-
-        interface QuitServer {
-            (_source: DBusServer, code: DBusServerExitCode): void;
-        }
-
-        interface RunServer {
-            (_source: DBusServer): DBusServerExitCode;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'bus-acquired': BusAcquired;
-            'bus-name-acquired': BusNameAcquired;
-            'bus-name-lost': BusNameLost;
-            'quit-server': QuitServer;
-            'run-server': RunServer;
+            'bus-acquired': (arg0: Gio.DBusConnection) => void;
+            'bus-name-acquired': (arg0: Gio.DBusConnection) => void;
+            'bus-name-lost': (arg0: Gio.DBusConnection) => void;
+            'quit-server': (arg0: DBusServerExitCode) => void;
+            'run-server': () => DBusServerExitCode;
         }
 
         // Constructor properties interface
@@ -2644,6 +2661,14 @@ export namespace EBackend {
      */
     abstract class DBusServer extends GObject.Object implements EDataServer.Extensible {
         static $gtype: GObject.GType<DBusServer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DBusServer.SignalSignatures;
 
         // Constructors
 
@@ -2655,17 +2680,17 @@ export namespace EBackend {
 
         connect<K extends keyof DBusServer.SignalSignatures>(
             signal: K,
-            callback: DBusServer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DBusServer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DBusServer.SignalSignatures>(
             signal: K,
-            callback: DBusServer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DBusServer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DBusServer.SignalSignatures>(
             signal: K,
-            ...args: DBusServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DBusServer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3193,9 +3218,9 @@ export namespace EBackend {
     namespace DataFactory {
         // Signal signatures
         interface SignalSignatures extends DBusServer.SignalSignatures {
-            'notify::backend-per-process': GObject.Object.Notify;
-            'notify::registry': GObject.Object.Notify;
-            'notify::reload-supported': GObject.Object.Notify;
+            'notify::backend-per-process': (pspec: GObject.ParamSpec) => void;
+            'notify::registry': (pspec: GObject.ParamSpec) => void;
+            'notify::reload-supported': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3226,6 +3251,14 @@ export namespace EBackend {
         get registry(): EDataServer.SourceRegistry;
         get reload_supported(): boolean;
         get reloadSupported(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DataFactory.SignalSignatures;
 
         // Constructors
 
@@ -3237,17 +3270,17 @@ export namespace EBackend {
 
         connect<K extends keyof DataFactory.SignalSignatures>(
             signal: K,
-            callback: DataFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataFactory.SignalSignatures>(
             signal: K,
-            callback: DataFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataFactory.SignalSignatures>(
             signal: K,
-            ...args: DataFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DataFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3903,7 +3936,7 @@ export namespace EBackend {
     namespace FileCache {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::filename': GObject.Object.Notify;
+            'notify::filename': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3926,6 +3959,14 @@ export namespace EBackend {
          * The filename of the cache.
          */
         get filename(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FileCache.SignalSignatures;
 
         // Constructors
 
@@ -3937,16 +3978,19 @@ export namespace EBackend {
 
         // Signals
 
-        connect<K extends keyof FileCache.SignalSignatures>(signal: K, callback: FileCache.SignalSignatures[K]): number;
+        connect<K extends keyof FileCache.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, FileCache.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileCache.SignalSignatures>(
             signal: K,
-            callback: FileCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileCache.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileCache.SignalSignatures>(
             signal: K,
-            ...args: FileCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FileCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4023,21 +4067,21 @@ export namespace EBackend {
     namespace ServerSideSource {
         // Signal signatures
         interface SignalSignatures extends EDataServer.Source.SignalSignatures {
-            'notify::exported': GObject.Object.Notify;
-            'notify::file': GObject.Object.Notify;
-            'notify::oauth2-support': GObject.Object.Notify;
-            'notify::remote-creatable': GObject.Object.Notify;
-            'notify::remote-deletable': GObject.Object.Notify;
-            'notify::removable': GObject.Object.Notify;
-            'notify::server': GObject.Object.Notify;
-            'notify::writable': GObject.Object.Notify;
-            'notify::write-directory': GObject.Object.Notify;
-            'notify::connection-status': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::enabled': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
+            'notify::exported': (pspec: GObject.ParamSpec) => void;
+            'notify::file': (pspec: GObject.ParamSpec) => void;
+            'notify::oauth2-support': (pspec: GObject.ParamSpec) => void;
+            'notify::remote-creatable': (pspec: GObject.ParamSpec) => void;
+            'notify::remote-deletable': (pspec: GObject.ParamSpec) => void;
+            'notify::removable': (pspec: GObject.ParamSpec) => void;
+            'notify::server': (pspec: GObject.ParamSpec) => void;
+            'notify::writable': (pspec: GObject.ParamSpec) => void;
+            'notify::write-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::connection-status': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::main-context': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4094,6 +4138,14 @@ export namespace EBackend {
         set write_directory(val: string);
         get writeDirectory(): string;
         set writeDirectory(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ServerSideSource.SignalSignatures;
 
         // Constructors
 
@@ -4112,17 +4164,17 @@ export namespace EBackend {
 
         connect<K extends keyof ServerSideSource.SignalSignatures>(
             signal: K,
-            callback: ServerSideSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServerSideSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServerSideSource.SignalSignatures>(
             signal: K,
-            callback: ServerSideSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServerSideSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServerSideSource.SignalSignatures>(
             signal: K,
-            ...args: ServerSideSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ServerSideSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4939,7 +4991,7 @@ export namespace EBackend {
     namespace ServerSideSourceCredentialsProvider {
         // Signal signatures
         interface SignalSignatures extends EDataServer.SourceCredentialsProvider.SignalSignatures {
-            'notify::registry': GObject.Object.Notify;
+            'notify::registry': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4958,6 +5010,14 @@ export namespace EBackend {
         implements EDataServer.Extensible
     {
         static $gtype: GObject.GType<ServerSideSourceCredentialsProvider>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ServerSideSourceCredentialsProvider.SignalSignatures;
 
         // Constructors
 
@@ -4974,18 +5034,21 @@ export namespace EBackend {
 
         connect<K extends keyof ServerSideSourceCredentialsProvider.SignalSignatures>(
             signal: K,
-            callback: ServerSideSourceCredentialsProvider.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServerSideSourceCredentialsProvider.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServerSideSourceCredentialsProvider.SignalSignatures>(
             signal: K,
-            callback: ServerSideSourceCredentialsProvider.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServerSideSourceCredentialsProvider.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServerSideSourceCredentialsProvider.SignalSignatures>(
             signal: K,
-            ...args: ServerSideSourceCredentialsProvider.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<ServerSideSourceCredentialsProvider.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -5457,38 +5520,16 @@ export namespace EBackend {
     }
 
     namespace SourceRegistryServer {
-        // Signal callback interfaces
-
-        interface FilesLoaded {
-            (_source: SourceRegistryServer): void;
-        }
-
-        interface LoadError {
-            (_source: SourceRegistryServer, file: Gio.File, error: GLib.Error): void;
-        }
-
-        interface SourceAdded {
-            (_source: SourceRegistryServer, source: ServerSideSource): void;
-        }
-
-        interface SourceRemoved {
-            (_source: SourceRegistryServer, source: ServerSideSource): void;
-        }
-
-        interface TweakKeyFile {
-            (_source: SourceRegistryServer, key_file: GLib.KeyFile, uid: string): boolean | void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends DataFactory.SignalSignatures {
-            'files-loaded': FilesLoaded;
-            'load-error': LoadError;
-            'source-added': SourceAdded;
-            'source-removed': SourceRemoved;
-            'tweak-key-file': TweakKeyFile;
-            'notify::backend-per-process': GObject.Object.Notify;
-            'notify::registry': GObject.Object.Notify;
-            'notify::reload-supported': GObject.Object.Notify;
+            'files-loaded': () => void;
+            'load-error': (arg0: Gio.File, arg1: GLib.Error) => void;
+            'source-added': (arg0: ServerSideSource) => void;
+            'source-removed': (arg0: ServerSideSource) => void;
+            'tweak-key-file': (arg0: GLib.KeyFile, arg1: string) => boolean | void;
+            'notify::backend-per-process': (pspec: GObject.ParamSpec) => void;
+            'notify::registry': (pspec: GObject.ParamSpec) => void;
+            'notify::reload-supported': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5506,6 +5547,14 @@ export namespace EBackend {
      */
     class SourceRegistryServer extends DataFactory implements OAuth2Support, EDataServer.Extensible, Gio.Initable {
         static $gtype: GObject.GType<SourceRegistryServer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SourceRegistryServer.SignalSignatures;
 
         // Constructors
 
@@ -5519,17 +5568,19 @@ export namespace EBackend {
 
         connect<K extends keyof SourceRegistryServer.SignalSignatures>(
             signal: K,
-            callback: SourceRegistryServer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SourceRegistryServer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceRegistryServer.SignalSignatures>(
             signal: K,
-            callback: SourceRegistryServer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SourceRegistryServer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceRegistryServer.SignalSignatures>(
             signal: K,
-            ...args: SourceRegistryServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SourceRegistryServer.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6335,7 +6386,7 @@ export namespace EBackend {
     namespace SubprocessFactory {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::registry': GObject.Object.Notify;
+            'notify::registry': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6355,6 +6406,14 @@ export namespace EBackend {
         // Properties
 
         get registry(): EDataServer.SourceRegistry;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SubprocessFactory.SignalSignatures;
 
         // Constructors
 
@@ -6366,17 +6425,17 @@ export namespace EBackend {
 
         connect<K extends keyof SubprocessFactory.SignalSignatures>(
             signal: K,
-            callback: SubprocessFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SubprocessFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubprocessFactory.SignalSignatures>(
             signal: K,
-            callback: SubprocessFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SubprocessFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubprocessFactory.SignalSignatures>(
             signal: K,
-            ...args: SubprocessFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SubprocessFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7007,6 +7066,14 @@ export namespace EBackend {
      */
     class UserPrompter extends GObject.Object {
         static $gtype: GObject.GType<UserPrompter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UserPrompter.SignalSignatures;
 
         // Constructors
 
@@ -7020,17 +7087,17 @@ export namespace EBackend {
 
         connect<K extends keyof UserPrompter.SignalSignatures>(
             signal: K,
-            callback: UserPrompter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserPrompter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserPrompter.SignalSignatures>(
             signal: K,
-            callback: UserPrompter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserPrompter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserPrompter.SignalSignatures>(
             signal: K,
-            ...args: UserPrompter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UserPrompter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7271,24 +7338,17 @@ export namespace EBackend {
     }
 
     namespace UserPrompterServer {
-        // Signal callback interfaces
-
-        interface Prompt {
-            (
-                _source: UserPrompterServer,
-                prompt_id: number,
-                type: string | null,
-                title: string | null,
-                primary_text: string | null,
-                secondary_text: string | null,
-                use_markup: boolean,
-                button_captions?: string[] | null,
-            ): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends DBusServer.SignalSignatures {
-            prompt: Prompt;
+            prompt: (
+                arg0: number,
+                arg1: string | null,
+                arg2: string | null,
+                arg3: string | null,
+                arg4: string | null,
+                arg5: boolean,
+                arg6: string[] | null,
+            ) => void;
         }
 
         // Constructor properties interface
@@ -7302,6 +7362,14 @@ export namespace EBackend {
      */
     class UserPrompterServer extends DBusServer implements EDataServer.Extensible {
         static $gtype: GObject.GType<UserPrompterServer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UserPrompterServer.SignalSignatures;
 
         // Constructors
 
@@ -7315,17 +7383,17 @@ export namespace EBackend {
 
         connect<K extends keyof UserPrompterServer.SignalSignatures>(
             signal: K,
-            callback: UserPrompterServer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserPrompterServer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserPrompterServer.SignalSignatures>(
             signal: K,
-            callback: UserPrompterServer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserPrompterServer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserPrompterServer.SignalSignatures>(
             signal: K,
-            ...args: UserPrompterServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UserPrompterServer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7825,7 +7893,7 @@ export namespace EBackend {
     namespace UserPrompterServerExtension {
         // Signal signatures
         interface SignalSignatures extends EDataServer.Extension.SignalSignatures {
-            'notify::extensible': GObject.Object.Notify;
+            'notify::extensible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7839,6 +7907,14 @@ export namespace EBackend {
      */
     abstract class UserPrompterServerExtension extends EDataServer.Extension {
         static $gtype: GObject.GType<UserPrompterServerExtension>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UserPrompterServerExtension.SignalSignatures;
 
         // Constructors
 
@@ -7850,17 +7926,19 @@ export namespace EBackend {
 
         connect<K extends keyof UserPrompterServerExtension.SignalSignatures>(
             signal: K,
-            callback: UserPrompterServerExtension.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserPrompterServerExtension.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserPrompterServerExtension.SignalSignatures>(
             signal: K,
-            callback: UserPrompterServerExtension.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserPrompterServerExtension.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserPrompterServerExtension.SignalSignatures>(
             signal: K,
-            ...args: UserPrompterServerExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UserPrompterServerExtension.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7924,13 +8002,13 @@ export namespace EBackend {
     namespace WebDAVCollectionBackend {
         // Signal signatures
         interface SignalSignatures extends CollectionBackend.SignalSignatures {
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::server': GObject.Object.Notify;
-            'notify::connectable': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
-            'notify::online': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
-            'notify::user-prompter': GObject.Object.Notify;
+            'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::server': (pspec: GObject.ParamSpec) => void;
+            'notify::connectable': (pspec: GObject.ParamSpec) => void;
+            'notify::main-context': (pspec: GObject.ParamSpec) => void;
+            'notify::online': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::user-prompter': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7944,6 +8022,14 @@ export namespace EBackend {
      */
     class WebDAVCollectionBackend extends CollectionBackend {
         static $gtype: GObject.GType<WebDAVCollectionBackend>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WebDAVCollectionBackend.SignalSignatures;
 
         // Constructors
 
@@ -7955,17 +8041,19 @@ export namespace EBackend {
 
         connect<K extends keyof WebDAVCollectionBackend.SignalSignatures>(
             signal: K,
-            callback: WebDAVCollectionBackend.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebDAVCollectionBackend.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebDAVCollectionBackend.SignalSignatures>(
             signal: K,
-            callback: WebDAVCollectionBackend.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebDAVCollectionBackend.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebDAVCollectionBackend.SignalSignatures>(
             signal: K,
-            ...args: WebDAVCollectionBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WebDAVCollectionBackend.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

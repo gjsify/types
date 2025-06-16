@@ -31,39 +31,39 @@ export namespace MxGtk {
     namespace Frame {
         // Signal signatures
         interface SignalSignatures extends Gtk.Frame.SignalSignatures {
-            'notify::label': GObject.Object.Notify;
-            'notify::label-widget': GObject.Object.Notify;
-            'notify::label-xalign': GObject.Object.Notify;
-            'notify::label-yalign': GObject.Object.Notify;
-            'notify::shadow': GObject.Object.Notify;
-            'notify::shadow-type': GObject.Object.Notify;
-            'notify::border-width': GObject.Object.Notify;
-            'notify::child': GObject.Object.Notify;
-            'notify::resize-mode': GObject.Object.Notify;
-            'notify::app-paintable': GObject.Object.Notify;
-            'notify::can-default': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::composite-child': GObject.Object.Notify;
-            'notify::double-buffered': GObject.Object.Notify;
-            'notify::events': GObject.Object.Notify;
-            'notify::extension-events': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
-            'notify::is-focus': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::no-show-all': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
-            'notify::window': GObject.Object.Notify;
-            'notify::user-data': GObject.Object.Notify;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::label-widget': (pspec: GObject.ParamSpec) => void;
+            'notify::label-xalign': (pspec: GObject.ParamSpec) => void;
+            'notify::label-yalign': (pspec: GObject.ParamSpec) => void;
+            'notify::shadow': (pspec: GObject.ParamSpec) => void;
+            'notify::shadow-type': (pspec: GObject.ParamSpec) => void;
+            'notify::border-width': (pspec: GObject.ParamSpec) => void;
+            'notify::child': (pspec: GObject.ParamSpec) => void;
+            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
+            'notify::can-default': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
+            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
+            'notify::events': (pspec: GObject.ParamSpec) => void;
+            'notify::extension-events': (pspec: GObject.ParamSpec) => void;
+            'notify::has-default': (pspec: GObject.ParamSpec) => void;
+            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::height-request': (pspec: GObject.ParamSpec) => void;
+            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
+            'notify::user-data': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -80,6 +80,14 @@ export namespace MxGtk {
      */
     class Frame extends Gtk.Frame implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Frame>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Frame.SignalSignatures;
 
         // Constructors
 
@@ -91,13 +99,19 @@ export namespace MxGtk {
 
         // Signals
 
-        connect<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
+        connect<K extends keyof Frame.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Frame.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
+        connect_after<K extends keyof Frame.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Frame.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Frame.SignalSignatures>(
             signal: K,
-            ...args: Frame.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Frame.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -544,40 +558,34 @@ export namespace MxGtk {
     }
 
     namespace LightSwitch {
-        // Signal callback interfaces
-
-        interface SwitchFlipped {
-            (_source: LightSwitch, object: boolean): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
-            'switch-flipped': SwitchFlipped;
-            'notify::active': GObject.Object.Notify;
-            'notify::app-paintable': GObject.Object.Notify;
-            'notify::can-default': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::composite-child': GObject.Object.Notify;
-            'notify::double-buffered': GObject.Object.Notify;
-            'notify::events': GObject.Object.Notify;
-            'notify::extension-events': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
-            'notify::is-focus': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::no-show-all': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
-            'notify::window': GObject.Object.Notify;
-            'notify::user-data': GObject.Object.Notify;
+            'switch-flipped': (arg0: boolean) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
+            'notify::can-default': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
+            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
+            'notify::events': (pspec: GObject.ParamSpec) => void;
+            'notify::extension-events': (pspec: GObject.ParamSpec) => void;
+            'notify::has-default': (pspec: GObject.ParamSpec) => void;
+            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::height-request': (pspec: GObject.ParamSpec) => void;
+            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
+            'notify::user-data': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -601,6 +609,14 @@ export namespace MxGtk {
 
         get active(): boolean;
         set active(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LightSwitch.SignalSignatures;
 
         // Constructors
 
@@ -614,17 +630,17 @@ export namespace MxGtk {
 
         connect<K extends keyof LightSwitch.SignalSignatures>(
             signal: K,
-            callback: LightSwitch.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LightSwitch.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LightSwitch.SignalSignatures>(
             signal: K,
-            callback: LightSwitch.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LightSwitch.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LightSwitch.SignalSignatures>(
             signal: K,
-            ...args: LightSwitch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LightSwitch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

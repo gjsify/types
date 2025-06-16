@@ -424,7 +424,7 @@ export namespace GSignond {
     namespace AccessControlManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::config': GObject.Object.Notify;
+            'notify::config': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -443,6 +443,14 @@ export namespace GSignond {
         // Properties
 
         get config(): Config;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AccessControlManager.SignalSignatures;
 
         // Constructors
 
@@ -454,17 +462,19 @@ export namespace GSignond {
 
         connect<K extends keyof AccessControlManager.SignalSignatures>(
             signal: K,
-            callback: AccessControlManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AccessControlManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AccessControlManager.SignalSignatures>(
             signal: K,
-            callback: AccessControlManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AccessControlManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AccessControlManager.SignalSignatures>(
             signal: K,
-            ...args: AccessControlManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AccessControlManager.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -625,6 +635,14 @@ export namespace GSignond {
      */
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Config.SignalSignatures;
 
         // Constructors
 
@@ -636,13 +654,19 @@ export namespace GSignond {
 
         // Signals
 
-        connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect_after<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Config.SignalSignatures>(
             signal: K,
-            ...args: Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -688,6 +712,14 @@ export namespace GSignond {
      */
     class Credentials extends GObject.Object {
         static $gtype: GObject.GType<Credentials>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Credentials.SignalSignatures;
 
         // Constructors
 
@@ -701,17 +733,17 @@ export namespace GSignond {
 
         connect<K extends keyof Credentials.SignalSignatures>(
             signal: K,
-            callback: Credentials.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Credentials.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Credentials.SignalSignatures>(
             signal: K,
-            callback: Credentials.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Credentials.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Credentials.SignalSignatures>(
             signal: K,
-            ...args: Credentials.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Credentials.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -782,6 +814,14 @@ export namespace GSignond {
      */
     class Dictionary extends GObject.Object {
         static $gtype: GObject.GType<Dictionary>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Dictionary.SignalSignatures;
 
         // Constructors
 
@@ -797,17 +837,17 @@ export namespace GSignond {
 
         connect<K extends keyof Dictionary.SignalSignatures>(
             signal: K,
-            callback: Dictionary.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Dictionary.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Dictionary.SignalSignatures>(
             signal: K,
-            callback: Dictionary.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Dictionary.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Dictionary.SignalSignatures>(
             signal: K,
-            ...args: Dictionary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Dictionary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -967,6 +1007,14 @@ export namespace GSignond {
      */
     class Extension extends GObject.Object {
         static $gtype: GObject.GType<Extension>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Extension.SignalSignatures;
 
         // Constructors
 
@@ -976,16 +1024,19 @@ export namespace GSignond {
 
         // Signals
 
-        connect<K extends keyof Extension.SignalSignatures>(signal: K, callback: Extension.SignalSignatures[K]): number;
+        connect<K extends keyof Extension.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Extension.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Extension.SignalSignatures>(
             signal: K,
-            callback: Extension.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Extension.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Extension.SignalSignatures>(
             signal: K,
-            ...args: Extension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Extension.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1051,7 +1102,7 @@ export namespace GSignond {
     namespace SecretStorage {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::config': GObject.Object.Notify;
+            'notify::config': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1070,6 +1121,14 @@ export namespace GSignond {
         // Properties
 
         get config(): Config;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SecretStorage.SignalSignatures;
 
         // Constructors
 
@@ -1081,17 +1140,17 @@ export namespace GSignond {
 
         connect<K extends keyof SecretStorage.SignalSignatures>(
             signal: K,
-            callback: SecretStorage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SecretStorage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SecretStorage.SignalSignatures>(
             signal: K,
-            callback: SecretStorage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SecretStorage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SecretStorage.SignalSignatures>(
             signal: K,
-            ...args: SecretStorage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SecretStorage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1258,6 +1317,14 @@ export namespace GSignond {
      */
     class SessionData extends Dictionary {
         static $gtype: GObject.GType<SessionData>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SessionData.SignalSignatures;
 
         // Constructors
 
@@ -1273,17 +1340,17 @@ export namespace GSignond {
 
         connect<K extends keyof SessionData.SignalSignatures>(
             signal: K,
-            callback: SessionData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SessionData.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SessionData.SignalSignatures>(
             signal: K,
-            callback: SessionData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SessionData.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SessionData.SignalSignatures>(
             signal: K,
-            ...args: SessionData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SessionData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1421,6 +1488,14 @@ export namespace GSignond {
      */
     class SignonuiData extends Dictionary {
         static $gtype: GObject.GType<SignonuiData>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SignonuiData.SignalSignatures;
 
         // Constructors
 
@@ -1436,17 +1511,17 @@ export namespace GSignond {
 
         connect<K extends keyof SignonuiData.SignalSignatures>(
             signal: K,
-            callback: SignonuiData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SignonuiData.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SignonuiData.SignalSignatures>(
             signal: K,
-            callback: SignonuiData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SignonuiData.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SignonuiData.SignalSignatures>(
             signal: K,
-            ...args: SignonuiData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SignonuiData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1671,7 +1746,7 @@ export namespace GSignond {
     namespace StorageManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::config': GObject.Object.Notify;
+            'notify::config': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1690,6 +1765,14 @@ export namespace GSignond {
         // Properties
 
         get config(): Config;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StorageManager.SignalSignatures;
 
         // Fields
 
@@ -1705,17 +1788,17 @@ export namespace GSignond {
 
         connect<K extends keyof StorageManager.SignalSignatures>(
             signal: K,
-            callback: StorageManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StorageManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StorageManager.SignalSignatures>(
             signal: K,
-            callback: StorageManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StorageManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StorageManager.SignalSignatures>(
             signal: K,
-            ...args: StorageManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StorageManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

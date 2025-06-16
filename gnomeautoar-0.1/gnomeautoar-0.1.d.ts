@@ -310,44 +310,22 @@ export namespace GnomeAutoar {
         (a?: any | null): number;
     }
     namespace Compressor {
-        // Signal callback interfaces
-
-        interface Cancelled {
-            (_source: Compressor): void;
-        }
-
-        interface Completed {
-            (_source: Compressor): void;
-        }
-
-        interface DecideDest {
-            (_source: Compressor, destination: Gio.File): void;
-        }
-
-        interface Error {
-            (_source: Compressor, error: GLib.Error): void;
-        }
-
-        interface Progress {
-            (_source: Compressor, completed_size: number, completed_files: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            cancelled: Cancelled;
-            completed: Completed;
-            'decide-dest': DecideDest;
-            error: Error;
-            progress: Progress;
-            'notify::completed-files': GObject.Object.Notify;
-            'notify::completed-size': GObject.Object.Notify;
-            'notify::create-top-level-directory': GObject.Object.Notify;
-            'notify::files': GObject.Object.Notify;
-            'notify::notify-interval': GObject.Object.Notify;
-            'notify::output-file': GObject.Object.Notify;
-            'notify::output-is-dest': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::source-files': GObject.Object.Notify;
+            cancelled: () => void;
+            completed: () => void;
+            'decide-dest': (arg0: Gio.File) => void;
+            error: (arg0: GLib.Error) => void;
+            progress: (arg0: number, arg1: number) => void;
+            'notify::completed-files': (pspec: GObject.ParamSpec) => void;
+            'notify::completed-size': (pspec: GObject.ParamSpec) => void;
+            'notify::create-top-level-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::files': (pspec: GObject.ParamSpec) => void;
+            'notify::notify-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::output-file': (pspec: GObject.ParamSpec) => void;
+            'notify::output-is-dest': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::source-files': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -399,6 +377,14 @@ export namespace GnomeAutoar {
         get size(): number;
         get source_files(): any;
         get sourceFiles(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Compressor.SignalSignatures;
 
         // Constructors
 
@@ -418,17 +404,17 @@ export namespace GnomeAutoar {
 
         connect<K extends keyof Compressor.SignalSignatures>(
             signal: K,
-            callback: Compressor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Compressor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Compressor.SignalSignatures>(
             signal: K,
-            callback: Compressor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Compressor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Compressor.SignalSignatures>(
             signal: K,
-            ...args: Compressor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Compressor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -547,59 +533,25 @@ export namespace GnomeAutoar {
     }
 
     namespace Extractor {
-        // Signal callback interfaces
-
-        interface Cancelled {
-            (_source: Extractor): void;
-        }
-
-        interface Completed {
-            (_source: Extractor): void;
-        }
-
-        interface Conflict {
-            (_source: Extractor, file: Gio.File, new_file?: any | null): number;
-        }
-
-        interface DecideDestination {
-            (_source: Extractor, destination: Gio.File, files?: any | null): GObject.Object;
-        }
-
-        interface Error {
-            (_source: Extractor, error: GLib.Error): void;
-        }
-
-        interface Progress {
-            (_source: Extractor, completed_size: number, completed_files: number): void;
-        }
-
-        interface RequestPassphrase {
-            (_source: Extractor): string;
-        }
-
-        interface Scanned {
-            (_source: Extractor, files: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            cancelled: Cancelled;
-            completed: Completed;
-            conflict: Conflict;
-            'decide-destination': DecideDestination;
-            error: Error;
-            progress: Progress;
-            'request-passphrase': RequestPassphrase;
-            scanned: Scanned;
-            'notify::completed-files': GObject.Object.Notify;
-            'notify::completed-size': GObject.Object.Notify;
-            'notify::delete-after-extraction': GObject.Object.Notify;
-            'notify::notify-interval': GObject.Object.Notify;
-            'notify::output-file': GObject.Object.Notify;
-            'notify::output-is-dest': GObject.Object.Notify;
-            'notify::source-file': GObject.Object.Notify;
-            'notify::total-files': GObject.Object.Notify;
-            'notify::total-size': GObject.Object.Notify;
+            cancelled: () => void;
+            completed: () => void;
+            conflict: (arg0: Gio.File, arg1: any | null) => number;
+            'decide-destination': (arg0: Gio.File, arg1: any | null) => GObject.Object;
+            error: (arg0: GLib.Error) => void;
+            progress: (arg0: number, arg1: number) => void;
+            'request-passphrase': () => string;
+            scanned: (arg0: number) => void;
+            'notify::completed-files': (pspec: GObject.ParamSpec) => void;
+            'notify::completed-size': (pspec: GObject.ParamSpec) => void;
+            'notify::delete-after-extraction': (pspec: GObject.ParamSpec) => void;
+            'notify::notify-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::output-file': (pspec: GObject.ParamSpec) => void;
+            'notify::output-is-dest': (pspec: GObject.ParamSpec) => void;
+            'notify::source-file': (pspec: GObject.ParamSpec) => void;
+            'notify::total-files': (pspec: GObject.ParamSpec) => void;
+            'notify::total-size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -655,6 +607,14 @@ export namespace GnomeAutoar {
         get totalFiles(): number;
         get total_size(): number;
         get totalSize(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Extractor.SignalSignatures;
 
         // Constructors
 
@@ -666,16 +626,19 @@ export namespace GnomeAutoar {
 
         // Signals
 
-        connect<K extends keyof Extractor.SignalSignatures>(signal: K, callback: Extractor.SignalSignatures[K]): number;
+        connect<K extends keyof Extractor.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Extractor.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Extractor.SignalSignatures>(
             signal: K,
-            callback: Extractor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Extractor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Extractor.SignalSignatures>(
             signal: K,
-            ...args: Extractor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Extractor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

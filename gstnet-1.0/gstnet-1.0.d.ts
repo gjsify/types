@@ -146,20 +146,20 @@ export namespace GstNet {
     namespace NetClientClock {
         // Signal signatures
         interface SignalSignatures extends Gst.SystemClock.SignalSignatures {
-            'notify::address': GObject.Object.Notify;
-            'notify::base-time': GObject.Object.Notify;
-            'notify::bus': GObject.Object.Notify;
-            'notify::internal-clock': GObject.Object.Notify;
-            'notify::minimum-update-interval': GObject.Object.Notify;
-            'notify::port': GObject.Object.Notify;
-            'notify::qos-dscp': GObject.Object.Notify;
-            'notify::round-trip-limit': GObject.Object.Notify;
-            'notify::clock-type': GObject.Object.Notify;
-            'notify::timeout': GObject.Object.Notify;
-            'notify::window-size': GObject.Object.Notify;
-            'notify::window-threshold': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::address': (pspec: GObject.ParamSpec) => void;
+            'notify::base-time': (pspec: GObject.ParamSpec) => void;
+            'notify::bus': (pspec: GObject.ParamSpec) => void;
+            'notify::internal-clock': (pspec: GObject.ParamSpec) => void;
+            'notify::minimum-update-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::port': (pspec: GObject.ParamSpec) => void;
+            'notify::qos-dscp': (pspec: GObject.ParamSpec) => void;
+            'notify::round-trip-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::clock-type': (pspec: GObject.ParamSpec) => void;
+            'notify::timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::window-size': (pspec: GObject.ParamSpec) => void;
+            'notify::window-threshold': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -232,6 +232,14 @@ export namespace GstNet {
         set round_trip_limit(val: number);
         get roundTripLimit(): number;
         set roundTripLimit(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NetClientClock.SignalSignatures;
 
         // Fields
 
@@ -254,17 +262,17 @@ export namespace GstNet {
 
         connect<K extends keyof NetClientClock.SignalSignatures>(
             signal: K,
-            callback: NetClientClock.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NetClientClock.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NetClientClock.SignalSignatures>(
             signal: K,
-            callback: NetClientClock.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NetClientClock.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NetClientClock.SignalSignatures>(
             signal: K,
-            ...args: NetClientClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NetClientClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -272,13 +280,13 @@ export namespace GstNet {
     namespace NetTimeProvider {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::active': GObject.Object.Notify;
-            'notify::address': GObject.Object.Notify;
-            'notify::clock': GObject.Object.Notify;
-            'notify::port': GObject.Object.Notify;
-            'notify::qos-dscp': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::address': (pspec: GObject.ParamSpec) => void;
+            'notify::clock': (pspec: GObject.ParamSpec) => void;
+            'notify::port': (pspec: GObject.ParamSpec) => void;
+            'notify::qos-dscp': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -318,6 +326,14 @@ export namespace GstNet {
         set qos_dscp(val: number);
         get qosDscp(): number;
         set qosDscp(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NetTimeProvider.SignalSignatures;
 
         // Constructors
 
@@ -331,17 +347,17 @@ export namespace GstNet {
 
         connect<K extends keyof NetTimeProvider.SignalSignatures>(
             signal: K,
-            callback: NetTimeProvider.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NetTimeProvider.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NetTimeProvider.SignalSignatures>(
             signal: K,
-            callback: NetTimeProvider.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NetTimeProvider.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NetTimeProvider.SignalSignatures>(
             signal: K,
-            ...args: NetTimeProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NetTimeProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -877,20 +893,20 @@ export namespace GstNet {
     namespace NtpClock {
         // Signal signatures
         interface SignalSignatures extends NetClientClock.SignalSignatures {
-            'notify::address': GObject.Object.Notify;
-            'notify::base-time': GObject.Object.Notify;
-            'notify::bus': GObject.Object.Notify;
-            'notify::internal-clock': GObject.Object.Notify;
-            'notify::minimum-update-interval': GObject.Object.Notify;
-            'notify::port': GObject.Object.Notify;
-            'notify::qos-dscp': GObject.Object.Notify;
-            'notify::round-trip-limit': GObject.Object.Notify;
-            'notify::clock-type': GObject.Object.Notify;
-            'notify::timeout': GObject.Object.Notify;
-            'notify::window-size': GObject.Object.Notify;
-            'notify::window-threshold': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::address': (pspec: GObject.ParamSpec) => void;
+            'notify::base-time': (pspec: GObject.ParamSpec) => void;
+            'notify::bus': (pspec: GObject.ParamSpec) => void;
+            'notify::internal-clock': (pspec: GObject.ParamSpec) => void;
+            'notify::minimum-update-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::port': (pspec: GObject.ParamSpec) => void;
+            'notify::qos-dscp': (pspec: GObject.ParamSpec) => void;
+            'notify::round-trip-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::clock-type': (pspec: GObject.ParamSpec) => void;
+            'notify::timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::window-size': (pspec: GObject.ParamSpec) => void;
+            'notify::window-threshold': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -900,6 +916,14 @@ export namespace GstNet {
 
     class NtpClock extends NetClientClock {
         static $gtype: GObject.GType<NtpClock>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NtpClock.SignalSignatures;
 
         // Fields
 
@@ -920,16 +944,19 @@ export namespace GstNet {
 
         // Signals
 
-        connect<K extends keyof NtpClock.SignalSignatures>(signal: K, callback: NtpClock.SignalSignatures[K]): number;
+        connect<K extends keyof NtpClock.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, NtpClock.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NtpClock.SignalSignatures>(
             signal: K,
-            callback: NtpClock.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NtpClock.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NtpClock.SignalSignatures>(
             signal: K,
-            ...args: NtpClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NtpClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -937,16 +964,16 @@ export namespace GstNet {
     namespace PtpClock {
         // Signal signatures
         interface SignalSignatures extends Gst.SystemClock.SignalSignatures {
-            'notify::domain': GObject.Object.Notify;
-            'notify::grandmaster-clock-id': GObject.Object.Notify;
-            'notify::internal-clock': GObject.Object.Notify;
-            'notify::master-clock-id': GObject.Object.Notify;
-            'notify::clock-type': GObject.Object.Notify;
-            'notify::timeout': GObject.Object.Notify;
-            'notify::window-size': GObject.Object.Notify;
-            'notify::window-threshold': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::domain': (pspec: GObject.ParamSpec) => void;
+            'notify::grandmaster-clock-id': (pspec: GObject.ParamSpec) => void;
+            'notify::internal-clock': (pspec: GObject.ParamSpec) => void;
+            'notify::master-clock-id': (pspec: GObject.ParamSpec) => void;
+            'notify::clock-type': (pspec: GObject.ParamSpec) => void;
+            'notify::timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::window-size': (pspec: GObject.ParamSpec) => void;
+            'notify::window-threshold': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -997,6 +1024,14 @@ export namespace GstNet {
         get internalClock(): Gst.Clock;
         get master_clock_id(): number;
         get masterClockId(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PtpClock.SignalSignatures;
 
         // Fields
 
@@ -1012,16 +1047,19 @@ export namespace GstNet {
 
         // Signals
 
-        connect<K extends keyof PtpClock.SignalSignatures>(signal: K, callback: PtpClock.SignalSignatures[K]): number;
+        connect<K extends keyof PtpClock.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, PtpClock.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PtpClock.SignalSignatures>(
             signal: K,
-            callback: PtpClock.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PtpClock.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PtpClock.SignalSignatures>(
             signal: K,
-            ...args: PtpClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PtpClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

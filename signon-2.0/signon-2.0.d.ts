@@ -300,6 +300,14 @@ export namespace Signon {
      */
     class AuthService extends GObject.Object {
         static $gtype: GObject.GType<AuthService>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AuthService.SignalSignatures;
 
         // Constructors
 
@@ -313,17 +321,17 @@ export namespace Signon {
 
         connect<K extends keyof AuthService.SignalSignatures>(
             signal: K,
-            callback: AuthService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthService.SignalSignatures>(
             signal: K,
-            callback: AuthService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthService.SignalSignatures>(
             signal: K,
-            ...args: AuthService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AuthService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -407,15 +415,9 @@ export namespace Signon {
     }
 
     namespace AuthSession {
-        // Signal callback interfaces
-
-        interface StateChanged {
-            (_source: AuthSession, state: number, message: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'state-changed': StateChanged;
+            'state-changed': (arg0: number, arg1: string) => void;
         }
 
         // Constructor properties interface
@@ -428,6 +430,14 @@ export namespace Signon {
      */
     class AuthSession extends GObject.Object {
         static $gtype: GObject.GType<AuthSession>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AuthSession.SignalSignatures;
 
         // Constructors
 
@@ -441,17 +451,17 @@ export namespace Signon {
 
         connect<K extends keyof AuthSession.SignalSignatures>(
             signal: K,
-            callback: AuthSession.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthSession.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthSession.SignalSignatures>(
             signal: K,
-            callback: AuthSession.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthSession.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthSession.SignalSignatures>(
             signal: K,
-            ...args: AuthSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AuthSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -527,16 +537,10 @@ export namespace Signon {
     }
 
     namespace Identity {
-        // Signal callback interfaces
-
-        interface SignedOut {
-            (_source: Identity): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'signed-out': SignedOut;
-            'notify::id': GObject.Object.Notify;
+            'signed-out': () => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -555,6 +559,14 @@ export namespace Signon {
         // Properties
 
         get id(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Identity.SignalSignatures;
 
         // Constructors
 
@@ -568,16 +580,19 @@ export namespace Signon {
 
         // Signals
 
-        connect<K extends keyof Identity.SignalSignatures>(signal: K, callback: Identity.SignalSignatures[K]): number;
+        connect<K extends keyof Identity.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Identity.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Identity.SignalSignatures>(
             signal: K,
-            callback: Identity.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Identity.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Identity.SignalSignatures>(
             signal: K,
-            ...args: Identity.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Identity.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

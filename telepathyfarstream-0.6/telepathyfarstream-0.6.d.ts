@@ -24,38 +24,16 @@ export namespace TelepathyFarstream {
      */
 
     namespace Channel {
-        // Signal callback interfaces
-
-        interface Closed {
-            (_source: Channel): void;
-        }
-
-        interface ContentAdded {
-            (_source: Channel, content: Content): void;
-        }
-
-        interface ContentRemoved {
-            (_source: Channel, content: Content): void;
-        }
-
-        interface FsConferenceAdded {
-            (_source: Channel, conf: Farstream.Conference): void;
-        }
-
-        interface FsConferenceRemoved {
-            (_source: Channel, conf: Farstream.Conference): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            closed: Closed;
-            'content-added': ContentAdded;
-            'content-removed': ContentRemoved;
-            'fs-conference-added': FsConferenceAdded;
-            'fs-conference-removed': FsConferenceRemoved;
-            'notify::channel': GObject.Object.Notify;
-            'notify::fs-conferences': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
+            closed: () => void;
+            'content-added': (arg0: Content) => void;
+            'content-removed': (arg0: Content) => void;
+            'fs-conference-added': (arg0: Farstream.Conference) => void;
+            'fs-conference-removed': (arg0: Farstream.Conference) => void;
+            'notify::channel': (pspec: GObject.ParamSpec) => void;
+            'notify::fs-conferences': (pspec: GObject.ParamSpec) => void;
+            'notify::object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -82,6 +60,14 @@ export namespace TelepathyFarstream {
         get fsConferences(): any[];
         get object_path(): string;
         get objectPath(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Channel.SignalSignatures;
 
         // Constructors
 
@@ -96,16 +82,19 @@ export namespace TelepathyFarstream {
 
         // Signals
 
-        connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: Channel.SignalSignatures[K]): number;
+        connect<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            callback: Channel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            ...args: Channel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Channel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -774,46 +763,20 @@ export namespace TelepathyFarstream {
     }
 
     namespace Content {
-        // Signal callback interfaces
-
-        interface RestartSource {
-            (_source: Content): void;
-        }
-
-        interface SrcPadAdded {
-            (_source: Content, handle: number, stream: Farstream.Stream, pad: Gst.Pad, codec: Farstream.Codec): void;
-        }
-
-        interface StartReceiving {
-            (_source: Content, handles: any, handle_count: number): boolean | void;
-        }
-
-        interface StartSending {
-            (_source: Content): boolean | void;
-        }
-
-        interface StopReceiving {
-            (_source: Content, handles: any, handle_count: number): void;
-        }
-
-        interface StopSending {
-            (_source: Content): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'restart-source': RestartSource;
-            'src-pad-added': SrcPadAdded;
-            'start-receiving': StartReceiving;
-            'start-sending': StartSending;
-            'stop-receiving': StopReceiving;
-            'stop-sending': StopSending;
-            'notify::fs-conference': GObject.Object.Notify;
-            'notify::fs-session': GObject.Object.Notify;
-            'notify::media-type': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
-            'notify::sink-pad': GObject.Object.Notify;
-            'notify::tf-channel': GObject.Object.Notify;
+            'restart-source': () => void;
+            'src-pad-added': (arg0: number, arg1: Farstream.Stream, arg2: Gst.Pad, arg3: Farstream.Codec) => void;
+            'start-receiving': (arg0: any, arg1: number) => boolean | void;
+            'start-sending': () => boolean | void;
+            'stop-receiving': (arg0: any, arg1: number) => void;
+            'stop-sending': () => void;
+            'notify::fs-conference': (pspec: GObject.ParamSpec) => void;
+            'notify::fs-session': (pspec: GObject.ParamSpec) => void;
+            'notify::media-type': (pspec: GObject.ParamSpec) => void;
+            'notify::object-path': (pspec: GObject.ParamSpec) => void;
+            'notify::sink-pad': (pspec: GObject.ParamSpec) => void;
+            'notify::tf-channel': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -854,6 +817,14 @@ export namespace TelepathyFarstream {
         get sinkPad(): Gst.Pad;
         get tf_channel(): Channel;
         get tfChannel(): Channel;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Content.SignalSignatures;
 
         // Constructors
 
@@ -863,16 +834,19 @@ export namespace TelepathyFarstream {
 
         // Signals
 
-        connect<K extends keyof Content.SignalSignatures>(signal: K, callback: Content.SignalSignatures[K]): number;
+        connect<K extends keyof Content.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Content.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Content.SignalSignatures>(
             signal: K,
-            callback: Content.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Content.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Content.SignalSignatures>(
             signal: K,
-            ...args: Content.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Content.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

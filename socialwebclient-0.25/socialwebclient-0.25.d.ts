@@ -39,15 +39,9 @@ export namespace SocialWebClient {
         (service: ClientService, error: GLib.Error): void;
     }
     namespace Client {
-        // Signal callback interfaces
-
-        interface OnlineChanged {
-            (_source: Client, object: boolean): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'online-changed': OnlineChanged;
+            'online-changed': (arg0: boolean) => void;
         }
 
         // Constructor properties interface
@@ -57,6 +51,14 @@ export namespace SocialWebClient {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -68,13 +70,19 @@ export namespace SocialWebClient {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -86,26 +94,12 @@ export namespace SocialWebClient {
     }
 
     namespace ClientContactView {
-        // Signal callback interfaces
-
-        interface ContactsAdded {
-            (_source: ClientContactView, contacts: Contact[]): void;
-        }
-
-        interface ContactsChanged {
-            (_source: ClientContactView, contacts: Contact[]): void;
-        }
-
-        interface ContactsRemoved {
-            (_source: ClientContactView, contacts: Contact[]): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'contacts-added': ContactsAdded;
-            'contacts-changed': ContactsChanged;
-            'contacts-removed': ContactsRemoved;
-            'notify::object-path': GObject.Object.Notify;
+            'contacts-added': (arg0: Contact[]) => void;
+            'contacts-changed': (arg0: Contact[]) => void;
+            'contacts-removed': (arg0: Contact[]) => void;
+            'notify::object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -123,6 +117,14 @@ export namespace SocialWebClient {
 
         get object_path(): string;
         get objectPath(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientContactView.SignalSignatures;
 
         // Constructors
 
@@ -134,17 +136,17 @@ export namespace SocialWebClient {
 
         connect<K extends keyof ClientContactView.SignalSignatures>(
             signal: K,
-            callback: ClientContactView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientContactView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientContactView.SignalSignatures>(
             signal: K,
-            callback: ClientContactView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientContactView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientContactView.SignalSignatures>(
             signal: K,
-            ...args: ClientContactView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientContactView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -157,26 +159,12 @@ export namespace SocialWebClient {
     }
 
     namespace ClientItemView {
-        // Signal callback interfaces
-
-        interface ItemsAdded {
-            (_source: ClientItemView, items: Item[]): void;
-        }
-
-        interface ItemsChanged {
-            (_source: ClientItemView, items: Item[]): void;
-        }
-
-        interface ItemsRemoved {
-            (_source: ClientItemView, items: Item[]): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'items-added': ItemsAdded;
-            'items-changed': ItemsChanged;
-            'items-removed': ItemsRemoved;
-            'notify::object-path': GObject.Object.Notify;
+            'items-added': (arg0: Item[]) => void;
+            'items-changed': (arg0: Item[]) => void;
+            'items-removed': (arg0: Item[]) => void;
+            'notify::object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -194,6 +182,14 @@ export namespace SocialWebClient {
 
         get object_path(): string;
         get objectPath(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientItemView.SignalSignatures;
 
         // Constructors
 
@@ -205,17 +201,17 @@ export namespace SocialWebClient {
 
         connect<K extends keyof ClientItemView.SignalSignatures>(
             signal: K,
-            callback: ClientItemView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientItemView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientItemView.SignalSignatures>(
             signal: K,
-            callback: ClientItemView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientItemView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientItemView.SignalSignatures>(
             signal: K,
-            ...args: ClientItemView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientItemView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -238,6 +234,14 @@ export namespace SocialWebClient {
 
     class ClientLastfm extends GObject.Object {
         static $gtype: GObject.GType<ClientLastfm>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientLastfm.SignalSignatures;
 
         // Constructors
 
@@ -251,17 +255,17 @@ export namespace SocialWebClient {
 
         connect<K extends keyof ClientLastfm.SignalSignatures>(
             signal: K,
-            callback: ClientLastfm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientLastfm.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientLastfm.SignalSignatures>(
             signal: K,
-            callback: ClientLastfm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientLastfm.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientLastfm.SignalSignatures>(
             signal: K,
-            ...args: ClientLastfm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientLastfm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -289,30 +293,12 @@ export namespace SocialWebClient {
     }
 
     namespace ClientService {
-        // Signal callback interfaces
-
-        interface AvatarRetrieved {
-            (_source: ClientService, object: string): void;
-        }
-
-        interface CapabilitiesChanged {
-            (_source: ClientService, object: string[]): void;
-        }
-
-        interface StatusUpdated {
-            (_source: ClientService, object: boolean): void;
-        }
-
-        interface UserChanged {
-            (_source: ClientService): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'avatar-retrieved': AvatarRetrieved;
-            'capabilities-changed': CapabilitiesChanged;
-            'status-updated': StatusUpdated;
-            'user-changed': UserChanged;
+            'avatar-retrieved': (arg0: string) => void;
+            'capabilities-changed': (arg0: string[]) => void;
+            'status-updated': (arg0: boolean) => void;
+            'user-changed': () => void;
         }
 
         // Constructor properties interface
@@ -322,6 +308,14 @@ export namespace SocialWebClient {
 
     class ClientService extends GObject.Object {
         static $gtype: GObject.GType<ClientService>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientService.SignalSignatures;
 
         // Constructors
 
@@ -333,17 +327,17 @@ export namespace SocialWebClient {
 
         connect<K extends keyof ClientService.SignalSignatures>(
             signal: K,
-            callback: ClientService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientService.SignalSignatures>(
             signal: K,
-            callback: ClientService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientService.SignalSignatures>(
             signal: K,
-            ...args: ClientService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

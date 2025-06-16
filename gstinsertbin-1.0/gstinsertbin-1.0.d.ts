@@ -24,51 +24,17 @@ export namespace GstInsertBin {
         (insertbin: InsertBin, element: Gst.Element, success: boolean): void;
     }
     namespace InsertBin {
-        // Signal callback interfaces
-
-        interface Append {
-            (_source: InsertBin, callback: Gst.Element, user_data?: any | null, user_data2?: any | null): void;
-        }
-
-        interface InsertAfter {
-            (
-                _source: InsertBin,
-                sibling: Gst.Element,
-                callback: Gst.Element,
-                user_data?: any | null,
-                user_data2?: any | null,
-            ): void;
-        }
-
-        interface InsertBefore {
-            (
-                _source: InsertBin,
-                sibling: Gst.Element,
-                callback: Gst.Element,
-                user_data?: any | null,
-                user_data2?: any | null,
-            ): void;
-        }
-
-        interface Prepend {
-            (_source: InsertBin, callback: Gst.Element, user_data?: any | null, user_data2?: any | null): void;
-        }
-
-        interface Remove {
-            (_source: InsertBin, callback: Gst.Element, user_data?: any | null, user_data2?: any | null): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gst.Bin.SignalSignatures {
-            append: Append;
-            'insert-after': InsertAfter;
-            'insert-before': InsertBefore;
-            prepend: Prepend;
-            remove: Remove;
-            'notify::async-handling': GObject.Object.Notify;
-            'notify::message-forward': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            append: (arg0: Gst.Element, arg1: any | null, arg2: any | null) => void;
+            'insert-after': (arg0: Gst.Element, arg1: Gst.Element, arg2: any | null, arg3: any | null) => void;
+            'insert-before': (arg0: Gst.Element, arg1: Gst.Element, arg2: any | null, arg3: any | null) => void;
+            prepend: (arg0: Gst.Element, arg1: any | null, arg2: any | null) => void;
+            remove: (arg0: Gst.Element, arg1: any | null, arg2: any | null) => void;
+            'notify::async-handling': (pspec: GObject.ParamSpec) => void;
+            'notify::message-forward': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -91,6 +57,14 @@ export namespace GstInsertBin {
      */
     class InsertBin extends Gst.Bin implements Gst.ChildProxy {
         static $gtype: GObject.GType<InsertBin>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InsertBin.SignalSignatures;
 
         // Constructors
 
@@ -102,16 +76,19 @@ export namespace GstInsertBin {
 
         // Signals
 
-        connect<K extends keyof InsertBin.SignalSignatures>(signal: K, callback: InsertBin.SignalSignatures[K]): number;
+        connect<K extends keyof InsertBin.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, InsertBin.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InsertBin.SignalSignatures>(
             signal: K,
-            callback: InsertBin.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InsertBin.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InsertBin.SignalSignatures>(
             signal: K,
-            ...args: InsertBin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InsertBin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

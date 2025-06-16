@@ -322,13 +322,13 @@ export namespace GstCheck {
     namespace TestClock {
         // Signal signatures
         interface SignalSignatures extends Gst.Clock.SignalSignatures {
-            'notify::clock-type': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
-            'notify::timeout': GObject.Object.Notify;
-            'notify::window-size': GObject.Object.Notify;
-            'notify::window-threshold': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::clock-type': (pspec: GObject.ParamSpec) => void;
+            'notify::start-time': (pspec: GObject.ParamSpec) => void;
+            'notify::timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::window-size': (pspec: GObject.ParamSpec) => void;
+            'notify::window-threshold': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -516,6 +516,14 @@ export namespace GstCheck {
          * this property contains the value 0.
          */
         get startTime(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TestClock.SignalSignatures;
 
         // Constructors
 
@@ -529,16 +537,19 @@ export namespace GstCheck {
 
         // Signals
 
-        connect<K extends keyof TestClock.SignalSignatures>(signal: K, callback: TestClock.SignalSignatures[K]): number;
+        connect<K extends keyof TestClock.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TestClock.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TestClock.SignalSignatures>(
             signal: K,
-            callback: TestClock.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TestClock.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TestClock.SignalSignatures>(
             signal: K,
-            ...args: TestClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TestClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

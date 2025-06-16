@@ -40,15 +40,15 @@ export namespace TimezoneMap {
     namespace TimezoneCompletion {
         // Signal signatures
         interface SignalSignatures extends Gtk.EntryCompletion.SignalSignatures {
-            'notify::cell-area': GObject.Object.Notify;
-            'notify::inline-completion': GObject.Object.Notify;
-            'notify::inline-selection': GObject.Object.Notify;
-            'notify::minimum-key-length': GObject.Object.Notify;
-            'notify::model': GObject.Object.Notify;
-            'notify::popup-completion': GObject.Object.Notify;
-            'notify::popup-set-width': GObject.Object.Notify;
-            'notify::popup-single-match': GObject.Object.Notify;
-            'notify::text-column': GObject.Object.Notify;
+            'notify::cell-area': (pspec: GObject.ParamSpec) => void;
+            'notify::inline-completion': (pspec: GObject.ParamSpec) => void;
+            'notify::inline-selection': (pspec: GObject.ParamSpec) => void;
+            'notify::minimum-key-length': (pspec: GObject.ParamSpec) => void;
+            'notify::model': (pspec: GObject.ParamSpec) => void;
+            'notify::popup-completion': (pspec: GObject.ParamSpec) => void;
+            'notify::popup-set-width': (pspec: GObject.ParamSpec) => void;
+            'notify::popup-single-match': (pspec: GObject.ParamSpec) => void;
+            'notify::text-column': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -61,6 +61,14 @@ export namespace TimezoneMap {
 
     class TimezoneCompletion extends Gtk.EntryCompletion implements Gtk.Buildable, Gtk.CellLayout {
         static $gtype: GObject.GType<TimezoneCompletion>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TimezoneCompletion.SignalSignatures;
 
         // Constructors
 
@@ -74,17 +82,17 @@ export namespace TimezoneMap {
 
         connect<K extends keyof TimezoneCompletion.SignalSignatures>(
             signal: K,
-            callback: TimezoneCompletion.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TimezoneCompletion.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TimezoneCompletion.SignalSignatures>(
             signal: K,
-            callback: TimezoneCompletion.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TimezoneCompletion.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TimezoneCompletion.SignalSignatures>(
             signal: K,
-            ...args: TimezoneCompletion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TimezoneCompletion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -863,12 +871,12 @@ export namespace TimezoneMap {
     namespace TimezoneLocation {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::comment': GObject.Object.Notify;
-            'notify::country': GObject.Object.Notify;
-            'notify::dist': GObject.Object.Notify;
-            'notify::latitude': GObject.Object.Notify;
-            'notify::longitude': GObject.Object.Notify;
-            'notify::zone': GObject.Object.Notify;
+            'notify::comment': (pspec: GObject.ParamSpec) => void;
+            'notify::country': (pspec: GObject.ParamSpec) => void;
+            'notify::dist': (pspec: GObject.ParamSpec) => void;
+            'notify::latitude': (pspec: GObject.ParamSpec) => void;
+            'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            'notify::zone': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -900,6 +908,14 @@ export namespace TimezoneMap {
         set longitude(val: number);
         get zone(): string;
         set zone(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TimezoneLocation.SignalSignatures;
 
         // Constructors
 
@@ -913,70 +929,64 @@ export namespace TimezoneMap {
 
         connect<K extends keyof TimezoneLocation.SignalSignatures>(
             signal: K,
-            callback: TimezoneLocation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TimezoneLocation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TimezoneLocation.SignalSignatures>(
             signal: K,
-            callback: TimezoneLocation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TimezoneLocation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TimezoneLocation.SignalSignatures>(
             signal: K,
-            ...args: TimezoneLocation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TimezoneLocation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace TimezoneMap {
-        // Signal callback interfaces
-
-        interface LocationChanged {
-            (_source: TimezoneMap, object: TimezoneLocation): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
-            'location-changed': LocationChanged;
-            'notify::app-paintable': GObject.Object.Notify;
-            'notify::can-default': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::composite-child': GObject.Object.Notify;
-            'notify::double-buffered': GObject.Object.Notify;
-            'notify::events': GObject.Object.Notify;
-            'notify::expand': GObject.Object.Notify;
-            'notify::focus-on-click': GObject.Object.Notify;
-            'notify::halign': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
-            'notify::hexpand': GObject.Object.Notify;
-            'notify::hexpand-set': GObject.Object.Notify;
-            'notify::is-focus': GObject.Object.Notify;
-            'notify::margin': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-end': GObject.Object.Notify;
-            'notify::margin-left': GObject.Object.Notify;
-            'notify::margin-right': GObject.Object.Notify;
-            'notify::margin-start': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::no-show-all': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
-            'notify::valign': GObject.Object.Notify;
-            'notify::vexpand': GObject.Object.Notify;
-            'notify::vexpand-set': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
-            'notify::window': GObject.Object.Notify;
+            'location-changed': (arg0: TimezoneLocation) => void;
+            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
+            'notify::can-default': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
+            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
+            'notify::events': (pspec: GObject.ParamSpec) => void;
+            'notify::expand': (pspec: GObject.ParamSpec) => void;
+            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
+            'notify::halign': (pspec: GObject.ParamSpec) => void;
+            'notify::has-default': (pspec: GObject.ParamSpec) => void;
+            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::height-request': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::margin': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
+            'notify::valign': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -989,6 +999,14 @@ export namespace TimezoneMap {
 
     class TimezoneMap extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TimezoneMap>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TimezoneMap.SignalSignatures;
 
         // Constructors
 
@@ -1002,17 +1020,17 @@ export namespace TimezoneMap {
 
         connect<K extends keyof TimezoneMap.SignalSignatures>(
             signal: K,
-            callback: TimezoneMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TimezoneMap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TimezoneMap.SignalSignatures>(
             signal: K,
-            callback: TimezoneMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TimezoneMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TimezoneMap.SignalSignatures>(
             signal: K,
-            ...args: TimezoneMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TimezoneMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

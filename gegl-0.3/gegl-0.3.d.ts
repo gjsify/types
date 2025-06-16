@@ -596,7 +596,7 @@ export namespace Gegl {
     namespace AudioFragment {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::string': GObject.Object.Notify;
+            'notify::string': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -613,6 +613,14 @@ export namespace Gegl {
 
         get string(): string;
         set string(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioFragment.SignalSignatures;
 
         // Fields
 
@@ -635,17 +643,17 @@ export namespace Gegl {
 
         connect<K extends keyof AudioFragment.SignalSignatures>(
             signal: K,
-            callback: AudioFragment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioFragment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioFragment.SignalSignatures>(
             signal: K,
-            callback: AudioFragment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioFragment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioFragment.SignalSignatures>(
             signal: K,
-            ...args: AudioFragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioFragment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -666,33 +674,27 @@ export namespace Gegl {
     }
 
     namespace Buffer {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: Buffer, object: Rectangle): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends TileHandler.SignalSignatures {
-            changed: Changed;
-            'notify::abyss-height': GObject.Object.Notify;
-            'notify::abyss-width': GObject.Object.Notify;
-            'notify::abyss-x': GObject.Object.Notify;
-            'notify::abyss-y': GObject.Object.Notify;
-            'notify::backend': GObject.Object.Notify;
-            'notify::format': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::pixels': GObject.Object.Notify;
-            'notify::px-size': GObject.Object.Notify;
-            'notify::shift-x': GObject.Object.Notify;
-            'notify::shift-y': GObject.Object.Notify;
-            'notify::tile-height': GObject.Object.Notify;
-            'notify::tile-width': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
+            changed: (arg0: Rectangle) => void;
+            'notify::abyss-height': (pspec: GObject.ParamSpec) => void;
+            'notify::abyss-width': (pspec: GObject.ParamSpec) => void;
+            'notify::abyss-x': (pspec: GObject.ParamSpec) => void;
+            'notify::abyss-y': (pspec: GObject.ParamSpec) => void;
+            'notify::backend': (pspec: GObject.ParamSpec) => void;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::pixels': (pspec: GObject.ParamSpec) => void;
+            'notify::px-size': (pspec: GObject.ParamSpec) => void;
+            'notify::shift-x': (pspec: GObject.ParamSpec) => void;
+            'notify::shift-y': (pspec: GObject.ParamSpec) => void;
+            'notify::tile-height': (pspec: GObject.ParamSpec) => void;
+            'notify::tile-width': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -763,6 +765,14 @@ export namespace Gegl {
         set x(val: number);
         get y(): number;
         set y(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Buffer.SignalSignatures;
 
         // Constructors
 
@@ -776,13 +786,19 @@ export namespace Gegl {
 
         // Signals
 
-        connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Buffer.SignalSignatures>(
             signal: K,
-            ...args: Buffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Buffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -950,7 +966,7 @@ export namespace Gegl {
     namespace Color {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::string': GObject.Object.Notify;
+            'notify::string': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -967,6 +983,14 @@ export namespace Gegl {
 
         get string(): string;
         set string(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Color.SignalSignatures;
 
         // Constructors
 
@@ -978,13 +1002,19 @@ export namespace Gegl {
 
         // Signals
 
-        connect<K extends keyof Color.SignalSignatures>(signal: K, callback: Color.SignalSignatures[K]): number;
+        connect<K extends keyof Color.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Color.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Color.SignalSignatures>(signal: K, callback: Color.SignalSignatures[K]): number;
+        connect_after<K extends keyof Color.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Color.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Color.SignalSignatures>(
             signal: K,
-            ...args: Color.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Color.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1025,16 +1055,16 @@ export namespace Gegl {
     namespace Config {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::application-license': GObject.Object.Notify;
-            'notify::chunk-size': GObject.Object.Notify;
-            'notify::quality': GObject.Object.Notify;
-            'notify::queue-size': GObject.Object.Notify;
-            'notify::swap': GObject.Object.Notify;
-            'notify::threads': GObject.Object.Notify;
-            'notify::tile-cache-size': GObject.Object.Notify;
-            'notify::tile-height': GObject.Object.Notify;
-            'notify::tile-width': GObject.Object.Notify;
-            'notify::use-opencl': GObject.Object.Notify;
+            'notify::application-license': (pspec: GObject.ParamSpec) => void;
+            'notify::chunk-size': (pspec: GObject.ParamSpec) => void;
+            'notify::quality': (pspec: GObject.ParamSpec) => void;
+            'notify::queue-size': (pspec: GObject.ParamSpec) => void;
+            'notify::swap': (pspec: GObject.ParamSpec) => void;
+            'notify::threads': (pspec: GObject.ParamSpec) => void;
+            'notify::tile-cache-size': (pspec: GObject.ParamSpec) => void;
+            'notify::tile-height': (pspec: GObject.ParamSpec) => void;
+            'notify::tile-width': (pspec: GObject.ParamSpec) => void;
+            'notify::use-opencl': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1099,6 +1129,14 @@ export namespace Gegl {
         set use_opencl(val: boolean);
         get useOpencl(): boolean;
         set useOpencl(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Config.SignalSignatures;
 
         // Constructors
 
@@ -1108,13 +1146,19 @@ export namespace Gegl {
 
         // Signals
 
-        connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect_after<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Config.SignalSignatures>(
             signal: K,
-            ...args: Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1130,6 +1174,14 @@ export namespace Gegl {
 
     class Curve extends GObject.Object {
         static $gtype: GObject.GType<Curve>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Curve.SignalSignatures;
 
         // Constructors
 
@@ -1143,13 +1195,19 @@ export namespace Gegl {
 
         // Signals
 
-        connect<K extends keyof Curve.SignalSignatures>(signal: K, callback: Curve.SignalSignatures[K]): number;
+        connect<K extends keyof Curve.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Curve.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Curve.SignalSignatures>(signal: K, callback: Curve.SignalSignatures[K]): number;
+        connect_after<K extends keyof Curve.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Curve.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Curve.SignalSignatures>(
             signal: K,
-            ...args: Curve.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Curve.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1200,31 +1258,17 @@ export namespace Gegl {
     }
 
     namespace Node {
-        // Signal callback interfaces
-
-        interface Computed {
-            (_source: Node, object: Rectangle): void;
-        }
-
-        interface Invalidated {
-            (_source: Node, object: Rectangle): void;
-        }
-
-        interface Progress {
-            (_source: Node, object: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            computed: Computed;
-            invalidated: Invalidated;
-            progress: Progress;
-            'notify::dont-cache': GObject.Object.Notify;
-            'notify::gegl-operation': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::operation': GObject.Object.Notify;
-            'notify::passthrough': GObject.Object.Notify;
-            'notify::use-opencl': GObject.Object.Notify;
+            computed: (arg0: Rectangle) => void;
+            invalidated: (arg0: Rectangle) => void;
+            progress: (arg0: number) => void;
+            'notify::dont-cache': (pspec: GObject.ParamSpec) => void;
+            'notify::gegl-operation': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::operation': (pspec: GObject.ParamSpec) => void;
+            'notify::passthrough': (pspec: GObject.ParamSpec) => void;
+            'notify::use-opencl': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1265,6 +1309,14 @@ export namespace Gegl {
         set use_opencl(val: boolean);
         get useOpencl(): boolean;
         set useOpencl(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Node.SignalSignatures;
 
         // Constructors
 
@@ -1282,13 +1334,19 @@ export namespace Gegl {
 
         // Signals
 
-        connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect_after<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Node.SignalSignatures>(
             signal: K,
-            ...args: Node.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Node.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1512,6 +1570,14 @@ export namespace Gegl {
 
     class Operation extends GObject.Object {
         static $gtype: GObject.GType<Operation>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Operation.SignalSignatures;
 
         // Constructors
 
@@ -1521,16 +1587,19 @@ export namespace Gegl {
 
         // Signals
 
-        connect<K extends keyof Operation.SignalSignatures>(signal: K, callback: Operation.SignalSignatures[K]): number;
+        connect<K extends keyof Operation.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Operation.SignalSignatures>(
             signal: K,
-            callback: Operation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Operation.SignalSignatures>(
             signal: K,
-            ...args: Operation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Operation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1550,15 +1619,9 @@ export namespace Gegl {
     }
 
     namespace Path {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: Path, object?: any | null): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
+            changed: (arg0: any | null) => void;
         }
 
         // Constructor properties interface
@@ -1568,6 +1631,14 @@ export namespace Gegl {
 
     class Path extends GObject.Object {
         static $gtype: GObject.GType<Path>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Path.SignalSignatures;
 
         // Constructors
 
@@ -1581,13 +1652,19 @@ export namespace Gegl {
 
         // Signals
 
-        connect<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
+        connect<K extends keyof Path.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Path.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
+        connect_after<K extends keyof Path.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Path.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Path.SignalSignatures>(
             signal: K,
-            ...args: Path.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Path.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1724,10 +1801,10 @@ export namespace Gegl {
     namespace Processor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::chunksize': GObject.Object.Notify;
-            'notify::node': GObject.Object.Notify;
-            'notify::progress': GObject.Object.Notify;
-            'notify::rectangle': GObject.Object.Notify;
+            'notify::chunksize': (pspec: GObject.ParamSpec) => void;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::progress': (pspec: GObject.ParamSpec) => void;
+            'notify::rectangle': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1751,6 +1828,14 @@ export namespace Gegl {
         set progress(val: number);
         get rectangle(): any;
         set rectangle(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Processor.SignalSignatures;
 
         // Constructors
 
@@ -1760,16 +1845,19 @@ export namespace Gegl {
 
         // Signals
 
-        connect<K extends keyof Processor.SignalSignatures>(signal: K, callback: Processor.SignalSignatures[K]): number;
+        connect<K extends keyof Processor.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Processor.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Processor.SignalSignatures>(
             signal: K,
-            callback: Processor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Processor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Processor.SignalSignatures>(
             signal: K,
-            ...args: Processor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Processor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1801,15 +1889,15 @@ export namespace Gegl {
     namespace Stats {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::swap-busy': GObject.Object.Notify;
-            'notify::swap-file-size': GObject.Object.Notify;
-            'notify::swap-total': GObject.Object.Notify;
-            'notify::tile-cache-hits': GObject.Object.Notify;
-            'notify::tile-cache-misses': GObject.Object.Notify;
-            'notify::tile-cache-total': GObject.Object.Notify;
-            'notify::tile-cache-total-max': GObject.Object.Notify;
-            'notify::tile-cache-total-uncloned': GObject.Object.Notify;
-            'notify::zoom-total': GObject.Object.Notify;
+            'notify::swap-busy': (pspec: GObject.ParamSpec) => void;
+            'notify::swap-file-size': (pspec: GObject.ParamSpec) => void;
+            'notify::swap-total': (pspec: GObject.ParamSpec) => void;
+            'notify::tile-cache-hits': (pspec: GObject.ParamSpec) => void;
+            'notify::tile-cache-misses': (pspec: GObject.ParamSpec) => void;
+            'notify::tile-cache-total': (pspec: GObject.ParamSpec) => void;
+            'notify::tile-cache-total-max': (pspec: GObject.ParamSpec) => void;
+            'notify::tile-cache-total-uncloned': (pspec: GObject.ParamSpec) => void;
+            'notify::zoom-total': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1859,6 +1947,14 @@ export namespace Gegl {
         get tileCacheTotalUncloned(): number;
         get zoom_total(): number;
         get zoomTotal(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Stats.SignalSignatures;
 
         // Constructors
 
@@ -1868,13 +1964,19 @@ export namespace Gegl {
 
         // Signals
 
-        connect<K extends keyof Stats.SignalSignatures>(signal: K, callback: Stats.SignalSignatures[K]): number;
+        connect<K extends keyof Stats.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Stats.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Stats.SignalSignatures>(signal: K, callback: Stats.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stats.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Stats.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Stats.SignalSignatures>(
             signal: K,
-            ...args: Stats.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Stats.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1882,12 +1984,12 @@ export namespace Gegl {
     namespace TileBackend {
         // Signal signatures
         interface SignalSignatures extends TileSource.SignalSignatures {
-            'notify::flush-on-destroy': GObject.Object.Notify;
-            'notify::format': GObject.Object.Notify;
-            'notify::px-size': GObject.Object.Notify;
-            'notify::tile-height': GObject.Object.Notify;
-            'notify::tile-size': GObject.Object.Notify;
-            'notify::tile-width': GObject.Object.Notify;
+            'notify::flush-on-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::px-size': (pspec: GObject.ParamSpec) => void;
+            'notify::tile-height': (pspec: GObject.ParamSpec) => void;
+            'notify::tile-size': (pspec: GObject.ParamSpec) => void;
+            'notify::tile-width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1925,6 +2027,14 @@ export namespace Gegl {
         get tileSize(): number;
         get tile_width(): number;
         get tileWidth(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TileBackend.SignalSignatures;
 
         // Constructors
 
@@ -1936,17 +2046,17 @@ export namespace Gegl {
 
         connect<K extends keyof TileBackend.SignalSignatures>(
             signal: K,
-            callback: TileBackend.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TileBackend.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TileBackend.SignalSignatures>(
             signal: K,
-            callback: TileBackend.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TileBackend.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TileBackend.SignalSignatures>(
             signal: K,
-            ...args: TileBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TileBackend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1992,7 +2102,7 @@ export namespace Gegl {
     namespace TileHandler {
         // Signal signatures
         interface SignalSignatures extends TileSource.SignalSignatures {
-            'notify::source': GObject.Object.Notify;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2009,6 +2119,14 @@ export namespace Gegl {
 
         get source(): GObject.Object;
         set source(val: GObject.Object);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TileHandler.SignalSignatures;
 
         // Constructors
 
@@ -2020,17 +2138,17 @@ export namespace Gegl {
 
         connect<K extends keyof TileHandler.SignalSignatures>(
             signal: K,
-            callback: TileHandler.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TileHandler.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TileHandler.SignalSignatures>(
             signal: K,
-            callback: TileHandler.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TileHandler.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TileHandler.SignalSignatures>(
             signal: K,
-            ...args: TileHandler.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TileHandler.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2051,6 +2169,14 @@ export namespace Gegl {
 
     class TileSource extends GObject.Object {
         static $gtype: GObject.GType<TileSource>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TileSource.SignalSignatures;
 
         // Fields
 
@@ -2067,17 +2193,17 @@ export namespace Gegl {
 
         connect<K extends keyof TileSource.SignalSignatures>(
             signal: K,
-            callback: TileSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TileSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TileSource.SignalSignatures>(
             signal: K,
-            callback: TileSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TileSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TileSource.SignalSignatures>(
             signal: K,
-            ...args: TileSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

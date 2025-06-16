@@ -610,99 +610,47 @@ export namespace Nice {
         CONSENT_FRESHNESS,
     }
     namespace Agent {
-        // Signal callback interfaces
-
-        interface CandidateGatheringDone {
-            (_source: Agent, stream_id: number): void;
-        }
-
-        interface ComponentStateChanged {
-            (_source: Agent, stream_id: number, component_id: number, state: number): void;
-        }
-
-        interface InitialBindingRequestReceived {
-            (_source: Agent, stream_id: number): void;
-        }
-
-        interface NewCandidate {
-            (_source: Agent, stream_id: number, component_id: number, foundation: string): void;
-        }
-
-        interface NewCandidateFull {
-            (_source: Agent, candidate: Candidate): void;
-        }
-
-        interface NewRemoteCandidate {
-            (_source: Agent, stream_id: number, component_id: number, foundation: string): void;
-        }
-
-        interface NewRemoteCandidateFull {
-            (_source: Agent, candidate: Candidate): void;
-        }
-
-        interface NewSelectedPair {
-            (_source: Agent, stream_id: number, component_id: number, lfoundation: string, rfoundation: string): void;
-        }
-
-        interface NewSelectedPairFull {
-            (
-                _source: Agent,
-                stream_id: number,
-                component_id: number,
-                lcandidate: Candidate,
-                rcandidate: Candidate,
-            ): void;
-        }
-
-        interface ReliableTransportWritable {
-            (_source: Agent, stream_id: number, component_id: number): void;
-        }
-
-        interface StreamsRemoved {
-            (_source: Agent, stream_ids: number[]): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'candidate-gathering-done': CandidateGatheringDone;
-            'component-state-changed': ComponentStateChanged;
-            'initial-binding-request-received': InitialBindingRequestReceived;
-            'new-candidate': NewCandidate;
-            'new-candidate-full': NewCandidateFull;
-            'new-remote-candidate': NewRemoteCandidate;
-            'new-remote-candidate-full': NewRemoteCandidateFull;
-            'new-selected-pair': NewSelectedPair;
-            'new-selected-pair-full': NewSelectedPairFull;
-            'reliable-transport-writable': ReliableTransportWritable;
-            'streams-removed': StreamsRemoved;
-            'notify::bytestream-tcp': GObject.Object.Notify;
-            'notify::compatibility': GObject.Object.Notify;
-            'notify::consent-freshness': GObject.Object.Notify;
-            'notify::controlling-mode': GObject.Object.Notify;
-            'notify::force-relay': GObject.Object.Notify;
-            'notify::full-mode': GObject.Object.Notify;
-            'notify::ice-tcp': GObject.Object.Notify;
-            'notify::ice-trickle': GObject.Object.Notify;
-            'notify::ice-udp': GObject.Object.Notify;
-            'notify::idle-timeout': GObject.Object.Notify;
-            'notify::keepalive-conncheck': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
-            'notify::max-connectivity-checks': GObject.Object.Notify;
-            'notify::proxy-ip': GObject.Object.Notify;
-            'notify::proxy-password': GObject.Object.Notify;
-            'notify::proxy-port': GObject.Object.Notify;
-            'notify::proxy-type': GObject.Object.Notify;
-            'notify::proxy-username': GObject.Object.Notify;
-            'notify::reliable': GObject.Object.Notify;
-            'notify::stun-initial-timeout': GObject.Object.Notify;
-            'notify::stun-max-retransmissions': GObject.Object.Notify;
-            'notify::stun-pacing-timer': GObject.Object.Notify;
-            'notify::stun-reliable-timeout': GObject.Object.Notify;
-            'notify::stun-server': GObject.Object.Notify;
-            'notify::stun-server-port': GObject.Object.Notify;
-            'notify::support-renomination': GObject.Object.Notify;
-            'notify::upnp': GObject.Object.Notify;
-            'notify::upnp-timeout': GObject.Object.Notify;
+            'candidate-gathering-done': (arg0: number) => void;
+            'component-state-changed': (arg0: number, arg1: number, arg2: number) => void;
+            'initial-binding-request-received': (arg0: number) => void;
+            'new-candidate': (arg0: number, arg1: number, arg2: string) => void;
+            'new-candidate-full': (arg0: Candidate) => void;
+            'new-remote-candidate': (arg0: number, arg1: number, arg2: string) => void;
+            'new-remote-candidate-full': (arg0: Candidate) => void;
+            'new-selected-pair': (arg0: number, arg1: number, arg2: string, arg3: string) => void;
+            'new-selected-pair-full': (arg0: number, arg1: number, arg2: Candidate, arg3: Candidate) => void;
+            'reliable-transport-writable': (arg0: number, arg1: number) => void;
+            'streams-removed': (arg0: number[]) => void;
+            'notify::bytestream-tcp': (pspec: GObject.ParamSpec) => void;
+            'notify::compatibility': (pspec: GObject.ParamSpec) => void;
+            'notify::consent-freshness': (pspec: GObject.ParamSpec) => void;
+            'notify::controlling-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::force-relay': (pspec: GObject.ParamSpec) => void;
+            'notify::full-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::ice-tcp': (pspec: GObject.ParamSpec) => void;
+            'notify::ice-trickle': (pspec: GObject.ParamSpec) => void;
+            'notify::ice-udp': (pspec: GObject.ParamSpec) => void;
+            'notify::idle-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::keepalive-conncheck': (pspec: GObject.ParamSpec) => void;
+            'notify::main-context': (pspec: GObject.ParamSpec) => void;
+            'notify::max-connectivity-checks': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-ip': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-password': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-port': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-type': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-username': (pspec: GObject.ParamSpec) => void;
+            'notify::reliable': (pspec: GObject.ParamSpec) => void;
+            'notify::stun-initial-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::stun-max-retransmissions': (pspec: GObject.ParamSpec) => void;
+            'notify::stun-pacing-timer': (pspec: GObject.ParamSpec) => void;
+            'notify::stun-reliable-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::stun-server': (pspec: GObject.ParamSpec) => void;
+            'notify::stun-server-port': (pspec: GObject.ParamSpec) => void;
+            'notify::support-renomination': (pspec: GObject.ParamSpec) => void;
+            'notify::upnp': (pspec: GObject.ParamSpec) => void;
+            'notify::upnp-timeout': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1242,6 +1190,14 @@ export namespace Nice {
          */
         get upnpTimeout(): number;
         set upnpTimeout(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Agent.SignalSignatures;
 
         // Constructors
 
@@ -1257,13 +1213,19 @@ export namespace Nice {
 
         // Signals
 
-        connect<K extends keyof Agent.SignalSignatures>(signal: K, callback: Agent.SignalSignatures[K]): number;
+        connect<K extends keyof Agent.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Agent.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Agent.SignalSignatures>(signal: K, callback: Agent.SignalSignatures[K]): number;
+        connect_after<K extends keyof Agent.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Agent.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Agent.SignalSignatures>(
             signal: K,
-            ...args: Agent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Agent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1974,14 +1936,14 @@ export namespace Nice {
     namespace PseudoTcpSocket {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::ack-delay': GObject.Object.Notify;
-            'notify::callbacks': GObject.Object.Notify;
-            'notify::conversation': GObject.Object.Notify;
-            'notify::no-delay': GObject.Object.Notify;
-            'notify::rcv-buf': GObject.Object.Notify;
-            'notify::snd-buf': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::support-fin-ack': GObject.Object.Notify;
+            'notify::ack-delay': (pspec: GObject.ParamSpec) => void;
+            'notify::callbacks': (pspec: GObject.ParamSpec) => void;
+            'notify::conversation': (pspec: GObject.ParamSpec) => void;
+            'notify::no-delay': (pspec: GObject.ParamSpec) => void;
+            'notify::rcv-buf': (pspec: GObject.ParamSpec) => void;
+            'notify::snd-buf': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::support-fin-ack': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2053,6 +2015,14 @@ export namespace Nice {
          * Support is enabled by default.
          */
         get supportFinAck(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PseudoTcpSocket.SignalSignatures;
 
         // Constructors
 
@@ -2066,17 +2036,17 @@ export namespace Nice {
 
         connect<K extends keyof PseudoTcpSocket.SignalSignatures>(
             signal: K,
-            callback: PseudoTcpSocket.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PseudoTcpSocket.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PseudoTcpSocket.SignalSignatures>(
             signal: K,
-            callback: PseudoTcpSocket.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PseudoTcpSocket.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PseudoTcpSocket.SignalSignatures>(
             signal: K,
-            ...args: PseudoTcpSocket.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PseudoTcpSocket.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -3026,6 +3026,14 @@ export namespace Camel {
 
     class Address extends GObject.Object {
         static $gtype: GObject.GType<Address>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Address.SignalSignatures;
 
         // Constructors
 
@@ -3037,16 +3045,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof Address.SignalSignatures>(signal: K, callback: Address.SignalSignatures[K]): number;
+        connect<K extends keyof Address.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Address.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Address.SignalSignatures>(
             signal: K,
-            callback: Address.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Address.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Address.SignalSignatures>(
             signal: K,
-            ...args: Address.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Address.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3153,6 +3164,14 @@ export namespace Camel {
 
     class BlockFile extends GObject.Object {
         static $gtype: GObject.GType<BlockFile>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BlockFile.SignalSignatures;
 
         // Constructors
 
@@ -3164,16 +3183,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof BlockFile.SignalSignatures>(signal: K, callback: BlockFile.SignalSignatures[K]): number;
+        connect<K extends keyof BlockFile.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, BlockFile.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BlockFile.SignalSignatures>(
             signal: K,
-            callback: BlockFile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BlockFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BlockFile.SignalSignatures>(
             signal: K,
-            ...args: BlockFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BlockFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3257,6 +3279,14 @@ export namespace Camel {
 
     class CertDB extends GObject.Object {
         static $gtype: GObject.GType<CertDB>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertDB.SignalSignatures;
 
         // Constructors
 
@@ -3268,13 +3298,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof CertDB.SignalSignatures>(signal: K, callback: CertDB.SignalSignatures[K]): number;
+        connect<K extends keyof CertDB.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, CertDB.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof CertDB.SignalSignatures>(signal: K, callback: CertDB.SignalSignatures[K]): number;
+        connect_after<K extends keyof CertDB.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, CertDB.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertDB.SignalSignatures>(
             signal: K,
-            ...args: CertDB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CertDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3326,7 +3362,7 @@ export namespace Camel {
     namespace CipherContext {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::session': GObject.Object.Notify;
+            'notify::session': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3342,6 +3378,14 @@ export namespace Camel {
         // Properties
 
         get session(): Session;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CipherContext.SignalSignatures;
 
         // Constructors
 
@@ -3355,17 +3399,17 @@ export namespace Camel {
 
         connect<K extends keyof CipherContext.SignalSignatures>(
             signal: K,
-            callback: CipherContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CipherContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CipherContext.SignalSignatures>(
             signal: K,
-            callback: CipherContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CipherContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CipherContext.SignalSignatures>(
             signal: K,
-            ...args: CipherContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CipherContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3764,6 +3808,14 @@ export namespace Camel {
 
     class DB extends GObject.Object {
         static $gtype: GObject.GType<DB>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DB.SignalSignatures;
 
         // Constructors
 
@@ -3775,13 +3827,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof DB.SignalSignatures>(signal: K, callback: DB.SignalSignatures[K]): number;
+        connect<K extends keyof DB.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DB.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof DB.SignalSignatures>(signal: K, callback: DB.SignalSignatures[K]): number;
+        connect_after<K extends keyof DB.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DB.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DB.SignalSignatures>(
             signal: K,
-            ...args: DB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4051,8 +4109,8 @@ export namespace Camel {
     namespace DataCache {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::expire-enabled': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
+            'notify::expire-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4075,6 +4133,14 @@ export namespace Camel {
         set expireEnabled(val: boolean);
         get path(): string;
         set path(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DataCache.SignalSignatures;
 
         // Constructors
 
@@ -4086,16 +4152,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof DataCache.SignalSignatures>(signal: K, callback: DataCache.SignalSignatures[K]): number;
+        connect<K extends keyof DataCache.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DataCache.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataCache.SignalSignatures>(
             signal: K,
-            callback: DataCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataCache.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataCache.SignalSignatures>(
             signal: K,
-            ...args: DataCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DataCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4223,6 +4292,14 @@ export namespace Camel {
 
     class DataWrapper extends GObject.Object {
         static $gtype: GObject.GType<DataWrapper>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DataWrapper.SignalSignatures;
 
         // Constructors
 
@@ -4236,17 +4313,17 @@ export namespace Camel {
 
         connect<K extends keyof DataWrapper.SignalSignatures>(
             signal: K,
-            callback: DataWrapper.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataWrapper.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataWrapper.SignalSignatures>(
             signal: K,
-            callback: DataWrapper.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataWrapper.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataWrapper.SignalSignatures>(
             signal: K,
-            ...args: DataWrapper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DataWrapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4865,6 +4942,14 @@ export namespace Camel {
 
     class FilterDriver extends GObject.Object {
         static $gtype: GObject.GType<FilterDriver>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FilterDriver.SignalSignatures;
 
         // Constructors
 
@@ -4878,17 +4963,17 @@ export namespace Camel {
 
         connect<K extends keyof FilterDriver.SignalSignatures>(
             signal: K,
-            callback: FilterDriver.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterDriver.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterDriver.SignalSignatures>(
             signal: K,
-            callback: FilterDriver.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterDriver.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterDriver.SignalSignatures>(
             signal: K,
-            ...args: FilterDriver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FilterDriver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4999,9 +5084,9 @@ export namespace Camel {
     namespace FilterInputStream {
         // Signal signatures
         interface SignalSignatures extends Gio.FilterInputStream.SignalSignatures {
-            'notify::filter': GObject.Object.Notify;
-            'notify::base-stream': GObject.Object.Notify;
-            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::filter': (pspec: GObject.ParamSpec) => void;
+            'notify::base-stream': (pspec: GObject.ParamSpec) => void;
+            'notify::close-base-stream': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5017,6 +5102,14 @@ export namespace Camel {
         // Properties
 
         get filter(): MimeFilter;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FilterInputStream.SignalSignatures;
 
         // Constructors
 
@@ -5030,17 +5123,17 @@ export namespace Camel {
 
         connect<K extends keyof FilterInputStream.SignalSignatures>(
             signal: K,
-            callback: FilterInputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterInputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterInputStream.SignalSignatures>(
             signal: K,
-            callback: FilterInputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterInputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterInputStream.SignalSignatures>(
             signal: K,
-            ...args: FilterInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FilterInputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5056,9 +5149,9 @@ export namespace Camel {
     namespace FilterOutputStream {
         // Signal signatures
         interface SignalSignatures extends Gio.FilterOutputStream.SignalSignatures {
-            'notify::filter': GObject.Object.Notify;
-            'notify::base-stream': GObject.Object.Notify;
-            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::filter': (pspec: GObject.ParamSpec) => void;
+            'notify::base-stream': (pspec: GObject.ParamSpec) => void;
+            'notify::close-base-stream': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5074,6 +5167,14 @@ export namespace Camel {
         // Properties
 
         get filter(): MimeFilter;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FilterOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -5087,17 +5188,17 @@ export namespace Camel {
 
         connect<K extends keyof FilterOutputStream.SignalSignatures>(
             signal: K,
-            callback: FilterOutputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterOutputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterOutputStream.SignalSignatures>(
             signal: K,
-            callback: FilterOutputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterOutputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterOutputStream.SignalSignatures>(
             signal: K,
-            ...args: FilterOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FilterOutputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5111,32 +5212,18 @@ export namespace Camel {
     }
 
     namespace Folder {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: Folder, changes: FolderChangeInfo): void;
-        }
-
-        interface Deleted {
-            (_source: Folder): void;
-        }
-
-        interface Renamed {
-            (_source: Folder, old_name: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            changed: Changed;
-            deleted: Deleted;
-            renamed: Renamed;
-            'notify::description': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::full-name': GObject.Object.Notify;
-            'notify::mark-seen': GObject.Object.Notify;
-            'notify::mark-seen-timeout': GObject.Object.Notify;
-            'notify::parent-store': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
+            changed: (arg0: FolderChangeInfo) => void;
+            deleted: () => void;
+            renamed: (arg0: string) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::full-name': (pspec: GObject.ParamSpec) => void;
+            'notify::mark-seen': (pspec: GObject.ParamSpec) => void;
+            'notify::mark-seen-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::parent-store': (pspec: GObject.ParamSpec) => void;
+            'notify::state-filename': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5218,6 +5305,14 @@ export namespace Camel {
          * The #CamelStore to which the folder belongs.
          */
         get parentStore(): Store;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Folder.SignalSignatures;
 
         // Constructors
 
@@ -5227,13 +5322,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof Folder.SignalSignatures>(signal: K, callback: Folder.SignalSignatures[K]): number;
+        connect<K extends keyof Folder.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Folder.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Folder.SignalSignatures>(signal: K, callback: Folder.SignalSignatures[K]): number;
+        connect_after<K extends keyof Folder.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Folder.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Folder.SignalSignatures>(
             signal: K,
-            ...args: Folder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Folder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6361,6 +6462,14 @@ export namespace Camel {
 
     class FolderSearch extends GObject.Object {
         static $gtype: GObject.GType<FolderSearch>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FolderSearch.SignalSignatures;
 
         // Constructors
 
@@ -6374,17 +6483,17 @@ export namespace Camel {
 
         connect<K extends keyof FolderSearch.SignalSignatures>(
             signal: K,
-            callback: FolderSearch.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FolderSearch.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FolderSearch.SignalSignatures>(
             signal: K,
-            callback: FolderSearch.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FolderSearch.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FolderSearch.SignalSignatures>(
             signal: K,
-            ...args: FolderSearch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FolderSearch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6493,22 +6602,16 @@ export namespace Camel {
     }
 
     namespace FolderSummary {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: FolderSummary): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            'notify::deleted-count': GObject.Object.Notify;
-            'notify::folder': GObject.Object.Notify;
-            'notify::junk-count': GObject.Object.Notify;
-            'notify::junk-not-deleted-count': GObject.Object.Notify;
-            'notify::saved-count': GObject.Object.Notify;
-            'notify::unread-count': GObject.Object.Notify;
-            'notify::visible-count': GObject.Object.Notify;
+            changed: () => void;
+            'notify::deleted-count': (pspec: GObject.ParamSpec) => void;
+            'notify::folder': (pspec: GObject.ParamSpec) => void;
+            'notify::junk-count': (pspec: GObject.ParamSpec) => void;
+            'notify::junk-not-deleted-count': (pspec: GObject.ParamSpec) => void;
+            'notify::saved-count': (pspec: GObject.ParamSpec) => void;
+            'notify::unread-count': (pspec: GObject.ParamSpec) => void;
+            'notify::visible-count': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6587,6 +6690,14 @@ export namespace Camel {
          * How many visible (not deleted and not junk) infos is saved in a summary.
          */
         get visibleCount(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FolderSummary.SignalSignatures;
 
         // Constructors
 
@@ -6600,17 +6711,17 @@ export namespace Camel {
 
         connect<K extends keyof FolderSummary.SignalSignatures>(
             signal: K,
-            callback: FolderSummary.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FolderSummary.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FolderSummary.SignalSignatures>(
             signal: K,
-            callback: FolderSummary.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FolderSummary.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FolderSummary.SignalSignatures>(
             signal: K,
-            ...args: FolderSummary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FolderSummary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6893,10 +7004,10 @@ export namespace Camel {
     namespace GpgContext {
         // Signal signatures
         interface SignalSignatures extends CipherContext.SignalSignatures {
-            'notify::always-trust': GObject.Object.Notify;
-            'notify::locate-keys': GObject.Object.Notify;
-            'notify::prefer-inline': GObject.Object.Notify;
-            'notify::session': GObject.Object.Notify;
+            'notify::always-trust': (pspec: GObject.ParamSpec) => void;
+            'notify::locate-keys': (pspec: GObject.ParamSpec) => void;
+            'notify::prefer-inline': (pspec: GObject.ParamSpec) => void;
+            'notify::session': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6928,6 +7039,14 @@ export namespace Camel {
         set prefer_inline(val: boolean);
         get preferInline(): boolean;
         set preferInline(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GpgContext.SignalSignatures;
 
         // Constructors
 
@@ -6941,17 +7060,17 @@ export namespace Camel {
 
         connect<K extends keyof GpgContext.SignalSignatures>(
             signal: K,
-            callback: GpgContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GpgContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GpgContext.SignalSignatures>(
             signal: K,
-            callback: GpgContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GpgContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GpgContext.SignalSignatures>(
             signal: K,
-            ...args: GpgContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GpgContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7082,6 +7201,14 @@ export namespace Camel {
 
     class HTMLParser extends GObject.Object {
         static $gtype: GObject.GType<HTMLParser>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HTMLParser.SignalSignatures;
 
         // Constructors
 
@@ -7095,17 +7222,17 @@ export namespace Camel {
 
         connect<K extends keyof HTMLParser.SignalSignatures>(
             signal: K,
-            callback: HTMLParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HTMLParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HTMLParser.SignalSignatures>(
             signal: K,
-            callback: HTMLParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HTMLParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HTMLParser.SignalSignatures>(
             signal: K,
-            ...args: HTMLParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HTMLParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7138,6 +7265,14 @@ export namespace Camel {
 
     class Index extends GObject.Object {
         static $gtype: GObject.GType<Index>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Index.SignalSignatures;
 
         // Fields
 
@@ -7156,13 +7291,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
+        connect<K extends keyof Index.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Index.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
+        connect_after<K extends keyof Index.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Index.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Index.SignalSignatures>(
             signal: K,
-            ...args: Index.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Index.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7216,6 +7357,14 @@ export namespace Camel {
 
     class IndexCursor extends GObject.Object {
         static $gtype: GObject.GType<IndexCursor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IndexCursor.SignalSignatures;
 
         // Fields
 
@@ -7231,17 +7380,17 @@ export namespace Camel {
 
         connect<K extends keyof IndexCursor.SignalSignatures>(
             signal: K,
-            callback: IndexCursor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IndexCursor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IndexCursor.SignalSignatures>(
             signal: K,
-            callback: IndexCursor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IndexCursor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IndexCursor.SignalSignatures>(
             signal: K,
-            ...args: IndexCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IndexCursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7265,6 +7414,14 @@ export namespace Camel {
 
     class IndexName extends GObject.Object {
         static $gtype: GObject.GType<IndexName>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IndexName.SignalSignatures;
 
         // Fields
 
@@ -7280,16 +7437,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof IndexName.SignalSignatures>(signal: K, callback: IndexName.SignalSignatures[K]): number;
+        connect<K extends keyof IndexName.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, IndexName.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IndexName.SignalSignatures>(
             signal: K,
-            callback: IndexName.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IndexName.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IndexName.SignalSignatures>(
             signal: K,
-            ...args: IndexName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IndexName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7315,6 +7475,14 @@ export namespace Camel {
 
     class InternetAddress extends Address {
         static $gtype: GObject.GType<InternetAddress>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InternetAddress.SignalSignatures;
 
         // Constructors
 
@@ -7328,17 +7496,17 @@ export namespace Camel {
 
         connect<K extends keyof InternetAddress.SignalSignatures>(
             signal: K,
-            callback: InternetAddress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InternetAddress.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InternetAddress.SignalSignatures>(
             signal: K,
-            callback: InternetAddress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InternetAddress.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InternetAddress.SignalSignatures>(
             signal: K,
-            ...args: InternetAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InternetAddress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7416,6 +7584,14 @@ export namespace Camel {
 
     class KeyFile extends GObject.Object {
         static $gtype: GObject.GType<KeyFile>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: KeyFile.SignalSignatures;
 
         // Constructors
 
@@ -7427,16 +7603,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof KeyFile.SignalSignatures>(signal: K, callback: KeyFile.SignalSignatures[K]): number;
+        connect<K extends keyof KeyFile.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, KeyFile.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyFile.SignalSignatures>(
             signal: K,
-            callback: KeyFile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, KeyFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyFile.SignalSignatures>(
             signal: K,
-            ...args: KeyFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<KeyFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7472,6 +7651,14 @@ export namespace Camel {
 
     class KeyTable extends GObject.Object {
         static $gtype: GObject.GType<KeyTable>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: KeyTable.SignalSignatures;
 
         // Constructors
 
@@ -7483,16 +7670,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof KeyTable.SignalSignatures>(signal: K, callback: KeyTable.SignalSignatures[K]): number;
+        connect<K extends keyof KeyTable.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, KeyTable.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyTable.SignalSignatures>(
             signal: K,
-            callback: KeyTable.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, KeyTable.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyTable.SignalSignatures>(
             signal: K,
-            ...args: KeyTable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<KeyTable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7511,12 +7701,12 @@ export namespace Camel {
     namespace LocalSettings {
         // Signal signatures
         interface SignalSignatures extends StoreSettings.SignalSignatures {
-            'notify::filter-all': GObject.Object.Notify;
-            'notify::filter-junk': GObject.Object.Notify;
-            'notify::maildir-alt-flag-sep': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::filter-inbox': GObject.Object.Notify;
-            'notify::store-changes-interval': GObject.Object.Notify;
+            'notify::filter-all': (pspec: GObject.ParamSpec) => void;
+            'notify::filter-junk': (pspec: GObject.ParamSpec) => void;
+            'notify::maildir-alt-flag-sep': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::filter-inbox': (pspec: GObject.ParamSpec) => void;
+            'notify::store-changes-interval': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7555,6 +7745,14 @@ export namespace Camel {
         set maildirAltFlagSep(val: boolean);
         get path(): string;
         set path(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LocalSettings.SignalSignatures;
 
         // Constructors
 
@@ -7566,17 +7764,17 @@ export namespace Camel {
 
         connect<K extends keyof LocalSettings.SignalSignatures>(
             signal: K,
-            callback: LocalSettings.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LocalSettings.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LocalSettings.SignalSignatures>(
             signal: K,
-            callback: LocalSettings.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LocalSettings.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LocalSettings.SignalSignatures>(
             signal: K,
-            ...args: LocalSettings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LocalSettings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7646,7 +7844,7 @@ export namespace Camel {
     namespace Medium {
         // Signal signatures
         interface SignalSignatures extends DataWrapper.SignalSignatures {
-            'notify::content': GObject.Object.Notify;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7663,6 +7861,14 @@ export namespace Camel {
 
         get content(): DataWrapper;
         set content(val: DataWrapper);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Medium.SignalSignatures;
 
         // Constructors
 
@@ -7672,13 +7878,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof Medium.SignalSignatures>(signal: K, callback: Medium.SignalSignatures[K]): number;
+        connect<K extends keyof Medium.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Medium.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Medium.SignalSignatures>(signal: K, callback: Medium.SignalSignatures[K]): number;
+        connect_after<K extends keyof Medium.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Medium.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Medium.SignalSignatures>(
             signal: K,
-            ...args: Medium.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Medium.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7800,28 +8012,28 @@ export namespace Camel {
     namespace MessageInfo {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::abort-notifications': GObject.Object.Notify;
-            'notify::cc': GObject.Object.Notify;
-            'notify::date-received': GObject.Object.Notify;
-            'notify::date-sent': GObject.Object.Notify;
-            'notify::dirty': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::folder-flagged': GObject.Object.Notify;
-            'notify::folder-flagged-stamp': GObject.Object.Notify;
-            'notify::from': GObject.Object.Notify;
-            'notify::headers': GObject.Object.Notify;
-            'notify::message-id': GObject.Object.Notify;
-            'notify::mlist': GObject.Object.Notify;
-            'notify::preview': GObject.Object.Notify;
-            'notify::references': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::subject': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::to': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
-            'notify::user-flags': GObject.Object.Notify;
-            'notify::user-headers': GObject.Object.Notify;
-            'notify::user-tags': GObject.Object.Notify;
+            'notify::abort-notifications': (pspec: GObject.ParamSpec) => void;
+            'notify::cc': (pspec: GObject.ParamSpec) => void;
+            'notify::date-received': (pspec: GObject.ParamSpec) => void;
+            'notify::date-sent': (pspec: GObject.ParamSpec) => void;
+            'notify::dirty': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::folder-flagged': (pspec: GObject.ParamSpec) => void;
+            'notify::folder-flagged-stamp': (pspec: GObject.ParamSpec) => void;
+            'notify::from': (pspec: GObject.ParamSpec) => void;
+            'notify::headers': (pspec: GObject.ParamSpec) => void;
+            'notify::message-id': (pspec: GObject.ParamSpec) => void;
+            'notify::mlist': (pspec: GObject.ParamSpec) => void;
+            'notify::preview': (pspec: GObject.ParamSpec) => void;
+            'notify::references': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::subject': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::to': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::user-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::user-headers': (pspec: GObject.ParamSpec) => void;
+            'notify::user-tags': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8050,6 +8262,14 @@ export namespace Camel {
          */
         get userTags(): NameValueArray;
         set userTags(val: NameValueArray);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MessageInfo.SignalSignatures;
 
         // Constructors
 
@@ -8065,17 +8285,17 @@ export namespace Camel {
 
         connect<K extends keyof MessageInfo.SignalSignatures>(
             signal: K,
-            callback: MessageInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MessageInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MessageInfo.SignalSignatures>(
             signal: K,
-            callback: MessageInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MessageInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MessageInfo.SignalSignatures>(
             signal: K,
-            ...args: MessageInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MessageInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8831,28 +9051,28 @@ export namespace Camel {
     namespace MessageInfoBase {
         // Signal signatures
         interface SignalSignatures extends MessageInfo.SignalSignatures {
-            'notify::abort-notifications': GObject.Object.Notify;
-            'notify::cc': GObject.Object.Notify;
-            'notify::date-received': GObject.Object.Notify;
-            'notify::date-sent': GObject.Object.Notify;
-            'notify::dirty': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::folder-flagged': GObject.Object.Notify;
-            'notify::folder-flagged-stamp': GObject.Object.Notify;
-            'notify::from': GObject.Object.Notify;
-            'notify::headers': GObject.Object.Notify;
-            'notify::message-id': GObject.Object.Notify;
-            'notify::mlist': GObject.Object.Notify;
-            'notify::preview': GObject.Object.Notify;
-            'notify::references': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::subject': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::to': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
-            'notify::user-flags': GObject.Object.Notify;
-            'notify::user-headers': GObject.Object.Notify;
-            'notify::user-tags': GObject.Object.Notify;
+            'notify::abort-notifications': (pspec: GObject.ParamSpec) => void;
+            'notify::cc': (pspec: GObject.ParamSpec) => void;
+            'notify::date-received': (pspec: GObject.ParamSpec) => void;
+            'notify::date-sent': (pspec: GObject.ParamSpec) => void;
+            'notify::dirty': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::folder-flagged': (pspec: GObject.ParamSpec) => void;
+            'notify::folder-flagged-stamp': (pspec: GObject.ParamSpec) => void;
+            'notify::from': (pspec: GObject.ParamSpec) => void;
+            'notify::headers': (pspec: GObject.ParamSpec) => void;
+            'notify::message-id': (pspec: GObject.ParamSpec) => void;
+            'notify::mlist': (pspec: GObject.ParamSpec) => void;
+            'notify::preview': (pspec: GObject.ParamSpec) => void;
+            'notify::references': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::subject': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::to': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::user-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::user-headers': (pspec: GObject.ParamSpec) => void;
+            'notify::user-tags': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8862,6 +9082,14 @@ export namespace Camel {
 
     class MessageInfoBase extends MessageInfo {
         static $gtype: GObject.GType<MessageInfoBase>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MessageInfoBase.SignalSignatures;
 
         // Constructors
 
@@ -8873,17 +9101,17 @@ export namespace Camel {
 
         connect<K extends keyof MessageInfoBase.SignalSignatures>(
             signal: K,
-            callback: MessageInfoBase.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MessageInfoBase.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MessageInfoBase.SignalSignatures>(
             signal: K,
-            callback: MessageInfoBase.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MessageInfoBase.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MessageInfoBase.SignalSignatures>(
             signal: K,
-            ...args: MessageInfoBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MessageInfoBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -8899,6 +9127,14 @@ export namespace Camel {
 
     abstract class MimeFilter extends GObject.Object {
         static $gtype: GObject.GType<MimeFilter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeFilter.SignalSignatures;
 
         // Fields
 
@@ -8923,17 +9159,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeFilter.SignalSignatures>(
             signal: K,
-            callback: MimeFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilter.SignalSignatures>(
             signal: K,
-            callback: MimeFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilter.SignalSignatures>(
             signal: K,
-            ...args: MimeFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9012,6 +9248,14 @@ export namespace Camel {
 
     class MimeFilterBasic extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterBasic>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeFilterBasic.SignalSignatures;
 
         // Constructors
 
@@ -9028,17 +9272,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeFilterBasic.SignalSignatures>(
             signal: K,
-            callback: MimeFilterBasic.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterBasic.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterBasic.SignalSignatures>(
             signal: K,
-            callback: MimeFilterBasic.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterBasic.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterBasic.SignalSignatures>(
             signal: K,
-            ...args: MimeFilterBasic.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeFilterBasic.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -9054,6 +9298,14 @@ export namespace Camel {
 
     class MimeFilterBestenc extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterBestenc>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeFilterBestenc.SignalSignatures;
 
         // Constructors
 
@@ -9070,17 +9322,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeFilterBestenc.SignalSignatures>(
             signal: K,
-            callback: MimeFilterBestenc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterBestenc.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterBestenc.SignalSignatures>(
             signal: K,
-            callback: MimeFilterBestenc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterBestenc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterBestenc.SignalSignatures>(
             signal: K,
-            ...args: MimeFilterBestenc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeFilterBestenc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9116,6 +9368,14 @@ export namespace Camel {
 
     class MimeFilterCRLF extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterCRLF>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeFilterCRLF.SignalSignatures;
 
         // Constructors
 
@@ -9132,17 +9392,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeFilterCRLF.SignalSignatures>(
             signal: K,
-            callback: MimeFilterCRLF.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterCRLF.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterCRLF.SignalSignatures>(
             signal: K,
-            callback: MimeFilterCRLF.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterCRLF.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterCRLF.SignalSignatures>(
             signal: K,
-            ...args: MimeFilterCRLF.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeFilterCRLF.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9169,6 +9429,14 @@ export namespace Camel {
 
     class MimeFilterCanon extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterCanon>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeFilterCanon.SignalSignatures;
 
         // Constructors
 
@@ -9185,17 +9453,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeFilterCanon.SignalSignatures>(
             signal: K,
-            callback: MimeFilterCanon.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterCanon.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterCanon.SignalSignatures>(
             signal: K,
-            callback: MimeFilterCanon.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterCanon.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterCanon.SignalSignatures>(
             signal: K,
-            ...args: MimeFilterCanon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeFilterCanon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -9211,6 +9479,14 @@ export namespace Camel {
 
     class MimeFilterCharset extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterCharset>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeFilterCharset.SignalSignatures;
 
         // Constructors
 
@@ -9227,17 +9503,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeFilterCharset.SignalSignatures>(
             signal: K,
-            callback: MimeFilterCharset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterCharset.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterCharset.SignalSignatures>(
             signal: K,
-            callback: MimeFilterCharset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterCharset.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterCharset.SignalSignatures>(
             signal: K,
-            ...args: MimeFilterCharset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeFilterCharset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -9253,6 +9529,14 @@ export namespace Camel {
 
     class MimeFilterEnriched extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterEnriched>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeFilterEnriched.SignalSignatures;
 
         // Constructors
 
@@ -9269,17 +9553,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeFilterEnriched.SignalSignatures>(
             signal: K,
-            callback: MimeFilterEnriched.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterEnriched.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterEnriched.SignalSignatures>(
             signal: K,
-            callback: MimeFilterEnriched.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterEnriched.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterEnriched.SignalSignatures>(
             signal: K,
-            ...args: MimeFilterEnriched.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeFilterEnriched.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -9295,6 +9579,14 @@ export namespace Camel {
 
     class MimeFilterFrom extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterFrom>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeFilterFrom.SignalSignatures;
 
         // Constructors
 
@@ -9308,17 +9600,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeFilterFrom.SignalSignatures>(
             signal: K,
-            callback: MimeFilterFrom.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterFrom.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterFrom.SignalSignatures>(
             signal: K,
-            callback: MimeFilterFrom.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterFrom.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterFrom.SignalSignatures>(
             signal: K,
-            ...args: MimeFilterFrom.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeFilterFrom.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -9334,6 +9626,14 @@ export namespace Camel {
 
     class MimeFilterGZip extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterGZip>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeFilterGZip.SignalSignatures;
 
         // Constructors
 
@@ -9350,17 +9650,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeFilterGZip.SignalSignatures>(
             signal: K,
-            callback: MimeFilterGZip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterGZip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterGZip.SignalSignatures>(
             signal: K,
-            callback: MimeFilterGZip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterGZip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterGZip.SignalSignatures>(
             signal: K,
-            ...args: MimeFilterGZip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeFilterGZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -9376,6 +9676,14 @@ export namespace Camel {
 
     class MimeFilterHTML extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterHTML>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeFilterHTML.SignalSignatures;
 
         // Constructors
 
@@ -9389,17 +9697,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeFilterHTML.SignalSignatures>(
             signal: K,
-            callback: MimeFilterHTML.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterHTML.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterHTML.SignalSignatures>(
             signal: K,
-            callback: MimeFilterHTML.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterHTML.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterHTML.SignalSignatures>(
             signal: K,
-            ...args: MimeFilterHTML.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeFilterHTML.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -9415,6 +9723,14 @@ export namespace Camel {
 
     class MimeFilterIndex extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterIndex>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeFilterIndex.SignalSignatures;
 
         // Constructors
 
@@ -9431,17 +9747,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeFilterIndex.SignalSignatures>(
             signal: K,
-            callback: MimeFilterIndex.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterIndex.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterIndex.SignalSignatures>(
             signal: K,
-            callback: MimeFilterIndex.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterIndex.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterIndex.SignalSignatures>(
             signal: K,
-            ...args: MimeFilterIndex.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeFilterIndex.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9470,6 +9786,14 @@ export namespace Camel {
 
     class MimeFilterLinewrap extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterLinewrap>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeFilterLinewrap.SignalSignatures;
 
         // Constructors
 
@@ -9486,17 +9810,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeFilterLinewrap.SignalSignatures>(
             signal: K,
-            callback: MimeFilterLinewrap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterLinewrap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterLinewrap.SignalSignatures>(
             signal: K,
-            callback: MimeFilterLinewrap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterLinewrap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterLinewrap.SignalSignatures>(
             signal: K,
-            ...args: MimeFilterLinewrap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeFilterLinewrap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -9512,6 +9836,14 @@ export namespace Camel {
 
     class MimeFilterPgp extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterPgp>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeFilterPgp.SignalSignatures;
 
         // Constructors
 
@@ -9525,17 +9857,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeFilterPgp.SignalSignatures>(
             signal: K,
-            callback: MimeFilterPgp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterPgp.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterPgp.SignalSignatures>(
             signal: K,
-            callback: MimeFilterPgp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterPgp.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterPgp.SignalSignatures>(
             signal: K,
-            ...args: MimeFilterPgp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeFilterPgp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -9551,6 +9883,14 @@ export namespace Camel {
 
     class MimeFilterProgress extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterProgress>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeFilterProgress.SignalSignatures;
 
         // Constructors
 
@@ -9567,17 +9907,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeFilterProgress.SignalSignatures>(
             signal: K,
-            callback: MimeFilterProgress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterProgress.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterProgress.SignalSignatures>(
             signal: K,
-            callback: MimeFilterProgress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterProgress.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterProgress.SignalSignatures>(
             signal: K,
-            ...args: MimeFilterProgress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeFilterProgress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -9593,6 +9933,14 @@ export namespace Camel {
 
     class MimeFilterToHTML extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterToHTML>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeFilterToHTML.SignalSignatures;
 
         // Constructors
 
@@ -9609,17 +9957,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeFilterToHTML.SignalSignatures>(
             signal: K,
-            callback: MimeFilterToHTML.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterToHTML.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterToHTML.SignalSignatures>(
             signal: K,
-            callback: MimeFilterToHTML.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterToHTML.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterToHTML.SignalSignatures>(
             signal: K,
-            ...args: MimeFilterToHTML.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeFilterToHTML.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -9635,6 +9983,14 @@ export namespace Camel {
 
     class MimeFilterWindows extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterWindows>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeFilterWindows.SignalSignatures;
 
         // Constructors
 
@@ -9651,17 +10007,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeFilterWindows.SignalSignatures>(
             signal: K,
-            callback: MimeFilterWindows.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterWindows.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterWindows.SignalSignatures>(
             signal: K,
-            callback: MimeFilterWindows.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterWindows.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterWindows.SignalSignatures>(
             signal: K,
-            ...args: MimeFilterWindows.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeFilterWindows.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9695,6 +10051,14 @@ export namespace Camel {
 
     class MimeFilterYenc extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterYenc>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeFilterYenc.SignalSignatures;
 
         // Constructors
 
@@ -9711,17 +10075,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeFilterYenc.SignalSignatures>(
             signal: K,
-            callback: MimeFilterYenc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterYenc.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterYenc.SignalSignatures>(
             signal: K,
-            callback: MimeFilterYenc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeFilterYenc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterYenc.SignalSignatures>(
             signal: K,
-            ...args: MimeFilterYenc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeFilterYenc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9752,11 +10116,11 @@ export namespace Camel {
     namespace MimeMessage {
         // Signal signatures
         interface SignalSignatures extends MimePart.SignalSignatures {
-            'notify::content-id': GObject.Object.Notify;
-            'notify::content-md5': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::disposition': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
+            'notify::content-id': (pspec: GObject.ParamSpec) => void;
+            'notify::content-md5': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::disposition': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9766,6 +10130,14 @@ export namespace Camel {
 
     class MimeMessage extends MimePart {
         static $gtype: GObject.GType<MimeMessage>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeMessage.SignalSignatures;
 
         // Constructors
 
@@ -9779,17 +10151,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeMessage.SignalSignatures>(
             signal: K,
-            callback: MimeMessage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeMessage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeMessage.SignalSignatures>(
             signal: K,
-            callback: MimeMessage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeMessage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeMessage.SignalSignatures>(
             signal: K,
-            ...args: MimeMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9944,6 +10316,14 @@ export namespace Camel {
 
     class MimeParser extends GObject.Object {
         static $gtype: GObject.GType<MimeParser>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimeParser.SignalSignatures;
 
         // Constructors
 
@@ -9957,17 +10337,17 @@ export namespace Camel {
 
         connect<K extends keyof MimeParser.SignalSignatures>(
             signal: K,
-            callback: MimeParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeParser.SignalSignatures>(
             signal: K,
-            callback: MimeParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimeParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeParser.SignalSignatures>(
             signal: K,
-            ...args: MimeParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimeParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10218,11 +10598,11 @@ export namespace Camel {
     namespace MimePart {
         // Signal signatures
         interface SignalSignatures extends Medium.SignalSignatures {
-            'notify::content-id': GObject.Object.Notify;
-            'notify::content-md5': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::disposition': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
+            'notify::content-id': (pspec: GObject.ParamSpec) => void;
+            'notify::content-md5': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::disposition': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10254,6 +10634,14 @@ export namespace Camel {
         set description(val: string);
         get disposition(): string;
         set disposition(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MimePart.SignalSignatures;
 
         // Constructors
 
@@ -10265,16 +10653,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof MimePart.SignalSignatures>(signal: K, callback: MimePart.SignalSignatures[K]): number;
+        connect<K extends keyof MimePart.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MimePart.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimePart.SignalSignatures>(
             signal: K,
-            callback: MimePart.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MimePart.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimePart.SignalSignatures>(
             signal: K,
-            ...args: MimePart.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MimePart.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10478,6 +10869,14 @@ export namespace Camel {
 
     class Multipart extends DataWrapper {
         static $gtype: GObject.GType<Multipart>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Multipart.SignalSignatures;
 
         // Constructors
 
@@ -10489,16 +10888,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof Multipart.SignalSignatures>(signal: K, callback: Multipart.SignalSignatures[K]): number;
+        connect<K extends keyof Multipart.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Multipart.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Multipart.SignalSignatures>(
             signal: K,
-            callback: Multipart.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Multipart.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Multipart.SignalSignatures>(
             signal: K,
-            ...args: Multipart.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Multipart.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10589,6 +10991,14 @@ export namespace Camel {
 
     class MultipartEncrypted extends Multipart {
         static $gtype: GObject.GType<MultipartEncrypted>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MultipartEncrypted.SignalSignatures;
 
         // Constructors
 
@@ -10602,17 +11012,17 @@ export namespace Camel {
 
         connect<K extends keyof MultipartEncrypted.SignalSignatures>(
             signal: K,
-            callback: MultipartEncrypted.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MultipartEncrypted.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MultipartEncrypted.SignalSignatures>(
             signal: K,
-            callback: MultipartEncrypted.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MultipartEncrypted.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MultipartEncrypted.SignalSignatures>(
             signal: K,
-            ...args: MultipartEncrypted.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MultipartEncrypted.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -10628,6 +11038,14 @@ export namespace Camel {
 
     class MultipartSigned extends Multipart {
         static $gtype: GObject.GType<MultipartSigned>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MultipartSigned.SignalSignatures;
 
         // Constructors
 
@@ -10641,17 +11059,17 @@ export namespace Camel {
 
         connect<K extends keyof MultipartSigned.SignalSignatures>(
             signal: K,
-            callback: MultipartSigned.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MultipartSigned.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MultipartSigned.SignalSignatures>(
             signal: K,
-            callback: MultipartSigned.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MultipartSigned.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MultipartSigned.SignalSignatures>(
             signal: K,
-            ...args: MultipartSigned.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MultipartSigned.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10687,6 +11105,14 @@ export namespace Camel {
 
     class NNTPAddress extends Address {
         static $gtype: GObject.GType<NNTPAddress>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NNTPAddress.SignalSignatures;
 
         // Constructors
 
@@ -10700,17 +11126,17 @@ export namespace Camel {
 
         connect<K extends keyof NNTPAddress.SignalSignatures>(
             signal: K,
-            callback: NNTPAddress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NNTPAddress.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NNTPAddress.SignalSignatures>(
             signal: K,
-            callback: NNTPAddress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NNTPAddress.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NNTPAddress.SignalSignatures>(
             signal: K,
-            ...args: NNTPAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NNTPAddress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10742,6 +11168,14 @@ export namespace Camel {
 
     class NullOutputStream extends Gio.OutputStream {
         static $gtype: GObject.GType<NullOutputStream>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NullOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -10755,17 +11189,17 @@ export namespace Camel {
 
         connect<K extends keyof NullOutputStream.SignalSignatures>(
             signal: K,
-            callback: NullOutputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NullOutputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NullOutputStream.SignalSignatures>(
             signal: K,
-            callback: NullOutputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NullOutputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NullOutputStream.SignalSignatures>(
             signal: K,
-            ...args: NullOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NullOutputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10782,7 +11216,7 @@ export namespace Camel {
     namespace Object {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::state-filename': GObject.Object.Notify;
+            'notify::state-filename': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10810,6 +11244,14 @@ export namespace Camel {
          */
         get stateFilename(): string;
         set stateFilename(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -10819,13 +11261,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
-            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10865,14 +11313,14 @@ export namespace Camel {
     namespace OfflineFolder {
         // Signal signatures
         interface SignalSignatures extends Folder.SignalSignatures {
-            'notify::offline-sync': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::full-name': GObject.Object.Notify;
-            'notify::mark-seen': GObject.Object.Notify;
-            'notify::mark-seen-timeout': GObject.Object.Notify;
-            'notify::parent-store': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
+            'notify::offline-sync': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::full-name': (pspec: GObject.ParamSpec) => void;
+            'notify::mark-seen': (pspec: GObject.ParamSpec) => void;
+            'notify::mark-seen-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::parent-store': (pspec: GObject.ParamSpec) => void;
+            'notify::state-filename': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10892,6 +11340,14 @@ export namespace Camel {
         set offline_sync(val: ThreeState);
         get offlineSync(): ThreeState;
         set offlineSync(val: ThreeState);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OfflineFolder.SignalSignatures;
 
         // Constructors
 
@@ -10903,17 +11359,17 @@ export namespace Camel {
 
         connect<K extends keyof OfflineFolder.SignalSignatures>(
             signal: K,
-            callback: OfflineFolder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OfflineFolder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OfflineFolder.SignalSignatures>(
             signal: K,
-            callback: OfflineFolder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OfflineFolder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OfflineFolder.SignalSignatures>(
             signal: K,
-            ...args: OfflineFolder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OfflineFolder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11013,12 +11469,12 @@ export namespace Camel {
     namespace OfflineSettings {
         // Signal signatures
         interface SignalSignatures extends StoreSettings.SignalSignatures {
-            'notify::limit-by-age': GObject.Object.Notify;
-            'notify::limit-unit': GObject.Object.Notify;
-            'notify::limit-value': GObject.Object.Notify;
-            'notify::stay-synchronized': GObject.Object.Notify;
-            'notify::filter-inbox': GObject.Object.Notify;
-            'notify::store-changes-interval': GObject.Object.Notify;
+            'notify::limit-by-age': (pspec: GObject.ParamSpec) => void;
+            'notify::limit-unit': (pspec: GObject.ParamSpec) => void;
+            'notify::limit-value': (pspec: GObject.ParamSpec) => void;
+            'notify::stay-synchronized': (pspec: GObject.ParamSpec) => void;
+            'notify::filter-inbox': (pspec: GObject.ParamSpec) => void;
+            'notify::store-changes-interval': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11060,6 +11516,14 @@ export namespace Camel {
         set stay_synchronized(val: boolean);
         get staySynchronized(): boolean;
         set staySynchronized(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OfflineSettings.SignalSignatures;
 
         // Constructors
 
@@ -11071,17 +11535,17 @@ export namespace Camel {
 
         connect<K extends keyof OfflineSettings.SignalSignatures>(
             signal: K,
-            callback: OfflineSettings.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OfflineSettings.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OfflineSettings.SignalSignatures>(
             signal: K,
-            callback: OfflineSettings.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OfflineSettings.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OfflineSettings.SignalSignatures>(
             signal: K,
-            ...args: OfflineSettings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OfflineSettings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11140,16 +11604,16 @@ export namespace Camel {
     namespace OfflineStore {
         // Signal signatures
         interface SignalSignatures extends Store.SignalSignatures {
-            'notify::online': GObject.Object.Notify;
-            'notify::connection-status': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::provider': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::session': GObject.Object.Notify;
-            'notify::settings': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
+            'notify::online': (pspec: GObject.ParamSpec) => void;
+            'notify::connection-status': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::provider': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::session': (pspec: GObject.ParamSpec) => void;
+            'notify::settings': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::state-filename': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11165,6 +11629,14 @@ export namespace Camel {
         // Properties
 
         get online(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OfflineStore.SignalSignatures;
 
         // Constructors
 
@@ -11176,12 +11648,12 @@ export namespace Camel {
 
         connect_after<K extends keyof OfflineStore.SignalSignatures>(
             signal: K,
-            callback: OfflineStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OfflineStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OfflineStore.SignalSignatures>(
             signal: K,
-            ...args: OfflineStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OfflineStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11731,30 +12203,12 @@ export namespace Camel {
     }
 
     namespace Operation {
-        // Signal callback interfaces
-
-        interface PopMessage {
-            (_source: Operation): void;
-        }
-
-        interface Progress {
-            (_source: Operation, object: number): void;
-        }
-
-        interface PushMessage {
-            (_source: Operation, object: string): void;
-        }
-
-        interface Status {
-            (_source: Operation, object: string, p0: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gio.Cancellable.SignalSignatures {
-            'pop-message': PopMessage;
-            progress: Progress;
-            'push-message': PushMessage;
-            status: Status;
+            'pop-message': () => void;
+            progress: (arg0: number) => void;
+            'push-message': (arg0: string) => void;
+            status: (arg0: string, arg1: number) => void;
         }
 
         // Constructor properties interface
@@ -11764,6 +12218,14 @@ export namespace Camel {
 
     class Operation extends Gio.Cancellable {
         static $gtype: GObject.GType<Operation>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Operation.SignalSignatures;
 
         // Constructors
 
@@ -11777,16 +12239,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof Operation.SignalSignatures>(signal: K, callback: Operation.SignalSignatures[K]): number;
+        connect<K extends keyof Operation.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Operation.SignalSignatures>(
             signal: K,
-            callback: Operation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Operation.SignalSignatures>(
             signal: K,
-            ...args: Operation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Operation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11833,6 +12298,14 @@ export namespace Camel {
 
     class PartitionTable extends GObject.Object {
         static $gtype: GObject.GType<PartitionTable>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PartitionTable.SignalSignatures;
 
         // Constructors
 
@@ -11846,17 +12319,17 @@ export namespace Camel {
 
         connect<K extends keyof PartitionTable.SignalSignatures>(
             signal: K,
-            callback: PartitionTable.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PartitionTable.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PartitionTable.SignalSignatures>(
             signal: K,
-            callback: PartitionTable.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PartitionTable.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PartitionTable.SignalSignatures>(
             signal: K,
-            ...args: PartitionTable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PartitionTable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11879,6 +12352,14 @@ export namespace Camel {
 
     class SExp extends GObject.Object {
         static $gtype: GObject.GType<SExp>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SExp.SignalSignatures;
 
         // Constructors
 
@@ -11890,13 +12371,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof SExp.SignalSignatures>(signal: K, callback: SExp.SignalSignatures[K]): number;
+        connect<K extends keyof SExp.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, SExp.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof SExp.SignalSignatures>(signal: K, callback: SExp.SignalSignatures[K]): number;
+        connect_after<K extends keyof SExp.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, SExp.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SExp.SignalSignatures>(
             signal: K,
-            ...args: SExp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SExp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11975,7 +12462,7 @@ export namespace Camel {
     namespace SMIMEContext {
         // Signal signatures
         interface SignalSignatures extends CipherContext.SignalSignatures {
-            'notify::session': GObject.Object.Notify;
+            'notify::session': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11985,6 +12472,14 @@ export namespace Camel {
 
     class SMIMEContext extends CipherContext {
         static $gtype: GObject.GType<SMIMEContext>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SMIMEContext.SignalSignatures;
 
         // Constructors
 
@@ -12001,17 +12496,17 @@ export namespace Camel {
 
         connect<K extends keyof SMIMEContext.SignalSignatures>(
             signal: K,
-            callback: SMIMEContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SMIMEContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SMIMEContext.SignalSignatures>(
             signal: K,
-            callback: SMIMEContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SMIMEContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SMIMEContext.SignalSignatures>(
             signal: K,
-            ...args: SMIMEContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SMIMEContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12025,10 +12520,10 @@ export namespace Camel {
     namespace Sasl {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::authenticated': GObject.Object.Notify;
-            'notify::mechanism': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
+            'notify::authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::mechanism': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::service-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12053,6 +12548,14 @@ export namespace Camel {
         get service(): Service;
         get service_name(): string;
         get serviceName(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Sasl.SignalSignatures;
 
         // Constructors
 
@@ -12064,13 +12567,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof Sasl.SignalSignatures>(signal: K, callback: Sasl.SignalSignatures[K]): number;
+        connect<K extends keyof Sasl.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Sasl.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Sasl.SignalSignatures>(signal: K, callback: Sasl.SignalSignatures[K]): number;
+        connect_after<K extends keyof Sasl.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Sasl.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Sasl.SignalSignatures>(
             signal: K,
-            ...args: Sasl.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Sasl.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12299,10 +12808,10 @@ export namespace Camel {
     namespace SaslAnonymous {
         // Signal signatures
         interface SignalSignatures extends Sasl.SignalSignatures {
-            'notify::authenticated': GObject.Object.Notify;
-            'notify::mechanism': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
+            'notify::authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::mechanism': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::service-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12312,6 +12821,14 @@ export namespace Camel {
 
     class SaslAnonymous extends Sasl {
         static $gtype: GObject.GType<SaslAnonymous>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SaslAnonymous.SignalSignatures;
 
         // Constructors
 
@@ -12328,17 +12845,17 @@ export namespace Camel {
 
         connect<K extends keyof SaslAnonymous.SignalSignatures>(
             signal: K,
-            callback: SaslAnonymous.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslAnonymous.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslAnonymous.SignalSignatures>(
             signal: K,
-            callback: SaslAnonymous.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslAnonymous.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslAnonymous.SignalSignatures>(
             signal: K,
-            ...args: SaslAnonymous.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SaslAnonymous.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -12346,10 +12863,10 @@ export namespace Camel {
     namespace SaslCramMd5 {
         // Signal signatures
         interface SignalSignatures extends Sasl.SignalSignatures {
-            'notify::authenticated': GObject.Object.Notify;
-            'notify::mechanism': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
+            'notify::authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::mechanism': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::service-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12359,6 +12876,14 @@ export namespace Camel {
 
     class SaslCramMd5 extends Sasl {
         static $gtype: GObject.GType<SaslCramMd5>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SaslCramMd5.SignalSignatures;
 
         // Constructors
 
@@ -12370,17 +12895,17 @@ export namespace Camel {
 
         connect<K extends keyof SaslCramMd5.SignalSignatures>(
             signal: K,
-            callback: SaslCramMd5.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslCramMd5.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslCramMd5.SignalSignatures>(
             signal: K,
-            callback: SaslCramMd5.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslCramMd5.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslCramMd5.SignalSignatures>(
             signal: K,
-            ...args: SaslCramMd5.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SaslCramMd5.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -12388,10 +12913,10 @@ export namespace Camel {
     namespace SaslDigestMd5 {
         // Signal signatures
         interface SignalSignatures extends Sasl.SignalSignatures {
-            'notify::authenticated': GObject.Object.Notify;
-            'notify::mechanism': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
+            'notify::authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::mechanism': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::service-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12401,6 +12926,14 @@ export namespace Camel {
 
     class SaslDigestMd5 extends Sasl {
         static $gtype: GObject.GType<SaslDigestMd5>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SaslDigestMd5.SignalSignatures;
 
         // Constructors
 
@@ -12412,17 +12945,17 @@ export namespace Camel {
 
         connect<K extends keyof SaslDigestMd5.SignalSignatures>(
             signal: K,
-            callback: SaslDigestMd5.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslDigestMd5.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslDigestMd5.SignalSignatures>(
             signal: K,
-            callback: SaslDigestMd5.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslDigestMd5.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslDigestMd5.SignalSignatures>(
             signal: K,
-            ...args: SaslDigestMd5.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SaslDigestMd5.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -12430,10 +12963,10 @@ export namespace Camel {
     namespace SaslGssapi {
         // Signal signatures
         interface SignalSignatures extends Sasl.SignalSignatures {
-            'notify::authenticated': GObject.Object.Notify;
-            'notify::mechanism': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
+            'notify::authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::mechanism': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::service-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12443,6 +12976,14 @@ export namespace Camel {
 
     class SaslGssapi extends Sasl {
         static $gtype: GObject.GType<SaslGssapi>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SaslGssapi.SignalSignatures;
 
         // Constructors
 
@@ -12454,17 +12995,17 @@ export namespace Camel {
 
         connect<K extends keyof SaslGssapi.SignalSignatures>(
             signal: K,
-            callback: SaslGssapi.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslGssapi.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslGssapi.SignalSignatures>(
             signal: K,
-            callback: SaslGssapi.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslGssapi.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslGssapi.SignalSignatures>(
             signal: K,
-            ...args: SaslGssapi.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SaslGssapi.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12487,10 +13028,10 @@ export namespace Camel {
     namespace SaslLogin {
         // Signal signatures
         interface SignalSignatures extends Sasl.SignalSignatures {
-            'notify::authenticated': GObject.Object.Notify;
-            'notify::mechanism': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
+            'notify::authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::mechanism': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::service-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12500,6 +13041,14 @@ export namespace Camel {
 
     class SaslLogin extends Sasl {
         static $gtype: GObject.GType<SaslLogin>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SaslLogin.SignalSignatures;
 
         // Constructors
 
@@ -12509,16 +13058,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof SaslLogin.SignalSignatures>(signal: K, callback: SaslLogin.SignalSignatures[K]): number;
+        connect<K extends keyof SaslLogin.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, SaslLogin.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslLogin.SignalSignatures>(
             signal: K,
-            callback: SaslLogin.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslLogin.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslLogin.SignalSignatures>(
             signal: K,
-            ...args: SaslLogin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SaslLogin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -12526,10 +13078,10 @@ export namespace Camel {
     namespace SaslNTLM {
         // Signal signatures
         interface SignalSignatures extends Sasl.SignalSignatures {
-            'notify::authenticated': GObject.Object.Notify;
-            'notify::mechanism': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
+            'notify::authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::mechanism': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::service-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12539,6 +13091,14 @@ export namespace Camel {
 
     class SaslNTLM extends Sasl {
         static $gtype: GObject.GType<SaslNTLM>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SaslNTLM.SignalSignatures;
 
         // Constructors
 
@@ -12548,16 +13108,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof SaslNTLM.SignalSignatures>(signal: K, callback: SaslNTLM.SignalSignatures[K]): number;
+        connect<K extends keyof SaslNTLM.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, SaslNTLM.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslNTLM.SignalSignatures>(
             signal: K,
-            callback: SaslNTLM.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslNTLM.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslNTLM.SignalSignatures>(
             signal: K,
-            ...args: SaslNTLM.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SaslNTLM.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -12565,10 +13128,10 @@ export namespace Camel {
     namespace SaslPOPB4SMTP {
         // Signal signatures
         interface SignalSignatures extends Sasl.SignalSignatures {
-            'notify::authenticated': GObject.Object.Notify;
-            'notify::mechanism': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
+            'notify::authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::mechanism': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::service-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12578,6 +13141,14 @@ export namespace Camel {
 
     class SaslPOPB4SMTP extends Sasl {
         static $gtype: GObject.GType<SaslPOPB4SMTP>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SaslPOPB4SMTP.SignalSignatures;
 
         // Constructors
 
@@ -12589,17 +13160,17 @@ export namespace Camel {
 
         connect<K extends keyof SaslPOPB4SMTP.SignalSignatures>(
             signal: K,
-            callback: SaslPOPB4SMTP.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslPOPB4SMTP.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslPOPB4SMTP.SignalSignatures>(
             signal: K,
-            callback: SaslPOPB4SMTP.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslPOPB4SMTP.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslPOPB4SMTP.SignalSignatures>(
             signal: K,
-            ...args: SaslPOPB4SMTP.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SaslPOPB4SMTP.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -12607,10 +13178,10 @@ export namespace Camel {
     namespace SaslPlain {
         // Signal signatures
         interface SignalSignatures extends Sasl.SignalSignatures {
-            'notify::authenticated': GObject.Object.Notify;
-            'notify::mechanism': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
+            'notify::authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::mechanism': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::service-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12620,6 +13191,14 @@ export namespace Camel {
 
     class SaslPlain extends Sasl {
         static $gtype: GObject.GType<SaslPlain>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SaslPlain.SignalSignatures;
 
         // Constructors
 
@@ -12629,16 +13208,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof SaslPlain.SignalSignatures>(signal: K, callback: SaslPlain.SignalSignatures[K]): number;
+        connect<K extends keyof SaslPlain.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, SaslPlain.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslPlain.SignalSignatures>(
             signal: K,
-            callback: SaslPlain.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslPlain.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslPlain.SignalSignatures>(
             signal: K,
-            ...args: SaslPlain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SaslPlain.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -12646,10 +13228,10 @@ export namespace Camel {
     namespace SaslXOAuth2 {
         // Signal signatures
         interface SignalSignatures extends Sasl.SignalSignatures {
-            'notify::authenticated': GObject.Object.Notify;
-            'notify::mechanism': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
+            'notify::authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::mechanism': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::service-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12659,6 +13241,14 @@ export namespace Camel {
 
     class SaslXOAuth2 extends Sasl {
         static $gtype: GObject.GType<SaslXOAuth2>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SaslXOAuth2.SignalSignatures;
 
         // Constructors
 
@@ -12670,17 +13260,17 @@ export namespace Camel {
 
         connect<K extends keyof SaslXOAuth2.SignalSignatures>(
             signal: K,
-            callback: SaslXOAuth2.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslXOAuth2.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslXOAuth2.SignalSignatures>(
             signal: K,
-            callback: SaslXOAuth2.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslXOAuth2.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslXOAuth2.SignalSignatures>(
             signal: K,
-            ...args: SaslXOAuth2.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SaslXOAuth2.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -12688,10 +13278,10 @@ export namespace Camel {
     namespace SaslXOAuth2Google {
         // Signal signatures
         interface SignalSignatures extends SaslXOAuth2.SignalSignatures {
-            'notify::authenticated': GObject.Object.Notify;
-            'notify::mechanism': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
+            'notify::authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::mechanism': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::service-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12701,6 +13291,14 @@ export namespace Camel {
 
     class SaslXOAuth2Google extends SaslXOAuth2 {
         static $gtype: GObject.GType<SaslXOAuth2Google>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SaslXOAuth2Google.SignalSignatures;
 
         // Constructors
 
@@ -12712,17 +13310,17 @@ export namespace Camel {
 
         connect<K extends keyof SaslXOAuth2Google.SignalSignatures>(
             signal: K,
-            callback: SaslXOAuth2Google.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslXOAuth2Google.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslXOAuth2Google.SignalSignatures>(
             signal: K,
-            callback: SaslXOAuth2Google.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslXOAuth2Google.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslXOAuth2Google.SignalSignatures>(
             signal: K,
-            ...args: SaslXOAuth2Google.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SaslXOAuth2Google.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -12730,10 +13328,10 @@ export namespace Camel {
     namespace SaslXOAuth2Outlook {
         // Signal signatures
         interface SignalSignatures extends SaslXOAuth2.SignalSignatures {
-            'notify::authenticated': GObject.Object.Notify;
-            'notify::mechanism': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
+            'notify::authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::mechanism': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::service-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12743,6 +13341,14 @@ export namespace Camel {
 
     class SaslXOAuth2Outlook extends SaslXOAuth2 {
         static $gtype: GObject.GType<SaslXOAuth2Outlook>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SaslXOAuth2Outlook.SignalSignatures;
 
         // Constructors
 
@@ -12754,17 +13360,17 @@ export namespace Camel {
 
         connect<K extends keyof SaslXOAuth2Outlook.SignalSignatures>(
             signal: K,
-            callback: SaslXOAuth2Outlook.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslXOAuth2Outlook.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslXOAuth2Outlook.SignalSignatures>(
             signal: K,
-            callback: SaslXOAuth2Outlook.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslXOAuth2Outlook.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslXOAuth2Outlook.SignalSignatures>(
             signal: K,
-            ...args: SaslXOAuth2Outlook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SaslXOAuth2Outlook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -12772,10 +13378,10 @@ export namespace Camel {
     namespace SaslXOAuth2Yahoo {
         // Signal signatures
         interface SignalSignatures extends SaslXOAuth2.SignalSignatures {
-            'notify::authenticated': GObject.Object.Notify;
-            'notify::mechanism': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
+            'notify::authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::mechanism': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::service-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12785,6 +13391,14 @@ export namespace Camel {
 
     class SaslXOAuth2Yahoo extends SaslXOAuth2 {
         static $gtype: GObject.GType<SaslXOAuth2Yahoo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SaslXOAuth2Yahoo.SignalSignatures;
 
         // Constructors
 
@@ -12796,17 +13410,17 @@ export namespace Camel {
 
         connect<K extends keyof SaslXOAuth2Yahoo.SignalSignatures>(
             signal: K,
-            callback: SaslXOAuth2Yahoo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslXOAuth2Yahoo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslXOAuth2Yahoo.SignalSignatures>(
             signal: K,
-            callback: SaslXOAuth2Yahoo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SaslXOAuth2Yahoo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslXOAuth2Yahoo.SignalSignatures>(
             signal: K,
-            ...args: SaslXOAuth2Yahoo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SaslXOAuth2Yahoo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -12814,15 +13428,15 @@ export namespace Camel {
     namespace Service {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::connection-status': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::provider': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::session': GObject.Object.Notify;
-            'notify::settings': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
+            'notify::connection-status': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::provider': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::session': (pspec: GObject.ParamSpec) => void;
+            'notify::settings': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::state-filename': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12864,6 +13478,14 @@ export namespace Camel {
         get settings(): Settings;
         set settings(val: Settings);
         get uid(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Service.SignalSignatures;
 
         // Constructors
 
@@ -12873,16 +13495,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof Service.SignalSignatures>(signal: K, callback: Service.SignalSignatures[K]): number;
+        connect<K extends keyof Service.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Service.SignalSignatures>(
             signal: K,
-            callback: Service.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Service.SignalSignatures>(
             signal: K,
-            ...args: Service.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Service.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13944,31 +14569,17 @@ export namespace Camel {
     }
 
     namespace Session {
-        // Signal callback interfaces
-
-        interface JobFinished {
-            (_source: Session, object: Gio.Cancellable | null, p0: GLib.Error): void;
-        }
-
-        interface JobStarted {
-            (_source: Session, object?: Gio.Cancellable | null): void;
-        }
-
-        interface UserAlert {
-            (_source: Session, service: Service, type: SessionAlertType, message: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'job-finished': JobFinished;
-            'job-started': JobStarted;
-            'user-alert': UserAlert;
-            'notify::junk-filter': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
-            'notify::network-monitor': GObject.Object.Notify;
-            'notify::online': GObject.Object.Notify;
-            'notify::user-cache-dir': GObject.Object.Notify;
-            'notify::user-data-dir': GObject.Object.Notify;
+            'job-finished': (arg0: Gio.Cancellable | null, arg1: GLib.Error) => void;
+            'job-started': (arg0: Gio.Cancellable | null) => void;
+            'user-alert': (arg0: Service, arg1: SessionAlertType, arg2: string) => void;
+            'notify::junk-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::main-context': (pspec: GObject.ParamSpec) => void;
+            'notify::network-monitor': (pspec: GObject.ParamSpec) => void;
+            'notify::online': (pspec: GObject.ParamSpec) => void;
+            'notify::user-cache-dir': (pspec: GObject.ParamSpec) => void;
+            'notify::user-data-dir': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14013,6 +14624,14 @@ export namespace Camel {
         set user_data_dir(val: string);
         get userDataDir(): string;
         set userDataDir(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -14022,16 +14641,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
-            callback: Session.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14752,6 +15374,14 @@ export namespace Camel {
      */
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Settings.SignalSignatures;
 
         // Constructors
 
@@ -14761,16 +15391,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            callback: Settings.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14824,44 +15457,22 @@ export namespace Camel {
     }
 
     namespace Store {
-        // Signal callback interfaces
-
-        interface FolderCreated {
-            (_source: Store, object: FolderInfo): void;
-        }
-
-        interface FolderDeleted {
-            (_source: Store, object: FolderInfo): void;
-        }
-
-        interface FolderInfoStale {
-            (_source: Store): void;
-        }
-
-        interface FolderOpened {
-            (_source: Store, object: Folder): void;
-        }
-
-        interface FolderRenamed {
-            (_source: Store, object: string, p0: FolderInfo): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Service.SignalSignatures {
-            'folder-created': FolderCreated;
-            'folder-deleted': FolderDeleted;
-            'folder-info-stale': FolderInfoStale;
-            'folder-opened': FolderOpened;
-            'folder-renamed': FolderRenamed;
-            'notify::connection-status': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::provider': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::session': GObject.Object.Notify;
-            'notify::settings': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
+            'folder-created': (arg0: FolderInfo) => void;
+            'folder-deleted': (arg0: FolderInfo) => void;
+            'folder-info-stale': () => void;
+            'folder-opened': (arg0: Folder) => void;
+            'folder-renamed': (arg0: string, arg1: FolderInfo) => void;
+            'notify::connection-status': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::provider': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::session': (pspec: GObject.ParamSpec) => void;
+            'notify::settings': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::state-filename': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14871,6 +15482,14 @@ export namespace Camel {
 
     abstract class Store extends Service implements Gio.Initable {
         static $gtype: GObject.GType<Store>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Store.SignalSignatures;
 
         // Constructors
 
@@ -14880,11 +15499,14 @@ export namespace Camel {
 
         // Signals
 
-        connect_after<K extends keyof Store.SignalSignatures>(signal: K, callback: Store.SignalSignatures[K]): number;
+        connect_after<K extends keyof Store.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Store.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Store.SignalSignatures>(
             signal: K,
-            ...args: Store.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Store.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -16358,8 +16980,8 @@ export namespace Camel {
     namespace StoreSettings {
         // Signal signatures
         interface SignalSignatures extends Settings.SignalSignatures {
-            'notify::filter-inbox': GObject.Object.Notify;
-            'notify::store-changes-interval': GObject.Object.Notify;
+            'notify::filter-inbox': (pspec: GObject.ParamSpec) => void;
+            'notify::store-changes-interval': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -16389,6 +17011,14 @@ export namespace Camel {
         set store_changes_interval(val: number);
         get storeChangesInterval(): number;
         set storeChangesInterval(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StoreSettings.SignalSignatures;
 
         // Constructors
 
@@ -16400,17 +17030,17 @@ export namespace Camel {
 
         connect<K extends keyof StoreSettings.SignalSignatures>(
             signal: K,
-            callback: StoreSettings.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StoreSettings.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StoreSettings.SignalSignatures>(
             signal: K,
-            callback: StoreSettings.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StoreSettings.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StoreSettings.SignalSignatures>(
             signal: K,
-            ...args: StoreSettings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StoreSettings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -16455,6 +17085,14 @@ export namespace Camel {
 
     class StoreSummary extends GObject.Object {
         static $gtype: GObject.GType<StoreSummary>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StoreSummary.SignalSignatures;
 
         // Constructors
 
@@ -16468,17 +17106,17 @@ export namespace Camel {
 
         connect<K extends keyof StoreSummary.SignalSignatures>(
             signal: K,
-            callback: StoreSummary.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StoreSummary.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StoreSummary.SignalSignatures>(
             signal: K,
-            callback: StoreSummary.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StoreSummary.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StoreSummary.SignalSignatures>(
             signal: K,
-            ...args: StoreSummary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StoreSummary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -16595,7 +17233,7 @@ export namespace Camel {
     namespace Stream {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -16615,6 +17253,14 @@ export namespace Camel {
         set base_stream(val: Gio.IOStream);
         get baseStream(): Gio.IOStream;
         set baseStream(val: Gio.IOStream);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Stream.SignalSignatures;
 
         // Constructors
 
@@ -16626,13 +17272,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        connect<K extends keyof Stream.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stream.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Stream.SignalSignatures>(
             signal: K,
-            ...args: Stream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Stream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -17277,7 +17929,7 @@ export namespace Camel {
     namespace StreamBuffer {
         // Signal signatures
         interface SignalSignatures extends Stream.SignalSignatures {
-            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -17287,6 +17939,14 @@ export namespace Camel {
 
     class StreamBuffer extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamBuffer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamBuffer.SignalSignatures;
 
         // Constructors
 
@@ -17303,17 +17963,17 @@ export namespace Camel {
 
         connect<K extends keyof StreamBuffer.SignalSignatures>(
             signal: K,
-            callback: StreamBuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamBuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamBuffer.SignalSignatures>(
             signal: K,
-            callback: StreamBuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamBuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamBuffer.SignalSignatures>(
             signal: K,
-            ...args: StreamBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -17893,7 +18553,7 @@ export namespace Camel {
     namespace StreamFilter {
         // Signal signatures
         interface SignalSignatures extends Stream.SignalSignatures {
-            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -17903,6 +18563,14 @@ export namespace Camel {
 
     class StreamFilter extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamFilter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamFilter.SignalSignatures;
 
         // Constructors
 
@@ -17919,17 +18587,17 @@ export namespace Camel {
 
         connect<K extends keyof StreamFilter.SignalSignatures>(
             signal: K,
-            callback: StreamFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamFilter.SignalSignatures>(
             signal: K,
-            callback: StreamFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamFilter.SignalSignatures>(
             signal: K,
-            ...args: StreamFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -18496,7 +19164,7 @@ export namespace Camel {
     namespace StreamFs {
         // Signal signatures
         interface SignalSignatures extends Stream.SignalSignatures {
-            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -18506,6 +19174,14 @@ export namespace Camel {
 
     class StreamFs extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamFs>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamFs.SignalSignatures;
 
         // Constructors
 
@@ -18519,16 +19195,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof StreamFs.SignalSignatures>(signal: K, callback: StreamFs.SignalSignatures[K]): number;
+        connect<K extends keyof StreamFs.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, StreamFs.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamFs.SignalSignatures>(
             signal: K,
-            callback: StreamFs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamFs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamFs.SignalSignatures>(
             signal: K,
-            ...args: StreamFs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamFs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -19080,7 +19759,7 @@ export namespace Camel {
     namespace StreamMem {
         // Signal signatures
         interface SignalSignatures extends Stream.SignalSignatures {
-            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19090,6 +19769,14 @@ export namespace Camel {
 
     class StreamMem extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamMem>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamMem.SignalSignatures;
 
         // Constructors
 
@@ -19105,16 +19792,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof StreamMem.SignalSignatures>(signal: K, callback: StreamMem.SignalSignatures[K]): number;
+        connect<K extends keyof StreamMem.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, StreamMem.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamMem.SignalSignatures>(
             signal: K,
-            callback: StreamMem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamMem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamMem.SignalSignatures>(
             signal: K,
-            ...args: StreamMem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamMem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -19688,7 +20378,7 @@ export namespace Camel {
     namespace StreamNull {
         // Signal signatures
         interface SignalSignatures extends Stream.SignalSignatures {
-            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19698,6 +20388,14 @@ export namespace Camel {
 
     class StreamNull extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamNull>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamNull.SignalSignatures;
 
         // Constructors
 
@@ -19711,17 +20409,17 @@ export namespace Camel {
 
         connect<K extends keyof StreamNull.SignalSignatures>(
             signal: K,
-            callback: StreamNull.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamNull.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamNull.SignalSignatures>(
             signal: K,
-            callback: StreamNull.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamNull.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamNull.SignalSignatures>(
             signal: K,
-            ...args: StreamNull.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamNull.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -20274,7 +20972,7 @@ export namespace Camel {
     namespace StreamProcess {
         // Signal signatures
         interface SignalSignatures extends Stream.SignalSignatures {
-            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -20284,6 +20982,14 @@ export namespace Camel {
 
     class StreamProcess extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamProcess>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamProcess.SignalSignatures;
 
         // Constructors
 
@@ -20297,17 +21003,17 @@ export namespace Camel {
 
         connect<K extends keyof StreamProcess.SignalSignatures>(
             signal: K,
-            callback: StreamProcess.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamProcess.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamProcess.SignalSignatures>(
             signal: K,
-            callback: StreamProcess.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamProcess.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamProcess.SignalSignatures>(
             signal: K,
-            ...args: StreamProcess.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamProcess.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -20868,6 +21574,14 @@ export namespace Camel {
 
     class TextIndex extends Index {
         static $gtype: GObject.GType<TextIndex>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TextIndex.SignalSignatures;
 
         // Constructors
 
@@ -20879,16 +21593,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof TextIndex.SignalSignatures>(signal: K, callback: TextIndex.SignalSignatures[K]): number;
+        connect<K extends keyof TextIndex.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TextIndex.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextIndex.SignalSignatures>(
             signal: K,
-            callback: TextIndex.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextIndex.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextIndex.SignalSignatures>(
             signal: K,
-            ...args: TextIndex.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TextIndex.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -20916,6 +21633,14 @@ export namespace Camel {
 
     class TextIndexCursor extends IndexCursor {
         static $gtype: GObject.GType<TextIndexCursor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TextIndexCursor.SignalSignatures;
 
         // Constructors
 
@@ -20927,17 +21652,17 @@ export namespace Camel {
 
         connect<K extends keyof TextIndexCursor.SignalSignatures>(
             signal: K,
-            callback: TextIndexCursor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextIndexCursor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextIndexCursor.SignalSignatures>(
             signal: K,
-            callback: TextIndexCursor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextIndexCursor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextIndexCursor.SignalSignatures>(
             signal: K,
-            ...args: TextIndexCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TextIndexCursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -20953,6 +21678,14 @@ export namespace Camel {
 
     class TextIndexKeyCursor extends IndexCursor {
         static $gtype: GObject.GType<TextIndexKeyCursor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TextIndexKeyCursor.SignalSignatures;
 
         // Constructors
 
@@ -20964,17 +21697,17 @@ export namespace Camel {
 
         connect<K extends keyof TextIndexKeyCursor.SignalSignatures>(
             signal: K,
-            callback: TextIndexKeyCursor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextIndexKeyCursor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextIndexKeyCursor.SignalSignatures>(
             signal: K,
-            callback: TextIndexKeyCursor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextIndexKeyCursor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextIndexKeyCursor.SignalSignatures>(
             signal: K,
-            ...args: TextIndexKeyCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TextIndexKeyCursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -20990,6 +21723,14 @@ export namespace Camel {
 
     class TextIndexName extends IndexName {
         static $gtype: GObject.GType<TextIndexName>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TextIndexName.SignalSignatures;
 
         // Constructors
 
@@ -21001,17 +21742,17 @@ export namespace Camel {
 
         connect<K extends keyof TextIndexName.SignalSignatures>(
             signal: K,
-            callback: TextIndexName.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextIndexName.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextIndexName.SignalSignatures>(
             signal: K,
-            callback: TextIndexName.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextIndexName.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextIndexName.SignalSignatures>(
             signal: K,
-            ...args: TextIndexName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TextIndexName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -21019,15 +21760,15 @@ export namespace Camel {
     namespace Transport {
         // Signal signatures
         interface SignalSignatures extends Service.SignalSignatures {
-            'notify::connection-status': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::provider': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::session': GObject.Object.Notify;
-            'notify::settings': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
+            'notify::connection-status': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::provider': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::session': (pspec: GObject.ParamSpec) => void;
+            'notify::settings': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::state-filename': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21037,6 +21778,14 @@ export namespace Camel {
 
     abstract class Transport extends Service implements Gio.Initable {
         static $gtype: GObject.GType<Transport>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Transport.SignalSignatures;
 
         // Constructors
 
@@ -21048,12 +21797,12 @@ export namespace Camel {
 
         connect_after<K extends keyof Transport.SignalSignatures>(
             signal: K,
-            callback: Transport.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Transport.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Transport.SignalSignatures>(
             signal: K,
-            ...args: Transport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Transport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21708,14 +22457,14 @@ export namespace Camel {
     namespace VTrashFolder {
         // Signal signatures
         interface SignalSignatures extends VeeFolder.SignalSignatures {
-            'notify::auto-update': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::full-name': GObject.Object.Notify;
-            'notify::mark-seen': GObject.Object.Notify;
-            'notify::mark-seen-timeout': GObject.Object.Notify;
-            'notify::parent-store': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
+            'notify::auto-update': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::full-name': (pspec: GObject.ParamSpec) => void;
+            'notify::mark-seen': (pspec: GObject.ParamSpec) => void;
+            'notify::mark-seen-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::parent-store': (pspec: GObject.ParamSpec) => void;
+            'notify::state-filename': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21725,6 +22474,14 @@ export namespace Camel {
 
     class VTrashFolder extends VeeFolder {
         static $gtype: GObject.GType<VTrashFolder>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VTrashFolder.SignalSignatures;
 
         // Constructors
 
@@ -21741,17 +22498,17 @@ export namespace Camel {
 
         connect<K extends keyof VTrashFolder.SignalSignatures>(
             signal: K,
-            callback: VTrashFolder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VTrashFolder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VTrashFolder.SignalSignatures>(
             signal: K,
-            callback: VTrashFolder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VTrashFolder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VTrashFolder.SignalSignatures>(
             signal: K,
-            ...args: VTrashFolder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VTrashFolder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21775,6 +22532,14 @@ export namespace Camel {
      */
     class VeeDataCache extends GObject.Object {
         static $gtype: GObject.GType<VeeDataCache>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VeeDataCache.SignalSignatures;
 
         // Constructors
 
@@ -21788,17 +22553,17 @@ export namespace Camel {
 
         connect<K extends keyof VeeDataCache.SignalSignatures>(
             signal: K,
-            callback: VeeDataCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VeeDataCache.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VeeDataCache.SignalSignatures>(
             signal: K,
-            callback: VeeDataCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VeeDataCache.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VeeDataCache.SignalSignatures>(
             signal: K,
-            ...args: VeeDataCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VeeDataCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21862,14 +22627,14 @@ export namespace Camel {
     namespace VeeFolder {
         // Signal signatures
         interface SignalSignatures extends Folder.SignalSignatures {
-            'notify::auto-update': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::full-name': GObject.Object.Notify;
-            'notify::mark-seen': GObject.Object.Notify;
-            'notify::mark-seen-timeout': GObject.Object.Notify;
-            'notify::parent-store': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
+            'notify::auto-update': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::full-name': (pspec: GObject.ParamSpec) => void;
+            'notify::mark-seen': (pspec: GObject.ParamSpec) => void;
+            'notify::mark-seen-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::parent-store': (pspec: GObject.ParamSpec) => void;
+            'notify::state-filename': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21889,6 +22654,14 @@ export namespace Camel {
         set auto_update(val: boolean);
         get autoUpdate(): boolean;
         set autoUpdate(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VeeFolder.SignalSignatures;
 
         // Constructors
 
@@ -21900,16 +22673,19 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof VeeFolder.SignalSignatures>(signal: K, callback: VeeFolder.SignalSignatures[K]): number;
+        connect<K extends keyof VeeFolder.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, VeeFolder.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VeeFolder.SignalSignatures>(
             signal: K,
-            callback: VeeFolder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VeeFolder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VeeFolder.SignalSignatures>(
             signal: K,
-            ...args: VeeFolder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VeeFolder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22052,28 +22828,28 @@ export namespace Camel {
     namespace VeeMessageInfo {
         // Signal signatures
         interface SignalSignatures extends MessageInfo.SignalSignatures {
-            'notify::abort-notifications': GObject.Object.Notify;
-            'notify::cc': GObject.Object.Notify;
-            'notify::date-received': GObject.Object.Notify;
-            'notify::date-sent': GObject.Object.Notify;
-            'notify::dirty': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::folder-flagged': GObject.Object.Notify;
-            'notify::folder-flagged-stamp': GObject.Object.Notify;
-            'notify::from': GObject.Object.Notify;
-            'notify::headers': GObject.Object.Notify;
-            'notify::message-id': GObject.Object.Notify;
-            'notify::mlist': GObject.Object.Notify;
-            'notify::preview': GObject.Object.Notify;
-            'notify::references': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::subject': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::to': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
-            'notify::user-flags': GObject.Object.Notify;
-            'notify::user-headers': GObject.Object.Notify;
-            'notify::user-tags': GObject.Object.Notify;
+            'notify::abort-notifications': (pspec: GObject.ParamSpec) => void;
+            'notify::cc': (pspec: GObject.ParamSpec) => void;
+            'notify::date-received': (pspec: GObject.ParamSpec) => void;
+            'notify::date-sent': (pspec: GObject.ParamSpec) => void;
+            'notify::dirty': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::folder-flagged': (pspec: GObject.ParamSpec) => void;
+            'notify::folder-flagged-stamp': (pspec: GObject.ParamSpec) => void;
+            'notify::from': (pspec: GObject.ParamSpec) => void;
+            'notify::headers': (pspec: GObject.ParamSpec) => void;
+            'notify::message-id': (pspec: GObject.ParamSpec) => void;
+            'notify::mlist': (pspec: GObject.ParamSpec) => void;
+            'notify::preview': (pspec: GObject.ParamSpec) => void;
+            'notify::references': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::subject': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::to': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::user-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::user-headers': (pspec: GObject.ParamSpec) => void;
+            'notify::user-tags': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22083,6 +22859,14 @@ export namespace Camel {
 
     class VeeMessageInfo extends MessageInfo {
         static $gtype: GObject.GType<VeeMessageInfo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VeeMessageInfo.SignalSignatures;
 
         // Constructors
 
@@ -22099,17 +22883,17 @@ export namespace Camel {
 
         connect<K extends keyof VeeMessageInfo.SignalSignatures>(
             signal: K,
-            callback: VeeMessageInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VeeMessageInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VeeMessageInfo.SignalSignatures>(
             signal: K,
-            callback: VeeMessageInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VeeMessageInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VeeMessageInfo.SignalSignatures>(
             signal: K,
-            ...args: VeeMessageInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VeeMessageInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22134,6 +22918,14 @@ export namespace Camel {
      */
     class VeeMessageInfoData extends GObject.Object {
         static $gtype: GObject.GType<VeeMessageInfoData>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VeeMessageInfoData.SignalSignatures;
 
         // Constructors
 
@@ -22147,17 +22939,17 @@ export namespace Camel {
 
         connect<K extends keyof VeeMessageInfoData.SignalSignatures>(
             signal: K,
-            callback: VeeMessageInfoData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VeeMessageInfoData.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VeeMessageInfoData.SignalSignatures>(
             signal: K,
-            callback: VeeMessageInfoData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VeeMessageInfoData.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VeeMessageInfoData.SignalSignatures>(
             signal: K,
-            ...args: VeeMessageInfoData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VeeMessageInfoData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22171,16 +22963,16 @@ export namespace Camel {
     namespace VeeStore {
         // Signal signatures
         interface SignalSignatures extends Store.SignalSignatures {
-            'notify::unmatched-enabled': GObject.Object.Notify;
-            'notify::connection-status': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::provider': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::session': GObject.Object.Notify;
-            'notify::settings': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
-            'notify::state-filename': GObject.Object.Notify;
+            'notify::unmatched-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::connection-status': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::provider': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::session': (pspec: GObject.ParamSpec) => void;
+            'notify::settings': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::state-filename': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22200,6 +22992,14 @@ export namespace Camel {
         set unmatched_enabled(val: boolean);
         get unmatchedEnabled(): boolean;
         set unmatchedEnabled(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VeeStore.SignalSignatures;
 
         // Constructors
 
@@ -22213,12 +23013,12 @@ export namespace Camel {
 
         connect_after<K extends keyof VeeStore.SignalSignatures>(
             signal: K,
-            callback: VeeStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VeeStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VeeStore.SignalSignatures>(
             signal: K,
-            ...args: VeeStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VeeStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22730,6 +23530,14 @@ export namespace Camel {
      */
     class VeeSubfolderData extends GObject.Object {
         static $gtype: GObject.GType<VeeSubfolderData>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VeeSubfolderData.SignalSignatures;
 
         // Constructors
 
@@ -22743,17 +23551,17 @@ export namespace Camel {
 
         connect<K extends keyof VeeSubfolderData.SignalSignatures>(
             signal: K,
-            callback: VeeSubfolderData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VeeSubfolderData.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VeeSubfolderData.SignalSignatures>(
             signal: K,
-            callback: VeeSubfolderData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VeeSubfolderData.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VeeSubfolderData.SignalSignatures>(
             signal: K,
-            ...args: VeeSubfolderData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VeeSubfolderData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22766,13 +23574,13 @@ export namespace Camel {
     namespace VeeSummary {
         // Signal signatures
         interface SignalSignatures extends FolderSummary.SignalSignatures {
-            'notify::deleted-count': GObject.Object.Notify;
-            'notify::folder': GObject.Object.Notify;
-            'notify::junk-count': GObject.Object.Notify;
-            'notify::junk-not-deleted-count': GObject.Object.Notify;
-            'notify::saved-count': GObject.Object.Notify;
-            'notify::unread-count': GObject.Object.Notify;
-            'notify::visible-count': GObject.Object.Notify;
+            'notify::deleted-count': (pspec: GObject.ParamSpec) => void;
+            'notify::folder': (pspec: GObject.ParamSpec) => void;
+            'notify::junk-count': (pspec: GObject.ParamSpec) => void;
+            'notify::junk-not-deleted-count': (pspec: GObject.ParamSpec) => void;
+            'notify::saved-count': (pspec: GObject.ParamSpec) => void;
+            'notify::unread-count': (pspec: GObject.ParamSpec) => void;
+            'notify::visible-count': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22782,6 +23590,14 @@ export namespace Camel {
 
     class VeeSummary extends FolderSummary {
         static $gtype: GObject.GType<VeeSummary>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VeeSummary.SignalSignatures;
 
         // Constructors
 
@@ -22795,17 +23611,17 @@ export namespace Camel {
 
         connect<K extends keyof VeeSummary.SignalSignatures>(
             signal: K,
-            callback: VeeSummary.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VeeSummary.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VeeSummary.SignalSignatures>(
             signal: K,
-            callback: VeeSummary.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VeeSummary.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VeeSummary.SignalSignatures>(
             signal: K,
-            ...args: VeeSummary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VeeSummary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

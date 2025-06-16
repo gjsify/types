@@ -167,22 +167,12 @@ export namespace Garcon {
      */
     function set_environment_xdg(fallback_env: string): void;
     namespace Menu {
-        // Signal callback interfaces
-
-        interface DirectoryChanged {
-            (_source: Menu, object: MenuDirectory, p0: MenuDirectory): void;
-        }
-
-        interface ReloadRequired {
-            (_source: Menu): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'directory-changed': DirectoryChanged;
-            'reload-required': ReloadRequired;
-            'notify::directory': GObject.Object.Notify;
-            'notify::file': GObject.Object.Notify;
+            'directory-changed': (arg0: MenuDirectory, arg1: MenuDirectory) => void;
+            'reload-required': () => void;
+            'notify::directory': (pspec: GObject.ParamSpec) => void;
+            'notify::file': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -207,6 +197,14 @@ export namespace Garcon {
          * The #GFile from which the %GarconMenu was loaded.
          */
         get file(): Gio.File;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Menu.SignalSignatures;
 
         // Constructors
 
@@ -222,13 +220,19 @@ export namespace Garcon {
 
         // Signals
 
-        connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        connect<K extends keyof Menu.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        connect_after<K extends keyof Menu.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Menu.SignalSignatures>(
             signal: K,
-            ...args: Menu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Menu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -774,11 +778,11 @@ export namespace Garcon {
     namespace MenuDirectory {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::comment': GObject.Object.Notify;
-            'notify::file': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::no-display': GObject.Object.Notify;
+            'notify::comment': (pspec: GObject.ParamSpec) => void;
+            'notify::file': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::no-display': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -830,6 +834,14 @@ export namespace Garcon {
          */
         get noDisplay(): boolean;
         set noDisplay(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MenuDirectory.SignalSignatures;
 
         // Constructors
 
@@ -843,17 +855,17 @@ export namespace Garcon {
 
         connect<K extends keyof MenuDirectory.SignalSignatures>(
             signal: K,
-            callback: MenuDirectory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuDirectory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuDirectory.SignalSignatures>(
             signal: K,
-            callback: MenuDirectory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuDirectory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuDirectory.SignalSignatures>(
             signal: K,
-            ...args: MenuDirectory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MenuDirectory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -936,29 +948,23 @@ export namespace Garcon {
     }
 
     namespace MenuItem {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: MenuItem): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            'notify::command': GObject.Object.Notify;
-            'notify::comment': GObject.Object.Notify;
-            'notify::desktop-id': GObject.Object.Notify;
-            'notify::file': GObject.Object.Notify;
-            'notify::generic-name': GObject.Object.Notify;
-            'notify::hidden': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::no-display': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::prefers-non-default-gpu': GObject.Object.Notify;
-            'notify::requires-terminal': GObject.Object.Notify;
-            'notify::supports-startup-notification': GObject.Object.Notify;
-            'notify::try-exec': GObject.Object.Notify;
+            changed: () => void;
+            'notify::command': (pspec: GObject.ParamSpec) => void;
+            'notify::comment': (pspec: GObject.ParamSpec) => void;
+            'notify::desktop-id': (pspec: GObject.ParamSpec) => void;
+            'notify::file': (pspec: GObject.ParamSpec) => void;
+            'notify::generic-name': (pspec: GObject.ParamSpec) => void;
+            'notify::hidden': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::no-display': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::prefers-non-default-gpu': (pspec: GObject.ParamSpec) => void;
+            'notify::requires-terminal': (pspec: GObject.ParamSpec) => void;
+            'notify::supports-startup-notification': (pspec: GObject.ParamSpec) => void;
+            'notify::try-exec': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1110,6 +1116,14 @@ export namespace Garcon {
          */
         get tryExec(): string;
         set tryExec(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MenuItem.SignalSignatures;
 
         // Constructors
 
@@ -1125,16 +1139,19 @@ export namespace Garcon {
 
         // Signals
 
-        connect<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: MenuItem.SignalSignatures[K]): number;
+        connect<K extends keyof MenuItem.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
-            callback: MenuItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
-            ...args: MenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1634,9 +1651,9 @@ export namespace Garcon {
     namespace MenuItemAction {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::command': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::command': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1674,6 +1691,14 @@ export namespace Garcon {
          */
         get name(): string;
         set name(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MenuItemAction.SignalSignatures;
 
         // Constructors
 
@@ -1687,17 +1712,17 @@ export namespace Garcon {
 
         connect<K extends keyof MenuItemAction.SignalSignatures>(
             signal: K,
-            callback: MenuItemAction.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuItemAction.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuItemAction.SignalSignatures>(
             signal: K,
-            callback: MenuItemAction.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuItemAction.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuItemAction.SignalSignatures>(
             signal: K,
-            ...args: MenuItemAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MenuItemAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1730,6 +1755,14 @@ export namespace Garcon {
 
     class MenuItemCache extends GObject.Object {
         static $gtype: GObject.GType<MenuItemCache>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MenuItemCache.SignalSignatures;
 
         // Constructors
 
@@ -1743,17 +1776,17 @@ export namespace Garcon {
 
         connect<K extends keyof MenuItemCache.SignalSignatures>(
             signal: K,
-            callback: MenuItemCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuItemCache.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuItemCache.SignalSignatures>(
             signal: K,
-            callback: MenuItemCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuItemCache.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuItemCache.SignalSignatures>(
             signal: K,
-            ...args: MenuItemCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MenuItemCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1776,6 +1809,14 @@ export namespace Garcon {
 
     class MenuItemPool extends GObject.Object {
         static $gtype: GObject.GType<MenuItemPool>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MenuItemPool.SignalSignatures;
 
         // Constructors
 
@@ -1789,17 +1830,17 @@ export namespace Garcon {
 
         connect<K extends keyof MenuItemPool.SignalSignatures>(
             signal: K,
-            callback: MenuItemPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuItemPool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuItemPool.SignalSignatures>(
             signal: K,
-            callback: MenuItemPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuItemPool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuItemPool.SignalSignatures>(
             signal: K,
-            ...args: MenuItemPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MenuItemPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1817,7 +1858,7 @@ export namespace Garcon {
     namespace MenuMerger {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::tree-provider': GObject.Object.Notify;
+            'notify::tree-provider': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1835,6 +1876,14 @@ export namespace Garcon {
 
         get tree_provider(): MenuTreeProvider;
         get treeProvider(): MenuTreeProvider;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MenuMerger.SignalSignatures;
 
         // Constructors
 
@@ -1848,17 +1897,17 @@ export namespace Garcon {
 
         connect<K extends keyof MenuMerger.SignalSignatures>(
             signal: K,
-            callback: MenuMerger.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuMerger.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuMerger.SignalSignatures>(
             signal: K,
-            callback: MenuMerger.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuMerger.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuMerger.SignalSignatures>(
             signal: K,
-            ...args: MenuMerger.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MenuMerger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2313,7 +2362,7 @@ export namespace Garcon {
     namespace MenuNode {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2333,6 +2382,14 @@ export namespace Garcon {
         set node_type(val: MenuNodeType);
         get nodeType(): MenuNodeType;
         set nodeType(val: MenuNodeType);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MenuNode.SignalSignatures;
 
         // Constructors
 
@@ -2344,16 +2401,19 @@ export namespace Garcon {
 
         // Signals
 
-        connect<K extends keyof MenuNode.SignalSignatures>(signal: K, callback: MenuNode.SignalSignatures[K]): number;
+        connect<K extends keyof MenuNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MenuNode.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuNode.SignalSignatures>(
             signal: K,
-            callback: MenuNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuNode.SignalSignatures>(
             signal: K,
-            ...args: MenuNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MenuNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2390,7 +2450,7 @@ export namespace Garcon {
     namespace MenuParser {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::file': GObject.Object.Notify;
+            'notify::file': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2406,6 +2466,14 @@ export namespace Garcon {
         // Properties
 
         get file(): Gio.File;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MenuParser.SignalSignatures;
 
         // Constructors
 
@@ -2419,17 +2487,17 @@ export namespace Garcon {
 
         connect<K extends keyof MenuParser.SignalSignatures>(
             signal: K,
-            callback: MenuParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuParser.SignalSignatures>(
             signal: K,
-            callback: MenuParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuParser.SignalSignatures>(
             signal: K,
-            ...args: MenuParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MenuParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2892,6 +2960,14 @@ export namespace Garcon {
 
     class MenuSeparator extends GObject.Object implements MenuElement {
         static $gtype: GObject.GType<MenuSeparator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MenuSeparator.SignalSignatures;
 
         // Constructors
 
@@ -2905,17 +2981,17 @@ export namespace Garcon {
 
         connect<K extends keyof MenuSeparator.SignalSignatures>(
             signal: K,
-            callback: MenuSeparator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuSeparator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuSeparator.SignalSignatures>(
             signal: K,
-            callback: MenuSeparator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuSeparator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuSeparator.SignalSignatures>(
             signal: K,
-            ...args: MenuSeparator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MenuSeparator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

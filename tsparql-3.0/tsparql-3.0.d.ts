@@ -421,7 +421,7 @@ export namespace Tsparql {
     namespace Batch {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::connection': GObject.Object.Notify;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -459,6 +459,14 @@ export namespace Tsparql {
          * The [class`SparqlConnection]` the batch belongs to.
          */
         get connection(): SparqlConnection;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Batch.SignalSignatures;
 
         // Constructors
 
@@ -468,13 +476,19 @@ export namespace Tsparql {
 
         // Signals
 
-        connect<K extends keyof Batch.SignalSignatures>(signal: K, callback: Batch.SignalSignatures[K]): number;
+        connect<K extends keyof Batch.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Batch.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Batch.SignalSignatures>(signal: K, callback: Batch.SignalSignatures[K]): number;
+        connect_after<K extends keyof Batch.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Batch.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Batch.SignalSignatures>(
             signal: K,
-            ...args: Batch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Batch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -595,10 +609,10 @@ export namespace Tsparql {
     namespace Endpoint {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::allowed-graphs': GObject.Object.Notify;
-            'notify::allowed-services': GObject.Object.Notify;
-            'notify::readonly': GObject.Object.Notify;
-            'notify::sparql-connection': GObject.Object.Notify;
+            'notify::allowed-graphs': (pspec: GObject.ParamSpec) => void;
+            'notify::allowed-services': (pspec: GObject.ParamSpec) => void;
+            'notify::readonly': (pspec: GObject.ParamSpec) => void;
+            'notify::sparql-connection': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -690,6 +704,14 @@ export namespace Tsparql {
          * The [class`SparqlConnection]` being proxied by this endpoint.
          */
         get sparqlConnection(): SparqlConnection;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Endpoint.SignalSignatures;
 
         // Constructors
 
@@ -699,16 +721,19 @@ export namespace Tsparql {
 
         // Signals
 
-        connect<K extends keyof Endpoint.SignalSignatures>(signal: K, callback: Endpoint.SignalSignatures[K]): number;
+        connect<K extends keyof Endpoint.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Endpoint.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
-            callback: Endpoint.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Endpoint.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
-            ...args: Endpoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Endpoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -788,21 +813,15 @@ export namespace Tsparql {
     }
 
     namespace EndpointDBus {
-        // Signal callback interfaces
-
-        interface BlockCall {
-            (_source: EndpointDBus, object: string): boolean | void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Endpoint.SignalSignatures {
-            'block-call': BlockCall;
-            'notify::dbus-connection': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
-            'notify::allowed-graphs': GObject.Object.Notify;
-            'notify::allowed-services': GObject.Object.Notify;
-            'notify::readonly': GObject.Object.Notify;
-            'notify::sparql-connection': GObject.Object.Notify;
+            'block-call': (arg0: string) => boolean | void;
+            'notify::dbus-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::object-path': (pspec: GObject.ParamSpec) => void;
+            'notify::allowed-graphs': (pspec: GObject.ParamSpec) => void;
+            'notify::allowed-services': (pspec: GObject.ParamSpec) => void;
+            'notify::readonly': (pspec: GObject.ParamSpec) => void;
+            'notify::sparql-connection': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -879,6 +898,14 @@ export namespace Tsparql {
          * The DBus object path that this endpoint manages.
          */
         get objectPath(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: EndpointDBus.SignalSignatures;
 
         // Constructors
 
@@ -897,17 +924,17 @@ export namespace Tsparql {
 
         connect<K extends keyof EndpointDBus.SignalSignatures>(
             signal: K,
-            callback: EndpointDBus.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EndpointDBus.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EndpointDBus.SignalSignatures>(
             signal: K,
-            callback: EndpointDBus.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EndpointDBus.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EndpointDBus.SignalSignatures>(
             signal: K,
-            ...args: EndpointDBus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<EndpointDBus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1439,21 +1466,15 @@ export namespace Tsparql {
     }
 
     namespace EndpointHttp {
-        // Signal callback interfaces
-
-        interface BlockRemoteAddress {
-            (_source: EndpointHttp, address: Gio.SocketAddress): boolean | void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Endpoint.SignalSignatures {
-            'block-remote-address': BlockRemoteAddress;
-            'notify::http-certificate': GObject.Object.Notify;
-            'notify::http-port': GObject.Object.Notify;
-            'notify::allowed-graphs': GObject.Object.Notify;
-            'notify::allowed-services': GObject.Object.Notify;
-            'notify::readonly': GObject.Object.Notify;
-            'notify::sparql-connection': GObject.Object.Notify;
+            'block-remote-address': (arg0: Gio.SocketAddress) => boolean | void;
+            'notify::http-certificate': (pspec: GObject.ParamSpec) => void;
+            'notify::http-port': (pspec: GObject.ParamSpec) => void;
+            'notify::allowed-graphs': (pspec: GObject.ParamSpec) => void;
+            'notify::allowed-services': (pspec: GObject.ParamSpec) => void;
+            'notify::readonly': (pspec: GObject.ParamSpec) => void;
+            'notify::sparql-connection': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1528,6 +1549,14 @@ export namespace Tsparql {
          * HTTP port used to listen requests.
          */
         get httpPort(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: EndpointHttp.SignalSignatures;
 
         // Constructors
 
@@ -1546,17 +1575,17 @@ export namespace Tsparql {
 
         connect<K extends keyof EndpointHttp.SignalSignatures>(
             signal: K,
-            callback: EndpointHttp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EndpointHttp.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EndpointHttp.SignalSignatures>(
             signal: K,
-            callback: EndpointHttp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EndpointHttp.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EndpointHttp.SignalSignatures>(
             signal: K,
-            ...args: EndpointHttp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<EndpointHttp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2111,6 +2140,14 @@ export namespace Tsparql {
      */
     class NamespaceManager extends GObject.Object {
         static $gtype: GObject.GType<NamespaceManager>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NamespaceManager.SignalSignatures;
 
         // Constructors
 
@@ -2124,17 +2161,17 @@ export namespace Tsparql {
 
         connect<K extends keyof NamespaceManager.SignalSignatures>(
             signal: K,
-            callback: NamespaceManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NamespaceManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NamespaceManager.SignalSignatures>(
             signal: K,
-            callback: NamespaceManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NamespaceManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NamespaceManager.SignalSignatures>(
             signal: K,
-            ...args: NamespaceManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NamespaceManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2208,16 +2245,10 @@ export namespace Tsparql {
     }
 
     namespace Notifier {
-        // Signal callback interfaces
-
-        interface Events {
-            (_source: Notifier, service: string, graph: string, events: NotifierEvent[]): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            events: Events;
-            'notify::connection': GObject.Object.Notify;
+            events: (arg0: string, arg1: string, arg2: NotifierEvent[]) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2269,6 +2300,14 @@ export namespace Tsparql {
          * SPARQL connection to listen to.
          */
         get connection(): SparqlConnection;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Notifier.SignalSignatures;
 
         // Constructors
 
@@ -2278,16 +2317,19 @@ export namespace Tsparql {
 
         // Signals
 
-        connect<K extends keyof Notifier.SignalSignatures>(signal: K, callback: Notifier.SignalSignatures[K]): number;
+        connect<K extends keyof Notifier.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Notifier.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Notifier.SignalSignatures>(
             signal: K,
-            callback: Notifier.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Notifier.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Notifier.SignalSignatures>(
             signal: K,
-            ...args: Notifier.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Notifier.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2334,7 +2376,7 @@ export namespace Tsparql {
     namespace Resource {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::identifier': GObject.Object.Notify;
+            'notify::identifier': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2386,6 +2428,14 @@ export namespace Tsparql {
          */
         get identifier(): string;
         set identifier(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Resource.SignalSignatures;
 
         // Constructors
 
@@ -2397,16 +2447,19 @@ export namespace Tsparql {
 
         // Signals
 
-        connect<K extends keyof Resource.SignalSignatures>(signal: K, callback: Resource.SignalSignatures[K]): number;
+        connect<K extends keyof Resource.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Resource.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Resource.SignalSignatures>(
             signal: K,
-            callback: Resource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Resource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Resource.SignalSignatures>(
             signal: K,
-            ...args: Resource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Resource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2879,6 +2932,14 @@ export namespace Tsparql {
      */
     abstract class SparqlConnection extends GObject.Object {
         static $gtype: GObject.GType<SparqlConnection>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SparqlConnection.SignalSignatures;
 
         // Constructors
 
@@ -2909,17 +2970,17 @@ export namespace Tsparql {
 
         connect<K extends keyof SparqlConnection.SignalSignatures>(
             signal: K,
-            callback: SparqlConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SparqlConnection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SparqlConnection.SignalSignatures>(
             signal: K,
-            callback: SparqlConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SparqlConnection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SparqlConnection.SignalSignatures>(
             signal: K,
-            ...args: SparqlConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SparqlConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3635,8 +3696,8 @@ export namespace Tsparql {
     namespace SparqlCursor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::connection': GObject.Object.Notify;
-            'notify::n-columns': GObject.Object.Notify;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::n-columns': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3692,6 +3753,14 @@ export namespace Tsparql {
          * Number of columns available in the result set.
          */
         get nColumns(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SparqlCursor.SignalSignatures;
 
         // Constructors
 
@@ -3703,17 +3772,17 @@ export namespace Tsparql {
 
         connect<K extends keyof SparqlCursor.SignalSignatures>(
             signal: K,
-            callback: SparqlCursor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SparqlCursor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SparqlCursor.SignalSignatures>(
             signal: K,
-            callback: SparqlCursor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SparqlCursor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SparqlCursor.SignalSignatures>(
             signal: K,
-            ...args: SparqlCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SparqlCursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3897,8 +3966,8 @@ export namespace Tsparql {
     namespace SparqlStatement {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::connection': GObject.Object.Notify;
-            'notify::sparql': GObject.Object.Notify;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::sparql': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3954,6 +4023,14 @@ export namespace Tsparql {
          * SPARQL query stored in this statement.
          */
         get sparql(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SparqlStatement.SignalSignatures;
 
         // Constructors
 
@@ -3965,17 +4042,17 @@ export namespace Tsparql {
 
         connect<K extends keyof SparqlStatement.SignalSignatures>(
             signal: K,
-            callback: SparqlStatement.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SparqlStatement.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SparqlStatement.SignalSignatures>(
             signal: K,
-            callback: SparqlStatement.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SparqlStatement.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SparqlStatement.SignalSignatures>(
             signal: K,
-            ...args: SparqlStatement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SparqlStatement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

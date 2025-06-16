@@ -33,7 +33,7 @@ export namespace GCi {
     namespace EntryController {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::entry': GObject.Object.Notify;
+            'notify::entry': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -50,6 +50,14 @@ export namespace GCi {
 
         get entry(): Gtk.Entry;
         set entry(val: Gtk.Entry);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: EntryController.SignalSignatures;
 
         // Constructors
 
@@ -65,17 +73,17 @@ export namespace GCi {
 
         connect<K extends keyof EntryController.SignalSignatures>(
             signal: K,
-            callback: EntryController.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EntryController.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EntryController.SignalSignatures>(
             signal: K,
-            callback: EntryController.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EntryController.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EntryController.SignalSignatures>(
             signal: K,
-            ...args: EntryController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<EntryController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

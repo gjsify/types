@@ -5753,29 +5753,15 @@ export namespace Mbim {
         SIM_REMOVABLE,
     }
     namespace Device {
-        // Signal callback interfaces
-
-        interface DeviceError {
-            (_source: Device, object: GLib.Error): void;
-        }
-
-        interface DeviceIndicateStatus {
-            (_source: Device, object: Message): void;
-        }
-
-        interface DeviceRemoved {
-            (_source: Device): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'device-error': DeviceError;
-            'device-indicate-status': DeviceIndicateStatus;
-            'device-removed': DeviceRemoved;
-            'notify::device-consecutive-timeouts': GObject.Object.Notify;
-            'notify::device-file': GObject.Object.Notify;
-            'notify::device-in-session': GObject.Object.Notify;
-            'notify::device-transaction-id': GObject.Object.Notify;
+            'device-error': (arg0: GLib.Error) => void;
+            'device-indicate-status': (arg0: Message) => void;
+            'device-removed': () => void;
+            'notify::device-consecutive-timeouts': (pspec: GObject.ParamSpec) => void;
+            'notify::device-file': (pspec: GObject.ParamSpec) => void;
+            'notify::device-in-session': (pspec: GObject.ParamSpec) => void;
+            'notify::device-transaction-id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5813,6 +5799,14 @@ export namespace Mbim {
         set device_transaction_id(val: number);
         get deviceTransactionId(): number;
         set deviceTransactionId(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -5827,13 +5821,19 @@ export namespace Mbim {
 
         // Signals
 
-        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
-            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6996,10 +6996,10 @@ export namespace Mbim {
     namespace Proxy {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::mbim-proxy-n-clients': GObject.Object.Notify;
-            'notify::mbim-proxy-nclients': GObject.Object.Notify;
-            'notify::mbim-proxy-n-devices': GObject.Object.Notify;
-            'notify::mbim-proxy-ndevices': GObject.Object.Notify;
+            'notify::mbim-proxy-n-clients': (pspec: GObject.ParamSpec) => void;
+            'notify::mbim-proxy-nclients': (pspec: GObject.ParamSpec) => void;
+            'notify::mbim-proxy-n-devices': (pspec: GObject.ParamSpec) => void;
+            'notify::mbim-proxy-ndevices': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7025,6 +7025,14 @@ export namespace Mbim {
         get mbimProxyNClients(): number;
         get mbim_proxy_n_devices(): number;
         get mbimProxyNDevices(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Proxy.SignalSignatures;
 
         // Constructors
 
@@ -7036,13 +7044,19 @@ export namespace Mbim {
 
         // Signals
 
-        connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect_after<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Proxy.SignalSignatures>(
             signal: K,
-            ...args: Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Proxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

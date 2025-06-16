@@ -30,20 +30,10 @@ export namespace GnomeBG {
      */
 
     namespace BG {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: BG): void;
-        }
-
-        interface Transitioned {
-            (_source: BG): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            transitioned: Transitioned;
+            changed: () => void;
+            transitioned: () => void;
         }
 
         // Constructor properties interface
@@ -53,6 +43,14 @@ export namespace GnomeBG {
 
     class BG extends GObject.Object {
         static $gtype: GObject.GType<BG>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BG.SignalSignatures;
 
         // Constructors
 
@@ -64,13 +62,19 @@ export namespace GnomeBG {
 
         // Signals
 
-        connect<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
+        connect<K extends keyof BG.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, BG.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
+        connect_after<K extends keyof BG.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, BG.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BG.SignalSignatures>(
             signal: K,
-            ...args: BG.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BG.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -132,10 +136,10 @@ export namespace GnomeBG {
     namespace BGSlideShow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::file': GObject.Object.Notify;
-            'notify::has-multiple-sizes': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
-            'notify::total-duration': GObject.Object.Notify;
+            'notify::file': (pspec: GObject.ParamSpec) => void;
+            'notify::has-multiple-sizes': (pspec: GObject.ParamSpec) => void;
+            'notify::start-time': (pspec: GObject.ParamSpec) => void;
+            'notify::total-duration': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -163,6 +167,14 @@ export namespace GnomeBG {
         get startTime(): number;
         get total_duration(): number;
         get totalDuration(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BGSlideShow.SignalSignatures;
 
         // Fields
 
@@ -180,17 +192,17 @@ export namespace GnomeBG {
 
         connect<K extends keyof BGSlideShow.SignalSignatures>(
             signal: K,
-            callback: BGSlideShow.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BGSlideShow.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BGSlideShow.SignalSignatures>(
             signal: K,
-            callback: BGSlideShow.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BGSlideShow.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BGSlideShow.SignalSignatures>(
             signal: K,
-            ...args: BGSlideShow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BGSlideShow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

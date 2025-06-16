@@ -130,31 +130,17 @@ export namespace Accounts {
         (account: Account, error: GLib.Error): void;
     }
     namespace Account {
-        // Signal callback interfaces
-
-        interface Deleted {
-            (_source: Account): void;
-        }
-
-        interface DisplayNameChanged {
-            (_source: Account): void;
-        }
-
-        interface Enabled {
-            (_source: Account, service: string, enabled: boolean): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            deleted: Deleted;
-            'display-name-changed': DisplayNameChanged;
-            enabled: Enabled;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::enabled': GObject.Object.Notify;
-            'notify::foreign': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::manager': GObject.Object.Notify;
-            'notify::provider': GObject.Object.Notify;
+            deleted: () => void;
+            'display-name-changed': () => void;
+            enabled: (arg0: string, arg1: boolean) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::foreign': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::manager': (pspec: GObject.ParamSpec) => void;
+            'notify::provider': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -203,6 +189,14 @@ export namespace Accounts {
          * The ID of the provider for the account.
          */
         get provider(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Account.SignalSignatures;
 
         // Constructors
 
@@ -212,16 +206,19 @@ export namespace Accounts {
 
         // Signals
 
-        connect<K extends keyof Account.SignalSignatures>(signal: K, callback: Account.SignalSignatures[K]): number;
+        connect<K extends keyof Account.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Account.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Account.SignalSignatures>(
             signal: K,
-            callback: Account.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Account.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Account.SignalSignatures>(
             signal: K,
-            ...args: Account.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Account.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -959,23 +956,13 @@ export namespace Accounts {
     }
 
     namespace AccountService {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: AccountService): void;
-        }
-
-        interface Enabled {
-            (_source: AccountService, enabled: boolean): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            enabled: Enabled;
-            'notify::account': GObject.Object.Notify;
-            'notify::enabled': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
+            changed: () => void;
+            enabled: (arg0: boolean) => void;
+            'notify::account': (pspec: GObject.ParamSpec) => void;
+            'notify::enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1011,6 +998,14 @@ export namespace Accounts {
          * The #AgService used by the account service.
          */
         get service(): Service;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AccountService.SignalSignatures;
 
         // Constructors
 
@@ -1024,17 +1019,17 @@ export namespace Accounts {
 
         connect<K extends keyof AccountService.SignalSignatures>(
             signal: K,
-            callback: AccountService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AccountService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AccountService.SignalSignatures>(
             signal: K,
-            callback: AccountService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AccountService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AccountService.SignalSignatures>(
             signal: K,
-            ...args: AccountService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AccountService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1132,34 +1127,16 @@ export namespace Accounts {
     }
 
     namespace Manager {
-        // Signal callback interfaces
-
-        interface AccountCreated {
-            (_source: Manager, account_id: number): void;
-        }
-
-        interface AccountDeleted {
-            (_source: Manager, account_id: number): void;
-        }
-
-        interface AccountUpdated {
-            (_source: Manager, account_id: number): void;
-        }
-
-        interface EnabledEvent {
-            (_source: Manager, account_id: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'account-created': AccountCreated;
-            'account-deleted': AccountDeleted;
-            'account-updated': AccountUpdated;
-            'enabled-event': EnabledEvent;
-            'notify::abort-on-db-timeout': GObject.Object.Notify;
-            'notify::db-timeout': GObject.Object.Notify;
-            'notify::service-type': GObject.Object.Notify;
-            'notify::use-dbus': GObject.Object.Notify;
+            'account-created': (arg0: number) => void;
+            'account-deleted': (arg0: number) => void;
+            'account-updated': (arg0: number) => void;
+            'enabled-event': (arg0: number) => void;
+            'notify::abort-on-db-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::db-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::service-type': (pspec: GObject.ParamSpec) => void;
+            'notify::use-dbus': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1232,6 +1209,14 @@ export namespace Accounts {
          * such as maintenance programs.
          */
         get useDbus(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Manager.SignalSignatures;
 
         // Constructors
 
@@ -1245,16 +1230,19 @@ export namespace Accounts {
 
         // Signals
 
-        connect<K extends keyof Manager.SignalSignatures>(signal: K, callback: Manager.SignalSignatures[K]): number;
+        connect<K extends keyof Manager.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Manager.SignalSignatures>(
             signal: K,
-            callback: Manager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Manager.SignalSignatures>(
             signal: K,
-            ...args: Manager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Manager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

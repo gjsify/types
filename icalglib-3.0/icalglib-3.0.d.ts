@@ -1171,11 +1171,11 @@ export namespace ICalGLib {
     namespace Array {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1188,6 +1188,14 @@ export namespace ICalGLib {
      */
     class Array extends Object {
         static $gtype: GObject.GType<Array>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Array.SignalSignatures;
 
         // Constructors
 
@@ -1197,13 +1205,19 @@ export namespace ICalGLib {
 
         // Signals
 
-        connect<K extends keyof Array.SignalSignatures>(signal: K, callback: Array.SignalSignatures[K]): number;
+        connect<K extends keyof Array.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Array.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Array.SignalSignatures>(signal: K, callback: Array.SignalSignatures[K]): number;
+        connect_after<K extends keyof Array.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Array.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Array.SignalSignatures>(
             signal: K,
-            ...args: Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Array.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1229,11 +1243,11 @@ export namespace ICalGLib {
     namespace Attach {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1246,6 +1260,14 @@ export namespace ICalGLib {
      */
     class Attach extends Object {
         static $gtype: GObject.GType<Attach>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Attach.SignalSignatures;
 
         // Constructors
 
@@ -1261,13 +1283,19 @@ export namespace ICalGLib {
 
         // Signals
 
-        connect<K extends keyof Attach.SignalSignatures>(signal: K, callback: Attach.SignalSignatures[K]): number;
+        connect<K extends keyof Attach.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Attach.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Attach.SignalSignatures>(signal: K, callback: Attach.SignalSignatures[K]): number;
+        connect_after<K extends keyof Attach.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Attach.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Attach.SignalSignatures>(
             signal: K,
-            ...args: Attach.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Attach.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1295,11 +1323,11 @@ export namespace ICalGLib {
     namespace CompIter {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1312,6 +1340,14 @@ export namespace ICalGLib {
      */
     class CompIter extends Object {
         static $gtype: GObject.GType<CompIter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CompIter.SignalSignatures;
 
         // Constructors
 
@@ -1321,16 +1357,19 @@ export namespace ICalGLib {
 
         // Signals
 
-        connect<K extends keyof CompIter.SignalSignatures>(signal: K, callback: CompIter.SignalSignatures[K]): number;
+        connect<K extends keyof CompIter.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, CompIter.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CompIter.SignalSignatures>(
             signal: K,
-            callback: CompIter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CompIter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CompIter.SignalSignatures>(
             signal: K,
-            ...args: CompIter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CompIter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1356,11 +1395,11 @@ export namespace ICalGLib {
     namespace Component {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1373,6 +1412,14 @@ export namespace ICalGLib {
      */
     class Component extends Object {
         static $gtype: GObject.GType<Component>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Component.SignalSignatures;
 
         // Constructors
 
@@ -1420,16 +1467,19 @@ export namespace ICalGLib {
 
         // Signals
 
-        connect<K extends keyof Component.SignalSignatures>(signal: K, callback: Component.SignalSignatures[K]): number;
+        connect<K extends keyof Component.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Component.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Component.SignalSignatures>(
             signal: K,
-            callback: Component.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Component.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Component.SignalSignatures>(
             signal: K,
-            ...args: Component.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Component.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1781,11 +1831,11 @@ export namespace ICalGLib {
     namespace Datetimeperiod {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1798,6 +1848,14 @@ export namespace ICalGLib {
      */
     class Datetimeperiod extends Object {
         static $gtype: GObject.GType<Datetimeperiod>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Datetimeperiod.SignalSignatures;
 
         // Constructors
 
@@ -1811,17 +1869,17 @@ export namespace ICalGLib {
 
         connect<K extends keyof Datetimeperiod.SignalSignatures>(
             signal: K,
-            callback: Datetimeperiod.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Datetimeperiod.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Datetimeperiod.SignalSignatures>(
             signal: K,
-            callback: Datetimeperiod.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Datetimeperiod.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Datetimeperiod.SignalSignatures>(
             signal: K,
-            ...args: Datetimeperiod.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Datetimeperiod.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1852,11 +1910,11 @@ export namespace ICalGLib {
     namespace Duration {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1869,6 +1927,14 @@ export namespace ICalGLib {
      */
     class Duration extends Object {
         static $gtype: GObject.GType<Duration>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Duration.SignalSignatures;
 
         // Constructors
 
@@ -1886,16 +1952,19 @@ export namespace ICalGLib {
 
         // Signals
 
-        connect<K extends keyof Duration.SignalSignatures>(signal: K, callback: Duration.SignalSignatures[K]): number;
+        connect<K extends keyof Duration.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Duration.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Duration.SignalSignatures>(
             signal: K,
-            callback: Duration.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Duration.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Duration.SignalSignatures>(
             signal: K,
-            ...args: Duration.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Duration.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1986,11 +2055,11 @@ export namespace ICalGLib {
     namespace Geo {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2003,6 +2072,14 @@ export namespace ICalGLib {
      */
     class Geo extends Object {
         static $gtype: GObject.GType<Geo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Geo.SignalSignatures;
 
         // Constructors
 
@@ -2014,13 +2091,19 @@ export namespace ICalGLib {
 
         // Signals
 
-        connect<K extends keyof Geo.SignalSignatures>(signal: K, callback: Geo.SignalSignatures[K]): number;
+        connect<K extends keyof Geo.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Geo.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Geo.SignalSignatures>(signal: K, callback: Geo.SignalSignatures[K]): number;
+        connect_after<K extends keyof Geo.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Geo.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Geo.SignalSignatures>(
             signal: K,
-            ...args: Geo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Geo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2056,11 +2139,11 @@ export namespace ICalGLib {
     namespace Object {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2127,6 +2210,14 @@ export namespace ICalGLib {
          */
         get owner(): GObject.Object;
         set owner(val: GObject.Object);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -2136,13 +2227,19 @@ export namespace ICalGLib {
 
         // Signals
 
-        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
-            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2220,11 +2317,11 @@ export namespace ICalGLib {
     namespace Parameter {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2237,6 +2334,14 @@ export namespace ICalGLib {
      */
     class Parameter extends Object {
         static $gtype: GObject.GType<Parameter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Parameter.SignalSignatures;
 
         // Constructors
 
@@ -2352,16 +2457,19 @@ export namespace ICalGLib {
 
         // Signals
 
-        connect<K extends keyof Parameter.SignalSignatures>(signal: K, callback: Parameter.SignalSignatures[K]): number;
+        connect<K extends keyof Parameter.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Parameter.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Parameter.SignalSignatures>(
             signal: K,
-            callback: Parameter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Parameter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Parameter.SignalSignatures>(
             signal: K,
-            ...args: Parameter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Parameter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2571,11 +2679,11 @@ export namespace ICalGLib {
     namespace Parser {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2588,6 +2696,14 @@ export namespace ICalGLib {
      */
     class Parser extends Object {
         static $gtype: GObject.GType<Parser>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Parser.SignalSignatures;
 
         // Constructors
 
@@ -2599,13 +2715,19 @@ export namespace ICalGLib {
 
         // Signals
 
-        connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect_after<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Parser.SignalSignatures>(
             signal: K,
-            ...args: Parser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Parser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2660,11 +2782,11 @@ export namespace ICalGLib {
     namespace Period {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2677,6 +2799,14 @@ export namespace ICalGLib {
      */
     class Period extends Object {
         static $gtype: GObject.GType<Period>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Period.SignalSignatures;
 
         // Constructors
 
@@ -2690,13 +2820,19 @@ export namespace ICalGLib {
 
         // Signals
 
-        connect<K extends keyof Period.SignalSignatures>(signal: K, callback: Period.SignalSignatures[K]): number;
+        connect<K extends keyof Period.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Period.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Period.SignalSignatures>(signal: K, callback: Period.SignalSignatures[K]): number;
+        connect_after<K extends keyof Period.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Period.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Period.SignalSignatures>(
             signal: K,
-            ...args: Period.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Period.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2752,11 +2888,11 @@ export namespace ICalGLib {
     namespace Property {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2769,6 +2905,14 @@ export namespace ICalGLib {
      */
     class Property extends Object {
         static $gtype: GObject.GType<Property>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Property.SignalSignatures;
 
         // Constructors
 
@@ -3010,16 +3154,19 @@ export namespace ICalGLib {
 
         // Signals
 
-        connect<K extends keyof Property.SignalSignatures>(signal: K, callback: Property.SignalSignatures[K]): number;
+        connect<K extends keyof Property.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Property.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Property.SignalSignatures>(
             signal: K,
-            callback: Property.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Property.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Property.SignalSignatures>(
             signal: K,
-            ...args: Property.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Property.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4376,11 +4523,11 @@ export namespace ICalGLib {
     namespace RecurIterator {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4393,6 +4540,14 @@ export namespace ICalGLib {
      */
     class RecurIterator extends Object {
         static $gtype: GObject.GType<RecurIterator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RecurIterator.SignalSignatures;
 
         // Constructors
 
@@ -4406,17 +4561,17 @@ export namespace ICalGLib {
 
         connect<K extends keyof RecurIterator.SignalSignatures>(
             signal: K,
-            callback: RecurIterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RecurIterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecurIterator.SignalSignatures>(
             signal: K,
-            callback: RecurIterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RecurIterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecurIterator.SignalSignatures>(
             signal: K,
-            ...args: RecurIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RecurIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4440,11 +4595,11 @@ export namespace ICalGLib {
     namespace Recurrence {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4457,6 +4612,14 @@ export namespace ICalGLib {
      */
     class Recurrence extends Object {
         static $gtype: GObject.GType<Recurrence>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Recurrence.SignalSignatures;
 
         // Constructors
 
@@ -4472,17 +4635,17 @@ export namespace ICalGLib {
 
         connect<K extends keyof Recurrence.SignalSignatures>(
             signal: K,
-            callback: Recurrence.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Recurrence.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Recurrence.SignalSignatures>(
             signal: K,
-            callback: Recurrence.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Recurrence.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Recurrence.SignalSignatures>(
             signal: K,
-            ...args: Recurrence.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Recurrence.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4816,11 +4979,11 @@ export namespace ICalGLib {
     namespace Reqstat {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4833,6 +4996,14 @@ export namespace ICalGLib {
      */
     class Reqstat extends Object {
         static $gtype: GObject.GType<Reqstat>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Reqstat.SignalSignatures;
 
         // Constructors
 
@@ -4844,16 +5015,19 @@ export namespace ICalGLib {
 
         // Signals
 
-        connect<K extends keyof Reqstat.SignalSignatures>(signal: K, callback: Reqstat.SignalSignatures[K]): number;
+        connect<K extends keyof Reqstat.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Reqstat.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Reqstat.SignalSignatures>(
             signal: K,
-            callback: Reqstat.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Reqstat.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Reqstat.SignalSignatures>(
             signal: K,
-            ...args: Reqstat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Reqstat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4889,11 +5063,11 @@ export namespace ICalGLib {
     namespace Time {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4906,6 +5080,14 @@ export namespace ICalGLib {
      */
     class Time extends Object {
         static $gtype: GObject.GType<Time>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Time.SignalSignatures;
 
         // Constructors
 
@@ -4931,13 +5113,19 @@ export namespace ICalGLib {
 
         // Signals
 
-        connect<K extends keyof Time.SignalSignatures>(signal: K, callback: Time.SignalSignatures[K]): number;
+        connect<K extends keyof Time.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Time.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Time.SignalSignatures>(signal: K, callback: Time.SignalSignatures[K]): number;
+        connect_after<K extends keyof Time.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Time.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Time.SignalSignatures>(
             signal: K,
-            ...args: Time.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Time.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5217,11 +5405,11 @@ export namespace ICalGLib {
     namespace TimeSpan {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5234,6 +5422,14 @@ export namespace ICalGLib {
      */
     class TimeSpan extends Object {
         static $gtype: GObject.GType<TimeSpan>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TimeSpan.SignalSignatures;
 
         // Constructors
 
@@ -5247,16 +5443,19 @@ export namespace ICalGLib {
 
         // Signals
 
-        connect<K extends keyof TimeSpan.SignalSignatures>(signal: K, callback: TimeSpan.SignalSignatures[K]): number;
+        connect<K extends keyof TimeSpan.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TimeSpan.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TimeSpan.SignalSignatures>(
             signal: K,
-            callback: TimeSpan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TimeSpan.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TimeSpan.SignalSignatures>(
             signal: K,
-            ...args: TimeSpan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TimeSpan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5314,11 +5513,11 @@ export namespace ICalGLib {
     namespace Timezone {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5331,6 +5530,14 @@ export namespace ICalGLib {
      */
     class Timezone extends Object {
         static $gtype: GObject.GType<Timezone>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Timezone.SignalSignatures;
 
         // Constructors
 
@@ -5344,16 +5551,19 @@ export namespace ICalGLib {
 
         // Signals
 
-        connect<K extends keyof Timezone.SignalSignatures>(signal: K, callback: Timezone.SignalSignatures[K]): number;
+        connect<K extends keyof Timezone.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Timezone.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Timezone.SignalSignatures>(
             signal: K,
-            callback: Timezone.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Timezone.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Timezone.SignalSignatures>(
             signal: K,
-            ...args: Timezone.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Timezone.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5526,11 +5736,11 @@ export namespace ICalGLib {
     namespace Trigger {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5543,6 +5753,14 @@ export namespace ICalGLib {
      */
     class Trigger extends Object {
         static $gtype: GObject.GType<Trigger>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Trigger.SignalSignatures;
 
         // Constructors
 
@@ -5556,16 +5774,19 @@ export namespace ICalGLib {
 
         // Signals
 
-        connect<K extends keyof Trigger.SignalSignatures>(signal: K, callback: Trigger.SignalSignatures[K]): number;
+        connect<K extends keyof Trigger.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Trigger.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Trigger.SignalSignatures>(
             signal: K,
-            callback: Trigger.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Trigger.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Trigger.SignalSignatures>(
             signal: K,
-            ...args: Trigger.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Trigger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5606,11 +5827,11 @@ export namespace ICalGLib {
     namespace Value {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::always-destroy': GObject.Object.Notify;
-            'notify::is-global-memory': GObject.Object.Notify;
-            'notify::native': GObject.Object.Notify;
-            'notify::native-destroy-func': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            'notify::always-destroy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-global-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::native': (pspec: GObject.ParamSpec) => void;
+            'notify::native-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5623,6 +5844,14 @@ export namespace ICalGLib {
      */
     class Value extends Object {
         static $gtype: GObject.GType<Value>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Value.SignalSignatures;
 
         // Constructors
 
@@ -5706,13 +5935,19 @@ export namespace ICalGLib {
 
         // Signals
 
-        connect<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
+        connect<K extends keyof Value.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Value.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
+        connect_after<K extends keyof Value.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Value.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Value.SignalSignatures>(
             signal: K,
-            ...args: Value.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Value.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

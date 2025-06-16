@@ -42,10 +42,10 @@ export namespace Vsqlite {
     namespace Connection {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::status': GObject.Object.Notify;
-            'notify::parameters': GObject.Object.Notify;
-            'notify::is-opened': GObject.Object.Notify;
-            'notify::connection-string': GObject.Object.Notify;
+            'notify::status': (pspec: GObject.ParamSpec) => void;
+            'notify::parameters': (pspec: GObject.ParamSpec) => void;
+            'notify::is-opened': (pspec: GObject.ParamSpec) => void;
+            'notify::connection-string': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -55,6 +55,14 @@ export namespace Vsqlite {
 
     class Connection extends GObject.Object implements Vda.Connection {
         static $gtype: GObject.GType<Connection>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Connection.SignalSignatures;
 
         // Constructors
 
@@ -68,17 +76,17 @@ export namespace Vsqlite {
 
         connect<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            callback: Connection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            callback: Connection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

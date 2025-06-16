@@ -505,8 +505,8 @@ export namespace LibvirtGConfig {
     namespace Capabilities {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -516,6 +516,14 @@ export namespace LibvirtGConfig {
 
     class Capabilities extends Object {
         static $gtype: GObject.GType<Capabilities>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Capabilities.SignalSignatures;
 
         // Constructors
 
@@ -534,17 +542,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof Capabilities.SignalSignatures>(
             signal: K,
-            callback: Capabilities.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Capabilities.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Capabilities.SignalSignatures>(
             signal: K,
-            callback: Capabilities.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Capabilities.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Capabilities.SignalSignatures>(
             signal: K,
-            ...args: Capabilities.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Capabilities.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -565,8 +573,8 @@ export namespace LibvirtGConfig {
     namespace CapabilitiesCpu {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -576,6 +584,14 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesCpu extends Object {
         static $gtype: GObject.GType<CapabilitiesCpu>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CapabilitiesCpu.SignalSignatures;
 
         // Constructors
 
@@ -587,17 +603,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof CapabilitiesCpu.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesCpu.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesCpu.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CapabilitiesCpu.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesCpu.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesCpu.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CapabilitiesCpu.SignalSignatures>(
             signal: K,
-            ...args: CapabilitiesCpu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CapabilitiesCpu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -641,8 +657,8 @@ export namespace LibvirtGConfig {
     namespace CapabilitiesCpuFeature {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -652,6 +668,14 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesCpuFeature extends Object {
         static $gtype: GObject.GType<CapabilitiesCpuFeature>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CapabilitiesCpuFeature.SignalSignatures;
 
         // Constructors
 
@@ -663,17 +687,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof CapabilitiesCpuFeature.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesCpuFeature.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesCpuFeature.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CapabilitiesCpuFeature.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesCpuFeature.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesCpuFeature.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CapabilitiesCpuFeature.SignalSignatures>(
             signal: K,
-            ...args: CapabilitiesCpuFeature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CapabilitiesCpuFeature.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -686,8 +712,8 @@ export namespace LibvirtGConfig {
     namespace CapabilitiesCpuModel {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -697,6 +723,14 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesCpuModel extends Object {
         static $gtype: GObject.GType<CapabilitiesCpuModel>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CapabilitiesCpuModel.SignalSignatures;
 
         // Constructors
 
@@ -715,17 +749,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof CapabilitiesCpuModel.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesCpuModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesCpuModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CapabilitiesCpuModel.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesCpuModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesCpuModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CapabilitiesCpuModel.SignalSignatures>(
             signal: K,
-            ...args: CapabilitiesCpuModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CapabilitiesCpuModel.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -738,8 +774,8 @@ export namespace LibvirtGConfig {
     namespace CapabilitiesCpuTopology {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -749,6 +785,14 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesCpuTopology extends Object {
         static $gtype: GObject.GType<CapabilitiesCpuTopology>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CapabilitiesCpuTopology.SignalSignatures;
 
         // Constructors
 
@@ -767,17 +811,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof CapabilitiesCpuTopology.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesCpuTopology.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesCpuTopology.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CapabilitiesCpuTopology.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesCpuTopology.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesCpuTopology.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CapabilitiesCpuTopology.SignalSignatures>(
             signal: K,
-            ...args: CapabilitiesCpuTopology.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CapabilitiesCpuTopology.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -794,8 +840,8 @@ export namespace LibvirtGConfig {
     namespace CapabilitiesGuest {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -805,6 +851,14 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesGuest extends Object {
         static $gtype: GObject.GType<CapabilitiesGuest>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CapabilitiesGuest.SignalSignatures;
 
         // Constructors
 
@@ -816,17 +870,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof CapabilitiesGuest.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesGuest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesGuest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CapabilitiesGuest.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesGuest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesGuest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CapabilitiesGuest.SignalSignatures>(
             signal: K,
-            ...args: CapabilitiesGuest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CapabilitiesGuest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -848,8 +902,8 @@ export namespace LibvirtGConfig {
     namespace CapabilitiesGuestArch {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -859,6 +913,14 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesGuestArch extends Object {
         static $gtype: GObject.GType<CapabilitiesGuestArch>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CapabilitiesGuestArch.SignalSignatures;
 
         // Constructors
 
@@ -870,17 +932,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof CapabilitiesGuestArch.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesGuestArch.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesGuestArch.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CapabilitiesGuestArch.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesGuestArch.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesGuestArch.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CapabilitiesGuestArch.SignalSignatures>(
             signal: K,
-            ...args: CapabilitiesGuestArch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CapabilitiesGuestArch.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -898,8 +962,8 @@ export namespace LibvirtGConfig {
     namespace CapabilitiesGuestDomain {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -909,6 +973,14 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesGuestDomain extends Object {
         static $gtype: GObject.GType<CapabilitiesGuestDomain>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CapabilitiesGuestDomain.SignalSignatures;
 
         // Constructors
 
@@ -920,17 +992,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof CapabilitiesGuestDomain.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesGuestDomain.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesGuestDomain.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CapabilitiesGuestDomain.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesGuestDomain.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesGuestDomain.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CapabilitiesGuestDomain.SignalSignatures>(
             signal: K,
-            ...args: CapabilitiesGuestDomain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CapabilitiesGuestDomain.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -943,8 +1017,8 @@ export namespace LibvirtGConfig {
     namespace CapabilitiesGuestFeature {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -954,6 +1028,14 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesGuestFeature extends Object {
         static $gtype: GObject.GType<CapabilitiesGuestFeature>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CapabilitiesGuestFeature.SignalSignatures;
 
         // Constructors
 
@@ -965,17 +1047,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof CapabilitiesGuestFeature.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesGuestFeature.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesGuestFeature.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CapabilitiesGuestFeature.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesGuestFeature.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesGuestFeature.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CapabilitiesGuestFeature.SignalSignatures>(
             signal: K,
-            ...args: CapabilitiesGuestFeature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CapabilitiesGuestFeature.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -987,8 +1071,8 @@ export namespace LibvirtGConfig {
     namespace CapabilitiesHost {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -998,6 +1082,14 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesHost extends Object {
         static $gtype: GObject.GType<CapabilitiesHost>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CapabilitiesHost.SignalSignatures;
 
         // Constructors
 
@@ -1009,17 +1101,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof CapabilitiesHost.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesHost.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesHost.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CapabilitiesHost.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesHost.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesHost.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CapabilitiesHost.SignalSignatures>(
             signal: K,
-            ...args: CapabilitiesHost.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CapabilitiesHost.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1041,8 +1133,8 @@ export namespace LibvirtGConfig {
     namespace CapabilitiesHostSecModel {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1052,6 +1144,14 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesHostSecModel extends Object {
         static $gtype: GObject.GType<CapabilitiesHostSecModel>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CapabilitiesHostSecModel.SignalSignatures;
 
         // Constructors
 
@@ -1063,17 +1163,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof CapabilitiesHostSecModel.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesHostSecModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesHostSecModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CapabilitiesHostSecModel.SignalSignatures>(
             signal: K,
-            callback: CapabilitiesHostSecModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CapabilitiesHostSecModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CapabilitiesHostSecModel.SignalSignatures>(
             signal: K,
-            ...args: CapabilitiesHostSecModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CapabilitiesHostSecModel.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1086,16 +1188,16 @@ export namespace LibvirtGConfig {
     namespace Domain {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::current-memory': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::features': GObject.Object.Notify;
-            'notify::memory': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::uuid': GObject.Object.Notify;
-            'notify::vcpu': GObject.Object.Notify;
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::current-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::features': (pspec: GObject.ParamSpec) => void;
+            'notify::memory': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::uuid': (pspec: GObject.ParamSpec) => void;
+            'notify::vcpu': (pspec: GObject.ParamSpec) => void;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1136,6 +1238,14 @@ export namespace LibvirtGConfig {
         set uuid(val: string);
         get vcpu(): number;
         set vcpu(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Domain.SignalSignatures;
 
         // Constructors
 
@@ -1152,13 +1262,19 @@ export namespace LibvirtGConfig {
 
         // Signals
 
-        connect<K extends keyof Domain.SignalSignatures>(signal: K, callback: Domain.SignalSignatures[K]): number;
+        connect<K extends keyof Domain.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Domain.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Domain.SignalSignatures>(signal: K, callback: Domain.SignalSignatures[K]): number;
+        connect_after<K extends keyof Domain.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Domain.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Domain.SignalSignatures>(
             signal: K,
-            ...args: Domain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Domain.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1239,8 +1355,8 @@ export namespace LibvirtGConfig {
     namespace DomainAddress {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1250,6 +1366,14 @@ export namespace LibvirtGConfig {
 
     abstract class DomainAddress extends Object {
         static $gtype: GObject.GType<DomainAddress>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainAddress.SignalSignatures;
 
         // Constructors
 
@@ -1261,17 +1385,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainAddress.SignalSignatures>(
             signal: K,
-            callback: DomainAddress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainAddress.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainAddress.SignalSignatures>(
             signal: K,
-            callback: DomainAddress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainAddress.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainAddress.SignalSignatures>(
             signal: K,
-            ...args: DomainAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainAddress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1279,8 +1403,8 @@ export namespace LibvirtGConfig {
     namespace DomainAddressPci {
         // Signal signatures
         interface SignalSignatures extends DomainAddress.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1290,6 +1414,14 @@ export namespace LibvirtGConfig {
 
     class DomainAddressPci extends DomainAddress {
         static $gtype: GObject.GType<DomainAddressPci>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainAddressPci.SignalSignatures;
 
         // Constructors
 
@@ -1308,17 +1440,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainAddressPci.SignalSignatures>(
             signal: K,
-            callback: DomainAddressPci.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainAddressPci.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainAddressPci.SignalSignatures>(
             signal: K,
-            callback: DomainAddressPci.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainAddressPci.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainAddressPci.SignalSignatures>(
             signal: K,
-            ...args: DomainAddressPci.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainAddressPci.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1339,8 +1471,8 @@ export namespace LibvirtGConfig {
     namespace DomainAddressUsb {
         // Signal signatures
         interface SignalSignatures extends DomainAddress.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1350,6 +1482,14 @@ export namespace LibvirtGConfig {
 
     class DomainAddressUsb extends DomainAddress {
         static $gtype: GObject.GType<DomainAddressUsb>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainAddressUsb.SignalSignatures;
 
         // Constructors
 
@@ -1368,17 +1508,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainAddressUsb.SignalSignatures>(
             signal: K,
-            callback: DomainAddressUsb.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainAddressUsb.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainAddressUsb.SignalSignatures>(
             signal: K,
-            callback: DomainAddressUsb.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainAddressUsb.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainAddressUsb.SignalSignatures>(
             signal: K,
-            ...args: DomainAddressUsb.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainAddressUsb.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1391,8 +1531,8 @@ export namespace LibvirtGConfig {
     namespace DomainCapabilities {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1402,6 +1542,14 @@ export namespace LibvirtGConfig {
 
     class DomainCapabilities extends Object {
         static $gtype: GObject.GType<DomainCapabilities>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainCapabilities.SignalSignatures;
 
         // Constructors
 
@@ -1420,17 +1568,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainCapabilities.SignalSignatures>(
             signal: K,
-            callback: DomainCapabilities.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainCapabilities.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainCapabilities.SignalSignatures>(
             signal: K,
-            callback: DomainCapabilities.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainCapabilities.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainCapabilities.SignalSignatures>(
             signal: K,
-            ...args: DomainCapabilities.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainCapabilities.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1446,8 +1594,8 @@ export namespace LibvirtGConfig {
     namespace DomainCapabilitiesOs {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1457,6 +1605,14 @@ export namespace LibvirtGConfig {
 
     class DomainCapabilitiesOs extends Object {
         static $gtype: GObject.GType<DomainCapabilitiesOs>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainCapabilitiesOs.SignalSignatures;
 
         // Constructors
 
@@ -1468,17 +1624,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainCapabilitiesOs.SignalSignatures>(
             signal: K,
-            callback: DomainCapabilitiesOs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainCapabilitiesOs.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainCapabilitiesOs.SignalSignatures>(
             signal: K,
-            callback: DomainCapabilitiesOs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainCapabilitiesOs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainCapabilitiesOs.SignalSignatures>(
             signal: K,
-            ...args: DomainCapabilitiesOs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainCapabilitiesOs.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1503,8 +1661,8 @@ export namespace LibvirtGConfig {
     namespace DomainChannel {
         // Signal signatures
         interface SignalSignatures extends DomainChardev.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1514,6 +1672,14 @@ export namespace LibvirtGConfig {
 
     class DomainChannel extends DomainChardev {
         static $gtype: GObject.GType<DomainChannel>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainChannel.SignalSignatures;
 
         // Constructors
 
@@ -1532,17 +1698,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainChannel.SignalSignatures>(
             signal: K,
-            callback: DomainChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainChannel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainChannel.SignalSignatures>(
             signal: K,
-            callback: DomainChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainChannel.SignalSignatures>(
             signal: K,
-            ...args: DomainChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1557,8 +1723,8 @@ export namespace LibvirtGConfig {
     namespace DomainChardev {
         // Signal signatures
         interface SignalSignatures extends DomainDevice.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1568,6 +1734,14 @@ export namespace LibvirtGConfig {
 
     abstract class DomainChardev extends DomainDevice {
         static $gtype: GObject.GType<DomainChardev>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainChardev.SignalSignatures;
 
         // Constructors
 
@@ -1579,17 +1753,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainChardev.SignalSignatures>(
             signal: K,
-            callback: DomainChardev.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainChardev.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainChardev.SignalSignatures>(
             signal: K,
-            callback: DomainChardev.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainChardev.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainChardev.SignalSignatures>(
             signal: K,
-            ...args: DomainChardev.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainChardev.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1606,8 +1780,8 @@ export namespace LibvirtGConfig {
     namespace DomainChardevSource {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1617,6 +1791,14 @@ export namespace LibvirtGConfig {
 
     abstract class DomainChardevSource extends Object {
         static $gtype: GObject.GType<DomainChardevSource>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainChardevSource.SignalSignatures;
 
         // Constructors
 
@@ -1628,17 +1810,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainChardevSource.SignalSignatures>(
             signal: K,
-            callback: DomainChardevSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainChardevSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainChardevSource.SignalSignatures>(
             signal: K,
-            callback: DomainChardevSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainChardevSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainChardevSource.SignalSignatures>(
             signal: K,
-            ...args: DomainChardevSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainChardevSource.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1646,8 +1830,8 @@ export namespace LibvirtGConfig {
     namespace DomainChardevSourcePty {
         // Signal signatures
         interface SignalSignatures extends DomainChardevSource.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1657,6 +1841,14 @@ export namespace LibvirtGConfig {
 
     class DomainChardevSourcePty extends DomainChardevSource {
         static $gtype: GObject.GType<DomainChardevSourcePty>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainChardevSourcePty.SignalSignatures;
 
         // Constructors
 
@@ -1675,17 +1867,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainChardevSourcePty.SignalSignatures>(
             signal: K,
-            callback: DomainChardevSourcePty.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainChardevSourcePty.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainChardevSourcePty.SignalSignatures>(
             signal: K,
-            callback: DomainChardevSourcePty.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainChardevSourcePty.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainChardevSourcePty.SignalSignatures>(
             signal: K,
-            ...args: DomainChardevSourcePty.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainChardevSourcePty.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1698,8 +1892,8 @@ export namespace LibvirtGConfig {
     namespace DomainChardevSourceSpicePort {
         // Signal signatures
         interface SignalSignatures extends DomainChardevSource.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1709,6 +1903,14 @@ export namespace LibvirtGConfig {
 
     class DomainChardevSourceSpicePort extends DomainChardevSource {
         static $gtype: GObject.GType<DomainChardevSourceSpicePort>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainChardevSourceSpicePort.SignalSignatures;
 
         // Constructors
 
@@ -1727,17 +1929,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainChardevSourceSpicePort.SignalSignatures>(
             signal: K,
-            callback: DomainChardevSourceSpicePort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainChardevSourceSpicePort.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainChardevSourceSpicePort.SignalSignatures>(
             signal: K,
-            callback: DomainChardevSourceSpicePort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainChardevSourceSpicePort.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainChardevSourceSpicePort.SignalSignatures>(
             signal: K,
-            ...args: DomainChardevSourceSpicePort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainChardevSourceSpicePort.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1750,8 +1954,8 @@ export namespace LibvirtGConfig {
     namespace DomainChardevSourceSpiceVmc {
         // Signal signatures
         interface SignalSignatures extends DomainChardevSource.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1761,6 +1965,14 @@ export namespace LibvirtGConfig {
 
     class DomainChardevSourceSpiceVmc extends DomainChardevSource {
         static $gtype: GObject.GType<DomainChardevSourceSpiceVmc>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainChardevSourceSpiceVmc.SignalSignatures;
 
         // Constructors
 
@@ -1779,17 +1991,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainChardevSourceSpiceVmc.SignalSignatures>(
             signal: K,
-            callback: DomainChardevSourceSpiceVmc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainChardevSourceSpiceVmc.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainChardevSourceSpiceVmc.SignalSignatures>(
             signal: K,
-            callback: DomainChardevSourceSpiceVmc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainChardevSourceSpiceVmc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainChardevSourceSpiceVmc.SignalSignatures>(
             signal: K,
-            ...args: DomainChardevSourceSpiceVmc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainChardevSourceSpiceVmc.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1797,8 +2011,8 @@ export namespace LibvirtGConfig {
     namespace DomainChardevSourceUnix {
         // Signal signatures
         interface SignalSignatures extends DomainChardevSource.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1808,6 +2022,14 @@ export namespace LibvirtGConfig {
 
     class DomainChardevSourceUnix extends DomainChardevSource {
         static $gtype: GObject.GType<DomainChardevSourceUnix>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainChardevSourceUnix.SignalSignatures;
 
         // Constructors
 
@@ -1826,17 +2048,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainChardevSourceUnix.SignalSignatures>(
             signal: K,
-            callback: DomainChardevSourceUnix.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainChardevSourceUnix.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainChardevSourceUnix.SignalSignatures>(
             signal: K,
-            callback: DomainChardevSourceUnix.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainChardevSourceUnix.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainChardevSourceUnix.SignalSignatures>(
             signal: K,
-            ...args: DomainChardevSourceUnix.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainChardevSourceUnix.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1844,8 +2068,8 @@ export namespace LibvirtGConfig {
     namespace DomainClock {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1855,6 +2079,14 @@ export namespace LibvirtGConfig {
 
     class DomainClock extends Object {
         static $gtype: GObject.GType<DomainClock>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainClock.SignalSignatures;
 
         // Constructors
 
@@ -1873,17 +2105,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainClock.SignalSignatures>(
             signal: K,
-            callback: DomainClock.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainClock.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainClock.SignalSignatures>(
             signal: K,
-            callback: DomainClock.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainClock.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainClock.SignalSignatures>(
             signal: K,
-            ...args: DomainClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1901,8 +2133,8 @@ export namespace LibvirtGConfig {
     namespace DomainConsole {
         // Signal signatures
         interface SignalSignatures extends DomainChardev.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1912,6 +2144,14 @@ export namespace LibvirtGConfig {
 
     class DomainConsole extends DomainChardev {
         static $gtype: GObject.GType<DomainConsole>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainConsole.SignalSignatures;
 
         // Constructors
 
@@ -1930,17 +2170,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainConsole.SignalSignatures>(
             signal: K,
-            callback: DomainConsole.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainConsole.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainConsole.SignalSignatures>(
             signal: K,
-            callback: DomainConsole.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainConsole.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainConsole.SignalSignatures>(
             signal: K,
-            ...args: DomainConsole.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainConsole.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1952,8 +2192,8 @@ export namespace LibvirtGConfig {
     namespace DomainController {
         // Signal signatures
         interface SignalSignatures extends DomainDevice.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1963,6 +2203,14 @@ export namespace LibvirtGConfig {
 
     abstract class DomainController extends DomainDevice {
         static $gtype: GObject.GType<DomainController>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainController.SignalSignatures;
 
         // Constructors
 
@@ -1974,17 +2222,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainController.SignalSignatures>(
             signal: K,
-            callback: DomainController.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainController.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainController.SignalSignatures>(
             signal: K,
-            callback: DomainController.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainController.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainController.SignalSignatures>(
             signal: K,
-            ...args: DomainController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2000,8 +2248,8 @@ export namespace LibvirtGConfig {
     namespace DomainControllerUsb {
         // Signal signatures
         interface SignalSignatures extends DomainController.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2016,6 +2264,14 @@ export namespace LibvirtGConfig {
      */
     class DomainControllerUsb extends DomainController {
         static $gtype: GObject.GType<DomainControllerUsb>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainControllerUsb.SignalSignatures;
 
         // Constructors
 
@@ -2034,17 +2290,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainControllerUsb.SignalSignatures>(
             signal: K,
-            callback: DomainControllerUsb.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainControllerUsb.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainControllerUsb.SignalSignatures>(
             signal: K,
-            callback: DomainControllerUsb.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainControllerUsb.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainControllerUsb.SignalSignatures>(
             signal: K,
-            ...args: DomainControllerUsb.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainControllerUsb.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2068,8 +2326,8 @@ export namespace LibvirtGConfig {
     namespace DomainCpu {
         // Signal signatures
         interface SignalSignatures extends CapabilitiesCpu.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2079,6 +2337,14 @@ export namespace LibvirtGConfig {
 
     class DomainCpu extends CapabilitiesCpu {
         static $gtype: GObject.GType<DomainCpu>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainCpu.SignalSignatures;
 
         // Constructors
 
@@ -2095,16 +2361,19 @@ export namespace LibvirtGConfig {
 
         // Signals
 
-        connect<K extends keyof DomainCpu.SignalSignatures>(signal: K, callback: DomainCpu.SignalSignatures[K]): number;
+        connect<K extends keyof DomainCpu.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DomainCpu.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainCpu.SignalSignatures>(
             signal: K,
-            callback: DomainCpu.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainCpu.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainCpu.SignalSignatures>(
             signal: K,
-            ...args: DomainCpu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainCpu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2120,8 +2389,8 @@ export namespace LibvirtGConfig {
     namespace DomainCpuFeature {
         // Signal signatures
         interface SignalSignatures extends CapabilitiesCpuFeature.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2131,6 +2400,14 @@ export namespace LibvirtGConfig {
 
     class DomainCpuFeature extends CapabilitiesCpuFeature {
         static $gtype: GObject.GType<DomainCpuFeature>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainCpuFeature.SignalSignatures;
 
         // Constructors
 
@@ -2149,17 +2426,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainCpuFeature.SignalSignatures>(
             signal: K,
-            callback: DomainCpuFeature.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainCpuFeature.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainCpuFeature.SignalSignatures>(
             signal: K,
-            callback: DomainCpuFeature.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainCpuFeature.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainCpuFeature.SignalSignatures>(
             signal: K,
-            ...args: DomainCpuFeature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainCpuFeature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2172,8 +2449,8 @@ export namespace LibvirtGConfig {
     namespace DomainCpuModel {
         // Signal signatures
         interface SignalSignatures extends CapabilitiesCpuModel.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2183,6 +2460,14 @@ export namespace LibvirtGConfig {
 
     class DomainCpuModel extends CapabilitiesCpuModel {
         static $gtype: GObject.GType<DomainCpuModel>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainCpuModel.SignalSignatures;
 
         // Constructors
 
@@ -2201,17 +2486,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainCpuModel.SignalSignatures>(
             signal: K,
-            callback: DomainCpuModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainCpuModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainCpuModel.SignalSignatures>(
             signal: K,
-            callback: DomainCpuModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainCpuModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainCpuModel.SignalSignatures>(
             signal: K,
-            ...args: DomainCpuModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainCpuModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2219,8 +2504,8 @@ export namespace LibvirtGConfig {
     namespace DomainDevice {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2230,6 +2515,14 @@ export namespace LibvirtGConfig {
 
     class DomainDevice extends Object {
         static $gtype: GObject.GType<DomainDevice>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainDevice.SignalSignatures;
 
         // Constructors
 
@@ -2241,17 +2534,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainDevice.SignalSignatures>(
             signal: K,
-            callback: DomainDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainDevice.SignalSignatures>(
             signal: K,
-            callback: DomainDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainDevice.SignalSignatures>(
             signal: K,
-            ...args: DomainDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2263,8 +2556,8 @@ export namespace LibvirtGConfig {
     namespace DomainDisk {
         // Signal signatures
         interface SignalSignatures extends DomainDevice.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2274,6 +2567,14 @@ export namespace LibvirtGConfig {
 
     class DomainDisk extends DomainDevice {
         static $gtype: GObject.GType<DomainDisk>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainDisk.SignalSignatures;
 
         // Constructors
 
@@ -2292,17 +2593,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainDisk.SignalSignatures>(
             signal: K,
-            callback: DomainDisk.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainDisk.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainDisk.SignalSignatures>(
             signal: K,
-            callback: DomainDisk.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainDisk.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainDisk.SignalSignatures>(
             signal: K,
-            ...args: DomainDisk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainDisk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2346,8 +2647,8 @@ export namespace LibvirtGConfig {
     namespace DomainDiskDriver {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2357,6 +2658,14 @@ export namespace LibvirtGConfig {
 
     class DomainDiskDriver extends Object {
         static $gtype: GObject.GType<DomainDiskDriver>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainDiskDriver.SignalSignatures;
 
         // Constructors
 
@@ -2375,17 +2684,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainDiskDriver.SignalSignatures>(
             signal: K,
-            callback: DomainDiskDriver.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainDiskDriver.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainDiskDriver.SignalSignatures>(
             signal: K,
-            callback: DomainDiskDriver.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainDiskDriver.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainDiskDriver.SignalSignatures>(
             signal: K,
-            ...args: DomainDiskDriver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainDiskDriver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2410,8 +2719,8 @@ export namespace LibvirtGConfig {
     namespace DomainFilesys {
         // Signal signatures
         interface SignalSignatures extends DomainDevice.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2421,6 +2730,14 @@ export namespace LibvirtGConfig {
 
     class DomainFilesys extends DomainDevice {
         static $gtype: GObject.GType<DomainFilesys>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainFilesys.SignalSignatures;
 
         // Constructors
 
@@ -2439,17 +2756,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainFilesys.SignalSignatures>(
             signal: K,
-            callback: DomainFilesys.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainFilesys.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainFilesys.SignalSignatures>(
             signal: K,
-            callback: DomainFilesys.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainFilesys.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainFilesys.SignalSignatures>(
             signal: K,
-            ...args: DomainFilesys.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainFilesys.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2468,8 +2785,8 @@ export namespace LibvirtGConfig {
     namespace DomainGraphics {
         // Signal signatures
         interface SignalSignatures extends DomainDevice.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2479,6 +2796,14 @@ export namespace LibvirtGConfig {
 
     abstract class DomainGraphics extends DomainDevice {
         static $gtype: GObject.GType<DomainGraphics>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainGraphics.SignalSignatures;
 
         // Constructors
 
@@ -2490,17 +2815,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainGraphics.SignalSignatures>(
             signal: K,
-            callback: DomainGraphics.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainGraphics.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainGraphics.SignalSignatures>(
             signal: K,
-            callback: DomainGraphics.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainGraphics.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainGraphics.SignalSignatures>(
             signal: K,
-            ...args: DomainGraphics.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainGraphics.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2508,8 +2833,8 @@ export namespace LibvirtGConfig {
     namespace DomainGraphicsDesktop {
         // Signal signatures
         interface SignalSignatures extends DomainGraphics.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2519,6 +2844,14 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsDesktop extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsDesktop>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainGraphicsDesktop.SignalSignatures;
 
         // Constructors
 
@@ -2537,17 +2870,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainGraphicsDesktop.SignalSignatures>(
             signal: K,
-            callback: DomainGraphicsDesktop.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainGraphicsDesktop.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainGraphicsDesktop.SignalSignatures>(
             signal: K,
-            callback: DomainGraphicsDesktop.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainGraphicsDesktop.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainGraphicsDesktop.SignalSignatures>(
             signal: K,
-            ...args: DomainGraphicsDesktop.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainGraphicsDesktop.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2562,8 +2897,8 @@ export namespace LibvirtGConfig {
     namespace DomainGraphicsRdp {
         // Signal signatures
         interface SignalSignatures extends DomainGraphics.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2573,6 +2908,14 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsRdp extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsRdp>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainGraphicsRdp.SignalSignatures;
 
         // Constructors
 
@@ -2591,17 +2934,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainGraphicsRdp.SignalSignatures>(
             signal: K,
-            callback: DomainGraphicsRdp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainGraphicsRdp.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainGraphicsRdp.SignalSignatures>(
             signal: K,
-            callback: DomainGraphicsRdp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainGraphicsRdp.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainGraphicsRdp.SignalSignatures>(
             signal: K,
-            ...args: DomainGraphicsRdp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainGraphicsRdp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2619,8 +2962,8 @@ export namespace LibvirtGConfig {
     namespace DomainGraphicsSdl {
         // Signal signatures
         interface SignalSignatures extends DomainGraphics.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2630,6 +2973,14 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsSdl extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsSdl>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainGraphicsSdl.SignalSignatures;
 
         // Constructors
 
@@ -2648,17 +2999,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainGraphicsSdl.SignalSignatures>(
             signal: K,
-            callback: DomainGraphicsSdl.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainGraphicsSdl.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainGraphicsSdl.SignalSignatures>(
             signal: K,
-            callback: DomainGraphicsSdl.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainGraphicsSdl.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainGraphicsSdl.SignalSignatures>(
             signal: K,
-            ...args: DomainGraphicsSdl.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainGraphicsSdl.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2672,8 +3023,8 @@ export namespace LibvirtGConfig {
     namespace DomainGraphicsSpice {
         // Signal signatures
         interface SignalSignatures extends DomainGraphics.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2683,6 +3034,14 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsSpice extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsSpice>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainGraphicsSpice.SignalSignatures;
 
         // Constructors
 
@@ -2701,17 +3060,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainGraphicsSpice.SignalSignatures>(
             signal: K,
-            callback: DomainGraphicsSpice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainGraphicsSpice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainGraphicsSpice.SignalSignatures>(
             signal: K,
-            callback: DomainGraphicsSpice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainGraphicsSpice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainGraphicsSpice.SignalSignatures>(
             signal: K,
-            ...args: DomainGraphicsSpice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainGraphicsSpice.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2730,8 +3091,8 @@ export namespace LibvirtGConfig {
     namespace DomainGraphicsVnc {
         // Signal signatures
         interface SignalSignatures extends DomainGraphics.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2741,6 +3102,14 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsVnc extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsVnc>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainGraphicsVnc.SignalSignatures;
 
         // Constructors
 
@@ -2759,17 +3128,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainGraphicsVnc.SignalSignatures>(
             signal: K,
-            callback: DomainGraphicsVnc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainGraphicsVnc.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainGraphicsVnc.SignalSignatures>(
             signal: K,
-            callback: DomainGraphicsVnc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainGraphicsVnc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainGraphicsVnc.SignalSignatures>(
             signal: K,
-            ...args: DomainGraphicsVnc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainGraphicsVnc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2786,8 +3155,8 @@ export namespace LibvirtGConfig {
     namespace DomainHostdev {
         // Signal signatures
         interface SignalSignatures extends DomainDevice.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2797,6 +3166,14 @@ export namespace LibvirtGConfig {
 
     abstract class DomainHostdev extends DomainDevice {
         static $gtype: GObject.GType<DomainHostdev>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainHostdev.SignalSignatures;
 
         // Constructors
 
@@ -2808,17 +3185,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainHostdev.SignalSignatures>(
             signal: K,
-            callback: DomainHostdev.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainHostdev.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainHostdev.SignalSignatures>(
             signal: K,
-            callback: DomainHostdev.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainHostdev.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainHostdev.SignalSignatures>(
             signal: K,
-            ...args: DomainHostdev.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainHostdev.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2848,8 +3225,8 @@ export namespace LibvirtGConfig {
     namespace DomainHostdevPci {
         // Signal signatures
         interface SignalSignatures extends DomainHostdev.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2859,6 +3236,14 @@ export namespace LibvirtGConfig {
 
     class DomainHostdevPci extends DomainHostdev {
         static $gtype: GObject.GType<DomainHostdevPci>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainHostdevPci.SignalSignatures;
 
         // Constructors
 
@@ -2877,17 +3262,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainHostdevPci.SignalSignatures>(
             signal: K,
-            callback: DomainHostdevPci.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainHostdevPci.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainHostdevPci.SignalSignatures>(
             signal: K,
-            callback: DomainHostdevPci.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainHostdevPci.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainHostdevPci.SignalSignatures>(
             signal: K,
-            ...args: DomainHostdevPci.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainHostdevPci.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2910,8 +3295,8 @@ export namespace LibvirtGConfig {
     namespace DomainInput {
         // Signal signatures
         interface SignalSignatures extends DomainDevice.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2921,6 +3306,14 @@ export namespace LibvirtGConfig {
 
     class DomainInput extends DomainDevice {
         static $gtype: GObject.GType<DomainInput>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainInput.SignalSignatures;
 
         // Constructors
 
@@ -2939,17 +3332,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainInput.SignalSignatures>(
             signal: K,
-            callback: DomainInput.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainInput.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainInput.SignalSignatures>(
             signal: K,
-            callback: DomainInput.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainInput.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainInput.SignalSignatures>(
             signal: K,
-            ...args: DomainInput.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainInput.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2964,8 +3357,8 @@ export namespace LibvirtGConfig {
     namespace DomainInterface {
         // Signal signatures
         interface SignalSignatures extends DomainDevice.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2975,6 +3368,14 @@ export namespace LibvirtGConfig {
 
     abstract class DomainInterface extends DomainDevice {
         static $gtype: GObject.GType<DomainInterface>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainInterface.SignalSignatures;
 
         // Constructors
 
@@ -2986,17 +3387,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainInterface.SignalSignatures>(
             signal: K,
-            callback: DomainInterface.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainInterface.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainInterface.SignalSignatures>(
             signal: K,
-            callback: DomainInterface.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainInterface.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainInterface.SignalSignatures>(
             signal: K,
-            ...args: DomainInterface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainInterface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3021,8 +3422,8 @@ export namespace LibvirtGConfig {
     namespace DomainInterfaceBridge {
         // Signal signatures
         interface SignalSignatures extends DomainInterface.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3032,6 +3433,14 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceBridge extends DomainInterface {
         static $gtype: GObject.GType<DomainInterfaceBridge>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainInterfaceBridge.SignalSignatures;
 
         // Constructors
 
@@ -3050,17 +3459,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainInterfaceBridge.SignalSignatures>(
             signal: K,
-            callback: DomainInterfaceBridge.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainInterfaceBridge.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainInterfaceBridge.SignalSignatures>(
             signal: K,
-            callback: DomainInterfaceBridge.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainInterfaceBridge.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainInterfaceBridge.SignalSignatures>(
             signal: K,
-            ...args: DomainInterfaceBridge.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainInterfaceBridge.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3072,8 +3483,8 @@ export namespace LibvirtGConfig {
     namespace DomainInterfaceFilterref {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3083,6 +3494,14 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceFilterref extends Object {
         static $gtype: GObject.GType<DomainInterfaceFilterref>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainInterfaceFilterref.SignalSignatures;
 
         // Constructors
 
@@ -3101,17 +3520,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainInterfaceFilterref.SignalSignatures>(
             signal: K,
-            callback: DomainInterfaceFilterref.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainInterfaceFilterref.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainInterfaceFilterref.SignalSignatures>(
             signal: K,
-            callback: DomainInterfaceFilterref.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainInterfaceFilterref.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainInterfaceFilterref.SignalSignatures>(
             signal: K,
-            ...args: DomainInterfaceFilterref.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainInterfaceFilterref.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3132,8 +3553,8 @@ export namespace LibvirtGConfig {
     namespace DomainInterfaceFilterrefParameter {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3143,6 +3564,14 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceFilterrefParameter extends Object {
         static $gtype: GObject.GType<DomainInterfaceFilterrefParameter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainInterfaceFilterrefParameter.SignalSignatures;
 
         // Constructors
 
@@ -3161,17 +3590,22 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainInterfaceFilterrefParameter.SignalSignatures>(
             signal: K,
-            callback: DomainInterfaceFilterrefParameter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainInterfaceFilterrefParameter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainInterfaceFilterrefParameter.SignalSignatures>(
             signal: K,
-            callback: DomainInterfaceFilterrefParameter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainInterfaceFilterrefParameter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainInterfaceFilterrefParameter.SignalSignatures>(
             signal: K,
-            ...args: DomainInterfaceFilterrefParameter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainInterfaceFilterrefParameter.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3186,8 +3620,8 @@ export namespace LibvirtGConfig {
     namespace DomainInterfaceNetwork {
         // Signal signatures
         interface SignalSignatures extends DomainInterface.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3197,6 +3631,14 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceNetwork extends DomainInterface {
         static $gtype: GObject.GType<DomainInterfaceNetwork>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainInterfaceNetwork.SignalSignatures;
 
         // Constructors
 
@@ -3215,17 +3657,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainInterfaceNetwork.SignalSignatures>(
             signal: K,
-            callback: DomainInterfaceNetwork.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainInterfaceNetwork.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainInterfaceNetwork.SignalSignatures>(
             signal: K,
-            callback: DomainInterfaceNetwork.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainInterfaceNetwork.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainInterfaceNetwork.SignalSignatures>(
             signal: K,
-            ...args: DomainInterfaceNetwork.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainInterfaceNetwork.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3237,8 +3681,8 @@ export namespace LibvirtGConfig {
     namespace DomainInterfaceUser {
         // Signal signatures
         interface SignalSignatures extends DomainInterface.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3248,6 +3692,14 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceUser extends DomainInterface {
         static $gtype: GObject.GType<DomainInterfaceUser>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainInterfaceUser.SignalSignatures;
 
         // Constructors
 
@@ -3266,17 +3718,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainInterfaceUser.SignalSignatures>(
             signal: K,
-            callback: DomainInterfaceUser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainInterfaceUser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainInterfaceUser.SignalSignatures>(
             signal: K,
-            callback: DomainInterfaceUser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainInterfaceUser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainInterfaceUser.SignalSignatures>(
             signal: K,
-            ...args: DomainInterfaceUser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainInterfaceUser.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3284,8 +3738,8 @@ export namespace LibvirtGConfig {
     namespace DomainMemballoon {
         // Signal signatures
         interface SignalSignatures extends DomainDevice.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3295,6 +3749,14 @@ export namespace LibvirtGConfig {
 
     class DomainMemballoon extends DomainDevice {
         static $gtype: GObject.GType<DomainMemballoon>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainMemballoon.SignalSignatures;
 
         // Constructors
 
@@ -3313,17 +3775,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainMemballoon.SignalSignatures>(
             signal: K,
-            callback: DomainMemballoon.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainMemballoon.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainMemballoon.SignalSignatures>(
             signal: K,
-            callback: DomainMemballoon.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainMemballoon.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainMemballoon.SignalSignatures>(
             signal: K,
-            ...args: DomainMemballoon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainMemballoon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3335,8 +3797,8 @@ export namespace LibvirtGConfig {
     namespace DomainOs {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3346,6 +3808,14 @@ export namespace LibvirtGConfig {
 
     class DomainOs extends Object {
         static $gtype: GObject.GType<DomainOs>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainOs.SignalSignatures;
 
         // Constructors
 
@@ -3362,16 +3832,19 @@ export namespace LibvirtGConfig {
 
         // Signals
 
-        connect<K extends keyof DomainOs.SignalSignatures>(signal: K, callback: DomainOs.SignalSignatures[K]): number;
+        connect<K extends keyof DomainOs.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DomainOs.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainOs.SignalSignatures>(
             signal: K,
-            callback: DomainOs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainOs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainOs.SignalSignatures>(
             signal: K,
-            ...args: DomainOs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainOs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3405,8 +3878,8 @@ export namespace LibvirtGConfig {
     namespace DomainParallel {
         // Signal signatures
         interface SignalSignatures extends DomainChardev.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3416,6 +3889,14 @@ export namespace LibvirtGConfig {
 
     class DomainParallel extends DomainChardev {
         static $gtype: GObject.GType<DomainParallel>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainParallel.SignalSignatures;
 
         // Constructors
 
@@ -3434,17 +3915,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainParallel.SignalSignatures>(
             signal: K,
-            callback: DomainParallel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainParallel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainParallel.SignalSignatures>(
             signal: K,
-            callback: DomainParallel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainParallel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainParallel.SignalSignatures>(
             signal: K,
-            ...args: DomainParallel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainParallel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3452,8 +3933,8 @@ export namespace LibvirtGConfig {
     namespace DomainPowerManagement {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3463,6 +3944,14 @@ export namespace LibvirtGConfig {
 
     class DomainPowerManagement extends Object {
         static $gtype: GObject.GType<DomainPowerManagement>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainPowerManagement.SignalSignatures;
 
         // Constructors
 
@@ -3481,17 +3970,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainPowerManagement.SignalSignatures>(
             signal: K,
-            callback: DomainPowerManagement.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainPowerManagement.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainPowerManagement.SignalSignatures>(
             signal: K,
-            callback: DomainPowerManagement.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainPowerManagement.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainPowerManagement.SignalSignatures>(
             signal: K,
-            ...args: DomainPowerManagement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainPowerManagement.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3504,8 +3995,8 @@ export namespace LibvirtGConfig {
     namespace DomainRedirdev {
         // Signal signatures
         interface SignalSignatures extends DomainChardev.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3515,6 +4006,14 @@ export namespace LibvirtGConfig {
 
     class DomainRedirdev extends DomainChardev {
         static $gtype: GObject.GType<DomainRedirdev>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainRedirdev.SignalSignatures;
 
         // Constructors
 
@@ -3533,17 +4032,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainRedirdev.SignalSignatures>(
             signal: K,
-            callback: DomainRedirdev.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainRedirdev.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainRedirdev.SignalSignatures>(
             signal: K,
-            callback: DomainRedirdev.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainRedirdev.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainRedirdev.SignalSignatures>(
             signal: K,
-            ...args: DomainRedirdev.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainRedirdev.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3556,8 +4055,8 @@ export namespace LibvirtGConfig {
     namespace DomainSeclabel {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3567,6 +4066,14 @@ export namespace LibvirtGConfig {
 
     class DomainSeclabel extends Object {
         static $gtype: GObject.GType<DomainSeclabel>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainSeclabel.SignalSignatures;
 
         // Constructors
 
@@ -3585,17 +4092,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainSeclabel.SignalSignatures>(
             signal: K,
-            callback: DomainSeclabel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSeclabel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainSeclabel.SignalSignatures>(
             signal: K,
-            callback: DomainSeclabel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSeclabel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainSeclabel.SignalSignatures>(
             signal: K,
-            ...args: DomainSeclabel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainSeclabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3610,8 +4117,8 @@ export namespace LibvirtGConfig {
     namespace DomainSerial {
         // Signal signatures
         interface SignalSignatures extends DomainChardev.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3621,6 +4128,14 @@ export namespace LibvirtGConfig {
 
     class DomainSerial extends DomainChardev {
         static $gtype: GObject.GType<DomainSerial>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainSerial.SignalSignatures;
 
         // Constructors
 
@@ -3639,17 +4154,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainSerial.SignalSignatures>(
             signal: K,
-            callback: DomainSerial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSerial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainSerial.SignalSignatures>(
             signal: K,
-            callback: DomainSerial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSerial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainSerial.SignalSignatures>(
             signal: K,
-            ...args: DomainSerial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainSerial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3657,8 +4172,8 @@ export namespace LibvirtGConfig {
     namespace DomainSmartcard {
         // Signal signatures
         interface SignalSignatures extends DomainDevice.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3668,6 +4183,14 @@ export namespace LibvirtGConfig {
 
     abstract class DomainSmartcard extends DomainDevice {
         static $gtype: GObject.GType<DomainSmartcard>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainSmartcard.SignalSignatures;
 
         // Constructors
 
@@ -3679,17 +4202,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainSmartcard.SignalSignatures>(
             signal: K,
-            callback: DomainSmartcard.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSmartcard.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainSmartcard.SignalSignatures>(
             signal: K,
-            callback: DomainSmartcard.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSmartcard.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainSmartcard.SignalSignatures>(
             signal: K,
-            ...args: DomainSmartcard.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainSmartcard.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3701,8 +4224,8 @@ export namespace LibvirtGConfig {
     namespace DomainSmartcardHost {
         // Signal signatures
         interface SignalSignatures extends DomainSmartcard.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3712,6 +4235,14 @@ export namespace LibvirtGConfig {
 
     class DomainSmartcardHost extends DomainSmartcard {
         static $gtype: GObject.GType<DomainSmartcardHost>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainSmartcardHost.SignalSignatures;
 
         // Constructors
 
@@ -3730,17 +4261,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainSmartcardHost.SignalSignatures>(
             signal: K,
-            callback: DomainSmartcardHost.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSmartcardHost.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainSmartcardHost.SignalSignatures>(
             signal: K,
-            callback: DomainSmartcardHost.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSmartcardHost.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainSmartcardHost.SignalSignatures>(
             signal: K,
-            ...args: DomainSmartcardHost.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainSmartcardHost.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3748,8 +4281,8 @@ export namespace LibvirtGConfig {
     namespace DomainSmartcardHostCertificates {
         // Signal signatures
         interface SignalSignatures extends DomainSmartcard.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3759,6 +4292,14 @@ export namespace LibvirtGConfig {
 
     class DomainSmartcardHostCertificates extends DomainSmartcard {
         static $gtype: GObject.GType<DomainSmartcardHostCertificates>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainSmartcardHostCertificates.SignalSignatures;
 
         // Constructors
 
@@ -3777,17 +4318,22 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainSmartcardHostCertificates.SignalSignatures>(
             signal: K,
-            callback: DomainSmartcardHostCertificates.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSmartcardHostCertificates.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainSmartcardHostCertificates.SignalSignatures>(
             signal: K,
-            callback: DomainSmartcardHostCertificates.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSmartcardHostCertificates.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainSmartcardHostCertificates.SignalSignatures>(
             signal: K,
-            ...args: DomainSmartcardHostCertificates.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainSmartcardHostCertificates.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3800,8 +4346,8 @@ export namespace LibvirtGConfig {
     namespace DomainSmartcardPassthrough {
         // Signal signatures
         interface SignalSignatures extends DomainSmartcard.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3811,6 +4357,14 @@ export namespace LibvirtGConfig {
 
     class DomainSmartcardPassthrough extends DomainSmartcard {
         static $gtype: GObject.GType<DomainSmartcardPassthrough>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainSmartcardPassthrough.SignalSignatures;
 
         // Constructors
 
@@ -3829,17 +4383,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainSmartcardPassthrough.SignalSignatures>(
             signal: K,
-            callback: DomainSmartcardPassthrough.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSmartcardPassthrough.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainSmartcardPassthrough.SignalSignatures>(
             signal: K,
-            callback: DomainSmartcardPassthrough.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSmartcardPassthrough.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainSmartcardPassthrough.SignalSignatures>(
             signal: K,
-            ...args: DomainSmartcardPassthrough.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainSmartcardPassthrough.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3851,8 +4407,8 @@ export namespace LibvirtGConfig {
     namespace DomainSnapshot {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3862,6 +4418,14 @@ export namespace LibvirtGConfig {
 
     class DomainSnapshot extends Object {
         static $gtype: GObject.GType<DomainSnapshot>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainSnapshot.SignalSignatures;
 
         // Constructors
 
@@ -3880,17 +4444,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainSnapshot.SignalSignatures>(
             signal: K,
-            callback: DomainSnapshot.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSnapshot.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainSnapshot.SignalSignatures>(
             signal: K,
-            callback: DomainSnapshot.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSnapshot.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainSnapshot.SignalSignatures>(
             signal: K,
-            ...args: DomainSnapshot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainSnapshot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3926,8 +4490,8 @@ export namespace LibvirtGConfig {
     namespace DomainSnapshotDisk {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3937,6 +4501,14 @@ export namespace LibvirtGConfig {
 
     class DomainSnapshotDisk extends Object {
         static $gtype: GObject.GType<DomainSnapshotDisk>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainSnapshotDisk.SignalSignatures;
 
         // Constructors
 
@@ -3955,17 +4527,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainSnapshotDisk.SignalSignatures>(
             signal: K,
-            callback: DomainSnapshotDisk.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSnapshotDisk.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainSnapshotDisk.SignalSignatures>(
             signal: K,
-            callback: DomainSnapshotDisk.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSnapshotDisk.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainSnapshotDisk.SignalSignatures>(
             signal: K,
-            ...args: DomainSnapshotDisk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainSnapshotDisk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3984,8 +4556,8 @@ export namespace LibvirtGConfig {
     namespace DomainSound {
         // Signal signatures
         interface SignalSignatures extends DomainDevice.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3995,6 +4567,14 @@ export namespace LibvirtGConfig {
 
     class DomainSound extends DomainDevice {
         static $gtype: GObject.GType<DomainSound>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainSound.SignalSignatures;
 
         // Constructors
 
@@ -4013,17 +4593,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainSound.SignalSignatures>(
             signal: K,
-            callback: DomainSound.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSound.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainSound.SignalSignatures>(
             signal: K,
-            callback: DomainSound.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSound.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainSound.SignalSignatures>(
             signal: K,
-            ...args: DomainSound.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainSound.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4035,8 +4615,8 @@ export namespace LibvirtGConfig {
     namespace DomainTimer {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4046,6 +4626,14 @@ export namespace LibvirtGConfig {
 
     abstract class DomainTimer extends Object {
         static $gtype: GObject.GType<DomainTimer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainTimer.SignalSignatures;
 
         // Constructors
 
@@ -4057,17 +4645,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainTimer.SignalSignatures>(
             signal: K,
-            callback: DomainTimer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainTimer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainTimer.SignalSignatures>(
             signal: K,
-            callback: DomainTimer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainTimer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainTimer.SignalSignatures>(
             signal: K,
-            ...args: DomainTimer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainTimer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4082,8 +4670,8 @@ export namespace LibvirtGConfig {
     namespace DomainTimerHpet {
         // Signal signatures
         interface SignalSignatures extends DomainTimer.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4093,6 +4681,14 @@ export namespace LibvirtGConfig {
 
     class DomainTimerHpet extends DomainTimer {
         static $gtype: GObject.GType<DomainTimerHpet>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainTimerHpet.SignalSignatures;
 
         // Constructors
 
@@ -4111,17 +4707,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainTimerHpet.SignalSignatures>(
             signal: K,
-            callback: DomainTimerHpet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainTimerHpet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainTimerHpet.SignalSignatures>(
             signal: K,
-            callback: DomainTimerHpet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainTimerHpet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainTimerHpet.SignalSignatures>(
             signal: K,
-            ...args: DomainTimerHpet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainTimerHpet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -4129,8 +4725,8 @@ export namespace LibvirtGConfig {
     namespace DomainTimerPit {
         // Signal signatures
         interface SignalSignatures extends DomainTimer.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4140,6 +4736,14 @@ export namespace LibvirtGConfig {
 
     class DomainTimerPit extends DomainTimer {
         static $gtype: GObject.GType<DomainTimerPit>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainTimerPit.SignalSignatures;
 
         // Constructors
 
@@ -4158,17 +4762,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainTimerPit.SignalSignatures>(
             signal: K,
-            callback: DomainTimerPit.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainTimerPit.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainTimerPit.SignalSignatures>(
             signal: K,
-            callback: DomainTimerPit.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainTimerPit.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainTimerPit.SignalSignatures>(
             signal: K,
-            ...args: DomainTimerPit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainTimerPit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -4176,8 +4780,8 @@ export namespace LibvirtGConfig {
     namespace DomainTimerRtc {
         // Signal signatures
         interface SignalSignatures extends DomainTimer.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4187,6 +4791,14 @@ export namespace LibvirtGConfig {
 
     class DomainTimerRtc extends DomainTimer {
         static $gtype: GObject.GType<DomainTimerRtc>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainTimerRtc.SignalSignatures;
 
         // Constructors
 
@@ -4205,17 +4817,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainTimerRtc.SignalSignatures>(
             signal: K,
-            callback: DomainTimerRtc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainTimerRtc.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainTimerRtc.SignalSignatures>(
             signal: K,
-            callback: DomainTimerRtc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainTimerRtc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainTimerRtc.SignalSignatures>(
             signal: K,
-            ...args: DomainTimerRtc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainTimerRtc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -4223,8 +4835,8 @@ export namespace LibvirtGConfig {
     namespace DomainVideo {
         // Signal signatures
         interface SignalSignatures extends DomainDevice.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4234,6 +4846,14 @@ export namespace LibvirtGConfig {
 
     class DomainVideo extends DomainDevice {
         static $gtype: GObject.GType<DomainVideo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainVideo.SignalSignatures;
 
         // Constructors
 
@@ -4252,17 +4872,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof DomainVideo.SignalSignatures>(
             signal: K,
-            callback: DomainVideo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainVideo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainVideo.SignalSignatures>(
             signal: K,
-            callback: DomainVideo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainVideo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainVideo.SignalSignatures>(
             signal: K,
-            ...args: DomainVideo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainVideo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4280,8 +4900,8 @@ export namespace LibvirtGConfig {
     namespace Interface {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4291,6 +4911,14 @@ export namespace LibvirtGConfig {
 
     class Interface extends Object {
         static $gtype: GObject.GType<Interface>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Interface.SignalSignatures;
 
         // Constructors
 
@@ -4307,16 +4935,19 @@ export namespace LibvirtGConfig {
 
         // Signals
 
-        connect<K extends keyof Interface.SignalSignatures>(signal: K, callback: Interface.SignalSignatures[K]): number;
+        connect<K extends keyof Interface.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Interface.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Interface.SignalSignatures>(
             signal: K,
-            callback: Interface.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Interface.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Interface.SignalSignatures>(
             signal: K,
-            ...args: Interface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Interface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -4324,8 +4955,8 @@ export namespace LibvirtGConfig {
     namespace Network {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4335,6 +4966,14 @@ export namespace LibvirtGConfig {
 
     class Network extends Object {
         static $gtype: GObject.GType<Network>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Network.SignalSignatures;
 
         // Constructors
 
@@ -4351,16 +4990,19 @@ export namespace LibvirtGConfig {
 
         // Signals
 
-        connect<K extends keyof Network.SignalSignatures>(signal: K, callback: Network.SignalSignatures[K]): number;
+        connect<K extends keyof Network.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Network.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Network.SignalSignatures>(
             signal: K,
-            callback: Network.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Network.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Network.SignalSignatures>(
             signal: K,
-            ...args: Network.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Network.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -4368,8 +5010,8 @@ export namespace LibvirtGConfig {
     namespace NetworkFilter {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4379,6 +5021,14 @@ export namespace LibvirtGConfig {
 
     class NetworkFilter extends Object {
         static $gtype: GObject.GType<NetworkFilter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NetworkFilter.SignalSignatures;
 
         // Constructors
 
@@ -4397,17 +5047,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof NetworkFilter.SignalSignatures>(
             signal: K,
-            callback: NetworkFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NetworkFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NetworkFilter.SignalSignatures>(
             signal: K,
-            callback: NetworkFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NetworkFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NetworkFilter.SignalSignatures>(
             signal: K,
-            ...args: NetworkFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NetworkFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -4415,8 +5065,8 @@ export namespace LibvirtGConfig {
     namespace NodeDevice {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4426,6 +5076,14 @@ export namespace LibvirtGConfig {
 
     class NodeDevice extends Object {
         static $gtype: GObject.GType<NodeDevice>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NodeDevice.SignalSignatures;
 
         // Constructors
 
@@ -4444,17 +5102,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof NodeDevice.SignalSignatures>(
             signal: K,
-            callback: NodeDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NodeDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NodeDevice.SignalSignatures>(
             signal: K,
-            callback: NodeDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NodeDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NodeDevice.SignalSignatures>(
             signal: K,
-            ...args: NodeDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NodeDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -4462,8 +5120,8 @@ export namespace LibvirtGConfig {
     namespace Object {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4481,6 +5139,14 @@ export namespace LibvirtGConfig {
 
         get node(): any;
         get schema(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -4494,13 +5160,19 @@ export namespace LibvirtGConfig {
 
         // Signals
 
-        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
-            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4518,8 +5190,8 @@ export namespace LibvirtGConfig {
     namespace Secret {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4529,6 +5201,14 @@ export namespace LibvirtGConfig {
 
     class Secret extends Object {
         static $gtype: GObject.GType<Secret>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Secret.SignalSignatures;
 
         // Constructors
 
@@ -4545,13 +5225,19 @@ export namespace LibvirtGConfig {
 
         // Signals
 
-        connect<K extends keyof Secret.SignalSignatures>(signal: K, callback: Secret.SignalSignatures[K]): number;
+        connect<K extends keyof Secret.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Secret.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Secret.SignalSignatures>(signal: K, callback: Secret.SignalSignatures[K]): number;
+        connect_after<K extends keyof Secret.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Secret.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Secret.SignalSignatures>(
             signal: K,
-            ...args: Secret.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Secret.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -4559,8 +5245,8 @@ export namespace LibvirtGConfig {
     namespace StoragePermissions {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4570,6 +5256,14 @@ export namespace LibvirtGConfig {
 
     class StoragePermissions extends Object {
         static $gtype: GObject.GType<StoragePermissions>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StoragePermissions.SignalSignatures;
 
         // Constructors
 
@@ -4588,17 +5282,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof StoragePermissions.SignalSignatures>(
             signal: K,
-            callback: StoragePermissions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StoragePermissions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StoragePermissions.SignalSignatures>(
             signal: K,
-            callback: StoragePermissions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StoragePermissions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StoragePermissions.SignalSignatures>(
             signal: K,
-            ...args: StoragePermissions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StoragePermissions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4633,8 +5327,8 @@ export namespace LibvirtGConfig {
     namespace StoragePool {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4644,6 +5338,14 @@ export namespace LibvirtGConfig {
 
     class StoragePool extends Object {
         static $gtype: GObject.GType<StoragePool>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StoragePool.SignalSignatures;
 
         // Constructors
 
@@ -4662,17 +5364,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof StoragePool.SignalSignatures>(
             signal: K,
-            callback: StoragePool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StoragePool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StoragePool.SignalSignatures>(
             signal: K,
-            callback: StoragePool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StoragePool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StoragePool.SignalSignatures>(
             signal: K,
-            ...args: StoragePool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StoragePool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4731,8 +5433,8 @@ export namespace LibvirtGConfig {
     namespace StoragePoolSource {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4742,6 +5444,14 @@ export namespace LibvirtGConfig {
 
     class StoragePoolSource extends Object {
         static $gtype: GObject.GType<StoragePoolSource>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StoragePoolSource.SignalSignatures;
 
         // Constructors
 
@@ -4760,17 +5470,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof StoragePoolSource.SignalSignatures>(
             signal: K,
-            callback: StoragePoolSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StoragePoolSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StoragePoolSource.SignalSignatures>(
             signal: K,
-            callback: StoragePoolSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StoragePoolSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StoragePoolSource.SignalSignatures>(
             signal: K,
-            ...args: StoragePoolSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StoragePoolSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4834,8 +5544,8 @@ export namespace LibvirtGConfig {
     namespace StoragePoolTarget {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4845,6 +5555,14 @@ export namespace LibvirtGConfig {
 
     class StoragePoolTarget extends Object {
         static $gtype: GObject.GType<StoragePoolTarget>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StoragePoolTarget.SignalSignatures;
 
         // Constructors
 
@@ -4863,17 +5581,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof StoragePoolTarget.SignalSignatures>(
             signal: K,
-            callback: StoragePoolTarget.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StoragePoolTarget.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StoragePoolTarget.SignalSignatures>(
             signal: K,
-            callback: StoragePoolTarget.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StoragePoolTarget.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StoragePoolTarget.SignalSignatures>(
             signal: K,
-            ...args: StoragePoolTarget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StoragePoolTarget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4897,8 +5615,8 @@ export namespace LibvirtGConfig {
     namespace StorageVol {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4908,6 +5626,14 @@ export namespace LibvirtGConfig {
 
     class StorageVol extends Object {
         static $gtype: GObject.GType<StorageVol>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StorageVol.SignalSignatures;
 
         // Constructors
 
@@ -4926,17 +5652,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof StorageVol.SignalSignatures>(
             signal: K,
-            callback: StorageVol.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StorageVol.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StorageVol.SignalSignatures>(
             signal: K,
-            callback: StorageVol.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StorageVol.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StorageVol.SignalSignatures>(
             signal: K,
-            ...args: StorageVol.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StorageVol.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4952,8 +5678,8 @@ export namespace LibvirtGConfig {
     namespace StorageVolBackingStore {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4963,6 +5689,14 @@ export namespace LibvirtGConfig {
 
     class StorageVolBackingStore extends Object {
         static $gtype: GObject.GType<StorageVolBackingStore>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StorageVolBackingStore.SignalSignatures;
 
         // Constructors
 
@@ -4981,17 +5715,19 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof StorageVolBackingStore.SignalSignatures>(
             signal: K,
-            callback: StorageVolBackingStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StorageVolBackingStore.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StorageVolBackingStore.SignalSignatures>(
             signal: K,
-            callback: StorageVolBackingStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StorageVolBackingStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StorageVolBackingStore.SignalSignatures>(
             signal: K,
-            ...args: StorageVolBackingStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StorageVolBackingStore.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5004,8 +5740,8 @@ export namespace LibvirtGConfig {
     namespace StorageVolTarget {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5015,6 +5751,14 @@ export namespace LibvirtGConfig {
 
     class StorageVolTarget extends Object {
         static $gtype: GObject.GType<StorageVolTarget>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StorageVolTarget.SignalSignatures;
 
         // Constructors
 
@@ -5033,17 +5777,17 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof StorageVolTarget.SignalSignatures>(
             signal: K,
-            callback: StorageVolTarget.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StorageVolTarget.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StorageVolTarget.SignalSignatures>(
             signal: K,
-            callback: StorageVolTarget.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StorageVolTarget.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StorageVolTarget.SignalSignatures>(
             signal: K,
-            ...args: StorageVolTarget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StorageVolTarget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

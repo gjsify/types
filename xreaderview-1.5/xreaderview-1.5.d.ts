@@ -106,26 +106,20 @@ export namespace XreaderView {
         ALL,
     }
     namespace DocumentModel {
-        // Signal callback interfaces
-
-        interface PageChanged {
-            (_source: DocumentModel, object: number, p0: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'page-changed': PageChanged;
-            'notify::continuous': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::dual-odd-left': GObject.Object.Notify;
-            'notify::dual-page': GObject.Object.Notify;
-            'notify::fullscreen': GObject.Object.Notify;
-            'notify::inverted-colors': GObject.Object.Notify;
-            'notify::page': GObject.Object.Notify;
-            'notify::rotation': GObject.Object.Notify;
-            'notify::rtl': GObject.Object.Notify;
-            'notify::scale': GObject.Object.Notify;
-            'notify::sizing-mode': GObject.Object.Notify;
+            'page-changed': (arg0: number, arg1: number) => void;
+            'notify::continuous': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::dual-odd-left': (pspec: GObject.ParamSpec) => void;
+            'notify::dual-page': (pspec: GObject.ParamSpec) => void;
+            'notify::fullscreen': (pspec: GObject.ParamSpec) => void;
+            'notify::inverted-colors': (pspec: GObject.ParamSpec) => void;
+            'notify::page': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation': (pspec: GObject.ParamSpec) => void;
+            'notify::rtl': (pspec: GObject.ParamSpec) => void;
+            'notify::scale': (pspec: GObject.ParamSpec) => void;
+            'notify::sizing-mode': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -184,6 +178,14 @@ export namespace XreaderView {
         set sizing_mode(val: SizingMode);
         get sizingMode(): SizingMode;
         set sizingMode(val: SizingMode);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentModel.SignalSignatures;
 
         // Constructors
 
@@ -199,17 +201,17 @@ export namespace XreaderView {
 
         connect<K extends keyof DocumentModel.SignalSignatures>(
             signal: K,
-            callback: DocumentModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentModel.SignalSignatures>(
             signal: K,
-            callback: DocumentModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentModel.SignalSignatures>(
             signal: K,
-            ...args: DocumentModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -249,20 +251,10 @@ export namespace XreaderView {
     }
 
     namespace Job {
-        // Signal callback interfaces
-
-        interface Cancelled {
-            (_source: Job): void;
-        }
-
-        interface Finished {
-            (_source: Job): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            cancelled: Cancelled;
-            finished: Finished;
+            cancelled: () => void;
+            finished: () => void;
         }
 
         // Constructor properties interface
@@ -272,6 +264,14 @@ export namespace XreaderView {
 
     abstract class Job extends GObject.Object {
         static $gtype: GObject.GType<Job>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Job.SignalSignatures;
 
         // Fields
 
@@ -292,13 +292,19 @@ export namespace XreaderView {
 
         // Signals
 
-        connect<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
+        connect<K extends keyof Job.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Job.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
+        connect_after<K extends keyof Job.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Job.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Job.SignalSignatures>(
             signal: K,
-            ...args: Job.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Job.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -333,6 +339,14 @@ export namespace XreaderView {
 
     class JobAnnots extends Job {
         static $gtype: GObject.GType<JobAnnots>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: JobAnnots.SignalSignatures;
 
         // Fields
 
@@ -348,16 +362,19 @@ export namespace XreaderView {
 
         // Signals
 
-        connect<K extends keyof JobAnnots.SignalSignatures>(signal: K, callback: JobAnnots.SignalSignatures[K]): number;
+        connect<K extends keyof JobAnnots.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, JobAnnots.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobAnnots.SignalSignatures>(
             signal: K,
-            callback: JobAnnots.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, JobAnnots.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobAnnots.SignalSignatures>(
             signal: K,
-            ...args: JobAnnots.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<JobAnnots.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -373,6 +390,14 @@ export namespace XreaderView {
 
     class JobAttachments extends Job {
         static $gtype: GObject.GType<JobAttachments>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: JobAttachments.SignalSignatures;
 
         // Fields
 
@@ -390,17 +415,17 @@ export namespace XreaderView {
 
         connect<K extends keyof JobAttachments.SignalSignatures>(
             signal: K,
-            callback: JobAttachments.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, JobAttachments.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobAttachments.SignalSignatures>(
             signal: K,
-            callback: JobAttachments.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, JobAttachments.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobAttachments.SignalSignatures>(
             signal: K,
-            ...args: JobAttachments.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<JobAttachments.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -416,6 +441,14 @@ export namespace XreaderView {
 
     class JobExport extends Job {
         static $gtype: GObject.GType<JobExport>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: JobExport.SignalSignatures;
 
         // Fields
 
@@ -432,16 +465,19 @@ export namespace XreaderView {
 
         // Signals
 
-        connect<K extends keyof JobExport.SignalSignatures>(signal: K, callback: JobExport.SignalSignatures[K]): number;
+        connect<K extends keyof JobExport.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, JobExport.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobExport.SignalSignatures>(
             signal: K,
-            callback: JobExport.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, JobExport.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobExport.SignalSignatures>(
             signal: K,
-            ...args: JobExport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<JobExport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -451,15 +487,9 @@ export namespace XreaderView {
     }
 
     namespace JobFind {
-        // Signal callback interfaces
-
-        interface Updated {
-            (_source: JobFind, object: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Job.SignalSignatures {
-            updated: Updated;
+            updated: (arg0: number) => void;
         }
 
         // Constructor properties interface
@@ -469,6 +499,14 @@ export namespace XreaderView {
 
     class JobFind extends Job {
         static $gtype: GObject.GType<JobFind>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: JobFind.SignalSignatures;
 
         // Fields
 
@@ -497,16 +535,19 @@ export namespace XreaderView {
 
         // Signals
 
-        connect<K extends keyof JobFind.SignalSignatures>(signal: K, callback: JobFind.SignalSignatures[K]): number;
+        connect<K extends keyof JobFind.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, JobFind.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobFind.SignalSignatures>(
             signal: K,
-            callback: JobFind.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, JobFind.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobFind.SignalSignatures>(
             signal: K,
-            ...args: JobFind.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<JobFind.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -523,15 +564,9 @@ export namespace XreaderView {
     }
 
     namespace JobFonts {
-        // Signal callback interfaces
-
-        interface Updated {
-            (_source: JobFonts, object: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Job.SignalSignatures {
-            updated: Updated;
+            updated: (arg0: number) => void;
         }
 
         // Constructor properties interface
@@ -541,6 +576,14 @@ export namespace XreaderView {
 
     class JobFonts extends Job {
         static $gtype: GObject.GType<JobFonts>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: JobFonts.SignalSignatures;
 
         // Fields
 
@@ -556,16 +599,19 @@ export namespace XreaderView {
 
         // Signals
 
-        connect<K extends keyof JobFonts.SignalSignatures>(signal: K, callback: JobFonts.SignalSignatures[K]): number;
+        connect<K extends keyof JobFonts.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, JobFonts.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobFonts.SignalSignatures>(
             signal: K,
-            callback: JobFonts.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, JobFonts.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobFonts.SignalSignatures>(
             signal: K,
-            ...args: JobFonts.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<JobFonts.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -585,6 +631,14 @@ export namespace XreaderView {
 
     class JobLayers extends Job {
         static $gtype: GObject.GType<JobLayers>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: JobLayers.SignalSignatures;
 
         // Fields
 
@@ -600,16 +654,19 @@ export namespace XreaderView {
 
         // Signals
 
-        connect<K extends keyof JobLayers.SignalSignatures>(signal: K, callback: JobLayers.SignalSignatures[K]): number;
+        connect<K extends keyof JobLayers.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, JobLayers.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobLayers.SignalSignatures>(
             signal: K,
-            callback: JobLayers.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, JobLayers.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobLayers.SignalSignatures>(
             signal: K,
-            ...args: JobLayers.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<JobLayers.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -625,6 +682,14 @@ export namespace XreaderView {
 
     class JobLinks extends Job {
         static $gtype: GObject.GType<JobLinks>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: JobLinks.SignalSignatures;
 
         // Fields
 
@@ -640,16 +705,19 @@ export namespace XreaderView {
 
         // Signals
 
-        connect<K extends keyof JobLinks.SignalSignatures>(signal: K, callback: JobLinks.SignalSignatures[K]): number;
+        connect<K extends keyof JobLinks.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, JobLinks.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobLinks.SignalSignatures>(
             signal: K,
-            callback: JobLinks.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, JobLinks.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobLinks.SignalSignatures>(
             signal: K,
-            ...args: JobLinks.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<JobLinks.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -665,6 +733,14 @@ export namespace XreaderView {
 
     class JobLoad extends Job {
         static $gtype: GObject.GType<JobLoad>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: JobLoad.SignalSignatures;
 
         // Fields
 
@@ -681,16 +757,19 @@ export namespace XreaderView {
 
         // Signals
 
-        connect<K extends keyof JobLoad.SignalSignatures>(signal: K, callback: JobLoad.SignalSignatures[K]): number;
+        connect<K extends keyof JobLoad.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, JobLoad.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobLoad.SignalSignatures>(
             signal: K,
-            callback: JobLoad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, JobLoad.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobLoad.SignalSignatures>(
             signal: K,
-            ...args: JobLoad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<JobLoad.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -711,6 +790,14 @@ export namespace XreaderView {
 
     class JobPageData extends Job {
         static $gtype: GObject.GType<JobPageData>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: JobPageData.SignalSignatures;
 
         // Fields
 
@@ -732,17 +819,17 @@ export namespace XreaderView {
 
         connect<K extends keyof JobPageData.SignalSignatures>(
             signal: K,
-            callback: JobPageData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, JobPageData.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobPageData.SignalSignatures>(
             signal: K,
-            callback: JobPageData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, JobPageData.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobPageData.SignalSignatures>(
             signal: K,
-            ...args: JobPageData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<JobPageData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -758,6 +845,14 @@ export namespace XreaderView {
 
     class JobPrint extends Job {
         static $gtype: GObject.GType<JobPrint>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: JobPrint.SignalSignatures;
 
         // Fields
 
@@ -773,16 +868,19 @@ export namespace XreaderView {
 
         // Signals
 
-        connect<K extends keyof JobPrint.SignalSignatures>(signal: K, callback: JobPrint.SignalSignatures[K]): number;
+        connect<K extends keyof JobPrint.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, JobPrint.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobPrint.SignalSignatures>(
             signal: K,
-            callback: JobPrint.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, JobPrint.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobPrint.SignalSignatures>(
             signal: K,
-            ...args: JobPrint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<JobPrint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -803,6 +901,14 @@ export namespace XreaderView {
 
     class JobRender extends Job {
         static $gtype: GObject.GType<JobRender>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: JobRender.SignalSignatures;
 
         // Fields
 
@@ -835,16 +941,19 @@ export namespace XreaderView {
 
         // Signals
 
-        connect<K extends keyof JobRender.SignalSignatures>(signal: K, callback: JobRender.SignalSignatures[K]): number;
+        connect<K extends keyof JobRender.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, JobRender.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobRender.SignalSignatures>(
             signal: K,
-            callback: JobRender.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, JobRender.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobRender.SignalSignatures>(
             signal: K,
-            ...args: JobRender.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<JobRender.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -869,6 +978,14 @@ export namespace XreaderView {
 
     class JobSave extends Job {
         static $gtype: GObject.GType<JobSave>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: JobSave.SignalSignatures;
 
         // Fields
 
@@ -885,16 +1002,19 @@ export namespace XreaderView {
 
         // Signals
 
-        connect<K extends keyof JobSave.SignalSignatures>(signal: K, callback: JobSave.SignalSignatures[K]): number;
+        connect<K extends keyof JobSave.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, JobSave.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobSave.SignalSignatures>(
             signal: K,
-            callback: JobSave.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, JobSave.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobSave.SignalSignatures>(
             signal: K,
-            ...args: JobSave.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<JobSave.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -910,6 +1030,14 @@ export namespace XreaderView {
 
     class JobThumbnail extends Job {
         static $gtype: GObject.GType<JobThumbnail>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: JobThumbnail.SignalSignatures;
 
         // Fields
 
@@ -930,42 +1058,28 @@ export namespace XreaderView {
 
         connect<K extends keyof JobThumbnail.SignalSignatures>(
             signal: K,
-            callback: JobThumbnail.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, JobThumbnail.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobThumbnail.SignalSignatures>(
             signal: K,
-            callback: JobThumbnail.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, JobThumbnail.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobThumbnail.SignalSignatures>(
             signal: K,
-            ...args: JobThumbnail.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<JobThumbnail.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace PrintOperation {
-        // Signal callback interfaces
-
-        interface BeginPrint {
-            (_source: PrintOperation): void;
-        }
-
-        interface Done {
-            (_source: PrintOperation, object: Gtk.PrintOperationResult): void;
-        }
-
-        interface StatusChanged {
-            (_source: PrintOperation): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'begin-print': BeginPrint;
-            done: Done;
-            'status-changed': StatusChanged;
-            'notify::document': GObject.Object.Notify;
+            'begin-print': () => void;
+            done: (arg0: Gtk.PrintOperationResult) => void;
+            'status-changed': () => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -981,6 +1095,14 @@ export namespace XreaderView {
         // Properties
 
         set document(val: XreaderDocument.Document);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PrintOperation.SignalSignatures;
 
         // Constructors
 
@@ -994,17 +1116,17 @@ export namespace XreaderView {
 
         connect<K extends keyof PrintOperation.SignalSignatures>(
             signal: K,
-            callback: PrintOperation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PrintOperation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PrintOperation.SignalSignatures>(
             signal: K,
-            callback: PrintOperation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PrintOperation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PrintOperation.SignalSignatures>(
             signal: K,
-            ...args: PrintOperation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PrintOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1029,106 +1151,64 @@ export namespace XreaderView {
     }
 
     namespace View {
-        // Signal callback interfaces
-
-        interface Activate {
-            (_source: View): void;
-        }
-
-        interface AnnotAdded {
-            (_source: View, object: XreaderDocument.Annotation): void;
-        }
-
-        interface AnnotRemoved {
-            (_source: View, object: XreaderDocument.Annotation): void;
-        }
-
-        interface BindingActivated {
-            (_source: View, object: Gtk.ScrollType, p0: boolean): void;
-        }
-
-        interface ExternalLink {
-            (_source: View, object: GObject.Object): void;
-        }
-
-        interface HandleLink {
-            (_source: View, object: GObject.Object): void;
-        }
-
-        interface LayersChanged {
-            (_source: View): void;
-        }
-
-        interface Popup {
-            (_source: View, object?: any | null): void;
-        }
-
-        interface SelectionChanged {
-            (_source: View): void;
-        }
-
-        interface SyncSource {
-            (_source: View, object?: any | null): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gtk.Container.SignalSignatures {
-            activate: Activate;
-            'annot-added': AnnotAdded;
-            'annot-removed': AnnotRemoved;
-            'binding-activated': BindingActivated;
-            'external-link': ExternalLink;
-            'handle-link': HandleLink;
-            'layers-changed': LayersChanged;
-            popup: Popup;
-            'selection-changed': SelectionChanged;
-            'sync-source': SyncSource;
-            'notify::border-width': GObject.Object.Notify;
-            'notify::child': GObject.Object.Notify;
-            'notify::resize-mode': GObject.Object.Notify;
-            'notify::app-paintable': GObject.Object.Notify;
-            'notify::can-default': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::composite-child': GObject.Object.Notify;
-            'notify::double-buffered': GObject.Object.Notify;
-            'notify::events': GObject.Object.Notify;
-            'notify::expand': GObject.Object.Notify;
-            'notify::focus-on-click': GObject.Object.Notify;
-            'notify::halign': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
-            'notify::hexpand': GObject.Object.Notify;
-            'notify::hexpand-set': GObject.Object.Notify;
-            'notify::is-focus': GObject.Object.Notify;
-            'notify::margin': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-end': GObject.Object.Notify;
-            'notify::margin-left': GObject.Object.Notify;
-            'notify::margin-right': GObject.Object.Notify;
-            'notify::margin-start': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::no-show-all': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
-            'notify::valign': GObject.Object.Notify;
-            'notify::vexpand': GObject.Object.Notify;
-            'notify::vexpand-set': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
-            'notify::window': GObject.Object.Notify;
-            'notify::hadjustment': GObject.Object.Notify;
-            'notify::hscroll-policy': GObject.Object.Notify;
-            'notify::vadjustment': GObject.Object.Notify;
-            'notify::vscroll-policy': GObject.Object.Notify;
+            activate: () => void;
+            'annot-added': (arg0: XreaderDocument.Annotation) => void;
+            'annot-removed': (arg0: XreaderDocument.Annotation) => void;
+            'binding-activated': (arg0: Gtk.ScrollType, arg1: boolean) => void;
+            'external-link': (arg0: GObject.Object) => void;
+            'handle-link': (arg0: GObject.Object) => void;
+            'layers-changed': () => void;
+            popup: (arg0: any | null) => void;
+            'selection-changed': () => void;
+            'sync-source': (arg0: any | null) => void;
+            'notify::border-width': (pspec: GObject.ParamSpec) => void;
+            'notify::child': (pspec: GObject.ParamSpec) => void;
+            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
+            'notify::can-default': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
+            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
+            'notify::events': (pspec: GObject.ParamSpec) => void;
+            'notify::expand': (pspec: GObject.ParamSpec) => void;
+            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
+            'notify::halign': (pspec: GObject.ParamSpec) => void;
+            'notify::has-default': (pspec: GObject.ParamSpec) => void;
+            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::height-request': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::margin': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
+            'notify::valign': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
+            'notify::hadjustment': (pspec: GObject.ParamSpec) => void;
+            'notify::hscroll-policy': (pspec: GObject.ParamSpec) => void;
+            'notify::vadjustment': (pspec: GObject.ParamSpec) => void;
+            'notify::vscroll-policy': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1142,6 +1222,14 @@ export namespace XreaderView {
 
     class View extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: View.SignalSignatures;
 
         // Constructors
 
@@ -1153,13 +1241,19 @@ export namespace XreaderView {
 
         // Signals
 
-        connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect<K extends keyof View.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, View.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect_after<K extends keyof View.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, View.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof View.SignalSignatures>(
             signal: K,
-            ...args: View.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<View.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1753,68 +1847,54 @@ export namespace XreaderView {
     }
 
     namespace ViewPresentation {
-        // Signal callback interfaces
-
-        interface ChangePage {
-            (_source: ViewPresentation, object: Gtk.ScrollType): void;
-        }
-
-        interface ExternalLink {
-            (_source: ViewPresentation, object: GObject.Object): void;
-        }
-
-        interface Finished {
-            (_source: ViewPresentation): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
-            'change-page': ChangePage;
-            'external-link': ExternalLink;
-            finished: Finished;
-            'notify::current-page': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::inverted-colors': GObject.Object.Notify;
-            'notify::rotation': GObject.Object.Notify;
-            'notify::app-paintable': GObject.Object.Notify;
-            'notify::can-default': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::composite-child': GObject.Object.Notify;
-            'notify::double-buffered': GObject.Object.Notify;
-            'notify::events': GObject.Object.Notify;
-            'notify::expand': GObject.Object.Notify;
-            'notify::focus-on-click': GObject.Object.Notify;
-            'notify::halign': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
-            'notify::hexpand': GObject.Object.Notify;
-            'notify::hexpand-set': GObject.Object.Notify;
-            'notify::is-focus': GObject.Object.Notify;
-            'notify::margin': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-end': GObject.Object.Notify;
-            'notify::margin-left': GObject.Object.Notify;
-            'notify::margin-right': GObject.Object.Notify;
-            'notify::margin-start': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::no-show-all': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
-            'notify::valign': GObject.Object.Notify;
-            'notify::vexpand': GObject.Object.Notify;
-            'notify::vexpand-set': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
-            'notify::window': GObject.Object.Notify;
+            'change-page': (arg0: Gtk.ScrollType) => void;
+            'external-link': (arg0: GObject.Object) => void;
+            finished: () => void;
+            'notify::current-page': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::inverted-colors': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation': (pspec: GObject.ParamSpec) => void;
+            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
+            'notify::can-default': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
+            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
+            'notify::events': (pspec: GObject.ParamSpec) => void;
+            'notify::expand': (pspec: GObject.ParamSpec) => void;
+            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
+            'notify::halign': (pspec: GObject.ParamSpec) => void;
+            'notify::has-default': (pspec: GObject.ParamSpec) => void;
+            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::height-request': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::margin': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
+            'notify::valign': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1844,6 +1924,14 @@ export namespace XreaderView {
         set invertedColors(val: boolean);
         get rotation(): number;
         set rotation(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ViewPresentation.SignalSignatures;
 
         // Constructors
 
@@ -1862,17 +1950,17 @@ export namespace XreaderView {
 
         connect<K extends keyof ViewPresentation.SignalSignatures>(
             signal: K,
-            callback: ViewPresentation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ViewPresentation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ViewPresentation.SignalSignatures>(
             signal: K,
-            callback: ViewPresentation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ViewPresentation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ViewPresentation.SignalSignatures>(
             signal: K,
-            ...args: ViewPresentation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ViewPresentation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2506,48 +2594,48 @@ export namespace XreaderView {
     namespace WebView {
         // Signal signatures
         interface SignalSignatures extends Gtk.Container.SignalSignatures {
-            'notify::border-width': GObject.Object.Notify;
-            'notify::child': GObject.Object.Notify;
-            'notify::resize-mode': GObject.Object.Notify;
-            'notify::app-paintable': GObject.Object.Notify;
-            'notify::can-default': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::composite-child': GObject.Object.Notify;
-            'notify::double-buffered': GObject.Object.Notify;
-            'notify::events': GObject.Object.Notify;
-            'notify::expand': GObject.Object.Notify;
-            'notify::focus-on-click': GObject.Object.Notify;
-            'notify::halign': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
-            'notify::hexpand': GObject.Object.Notify;
-            'notify::hexpand-set': GObject.Object.Notify;
-            'notify::is-focus': GObject.Object.Notify;
-            'notify::margin': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-end': GObject.Object.Notify;
-            'notify::margin-left': GObject.Object.Notify;
-            'notify::margin-right': GObject.Object.Notify;
-            'notify::margin-start': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::no-show-all': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
-            'notify::valign': GObject.Object.Notify;
-            'notify::vexpand': GObject.Object.Notify;
-            'notify::vexpand-set': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
-            'notify::window': GObject.Object.Notify;
+            'notify::border-width': (pspec: GObject.ParamSpec) => void;
+            'notify::child': (pspec: GObject.ParamSpec) => void;
+            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
+            'notify::can-default': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
+            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
+            'notify::events': (pspec: GObject.ParamSpec) => void;
+            'notify::expand': (pspec: GObject.ParamSpec) => void;
+            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
+            'notify::halign': (pspec: GObject.ParamSpec) => void;
+            'notify::has-default': (pspec: GObject.ParamSpec) => void;
+            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::height-request': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::margin': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
+            'notify::valign': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2560,6 +2648,14 @@ export namespace XreaderView {
 
     class WebView extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WebView>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WebView.SignalSignatures;
 
         // Constructors
 
@@ -2571,16 +2667,19 @@ export namespace XreaderView {
 
         // Signals
 
-        connect<K extends keyof WebView.SignalSignatures>(signal: K, callback: WebView.SignalSignatures[K]): number;
+        connect<K extends keyof WebView.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WebView.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebView.SignalSignatures>(
             signal: K,
-            callback: WebView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebView.SignalSignatures>(
             signal: K,
-            ...args: WebView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WebView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

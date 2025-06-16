@@ -46,6 +46,14 @@ export namespace CambalachePrivate {
 
     class BuilderScope extends Gtk.BuilderCScope implements Gtk.BuilderScope {
         static $gtype: GObject.GType<BuilderScope>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BuilderScope.SignalSignatures;
 
         // Constructors
 
@@ -57,17 +65,17 @@ export namespace CambalachePrivate {
 
         connect<K extends keyof BuilderScope.SignalSignatures>(
             signal: K,
-            callback: BuilderScope.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BuilderScope.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BuilderScope.SignalSignatures>(
             signal: K,
-            callback: BuilderScope.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BuilderScope.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BuilderScope.SignalSignatures>(
             signal: K,
-            ...args: BuilderScope.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BuilderScope.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

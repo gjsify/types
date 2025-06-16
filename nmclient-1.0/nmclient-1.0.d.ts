@@ -1235,18 +1235,18 @@ export namespace NMClient {
     namespace AccessPoint {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::bssid': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::frequency': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::last-seen': GObject.Object.Notify;
-            'notify::max-bitrate': GObject.Object.Notify;
-            'notify::mode': GObject.Object.Notify;
-            'notify::rsn-flags': GObject.Object.Notify;
-            'notify::ssid': GObject.Object.Notify;
-            'notify::strength': GObject.Object.Notify;
-            'notify::wpa-flags': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'notify::bssid': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::frequency': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::last-seen': (pspec: GObject.ParamSpec) => void;
+            'notify::max-bitrate': (pspec: GObject.ParamSpec) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::rsn-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ssid': (pspec: GObject.ParamSpec) => void;
+            'notify::strength': (pspec: GObject.ParamSpec) => void;
+            'notify::wpa-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1349,6 +1349,14 @@ export namespace NMClient {
          * The WPA flags of the access point.
          */
         get wpaFlags(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AccessPoint.SignalSignatures;
 
         // Constructors
 
@@ -1362,17 +1370,17 @@ export namespace NMClient {
 
         connect<K extends keyof AccessPoint.SignalSignatures>(
             signal: K,
-            callback: AccessPoint.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AccessPoint.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AccessPoint.SignalSignatures>(
             signal: K,
-            callback: AccessPoint.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AccessPoint.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AccessPoint.SignalSignatures>(
             signal: K,
-            ...args: AccessPoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AccessPoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2189,22 +2197,22 @@ export namespace NMClient {
     namespace ActiveConnection {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::connection': GObject.Object.Notify;
-            'notify::default': GObject.Object.Notify;
-            'notify::default6': GObject.Object.Notify;
-            'notify::devices': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::master': GObject.Object.Notify;
-            'notify::specific-object': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::uuid': GObject.Object.Notify;
-            'notify::vpn': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::default': (pspec: GObject.ParamSpec) => void;
+            'notify::default6': (pspec: GObject.ParamSpec) => void;
+            'notify::devices': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::master': (pspec: GObject.ParamSpec) => void;
+            'notify::specific-object': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::uuid': (pspec: GObject.ParamSpec) => void;
+            'notify::vpn': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2318,6 +2326,14 @@ export namespace NMClient {
          * Whether the active connection is a VPN connection.
          */
         get vpn(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ActiveConnection.SignalSignatures;
 
         // Constructors
 
@@ -2331,17 +2347,17 @@ export namespace NMClient {
 
         connect<K extends keyof ActiveConnection.SignalSignatures>(
             signal: K,
-            callback: ActiveConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ActiveConnection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ActiveConnection.SignalSignatures>(
             signal: K,
-            callback: ActiveConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ActiveConnection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ActiveConnection.SignalSignatures>(
             signal: K,
-            ...args: ActiveConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ActiveConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3158,53 +3174,31 @@ export namespace NMClient {
     }
 
     namespace Client {
-        // Signal callback interfaces
-
-        interface AnyDeviceAdded {
-            (_source: Client, device: Device): void;
-        }
-
-        interface AnyDeviceRemoved {
-            (_source: Client, device: Device): void;
-        }
-
-        interface DeviceAdded {
-            (_source: Client, device: Device): void;
-        }
-
-        interface DeviceRemoved {
-            (_source: Client, device: Device): void;
-        }
-
-        interface PermissionChanged {
-            (_source: Client, permission: number, result: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'any-device-added': AnyDeviceAdded;
-            'any-device-removed': AnyDeviceRemoved;
-            'device-added': DeviceAdded;
-            'device-removed': DeviceRemoved;
-            'permission-changed': PermissionChanged;
-            'notify::activating-connection': GObject.Object.Notify;
-            'notify::active-connections': GObject.Object.Notify;
-            'notify::all-devices': GObject.Object.Notify;
-            'notify::connectivity': GObject.Object.Notify;
-            'notify::devices': GObject.Object.Notify;
-            'notify::manager-running': GObject.Object.Notify;
-            'notify::networking-enabled': GObject.Object.Notify;
-            'notify::primary-connection': GObject.Object.Notify;
-            'notify::startup': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
-            'notify::wimax-enabled': GObject.Object.Notify;
-            'notify::wimax-hardware-enabled': GObject.Object.Notify;
-            'notify::wireless-enabled': GObject.Object.Notify;
-            'notify::wireless-hardware-enabled': GObject.Object.Notify;
-            'notify::wwan-enabled': GObject.Object.Notify;
-            'notify::wwan-hardware-enabled': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'any-device-added': (arg0: Device) => void;
+            'any-device-removed': (arg0: Device) => void;
+            'device-added': (arg0: Device) => void;
+            'device-removed': (arg0: Device) => void;
+            'permission-changed': (arg0: number, arg1: number) => void;
+            'notify::activating-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::all-devices': (pspec: GObject.ParamSpec) => void;
+            'notify::connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::devices': (pspec: GObject.ParamSpec) => void;
+            'notify::manager-running': (pspec: GObject.ParamSpec) => void;
+            'notify::networking-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::primary-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::startup': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
+            'notify::wimax-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::wimax-hardware-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::wireless-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::wireless-hardware-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::wwan-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::wwan-hardware-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3378,6 +3372,14 @@ export namespace NMClient {
          * Whether the WWAN hardware is enabled.
          */
         get wwanHardwareEnabled(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -3394,13 +3396,19 @@ export namespace NMClient {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4433,8 +4441,8 @@ export namespace NMClient {
     namespace DHCP4Config {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::options': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'notify::options': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4456,6 +4464,14 @@ export namespace NMClient {
          * The #GHashTable containing options of the configuration.
          */
         get options(): GLib.HashTable<string, GObject.Value>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DHCP4Config.SignalSignatures;
 
         // Constructors
 
@@ -4469,17 +4485,17 @@ export namespace NMClient {
 
         connect<K extends keyof DHCP4Config.SignalSignatures>(
             signal: K,
-            callback: DHCP4Config.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DHCP4Config.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DHCP4Config.SignalSignatures>(
             signal: K,
-            callback: DHCP4Config.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DHCP4Config.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DHCP4Config.SignalSignatures>(
             signal: K,
-            ...args: DHCP4Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DHCP4Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5226,8 +5242,8 @@ export namespace NMClient {
     namespace DHCP6Config {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::options': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'notify::options': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5249,6 +5265,14 @@ export namespace NMClient {
          * The #GHashTable containing options of the configuration.
          */
         get options(): GLib.HashTable<string, GObject.Value>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DHCP6Config.SignalSignatures;
 
         // Constructors
 
@@ -5262,17 +5286,17 @@ export namespace NMClient {
 
         connect<K extends keyof DHCP6Config.SignalSignatures>(
             signal: K,
-            callback: DHCP6Config.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DHCP6Config.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DHCP6Config.SignalSignatures>(
             signal: K,
-            callback: DHCP6Config.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DHCP6Config.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DHCP6Config.SignalSignatures>(
             signal: K,
-            ...args: DHCP6Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DHCP6Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6017,39 +6041,33 @@ export namespace NMClient {
     }
 
     namespace Device {
-        // Signal callback interfaces
-
-        interface StateChanged {
-            (_source: Device, new_state: number, old_state: number, reason: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'state-changed': StateChanged;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'state-changed': (arg0: number, arg1: number, arg2: number) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6255,6 +6273,14 @@ export namespace NMClient {
          * The vendor string of the device.
          */
         get vendor(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -6266,13 +6292,19 @@ export namespace NMClient {
 
         // Signals
 
-        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
-            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7280,31 +7312,31 @@ export namespace NMClient {
     namespace DeviceAdsl {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::carrier': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'notify::carrier': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7326,6 +7358,14 @@ export namespace NMClient {
          * Whether the device has carrier.
          */
         get carrier(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceAdsl.SignalSignatures;
 
         // Constructors
 
@@ -7339,17 +7379,17 @@ export namespace NMClient {
 
         connect<K extends keyof DeviceAdsl.SignalSignatures>(
             signal: K,
-            callback: DeviceAdsl.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceAdsl.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceAdsl.SignalSignatures>(
             signal: K,
-            callback: DeviceAdsl.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceAdsl.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceAdsl.SignalSignatures>(
             signal: K,
-            ...args: DeviceAdsl.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceAdsl.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8007,33 +8047,33 @@ export namespace NMClient {
     namespace DeviceBond {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::carrier': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::slaves': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'notify::carrier': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::slaves': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8070,6 +8110,14 @@ export namespace NMClient {
          * The devices (#NMDevice) enslaved to the bond device.
          */
         get slaves(): ObjectArray;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceBond.SignalSignatures;
 
         // Constructors
 
@@ -8083,17 +8131,17 @@ export namespace NMClient {
 
         connect<K extends keyof DeviceBond.SignalSignatures>(
             signal: K,
-            callback: DeviceBond.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceBond.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceBond.SignalSignatures>(
             signal: K,
-            callback: DeviceBond.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceBond.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceBond.SignalSignatures>(
             signal: K,
-            ...args: DeviceBond.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceBond.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8761,33 +8809,33 @@ export namespace NMClient {
     namespace DeviceBridge {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::carrier': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::slaves': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'notify::carrier': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::slaves': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8824,6 +8872,14 @@ export namespace NMClient {
          * The devices (#NMDevice) enslaved to the bridge device.
          */
         get slaves(): ObjectArray;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceBridge.SignalSignatures;
 
         // Constructors
 
@@ -8837,17 +8893,17 @@ export namespace NMClient {
 
         connect<K extends keyof DeviceBridge.SignalSignatures>(
             signal: K,
-            callback: DeviceBridge.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceBridge.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceBridge.SignalSignatures>(
             signal: K,
-            callback: DeviceBridge.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceBridge.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceBridge.SignalSignatures>(
             signal: K,
-            ...args: DeviceBridge.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceBridge.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9515,33 +9571,33 @@ export namespace NMClient {
     namespace DeviceBt {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::bt-capabilities': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'notify::bt-capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9583,6 +9639,14 @@ export namespace NMClient {
          * The name of the bluetooth device.
          */
         get name(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceBt.SignalSignatures;
 
         // Constructors
 
@@ -9594,16 +9658,19 @@ export namespace NMClient {
 
         // Signals
 
-        connect<K extends keyof DeviceBt.SignalSignatures>(signal: K, callback: DeviceBt.SignalSignatures[K]): number;
+        connect<K extends keyof DeviceBt.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DeviceBt.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceBt.SignalSignatures>(
             signal: K,
-            callback: DeviceBt.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceBt.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceBt.SignalSignatures>(
             signal: K,
-            ...args: DeviceBt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceBt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10273,34 +10340,34 @@ export namespace NMClient {
     namespace DeviceEthernet {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::carrier': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::perm-hw-address': GObject.Object.Notify;
-            'notify::speed': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'notify::carrier': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::perm-hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::speed': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10347,6 +10414,14 @@ export namespace NMClient {
          * The speed of the device.
          */
         get speed(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceEthernet.SignalSignatures;
 
         // Constructors
 
@@ -10360,17 +10435,17 @@ export namespace NMClient {
 
         connect<K extends keyof DeviceEthernet.SignalSignatures>(
             signal: K,
-            callback: DeviceEthernet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceEthernet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceEthernet.SignalSignatures>(
             signal: K,
-            callback: DeviceEthernet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceEthernet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceEthernet.SignalSignatures>(
             signal: K,
-            ...args: DeviceEthernet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceEthernet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11043,32 +11118,32 @@ export namespace NMClient {
     namespace DeviceGeneric {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::type-description': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::type-description': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11107,6 +11182,14 @@ export namespace NMClient {
          * if not known.
          */
         get typeDescription(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceGeneric.SignalSignatures;
 
         // Constructors
 
@@ -11120,17 +11203,17 @@ export namespace NMClient {
 
         connect<K extends keyof DeviceGeneric.SignalSignatures>(
             signal: K,
-            callback: DeviceGeneric.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceGeneric.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceGeneric.SignalSignatures>(
             signal: K,
-            callback: DeviceGeneric.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceGeneric.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceGeneric.SignalSignatures>(
             signal: K,
-            ...args: DeviceGeneric.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceGeneric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11788,32 +11871,32 @@ export namespace NMClient {
     namespace DeviceInfiniband {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::carrier': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'notify::carrier': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11845,6 +11928,14 @@ export namespace NMClient {
          * The hardware (MAC) address of the device.
          */
         get hwAddress(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceInfiniband.SignalSignatures;
 
         // Constructors
 
@@ -11858,17 +11949,17 @@ export namespace NMClient {
 
         connect<K extends keyof DeviceInfiniband.SignalSignatures>(
             signal: K,
-            callback: DeviceInfiniband.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceInfiniband.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceInfiniband.SignalSignatures>(
             signal: K,
-            callback: DeviceInfiniband.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceInfiniband.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceInfiniband.SignalSignatures>(
             signal: K,
-            ...args: DeviceInfiniband.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceInfiniband.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12531,32 +12622,32 @@ export namespace NMClient {
     namespace DeviceModem {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::current-capabilities': GObject.Object.Notify;
-            'notify::modem-capabilities': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'notify::current-capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::modem-capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12601,6 +12692,14 @@ export namespace NMClient {
          * CDMA/EVDO and GSM/UMTS.
          */
         get modemCapabilities(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceModem.SignalSignatures;
 
         // Constructors
 
@@ -12612,17 +12711,17 @@ export namespace NMClient {
 
         connect<K extends keyof DeviceModem.SignalSignatures>(
             signal: K,
-            callback: DeviceModem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceModem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceModem.SignalSignatures>(
             signal: K,
-            callback: DeviceModem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceModem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceModem.SignalSignatures>(
             signal: K,
-            ...args: DeviceModem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceModem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13289,33 +13388,33 @@ export namespace NMClient {
     namespace DeviceOlpcMesh {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::active-channel': GObject.Object.Notify;
-            'notify::companion': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'notify::active-channel': (pspec: GObject.ParamSpec) => void;
+            'notify::companion': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13357,6 +13456,14 @@ export namespace NMClient {
          * The hardware (MAC) address of the device.
          */
         get hwAddress(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceOlpcMesh.SignalSignatures;
 
         // Constructors
 
@@ -13370,17 +13477,17 @@ export namespace NMClient {
 
         connect<K extends keyof DeviceOlpcMesh.SignalSignatures>(
             signal: K,
-            callback: DeviceOlpcMesh.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceOlpcMesh.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceOlpcMesh.SignalSignatures>(
             signal: K,
-            callback: DeviceOlpcMesh.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceOlpcMesh.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceOlpcMesh.SignalSignatures>(
             signal: K,
-            ...args: DeviceOlpcMesh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceOlpcMesh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14048,33 +14155,33 @@ export namespace NMClient {
     namespace DeviceTeam {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::carrier': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::slaves': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'notify::carrier': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::slaves': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14111,6 +14218,14 @@ export namespace NMClient {
          * The devices (#NMDevice) enslaved to the team device.
          */
         get slaves(): ObjectArray;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceTeam.SignalSignatures;
 
         // Constructors
 
@@ -14124,17 +14239,17 @@ export namespace NMClient {
 
         connect<K extends keyof DeviceTeam.SignalSignatures>(
             signal: K,
-            callback: DeviceTeam.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceTeam.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceTeam.SignalSignatures>(
             signal: K,
-            callback: DeviceTeam.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceTeam.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceTeam.SignalSignatures>(
             signal: K,
-            ...args: DeviceTeam.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceTeam.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14802,34 +14917,34 @@ export namespace NMClient {
     namespace DeviceVlan {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::carrier': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::vlan-id': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'notify::carrier': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::vlan-id': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14876,6 +14991,14 @@ export namespace NMClient {
          * The device's VLAN ID.
          */
         get vlanId(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceVlan.SignalSignatures;
 
         // Constructors
 
@@ -14889,17 +15012,17 @@ export namespace NMClient {
 
         connect<K extends keyof DeviceVlan.SignalSignatures>(
             signal: K,
-            callback: DeviceVlan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceVlan.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceVlan.SignalSignatures>(
             signal: K,
-            callback: DeviceVlan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceVlan.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceVlan.SignalSignatures>(
             signal: K,
-            ...args: DeviceVlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceVlan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -15562,51 +15685,41 @@ export namespace NMClient {
     }
 
     namespace DeviceWifi {
-        // Signal callback interfaces
-
-        interface AccessPointAdded {
-            (_source: DeviceWifi, ap: GObject.Object): void;
-        }
-
-        interface AccessPointRemoved {
-            (_source: DeviceWifi, ap: GObject.Object): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'access-point-added': AccessPointAdded;
-            'access-point-removed': AccessPointRemoved;
-            'notify::access-points': GObject.Object.Notify;
-            'notify::active-access-point': GObject.Object.Notify;
-            'notify::bitrate': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::mode': GObject.Object.Notify;
-            'notify::perm-hw-address': GObject.Object.Notify;
-            'notify::wireless-capabilities': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'access-point-added': (arg0: GObject.Object) => void;
+            'access-point-removed': (arg0: GObject.Object) => void;
+            'notify::access-points': (pspec: GObject.ParamSpec) => void;
+            'notify::active-access-point': (pspec: GObject.ParamSpec) => void;
+            'notify::bitrate': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::perm-hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::wireless-capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15683,6 +15796,14 @@ export namespace NMClient {
          * The wireless capabilities of the device.
          */
         get wirelessCapabilities(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceWifi.SignalSignatures;
 
         // Constructors
 
@@ -15696,17 +15817,17 @@ export namespace NMClient {
 
         connect<K extends keyof DeviceWifi.SignalSignatures>(
             signal: K,
-            callback: DeviceWifi.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceWifi.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceWifi.SignalSignatures>(
             signal: K,
-            callback: DeviceWifi.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceWifi.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceWifi.SignalSignatures>(
             signal: K,
-            ...args: DeviceWifi.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceWifi.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -16412,52 +16533,42 @@ export namespace NMClient {
     }
 
     namespace DeviceWimax {
-        // Signal callback interfaces
-
-        interface NspAdded {
-            (_source: DeviceWimax, nsp: GObject.Object): void;
-        }
-
-        interface NspRemoved {
-            (_source: DeviceWimax, nsp: GObject.Object): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'nsp-added': NspAdded;
-            'nsp-removed': NspRemoved;
-            'notify::active-nsp': GObject.Object.Notify;
-            'notify::bsid': GObject.Object.Notify;
-            'notify::center-frequency': GObject.Object.Notify;
-            'notify::cinr': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::nsps': GObject.Object.Notify;
-            'notify::rssi': GObject.Object.Notify;
-            'notify::tx-power': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'nsp-added': (arg0: GObject.Object) => void;
+            'nsp-removed': (arg0: GObject.Object) => void;
+            'notify::active-nsp': (pspec: GObject.ParamSpec) => void;
+            'notify::bsid': (pspec: GObject.ParamSpec) => void;
+            'notify::center-frequency': (pspec: GObject.ParamSpec) => void;
+            'notify::cinr': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::nsps': (pspec: GObject.ParamSpec) => void;
+            'notify::rssi': (pspec: GObject.ParamSpec) => void;
+            'notify::tx-power': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -16548,6 +16659,14 @@ export namespace NMClient {
          * -5.5 dBm.  Has no meaning when the device is not connected.
          */
         get txPower(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceWimax.SignalSignatures;
 
         // Constructors
 
@@ -16561,17 +16680,17 @@ export namespace NMClient {
 
         connect<K extends keyof DeviceWimax.SignalSignatures>(
             signal: K,
-            callback: DeviceWimax.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceWimax.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceWimax.SignalSignatures>(
             signal: K,
-            callback: DeviceWimax.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceWimax.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceWimax.SignalSignatures>(
             signal: K,
-            ...args: DeviceWimax.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceWimax.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -17284,14 +17403,14 @@ export namespace NMClient {
     namespace IP4Config {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::addresses': GObject.Object.Notify;
-            'notify::domains': GObject.Object.Notify;
-            'notify::gateway': GObject.Object.Notify;
-            'notify::nameservers': GObject.Object.Notify;
-            'notify::routes': GObject.Object.Notify;
-            'notify::searches': GObject.Object.Notify;
-            'notify::wins-servers': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'notify::addresses': (pspec: GObject.ParamSpec) => void;
+            'notify::domains': (pspec: GObject.ParamSpec) => void;
+            'notify::gateway': (pspec: GObject.ParamSpec) => void;
+            'notify::nameservers': (pspec: GObject.ParamSpec) => void;
+            'notify::routes': (pspec: GObject.ParamSpec) => void;
+            'notify::searches': (pspec: GObject.ParamSpec) => void;
+            'notify::wins-servers': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -17348,6 +17467,14 @@ export namespace NMClient {
          * The #GArray containing WINS servers (#guint32s) of the configuration.
          */
         get winsServers(): UintArray;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IP4Config.SignalSignatures;
 
         // Constructors
 
@@ -17359,16 +17486,19 @@ export namespace NMClient {
 
         // Signals
 
-        connect<K extends keyof IP4Config.SignalSignatures>(signal: K, callback: IP4Config.SignalSignatures[K]): number;
+        connect<K extends keyof IP4Config.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, IP4Config.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IP4Config.SignalSignatures>(
             signal: K,
-            callback: IP4Config.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IP4Config.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IP4Config.SignalSignatures>(
             signal: K,
-            ...args: IP4Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IP4Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -18139,13 +18269,13 @@ export namespace NMClient {
     namespace IP6Config {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::addresses': GObject.Object.Notify;
-            'notify::domains': GObject.Object.Notify;
-            'notify::gateway': GObject.Object.Notify;
-            'notify::nameservers': GObject.Object.Notify;
-            'notify::routes': GObject.Object.Notify;
-            'notify::searches': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'notify::addresses': (pspec: GObject.ParamSpec) => void;
+            'notify::domains': (pspec: GObject.ParamSpec) => void;
+            'notify::gateway': (pspec: GObject.ParamSpec) => void;
+            'notify::nameservers': (pspec: GObject.ParamSpec) => void;
+            'notify::routes': (pspec: GObject.ParamSpec) => void;
+            'notify::searches': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -18197,6 +18327,14 @@ export namespace NMClient {
          * The #GPtrArray containing dns search strings of the configuration.
          */
         get searches(): StringArray;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IP6Config.SignalSignatures;
 
         // Constructors
 
@@ -18208,16 +18346,19 @@ export namespace NMClient {
 
         // Signals
 
-        connect<K extends keyof IP6Config.SignalSignatures>(signal: K, callback: IP6Config.SignalSignatures[K]): number;
+        connect<K extends keyof IP6Config.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, IP6Config.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IP6Config.SignalSignatures>(
             signal: K,
-            callback: IP6Config.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IP6Config.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IP6Config.SignalSignatures>(
             signal: K,
-            ...args: IP6Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IP6Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -18987,16 +19128,10 @@ export namespace NMClient {
     }
 
     namespace Object {
-        // Signal callback interfaces
-
-        interface ObjectCreationFailed {
-            (_source: Object, error?: any | null, failed_path?: any | null): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'object-creation-failed': ObjectCreationFailed;
-            'notify::dbus-path': GObject.Object.Notify;
+            'object-creation-failed': (arg0: any | null, arg1: any | null) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19017,6 +19152,14 @@ export namespace NMClient {
 
         get dbus_path(): string;
         get dbusPath(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -19026,13 +19169,19 @@ export namespace NMClient {
 
         // Signals
 
-        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
-            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -19780,28 +19929,14 @@ export namespace NMClient {
     }
 
     namespace RemoteConnection {
-        // Signal callback interfaces
-
-        interface Removed {
-            (_source: RemoteConnection): void;
-        }
-
-        interface Updated {
-            (_source: RemoteConnection): void;
-        }
-
-        interface Visible {
-            (_source: RemoteConnection, object: boolean): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends NetworkManager.Connection.SignalSignatures {
-            removed: Removed;
-            updated: Updated;
-            visible: Visible;
-            'notify::dbus-path': GObject.Object.Notify;
-            'notify::unsaved': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
+            removed: () => void;
+            updated: () => void;
+            visible: (arg0: boolean) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
+            'notify::unsaved': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19831,6 +19966,14 @@ export namespace NMClient {
          * to disk, %FALSE if the connection is the same as its on-disk representation.
          */
         get unsaved(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RemoteConnection.SignalSignatures;
 
         // Constructors
 
@@ -19847,17 +19990,17 @@ export namespace NMClient {
 
         connect<K extends keyof RemoteConnection.SignalSignatures>(
             signal: K,
-            callback: RemoteConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RemoteConnection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RemoteConnection.SignalSignatures>(
             signal: K,
-            callback: RemoteConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RemoteConnection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RemoteConnection.SignalSignatures>(
             signal: K,
-            ...args: RemoteConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RemoteConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -20628,23 +20771,13 @@ export namespace NMClient {
     }
 
     namespace RemoteSettings {
-        // Signal callback interfaces
-
-        interface ConnectionsRead {
-            (_source: RemoteSettings): void;
-        }
-
-        interface NewConnection {
-            (_source: RemoteSettings, object: GObject.Object): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'connections-read': ConnectionsRead;
-            'new-connection': NewConnection;
-            'notify::can-modify': GObject.Object.Notify;
-            'notify::hostname': GObject.Object.Notify;
-            'notify::service-running': GObject.Object.Notify;
+            'connections-read': () => void;
+            'new-connection': (arg0: GObject.Object) => void;
+            'notify::can-modify': (pspec: GObject.ParamSpec) => void;
+            'notify::hostname': (pspec: GObject.ParamSpec) => void;
+            'notify::service-running': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -20687,6 +20820,14 @@ export namespace NMClient {
          * Whether the settings service is running.
          */
         get serviceRunning(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RemoteSettings.SignalSignatures;
 
         // Constructors
 
@@ -20705,17 +20846,17 @@ export namespace NMClient {
 
         connect<K extends keyof RemoteSettings.SignalSignatures>(
             signal: K,
-            callback: RemoteSettings.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RemoteSettings.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RemoteSettings.SignalSignatures>(
             signal: K,
-            callback: RemoteSettings.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RemoteSettings.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RemoteSettings.SignalSignatures>(
             signal: K,
-            ...args: RemoteSettings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RemoteSettings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21549,19 +21690,13 @@ export namespace NMClient {
     }
 
     namespace SecretAgent {
-        // Signal callback interfaces
-
-        interface RegistrationResult {
-            (_source: SecretAgent, error?: any | null): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'registration-result': RegistrationResult;
-            'notify::auto-register': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::identifier': GObject.Object.Notify;
-            'notify::registered': GObject.Object.Notify;
+            'registration-result': (arg0: any | null) => void;
+            'notify::auto-register': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::identifier': (pspec: GObject.ParamSpec) => void;
+            'notify::registered': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21621,6 +21756,14 @@ export namespace NMClient {
          * %TRUE if the agent is registered with NetworkManager, %FALSE if not.
          */
         get registered(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SecretAgent.SignalSignatures;
 
         // Constructors
 
@@ -21632,17 +21775,17 @@ export namespace NMClient {
 
         connect<K extends keyof SecretAgent.SignalSignatures>(
             signal: K,
-            callback: SecretAgent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SecretAgent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SecretAgent.SignalSignatures>(
             signal: K,
-            callback: SecretAgent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SecretAgent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SecretAgent.SignalSignatures>(
             signal: K,
-            ...args: SecretAgent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SecretAgent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21751,33 +21894,27 @@ export namespace NMClient {
     }
 
     namespace VPNConnection {
-        // Signal callback interfaces
-
-        interface VpnStateChanged {
-            (_source: VPNConnection, object: number, p0: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends ActiveConnection.SignalSignatures {
-            'vpn-state-changed': VpnStateChanged;
-            'notify::banner': GObject.Object.Notify;
-            'notify::vpn-state': GObject.Object.Notify;
-            'notify::connection': GObject.Object.Notify;
-            'notify::default': GObject.Object.Notify;
-            'notify::default6': GObject.Object.Notify;
-            'notify::devices': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::master': GObject.Object.Notify;
-            'notify::specific-object': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::uuid': GObject.Object.Notify;
-            'notify::vpn': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'vpn-state-changed': (arg0: number, arg1: number) => void;
+            'notify::banner': (pspec: GObject.ParamSpec) => void;
+            'notify::vpn-state': (pspec: GObject.ParamSpec) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::default': (pspec: GObject.ParamSpec) => void;
+            'notify::default6': (pspec: GObject.ParamSpec) => void;
+            'notify::devices': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::master': (pspec: GObject.ParamSpec) => void;
+            'notify::specific-object': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::uuid': (pspec: GObject.ParamSpec) => void;
+            'notify::vpn': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21809,6 +21946,14 @@ export namespace NMClient {
          * The VPN state of the active VPN connection.
          */
         get vpnState(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VPNConnection.SignalSignatures;
 
         // Constructors
 
@@ -21822,17 +21967,17 @@ export namespace NMClient {
 
         connect<K extends keyof VPNConnection.SignalSignatures>(
             signal: K,
-            callback: VPNConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VPNConnection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VPNConnection.SignalSignatures>(
             signal: K,
-            callback: VPNConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VPNConnection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VPNConnection.SignalSignatures>(
             signal: K,
-            ...args: VPNConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VPNConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22500,10 +22645,10 @@ export namespace NMClient {
     namespace WimaxNsp {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::network-type': GObject.Object.Notify;
-            'notify::signal-quality': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::network-type': (pspec: GObject.ParamSpec) => void;
+            'notify::signal-quality': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22545,6 +22690,14 @@ export namespace NMClient {
          * The signal quality of the WiMAX NSP.
          */
         get signalQuality(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WimaxNsp.SignalSignatures;
 
         // Constructors
 
@@ -22556,16 +22709,19 @@ export namespace NMClient {
 
         // Signals
 
-        connect<K extends keyof WimaxNsp.SignalSignatures>(signal: K, callback: WimaxNsp.SignalSignatures[K]): number;
+        connect<K extends keyof WimaxNsp.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WimaxNsp.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WimaxNsp.SignalSignatures>(
             signal: K,
-            callback: WimaxNsp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WimaxNsp.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WimaxNsp.SignalSignatures>(
             signal: K,
-            ...args: WimaxNsp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WimaxNsp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

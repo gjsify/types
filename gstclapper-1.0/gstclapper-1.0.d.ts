@@ -164,95 +164,45 @@ export namespace GstClapper {
         (data?: any | null): void;
     }
     namespace Clapper {
-        // Signal callback interfaces
-
-        interface AudioDecoderChanged {
-            (_source: Clapper, object: string): void;
-        }
-
-        interface Buffering {
-            (_source: Clapper, object: number): void;
-        }
-
-        interface DurationChanged {
-            (_source: Clapper, object: number): void;
-        }
-
-        interface EndOfStream {
-            (_source: Clapper): void;
-        }
-
-        interface Error {
-            (_source: Clapper, object: GLib.Error): void;
-        }
-
-        interface MediaInfoUpdated {
-            (_source: Clapper, object: ClapperMediaInfo): void;
-        }
-
-        interface PositionUpdated {
-            (_source: Clapper, object: number): void;
-        }
-
-        interface StateChanged {
-            (_source: Clapper, object: ClapperState): void;
-        }
-
-        interface UriLoaded {
-            (_source: Clapper, object: string): void;
-        }
-
-        interface VideoDecoderChanged {
-            (_source: Clapper, object: string): void;
-        }
-
-        interface VideoDimensionsChanged {
-            (_source: Clapper, object: number, p0: number): void;
-        }
-
-        interface Warning {
-            (_source: Clapper, object: GLib.Error): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'audio-decoder-changed': AudioDecoderChanged;
-            buffering: Buffering;
-            'duration-changed': DurationChanged;
-            'end-of-stream': EndOfStream;
-            error: Error;
-            'media-info-updated': MediaInfoUpdated;
-            'position-updated': PositionUpdated;
-            'state-changed': StateChanged;
-            'uri-loaded': UriLoaded;
-            'video-decoder-changed': VideoDecoderChanged;
-            'video-dimensions-changed': VideoDimensionsChanged;
-            warning: Warning;
-            'notify::audio-video-offset': GObject.Object.Notify;
-            'notify::current-audio-track': GObject.Object.Notify;
-            'notify::current-subtitle-track': GObject.Object.Notify;
-            'notify::current-video-track': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::media-info': GObject.Object.Notify;
-            'notify::mpris': GObject.Object.Notify;
-            'notify::mute': GObject.Object.Notify;
-            'notify::pipeline': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::rate': GObject.Object.Notify;
-            'notify::seek-mode': GObject.Object.Notify;
-            'notify::signal-dispatcher': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::subtitle-video-offset': GObject.Object.Notify;
-            'notify::suburi': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
-            'notify::use-pipewire': GObject.Object.Notify;
-            'notify::use-playbin3': GObject.Object.Notify;
-            'notify::video-multiview-flags': GObject.Object.Notify;
-            'notify::video-multiview-mode': GObject.Object.Notify;
-            'notify::video-renderer': GObject.Object.Notify;
-            'notify::volume': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'audio-decoder-changed': (arg0: string) => void;
+            buffering: (arg0: number) => void;
+            'duration-changed': (arg0: number) => void;
+            'end-of-stream': () => void;
+            error: (arg0: GLib.Error) => void;
+            'media-info-updated': (arg0: ClapperMediaInfo) => void;
+            'position-updated': (arg0: number) => void;
+            'state-changed': (arg0: ClapperState) => void;
+            'uri-loaded': (arg0: string) => void;
+            'video-decoder-changed': (arg0: string) => void;
+            'video-dimensions-changed': (arg0: number, arg1: number) => void;
+            warning: (arg0: GLib.Error) => void;
+            'notify::audio-video-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::current-audio-track': (pspec: GObject.ParamSpec) => void;
+            'notify::current-subtitle-track': (pspec: GObject.ParamSpec) => void;
+            'notify::current-video-track': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::media-info': (pspec: GObject.ParamSpec) => void;
+            'notify::mpris': (pspec: GObject.ParamSpec) => void;
+            'notify::mute': (pspec: GObject.ParamSpec) => void;
+            'notify::pipeline': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::rate': (pspec: GObject.ParamSpec) => void;
+            'notify::seek-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::signal-dispatcher': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle-video-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::suburi': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::use-pipewire': (pspec: GObject.ParamSpec) => void;
+            'notify::use-playbin3': (pspec: GObject.ParamSpec) => void;
+            'notify::video-multiview-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::video-multiview-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::video-renderer': (pspec: GObject.ParamSpec) => void;
+            'notify::volume': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -353,6 +303,14 @@ export namespace GstClapper {
         set videoRenderer(val: ClapperVideoRenderer);
         get volume(): number;
         set volume(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Clapper.SignalSignatures;
 
         // Constructors
 
@@ -368,16 +326,19 @@ export namespace GstClapper {
 
         // Signals
 
-        connect<K extends keyof Clapper.SignalSignatures>(signal: K, callback: Clapper.SignalSignatures[K]): number;
+        connect<K extends keyof Clapper.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Clapper.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Clapper.SignalSignatures>(
             signal: K,
-            callback: Clapper.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Clapper.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Clapper.SignalSignatures>(
             signal: K,
-            ...args: Clapper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Clapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -629,6 +590,14 @@ export namespace GstClapper {
      */
     class ClapperAudioInfo extends ClapperStreamInfo {
         static $gtype: GObject.GType<ClapperAudioInfo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClapperAudioInfo.SignalSignatures;
 
         // Constructors
 
@@ -640,17 +609,17 @@ export namespace GstClapper {
 
         connect<K extends keyof ClapperAudioInfo.SignalSignatures>(
             signal: K,
-            callback: ClapperAudioInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClapperAudioInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClapperAudioInfo.SignalSignatures>(
             signal: K,
-            callback: ClapperAudioInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClapperAudioInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClapperAudioInfo.SignalSignatures>(
             signal: K,
-            ...args: ClapperAudioInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClapperAudioInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -666,7 +635,7 @@ export namespace GstClapper {
     namespace ClapperGMainContextSignalDispatcher {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::application-context': GObject.Object.Notify;
+            'notify::application-context': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -684,6 +653,14 @@ export namespace GstClapper {
 
         get application_context(): GLib.MainContext;
         get applicationContext(): GLib.MainContext;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClapperGMainContextSignalDispatcher.SignalSignatures;
 
         // Constructors
 
@@ -695,18 +672,21 @@ export namespace GstClapper {
 
         connect<K extends keyof ClapperGMainContextSignalDispatcher.SignalSignatures>(
             signal: K,
-            callback: ClapperGMainContextSignalDispatcher.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClapperGMainContextSignalDispatcher.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClapperGMainContextSignalDispatcher.SignalSignatures>(
             signal: K,
-            callback: ClapperGMainContextSignalDispatcher.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClapperGMainContextSignalDispatcher.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClapperGMainContextSignalDispatcher.SignalSignatures>(
             signal: K,
-            ...args: ClapperGMainContextSignalDispatcher.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<ClapperGMainContextSignalDispatcher.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -1166,7 +1146,7 @@ export namespace GstClapper {
     namespace ClapperGtk4Plugin {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::video-sink': GObject.Object.Notify;
+            'notify::video-sink': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1187,6 +1167,14 @@ export namespace GstClapper {
 
         get video_sink(): Gst.Element;
         get videoSink(): Gst.Element;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClapperGtk4Plugin.SignalSignatures;
 
         // Constructors
 
@@ -1200,17 +1188,17 @@ export namespace GstClapper {
 
         connect<K extends keyof ClapperGtk4Plugin.SignalSignatures>(
             signal: K,
-            callback: ClapperGtk4Plugin.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClapperGtk4Plugin.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClapperGtk4Plugin.SignalSignatures>(
             signal: K,
-            callback: ClapperGtk4Plugin.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClapperGtk4Plugin.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClapperGtk4Plugin.SignalSignatures>(
             signal: K,
-            ...args: ClapperGtk4Plugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClapperGtk4Plugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1229,6 +1217,14 @@ export namespace GstClapper {
      */
     class ClapperMediaInfo extends GObject.Object {
         static $gtype: GObject.GType<ClapperMediaInfo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClapperMediaInfo.SignalSignatures;
 
         // Constructors
 
@@ -1240,17 +1236,17 @@ export namespace GstClapper {
 
         connect<K extends keyof ClapperMediaInfo.SignalSignatures>(
             signal: K,
-            callback: ClapperMediaInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClapperMediaInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClapperMediaInfo.SignalSignatures>(
             signal: K,
-            callback: ClapperMediaInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClapperMediaInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClapperMediaInfo.SignalSignatures>(
             signal: K,
-            ...args: ClapperMediaInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClapperMediaInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1283,12 +1279,12 @@ export namespace GstClapper {
     namespace ClapperMpris {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::default-art-url': GObject.Object.Notify;
-            'notify::desktop-entry': GObject.Object.Notify;
-            'notify::id-path': GObject.Object.Notify;
-            'notify::identity': GObject.Object.Notify;
-            'notify::own-name': GObject.Object.Notify;
-            'notify::volume': GObject.Object.Notify;
+            'notify::default-art-url': (pspec: GObject.ParamSpec) => void;
+            'notify::desktop-entry': (pspec: GObject.ParamSpec) => void;
+            'notify::id-path': (pspec: GObject.ParamSpec) => void;
+            'notify::identity': (pspec: GObject.ParamSpec) => void;
+            'notify::own-name': (pspec: GObject.ParamSpec) => void;
+            'notify::volume': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1323,6 +1319,14 @@ export namespace GstClapper {
         get ownName(): string;
         get volume(): number;
         set volume(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClapperMpris.SignalSignatures;
 
         // Constructors
 
@@ -1342,17 +1346,17 @@ export namespace GstClapper {
 
         connect<K extends keyof ClapperMpris.SignalSignatures>(
             signal: K,
-            callback: ClapperMpris.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClapperMpris.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClapperMpris.SignalSignatures>(
             signal: K,
-            callback: ClapperMpris.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClapperMpris.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClapperMpris.SignalSignatures>(
             signal: K,
-            ...args: ClapperMpris.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClapperMpris.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1373,6 +1377,14 @@ export namespace GstClapper {
      */
     abstract class ClapperStreamInfo extends GObject.Object {
         static $gtype: GObject.GType<ClapperStreamInfo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClapperStreamInfo.SignalSignatures;
 
         // Constructors
 
@@ -1384,17 +1396,17 @@ export namespace GstClapper {
 
         connect<K extends keyof ClapperStreamInfo.SignalSignatures>(
             signal: K,
-            callback: ClapperStreamInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClapperStreamInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClapperStreamInfo.SignalSignatures>(
             signal: K,
-            callback: ClapperStreamInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClapperStreamInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClapperStreamInfo.SignalSignatures>(
             signal: K,
-            ...args: ClapperStreamInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClapperStreamInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1434,6 +1446,14 @@ export namespace GstClapper {
      */
     class ClapperSubtitleInfo extends ClapperStreamInfo {
         static $gtype: GObject.GType<ClapperSubtitleInfo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClapperSubtitleInfo.SignalSignatures;
 
         // Constructors
 
@@ -1445,17 +1465,19 @@ export namespace GstClapper {
 
         connect<K extends keyof ClapperSubtitleInfo.SignalSignatures>(
             signal: K,
-            callback: ClapperSubtitleInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClapperSubtitleInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClapperSubtitleInfo.SignalSignatures>(
             signal: K,
-            callback: ClapperSubtitleInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClapperSubtitleInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClapperSubtitleInfo.SignalSignatures>(
             signal: K,
-            ...args: ClapperSubtitleInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClapperSubtitleInfo.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1479,6 +1501,14 @@ export namespace GstClapper {
      */
     class ClapperVideoInfo extends ClapperStreamInfo {
         static $gtype: GObject.GType<ClapperVideoInfo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClapperVideoInfo.SignalSignatures;
 
         // Constructors
 
@@ -1490,17 +1520,17 @@ export namespace GstClapper {
 
         connect<K extends keyof ClapperVideoInfo.SignalSignatures>(
             signal: K,
-            callback: ClapperVideoInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClapperVideoInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClapperVideoInfo.SignalSignatures>(
             signal: K,
-            callback: ClapperVideoInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClapperVideoInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClapperVideoInfo.SignalSignatures>(
             signal: K,
-            ...args: ClapperVideoInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClapperVideoInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1520,8 +1550,8 @@ export namespace GstClapper {
     namespace ClapperVideoOverlayVideoRenderer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::video-sink': GObject.Object.Notify;
-            'notify::window-handle': GObject.Object.Notify;
+            'notify::video-sink': (pspec: GObject.ParamSpec) => void;
+            'notify::window-handle': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1547,6 +1577,14 @@ export namespace GstClapper {
         set window_handle(val: any);
         get windowHandle(): any;
         set windowHandle(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClapperVideoOverlayVideoRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1558,17 +1596,22 @@ export namespace GstClapper {
 
         connect<K extends keyof ClapperVideoOverlayVideoRenderer.SignalSignatures>(
             signal: K,
-            callback: ClapperVideoOverlayVideoRenderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClapperVideoOverlayVideoRenderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClapperVideoOverlayVideoRenderer.SignalSignatures>(
             signal: K,
-            callback: ClapperVideoOverlayVideoRenderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClapperVideoOverlayVideoRenderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClapperVideoOverlayVideoRenderer.SignalSignatures>(
             signal: K,
-            ...args: ClapperVideoOverlayVideoRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClapperVideoOverlayVideoRenderer.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -166,6 +166,14 @@ export namespace Libinsane {
 
     class Api extends GObject.Object {
         static $gtype: GObject.GType<Api>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Api.SignalSignatures;
 
         // Constructors
 
@@ -179,13 +187,19 @@ export namespace Libinsane {
 
         // Signals
 
-        connect<K extends keyof Api.SignalSignatures>(signal: K, callback: Api.SignalSignatures[K]): number;
+        connect<K extends keyof Api.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Api.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Api.SignalSignatures>(signal: K, callback: Api.SignalSignatures[K]): number;
+        connect_after<K extends keyof Api.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Api.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Api.SignalSignatures>(
             signal: K,
-            ...args: Api.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Api.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -211,6 +225,14 @@ export namespace Libinsane {
 
     class DeviceDescriptor extends GObject.Object {
         static $gtype: GObject.GType<DeviceDescriptor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -222,17 +244,17 @@ export namespace Libinsane {
 
         connect<K extends keyof DeviceDescriptor.SignalSignatures>(
             signal: K,
-            callback: DeviceDescriptor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceDescriptor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceDescriptor.SignalSignatures>(
             signal: K,
-            callback: DeviceDescriptor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceDescriptor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceDescriptor.SignalSignatures>(
             signal: K,
-            ...args: DeviceDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -260,6 +282,14 @@ export namespace Libinsane {
 
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Item.SignalSignatures;
 
         // Constructors
 
@@ -269,13 +299,19 @@ export namespace Libinsane {
 
         // Signals
 
-        connect<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect<K extends keyof Item.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect_after<K extends keyof Item.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Item.SignalSignatures>(
             signal: K,
-            ...args: Item.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Item.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -308,6 +344,14 @@ export namespace Libinsane {
 
     class OptionDescriptor extends GObject.Object {
         static $gtype: GObject.GType<OptionDescriptor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OptionDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -319,17 +363,17 @@ export namespace Libinsane {
 
         connect<K extends keyof OptionDescriptor.SignalSignatures>(
             signal: K,
-            callback: OptionDescriptor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OptionDescriptor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OptionDescriptor.SignalSignatures>(
             signal: K,
-            callback: OptionDescriptor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OptionDescriptor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OptionDescriptor.SignalSignatures>(
             signal: K,
-            ...args: OptionDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OptionDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -364,6 +408,14 @@ export namespace Libinsane {
 
     class ScanParameters extends GObject.Object {
         static $gtype: GObject.GType<ScanParameters>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ScanParameters.SignalSignatures;
 
         // Constructors
 
@@ -375,17 +427,17 @@ export namespace Libinsane {
 
         connect<K extends keyof ScanParameters.SignalSignatures>(
             signal: K,
-            callback: ScanParameters.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ScanParameters.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScanParameters.SignalSignatures>(
             signal: K,
-            callback: ScanParameters.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ScanParameters.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScanParameters.SignalSignatures>(
             signal: K,
-            ...args: ScanParameters.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ScanParameters.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -408,6 +460,14 @@ export namespace Libinsane {
 
     class ScanSession extends GObject.Object {
         static $gtype: GObject.GType<ScanSession>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ScanSession.SignalSignatures;
 
         // Constructors
 
@@ -419,17 +479,17 @@ export namespace Libinsane {
 
         connect<K extends keyof ScanSession.SignalSignatures>(
             signal: K,
-            callback: ScanSession.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ScanSession.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScanSession.SignalSignatures>(
             signal: K,
-            callback: ScanSession.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ScanSession.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScanSession.SignalSignatures>(
             signal: K,
-            ...args: ScanSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ScanSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

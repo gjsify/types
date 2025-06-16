@@ -351,21 +351,15 @@ export namespace Shell {
         ALL,
     }
     namespace App {
-        // Signal callback interfaces
-
-        interface WindowsChanged {
-            (_source: App): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'windows-changed': WindowsChanged;
-            'notify::action-group': GObject.Object.Notify;
-            'notify::app-info': GObject.Object.Notify;
-            'notify::busy': GObject.Object.Notify;
-            'notify::icon': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
+            'windows-changed': () => void;
+            'notify::action-group': (pspec: GObject.ParamSpec) => void;
+            'notify::app-info': (pspec: GObject.ParamSpec) => void;
+            'notify::busy': (pspec: GObject.ParamSpec) => void;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -423,6 +417,14 @@ export namespace Shell {
          * running or not, or transitioning between those states.
          */
         get state(): AppState;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: App.SignalSignatures;
 
         // Constructors
 
@@ -432,13 +434,19 @@ export namespace Shell {
 
         // Signals
 
-        connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        connect<K extends keyof App.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, App.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        connect_after<K extends keyof App.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, App.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof App.SignalSignatures>(
             signal: K,
-            ...args: App.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<App.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -549,20 +557,10 @@ export namespace Shell {
     }
 
     namespace AppSystem {
-        // Signal callback interfaces
-
-        interface AppStateChanged {
-            (_source: AppSystem, object: App): void;
-        }
-
-        interface InstalledChanged {
-            (_source: AppSystem): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'app-state-changed': AppStateChanged;
-            'installed-changed': InstalledChanged;
+            'app-state-changed': (arg0: App) => void;
+            'installed-changed': () => void;
         }
 
         // Constructor properties interface
@@ -572,6 +570,14 @@ export namespace Shell {
 
     class AppSystem extends GObject.Object {
         static $gtype: GObject.GType<AppSystem>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AppSystem.SignalSignatures;
 
         // Constructors
 
@@ -581,16 +587,19 @@ export namespace Shell {
 
         // Signals
 
-        connect<K extends keyof AppSystem.SignalSignatures>(signal: K, callback: AppSystem.SignalSignatures[K]): number;
+        connect<K extends keyof AppSystem.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AppSystem.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AppSystem.SignalSignatures>(
             signal: K,
-            callback: AppSystem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AppSystem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AppSystem.SignalSignatures>(
             signal: K,
-            ...args: AppSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AppSystem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -658,6 +667,14 @@ export namespace Shell {
 
     class AppUsage extends GObject.Object {
         static $gtype: GObject.GType<AppUsage>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AppUsage.SignalSignatures;
 
         // Constructors
 
@@ -667,16 +684,19 @@ export namespace Shell {
 
         // Signals
 
-        connect<K extends keyof AppUsage.SignalSignatures>(signal: K, callback: AppUsage.SignalSignatures[K]): number;
+        connect<K extends keyof AppUsage.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AppUsage.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AppUsage.SignalSignatures>(
             signal: K,
-            callback: AppUsage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AppUsage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AppUsage.SignalSignatures>(
             signal: K,
-            ...args: AppUsage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AppUsage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -699,12 +719,12 @@ export namespace Shell {
     namespace BlurEffect {
         // Signal signatures
         interface SignalSignatures extends Clutter.Effect.SignalSignatures {
-            'notify::brightness': GObject.Object.Notify;
-            'notify::mode': GObject.Object.Notify;
-            'notify::sigma': GObject.Object.Notify;
-            'notify::actor': GObject.Object.Notify;
-            'notify::enabled': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::brightness': (pspec: GObject.ParamSpec) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::sigma': (pspec: GObject.ParamSpec) => void;
+            'notify::actor': (pspec: GObject.ParamSpec) => void;
+            'notify::enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -727,6 +747,14 @@ export namespace Shell {
         set mode(val: BlurMode);
         get sigma(): number;
         set sigma(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BlurEffect.SignalSignatures;
 
         // Constructors
 
@@ -740,17 +768,17 @@ export namespace Shell {
 
         connect<K extends keyof BlurEffect.SignalSignatures>(
             signal: K,
-            callback: BlurEffect.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BlurEffect.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BlurEffect.SignalSignatures>(
             signal: K,
-            callback: BlurEffect.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BlurEffect.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BlurEffect.SignalSignatures>(
             signal: K,
-            ...args: BlurEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BlurEffect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -767,7 +795,7 @@ export namespace Shell {
     namespace CameraMonitor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::cameras-in-use': GObject.Object.Notify;
+            'notify::cameras-in-use': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -785,6 +813,14 @@ export namespace Shell {
 
         get cameras_in_use(): boolean;
         get camerasInUse(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CameraMonitor.SignalSignatures;
 
         // Constructors
 
@@ -796,17 +832,17 @@ export namespace Shell {
 
         connect<K extends keyof CameraMonitor.SignalSignatures>(
             signal: K,
-            callback: CameraMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CameraMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CameraMonitor.SignalSignatures>(
             signal: K,
-            callback: CameraMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CameraMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CameraMonitor.SignalSignatures>(
             signal: K,
-            ...args: CameraMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CameraMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -814,9 +850,9 @@ export namespace Shell {
     namespace GLSLEffect {
         // Signal signatures
         interface SignalSignatures extends Clutter.OffscreenEffect.SignalSignatures {
-            'notify::actor': GObject.Object.Notify;
-            'notify::enabled': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::actor': (pspec: GObject.ParamSpec) => void;
+            'notify::enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -826,6 +862,14 @@ export namespace Shell {
 
     class GLSLEffect extends Clutter.OffscreenEffect {
         static $gtype: GObject.GType<GLSLEffect>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLSLEffect.SignalSignatures;
 
         // Constructors
 
@@ -837,17 +881,17 @@ export namespace Shell {
 
         connect<K extends keyof GLSLEffect.SignalSignatures>(
             signal: K,
-            callback: GLSLEffect.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLSLEffect.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLSLEffect.SignalSignatures>(
             signal: K,
-            callback: GLSLEffect.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLSLEffect.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLSLEffect.SignalSignatures>(
             signal: K,
-            ...args: GLSLEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLSLEffect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -875,47 +919,33 @@ export namespace Shell {
     }
 
     namespace Global {
-        // Signal callback interfaces
-
-        interface LocatePointer {
-            (_source: Global): void;
-        }
-
-        interface NotifyError {
-            (_source: Global, object: string, p0: string): void;
-        }
-
-        interface Shutdown {
-            (_source: Global): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'locate-pointer': LocatePointer;
-            'notify-error': NotifyError;
-            shutdown: Shutdown;
-            'notify::automation-script': GObject.Object.Notify;
-            'notify::backend': GObject.Object.Notify;
-            'notify::compositor': GObject.Object.Notify;
-            'notify::context': GObject.Object.Notify;
-            'notify::datadir': GObject.Object.Notify;
-            'notify::display': GObject.Object.Notify;
-            'notify::focus-manager': GObject.Object.Notify;
-            'notify::force-animations': GObject.Object.Notify;
-            'notify::frame-finish-timestamp': GObject.Object.Notify;
-            'notify::frame-timestamps': GObject.Object.Notify;
-            'notify::imagedir': GObject.Object.Notify;
-            'notify::screen-height': GObject.Object.Notify;
-            'notify::screen-width': GObject.Object.Notify;
-            'notify::session-mode': GObject.Object.Notify;
-            'notify::settings': GObject.Object.Notify;
-            'notify::stage': GObject.Object.Notify;
-            'notify::switcheroo-control': GObject.Object.Notify;
-            'notify::top-window-group': GObject.Object.Notify;
-            'notify::userdatadir': GObject.Object.Notify;
-            'notify::window-group': GObject.Object.Notify;
-            'notify::window-manager': GObject.Object.Notify;
-            'notify::workspace-manager': GObject.Object.Notify;
+            'locate-pointer': () => void;
+            'notify-error': (arg0: string, arg1: string) => void;
+            shutdown: () => void;
+            'notify::automation-script': (pspec: GObject.ParamSpec) => void;
+            'notify::backend': (pspec: GObject.ParamSpec) => void;
+            'notify::compositor': (pspec: GObject.ParamSpec) => void;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::datadir': (pspec: GObject.ParamSpec) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::focus-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::force-animations': (pspec: GObject.ParamSpec) => void;
+            'notify::frame-finish-timestamp': (pspec: GObject.ParamSpec) => void;
+            'notify::frame-timestamps': (pspec: GObject.ParamSpec) => void;
+            'notify::imagedir': (pspec: GObject.ParamSpec) => void;
+            'notify::screen-height': (pspec: GObject.ParamSpec) => void;
+            'notify::screen-width': (pspec: GObject.ParamSpec) => void;
+            'notify::session-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::settings': (pspec: GObject.ParamSpec) => void;
+            'notify::stage': (pspec: GObject.ParamSpec) => void;
+            'notify::switcheroo-control': (pspec: GObject.ParamSpec) => void;
+            'notify::top-window-group': (pspec: GObject.ParamSpec) => void;
+            'notify::userdatadir': (pspec: GObject.ParamSpec) => void;
+            'notify::window-group': (pspec: GObject.ParamSpec) => void;
+            'notify::window-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::workspace-manager': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1005,6 +1035,14 @@ export namespace Shell {
         get windowManager(): WM;
         get workspace_manager(): Meta.WorkspaceManager;
         get workspaceManager(): Meta.WorkspaceManager;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Global.SignalSignatures;
 
         // Constructors
 
@@ -1014,13 +1052,19 @@ export namespace Shell {
 
         // Signals
 
-        connect<K extends keyof Global.SignalSignatures>(signal: K, callback: Global.SignalSignatures[K]): number;
+        connect<K extends keyof Global.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Global.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Global.SignalSignatures>(signal: K, callback: Global.SignalSignatures[K]): number;
+        connect_after<K extends keyof Global.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Global.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Global.SignalSignatures>(
             signal: K,
-            ...args: Global.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Global.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1164,9 +1208,9 @@ export namespace Shell {
     namespace InvertLightnessEffect {
         // Signal signatures
         interface SignalSignatures extends Clutter.OffscreenEffect.SignalSignatures {
-            'notify::actor': GObject.Object.Notify;
-            'notify::enabled': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::actor': (pspec: GObject.ParamSpec) => void;
+            'notify::enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1176,6 +1220,14 @@ export namespace Shell {
 
     class InvertLightnessEffect extends Clutter.OffscreenEffect {
         static $gtype: GObject.GType<InvertLightnessEffect>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InvertLightnessEffect.SignalSignatures;
 
         // Constructors
 
@@ -1189,53 +1241,45 @@ export namespace Shell {
 
         connect<K extends keyof InvertLightnessEffect.SignalSignatures>(
             signal: K,
-            callback: InvertLightnessEffect.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InvertLightnessEffect.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InvertLightnessEffect.SignalSignatures>(
             signal: K,
-            callback: InvertLightnessEffect.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InvertLightnessEffect.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InvertLightnessEffect.SignalSignatures>(
             signal: K,
-            ...args: InvertLightnessEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InvertLightnessEffect.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace KeyringPrompt {
-        // Signal callback interfaces
-
-        interface ShowConfirm {
-            (_source: KeyringPrompt): void;
-        }
-
-        interface ShowPassword {
-            (_source: KeyringPrompt): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'show-confirm': ShowConfirm;
-            'show-password': ShowPassword;
-            'notify::choice-visible': GObject.Object.Notify;
-            'notify::confirm-actor': GObject.Object.Notify;
-            'notify::confirm-visible': GObject.Object.Notify;
-            'notify::password-actor': GObject.Object.Notify;
-            'notify::password-visible': GObject.Object.Notify;
-            'notify::warning-visible': GObject.Object.Notify;
-            'notify::caller-window': GObject.Object.Notify;
-            'notify::cancel-label': GObject.Object.Notify;
-            'notify::choice-chosen': GObject.Object.Notify;
-            'notify::choice-label': GObject.Object.Notify;
-            'notify::continue-label': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::message': GObject.Object.Notify;
-            'notify::password-new': GObject.Object.Notify;
-            'notify::password-strength': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::warning': GObject.Object.Notify;
+            'show-confirm': () => void;
+            'show-password': () => void;
+            'notify::choice-visible': (pspec: GObject.ParamSpec) => void;
+            'notify::confirm-actor': (pspec: GObject.ParamSpec) => void;
+            'notify::confirm-visible': (pspec: GObject.ParamSpec) => void;
+            'notify::password-actor': (pspec: GObject.ParamSpec) => void;
+            'notify::password-visible': (pspec: GObject.ParamSpec) => void;
+            'notify::warning-visible': (pspec: GObject.ParamSpec) => void;
+            'notify::caller-window': (pspec: GObject.ParamSpec) => void;
+            'notify::cancel-label': (pspec: GObject.ParamSpec) => void;
+            'notify::choice-chosen': (pspec: GObject.ParamSpec) => void;
+            'notify::choice-label': (pspec: GObject.ParamSpec) => void;
+            'notify::continue-label': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::message': (pspec: GObject.ParamSpec) => void;
+            'notify::password-new': (pspec: GObject.ParamSpec) => void;
+            'notify::password-strength': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::warning': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1313,6 +1357,14 @@ export namespace Shell {
          * Whether the warning label is visible or not.
          */
         get warningVisible(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: KeyringPrompt.SignalSignatures;
 
         // Constructors
 
@@ -1326,17 +1378,17 @@ export namespace Shell {
 
         connect<K extends keyof KeyringPrompt.SignalSignatures>(
             signal: K,
-            callback: KeyringPrompt.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, KeyringPrompt.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyringPrompt.SignalSignatures>(
             signal: K,
-            callback: KeyringPrompt.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, KeyringPrompt.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyringPrompt.SignalSignatures>(
             signal: K,
-            ...args: KeyringPrompt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<KeyringPrompt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2360,24 +2412,18 @@ export namespace Shell {
     }
 
     namespace MountOperation {
-        // Signal callback interfaces
-
-        interface ShowProcesses2 {
-            (_source: MountOperation): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gio.MountOperation.SignalSignatures {
-            'show-processes-2': ShowProcesses2;
-            'notify::anonymous': GObject.Object.Notify;
-            'notify::choice': GObject.Object.Notify;
-            'notify::domain': GObject.Object.Notify;
-            'notify::is-tcrypt-hidden-volume': GObject.Object.Notify;
-            'notify::is-tcrypt-system-volume': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::password-save': GObject.Object.Notify;
-            'notify::pim': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
+            'show-processes-2': () => void;
+            'notify::anonymous': (pspec: GObject.ParamSpec) => void;
+            'notify::choice': (pspec: GObject.ParamSpec) => void;
+            'notify::domain': (pspec: GObject.ParamSpec) => void;
+            'notify::is-tcrypt-hidden-volume': (pspec: GObject.ParamSpec) => void;
+            'notify::is-tcrypt-system-volume': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::password-save': (pspec: GObject.ParamSpec) => void;
+            'notify::pim': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2387,6 +2433,14 @@ export namespace Shell {
 
     class MountOperation extends Gio.MountOperation {
         static $gtype: GObject.GType<MountOperation>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MountOperation.SignalSignatures;
 
         // Constructors
 
@@ -2400,17 +2454,17 @@ export namespace Shell {
 
         connect<K extends keyof MountOperation.SignalSignatures>(
             signal: K,
-            callback: MountOperation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MountOperation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MountOperation.SignalSignatures>(
             signal: K,
-            callback: MountOperation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MountOperation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MountOperation.SignalSignatures>(
             signal: K,
-            ...args: MountOperation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MountOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2422,25 +2476,15 @@ export namespace Shell {
     }
 
     namespace NetworkAgent {
-        // Signal callback interfaces
-
-        interface CancelRequest {
-            (_source: NetworkAgent, object: string): void;
-        }
-
-        interface NewRequest {
-            (_source: NetworkAgent, object: string, p0: NM.Connection, p1: string, p2: string[], p3: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends NM.SecretAgentOld.SignalSignatures {
-            'cancel-request': CancelRequest;
-            'new-request': NewRequest;
-            'notify::auto-register': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::dbus-connection': GObject.Object.Notify;
-            'notify::identifier': GObject.Object.Notify;
-            'notify::registered': GObject.Object.Notify;
+            'cancel-request': (arg0: string) => void;
+            'new-request': (arg0: string, arg1: NM.Connection, arg2: string, arg3: string[], arg4: number) => void;
+            'notify::auto-register': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::identifier': (pspec: GObject.ParamSpec) => void;
+            'notify::registered': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2453,6 +2497,14 @@ export namespace Shell {
 
     class NetworkAgent extends NM.SecretAgentOld implements Gio.AsyncInitable<NetworkAgent>, Gio.Initable {
         static $gtype: GObject.GType<NetworkAgent>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NetworkAgent.SignalSignatures;
 
         // Constructors
 
@@ -2464,17 +2516,17 @@ export namespace Shell {
 
         connect<K extends keyof NetworkAgent.SignalSignatures>(
             signal: K,
-            callback: NetworkAgent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NetworkAgent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NetworkAgent.SignalSignatures>(
             signal: K,
-            callback: NetworkAgent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NetworkAgent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NetworkAgent.SignalSignatures>(
             signal: K,
-            ...args: NetworkAgent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NetworkAgent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3228,6 +3280,14 @@ export namespace Shell {
 
     class PerfLog extends GObject.Object {
         static $gtype: GObject.GType<PerfLog>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PerfLog.SignalSignatures;
 
         // Constructors
 
@@ -3237,16 +3297,19 @@ export namespace Shell {
 
         // Signals
 
-        connect<K extends keyof PerfLog.SignalSignatures>(signal: K, callback: PerfLog.SignalSignatures[K]): number;
+        connect<K extends keyof PerfLog.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, PerfLog.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PerfLog.SignalSignatures>(
             signal: K,
-            callback: PerfLog.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PerfLog.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PerfLog.SignalSignatures>(
             signal: K,
-            ...args: PerfLog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PerfLog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3369,27 +3432,10 @@ export namespace Shell {
     }
 
     namespace PolkitAuthenticationAgent {
-        // Signal callback interfaces
-
-        interface Cancel {
-            (_source: PolkitAuthenticationAgent): void;
-        }
-
-        interface Initiate {
-            (
-                _source: PolkitAuthenticationAgent,
-                object: string,
-                p0: string,
-                p1: string,
-                p2: string,
-                p3: string[],
-            ): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends PolkitAgent.Listener.SignalSignatures {
-            cancel: Cancel;
-            initiate: Initiate;
+            cancel: () => void;
+            initiate: (arg0: string, arg1: string, arg2: string, arg3: string, arg4: string[]) => void;
         }
 
         // Constructor properties interface
@@ -3399,6 +3445,14 @@ export namespace Shell {
 
     class PolkitAuthenticationAgent extends PolkitAgent.Listener {
         static $gtype: GObject.GType<PolkitAuthenticationAgent>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PolkitAuthenticationAgent.SignalSignatures;
 
         // Constructors
 
@@ -3412,17 +3466,19 @@ export namespace Shell {
 
         connect<K extends keyof PolkitAuthenticationAgent.SignalSignatures>(
             signal: K,
-            callback: PolkitAuthenticationAgent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PolkitAuthenticationAgent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PolkitAuthenticationAgent.SignalSignatures>(
             signal: K,
-            callback: PolkitAuthenticationAgent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PolkitAuthenticationAgent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PolkitAuthenticationAgent.SignalSignatures>(
             signal: K,
-            ...args: PolkitAuthenticationAgent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PolkitAuthenticationAgent.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3436,15 +3492,9 @@ export namespace Shell {
     }
 
     namespace Screenshot {
-        // Signal callback interfaces
-
-        interface ScreenshotTaken {
-            (_source: Screenshot, object: Mtk.Rectangle): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'screenshot-taken': ScreenshotTaken;
+            'screenshot-taken': (arg0: Mtk.Rectangle) => void;
         }
 
         // Constructor properties interface
@@ -3454,6 +3504,14 @@ export namespace Shell {
 
     class Screenshot extends GObject.Object {
         static $gtype: GObject.GType<Screenshot>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Screenshot.SignalSignatures;
 
         // Constructors
 
@@ -3467,17 +3525,17 @@ export namespace Shell {
 
         connect<K extends keyof Screenshot.SignalSignatures>(
             signal: K,
-            callback: Screenshot.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Screenshot.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Screenshot.SignalSignatures>(
             signal: K,
-            callback: Screenshot.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Screenshot.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Screenshot.SignalSignatures>(
             signal: K,
-            ...args: Screenshot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Screenshot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3725,9 +3783,9 @@ export namespace Shell {
     namespace SecureTextBuffer {
         // Signal signatures
         interface SignalSignatures extends Clutter.TextBuffer.SignalSignatures {
-            'notify::length': GObject.Object.Notify;
-            'notify::max-length': GObject.Object.Notify;
-            'notify::text': GObject.Object.Notify;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
+            'notify::max-length': (pspec: GObject.ParamSpec) => void;
+            'notify::text': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3737,6 +3795,14 @@ export namespace Shell {
 
     class SecureTextBuffer extends Clutter.TextBuffer {
         static $gtype: GObject.GType<SecureTextBuffer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SecureTextBuffer.SignalSignatures;
 
         // Constructors
 
@@ -3750,17 +3816,17 @@ export namespace Shell {
 
         connect<K extends keyof SecureTextBuffer.SignalSignatures>(
             signal: K,
-            callback: SecureTextBuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SecureTextBuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SecureTextBuffer.SignalSignatures>(
             signal: K,
-            callback: SecureTextBuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SecureTextBuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SecureTextBuffer.SignalSignatures>(
             signal: K,
-            ...args: SecureTextBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SecureTextBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3768,87 +3834,87 @@ export namespace Shell {
     namespace SquareBin {
         // Signal signatures
         interface SignalSignatures extends St.Bin.SignalSignatures {
-            'notify::child': GObject.Object.Notify;
-            'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-role': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::hover': GObject.Object.Notify;
-            'notify::label-actor': GObject.Object.Notify;
-            'notify::pseudo-class': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::style-class': GObject.Object.Notify;
-            'notify::track-hover': GObject.Object.Notify;
-            'notify::actions': GObject.Object.Notify;
-            'notify::allocation': GObject.Object.Notify;
-            'notify::background-color': GObject.Object.Notify;
-            'notify::background-color-set': GObject.Object.Notify;
-            'notify::child-transform': GObject.Object.Notify;
-            'notify::child-transform-set': GObject.Object.Notify;
-            'notify::clip-rect': GObject.Object.Notify;
-            'notify::clip-to-allocation': GObject.Object.Notify;
-            'notify::color-state': GObject.Object.Notify;
-            'notify::constraints': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-box': GObject.Object.Notify;
-            'notify::content-gravity': GObject.Object.Notify;
-            'notify::content-repeat': GObject.Object.Notify;
-            'notify::effect': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::fixed-position-set': GObject.Object.Notify;
-            'notify::fixed-x': GObject.Object.Notify;
-            'notify::fixed-y': GObject.Object.Notify;
-            'notify::has-clip': GObject.Object.Notify;
-            'notify::has-pointer': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::layout-manager': GObject.Object.Notify;
-            'notify::magnification-filter': GObject.Object.Notify;
-            'notify::mapped': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-left': GObject.Object.Notify;
-            'notify::margin-right': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::min-height': GObject.Object.Notify;
-            'notify::min-height-set': GObject.Object.Notify;
-            'notify::min-width': GObject.Object.Notify;
-            'notify::min-width-set': GObject.Object.Notify;
-            'notify::minification-filter': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::natural-height': GObject.Object.Notify;
-            'notify::natural-height-set': GObject.Object.Notify;
-            'notify::natural-width': GObject.Object.Notify;
-            'notify::natural-width-set': GObject.Object.Notify;
-            'notify::offscreen-redirect': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::pivot-point': GObject.Object.Notify;
-            'notify::pivot-point-z': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::reactive': GObject.Object.Notify;
-            'notify::realized': GObject.Object.Notify;
-            'notify::request-mode': GObject.Object.Notify;
-            'notify::rotation-angle-x': GObject.Object.Notify;
-            'notify::rotation-angle-y': GObject.Object.Notify;
-            'notify::rotation-angle-z': GObject.Object.Notify;
-            'notify::scale-x': GObject.Object.Notify;
-            'notify::scale-y': GObject.Object.Notify;
-            'notify::scale-z': GObject.Object.Notify;
-            'notify::show-on-set-parent': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::text-direction': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::transform-set': GObject.Object.Notify;
-            'notify::translation-x': GObject.Object.Notify;
-            'notify::translation-y': GObject.Object.Notify;
-            'notify::translation-z': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::x-align': GObject.Object.Notify;
-            'notify::x-expand': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::y-align': GObject.Object.Notify;
-            'notify::y-expand': GObject.Object.Notify;
-            'notify::z-position': GObject.Object.Notify;
+            'notify::child': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::hover': (pspec: GObject.ParamSpec) => void;
+            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
+            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::style-class': (pspec: GObject.ParamSpec) => void;
+            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
+            'notify::actions': (pspec: GObject.ParamSpec) => void;
+            'notify::allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::color-state': (pspec: GObject.ParamSpec) => void;
+            'notify::constraints': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-box': (pspec: GObject.ParamSpec) => void;
+            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
+            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
+            'notify::effect': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
+            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
+            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::mapped': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::reactive': (pspec: GObject.ParamSpec) => void;
+            'notify::realized': (pspec: GObject.ParamSpec) => void;
+            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
+            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::x-align': (pspec: GObject.ParamSpec) => void;
+            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::y-align': (pspec: GObject.ParamSpec) => void;
+            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::z-position': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3866,6 +3932,14 @@ export namespace Shell {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
         static $gtype: GObject.GType<SquareBin>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SquareBin.SignalSignatures;
 
         // Constructors
 
@@ -3875,16 +3949,19 @@ export namespace Shell {
 
         // Signals
 
-        connect<K extends keyof SquareBin.SignalSignatures>(signal: K, callback: SquareBin.SignalSignatures[K]): number;
+        connect<K extends keyof SquareBin.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, SquareBin.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SquareBin.SignalSignatures>(
             signal: K,
-            callback: SquareBin.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SquareBin.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SquareBin.SignalSignatures>(
             signal: K,
-            ...args: SquareBin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SquareBin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4489,86 +4566,86 @@ export namespace Shell {
     namespace Stack {
         // Signal signatures
         interface SignalSignatures extends St.Widget.SignalSignatures {
-            'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-role': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::hover': GObject.Object.Notify;
-            'notify::label-actor': GObject.Object.Notify;
-            'notify::pseudo-class': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::style-class': GObject.Object.Notify;
-            'notify::track-hover': GObject.Object.Notify;
-            'notify::actions': GObject.Object.Notify;
-            'notify::allocation': GObject.Object.Notify;
-            'notify::background-color': GObject.Object.Notify;
-            'notify::background-color-set': GObject.Object.Notify;
-            'notify::child-transform': GObject.Object.Notify;
-            'notify::child-transform-set': GObject.Object.Notify;
-            'notify::clip-rect': GObject.Object.Notify;
-            'notify::clip-to-allocation': GObject.Object.Notify;
-            'notify::color-state': GObject.Object.Notify;
-            'notify::constraints': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-box': GObject.Object.Notify;
-            'notify::content-gravity': GObject.Object.Notify;
-            'notify::content-repeat': GObject.Object.Notify;
-            'notify::effect': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::fixed-position-set': GObject.Object.Notify;
-            'notify::fixed-x': GObject.Object.Notify;
-            'notify::fixed-y': GObject.Object.Notify;
-            'notify::has-clip': GObject.Object.Notify;
-            'notify::has-pointer': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::layout-manager': GObject.Object.Notify;
-            'notify::magnification-filter': GObject.Object.Notify;
-            'notify::mapped': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-left': GObject.Object.Notify;
-            'notify::margin-right': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::min-height': GObject.Object.Notify;
-            'notify::min-height-set': GObject.Object.Notify;
-            'notify::min-width': GObject.Object.Notify;
-            'notify::min-width-set': GObject.Object.Notify;
-            'notify::minification-filter': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::natural-height': GObject.Object.Notify;
-            'notify::natural-height-set': GObject.Object.Notify;
-            'notify::natural-width': GObject.Object.Notify;
-            'notify::natural-width-set': GObject.Object.Notify;
-            'notify::offscreen-redirect': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::pivot-point': GObject.Object.Notify;
-            'notify::pivot-point-z': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::reactive': GObject.Object.Notify;
-            'notify::realized': GObject.Object.Notify;
-            'notify::request-mode': GObject.Object.Notify;
-            'notify::rotation-angle-x': GObject.Object.Notify;
-            'notify::rotation-angle-y': GObject.Object.Notify;
-            'notify::rotation-angle-z': GObject.Object.Notify;
-            'notify::scale-x': GObject.Object.Notify;
-            'notify::scale-y': GObject.Object.Notify;
-            'notify::scale-z': GObject.Object.Notify;
-            'notify::show-on-set-parent': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::text-direction': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::transform-set': GObject.Object.Notify;
-            'notify::translation-x': GObject.Object.Notify;
-            'notify::translation-y': GObject.Object.Notify;
-            'notify::translation-z': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::x-align': GObject.Object.Notify;
-            'notify::x-expand': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::y-align': GObject.Object.Notify;
-            'notify::y-expand': GObject.Object.Notify;
-            'notify::z-position': GObject.Object.Notify;
+            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::hover': (pspec: GObject.ParamSpec) => void;
+            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
+            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::style-class': (pspec: GObject.ParamSpec) => void;
+            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
+            'notify::actions': (pspec: GObject.ParamSpec) => void;
+            'notify::allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::color-state': (pspec: GObject.ParamSpec) => void;
+            'notify::constraints': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-box': (pspec: GObject.ParamSpec) => void;
+            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
+            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
+            'notify::effect': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
+            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
+            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::mapped': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::reactive': (pspec: GObject.ParamSpec) => void;
+            'notify::realized': (pspec: GObject.ParamSpec) => void;
+            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
+            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::x-align': (pspec: GObject.ParamSpec) => void;
+            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::y-align': (pspec: GObject.ParamSpec) => void;
+            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::z-position': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4586,6 +4663,14 @@ export namespace Shell {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Stack>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Stack.SignalSignatures;
 
         // Constructors
 
@@ -4595,13 +4680,19 @@ export namespace Shell {
 
         // Signals
 
-        connect<K extends keyof Stack.SignalSignatures>(signal: K, callback: Stack.SignalSignatures[K]): number;
+        connect<K extends keyof Stack.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Stack.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Stack.SignalSignatures>(signal: K, callback: Stack.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stack.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Stack.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Stack.SignalSignatures>(
             signal: K,
-            ...args: Stack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Stack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5206,81 +5297,81 @@ export namespace Shell {
     namespace TrayIcon {
         // Signal signatures
         interface SignalSignatures extends Clutter.Clone.SignalSignatures {
-            'notify::pid': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::wm-class': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
-            'notify::actions': GObject.Object.Notify;
-            'notify::allocation': GObject.Object.Notify;
-            'notify::background-color': GObject.Object.Notify;
-            'notify::background-color-set': GObject.Object.Notify;
-            'notify::child-transform': GObject.Object.Notify;
-            'notify::child-transform-set': GObject.Object.Notify;
-            'notify::clip-rect': GObject.Object.Notify;
-            'notify::clip-to-allocation': GObject.Object.Notify;
-            'notify::color-state': GObject.Object.Notify;
-            'notify::constraints': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-box': GObject.Object.Notify;
-            'notify::content-gravity': GObject.Object.Notify;
-            'notify::content-repeat': GObject.Object.Notify;
-            'notify::effect': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::fixed-position-set': GObject.Object.Notify;
-            'notify::fixed-x': GObject.Object.Notify;
-            'notify::fixed-y': GObject.Object.Notify;
-            'notify::has-clip': GObject.Object.Notify;
-            'notify::has-pointer': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::layout-manager': GObject.Object.Notify;
-            'notify::magnification-filter': GObject.Object.Notify;
-            'notify::mapped': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-left': GObject.Object.Notify;
-            'notify::margin-right': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::min-height': GObject.Object.Notify;
-            'notify::min-height-set': GObject.Object.Notify;
-            'notify::min-width': GObject.Object.Notify;
-            'notify::min-width-set': GObject.Object.Notify;
-            'notify::minification-filter': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::natural-height': GObject.Object.Notify;
-            'notify::natural-height-set': GObject.Object.Notify;
-            'notify::natural-width': GObject.Object.Notify;
-            'notify::natural-width-set': GObject.Object.Notify;
-            'notify::offscreen-redirect': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::pivot-point': GObject.Object.Notify;
-            'notify::pivot-point-z': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::reactive': GObject.Object.Notify;
-            'notify::realized': GObject.Object.Notify;
-            'notify::request-mode': GObject.Object.Notify;
-            'notify::rotation-angle-x': GObject.Object.Notify;
-            'notify::rotation-angle-y': GObject.Object.Notify;
-            'notify::rotation-angle-z': GObject.Object.Notify;
-            'notify::scale-x': GObject.Object.Notify;
-            'notify::scale-y': GObject.Object.Notify;
-            'notify::scale-z': GObject.Object.Notify;
-            'notify::show-on-set-parent': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::text-direction': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::transform-set': GObject.Object.Notify;
-            'notify::translation-x': GObject.Object.Notify;
-            'notify::translation-y': GObject.Object.Notify;
-            'notify::translation-z': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::x-align': GObject.Object.Notify;
-            'notify::x-expand': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::y-align': GObject.Object.Notify;
-            'notify::y-expand': GObject.Object.Notify;
-            'notify::z-position': GObject.Object.Notify;
+            'notify::pid': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::wm-class': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::actions': (pspec: GObject.ParamSpec) => void;
+            'notify::allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::color-state': (pspec: GObject.ParamSpec) => void;
+            'notify::constraints': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-box': (pspec: GObject.ParamSpec) => void;
+            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
+            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
+            'notify::effect': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
+            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
+            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::mapped': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::reactive': (pspec: GObject.ParamSpec) => void;
+            'notify::realized': (pspec: GObject.ParamSpec) => void;
+            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
+            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::x-align': (pspec: GObject.ParamSpec) => void;
+            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::y-align': (pspec: GObject.ParamSpec) => void;
+            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::z-position': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5310,6 +5401,14 @@ export namespace Shell {
         get title(): string;
         get wm_class(): string;
         get wmClass(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TrayIcon.SignalSignatures;
 
         // Constructors
 
@@ -5319,16 +5418,19 @@ export namespace Shell {
 
         // Signals
 
-        connect<K extends keyof TrayIcon.SignalSignatures>(signal: K, callback: TrayIcon.SignalSignatures[K]): number;
+        connect<K extends keyof TrayIcon.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TrayIcon.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TrayIcon.SignalSignatures>(
             signal: K,
-            callback: TrayIcon.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TrayIcon.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TrayIcon.SignalSignatures>(
             signal: K,
-            ...args: TrayIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TrayIcon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5943,21 +6045,11 @@ export namespace Shell {
     }
 
     namespace TrayManager {
-        // Signal callback interfaces
-
-        interface TrayIconAdded {
-            (_source: TrayManager, object: Clutter.Actor): void;
-        }
-
-        interface TrayIconRemoved {
-            (_source: TrayManager, object: Clutter.Actor): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'tray-icon-added': TrayIconAdded;
-            'tray-icon-removed': TrayIconRemoved;
-            'notify::bg-color': GObject.Object.Notify;
+            'tray-icon-added': (arg0: Clutter.Actor) => void;
+            'tray-icon-removed': (arg0: Clutter.Actor) => void;
+            'notify::bg-color': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5975,6 +6067,14 @@ export namespace Shell {
 
         get bg_color(): Clutter.Color;
         get bgColor(): Clutter.Color;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TrayManager.SignalSignatures;
 
         // Constructors
 
@@ -5988,17 +6088,17 @@ export namespace Shell {
 
         connect<K extends keyof TrayManager.SignalSignatures>(
             signal: K,
-            callback: TrayManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TrayManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TrayManager.SignalSignatures>(
             signal: K,
-            callback: TrayManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TrayManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TrayManager.SignalSignatures>(
             signal: K,
-            ...args: TrayManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TrayManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6009,90 +6109,29 @@ export namespace Shell {
     }
 
     namespace WM {
-        // Signal callback interfaces
-
-        interface ConfirmDisplayChange {
-            (_source: WM): void;
-        }
-
-        interface CreateCloseDialog {
-            (_source: WM, window: Meta.Window): Meta.CloseDialog;
-        }
-
-        interface CreateInhibitShortcutsDialog {
-            (_source: WM, window: Meta.Window): Meta.InhibitShortcutsDialog;
-        }
-
-        interface Destroy {
-            (_source: WM, object: Meta.WindowActor): void;
-        }
-
-        interface FilterKeybinding {
-            (_source: WM, object: Meta.KeyBinding): boolean | void;
-        }
-
-        interface HideTilePreview {
-            (_source: WM): void;
-        }
-
-        interface KillSwitchWorkspace {
-            (_source: WM): void;
-        }
-
-        interface KillWindowEffects {
-            (_source: WM, object: Meta.WindowActor): void;
-        }
-
-        interface Map {
-            (_source: WM, object: Meta.WindowActor): void;
-        }
-
-        interface Minimize {
-            (_source: WM, object: Meta.WindowActor): void;
-        }
-
-        interface ShowTilePreview {
-            (_source: WM, object: Meta.Window, p0: Mtk.Rectangle, p1: number): void;
-        }
-
-        interface ShowWindowMenu {
-            (_source: WM, object: Meta.Window, p0: number, p1: Mtk.Rectangle): void;
-        }
-
-        interface SizeChange {
-            (_source: WM, object: Meta.WindowActor, p0: Meta.SizeChange, p1: Mtk.Rectangle, p2: Mtk.Rectangle): void;
-        }
-
-        interface SizeChanged {
-            (_source: WM, object: Meta.WindowActor): void;
-        }
-
-        interface SwitchWorkspace {
-            (_source: WM, object: number, p0: number, p1: number): void;
-        }
-
-        interface Unminimize {
-            (_source: WM, object: Meta.WindowActor): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'confirm-display-change': ConfirmDisplayChange;
-            'create-close-dialog': CreateCloseDialog;
-            'create-inhibit-shortcuts-dialog': CreateInhibitShortcutsDialog;
-            destroy: Destroy;
-            'filter-keybinding': FilterKeybinding;
-            'hide-tile-preview': HideTilePreview;
-            'kill-switch-workspace': KillSwitchWorkspace;
-            'kill-window-effects': KillWindowEffects;
-            map: Map;
-            minimize: Minimize;
-            'show-tile-preview': ShowTilePreview;
-            'show-window-menu': ShowWindowMenu;
-            'size-change': SizeChange;
-            'size-changed': SizeChanged;
-            'switch-workspace': SwitchWorkspace;
-            unminimize: Unminimize;
+            'confirm-display-change': () => void;
+            'create-close-dialog': (arg0: Meta.Window) => Meta.CloseDialog;
+            'create-inhibit-shortcuts-dialog': (arg0: Meta.Window) => Meta.InhibitShortcutsDialog;
+            destroy: (arg0: Meta.WindowActor) => void;
+            'filter-keybinding': (arg0: Meta.KeyBinding) => boolean | void;
+            'hide-tile-preview': () => void;
+            'kill-switch-workspace': () => void;
+            'kill-window-effects': (arg0: Meta.WindowActor) => void;
+            map: (arg0: Meta.WindowActor) => void;
+            minimize: (arg0: Meta.WindowActor) => void;
+            'show-tile-preview': (arg0: Meta.Window, arg1: Mtk.Rectangle, arg2: number) => void;
+            'show-window-menu': (arg0: Meta.Window, arg1: number, arg2: Mtk.Rectangle) => void;
+            'size-change': (
+                arg0: Meta.WindowActor,
+                arg1: Meta.SizeChange,
+                arg2: Mtk.Rectangle,
+                arg3: Mtk.Rectangle,
+            ) => void;
+            'size-changed': (arg0: Meta.WindowActor) => void;
+            'switch-workspace': (arg0: number, arg1: number, arg2: number) => void;
+            unminimize: (arg0: Meta.WindowActor) => void;
         }
 
         // Constructor properties interface
@@ -6102,6 +6141,14 @@ export namespace Shell {
 
     class WM extends GObject.Object {
         static $gtype: GObject.GType<WM>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WM.SignalSignatures;
 
         // Constructors
 
@@ -6113,13 +6160,19 @@ export namespace Shell {
 
         // Signals
 
-        connect<K extends keyof WM.SignalSignatures>(signal: K, callback: WM.SignalSignatures[K]): number;
+        connect<K extends keyof WM.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WM.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof WM.SignalSignatures>(signal: K, callback: WM.SignalSignatures[K]): number;
+        connect_after<K extends keyof WM.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WM.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WM.SignalSignatures>(
             signal: K,
-            ...args: WM.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WM.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6161,87 +6214,87 @@ export namespace Shell {
     namespace WindowPreview {
         // Signal signatures
         interface SignalSignatures extends St.Widget.SignalSignatures {
-            'notify::window-container': GObject.Object.Notify;
-            'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-role': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::hover': GObject.Object.Notify;
-            'notify::label-actor': GObject.Object.Notify;
-            'notify::pseudo-class': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::style-class': GObject.Object.Notify;
-            'notify::track-hover': GObject.Object.Notify;
-            'notify::actions': GObject.Object.Notify;
-            'notify::allocation': GObject.Object.Notify;
-            'notify::background-color': GObject.Object.Notify;
-            'notify::background-color-set': GObject.Object.Notify;
-            'notify::child-transform': GObject.Object.Notify;
-            'notify::child-transform-set': GObject.Object.Notify;
-            'notify::clip-rect': GObject.Object.Notify;
-            'notify::clip-to-allocation': GObject.Object.Notify;
-            'notify::color-state': GObject.Object.Notify;
-            'notify::constraints': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-box': GObject.Object.Notify;
-            'notify::content-gravity': GObject.Object.Notify;
-            'notify::content-repeat': GObject.Object.Notify;
-            'notify::effect': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::fixed-position-set': GObject.Object.Notify;
-            'notify::fixed-x': GObject.Object.Notify;
-            'notify::fixed-y': GObject.Object.Notify;
-            'notify::has-clip': GObject.Object.Notify;
-            'notify::has-pointer': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::layout-manager': GObject.Object.Notify;
-            'notify::magnification-filter': GObject.Object.Notify;
-            'notify::mapped': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-left': GObject.Object.Notify;
-            'notify::margin-right': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::min-height': GObject.Object.Notify;
-            'notify::min-height-set': GObject.Object.Notify;
-            'notify::min-width': GObject.Object.Notify;
-            'notify::min-width-set': GObject.Object.Notify;
-            'notify::minification-filter': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::natural-height': GObject.Object.Notify;
-            'notify::natural-height-set': GObject.Object.Notify;
-            'notify::natural-width': GObject.Object.Notify;
-            'notify::natural-width-set': GObject.Object.Notify;
-            'notify::offscreen-redirect': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::pivot-point': GObject.Object.Notify;
-            'notify::pivot-point-z': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::reactive': GObject.Object.Notify;
-            'notify::realized': GObject.Object.Notify;
-            'notify::request-mode': GObject.Object.Notify;
-            'notify::rotation-angle-x': GObject.Object.Notify;
-            'notify::rotation-angle-y': GObject.Object.Notify;
-            'notify::rotation-angle-z': GObject.Object.Notify;
-            'notify::scale-x': GObject.Object.Notify;
-            'notify::scale-y': GObject.Object.Notify;
-            'notify::scale-z': GObject.Object.Notify;
-            'notify::show-on-set-parent': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::text-direction': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::transform-set': GObject.Object.Notify;
-            'notify::translation-x': GObject.Object.Notify;
-            'notify::translation-y': GObject.Object.Notify;
-            'notify::translation-z': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::x-align': GObject.Object.Notify;
-            'notify::x-expand': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::y-align': GObject.Object.Notify;
-            'notify::y-expand': GObject.Object.Notify;
-            'notify::z-position': GObject.Object.Notify;
+            'notify::window-container': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::hover': (pspec: GObject.ParamSpec) => void;
+            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
+            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::style-class': (pspec: GObject.ParamSpec) => void;
+            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
+            'notify::actions': (pspec: GObject.ParamSpec) => void;
+            'notify::allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::color-state': (pspec: GObject.ParamSpec) => void;
+            'notify::constraints': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-box': (pspec: GObject.ParamSpec) => void;
+            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
+            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
+            'notify::effect': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
+            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
+            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::mapped': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::reactive': (pspec: GObject.ParamSpec) => void;
+            'notify::realized': (pspec: GObject.ParamSpec) => void;
+            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
+            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::x-align': (pspec: GObject.ParamSpec) => void;
+            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::y-align': (pspec: GObject.ParamSpec) => void;
+            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::z-position': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6269,6 +6322,14 @@ export namespace Shell {
         set window_container(val: Clutter.Actor);
         get windowContainer(): Clutter.Actor;
         set windowContainer(val: Clutter.Actor);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WindowPreview.SignalSignatures;
 
         // Constructors
 
@@ -6280,17 +6341,17 @@ export namespace Shell {
 
         connect<K extends keyof WindowPreview.SignalSignatures>(
             signal: K,
-            callback: WindowPreview.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WindowPreview.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WindowPreview.SignalSignatures>(
             signal: K,
-            callback: WindowPreview.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WindowPreview.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WindowPreview.SignalSignatures>(
             signal: K,
-            ...args: WindowPreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WindowPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6895,7 +6956,7 @@ export namespace Shell {
     namespace WindowPreviewLayout {
         // Signal signatures
         interface SignalSignatures extends Clutter.LayoutManager.SignalSignatures {
-            'notify::bounding-box': GObject.Object.Notify;
+            'notify::bounding-box': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6913,6 +6974,14 @@ export namespace Shell {
 
         get bounding_box(): Clutter.ActorBox;
         get boundingBox(): Clutter.ActorBox;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WindowPreviewLayout.SignalSignatures;
 
         // Constructors
 
@@ -6924,17 +6993,19 @@ export namespace Shell {
 
         connect<K extends keyof WindowPreviewLayout.SignalSignatures>(
             signal: K,
-            callback: WindowPreviewLayout.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WindowPreviewLayout.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WindowPreviewLayout.SignalSignatures>(
             signal: K,
-            callback: WindowPreviewLayout.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WindowPreviewLayout.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WindowPreviewLayout.SignalSignatures>(
             signal: K,
-            ...args: WindowPreviewLayout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WindowPreviewLayout.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6965,21 +7036,11 @@ export namespace Shell {
     }
 
     namespace WindowTracker {
-        // Signal callback interfaces
-
-        interface StartupSequenceChanged {
-            (_source: WindowTracker, object: Meta.StartupSequence): void;
-        }
-
-        interface TrackedWindowsChanged {
-            (_source: WindowTracker): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'startup-sequence-changed': StartupSequenceChanged;
-            'tracked-windows-changed': TrackedWindowsChanged;
-            'notify::focus-app': GObject.Object.Notify;
+            'startup-sequence-changed': (arg0: Meta.StartupSequence) => void;
+            'tracked-windows-changed': () => void;
+            'notify::focus-app': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6997,6 +7058,14 @@ export namespace Shell {
 
         get focus_app(): App;
         get focusApp(): App;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WindowTracker.SignalSignatures;
 
         // Constructors
 
@@ -7008,17 +7077,17 @@ export namespace Shell {
 
         connect<K extends keyof WindowTracker.SignalSignatures>(
             signal: K,
-            callback: WindowTracker.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WindowTracker.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WindowTracker.SignalSignatures>(
             signal: K,
-            callback: WindowTracker.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WindowTracker.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WindowTracker.SignalSignatures>(
             signal: K,
-            ...args: WindowTracker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WindowTracker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7041,88 +7110,88 @@ export namespace Shell {
     namespace WorkspaceBackground {
         // Signal signatures
         interface SignalSignatures extends St.Widget.SignalSignatures {
-            'notify::monitor-index': GObject.Object.Notify;
-            'notify::state-adjustment-value': GObject.Object.Notify;
-            'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-role': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::hover': GObject.Object.Notify;
-            'notify::label-actor': GObject.Object.Notify;
-            'notify::pseudo-class': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::style-class': GObject.Object.Notify;
-            'notify::track-hover': GObject.Object.Notify;
-            'notify::actions': GObject.Object.Notify;
-            'notify::allocation': GObject.Object.Notify;
-            'notify::background-color': GObject.Object.Notify;
-            'notify::background-color-set': GObject.Object.Notify;
-            'notify::child-transform': GObject.Object.Notify;
-            'notify::child-transform-set': GObject.Object.Notify;
-            'notify::clip-rect': GObject.Object.Notify;
-            'notify::clip-to-allocation': GObject.Object.Notify;
-            'notify::color-state': GObject.Object.Notify;
-            'notify::constraints': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-box': GObject.Object.Notify;
-            'notify::content-gravity': GObject.Object.Notify;
-            'notify::content-repeat': GObject.Object.Notify;
-            'notify::effect': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::fixed-position-set': GObject.Object.Notify;
-            'notify::fixed-x': GObject.Object.Notify;
-            'notify::fixed-y': GObject.Object.Notify;
-            'notify::has-clip': GObject.Object.Notify;
-            'notify::has-pointer': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::layout-manager': GObject.Object.Notify;
-            'notify::magnification-filter': GObject.Object.Notify;
-            'notify::mapped': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-left': GObject.Object.Notify;
-            'notify::margin-right': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::min-height': GObject.Object.Notify;
-            'notify::min-height-set': GObject.Object.Notify;
-            'notify::min-width': GObject.Object.Notify;
-            'notify::min-width-set': GObject.Object.Notify;
-            'notify::minification-filter': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::natural-height': GObject.Object.Notify;
-            'notify::natural-height-set': GObject.Object.Notify;
-            'notify::natural-width': GObject.Object.Notify;
-            'notify::natural-width-set': GObject.Object.Notify;
-            'notify::offscreen-redirect': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::pivot-point': GObject.Object.Notify;
-            'notify::pivot-point-z': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::reactive': GObject.Object.Notify;
-            'notify::realized': GObject.Object.Notify;
-            'notify::request-mode': GObject.Object.Notify;
-            'notify::rotation-angle-x': GObject.Object.Notify;
-            'notify::rotation-angle-y': GObject.Object.Notify;
-            'notify::rotation-angle-z': GObject.Object.Notify;
-            'notify::scale-x': GObject.Object.Notify;
-            'notify::scale-y': GObject.Object.Notify;
-            'notify::scale-z': GObject.Object.Notify;
-            'notify::show-on-set-parent': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::text-direction': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::transform-set': GObject.Object.Notify;
-            'notify::translation-x': GObject.Object.Notify;
-            'notify::translation-y': GObject.Object.Notify;
-            'notify::translation-z': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::x-align': GObject.Object.Notify;
-            'notify::x-expand': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::y-align': GObject.Object.Notify;
-            'notify::y-expand': GObject.Object.Notify;
-            'notify::z-position': GObject.Object.Notify;
+            'notify::monitor-index': (pspec: GObject.ParamSpec) => void;
+            'notify::state-adjustment-value': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::hover': (pspec: GObject.ParamSpec) => void;
+            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
+            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::style-class': (pspec: GObject.ParamSpec) => void;
+            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
+            'notify::actions': (pspec: GObject.ParamSpec) => void;
+            'notify::allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::color-state': (pspec: GObject.ParamSpec) => void;
+            'notify::constraints': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-box': (pspec: GObject.ParamSpec) => void;
+            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
+            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
+            'notify::effect': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
+            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
+            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::mapped': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::reactive': (pspec: GObject.ParamSpec) => void;
+            'notify::realized': (pspec: GObject.ParamSpec) => void;
+            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
+            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::x-align': (pspec: GObject.ParamSpec) => void;
+            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::y-align': (pspec: GObject.ParamSpec) => void;
+            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::z-position': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7154,6 +7223,14 @@ export namespace Shell {
         set state_adjustment_value(val: number);
         get stateAdjustmentValue(): number;
         set stateAdjustmentValue(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WorkspaceBackground.SignalSignatures;
 
         // Constructors
 
@@ -7165,17 +7242,19 @@ export namespace Shell {
 
         connect<K extends keyof WorkspaceBackground.SignalSignatures>(
             signal: K,
-            callback: WorkspaceBackground.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkspaceBackground.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkspaceBackground.SignalSignatures>(
             signal: K,
-            callback: WorkspaceBackground.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkspaceBackground.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkspaceBackground.SignalSignatures>(
             signal: K,
-            ...args: WorkspaceBackground.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WorkspaceBackground.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

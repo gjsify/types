@@ -623,19 +623,13 @@ export namespace GWeather {
         ALL,
     }
     namespace Info {
-        // Signal callback interfaces
-
-        interface Updated {
-            (_source: Info): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            updated: Updated;
-            'notify::application-id': GObject.Object.Notify;
-            'notify::contact-info': GObject.Object.Notify;
-            'notify::enabled-providers': GObject.Object.Notify;
-            'notify::location': GObject.Object.Notify;
+            updated: () => void;
+            'notify::application-id': (pspec: GObject.ParamSpec) => void;
+            'notify::contact-info': (pspec: GObject.ParamSpec) => void;
+            'notify::enabled-providers': (pspec: GObject.ParamSpec) => void;
+            'notify::location': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -709,6 +703,14 @@ export namespace GWeather {
          */
         get location(): Location;
         set location(val: Location);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Info.SignalSignatures;
 
         // Constructors
 
@@ -720,13 +722,19 @@ export namespace GWeather {
 
         // Signals
 
-        connect<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
+        connect<K extends keyof Info.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
+        connect_after<K extends keyof Info.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Info.SignalSignatures>(
             signal: K,
-            ...args: Info.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Info.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -892,6 +900,14 @@ export namespace GWeather {
      */
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Location.SignalSignatures;
 
         // Constructors
 
@@ -903,16 +919,19 @@ export namespace GWeather {
 
         // Signals
 
-        connect<K extends keyof Location.SignalSignatures>(signal: K, callback: Location.SignalSignatures[K]): number;
+        connect<K extends keyof Location.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Location.SignalSignatures>(
             signal: K,
-            callback: Location.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Location.SignalSignatures>(
             signal: K,
-            ...args: Location.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Location.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -41,14 +41,14 @@ export namespace GFBGraph {
     namespace Album {
         // Signal signatures
         interface SignalSignatures extends Node.SignalSignatures {
-            'notify::count': GObject.Object.Notify;
-            'notify::cover-photo': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::created-time': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::link': GObject.Object.Notify;
-            'notify::updated-time': GObject.Object.Notify;
+            'notify::count': (pspec: GObject.ParamSpec) => void;
+            'notify::cover-photo': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::created-time': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::link': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-time': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -86,6 +86,14 @@ export namespace GFBGraph {
          */
         get name(): string;
         set name(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Album.SignalSignatures;
 
         // Constructors
 
@@ -99,13 +107,19 @@ export namespace GFBGraph {
 
         // Signals
 
-        connect<K extends keyof Album.SignalSignatures>(signal: K, callback: Album.SignalSignatures[K]): number;
+        connect<K extends keyof Album.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Album.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Album.SignalSignatures>(signal: K, callback: Album.SignalSignatures[K]): number;
+        connect_after<K extends keyof Album.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Album.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Album.SignalSignatures>(
             signal: K,
-            ...args: Album.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Album.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -306,6 +320,14 @@ export namespace GFBGraph {
 
     class GoaAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<GoaAuthorizer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GoaAuthorizer.SignalSignatures;
 
         // Constructors
 
@@ -317,17 +339,17 @@ export namespace GFBGraph {
 
         connect<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
-            callback: GoaAuthorizer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
-            callback: GoaAuthorizer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
-            ...args: GoaAuthorizer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GoaAuthorizer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -823,10 +845,10 @@ export namespace GFBGraph {
     namespace Node {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::created-time': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::link': GObject.Object.Notify;
-            'notify::updated-time': GObject.Object.Notify;
+            'notify::created-time': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::link': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-time': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -864,6 +886,14 @@ export namespace GFBGraph {
         set updated_time(val: string);
         get updatedTime(): string;
         set updatedTime(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Node.SignalSignatures;
 
         // Constructors
 
@@ -877,13 +907,19 @@ export namespace GFBGraph {
 
         // Signals
 
-        connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect_after<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Node.SignalSignatures>(
             signal: K,
-            ...args: Node.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Node.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -993,15 +1029,15 @@ export namespace GFBGraph {
     namespace Photo {
         // Signal signatures
         interface SignalSignatures extends Node.SignalSignatures {
-            'notify::height': GObject.Object.Notify;
-            'notify::images': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::created-time': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::link': GObject.Object.Notify;
-            'notify::updated-time': GObject.Object.Notify;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::images': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::created-time': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::link': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-time': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1048,6 +1084,14 @@ export namespace GFBGraph {
          */
         get width(): number;
         set width(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Photo.SignalSignatures;
 
         // Constructors
 
@@ -1061,13 +1105,19 @@ export namespace GFBGraph {
 
         // Signals
 
-        connect<K extends keyof Photo.SignalSignatures>(signal: K, callback: Photo.SignalSignatures[K]): number;
+        connect<K extends keyof Photo.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Photo.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Photo.SignalSignatures>(signal: K, callback: Photo.SignalSignatures[K]): number;
+        connect_after<K extends keyof Photo.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Photo.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Photo.SignalSignatures>(
             signal: K,
-            ...args: Photo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Photo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1852,7 +1902,7 @@ export namespace GFBGraph {
     namespace SimpleAuthorizer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::access-token': GObject.Object.Notify;
+            'notify::access-token': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1872,6 +1922,14 @@ export namespace GFBGraph {
         set access_token(val: string);
         get accessToken(): string;
         set accessToken(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SimpleAuthorizer.SignalSignatures;
 
         // Constructors
 
@@ -1885,17 +1943,17 @@ export namespace GFBGraph {
 
         connect<K extends keyof SimpleAuthorizer.SignalSignatures>(
             signal: K,
-            callback: SimpleAuthorizer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SimpleAuthorizer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleAuthorizer.SignalSignatures>(
             signal: K,
-            callback: SimpleAuthorizer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SimpleAuthorizer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleAuthorizer.SignalSignatures>(
             signal: K,
-            ...args: SimpleAuthorizer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SimpleAuthorizer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2391,12 +2449,12 @@ export namespace GFBGraph {
     namespace User {
         // Signal signatures
         interface SignalSignatures extends Node.SignalSignatures {
-            'notify::email': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::created-time': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::link': GObject.Object.Notify;
-            'notify::updated-time': GObject.Object.Notify;
+            'notify::email': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::created-time': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::link': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-time': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2422,6 +2480,14 @@ export namespace GFBGraph {
          */
         get name(): string;
         set name(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: User.SignalSignatures;
 
         // Constructors
 
@@ -2435,13 +2501,19 @@ export namespace GFBGraph {
 
         // Signals
 
-        connect<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
+        connect<K extends keyof User.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, User.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
+        connect_after<K extends keyof User.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, User.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof User.SignalSignatures>(
             signal: K,
-            ...args: User.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<User.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -180,32 +180,18 @@ export namespace GstMse {
      */
     function media_source_error_quark(): GLib.Quark;
     namespace MediaSource {
-        // Signal callback interfaces
-
-        interface OnSourceClose {
-            (_source: MediaSource): void;
-        }
-
-        interface OnSourceEnded {
-            (_source: MediaSource): void;
-        }
-
-        interface OnSourceOpen {
-            (_source: MediaSource): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'on-source-close': OnSourceClose;
-            'on-source-ended': OnSourceEnded;
-            'on-source-open': OnSourceOpen;
-            'notify::active-source-buffers': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::ready-state': GObject.Object.Notify;
-            'notify::source-buffers': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'on-source-close': () => void;
+            'on-source-ended': () => void;
+            'on-source-open': () => void;
+            'notify::active-source-buffers': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::ready-state': (pspec: GObject.ParamSpec) => void;
+            'notify::source-buffers': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -288,6 +274,14 @@ export namespace GstMse {
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-sourcebuffers)
          */
         get sourceBuffers(): SourceBufferList;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MediaSource.SignalSignatures;
 
         // Constructors
 
@@ -301,17 +295,17 @@ export namespace GstMse {
 
         connect<K extends keyof MediaSource.SignalSignatures>(
             signal: K,
-            callback: MediaSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaSource.SignalSignatures>(
             signal: K,
-            callback: MediaSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaSource.SignalSignatures>(
             signal: K,
-            ...args: MediaSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MediaSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -452,14 +446,14 @@ export namespace GstMse {
     namespace MseSrc {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
-            'notify::duration': GObject.Object.Notify;
-            'notify::n-audio': GObject.Object.Notify;
-            'notify::n-text': GObject.Object.Notify;
-            'notify::n-video': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::ready-state': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::n-audio': (pspec: GObject.ParamSpec) => void;
+            'notify::n-text': (pspec: GObject.ParamSpec) => void;
+            'notify::n-video': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::ready-state': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -550,6 +544,14 @@ export namespace GstMse {
          * [Specification](https://html.spec.whatwg.org/multipage/media.html#ready-states)
          */
         get readyState(): MseSrcReadyState;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MseSrc.SignalSignatures;
 
         // Constructors
 
@@ -559,13 +561,19 @@ export namespace GstMse {
 
         // Signals
 
-        connect<K extends keyof MseSrc.SignalSignatures>(signal: K, callback: MseSrc.SignalSignatures[K]): number;
+        connect<K extends keyof MseSrc.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MseSrc.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof MseSrc.SignalSignatures>(signal: K, callback: MseSrc.SignalSignatures[K]): number;
+        connect_after<K extends keyof MseSrc.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MseSrc.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MseSrc.SignalSignatures>(
             signal: K,
-            ...args: MseSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MseSrc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1077,12 +1085,12 @@ export namespace GstMse {
     namespace MseSrcPad {
         // Signal signatures
         interface SignalSignatures extends Gst.Pad.SignalSignatures {
-            'notify::caps': GObject.Object.Notify;
-            'notify::direction': GObject.Object.Notify;
-            'notify::offset': GObject.Object.Notify;
-            'notify::template': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::caps': (pspec: GObject.ParamSpec) => void;
+            'notify::direction': (pspec: GObject.ParamSpec) => void;
+            'notify::offset': (pspec: GObject.ParamSpec) => void;
+            'notify::template': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1092,6 +1100,14 @@ export namespace GstMse {
 
     class MseSrcPad extends Gst.Pad {
         static $gtype: GObject.GType<MseSrcPad>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MseSrcPad.SignalSignatures;
 
         // Constructors
 
@@ -1101,59 +1117,40 @@ export namespace GstMse {
 
         // Signals
 
-        connect<K extends keyof MseSrcPad.SignalSignatures>(signal: K, callback: MseSrcPad.SignalSignatures[K]): number;
+        connect<K extends keyof MseSrcPad.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MseSrcPad.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MseSrcPad.SignalSignatures>(
             signal: K,
-            callback: MseSrcPad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MseSrcPad.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MseSrcPad.SignalSignatures>(
             signal: K,
-            ...args: MseSrcPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MseSrcPad.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace SourceBuffer {
-        // Signal callback interfaces
-
-        interface OnAbort {
-            (_source: SourceBuffer): void;
-        }
-
-        interface OnError {
-            (_source: SourceBuffer): void;
-        }
-
-        interface OnUpdate {
-            (_source: SourceBuffer): void;
-        }
-
-        interface OnUpdateEnd {
-            (_source: SourceBuffer): void;
-        }
-
-        interface OnUpdateStart {
-            (_source: SourceBuffer): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'on-abort': OnAbort;
-            'on-error': OnError;
-            'on-update': OnUpdate;
-            'on-update-end': OnUpdateEnd;
-            'on-update-start': OnUpdateStart;
-            'notify::append-mode': GObject.Object.Notify;
-            'notify::append-window-end': GObject.Object.Notify;
-            'notify::append-window-start': GObject.Object.Notify;
-            'notify::buffered': GObject.Object.Notify;
-            'notify::content-type': GObject.Object.Notify;
-            'notify::timestamp-offset': GObject.Object.Notify;
-            'notify::updating': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'on-abort': () => void;
+            'on-error': () => void;
+            'on-update': () => void;
+            'on-update-end': () => void;
+            'on-update-start': () => void;
+            'notify::append-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::append-window-end': (pspec: GObject.ParamSpec) => void;
+            'notify::append-window-start': (pspec: GObject.ParamSpec) => void;
+            'notify::buffered': (pspec: GObject.ParamSpec) => void;
+            'notify::content-type': (pspec: GObject.ParamSpec) => void;
+            'notify::timestamp-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::updating': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1299,6 +1296,14 @@ export namespace GstMse {
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-updating)
          */
         get updating(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SourceBuffer.SignalSignatures;
 
         // Constructors
 
@@ -1310,17 +1315,17 @@ export namespace GstMse {
 
         connect<K extends keyof SourceBuffer.SignalSignatures>(
             signal: K,
-            callback: SourceBuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SourceBuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceBuffer.SignalSignatures>(
             signal: K,
-            callback: SourceBuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SourceBuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceBuffer.SignalSignatures>(
             signal: K,
-            ...args: SourceBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SourceBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1448,23 +1453,13 @@ export namespace GstMse {
     }
 
     namespace SourceBufferList {
-        // Signal callback interfaces
-
-        interface OnSourcebufferAdded {
-            (_source: SourceBufferList): void;
-        }
-
-        interface OnSourcebufferRemoved {
-            (_source: SourceBufferList): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'on-sourcebuffer-added': OnSourcebufferAdded;
-            'on-sourcebuffer-removed': OnSourcebufferRemoved;
-            'notify::length': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'on-sourcebuffer-added': () => void;
+            'on-sourcebuffer-removed': () => void;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1496,6 +1491,14 @@ export namespace GstMse {
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebufferlist-length)
          */
         get length(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SourceBufferList.SignalSignatures;
 
         // Constructors
 
@@ -1507,17 +1510,17 @@ export namespace GstMse {
 
         connect<K extends keyof SourceBufferList.SignalSignatures>(
             signal: K,
-            callback: SourceBufferList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SourceBufferList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceBufferList.SignalSignatures>(
             signal: K,
-            callback: SourceBufferList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SourceBufferList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceBufferList.SignalSignatures>(
             signal: K,
-            ...args: SourceBufferList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SourceBufferList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

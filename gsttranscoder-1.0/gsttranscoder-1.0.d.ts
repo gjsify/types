@@ -162,16 +162,16 @@ export namespace GstTranscoder {
     namespace Transcoder {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::avoid-reencoding': GObject.Object.Notify;
-            'notify::dest-uri': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::pipeline': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::position-update-interval': GObject.Object.Notify;
-            'notify::profile': GObject.Object.Notify;
-            'notify::src-uri': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::avoid-reencoding': (pspec: GObject.ParamSpec) => void;
+            'notify::dest-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::pipeline': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::position-update-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::profile': (pspec: GObject.ParamSpec) => void;
+            'notify::src-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -219,6 +219,14 @@ export namespace GstTranscoder {
         get profile(): GstPbutils.EncodingProfile;
         get src_uri(): string;
         get srcUri(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Transcoder.SignalSignatures;
 
         // Constructors
 
@@ -234,17 +242,17 @@ export namespace GstTranscoder {
 
         connect<K extends keyof Transcoder.SignalSignatures>(
             signal: K,
-            callback: Transcoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Transcoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Transcoder.SignalSignatures>(
             signal: K,
-            callback: Transcoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Transcoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Transcoder.SignalSignatures>(
             signal: K,
-            ...args: Transcoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Transcoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -335,41 +343,15 @@ export namespace GstTranscoder {
     }
 
     namespace TranscoderSignalAdapter {
-        // Signal callback interfaces
-
-        interface Done {
-            (_source: TranscoderSignalAdapter): void;
-        }
-
-        interface DurationChanged {
-            (_source: TranscoderSignalAdapter, object: number): void;
-        }
-
-        interface Error {
-            (_source: TranscoderSignalAdapter, object: GLib.Error, p0: Gst.Structure): void;
-        }
-
-        interface PositionUpdated {
-            (_source: TranscoderSignalAdapter, object: number): void;
-        }
-
-        interface StateChanged {
-            (_source: TranscoderSignalAdapter, object: TranscoderState): void;
-        }
-
-        interface Warning {
-            (_source: TranscoderSignalAdapter, object: GLib.Error, p0: Gst.Structure): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            done: Done;
-            'duration-changed': DurationChanged;
-            error: Error;
-            'position-updated': PositionUpdated;
-            'state-changed': StateChanged;
-            warning: Warning;
-            'notify::transcoder': GObject.Object.Notify;
+            done: () => void;
+            'duration-changed': (arg0: number) => void;
+            error: (arg0: GLib.Error, arg1: Gst.Structure) => void;
+            'position-updated': (arg0: number) => void;
+            'state-changed': (arg0: TranscoderState) => void;
+            warning: (arg0: GLib.Error, arg1: Gst.Structure) => void;
+            'notify::transcoder': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -391,6 +373,14 @@ export namespace GstTranscoder {
          * The #GstTranscoder tracked by the adapter.
          */
         get transcoder(): Transcoder;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TranscoderSignalAdapter.SignalSignatures;
 
         // Constructors
 
@@ -402,17 +392,19 @@ export namespace GstTranscoder {
 
         connect<K extends keyof TranscoderSignalAdapter.SignalSignatures>(
             signal: K,
-            callback: TranscoderSignalAdapter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TranscoderSignalAdapter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TranscoderSignalAdapter.SignalSignatures>(
             signal: K,
-            callback: TranscoderSignalAdapter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TranscoderSignalAdapter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TranscoderSignalAdapter.SignalSignatures>(
             signal: K,
-            ...args: TranscoderSignalAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TranscoderSignalAdapter.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

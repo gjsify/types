@@ -100,108 +100,66 @@ export namespace Playerctl {
      */
     function list_players(): PlayerName[];
     namespace Player {
-        // Signal callback interfaces
-
-        interface Exit {
-            (_source: Player): void;
-        }
-
-        interface LoopStatus {
-            (_source: Player, loop_status: LoopStatus): void;
-        }
-
-        interface Metadata {
-            (_source: Player, metadata: GLib.Variant): void;
-        }
-
-        interface Pause {
-            (_source: Player): void;
-        }
-
-        interface Play {
-            (_source: Player): void;
-        }
-
-        interface PlaybackStatus {
-            (_source: Player, playback_status: PlaybackStatus): void;
-        }
-
-        interface Seeked {
-            (_source: Player, position: number): void;
-        }
-
-        interface Shuffle {
-            (_source: Player, shuffle_status: boolean): void;
-        }
-
-        interface Stop {
-            (_source: Player): void;
-        }
-
-        interface Volume {
-            (_source: Player, volume: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            exit: Exit;
-            'loop-status': LoopStatus;
-            metadata: Metadata;
-            pause: Pause;
-            play: Play;
-            'playback-status': PlaybackStatus;
-            seeked: Seeked;
-            shuffle: Shuffle;
-            stop: Stop;
-            volume: Volume;
-            'notify::can-control': GObject.Object.Notify;
-            'notify::can-go-next': GObject.Object.Notify;
-            'notify::can-go-previous': GObject.Object.Notify;
-            'notify::can-pause': GObject.Object.Notify;
-            'notify::can-play': GObject.Object.Notify;
-            'notify::can-seek': GObject.Object.Notify;
-            'notify::loop-status': GObject.Object.Notify;
-            'notify::metadata': GObject.Object.Notify;
-            'notify::playback-status': GObject.Object.Notify;
-            'notify::player-instance': GObject.Object.Notify;
-            'notify::player-name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::shuffle': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
-            'notify::status': GObject.Object.Notify;
-            'notify::volume': GObject.Object.Notify;
-            'loop-status::can-control': LoopStatus;
-            'loop-status::can-go-next': LoopStatus;
-            'loop-status::can-go-previous': LoopStatus;
-            'loop-status::can-pause': LoopStatus;
-            'loop-status::can-play': LoopStatus;
-            'loop-status::can-seek': LoopStatus;
-            'loop-status::loop-status': LoopStatus;
-            'loop-status::metadata': LoopStatus;
-            'loop-status::playback-status': LoopStatus;
-            'loop-status::player-instance': LoopStatus;
-            'loop-status::player-name': LoopStatus;
-            'loop-status::position': LoopStatus;
-            'loop-status::shuffle': LoopStatus;
-            'loop-status::source': LoopStatus;
-            'loop-status::status': LoopStatus;
-            'loop-status::volume': LoopStatus;
-            'playback-status::can-control': PlaybackStatus;
-            'playback-status::can-go-next': PlaybackStatus;
-            'playback-status::can-go-previous': PlaybackStatus;
-            'playback-status::can-pause': PlaybackStatus;
-            'playback-status::can-play': PlaybackStatus;
-            'playback-status::can-seek': PlaybackStatus;
-            'playback-status::loop-status': PlaybackStatus;
-            'playback-status::metadata': PlaybackStatus;
-            'playback-status::playback-status': PlaybackStatus;
-            'playback-status::player-instance': PlaybackStatus;
-            'playback-status::player-name': PlaybackStatus;
-            'playback-status::position': PlaybackStatus;
-            'playback-status::shuffle': PlaybackStatus;
-            'playback-status::source': PlaybackStatus;
-            'playback-status::status': PlaybackStatus;
-            'playback-status::volume': PlaybackStatus;
+            exit: () => void;
+            'loop-status': (arg0: LoopStatus) => void;
+            metadata: (arg0: GLib.Variant) => void;
+            pause: () => void;
+            play: () => void;
+            'playback-status': (arg0: PlaybackStatus) => void;
+            seeked: (arg0: number) => void;
+            shuffle: (arg0: boolean) => void;
+            stop: () => void;
+            volume: (arg0: number) => void;
+            'notify::can-control': (pspec: GObject.ParamSpec) => void;
+            'notify::can-go-next': (pspec: GObject.ParamSpec) => void;
+            'notify::can-go-previous': (pspec: GObject.ParamSpec) => void;
+            'notify::can-pause': (pspec: GObject.ParamSpec) => void;
+            'notify::can-play': (pspec: GObject.ParamSpec) => void;
+            'notify::can-seek': (pspec: GObject.ParamSpec) => void;
+            'notify::loop-status': (pspec: GObject.ParamSpec) => void;
+            'notify::metadata': (pspec: GObject.ParamSpec) => void;
+            'notify::playback-status': (pspec: GObject.ParamSpec) => void;
+            'notify::player-instance': (pspec: GObject.ParamSpec) => void;
+            'notify::player-name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::shuffle': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::status': (pspec: GObject.ParamSpec) => void;
+            'notify::volume': (pspec: GObject.ParamSpec) => void;
+            'loop-status::can-control': (arg0: LoopStatus) => void;
+            'loop-status::can-go-next': (arg0: LoopStatus) => void;
+            'loop-status::can-go-previous': (arg0: LoopStatus) => void;
+            'loop-status::can-pause': (arg0: LoopStatus) => void;
+            'loop-status::can-play': (arg0: LoopStatus) => void;
+            'loop-status::can-seek': (arg0: LoopStatus) => void;
+            'loop-status::loop-status': (arg0: LoopStatus) => void;
+            'loop-status::metadata': (arg0: LoopStatus) => void;
+            'loop-status::playback-status': (arg0: LoopStatus) => void;
+            'loop-status::player-instance': (arg0: LoopStatus) => void;
+            'loop-status::player-name': (arg0: LoopStatus) => void;
+            'loop-status::position': (arg0: LoopStatus) => void;
+            'loop-status::shuffle': (arg0: LoopStatus) => void;
+            'loop-status::source': (arg0: LoopStatus) => void;
+            'loop-status::status': (arg0: LoopStatus) => void;
+            'loop-status::volume': (arg0: LoopStatus) => void;
+            'playback-status::can-control': (arg0: PlaybackStatus) => void;
+            'playback-status::can-go-next': (arg0: PlaybackStatus) => void;
+            'playback-status::can-go-previous': (arg0: PlaybackStatus) => void;
+            'playback-status::can-pause': (arg0: PlaybackStatus) => void;
+            'playback-status::can-play': (arg0: PlaybackStatus) => void;
+            'playback-status::can-seek': (arg0: PlaybackStatus) => void;
+            'playback-status::loop-status': (arg0: PlaybackStatus) => void;
+            'playback-status::metadata': (arg0: PlaybackStatus) => void;
+            'playback-status::playback-status': (arg0: PlaybackStatus) => void;
+            'playback-status::player-instance': (arg0: PlaybackStatus) => void;
+            'playback-status::player-name': (arg0: PlaybackStatus) => void;
+            'playback-status::position': (arg0: PlaybackStatus) => void;
+            'playback-status::shuffle': (arg0: PlaybackStatus) => void;
+            'playback-status::source': (arg0: PlaybackStatus) => void;
+            'playback-status::status': (arg0: PlaybackStatus) => void;
+            'playback-status::volume': (arg0: PlaybackStatus) => void;
         }
 
         // Constructor properties interface
@@ -271,6 +229,14 @@ export namespace Playerctl {
         get status(): string;
         get volume(): number;
         set volume(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Player.SignalSignatures;
 
         // Constructors
 
@@ -286,13 +252,19 @@ export namespace Playerctl {
 
         // Signals
 
-        connect<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
+        connect<K extends keyof Player.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Player.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
+        connect_after<K extends keyof Player.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Player.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Player.SignalSignatures>(
             signal: K,
-            ...args: Player.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Player.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -393,32 +365,14 @@ export namespace Playerctl {
     }
 
     namespace PlayerManager {
-        // Signal callback interfaces
-
-        interface NameAppeared {
-            (_source: PlayerManager, name: PlayerName): void;
-        }
-
-        interface NameVanished {
-            (_source: PlayerManager, name: PlayerName): void;
-        }
-
-        interface PlayerAppeared {
-            (_source: PlayerManager, player: Player): void;
-        }
-
-        interface PlayerVanished {
-            (_source: PlayerManager, player: Player): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'name-appeared': NameAppeared;
-            'name-vanished': NameVanished;
-            'player-appeared': PlayerAppeared;
-            'player-vanished': PlayerVanished;
-            'notify::player-names': GObject.Object.Notify;
-            'notify::players': GObject.Object.Notify;
+            'name-appeared': (arg0: PlayerName) => void;
+            'name-vanished': (arg0: PlayerName) => void;
+            'player-appeared': (arg0: Player) => void;
+            'player-vanished': (arg0: Player) => void;
+            'notify::player-names': (pspec: GObject.ParamSpec) => void;
+            'notify::players': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -447,6 +401,14 @@ export namespace Playerctl {
          * A list of players that are currently connected and managed by this class.
          */
         get players(): Player[];
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PlayerManager.SignalSignatures;
 
         // Constructors
 
@@ -460,17 +422,17 @@ export namespace Playerctl {
 
         connect<K extends keyof PlayerManager.SignalSignatures>(
             signal: K,
-            callback: PlayerManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlayerManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlayerManager.SignalSignatures>(
             signal: K,
-            callback: PlayerManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlayerManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlayerManager.SignalSignatures>(
             signal: K,
-            ...args: PlayerManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PlayerManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

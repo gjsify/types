@@ -518,14 +518,14 @@ export namespace GstValidate {
     namespace BinMonitor {
         // Signal signatures
         interface SignalSignatures extends ElementMonitor.SignalSignatures {
-            'notify::handles-states': GObject.Object.Notify;
-            'notify::object': GObject.Object.Notify;
-            'notify::pipeline': GObject.Object.Notify;
-            'notify::validate-parent': GObject.Object.Notify;
-            'notify::validate-runner': GObject.Object.Notify;
-            'notify::verbosity': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::handles-states': (pspec: GObject.ParamSpec) => void;
+            'notify::object': (pspec: GObject.ParamSpec) => void;
+            'notify::pipeline': (pspec: GObject.ParamSpec) => void;
+            'notify::validate-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::validate-runner': (pspec: GObject.ParamSpec) => void;
+            'notify::verbosity': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -548,6 +548,14 @@ export namespace GstValidate {
 
         get handles_states(): boolean;
         get handlesStates(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BinMonitor.SignalSignatures;
 
         // Fields
 
@@ -566,17 +574,17 @@ export namespace GstValidate {
 
         connect<K extends keyof BinMonitor.SignalSignatures>(
             signal: K,
-            callback: BinMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BinMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BinMonitor.SignalSignatures>(
             signal: K,
-            callback: BinMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BinMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BinMonitor.SignalSignatures>(
             signal: K,
-            ...args: BinMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BinMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1031,13 +1039,13 @@ export namespace GstValidate {
     namespace ElementMonitor {
         // Signal signatures
         interface SignalSignatures extends Monitor.SignalSignatures {
-            'notify::object': GObject.Object.Notify;
-            'notify::pipeline': GObject.Object.Notify;
-            'notify::validate-parent': GObject.Object.Notify;
-            'notify::validate-runner': GObject.Object.Notify;
-            'notify::verbosity': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::object': (pspec: GObject.ParamSpec) => void;
+            'notify::pipeline': (pspec: GObject.ParamSpec) => void;
+            'notify::validate-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::validate-runner': (pspec: GObject.ParamSpec) => void;
+            'notify::verbosity': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1052,6 +1060,14 @@ export namespace GstValidate {
      */
     class ElementMonitor extends Monitor implements Reporter {
         static $gtype: GObject.GType<ElementMonitor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ElementMonitor.SignalSignatures;
 
         // Constructors
 
@@ -1065,17 +1081,17 @@ export namespace GstValidate {
 
         connect<K extends keyof ElementMonitor.SignalSignatures>(
             signal: K,
-            callback: ElementMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ElementMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ElementMonitor.SignalSignatures>(
             signal: K,
-            callback: ElementMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ElementMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ElementMonitor.SignalSignatures>(
             signal: K,
-            ...args: ElementMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ElementMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1577,9 +1593,9 @@ export namespace GstValidate {
     namespace MediaDescriptor {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::validate-runner': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::validate-runner': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1597,6 +1613,14 @@ export namespace GstValidate {
 
         get validate_runner(): Runner;
         get validateRunner(): Runner;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MediaDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -1608,17 +1632,17 @@ export namespace GstValidate {
 
         connect<K extends keyof MediaDescriptor.SignalSignatures>(
             signal: K,
-            callback: MediaDescriptor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaDescriptor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaDescriptor.SignalSignatures>(
             signal: K,
-            callback: MediaDescriptor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaDescriptor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaDescriptor.SignalSignatures>(
             signal: K,
-            ...args: MediaDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MediaDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2124,9 +2148,9 @@ export namespace GstValidate {
     namespace MediaDescriptorParser {
         // Signal signatures
         interface SignalSignatures extends MediaDescriptor.SignalSignatures {
-            'notify::validate-runner': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::validate-runner': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2136,6 +2160,14 @@ export namespace GstValidate {
 
     class MediaDescriptorParser extends MediaDescriptor implements Reporter {
         static $gtype: GObject.GType<MediaDescriptorParser>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MediaDescriptorParser.SignalSignatures;
 
         // Constructors
 
@@ -2151,17 +2183,19 @@ export namespace GstValidate {
 
         connect<K extends keyof MediaDescriptorParser.SignalSignatures>(
             signal: K,
-            callback: MediaDescriptorParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaDescriptorParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaDescriptorParser.SignalSignatures>(
             signal: K,
-            callback: MediaDescriptorParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaDescriptorParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaDescriptorParser.SignalSignatures>(
             signal: K,
-            ...args: MediaDescriptorParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MediaDescriptorParser.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2671,9 +2705,9 @@ export namespace GstValidate {
     namespace MediaDescriptorWriter {
         // Signal signatures
         interface SignalSignatures extends MediaDescriptor.SignalSignatures {
-            'notify::validate-runner': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::validate-runner': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2683,6 +2717,14 @@ export namespace GstValidate {
 
     class MediaDescriptorWriter extends MediaDescriptor implements Reporter {
         static $gtype: GObject.GType<MediaDescriptorWriter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MediaDescriptorWriter.SignalSignatures;
 
         // Constructors
 
@@ -2703,17 +2745,19 @@ export namespace GstValidate {
 
         connect<K extends keyof MediaDescriptorWriter.SignalSignatures>(
             signal: K,
-            callback: MediaDescriptorWriter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaDescriptorWriter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaDescriptorWriter.SignalSignatures>(
             signal: K,
-            callback: MediaDescriptorWriter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaDescriptorWriter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaDescriptorWriter.SignalSignatures>(
             signal: K,
-            ...args: MediaDescriptorWriter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MediaDescriptorWriter.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3228,13 +3272,13 @@ export namespace GstValidate {
     namespace Monitor {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::object': GObject.Object.Notify;
-            'notify::pipeline': GObject.Object.Notify;
-            'notify::validate-parent': GObject.Object.Notify;
-            'notify::validate-runner': GObject.Object.Notify;
-            'notify::verbosity': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::object': (pspec: GObject.ParamSpec) => void;
+            'notify::pipeline': (pspec: GObject.ParamSpec) => void;
+            'notify::validate-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::validate-runner': (pspec: GObject.ParamSpec) => void;
+            'notify::verbosity': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3270,6 +3314,14 @@ export namespace GstValidate {
         get validateRunner(): Runner;
         get verbosity(): VerbosityFlags;
         set verbosity(val: VerbosityFlags);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Monitor.SignalSignatures;
 
         // Fields
 
@@ -3286,16 +3338,19 @@ export namespace GstValidate {
 
         // Signals
 
-        connect<K extends keyof Monitor.SignalSignatures>(signal: K, callback: Monitor.SignalSignatures[K]): number;
+        connect<K extends keyof Monitor.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Monitor.SignalSignatures>(
             signal: K,
-            callback: Monitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Monitor.SignalSignatures>(
             signal: K,
-            ...args: Monitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Monitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3817,9 +3872,9 @@ export namespace GstValidate {
     namespace Override {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::validate-runner': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::validate-runner': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3837,6 +3892,14 @@ export namespace GstValidate {
 
         get validate_runner(): Runner;
         get validateRunner(): Runner;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Override.SignalSignatures;
 
         // Constructors
 
@@ -3848,16 +3911,19 @@ export namespace GstValidate {
 
         // Signals
 
-        connect<K extends keyof Override.SignalSignatures>(signal: K, callback: Override.SignalSignatures[K]): number;
+        connect<K extends keyof Override.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Override.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Override.SignalSignatures>(
             signal: K,
-            callback: Override.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Override.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Override.SignalSignatures>(
             signal: K,
-            ...args: Override.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Override.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4372,13 +4438,13 @@ export namespace GstValidate {
     namespace PadMonitor {
         // Signal signatures
         interface SignalSignatures extends Monitor.SignalSignatures {
-            'notify::object': GObject.Object.Notify;
-            'notify::pipeline': GObject.Object.Notify;
-            'notify::validate-parent': GObject.Object.Notify;
-            'notify::validate-runner': GObject.Object.Notify;
-            'notify::verbosity': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::object': (pspec: GObject.ParamSpec) => void;
+            'notify::pipeline': (pspec: GObject.ParamSpec) => void;
+            'notify::validate-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::validate-runner': (pspec: GObject.ParamSpec) => void;
+            'notify::verbosity': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4393,6 +4459,14 @@ export namespace GstValidate {
      */
     class PadMonitor extends Monitor implements Reporter {
         static $gtype: GObject.GType<PadMonitor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PadMonitor.SignalSignatures;
 
         // Fields
 
@@ -4417,17 +4491,17 @@ export namespace GstValidate {
 
         connect<K extends keyof PadMonitor.SignalSignatures>(
             signal: K,
-            callback: PadMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PadMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PadMonitor.SignalSignatures>(
             signal: K,
-            callback: PadMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PadMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PadMonitor.SignalSignatures>(
             signal: K,
-            ...args: PadMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PadMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4929,14 +5003,14 @@ export namespace GstValidate {
     namespace PipelineMonitor {
         // Signal signatures
         interface SignalSignatures extends BinMonitor.SignalSignatures {
-            'notify::handles-states': GObject.Object.Notify;
-            'notify::object': GObject.Object.Notify;
-            'notify::pipeline': GObject.Object.Notify;
-            'notify::validate-parent': GObject.Object.Notify;
-            'notify::validate-runner': GObject.Object.Notify;
-            'notify::verbosity': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::handles-states': (pspec: GObject.ParamSpec) => void;
+            'notify::object': (pspec: GObject.ParamSpec) => void;
+            'notify::pipeline': (pspec: GObject.ParamSpec) => void;
+            'notify::validate-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::validate-runner': (pspec: GObject.ParamSpec) => void;
+            'notify::verbosity': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4951,6 +5025,14 @@ export namespace GstValidate {
      */
     class PipelineMonitor extends BinMonitor implements Reporter {
         static $gtype: GObject.GType<PipelineMonitor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PipelineMonitor.SignalSignatures;
 
         // Constructors
 
@@ -4964,17 +5046,17 @@ export namespace GstValidate {
 
         connect<K extends keyof PipelineMonitor.SignalSignatures>(
             signal: K,
-            callback: PipelineMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PipelineMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PipelineMonitor.SignalSignatures>(
             signal: K,
-            callback: PipelineMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PipelineMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PipelineMonitor.SignalSignatures>(
             signal: K,
-            ...args: PipelineMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PipelineMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5423,23 +5505,13 @@ export namespace GstValidate {
     }
 
     namespace Runner {
-        // Signal callback interfaces
-
-        interface ReportAdded {
-            (_source: Runner, object: Report): void;
-        }
-
-        interface Stopping {
-            (_source: Runner): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gst.Tracer.SignalSignatures {
-            'report-added': ReportAdded;
-            stopping: Stopping;
-            'notify::params': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'report-added': (arg0: Report) => void;
+            stopping: () => void;
+            'notify::params': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5461,6 +5533,14 @@ export namespace GstValidate {
 
         get params(): string;
         set params(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Runner.SignalSignatures;
 
         // Fields
 
@@ -5476,13 +5556,19 @@ export namespace GstValidate {
 
         // Signals
 
-        connect<K extends keyof Runner.SignalSignatures>(signal: K, callback: Runner.SignalSignatures[K]): number;
+        connect<K extends keyof Runner.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Runner.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Runner.SignalSignatures>(signal: K, callback: Runner.SignalSignatures[K]): number;
+        connect_after<K extends keyof Runner.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Runner.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Runner.SignalSignatures>(
             signal: K,
-            ...args: Runner.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Runner.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5507,25 +5593,15 @@ export namespace GstValidate {
     }
 
     namespace Scenario {
-        // Signal callback interfaces
-
-        interface ActionDone {
-            (_source: Scenario, action: Action): void;
-        }
-
-        interface Done {
-            (_source: Scenario): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'action-done': ActionDone;
-            done: Done;
-            'notify::execute-on-idle': GObject.Object.Notify;
-            'notify::handles-states': GObject.Object.Notify;
-            'notify::validate-runner': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'action-done': (arg0: Action) => void;
+            done: () => void;
+            'notify::execute-on-idle': (pspec: GObject.ParamSpec) => void;
+            'notify::handles-states': (pspec: GObject.ParamSpec) => void;
+            'notify::validate-runner': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5553,6 +5629,14 @@ export namespace GstValidate {
         get handlesStates(): boolean;
         get validate_runner(): Runner;
         get validateRunner(): Runner;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Scenario.SignalSignatures;
 
         // Constructors
 
@@ -5562,16 +5646,19 @@ export namespace GstValidate {
 
         // Signals
 
-        connect<K extends keyof Scenario.SignalSignatures>(signal: K, callback: Scenario.SignalSignatures[K]): number;
+        connect<K extends keyof Scenario.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Scenario.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Scenario.SignalSignatures>(
             signal: K,
-            callback: Scenario.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Scenario.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Scenario.SignalSignatures>(
             signal: K,
-            ...args: Scenario.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Scenario.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

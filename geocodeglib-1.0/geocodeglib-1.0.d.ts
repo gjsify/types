@@ -312,10 +312,10 @@ export namespace GeocodeGlib {
     namespace BoundingBox {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::bottom': GObject.Object.Notify;
-            'notify::left': GObject.Object.Notify;
-            'notify::right': GObject.Object.Notify;
-            'notify::top': GObject.Object.Notify;
+            'notify::bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::left': (pspec: GObject.ParamSpec) => void;
+            'notify::right': (pspec: GObject.ParamSpec) => void;
+            'notify::top': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -353,6 +353,14 @@ export namespace GeocodeGlib {
          * Top coordinate.
          */
         get top(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BoundingBox.SignalSignatures;
 
         // Constructors
 
@@ -366,17 +374,17 @@ export namespace GeocodeGlib {
 
         connect<K extends keyof BoundingBox.SignalSignatures>(
             signal: K,
-            callback: BoundingBox.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BoundingBox.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BoundingBox.SignalSignatures>(
             signal: K,
-            callback: BoundingBox.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BoundingBox.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BoundingBox.SignalSignatures>(
             signal: K,
-            ...args: BoundingBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BoundingBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -416,9 +424,9 @@ export namespace GeocodeGlib {
     namespace Forward {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::answer-count': GObject.Object.Notify;
-            'notify::bounded': GObject.Object.Notify;
-            'notify::search-area': GObject.Object.Notify;
+            'notify::answer-count': (pspec: GObject.ParamSpec) => void;
+            'notify::bounded': (pspec: GObject.ParamSpec) => void;
+            'notify::search-area': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -472,6 +480,14 @@ export namespace GeocodeGlib {
          */
         get searchArea(): BoundingBox;
         set searchArea(val: BoundingBox);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Forward.SignalSignatures;
 
         // Constructors
 
@@ -485,16 +501,19 @@ export namespace GeocodeGlib {
 
         // Signals
 
-        connect<K extends keyof Forward.SignalSignatures>(signal: K, callback: Forward.SignalSignatures[K]): number;
+        connect<K extends keyof Forward.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Forward.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Forward.SignalSignatures>(
             signal: K,
-            callback: Forward.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Forward.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Forward.SignalSignatures>(
             signal: K,
-            ...args: Forward.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Forward.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -593,13 +612,13 @@ export namespace GeocodeGlib {
     namespace Location {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::accuracy': GObject.Object.Notify;
-            'notify::altitude': GObject.Object.Notify;
-            'notify::crs': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::latitude': GObject.Object.Notify;
-            'notify::longitude': GObject.Object.Notify;
-            'notify::timestamp': GObject.Object.Notify;
+            'notify::accuracy': (pspec: GObject.ParamSpec) => void;
+            'notify::altitude': (pspec: GObject.ParamSpec) => void;
+            'notify::crs': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::latitude': (pspec: GObject.ParamSpec) => void;
+            'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -661,6 +680,14 @@ export namespace GeocodeGlib {
          * A value of 0 (zero) will be interpreted as the current time.
          */
         get timestamp(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Location.SignalSignatures;
 
         // Constructors
 
@@ -679,16 +706,19 @@ export namespace GeocodeGlib {
 
         // Signals
 
-        connect<K extends keyof Location.SignalSignatures>(signal: K, callback: Location.SignalSignatures[K]): number;
+        connect<K extends keyof Location.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Location.SignalSignatures>(
             signal: K,
-            callback: Location.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Location.SignalSignatures>(
             signal: K,
-            ...args: Location.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Location.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -800,6 +830,14 @@ export namespace GeocodeGlib {
      */
     class MockBackend extends GObject.Object implements Backend {
         static $gtype: GObject.GType<MockBackend>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MockBackend.SignalSignatures;
 
         // Constructors
 
@@ -813,17 +851,17 @@ export namespace GeocodeGlib {
 
         connect<K extends keyof MockBackend.SignalSignatures>(
             signal: K,
-            callback: MockBackend.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MockBackend.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MockBackend.SignalSignatures>(
             signal: K,
-            callback: MockBackend.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MockBackend.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MockBackend.SignalSignatures>(
             signal: K,
-            ...args: MockBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MockBackend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1621,9 +1659,9 @@ export namespace GeocodeGlib {
     namespace Nominatim {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::base-url': GObject.Object.Notify;
-            'notify::maintainer-email-address': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
+            'notify::base-url': (pspec: GObject.ParamSpec) => void;
+            'notify::maintainer-email-address': (pspec: GObject.ParamSpec) => void;
+            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1699,6 +1737,14 @@ export namespace GeocodeGlib {
          */
         get userAgent(): string;
         set userAgent(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Nominatim.SignalSignatures;
 
         // Constructors
 
@@ -1710,16 +1756,19 @@ export namespace GeocodeGlib {
 
         // Signals
 
-        connect<K extends keyof Nominatim.SignalSignatures>(signal: K, callback: Nominatim.SignalSignatures[K]): number;
+        connect<K extends keyof Nominatim.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Nominatim.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Nominatim.SignalSignatures>(
             signal: K,
-            callback: Nominatim.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Nominatim.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Nominatim.SignalSignatures>(
             signal: K,
-            ...args: Nominatim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Nominatim.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2469,25 +2518,25 @@ export namespace GeocodeGlib {
     namespace Place {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::administrative-area': GObject.Object.Notify;
-            'notify::area': GObject.Object.Notify;
-            'notify::bounding-box': GObject.Object.Notify;
-            'notify::building': GObject.Object.Notify;
-            'notify::continent': GObject.Object.Notify;
-            'notify::country': GObject.Object.Notify;
-            'notify::country-code': GObject.Object.Notify;
-            'notify::county': GObject.Object.Notify;
-            'notify::icon': GObject.Object.Notify;
-            'notify::location': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::osm-id': GObject.Object.Notify;
-            'notify::osm-type': GObject.Object.Notify;
-            'notify::place-type': GObject.Object.Notify;
-            'notify::postal-code': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::street': GObject.Object.Notify;
-            'notify::street-address': GObject.Object.Notify;
-            'notify::town': GObject.Object.Notify;
+            'notify::administrative-area': (pspec: GObject.ParamSpec) => void;
+            'notify::area': (pspec: GObject.ParamSpec) => void;
+            'notify::bounding-box': (pspec: GObject.ParamSpec) => void;
+            'notify::building': (pspec: GObject.ParamSpec) => void;
+            'notify::continent': (pspec: GObject.ParamSpec) => void;
+            'notify::country': (pspec: GObject.ParamSpec) => void;
+            'notify::country-code': (pspec: GObject.ParamSpec) => void;
+            'notify::county': (pspec: GObject.ParamSpec) => void;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::location': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::osm-id': (pspec: GObject.ParamSpec) => void;
+            'notify::osm-type': (pspec: GObject.ParamSpec) => void;
+            'notify::place-type': (pspec: GObject.ParamSpec) => void;
+            'notify::postal-code': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::street': (pspec: GObject.ParamSpec) => void;
+            'notify::street-address': (pspec: GObject.ParamSpec) => void;
+            'notify::town': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2663,6 +2712,14 @@ export namespace GeocodeGlib {
          */
         get town(): string;
         set town(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Place.SignalSignatures;
 
         // Constructors
 
@@ -2676,13 +2733,19 @@ export namespace GeocodeGlib {
 
         // Signals
 
-        connect<K extends keyof Place.SignalSignatures>(signal: K, callback: Place.SignalSignatures[K]): number;
+        connect<K extends keyof Place.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Place.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Place.SignalSignatures>(signal: K, callback: Place.SignalSignatures[K]): number;
+        connect_after<K extends keyof Place.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Place.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Place.SignalSignatures>(
             signal: K,
-            ...args: Place.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Place.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2886,6 +2949,14 @@ export namespace GeocodeGlib {
      */
     class Reverse extends GObject.Object {
         static $gtype: GObject.GType<Reverse>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Reverse.SignalSignatures;
 
         // Constructors
 
@@ -2897,16 +2968,19 @@ export namespace GeocodeGlib {
 
         // Signals
 
-        connect<K extends keyof Reverse.SignalSignatures>(signal: K, callback: Reverse.SignalSignatures[K]): number;
+        connect<K extends keyof Reverse.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Reverse.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Reverse.SignalSignatures>(
             signal: K,
-            callback: Reverse.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Reverse.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Reverse.SignalSignatures>(
             signal: K,
-            ...args: Reverse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Reverse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

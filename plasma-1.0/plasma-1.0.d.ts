@@ -25,7 +25,7 @@ export namespace Plasma {
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::client': GObject.Object.Notify;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -41,6 +41,14 @@ export namespace Plasma {
         // Properties
 
         set client(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -52,13 +60,19 @@ export namespace Plasma {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -74,7 +88,7 @@ export namespace Plasma {
     namespace ClientCreateOptions {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::gpu-device': GObject.Object.Notify;
+            'notify::gpu-device': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -94,6 +108,14 @@ export namespace Plasma {
         set gpu_device(val: number);
         get gpuDevice(): number;
         set gpuDevice(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientCreateOptions.SignalSignatures;
 
         // Constructors
 
@@ -107,17 +129,19 @@ export namespace Plasma {
 
         connect<K extends keyof ClientCreateOptions.SignalSignatures>(
             signal: K,
-            callback: ClientCreateOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientCreateOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientCreateOptions.SignalSignatures>(
             signal: K,
-            callback: ClientCreateOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientCreateOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientCreateOptions.SignalSignatures>(
             signal: K,
-            ...args: ClientCreateOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientCreateOptions.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -130,7 +154,7 @@ export namespace Plasma {
     namespace ClientOptions {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::n-retries': GObject.Object.Notify;
+            'notify::n-retries': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -150,6 +174,14 @@ export namespace Plasma {
         set n_retries(val: number);
         get nRetries(): number;
         set nRetries(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientOptions.SignalSignatures;
 
         // Constructors
 
@@ -163,17 +195,17 @@ export namespace Plasma {
 
         connect<K extends keyof ClientOptions.SignalSignatures>(
             signal: K,
-            callback: ClientOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientOptions.SignalSignatures>(
             signal: K,
-            callback: ClientOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientOptions.SignalSignatures>(
             signal: K,
-            ...args: ClientOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -186,13 +218,13 @@ export namespace Plasma {
     namespace CreatedObject {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::client': GObject.Object.Notify;
-            'notify::data': GObject.Object.Notify;
-            'notify::gpu-device': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::metadata': GObject.Object.Notify;
-            'notify::raw-data': GObject.Object.Notify;
-            'notify::raw-metadata': GObject.Object.Notify;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
+            'notify::gpu-device': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::metadata': (pspec: GObject.ParamSpec) => void;
+            'notify::raw-data': (pspec: GObject.ParamSpec) => void;
+            'notify::raw-metadata': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -202,6 +234,14 @@ export namespace Plasma {
 
     class CreatedObject extends Object {
         static $gtype: GObject.GType<CreatedObject>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CreatedObject.SignalSignatures;
 
         // Constructors
 
@@ -213,17 +253,17 @@ export namespace Plasma {
 
         connect<K extends keyof CreatedObject.SignalSignatures>(
             signal: K,
-            callback: CreatedObject.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CreatedObject.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CreatedObject.SignalSignatures>(
             signal: K,
-            callback: CreatedObject.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CreatedObject.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CreatedObject.SignalSignatures>(
             signal: K,
-            ...args: CreatedObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CreatedObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -246,13 +286,13 @@ export namespace Plasma {
     namespace Object {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::client': GObject.Object.Notify;
-            'notify::data': GObject.Object.Notify;
-            'notify::gpu-device': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::metadata': GObject.Object.Notify;
-            'notify::raw-data': GObject.Object.Notify;
-            'notify::raw-metadata': GObject.Object.Notify;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
+            'notify::gpu-device': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::metadata': (pspec: GObject.ParamSpec) => void;
+            'notify::raw-data': (pspec: GObject.ParamSpec) => void;
+            'notify::raw-metadata': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -286,6 +326,14 @@ export namespace Plasma {
         set rawData(val: any);
         set raw_metadata(val: any);
         set rawMetadata(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -295,13 +343,19 @@ export namespace Plasma {
 
         // Signals
 
-        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
-            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -317,6 +371,14 @@ export namespace Plasma {
 
     class ObjectID extends GObject.Object {
         static $gtype: GObject.GType<ObjectID>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ObjectID.SignalSignatures;
 
         // Constructors
 
@@ -328,16 +390,19 @@ export namespace Plasma {
 
         // Signals
 
-        connect<K extends keyof ObjectID.SignalSignatures>(signal: K, callback: ObjectID.SignalSignatures[K]): number;
+        connect<K extends keyof ObjectID.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ObjectID.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ObjectID.SignalSignatures>(
             signal: K,
-            callback: ObjectID.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ObjectID.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ObjectID.SignalSignatures>(
             signal: K,
-            ...args: ObjectID.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ObjectID.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -350,13 +415,13 @@ export namespace Plasma {
     namespace ReferredObject {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::client': GObject.Object.Notify;
-            'notify::data': GObject.Object.Notify;
-            'notify::gpu-device': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::metadata': GObject.Object.Notify;
-            'notify::raw-data': GObject.Object.Notify;
-            'notify::raw-metadata': GObject.Object.Notify;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
+            'notify::gpu-device': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::metadata': (pspec: GObject.ParamSpec) => void;
+            'notify::raw-data': (pspec: GObject.ParamSpec) => void;
+            'notify::raw-metadata': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -366,6 +431,14 @@ export namespace Plasma {
 
     class ReferredObject extends Object {
         static $gtype: GObject.GType<ReferredObject>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ReferredObject.SignalSignatures;
 
         // Constructors
 
@@ -377,17 +450,17 @@ export namespace Plasma {
 
         connect<K extends keyof ReferredObject.SignalSignatures>(
             signal: K,
-            callback: ReferredObject.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ReferredObject.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ReferredObject.SignalSignatures>(
             signal: K,
-            callback: ReferredObject.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ReferredObject.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ReferredObject.SignalSignatures>(
             signal: K,
-            ...args: ReferredObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ReferredObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

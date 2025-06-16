@@ -33,7 +33,7 @@ export namespace Shew {
     namespace ExternalWindow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::display': GObject.Object.Notify;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -49,6 +49,14 @@ export namespace Shew {
         // Properties
 
         get display(): Gdk.Display;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExternalWindow.SignalSignatures;
 
         // Constructors
 
@@ -62,17 +70,17 @@ export namespace Shew {
 
         connect<K extends keyof ExternalWindow.SignalSignatures>(
             signal: K,
-            callback: ExternalWindow.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExternalWindow.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExternalWindow.SignalSignatures>(
             signal: K,
-            callback: ExternalWindow.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExternalWindow.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExternalWindow.SignalSignatures>(
             signal: K,
-            ...args: ExternalWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExternalWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -89,7 +97,7 @@ export namespace Shew {
     namespace WindowExporter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::window': GObject.Object.Notify;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -105,6 +113,14 @@ export namespace Shew {
         // Properties
 
         get window(): Gtk.Window;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WindowExporter.SignalSignatures;
 
         // Constructors
 
@@ -118,17 +134,17 @@ export namespace Shew {
 
         connect<K extends keyof WindowExporter.SignalSignatures>(
             signal: K,
-            callback: WindowExporter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WindowExporter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WindowExporter.SignalSignatures>(
             signal: K,
-            callback: WindowExporter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WindowExporter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WindowExporter.SignalSignatures>(
             signal: K,
-            ...args: WindowExporter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WindowExporter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

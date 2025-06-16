@@ -1079,44 +1079,22 @@ export namespace Fwupd {
         METADATA,
     }
     namespace Client {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: Client): void;
-        }
-
-        interface DeviceAdded {
-            (_source: Client, result: Device): void;
-        }
-
-        interface DeviceChanged {
-            (_source: Client, result: Device): void;
-        }
-
-        interface DeviceRemoved {
-            (_source: Client, result: Device): void;
-        }
-
-        interface StatusChanged {
-            (_source: Client, object: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            'device-added': DeviceAdded;
-            'device-changed': DeviceChanged;
-            'device-removed': DeviceRemoved;
-            'status-changed': StatusChanged;
-            'notify::daemon-version': GObject.Object.Notify;
-            'notify::host-machine-id': GObject.Object.Notify;
-            'notify::host-product': GObject.Object.Notify;
-            'notify::host-security-id': GObject.Object.Notify;
-            'notify::interactive': GObject.Object.Notify;
-            'notify::percentage': GObject.Object.Notify;
-            'notify::soup-session': GObject.Object.Notify;
-            'notify::status': GObject.Object.Notify;
-            'notify::tainted': GObject.Object.Notify;
+            changed: () => void;
+            'device-added': (arg0: Device) => void;
+            'device-changed': (arg0: Device) => void;
+            'device-removed': (arg0: Device) => void;
+            'status-changed': (arg0: number) => void;
+            'notify::daemon-version': (pspec: GObject.ParamSpec) => void;
+            'notify::host-machine-id': (pspec: GObject.ParamSpec) => void;
+            'notify::host-product': (pspec: GObject.ParamSpec) => void;
+            'notify::host-security-id': (pspec: GObject.ParamSpec) => void;
+            'notify::interactive': (pspec: GObject.ParamSpec) => void;
+            'notify::percentage': (pspec: GObject.ParamSpec) => void;
+            'notify::soup-session': (pspec: GObject.ParamSpec) => void;
+            'notify::status': (pspec: GObject.ParamSpec) => void;
+            'notify::tainted': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1202,6 +1180,14 @@ export namespace Fwupd {
          * If the daemon is tainted by 3rd party code.
          */
         get tainted(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -1213,13 +1199,19 @@ export namespace Fwupd {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3306,12 +3298,12 @@ export namespace Fwupd {
     namespace Device {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::flags': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::protocol': GObject.Object.Notify;
-            'notify::status': GObject.Object.Notify;
-            'notify::update-state': GObject.Object.Notify;
-            'notify::version-format': GObject.Object.Notify;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::protocol': (pspec: GObject.ParamSpec) => void;
+            'notify::status': (pspec: GObject.ParamSpec) => void;
+            'notify::update-state': (pspec: GObject.ParamSpec) => void;
+            'notify::version-format': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3349,6 +3341,14 @@ export namespace Fwupd {
         set version_format(val: number);
         get versionFormat(): number;
         set versionFormat(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -3360,13 +3360,19 @@ export namespace Fwupd {
 
         // Signals
 
-        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
-            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3851,8 +3857,8 @@ export namespace Fwupd {
     namespace Plugin {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::flags': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3872,6 +3878,14 @@ export namespace Fwupd {
         set flags(val: number);
         get name(): string;
         set name(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Plugin.SignalSignatures;
 
         // Constructors
 
@@ -3883,13 +3897,19 @@ export namespace Fwupd {
 
         // Signals
 
-        connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect_after<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Plugin.SignalSignatures>(
             signal: K,
-            ...args: Plugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3977,6 +3997,14 @@ export namespace Fwupd {
 
     class Release extends GObject.Object {
         static $gtype: GObject.GType<Release>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Release.SignalSignatures;
 
         // Constructors
 
@@ -3988,16 +4016,19 @@ export namespace Fwupd {
 
         // Signals
 
-        connect<K extends keyof Release.SignalSignatures>(signal: K, callback: Release.SignalSignatures[K]): number;
+        connect<K extends keyof Release.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Release.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Release.SignalSignatures>(
             signal: K,
-            callback: Release.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Release.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Release.SignalSignatures>(
             signal: K,
-            ...args: Release.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Release.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4404,11 +4435,11 @@ export namespace Fwupd {
     namespace Remote {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::approval-required': GObject.Object.Notify;
-            'notify::automatic-reports': GObject.Object.Notify;
-            'notify::automatic-security-reports': GObject.Object.Notify;
-            'notify::enabled': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
+            'notify::approval-required': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-reports': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-security-reports': (pspec: GObject.ParamSpec) => void;
+            'notify::enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4472,6 +4503,14 @@ export namespace Fwupd {
          */
         get id(): string;
         set id(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Remote.SignalSignatures;
 
         // Constructors
 
@@ -4483,13 +4522,19 @@ export namespace Fwupd {
 
         // Signals
 
-        connect<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
+        connect<K extends keyof Remote.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Remote.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
+        connect_after<K extends keyof Remote.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Remote.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Remote.SignalSignatures>(
             signal: K,
-            ...args: Remote.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Remote.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4718,6 +4763,14 @@ export namespace Fwupd {
 
     class SecurityAttr extends GObject.Object {
         static $gtype: GObject.GType<SecurityAttr>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SecurityAttr.SignalSignatures;
 
         // Constructors
 
@@ -4731,17 +4784,17 @@ export namespace Fwupd {
 
         connect<K extends keyof SecurityAttr.SignalSignatures>(
             signal: K,
-            callback: SecurityAttr.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SecurityAttr.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SecurityAttr.SignalSignatures>(
             signal: K,
-            callback: SecurityAttr.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SecurityAttr.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SecurityAttr.SignalSignatures>(
             signal: K,
-            ...args: SecurityAttr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SecurityAttr.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

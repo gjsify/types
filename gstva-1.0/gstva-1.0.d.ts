@@ -202,8 +202,8 @@ export namespace GstVa {
     namespace VaAllocator {
         // Signal signatures
         interface SignalSignatures extends Gst.Allocator.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -219,6 +219,14 @@ export namespace GstVa {
      */
     class VaAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VaAllocator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VaAllocator.SignalSignatures;
 
         // Constructors
 
@@ -232,17 +240,17 @@ export namespace GstVa {
 
         connect<K extends keyof VaAllocator.SignalSignatures>(
             signal: K,
-            callback: VaAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VaAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VaAllocator.SignalSignatures>(
             signal: K,
-            callback: VaAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VaAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VaAllocator.SignalSignatures>(
             signal: K,
-            ...args: VaAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VaAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -301,10 +309,10 @@ export namespace GstVa {
     namespace VaDisplay {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::description': GObject.Object.Notify;
-            'notify::va-display': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::va-display': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -335,6 +343,14 @@ export namespace GstVa {
         get description(): string;
         get va_display(): any;
         get vaDisplay(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VaDisplay.SignalSignatures;
 
         // Constructors
 
@@ -344,16 +360,19 @@ export namespace GstVa {
 
         // Signals
 
-        connect<K extends keyof VaDisplay.SignalSignatures>(signal: K, callback: VaDisplay.SignalSignatures[K]): number;
+        connect<K extends keyof VaDisplay.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, VaDisplay.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VaDisplay.SignalSignatures>(
             signal: K,
-            callback: VaDisplay.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VaDisplay.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VaDisplay.SignalSignatures>(
             signal: K,
-            ...args: VaDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VaDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -395,11 +414,11 @@ export namespace GstVa {
     namespace VaDisplayDrm {
         // Signal signatures
         interface SignalSignatures extends VaDisplay.SignalSignatures {
-            'notify::path': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::va-display': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::va-display': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -418,6 +437,14 @@ export namespace GstVa {
         // Properties
 
         get path(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VaDisplayDrm.SignalSignatures;
 
         // Constructors
 
@@ -431,17 +458,17 @@ export namespace GstVa {
 
         connect<K extends keyof VaDisplayDrm.SignalSignatures>(
             signal: K,
-            callback: VaDisplayDrm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VaDisplayDrm.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VaDisplayDrm.SignalSignatures>(
             signal: K,
-            callback: VaDisplayDrm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VaDisplayDrm.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VaDisplayDrm.SignalSignatures>(
             signal: K,
-            ...args: VaDisplayDrm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VaDisplayDrm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -449,10 +476,10 @@ export namespace GstVa {
     namespace VaDisplayWrapped {
         // Signal signatures
         interface SignalSignatures extends VaDisplay.SignalSignatures {
-            'notify::description': GObject.Object.Notify;
-            'notify::va-display': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::va-display': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -466,6 +493,14 @@ export namespace GstVa {
      */
     class VaDisplayWrapped extends VaDisplay {
         static $gtype: GObject.GType<VaDisplayWrapped>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VaDisplayWrapped.SignalSignatures;
 
         // Constructors
 
@@ -479,17 +514,17 @@ export namespace GstVa {
 
         connect<K extends keyof VaDisplayWrapped.SignalSignatures>(
             signal: K,
-            callback: VaDisplayWrapped.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VaDisplayWrapped.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VaDisplayWrapped.SignalSignatures>(
             signal: K,
-            callback: VaDisplayWrapped.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VaDisplayWrapped.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VaDisplayWrapped.SignalSignatures>(
             signal: K,
-            ...args: VaDisplayWrapped.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VaDisplayWrapped.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -497,8 +532,8 @@ export namespace GstVa {
     namespace VaDmabufAllocator {
         // Signal signatures
         interface SignalSignatures extends Gst.Allocator.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -513,6 +548,14 @@ export namespace GstVa {
      */
     class VaDmabufAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VaDmabufAllocator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VaDmabufAllocator.SignalSignatures;
 
         // Constructors
 
@@ -526,17 +569,17 @@ export namespace GstVa {
 
         connect<K extends keyof VaDmabufAllocator.SignalSignatures>(
             signal: K,
-            callback: VaDmabufAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VaDmabufAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VaDmabufAllocator.SignalSignatures>(
             signal: K,
-            callback: VaDmabufAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VaDmabufAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VaDmabufAllocator.SignalSignatures>(
             signal: K,
-            ...args: VaDmabufAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VaDmabufAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -583,8 +626,8 @@ export namespace GstVa {
     namespace VaPool {
         // Signal signatures
         interface SignalSignatures extends Gst.BufferPool.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -597,6 +640,14 @@ export namespace GstVa {
      */
     class VaPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VaPool>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VaPool.SignalSignatures;
 
         // Constructors
 
@@ -618,13 +669,19 @@ export namespace GstVa {
 
         // Signals
 
-        connect<K extends keyof VaPool.SignalSignatures>(signal: K, callback: VaPool.SignalSignatures[K]): number;
+        connect<K extends keyof VaPool.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, VaPool.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof VaPool.SignalSignatures>(signal: K, callback: VaPool.SignalSignatures[K]): number;
+        connect_after<K extends keyof VaPool.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, VaPool.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VaPool.SignalSignatures>(
             signal: K,
-            ...args: VaPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VaPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -508,20 +508,14 @@ export namespace Libxfce4windowing {
         VIRTUAL,
     }
     namespace Application {
-        // Signal callback interfaces
-
-        interface IconChanged {
-            (_source: Application): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'icon-changed': IconChanged;
-            'notify::class-id': GObject.Object.Notify;
-            'notify::gicon': GObject.Object.Notify;
-            'notify::instances': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::windows': GObject.Object.Notify;
+            'icon-changed': () => void;
+            'notify::class-id': (pspec: GObject.ParamSpec) => void;
+            'notify::gicon': (pspec: GObject.ParamSpec) => void;
+            'notify::instances': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::windows': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -565,6 +559,14 @@ export namespace Libxfce4windowing {
          * The list of #XfwWindow belonging to the application.
          */
         get windows(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Application.SignalSignatures;
 
         // Constructors
 
@@ -576,17 +578,17 @@ export namespace Libxfce4windowing {
 
         connect<K extends keyof Application.SignalSignatures>(
             signal: K,
-            callback: Application.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Application.SignalSignatures>(
             signal: K,
-            callback: Application.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -650,12 +652,12 @@ export namespace Libxfce4windowing {
     namespace ApplicationWayland {
         // Signal signatures
         interface SignalSignatures extends Application.SignalSignatures {
-            'notify::app-id': GObject.Object.Notify;
-            'notify::class-id': GObject.Object.Notify;
-            'notify::gicon': GObject.Object.Notify;
-            'notify::instances': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::windows': GObject.Object.Notify;
+            'notify::app-id': (pspec: GObject.ParamSpec) => void;
+            'notify::class-id': (pspec: GObject.ParamSpec) => void;
+            'notify::gicon': (pspec: GObject.ParamSpec) => void;
+            'notify::instances': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::windows': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -673,6 +675,14 @@ export namespace Libxfce4windowing {
 
         get app_id(): string;
         get appId(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ApplicationWayland.SignalSignatures;
 
         // Constructors
 
@@ -684,17 +694,17 @@ export namespace Libxfce4windowing {
 
         connect<K extends keyof ApplicationWayland.SignalSignatures>(
             signal: K,
-            callback: ApplicationWayland.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ApplicationWayland.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ApplicationWayland.SignalSignatures>(
             signal: K,
-            callback: ApplicationWayland.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ApplicationWayland.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ApplicationWayland.SignalSignatures>(
             signal: K,
-            ...args: ApplicationWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ApplicationWayland.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -702,11 +712,11 @@ export namespace Libxfce4windowing {
     namespace ApplicationX11 {
         // Signal signatures
         interface SignalSignatures extends Application.SignalSignatures {
-            'notify::class-id': GObject.Object.Notify;
-            'notify::gicon': GObject.Object.Notify;
-            'notify::instances': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::windows': GObject.Object.Notify;
+            'notify::class-id': (pspec: GObject.ParamSpec) => void;
+            'notify::gicon': (pspec: GObject.ParamSpec) => void;
+            'notify::instances': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::windows': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -716,6 +726,14 @@ export namespace Libxfce4windowing {
 
     class ApplicationX11 extends Application {
         static $gtype: GObject.GType<ApplicationX11>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ApplicationX11.SignalSignatures;
 
         // Constructors
 
@@ -727,17 +745,17 @@ export namespace Libxfce4windowing {
 
         connect<K extends keyof ApplicationX11.SignalSignatures>(
             signal: K,
-            callback: ApplicationX11.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ApplicationX11.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ApplicationX11.SignalSignatures>(
             signal: K,
-            callback: ApplicationX11.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ApplicationX11.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ApplicationX11.SignalSignatures>(
             signal: K,
-            ...args: ApplicationX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ApplicationX11.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -745,10 +763,10 @@ export namespace Libxfce4windowing {
     namespace ScreenWayland {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::active-window': GObject.Object.Notify;
-            'notify::screen': GObject.Object.Notify;
-            'notify::show-desktop': GObject.Object.Notify;
-            'notify::workspace-manager': GObject.Object.Notify;
+            'notify::active-window': (pspec: GObject.ParamSpec) => void;
+            'notify::screen': (pspec: GObject.ParamSpec) => void;
+            'notify::show-desktop': (pspec: GObject.ParamSpec) => void;
+            'notify::workspace-manager': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -758,6 +776,14 @@ export namespace Libxfce4windowing {
 
     class ScreenWayland extends GObject.Object implements Screen {
         static $gtype: GObject.GType<ScreenWayland>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ScreenWayland.SignalSignatures;
 
         // Constructors
 
@@ -769,17 +795,17 @@ export namespace Libxfce4windowing {
 
         connect<K extends keyof ScreenWayland.SignalSignatures>(
             signal: K,
-            callback: ScreenWayland.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ScreenWayland.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScreenWayland.SignalSignatures>(
             signal: K,
-            callback: ScreenWayland.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ScreenWayland.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScreenWayland.SignalSignatures>(
             signal: K,
-            ...args: ScreenWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ScreenWayland.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1300,10 +1326,10 @@ export namespace Libxfce4windowing {
     namespace ScreenX11 {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::active-window': GObject.Object.Notify;
-            'notify::screen': GObject.Object.Notify;
-            'notify::show-desktop': GObject.Object.Notify;
-            'notify::workspace-manager': GObject.Object.Notify;
+            'notify::active-window': (pspec: GObject.ParamSpec) => void;
+            'notify::screen': (pspec: GObject.ParamSpec) => void;
+            'notify::show-desktop': (pspec: GObject.ParamSpec) => void;
+            'notify::workspace-manager': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1313,6 +1339,14 @@ export namespace Libxfce4windowing {
 
     class ScreenX11 extends GObject.Object implements Screen {
         static $gtype: GObject.GType<ScreenX11>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ScreenX11.SignalSignatures;
 
         // Constructors
 
@@ -1322,16 +1356,19 @@ export namespace Libxfce4windowing {
 
         // Signals
 
-        connect<K extends keyof ScreenX11.SignalSignatures>(signal: K, callback: ScreenX11.SignalSignatures[K]): number;
+        connect<K extends keyof ScreenX11.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ScreenX11.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScreenX11.SignalSignatures>(
             signal: K,
-            callback: ScreenX11.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ScreenX11.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScreenX11.SignalSignatures>(
             signal: K,
-            ...args: ScreenX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ScreenX11.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1850,65 +1887,27 @@ export namespace Libxfce4windowing {
     }
 
     namespace Window {
-        // Signal callback interfaces
-
-        interface CapabilitiesChanged {
-            (_source: Window, changed_mask: WindowCapabilities, new_state: WindowCapabilities): void;
-        }
-
-        interface ClassChanged {
-            (_source: Window): void;
-        }
-
-        interface Closed {
-            (_source: Window): void;
-        }
-
-        interface GeometryChanged {
-            (_source: Window): void;
-        }
-
-        interface IconChanged {
-            (_source: Window): void;
-        }
-
-        interface NameChanged {
-            (_source: Window): void;
-        }
-
-        interface StateChanged {
-            (_source: Window, changed_mask: WindowState, new_state: WindowState): void;
-        }
-
-        interface TypeChanged {
-            (_source: Window, old_type: WindowType): void;
-        }
-
-        interface WorkspaceChanged {
-            (_source: Window): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'capabilities-changed': CapabilitiesChanged;
-            'class-changed': ClassChanged;
-            closed: Closed;
-            'geometry-changed': GeometryChanged;
-            'icon-changed': IconChanged;
-            'name-changed': NameChanged;
-            'state-changed': StateChanged;
-            'type-changed': TypeChanged;
-            'workspace-changed': WorkspaceChanged;
-            'notify::application': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::class-ids': GObject.Object.Notify;
-            'notify::gicon': GObject.Object.Notify;
-            'notify::monitors': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::screen': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::workspace': GObject.Object.Notify;
+            'capabilities-changed': (arg0: WindowCapabilities, arg1: WindowCapabilities) => void;
+            'class-changed': () => void;
+            closed: () => void;
+            'geometry-changed': () => void;
+            'icon-changed': () => void;
+            'name-changed': () => void;
+            'state-changed': (arg0: WindowState, arg1: WindowState) => void;
+            'type-changed': (arg0: WindowType) => void;
+            'workspace-changed': () => void;
+            'notify::application': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::class-ids': (pspec: GObject.ParamSpec) => void;
+            'notify::gicon': (pspec: GObject.ParamSpec) => void;
+            'notify::monitors': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::screen': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::workspace': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1974,6 +1973,14 @@ export namespace Libxfce4windowing {
          */
         get type(): WindowType;
         get workspace(): Workspace;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Window.SignalSignatures;
 
         // Constructors
 
@@ -1983,13 +1990,19 @@ export namespace Libxfce4windowing {
 
         // Signals
 
-        connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        connect<K extends keyof Window.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        connect_after<K extends keyof Window.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Window.SignalSignatures>(
             signal: K,
-            ...args: Window.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Window.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2111,17 +2124,17 @@ export namespace Libxfce4windowing {
     namespace WindowWayland {
         // Signal signatures
         interface SignalSignatures extends Window.SignalSignatures {
-            'notify::handle': GObject.Object.Notify;
-            'notify::application': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::class-ids': GObject.Object.Notify;
-            'notify::gicon': GObject.Object.Notify;
-            'notify::monitors': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::screen': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::workspace': GObject.Object.Notify;
+            'notify::handle': (pspec: GObject.ParamSpec) => void;
+            'notify::application': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::class-ids': (pspec: GObject.ParamSpec) => void;
+            'notify::gicon': (pspec: GObject.ParamSpec) => void;
+            'notify::monitors': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::screen': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::workspace': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2137,6 +2150,14 @@ export namespace Libxfce4windowing {
         // Properties
 
         get handle(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WindowWayland.SignalSignatures;
 
         // Constructors
 
@@ -2148,17 +2169,17 @@ export namespace Libxfce4windowing {
 
         connect<K extends keyof WindowWayland.SignalSignatures>(
             signal: K,
-            callback: WindowWayland.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WindowWayland.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WindowWayland.SignalSignatures>(
             signal: K,
-            callback: WindowWayland.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WindowWayland.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WindowWayland.SignalSignatures>(
             signal: K,
-            ...args: WindowWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WindowWayland.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2166,16 +2187,16 @@ export namespace Libxfce4windowing {
     namespace WindowX11 {
         // Signal signatures
         interface SignalSignatures extends Window.SignalSignatures {
-            'notify::application': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::class-ids': GObject.Object.Notify;
-            'notify::gicon': GObject.Object.Notify;
-            'notify::monitors': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::screen': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::workspace': GObject.Object.Notify;
+            'notify::application': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::class-ids': (pspec: GObject.ParamSpec) => void;
+            'notify::gicon': (pspec: GObject.ParamSpec) => void;
+            'notify::monitors': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::screen': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::workspace': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2185,6 +2206,14 @@ export namespace Libxfce4windowing {
 
     class WindowX11 extends Window {
         static $gtype: GObject.GType<WindowX11>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WindowX11.SignalSignatures;
 
         // Constructors
 
@@ -2194,16 +2223,19 @@ export namespace Libxfce4windowing {
 
         // Signals
 
-        connect<K extends keyof WindowX11.SignalSignatures>(signal: K, callback: WindowX11.SignalSignatures[K]): number;
+        connect<K extends keyof WindowX11.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WindowX11.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WindowX11.SignalSignatures>(
             signal: K,
-            callback: WindowX11.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WindowX11.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WindowX11.SignalSignatures>(
             signal: K,
-            ...args: WindowX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WindowX11.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2211,7 +2243,7 @@ export namespace Libxfce4windowing {
     namespace WnckIcon {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::wnck-object': GObject.Object.Notify;
+            'notify::wnck-object': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2233,6 +2265,14 @@ export namespace Libxfce4windowing {
 
         get wnck_object(): GObject.Object;
         get wnckObject(): GObject.Object;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WnckIcon.SignalSignatures;
 
         // Constructors
 
@@ -2242,16 +2282,19 @@ export namespace Libxfce4windowing {
 
         // Signals
 
-        connect<K extends keyof WnckIcon.SignalSignatures>(signal: K, callback: WnckIcon.SignalSignatures[K]): number;
+        connect<K extends keyof WnckIcon.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WnckIcon.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WnckIcon.SignalSignatures>(
             signal: K,
-            callback: WnckIcon.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WnckIcon.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WnckIcon.SignalSignatures>(
             signal: K,
-            ...args: WnckIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WnckIcon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2920,14 +2963,14 @@ export namespace Libxfce4windowing {
     namespace WorkspaceDummy {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::group': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::layout-column': GObject.Object.Notify;
-            'notify::layout-row': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::number': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::group': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-column': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-row': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::number': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2937,6 +2980,14 @@ export namespace Libxfce4windowing {
 
     class WorkspaceDummy extends GObject.Object implements Workspace {
         static $gtype: GObject.GType<WorkspaceDummy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WorkspaceDummy.SignalSignatures;
 
         // Constructors
 
@@ -2948,17 +2999,17 @@ export namespace Libxfce4windowing {
 
         connect<K extends keyof WorkspaceDummy.SignalSignatures>(
             signal: K,
-            callback: WorkspaceDummy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkspaceDummy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkspaceDummy.SignalSignatures>(
             signal: K,
-            callback: WorkspaceDummy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkspaceDummy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkspaceDummy.SignalSignatures>(
             signal: K,
-            ...args: WorkspaceDummy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WorkspaceDummy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3548,14 +3599,14 @@ export namespace Libxfce4windowing {
     namespace WorkspaceGroupDummy {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::create-workspace-func': GObject.Object.Notify;
-            'notify::move-viewport-func': GObject.Object.Notify;
-            'notify::set-layout-func': GObject.Object.Notify;
-            'notify::active-workspace': GObject.Object.Notify;
-            'notify::monitors': GObject.Object.Notify;
-            'notify::screen': GObject.Object.Notify;
-            'notify::workspace-manager': GObject.Object.Notify;
-            'notify::workspaces': GObject.Object.Notify;
+            'notify::create-workspace-func': (pspec: GObject.ParamSpec) => void;
+            'notify::move-viewport-func': (pspec: GObject.ParamSpec) => void;
+            'notify::set-layout-func': (pspec: GObject.ParamSpec) => void;
+            'notify::active-workspace': (pspec: GObject.ParamSpec) => void;
+            'notify::monitors': (pspec: GObject.ParamSpec) => void;
+            'notify::screen': (pspec: GObject.ParamSpec) => void;
+            'notify::workspace-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::workspaces': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3587,6 +3638,14 @@ export namespace Libxfce4windowing {
         set set_layout_func(val: any);
         get setLayoutFunc(): any;
         set setLayoutFunc(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WorkspaceGroupDummy.SignalSignatures;
 
         // Constructors
 
@@ -3598,17 +3657,19 @@ export namespace Libxfce4windowing {
 
         connect<K extends keyof WorkspaceGroupDummy.SignalSignatures>(
             signal: K,
-            callback: WorkspaceGroupDummy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkspaceGroupDummy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkspaceGroupDummy.SignalSignatures>(
             signal: K,
-            callback: WorkspaceGroupDummy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkspaceGroupDummy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkspaceGroupDummy.SignalSignatures>(
             signal: K,
-            ...args: WorkspaceGroupDummy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WorkspaceGroupDummy.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4149,20 +4210,14 @@ export namespace Libxfce4windowing {
     }
 
     namespace WorkspaceGroupWayland {
-        // Signal callback interfaces
-
-        interface Destroyed {
-            (_source: WorkspaceGroupWayland): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            destroyed: Destroyed;
-            'notify::active-workspace': GObject.Object.Notify;
-            'notify::monitors': GObject.Object.Notify;
-            'notify::screen': GObject.Object.Notify;
-            'notify::workspace-manager': GObject.Object.Notify;
-            'notify::workspaces': GObject.Object.Notify;
+            destroyed: () => void;
+            'notify::active-workspace': (pspec: GObject.ParamSpec) => void;
+            'notify::monitors': (pspec: GObject.ParamSpec) => void;
+            'notify::screen': (pspec: GObject.ParamSpec) => void;
+            'notify::workspace-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::workspaces': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4172,6 +4227,14 @@ export namespace Libxfce4windowing {
 
     class WorkspaceGroupWayland extends GObject.Object implements WorkspaceGroup {
         static $gtype: GObject.GType<WorkspaceGroupWayland>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WorkspaceGroupWayland.SignalSignatures;
 
         // Constructors
 
@@ -4183,17 +4246,19 @@ export namespace Libxfce4windowing {
 
         connect<K extends keyof WorkspaceGroupWayland.SignalSignatures>(
             signal: K,
-            callback: WorkspaceGroupWayland.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkspaceGroupWayland.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkspaceGroupWayland.SignalSignatures>(
             signal: K,
-            callback: WorkspaceGroupWayland.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkspaceGroupWayland.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkspaceGroupWayland.SignalSignatures>(
             signal: K,
-            ...args: WorkspaceGroupWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WorkspaceGroupWayland.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4736,7 +4801,7 @@ export namespace Libxfce4windowing {
     namespace WorkspaceManagerDummy {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::screen': GObject.Object.Notify;
+            'notify::screen': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4746,6 +4811,14 @@ export namespace Libxfce4windowing {
 
     class WorkspaceManagerDummy extends GObject.Object implements WorkspaceManager {
         static $gtype: GObject.GType<WorkspaceManagerDummy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WorkspaceManagerDummy.SignalSignatures;
 
         // Constructors
 
@@ -4757,17 +4830,19 @@ export namespace Libxfce4windowing {
 
         connect<K extends keyof WorkspaceManagerDummy.SignalSignatures>(
             signal: K,
-            callback: WorkspaceManagerDummy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkspaceManagerDummy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkspaceManagerDummy.SignalSignatures>(
             signal: K,
-            callback: WorkspaceManagerDummy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkspaceManagerDummy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkspaceManagerDummy.SignalSignatures>(
             signal: K,
-            ...args: WorkspaceManagerDummy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WorkspaceManagerDummy.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5233,9 +5308,9 @@ export namespace Libxfce4windowing {
     namespace WorkspaceManagerWayland {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::wl-manager': GObject.Object.Notify;
-            'notify::wl-registry': GObject.Object.Notify;
-            'notify::screen': GObject.Object.Notify;
+            'notify::wl-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::wl-registry': (pspec: GObject.ParamSpec) => void;
+            'notify::screen': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5257,6 +5332,14 @@ export namespace Libxfce4windowing {
         get wlManager(): any;
         get wl_registry(): any;
         get wlRegistry(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WorkspaceManagerWayland.SignalSignatures;
 
         // Constructors
 
@@ -5268,17 +5351,19 @@ export namespace Libxfce4windowing {
 
         connect<K extends keyof WorkspaceManagerWayland.SignalSignatures>(
             signal: K,
-            callback: WorkspaceManagerWayland.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkspaceManagerWayland.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkspaceManagerWayland.SignalSignatures>(
             signal: K,
-            callback: WorkspaceManagerWayland.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkspaceManagerWayland.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkspaceManagerWayland.SignalSignatures>(
             signal: K,
-            ...args: WorkspaceManagerWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WorkspaceManagerWayland.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5744,7 +5829,7 @@ export namespace Libxfce4windowing {
     namespace WorkspaceManagerX11 {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::screen': GObject.Object.Notify;
+            'notify::screen': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5754,6 +5839,14 @@ export namespace Libxfce4windowing {
 
     class WorkspaceManagerX11 extends GObject.Object implements WorkspaceManager {
         static $gtype: GObject.GType<WorkspaceManagerX11>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WorkspaceManagerX11.SignalSignatures;
 
         // Constructors
 
@@ -5765,17 +5858,19 @@ export namespace Libxfce4windowing {
 
         connect<K extends keyof WorkspaceManagerX11.SignalSignatures>(
             signal: K,
-            callback: WorkspaceManagerX11.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkspaceManagerX11.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkspaceManagerX11.SignalSignatures>(
             signal: K,
-            callback: WorkspaceManagerX11.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkspaceManagerX11.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkspaceManagerX11.SignalSignatures>(
             signal: K,
-            ...args: WorkspaceManagerX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WorkspaceManagerX11.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6239,24 +6334,18 @@ export namespace Libxfce4windowing {
     }
 
     namespace WorkspaceWayland {
-        // Signal callback interfaces
-
-        interface Destroyed {
-            (_source: WorkspaceWayland): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            destroyed: Destroyed;
-            'notify::handle': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::group': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::layout-column': GObject.Object.Notify;
-            'notify::layout-row': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::number': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
+            destroyed: () => void;
+            'notify::handle': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::group': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-column': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-row': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::number': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6272,6 +6361,14 @@ export namespace Libxfce4windowing {
         // Properties
 
         get handle(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WorkspaceWayland.SignalSignatures;
 
         // Constructors
 
@@ -6283,17 +6380,17 @@ export namespace Libxfce4windowing {
 
         connect<K extends keyof WorkspaceWayland.SignalSignatures>(
             signal: K,
-            callback: WorkspaceWayland.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkspaceWayland.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkspaceWayland.SignalSignatures>(
             signal: K,
-            callback: WorkspaceWayland.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkspaceWayland.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkspaceWayland.SignalSignatures>(
             signal: K,
-            ...args: WorkspaceWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WorkspaceWayland.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6883,14 +6980,14 @@ export namespace Libxfce4windowing {
     namespace WorkspaceX11 {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::group': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::layout-column': GObject.Object.Notify;
-            'notify::layout-row': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::number': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::group': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-column': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-row': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::number': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6900,6 +6997,14 @@ export namespace Libxfce4windowing {
 
     class WorkspaceX11 extends GObject.Object implements Workspace {
         static $gtype: GObject.GType<WorkspaceX11>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WorkspaceX11.SignalSignatures;
 
         // Constructors
 
@@ -6911,17 +7016,17 @@ export namespace Libxfce4windowing {
 
         connect<K extends keyof WorkspaceX11.SignalSignatures>(
             signal: K,
-            callback: WorkspaceX11.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkspaceX11.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkspaceX11.SignalSignatures>(
             signal: K,
-            callback: WorkspaceX11.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkspaceX11.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkspaceX11.SignalSignatures>(
             signal: K,
-            ...args: WorkspaceX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WorkspaceX11.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

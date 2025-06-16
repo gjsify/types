@@ -141,13 +141,13 @@ export namespace ClutterGst {
     namespace Aspectratio {
         // Signal signatures
         interface SignalSignatures extends Content.SignalSignatures {
-            'notify::fill-allocation': GObject.Object.Notify;
-            'notify::paint-borders': GObject.Object.Notify;
-            'notify::frame': GObject.Object.Notify;
-            'notify::paint-frame': GObject.Object.Notify;
-            'notify::paint-overlays': GObject.Object.Notify;
-            'notify::player': GObject.Object.Notify;
-            'notify::sink': GObject.Object.Notify;
+            'notify::fill-allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::paint-borders': (pspec: GObject.ParamSpec) => void;
+            'notify::frame': (pspec: GObject.ParamSpec) => void;
+            'notify::paint-frame': (pspec: GObject.ParamSpec) => void;
+            'notify::paint-overlays': (pspec: GObject.ParamSpec) => void;
+            'notify::player': (pspec: GObject.ParamSpec) => void;
+            'notify::sink': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -194,6 +194,14 @@ export namespace ClutterGst {
          */
         get paintBorders(): boolean;
         set paintBorders(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Aspectratio.SignalSignatures;
 
         // Constructors
 
@@ -205,17 +213,17 @@ export namespace ClutterGst {
 
         connect<K extends keyof Aspectratio.SignalSignatures>(
             signal: K,
-            callback: Aspectratio.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Aspectratio.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Aspectratio.SignalSignatures>(
             signal: K,
-            callback: Aspectratio.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Aspectratio.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Aspectratio.SignalSignatures>(
             signal: K,
-            ...args: Aspectratio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Aspectratio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -702,34 +710,16 @@ export namespace ClutterGst {
     }
 
     namespace Camera {
-        // Signal callback interfaces
-
-        interface PhotoSaved {
-            (_source: Camera): void;
-        }
-
-        interface PhotoTaken {
-            (_source: Camera, pixbuf: GdkPixbuf.Pixbuf): void;
-        }
-
-        interface ReadyForCapture {
-            (_source: Camera, ready: boolean): void;
-        }
-
-        interface VideoSaved {
-            (_source: Camera): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'photo-saved': PhotoSaved;
-            'photo-taken': PhotoTaken;
-            'ready-for-capture': ReadyForCapture;
-            'video-saved': VideoSaved;
-            'notify::device': GObject.Object.Notify;
-            'notify::audio-volume': GObject.Object.Notify;
-            'notify::idle': GObject.Object.Notify;
-            'notify::playing': GObject.Object.Notify;
+            'photo-saved': () => void;
+            'photo-taken': (arg0: GdkPixbuf.Pixbuf) => void;
+            'ready-for-capture': (arg0: boolean) => void;
+            'video-saved': () => void;
+            'notify::device': (pspec: GObject.ParamSpec) => void;
+            'notify::audio-volume': (pspec: GObject.ParamSpec) => void;
+            'notify::idle': (pspec: GObject.ParamSpec) => void;
+            'notify::playing': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -753,6 +743,14 @@ export namespace ClutterGst {
 
         get device(): CameraDevice;
         set device(val: CameraDevice);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Camera.SignalSignatures;
 
         // Constructors
 
@@ -764,13 +762,19 @@ export namespace ClutterGst {
 
         // Signals
 
-        connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
+        connect<K extends keyof Camera.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
+        connect_after<K extends keyof Camera.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Camera.SignalSignatures>(
             signal: K,
-            ...args: Camera.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Camera.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1520,18 +1524,12 @@ export namespace ClutterGst {
     }
 
     namespace CameraDevice {
-        // Signal callback interfaces
-
-        interface CaptureResolutionChanged {
-            (_source: CameraDevice, width: number, height: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'capture-resolution-changed': CaptureResolutionChanged;
-            'notify::element-factory': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::node': GObject.Object.Notify;
+            'capture-resolution-changed': (arg0: number, arg1: number) => void;
+            'notify::element-factory': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1571,6 +1569,14 @@ export namespace ClutterGst {
          * The device node.
          */
         get node(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CameraDevice.SignalSignatures;
 
         // Constructors
 
@@ -1582,17 +1588,17 @@ export namespace ClutterGst {
 
         connect<K extends keyof CameraDevice.SignalSignatures>(
             signal: K,
-            callback: CameraDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CameraDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CameraDevice.SignalSignatures>(
             signal: K,
-            callback: CameraDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CameraDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CameraDevice.SignalSignatures>(
             signal: K,
-            ...args: CameraDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CameraDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1630,20 +1636,10 @@ export namespace ClutterGst {
     }
 
     namespace CameraManager {
-        // Signal callback interfaces
-
-        interface CameraAdded {
-            (_source: CameraManager, camera_device: CameraDevice): void;
-        }
-
-        interface CameraRemoved {
-            (_source: CameraManager, camera_device: CameraDevice): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'camera-added': CameraAdded;
-            'camera-removed': CameraRemoved;
+            'camera-added': (arg0: CameraDevice) => void;
+            'camera-removed': (arg0: CameraDevice) => void;
         }
 
         // Constructor properties interface
@@ -1659,6 +1655,14 @@ export namespace ClutterGst {
      */
     class CameraManager extends GObject.Object {
         static $gtype: GObject.GType<CameraManager>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CameraManager.SignalSignatures;
 
         // Constructors
 
@@ -1670,17 +1674,17 @@ export namespace ClutterGst {
 
         connect<K extends keyof CameraManager.SignalSignatures>(
             signal: K,
-            callback: CameraManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CameraManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CameraManager.SignalSignatures>(
             signal: K,
-            callback: CameraManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CameraManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CameraManager.SignalSignatures>(
             signal: K,
-            ...args: CameraManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CameraManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1704,20 +1708,14 @@ export namespace ClutterGst {
     }
 
     namespace Content {
-        // Signal callback interfaces
-
-        interface SizeChange {
-            (_source: Content, width: number, height: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'size-change': SizeChange;
-            'notify::frame': GObject.Object.Notify;
-            'notify::paint-frame': GObject.Object.Notify;
-            'notify::paint-overlays': GObject.Object.Notify;
-            'notify::player': GObject.Object.Notify;
-            'notify::sink': GObject.Object.Notify;
+            'size-change': (arg0: number, arg1: number) => void;
+            'notify::frame': (pspec: GObject.ParamSpec) => void;
+            'notify::paint-frame': (pspec: GObject.ParamSpec) => void;
+            'notify::paint-overlays': (pspec: GObject.ParamSpec) => void;
+            'notify::player': (pspec: GObject.ParamSpec) => void;
+            'notify::sink': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1756,6 +1754,14 @@ export namespace ClutterGst {
         set player(val: GObject.Object);
         get sink(): VideoSink;
         set sink(val: VideoSink);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Content.SignalSignatures;
 
         // Constructors
 
@@ -1765,16 +1771,19 @@ export namespace ClutterGst {
 
         // Signals
 
-        connect<K extends keyof Content.SignalSignatures>(signal: K, callback: Content.SignalSignatures[K]): number;
+        connect<K extends keyof Content.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Content.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Content.SignalSignatures>(
             signal: K,
-            callback: Content.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Content.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Content.SignalSignatures>(
             signal: K,
-            ...args: Content.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Content.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2282,15 +2291,15 @@ export namespace ClutterGst {
     namespace Crop {
         // Signal signatures
         interface SignalSignatures extends Content.SignalSignatures {
-            'notify::cull-backface': GObject.Object.Notify;
-            'notify::input-region': GObject.Object.Notify;
-            'notify::output-region': GObject.Object.Notify;
-            'notify::paint-borders': GObject.Object.Notify;
-            'notify::frame': GObject.Object.Notify;
-            'notify::paint-frame': GObject.Object.Notify;
-            'notify::paint-overlays': GObject.Object.Notify;
-            'notify::player': GObject.Object.Notify;
-            'notify::sink': GObject.Object.Notify;
+            'notify::cull-backface': (pspec: GObject.ParamSpec) => void;
+            'notify::input-region': (pspec: GObject.ParamSpec) => void;
+            'notify::output-region': (pspec: GObject.ParamSpec) => void;
+            'notify::paint-borders': (pspec: GObject.ParamSpec) => void;
+            'notify::frame': (pspec: GObject.ParamSpec) => void;
+            'notify::paint-frame': (pspec: GObject.ParamSpec) => void;
+            'notify::paint-overlays': (pspec: GObject.ParamSpec) => void;
+            'notify::player': (pspec: GObject.ParamSpec) => void;
+            'notify::sink': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2359,6 +2368,14 @@ export namespace ClutterGst {
          */
         get paintBorders(): boolean;
         set paintBorders(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Crop.SignalSignatures;
 
         // Constructors
 
@@ -2373,13 +2390,19 @@ export namespace ClutterGst {
 
         // Signals
 
-        connect<K extends keyof Crop.SignalSignatures>(signal: K, callback: Crop.SignalSignatures[K]): number;
+        connect<K extends keyof Crop.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Crop.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Crop.SignalSignatures>(signal: K, callback: Crop.SignalSignatures[K]): number;
+        connect_after<K extends keyof Crop.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Crop.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Crop.SignalSignatures>(
             signal: K,
-            ...args: Crop.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Crop.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2862,32 +2885,26 @@ export namespace ClutterGst {
     }
 
     namespace Playback {
-        // Signal callback interfaces
-
-        interface ShouldBuffer {
-            (_source: Playback, query: Gst.Query): boolean | void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'should-buffer': ShouldBuffer;
-            'notify::audio-stream': GObject.Object.Notify;
-            'notify::audio-streams': GObject.Object.Notify;
-            'notify::buffer-fill': GObject.Object.Notify;
-            'notify::can-seek': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-seek': GObject.Object.Notify;
-            'notify::progress': GObject.Object.Notify;
-            'notify::seek-flags': GObject.Object.Notify;
-            'notify::subtitle-font-name': GObject.Object.Notify;
-            'notify::subtitle-track': GObject.Object.Notify;
-            'notify::subtitle-tracks': GObject.Object.Notify;
-            'notify::subtitle-uri': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
-            'notify::audio-volume': GObject.Object.Notify;
-            'notify::idle': GObject.Object.Notify;
-            'notify::playing': GObject.Object.Notify;
+            'should-buffer': (arg0: Gst.Query) => boolean | void;
+            'notify::audio-stream': (pspec: GObject.ParamSpec) => void;
+            'notify::audio-streams': (pspec: GObject.ParamSpec) => void;
+            'notify::buffer-fill': (pspec: GObject.ParamSpec) => void;
+            'notify::can-seek': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-seek': (pspec: GObject.ParamSpec) => void;
+            'notify::progress': (pspec: GObject.ParamSpec) => void;
+            'notify::seek-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle-font-name': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle-track': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle-tracks': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
+            'notify::audio-volume': (pspec: GObject.ParamSpec) => void;
+            'notify::idle': (pspec: GObject.ParamSpec) => void;
+            'notify::playing': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3054,6 +3071,14 @@ export namespace ClutterGst {
          */
         get userAgent(): string;
         set userAgent(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Playback.SignalSignatures;
 
         // Constructors
 
@@ -3065,16 +3090,19 @@ export namespace ClutterGst {
 
         // Signals
 
-        connect<K extends keyof Playback.SignalSignatures>(signal: K, callback: Playback.SignalSignatures[K]): number;
+        connect<K extends keyof Playback.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Playback.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Playback.SignalSignatures>(
             signal: K,
-            callback: Playback.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Playback.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Playback.SignalSignatures>(
             signal: K,
-            ...args: Playback.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Playback.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3809,42 +3837,28 @@ export namespace ClutterGst {
     }
 
     namespace VideoSink {
-        // Signal callback interfaces
-
-        interface NewFrame {
-            (_source: VideoSink): void;
-        }
-
-        interface NewOverlays {
-            (_source: VideoSink): void;
-        }
-
-        interface PipelineReady {
-            (_source: VideoSink): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GstVideo.VideoSink.SignalSignatures {
-            'new-frame': NewFrame;
-            'new-overlays': NewOverlays;
-            'pipeline-ready': PipelineReady;
-            'notify::update-priority': GObject.Object.Notify;
-            'notify::show-preroll-frame': GObject.Object.Notify;
-            'notify::async': GObject.Object.Notify;
-            'notify::blocksize': GObject.Object.Notify;
-            'notify::enable-last-sample': GObject.Object.Notify;
-            'notify::last-sample': GObject.Object.Notify;
-            'notify::max-bitrate': GObject.Object.Notify;
-            'notify::max-lateness': GObject.Object.Notify;
-            'notify::processing-deadline': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::render-delay': GObject.Object.Notify;
-            'notify::stats': GObject.Object.Notify;
-            'notify::sync': GObject.Object.Notify;
-            'notify::throttle-time': GObject.Object.Notify;
-            'notify::ts-offset': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'new-frame': () => void;
+            'new-overlays': () => void;
+            'pipeline-ready': () => void;
+            'notify::update-priority': (pspec: GObject.ParamSpec) => void;
+            'notify::show-preroll-frame': (pspec: GObject.ParamSpec) => void;
+            'notify::async': (pspec: GObject.ParamSpec) => void;
+            'notify::blocksize': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-last-sample': (pspec: GObject.ParamSpec) => void;
+            'notify::last-sample': (pspec: GObject.ParamSpec) => void;
+            'notify::max-bitrate': (pspec: GObject.ParamSpec) => void;
+            'notify::max-lateness': (pspec: GObject.ParamSpec) => void;
+            'notify::processing-deadline': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::render-delay': (pspec: GObject.ParamSpec) => void;
+            'notify::stats': (pspec: GObject.ParamSpec) => void;
+            'notify::sync': (pspec: GObject.ParamSpec) => void;
+            'notify::throttle-time': (pspec: GObject.ParamSpec) => void;
+            'notify::ts-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3871,6 +3885,14 @@ export namespace ClutterGst {
         set update_priority(val: number);
         get updatePriority(): number;
         set updatePriority(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VideoSink.SignalSignatures;
 
         // Constructors
 
@@ -3882,16 +3904,19 @@ export namespace ClutterGst {
 
         // Signals
 
-        connect<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: VideoSink.SignalSignatures[K]): number;
+        connect<K extends keyof VideoSink.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
-            callback: VideoSink.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
-            ...args: VideoSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VideoSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

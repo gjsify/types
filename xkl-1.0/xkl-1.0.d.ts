@@ -150,6 +150,14 @@ export namespace Xkl {
 
     class ConfigItem extends GObject.Object {
         static $gtype: GObject.GType<ConfigItem>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigItem.SignalSignatures;
 
         // Fields
 
@@ -169,17 +177,17 @@ export namespace Xkl {
 
         connect<K extends keyof ConfigItem.SignalSignatures>(
             signal: K,
-            callback: ConfigItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigItem.SignalSignatures>(
             signal: K,
-            callback: ConfigItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigItem.SignalSignatures>(
             signal: K,
-            ...args: ConfigItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -219,6 +227,14 @@ export namespace Xkl {
 
     class ConfigRec extends GObject.Object {
         static $gtype: GObject.GType<ConfigRec>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigRec.SignalSignatures;
 
         // Fields
 
@@ -237,16 +253,19 @@ export namespace Xkl {
 
         // Signals
 
-        connect<K extends keyof ConfigRec.SignalSignatures>(signal: K, callback: ConfigRec.SignalSignatures[K]): number;
+        connect<K extends keyof ConfigRec.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ConfigRec.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigRec.SignalSignatures>(
             signal: K,
-            callback: ConfigRec.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigRec.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigRec.SignalSignatures>(
             signal: K,
-            ...args: ConfigRec.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigRec.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -345,7 +364,7 @@ export namespace Xkl {
     namespace ConfigRegistry {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::engine': GObject.Object.Notify;
+            'notify::engine': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -361,6 +380,14 @@ export namespace Xkl {
         // Properties
 
         get engine(): Engine;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigRegistry.SignalSignatures;
 
         // Constructors
 
@@ -372,17 +399,17 @@ export namespace Xkl {
 
         connect<K extends keyof ConfigRegistry.SignalSignatures>(
             signal: K,
-            callback: ConfigRegistry.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigRegistry.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigRegistry.SignalSignatures>(
             signal: K,
-            callback: ConfigRegistry.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigRegistry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigRegistry.SignalSignatures>(
             signal: K,
-            ...args: ConfigRegistry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigRegistry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -504,38 +531,20 @@ export namespace Xkl {
     }
 
     namespace Engine {
-        // Signal callback interfaces
-
-        interface XConfigChanged {
-            (_source: Engine): void;
-        }
-
-        interface XNewDevice {
-            (_source: Engine): void;
-        }
-
-        interface XStateChanged {
-            (_source: Engine, object: EngineStateChange, p0: number, p1: boolean): void;
-        }
-
-        interface NewToplevelWindow {
-            (_source: Engine, object: number, p0: number): number;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'X-config-changed': XConfigChanged;
-            'X-new-device': XNewDevice;
-            'X-state-changed': XStateChanged;
-            'new-toplevel-window': NewToplevelWindow;
-            'notify::backend-name': GObject.Object.Notify;
-            'notify::default-group': GObject.Object.Notify;
-            'notify::display': GObject.Object.Notify;
-            'notify::features': GObject.Object.Notify;
-            'notify::indicators-handling': GObject.Object.Notify;
-            'notify::max-num-groups': GObject.Object.Notify;
-            'notify::num-groups': GObject.Object.Notify;
-            'notify::secondary-groups-mask': GObject.Object.Notify;
+            'X-config-changed': () => void;
+            'X-new-device': () => void;
+            'X-state-changed': (arg0: EngineStateChange, arg1: number, arg2: boolean) => void;
+            'new-toplevel-window': (arg0: number, arg1: number) => number;
+            'notify::backend-name': (pspec: GObject.ParamSpec) => void;
+            'notify::default-group': (pspec: GObject.ParamSpec) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::features': (pspec: GObject.ParamSpec) => void;
+            'notify::indicators-handling': (pspec: GObject.ParamSpec) => void;
+            'notify::max-num-groups': (pspec: GObject.ParamSpec) => void;
+            'notify::num-groups': (pspec: GObject.ParamSpec) => void;
+            'notify::secondary-groups-mask': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -575,6 +584,14 @@ export namespace Xkl {
         get numGroups(): number;
         get secondary_groups_mask(): number;
         get secondaryGroupsMask(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Engine.SignalSignatures;
 
         // Constructors
 
@@ -584,13 +601,19 @@ export namespace Xkl {
 
         // Signals
 
-        connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
+        connect<K extends keyof Engine.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Engine.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
+        connect_after<K extends keyof Engine.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Engine.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Engine.SignalSignatures>(
             signal: K,
-            ...args: Engine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Engine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

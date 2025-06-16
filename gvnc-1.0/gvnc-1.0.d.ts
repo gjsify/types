@@ -219,25 +219,11 @@ export namespace GVnc {
      */
     function util_set_debug(enabled: boolean): void;
     namespace BaseAudio {
-        // Signal callback interfaces
-
-        interface VncAudioPlaybackData {
-            (_source: BaseAudio, object: AudioSample): void;
-        }
-
-        interface VncAudioPlaybackStart {
-            (_source: BaseAudio, object: AudioFormat): void;
-        }
-
-        interface VncAudioPlaybackStop {
-            (_source: BaseAudio): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'vnc-audio-playback-data': VncAudioPlaybackData;
-            'vnc-audio-playback-start': VncAudioPlaybackStart;
-            'vnc-audio-playback-stop': VncAudioPlaybackStop;
+            'vnc-audio-playback-data': (arg0: AudioSample) => void;
+            'vnc-audio-playback-start': (arg0: AudioFormat) => void;
+            'vnc-audio-playback-stop': () => void;
         }
 
         // Constructor properties interface
@@ -247,6 +233,14 @@ export namespace GVnc {
 
     class BaseAudio extends GObject.Object implements Audio {
         static $gtype: GObject.GType<BaseAudio>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BaseAudio.SignalSignatures;
 
         // Constructors
 
@@ -258,16 +252,19 @@ export namespace GVnc {
 
         // Signals
 
-        connect<K extends keyof BaseAudio.SignalSignatures>(signal: K, callback: BaseAudio.SignalSignatures[K]): number;
+        connect<K extends keyof BaseAudio.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, BaseAudio.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseAudio.SignalSignatures>(
             signal: K,
-            callback: BaseAudio.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BaseAudio.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseAudio.SignalSignatures>(
             signal: K,
-            ...args: BaseAudio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BaseAudio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -738,13 +735,13 @@ export namespace GVnc {
     namespace BaseFramebuffer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::buffer': GObject.Object.Notify;
-            'notify::color-map': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::local-format': GObject.Object.Notify;
-            'notify::remote-format': GObject.Object.Notify;
-            'notify::rowstride': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::buffer': (pspec: GObject.ParamSpec) => void;
+            'notify::color-map': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::local-format': (pspec: GObject.ParamSpec) => void;
+            'notify::remote-format': (pspec: GObject.ParamSpec) => void;
+            'notify::rowstride': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -780,6 +777,14 @@ export namespace GVnc {
         get remoteFormat(): PixelFormat;
         get rowstride(): number;
         get width(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BaseFramebuffer.SignalSignatures;
 
         // Constructors
 
@@ -800,17 +805,17 @@ export namespace GVnc {
 
         connect<K extends keyof BaseFramebuffer.SignalSignatures>(
             signal: K,
-            callback: BaseFramebuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BaseFramebuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseFramebuffer.SignalSignatures>(
             signal: K,
-            callback: BaseFramebuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BaseFramebuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseFramebuffer.SignalSignatures>(
             signal: K,
-            ...args: BaseFramebuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BaseFramebuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1428,111 +1433,29 @@ export namespace GVnc {
     }
 
     namespace Connection {
-        // Signal callback interfaces
-
-        interface VncAuthChooseSubtype {
-            (_source: Connection, object: number, p0: GObject.ValueArray): void;
-        }
-
-        interface VncAuthChooseType {
-            (_source: Connection, object: GObject.ValueArray): void;
-        }
-
-        interface VncAuthCredential {
-            (_source: Connection, object: GObject.ValueArray): void;
-        }
-
-        interface VncAuthFailure {
-            (_source: Connection, object: string): void;
-        }
-
-        interface VncAuthUnsupported {
-            (_source: Connection, object: number): void;
-        }
-
-        interface VncBell {
-            (_source: Connection): void;
-        }
-
-        interface VncConnected {
-            (_source: Connection): void;
-        }
-
-        interface VncCursorChanged {
-            (_source: Connection, cursor?: Cursor | null): void;
-        }
-
-        interface VncDesktopRename {
-            (_source: Connection, object: string): void;
-        }
-
-        interface VncDesktopResize {
-            (_source: Connection, object: number, p0: number): void;
-        }
-
-        interface VncDisconnected {
-            (_source: Connection): void;
-        }
-
-        interface VncError {
-            (_source: Connection, object: string): void;
-        }
-
-        interface VncFramebufferUpdate {
-            (_source: Connection, object: number, p0: number, p1: number, p2: number): void;
-        }
-
-        interface VncInitialized {
-            (_source: Connection): void;
-        }
-
-        interface VncLedState {
-            (_source: Connection): void;
-        }
-
-        interface VncPixelFormatChanged {
-            (_source: Connection, object: PixelFormat): void;
-        }
-
-        interface VncPointerModeChanged {
-            (_source: Connection, object: boolean): void;
-        }
-
-        interface VncPowerControlFailed {
-            (_source: Connection): void;
-        }
-
-        interface VncPowerControlInitialized {
-            (_source: Connection): void;
-        }
-
-        interface VncServerCutText {
-            (_source: Connection, object: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'vnc-auth-choose-subtype': VncAuthChooseSubtype;
-            'vnc-auth-choose-type': VncAuthChooseType;
-            'vnc-auth-credential': VncAuthCredential;
-            'vnc-auth-failure': VncAuthFailure;
-            'vnc-auth-unsupported': VncAuthUnsupported;
-            'vnc-bell': VncBell;
-            'vnc-connected': VncConnected;
-            'vnc-cursor-changed': VncCursorChanged;
-            'vnc-desktop-rename': VncDesktopRename;
-            'vnc-desktop-resize': VncDesktopResize;
-            'vnc-disconnected': VncDisconnected;
-            'vnc-error': VncError;
-            'vnc-framebuffer-update': VncFramebufferUpdate;
-            'vnc-initialized': VncInitialized;
-            'vnc-led-state': VncLedState;
-            'vnc-pixel-format-changed': VncPixelFormatChanged;
-            'vnc-pointer-mode-changed': VncPointerModeChanged;
-            'vnc-power-control-failed': VncPowerControlFailed;
-            'vnc-power-control-initialized': VncPowerControlInitialized;
-            'vnc-server-cut-text': VncServerCutText;
-            'notify::framebuffer': GObject.Object.Notify;
+            'vnc-auth-choose-subtype': (arg0: number, arg1: GObject.ValueArray) => void;
+            'vnc-auth-choose-type': (arg0: GObject.ValueArray) => void;
+            'vnc-auth-credential': (arg0: GObject.ValueArray) => void;
+            'vnc-auth-failure': (arg0: string) => void;
+            'vnc-auth-unsupported': (arg0: number) => void;
+            'vnc-bell': () => void;
+            'vnc-connected': () => void;
+            'vnc-cursor-changed': (arg0: Cursor | null) => void;
+            'vnc-desktop-rename': (arg0: string) => void;
+            'vnc-desktop-resize': (arg0: number, arg1: number) => void;
+            'vnc-disconnected': () => void;
+            'vnc-error': (arg0: string) => void;
+            'vnc-framebuffer-update': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            'vnc-initialized': () => void;
+            'vnc-led-state': () => void;
+            'vnc-pixel-format-changed': (arg0: PixelFormat) => void;
+            'vnc-pointer-mode-changed': (arg0: boolean) => void;
+            'vnc-power-control-failed': () => void;
+            'vnc-power-control-initialized': () => void;
+            'vnc-server-cut-text': (arg0: string) => void;
+            'notify::framebuffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1549,6 +1472,14 @@ export namespace GVnc {
 
         get framebuffer(): Framebuffer;
         set framebuffer(val: Framebuffer);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Connection.SignalSignatures;
 
         // Constructors
 
@@ -1562,17 +1493,17 @@ export namespace GVnc {
 
         connect<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            callback: Connection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            callback: Connection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1883,11 +1814,11 @@ export namespace GVnc {
     namespace Cursor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::data': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::hotx': GObject.Object.Notify;
-            'notify::hoty': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::hotx': (pspec: GObject.ParamSpec) => void;
+            'notify::hoty': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1916,6 +1847,14 @@ export namespace GVnc {
         set hoty(val: number);
         get width(): number;
         set width(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Cursor.SignalSignatures;
 
         // Constructors
 
@@ -1927,13 +1866,19 @@ export namespace GVnc {
 
         // Signals
 
-        connect<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
+        connect<K extends keyof Cursor.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Cursor.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
+        connect_after<K extends keyof Cursor.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Cursor.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Cursor.SignalSignatures>(
             signal: K,
-            ...args: Cursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Cursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

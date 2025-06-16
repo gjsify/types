@@ -265,6 +265,14 @@ export namespace GExiv2 {
      */
     class Metadata extends GObject.Object {
         static $gtype: GObject.GType<Metadata>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Metadata.SignalSignatures;
 
         // Constructors
 
@@ -276,16 +284,19 @@ export namespace GExiv2 {
 
         // Signals
 
-        connect<K extends keyof Metadata.SignalSignatures>(signal: K, callback: Metadata.SignalSignatures[K]): number;
+        connect<K extends keyof Metadata.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Metadata.SignalSignatures>(
             signal: K,
-            callback: Metadata.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Metadata.SignalSignatures>(
             signal: K,
-            ...args: Metadata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Metadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1020,6 +1031,14 @@ export namespace GExiv2 {
 
     class PreviewImage extends GObject.Object {
         static $gtype: GObject.GType<PreviewImage>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PreviewImage.SignalSignatures;
 
         // Constructors
 
@@ -1031,17 +1050,17 @@ export namespace GExiv2 {
 
         connect<K extends keyof PreviewImage.SignalSignatures>(
             signal: K,
-            callback: PreviewImage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PreviewImage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PreviewImage.SignalSignatures>(
             signal: K,
-            callback: PreviewImage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PreviewImage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PreviewImage.SignalSignatures>(
             signal: K,
-            ...args: PreviewImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PreviewImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1073,6 +1092,14 @@ export namespace GExiv2 {
 
     class PreviewProperties extends GObject.Object {
         static $gtype: GObject.GType<PreviewProperties>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PreviewProperties.SignalSignatures;
 
         // Constructors
 
@@ -1084,17 +1111,17 @@ export namespace GExiv2 {
 
         connect<K extends keyof PreviewProperties.SignalSignatures>(
             signal: K,
-            callback: PreviewProperties.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PreviewProperties.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PreviewProperties.SignalSignatures>(
             signal: K,
-            callback: PreviewProperties.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PreviewProperties.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PreviewProperties.SignalSignatures>(
             signal: K,
-            ...args: PreviewProperties.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PreviewProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

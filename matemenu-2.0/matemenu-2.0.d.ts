@@ -47,18 +47,12 @@ export namespace MateMenu {
         INCLUDE_UNALLOCATED,
     }
     namespace Tree {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: Tree): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            'notify::flags': GObject.Object.Notify;
-            'notify::menu-basename': GObject.Object.Notify;
-            'notify::menu-path': GObject.Object.Notify;
+            changed: () => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::menu-basename': (pspec: GObject.ParamSpec) => void;
+            'notify::menu-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -103,6 +97,14 @@ export namespace MateMenu {
          * ignored.
          */
         get menuPath(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Tree.SignalSignatures;
 
         // Constructors
 
@@ -116,13 +118,19 @@ export namespace MateMenu {
 
         // Signals
 
-        connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        connect<K extends keyof Tree.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tree.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Tree.SignalSignatures>(
             signal: K,
-            ...args: Tree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Tree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

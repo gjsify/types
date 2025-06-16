@@ -244,6 +244,14 @@ export namespace Jcat {
 
     class Blob extends GObject.Object {
         static $gtype: GObject.GType<Blob>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Blob.SignalSignatures;
 
         // Constructors
 
@@ -259,13 +267,19 @@ export namespace Jcat {
 
         // Signals
 
-        connect<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
+        connect<K extends keyof Blob.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Blob.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
+        connect_after<K extends keyof Blob.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Blob.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Blob.SignalSignatures>(
             signal: K,
-            ...args: Blob.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Blob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -354,6 +368,14 @@ export namespace Jcat {
 
     class BtCheckpoint extends GObject.Object {
         static $gtype: GObject.GType<BtCheckpoint>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BtCheckpoint.SignalSignatures;
 
         // Constructors
 
@@ -367,17 +389,17 @@ export namespace Jcat {
 
         connect<K extends keyof BtCheckpoint.SignalSignatures>(
             signal: K,
-            callback: BtCheckpoint.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BtCheckpoint.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BtCheckpoint.SignalSignatures>(
             signal: K,
-            callback: BtCheckpoint.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BtCheckpoint.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BtCheckpoint.SignalSignatures>(
             signal: K,
-            ...args: BtCheckpoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BtCheckpoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -437,6 +459,14 @@ export namespace Jcat {
 
     class BtVerifier extends GObject.Object {
         static $gtype: GObject.GType<BtVerifier>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BtVerifier.SignalSignatures;
 
         // Constructors
 
@@ -450,17 +480,17 @@ export namespace Jcat {
 
         connect<K extends keyof BtVerifier.SignalSignatures>(
             signal: K,
-            callback: BtVerifier.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BtVerifier.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BtVerifier.SignalSignatures>(
             signal: K,
-            callback: BtVerifier.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BtVerifier.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BtVerifier.SignalSignatures>(
             signal: K,
-            ...args: BtVerifier.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BtVerifier.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -504,6 +534,14 @@ export namespace Jcat {
 
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -515,16 +553,19 @@ export namespace Jcat {
 
         // Signals
 
-        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
-            callback: Context.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -603,10 +644,10 @@ export namespace Jcat {
     namespace Engine {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::kind': GObject.Object.Notify;
-            'notify::method': GObject.Object.Notify;
-            'notify::verify-kind': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::kind': (pspec: GObject.ParamSpec) => void;
+            'notify::method': (pspec: GObject.ParamSpec) => void;
+            'notify::verify-kind': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -630,6 +671,14 @@ export namespace Jcat {
         get method(): number;
         get verify_kind(): number;
         get verifyKind(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Engine.SignalSignatures;
 
         // Constructors
 
@@ -639,13 +688,19 @@ export namespace Jcat {
 
         // Signals
 
-        connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
+        connect<K extends keyof Engine.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Engine.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
+        connect_after<K extends keyof Engine.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Engine.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Engine.SignalSignatures>(
             signal: K,
-            ...args: Engine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Engine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -776,6 +831,14 @@ export namespace Jcat {
 
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: File.SignalSignatures;
 
         // Constructors
 
@@ -787,13 +850,19 @@ export namespace Jcat {
 
         // Signals
 
-        connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        connect<K extends keyof File.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, File.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        connect_after<K extends keyof File.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, File.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof File.SignalSignatures>(
             signal: K,
-            ...args: File.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<File.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -902,6 +971,14 @@ export namespace Jcat {
 
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Item.SignalSignatures;
 
         // Constructors
 
@@ -913,13 +990,19 @@ export namespace Jcat {
 
         // Signals
 
-        connect<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect<K extends keyof Item.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect_after<K extends keyof Item.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Item.SignalSignatures>(
             signal: K,
-            ...args: Item.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Item.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -985,9 +1068,9 @@ export namespace Jcat {
     namespace Result {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::authority': GObject.Object.Notify;
-            'notify::engine': GObject.Object.Notify;
-            'notify::timestamp': GObject.Object.Notify;
+            'notify::authority': (pspec: GObject.ParamSpec) => void;
+            'notify::engine': (pspec: GObject.ParamSpec) => void;
+            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1009,6 +1092,14 @@ export namespace Jcat {
         get engine(): Engine;
         get timestamp(): number;
         set timestamp(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Result.SignalSignatures;
 
         // Constructors
 
@@ -1018,13 +1109,19 @@ export namespace Jcat {
 
         // Signals
 
-        connect<K extends keyof Result.SignalSignatures>(signal: K, callback: Result.SignalSignatures[K]): number;
+        connect<K extends keyof Result.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Result.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Result.SignalSignatures>(signal: K, callback: Result.SignalSignatures[K]): number;
+        connect_after<K extends keyof Result.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Result.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Result.SignalSignatures>(
             signal: K,
-            ...args: Result.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Result.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

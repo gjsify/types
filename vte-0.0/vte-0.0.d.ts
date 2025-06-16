@@ -227,9 +227,9 @@ export namespace Vte {
     namespace Pty {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::fd': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::term': GObject.Object.Notify;
+            'notify::fd': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::term': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -261,6 +261,14 @@ export namespace Vte {
          */
         get term(): string;
         set term(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Pty.SignalSignatures;
 
         // Constructors
 
@@ -274,13 +282,19 @@ export namespace Vte {
 
         // Signals
 
-        connect<K extends keyof Pty.SignalSignatures>(signal: K, callback: Pty.SignalSignatures[K]): number;
+        connect<K extends keyof Pty.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Pty.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Pty.SignalSignatures>(signal: K, callback: Pty.SignalSignatures[K]): number;
+        connect_after<K extends keyof Pty.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Pty.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Pty.SignalSignatures>(
             signal: K,
-            ...args: Pty.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Pty.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -855,215 +869,89 @@ export namespace Vte {
     }
 
     namespace Terminal {
-        // Signal callback interfaces
-
-        interface Beep {
-            (_source: Terminal): void;
-        }
-
-        interface CharSizeChanged {
-            (_source: Terminal, width: number, height: number): void;
-        }
-
-        interface ChildExited {
-            (_source: Terminal): void;
-        }
-
-        interface Commit {
-            (_source: Terminal, text: string, size: number): void;
-        }
-
-        interface ContentsChanged {
-            (_source: Terminal): void;
-        }
-
-        interface CopyClipboard {
-            (_source: Terminal): void;
-        }
-
-        interface CursorMoved {
-            (_source: Terminal): void;
-        }
-
-        interface DecreaseFontSize {
-            (_source: Terminal): void;
-        }
-
-        interface DeiconifyWindow {
-            (_source: Terminal): void;
-        }
-
-        interface EmulationChanged {
-            (_source: Terminal): void;
-        }
-
-        interface EncodingChanged {
-            (_source: Terminal): void;
-        }
-
-        interface Eof {
-            (_source: Terminal): void;
-        }
-
-        interface IconTitleChanged {
-            (_source: Terminal): void;
-        }
-
-        interface IconifyWindow {
-            (_source: Terminal): void;
-        }
-
-        interface IncreaseFontSize {
-            (_source: Terminal): void;
-        }
-
-        interface LowerWindow {
-            (_source: Terminal): void;
-        }
-
-        interface MaximizeWindow {
-            (_source: Terminal): void;
-        }
-
-        interface MoveWindow {
-            (_source: Terminal, x: number, y: number): void;
-        }
-
-        interface PasteClipboard {
-            (_source: Terminal): void;
-        }
-
-        interface RaiseWindow {
-            (_source: Terminal): void;
-        }
-
-        interface RefreshWindow {
-            (_source: Terminal): void;
-        }
-
-        interface ResizeWindow {
-            (_source: Terminal, width: number, height: number): void;
-        }
-
-        interface RestoreWindow {
-            (_source: Terminal): void;
-        }
-
-        interface SelectionChanged {
-            (_source: Terminal): void;
-        }
-
-        interface SetScrollAdjustments {
-            (_source: Terminal, horizontal?: Gtk.Adjustment | null, vertical?: Gtk.Adjustment | null): void;
-        }
-
-        interface StatusLineChanged {
-            (_source: Terminal): void;
-        }
-
-        interface TextDeleted {
-            (_source: Terminal): void;
-        }
-
-        interface TextInserted {
-            (_source: Terminal): void;
-        }
-
-        interface TextModified {
-            (_source: Terminal): void;
-        }
-
-        interface TextScrolled {
-            (_source: Terminal, delta: number): void;
-        }
-
-        interface WindowTitleChanged {
-            (_source: Terminal): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
-            beep: Beep;
-            'char-size-changed': CharSizeChanged;
-            'child-exited': ChildExited;
-            commit: Commit;
-            'contents-changed': ContentsChanged;
-            'copy-clipboard': CopyClipboard;
-            'cursor-moved': CursorMoved;
-            'decrease-font-size': DecreaseFontSize;
-            'deiconify-window': DeiconifyWindow;
-            'emulation-changed': EmulationChanged;
-            'encoding-changed': EncodingChanged;
-            eof: Eof;
-            'icon-title-changed': IconTitleChanged;
-            'iconify-window': IconifyWindow;
-            'increase-font-size': IncreaseFontSize;
-            'lower-window': LowerWindow;
-            'maximize-window': MaximizeWindow;
-            'move-window': MoveWindow;
-            'paste-clipboard': PasteClipboard;
-            'raise-window': RaiseWindow;
-            'refresh-window': RefreshWindow;
-            'resize-window': ResizeWindow;
-            'restore-window': RestoreWindow;
-            'selection-changed': SelectionChanged;
-            'set-scroll-adjustments': SetScrollAdjustments;
-            'status-line-changed': StatusLineChanged;
-            'text-deleted': TextDeleted;
-            'text-inserted': TextInserted;
-            'text-modified': TextModified;
-            'text-scrolled': TextScrolled;
-            'window-title-changed': WindowTitleChanged;
-            'notify::allow-bold': GObject.Object.Notify;
-            'notify::audible-bell': GObject.Object.Notify;
-            'notify::background-image-file': GObject.Object.Notify;
-            'notify::background-image-pixbuf': GObject.Object.Notify;
-            'notify::background-opacity': GObject.Object.Notify;
-            'notify::background-saturation': GObject.Object.Notify;
-            'notify::background-tint-color': GObject.Object.Notify;
-            'notify::background-transparent': GObject.Object.Notify;
-            'notify::backspace-binding': GObject.Object.Notify;
-            'notify::cursor-blink-mode': GObject.Object.Notify;
-            'notify::cursor-shape': GObject.Object.Notify;
-            'notify::delete-binding': GObject.Object.Notify;
-            'notify::emulation': GObject.Object.Notify;
-            'notify::encoding': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::icon-title': GObject.Object.Notify;
-            'notify::pointer-autohide': GObject.Object.Notify;
-            'notify::pty': GObject.Object.Notify;
-            'notify::pty-object': GObject.Object.Notify;
-            'notify::scroll-background': GObject.Object.Notify;
-            'notify::scroll-on-keystroke': GObject.Object.Notify;
-            'notify::scroll-on-output': GObject.Object.Notify;
-            'notify::scrollback-lines': GObject.Object.Notify;
-            'notify::visible-bell': GObject.Object.Notify;
-            'notify::window-title': GObject.Object.Notify;
-            'notify::word-chars': GObject.Object.Notify;
-            'notify::app-paintable': GObject.Object.Notify;
-            'notify::can-default': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::composite-child': GObject.Object.Notify;
-            'notify::double-buffered': GObject.Object.Notify;
-            'notify::events': GObject.Object.Notify;
-            'notify::extension-events': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
-            'notify::is-focus': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::no-show-all': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
-            'notify::window': GObject.Object.Notify;
-            'notify::user-data': GObject.Object.Notify;
+            beep: () => void;
+            'char-size-changed': (arg0: number, arg1: number) => void;
+            'child-exited': () => void;
+            commit: (arg0: string, arg1: number) => void;
+            'contents-changed': () => void;
+            'copy-clipboard': () => void;
+            'cursor-moved': () => void;
+            'decrease-font-size': () => void;
+            'deiconify-window': () => void;
+            'emulation-changed': () => void;
+            'encoding-changed': () => void;
+            eof: () => void;
+            'icon-title-changed': () => void;
+            'iconify-window': () => void;
+            'increase-font-size': () => void;
+            'lower-window': () => void;
+            'maximize-window': () => void;
+            'move-window': (arg0: number, arg1: number) => void;
+            'paste-clipboard': () => void;
+            'raise-window': () => void;
+            'refresh-window': () => void;
+            'resize-window': (arg0: number, arg1: number) => void;
+            'restore-window': () => void;
+            'selection-changed': () => void;
+            'set-scroll-adjustments': (arg0: Gtk.Adjustment | null, arg1: Gtk.Adjustment | null) => void;
+            'status-line-changed': () => void;
+            'text-deleted': () => void;
+            'text-inserted': () => void;
+            'text-modified': () => void;
+            'text-scrolled': (arg0: number) => void;
+            'window-title-changed': () => void;
+            'notify::allow-bold': (pspec: GObject.ParamSpec) => void;
+            'notify::audible-bell': (pspec: GObject.ParamSpec) => void;
+            'notify::background-image-file': (pspec: GObject.ParamSpec) => void;
+            'notify::background-image-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::background-opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::background-saturation': (pspec: GObject.ParamSpec) => void;
+            'notify::background-tint-color': (pspec: GObject.ParamSpec) => void;
+            'notify::background-transparent': (pspec: GObject.ParamSpec) => void;
+            'notify::backspace-binding': (pspec: GObject.ParamSpec) => void;
+            'notify::cursor-blink-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::cursor-shape': (pspec: GObject.ParamSpec) => void;
+            'notify::delete-binding': (pspec: GObject.ParamSpec) => void;
+            'notify::emulation': (pspec: GObject.ParamSpec) => void;
+            'notify::encoding': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-title': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-autohide': (pspec: GObject.ParamSpec) => void;
+            'notify::pty': (pspec: GObject.ParamSpec) => void;
+            'notify::pty-object': (pspec: GObject.ParamSpec) => void;
+            'notify::scroll-background': (pspec: GObject.ParamSpec) => void;
+            'notify::scroll-on-keystroke': (pspec: GObject.ParamSpec) => void;
+            'notify::scroll-on-output': (pspec: GObject.ParamSpec) => void;
+            'notify::scrollback-lines': (pspec: GObject.ParamSpec) => void;
+            'notify::visible-bell': (pspec: GObject.ParamSpec) => void;
+            'notify::window-title': (pspec: GObject.ParamSpec) => void;
+            'notify::word-chars': (pspec: GObject.ParamSpec) => void;
+            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
+            'notify::can-default': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
+            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
+            'notify::events': (pspec: GObject.ParamSpec) => void;
+            'notify::extension-events': (pspec: GObject.ParamSpec) => void;
+            'notify::has-default': (pspec: GObject.ParamSpec) => void;
+            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::height-request': (pspec: GObject.ParamSpec) => void;
+            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
+            'notify::user-data': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1486,6 +1374,14 @@ export namespace Vte {
          */
         get wordChars(): string;
         set wordChars(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Terminal.SignalSignatures;
 
         // Fields
 
@@ -1501,16 +1397,19 @@ export namespace Vte {
 
         // Signals
 
-        connect<K extends keyof Terminal.SignalSignatures>(signal: K, callback: Terminal.SignalSignatures[K]): number;
+        connect<K extends keyof Terminal.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Terminal.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Terminal.SignalSignatures>(
             signal: K,
-            callback: Terminal.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Terminal.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Terminal.SignalSignatures>(
             signal: K,
-            ...args: Terminal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Terminal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

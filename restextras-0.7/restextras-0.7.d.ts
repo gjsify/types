@@ -36,17 +36,17 @@ export namespace RestExtras {
     namespace FlickrProxy {
         // Signal signatures
         interface SignalSignatures extends Rest.Proxy.SignalSignatures {
-            'notify::api-key': GObject.Object.Notify;
-            'notify::shared-secret': GObject.Object.Notify;
-            'notify::token': GObject.Object.Notify;
-            'notify::binding-required': GObject.Object.Notify;
-            'notify::disable-cookies': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::ssl-ca-file': GObject.Object.Notify;
-            'notify::ssl-strict': GObject.Object.Notify;
-            'notify::url-format': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
+            'notify::api-key': (pspec: GObject.ParamSpec) => void;
+            'notify::shared-secret': (pspec: GObject.ParamSpec) => void;
+            'notify::token': (pspec: GObject.ParamSpec) => void;
+            'notify::binding-required': (pspec: GObject.ParamSpec) => void;
+            'notify::disable-cookies': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::ssl-ca-file': (pspec: GObject.ParamSpec) => void;
+            'notify::ssl-strict': (pspec: GObject.ParamSpec) => void;
+            'notify::url-format': (pspec: GObject.ParamSpec) => void;
+            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -74,6 +74,14 @@ export namespace RestExtras {
         get sharedSecret(): string;
         get token(): string;
         set token(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FlickrProxy.SignalSignatures;
 
         // Constructors
 
@@ -92,17 +100,17 @@ export namespace RestExtras {
 
         connect<K extends keyof FlickrProxy.SignalSignatures>(
             signal: K,
-            callback: FlickrProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FlickrProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FlickrProxy.SignalSignatures>(
             signal: K,
-            callback: FlickrProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FlickrProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FlickrProxy.SignalSignatures>(
             signal: K,
-            ...args: FlickrProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FlickrProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -165,8 +173,8 @@ export namespace RestExtras {
     namespace FlickrProxyCall {
         // Signal signatures
         interface SignalSignatures extends Rest.ProxyCall.SignalSignatures {
-            'notify::upload': GObject.Object.Notify;
-            'notify::proxy': GObject.Object.Notify;
+            'notify::upload': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -190,6 +198,14 @@ export namespace RestExtras {
          */
         // This accessor conflicts with a property or field in a parent class or interface.
         upload: boolean | any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FlickrProxyCall.SignalSignatures;
 
         // Constructors
 
@@ -201,17 +217,17 @@ export namespace RestExtras {
 
         connect<K extends keyof FlickrProxyCall.SignalSignatures>(
             signal: K,
-            callback: FlickrProxyCall.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FlickrProxyCall.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FlickrProxyCall.SignalSignatures>(
             signal: K,
-            callback: FlickrProxyCall.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FlickrProxyCall.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FlickrProxyCall.SignalSignatures>(
             signal: K,
-            ...args: FlickrProxyCall.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FlickrProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -219,17 +235,17 @@ export namespace RestExtras {
     namespace LastfmProxy {
         // Signal signatures
         interface SignalSignatures extends Rest.Proxy.SignalSignatures {
-            'notify::api-key': GObject.Object.Notify;
-            'notify::secret': GObject.Object.Notify;
-            'notify::session-key': GObject.Object.Notify;
-            'notify::binding-required': GObject.Object.Notify;
-            'notify::disable-cookies': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::ssl-ca-file': GObject.Object.Notify;
-            'notify::ssl-strict': GObject.Object.Notify;
-            'notify::url-format': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
+            'notify::api-key': (pspec: GObject.ParamSpec) => void;
+            'notify::secret': (pspec: GObject.ParamSpec) => void;
+            'notify::session-key': (pspec: GObject.ParamSpec) => void;
+            'notify::binding-required': (pspec: GObject.ParamSpec) => void;
+            'notify::disable-cookies': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::ssl-ca-file': (pspec: GObject.ParamSpec) => void;
+            'notify::ssl-strict': (pspec: GObject.ParamSpec) => void;
+            'notify::url-format': (pspec: GObject.ParamSpec) => void;
+            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -258,6 +274,14 @@ export namespace RestExtras {
         set session_key(val: string);
         get sessionKey(): string;
         set sessionKey(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LastfmProxy.SignalSignatures;
 
         // Constructors
 
@@ -276,17 +300,17 @@ export namespace RestExtras {
 
         connect<K extends keyof LastfmProxy.SignalSignatures>(
             signal: K,
-            callback: LastfmProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LastfmProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LastfmProxy.SignalSignatures>(
             signal: K,
-            callback: LastfmProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LastfmProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LastfmProxy.SignalSignatures>(
             signal: K,
-            ...args: LastfmProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LastfmProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -328,7 +352,7 @@ export namespace RestExtras {
     namespace LastfmProxyCall {
         // Signal signatures
         interface SignalSignatures extends Rest.ProxyCall.SignalSignatures {
-            'notify::proxy': GObject.Object.Notify;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -341,6 +365,14 @@ export namespace RestExtras {
      */
     class LastfmProxyCall extends Rest.ProxyCall {
         static $gtype: GObject.GType<LastfmProxyCall>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LastfmProxyCall.SignalSignatures;
 
         // Constructors
 
@@ -352,17 +384,17 @@ export namespace RestExtras {
 
         connect<K extends keyof LastfmProxyCall.SignalSignatures>(
             signal: K,
-            callback: LastfmProxyCall.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LastfmProxyCall.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LastfmProxyCall.SignalSignatures>(
             signal: K,
-            callback: LastfmProxyCall.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LastfmProxyCall.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LastfmProxyCall.SignalSignatures>(
             signal: K,
-            ...args: LastfmProxyCall.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LastfmProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -370,16 +402,16 @@ export namespace RestExtras {
     namespace YoutubeProxy {
         // Signal signatures
         interface SignalSignatures extends Rest.Proxy.SignalSignatures {
-            'notify::developer-key': GObject.Object.Notify;
-            'notify::user-auth': GObject.Object.Notify;
-            'notify::binding-required': GObject.Object.Notify;
-            'notify::disable-cookies': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::ssl-ca-file': GObject.Object.Notify;
-            'notify::ssl-strict': GObject.Object.Notify;
-            'notify::url-format': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
+            'notify::developer-key': (pspec: GObject.ParamSpec) => void;
+            'notify::user-auth': (pspec: GObject.ParamSpec) => void;
+            'notify::binding-required': (pspec: GObject.ParamSpec) => void;
+            'notify::disable-cookies': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::ssl-ca-file': (pspec: GObject.ParamSpec) => void;
+            'notify::ssl-strict': (pspec: GObject.ParamSpec) => void;
+            'notify::url-format': (pspec: GObject.ParamSpec) => void;
+            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -406,6 +438,14 @@ export namespace RestExtras {
         set user_auth(val: string);
         get userAuth(): string;
         set userAuth(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: YoutubeProxy.SignalSignatures;
 
         // Constructors
 
@@ -421,17 +461,17 @@ export namespace RestExtras {
 
         connect<K extends keyof YoutubeProxy.SignalSignatures>(
             signal: K,
-            callback: YoutubeProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, YoutubeProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof YoutubeProxy.SignalSignatures>(
             signal: K,
-            callback: YoutubeProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, YoutubeProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof YoutubeProxy.SignalSignatures>(
             signal: K,
-            ...args: YoutubeProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<YoutubeProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

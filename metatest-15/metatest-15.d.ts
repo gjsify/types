@@ -65,28 +65,14 @@ export namespace MetaTest {
         CAN_SKIP,
     }
     namespace ContextTest {
-        // Signal callback interfaces
-
-        interface AfterTests {
-            (_source: ContextTest): void;
-        }
-
-        interface BeforeTests {
-            (_source: ContextTest): void;
-        }
-
-        interface RunTests {
-            (_source: ContextTest): number;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Meta.Context.SignalSignatures {
-            'after-tests': AfterTests;
-            'before-tests': BeforeTests;
-            'run-tests': RunTests;
-            'notify::name': GObject.Object.Notify;
-            'notify::nick': GObject.Object.Notify;
-            'notify::unsafe-mode': GObject.Object.Notify;
+            'after-tests': () => void;
+            'before-tests': () => void;
+            'run-tests': () => number;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::nick': (pspec: GObject.ParamSpec) => void;
+            'notify::unsafe-mode': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -96,6 +82,14 @@ export namespace MetaTest {
 
     class ContextTest extends Meta.Context {
         static $gtype: GObject.GType<ContextTest>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ContextTest.SignalSignatures;
 
         // Constructors
 
@@ -107,17 +101,17 @@ export namespace MetaTest {
 
         connect<K extends keyof ContextTest.SignalSignatures>(
             signal: K,
-            callback: ContextTest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContextTest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContextTest.SignalSignatures>(
             signal: K,
-            callback: ContextTest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContextTest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContextTest.SignalSignatures>(
             signal: K,
-            ...args: ContextTest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ContextTest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -138,6 +132,14 @@ export namespace MetaTest {
 
     class TestMonitor extends GObject.Object {
         static $gtype: GObject.GType<TestMonitor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TestMonitor.SignalSignatures;
 
         // Constructors
 
@@ -151,17 +153,17 @@ export namespace MetaTest {
 
         connect<K extends keyof TestMonitor.SignalSignatures>(
             signal: K,
-            callback: TestMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TestMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TestMonitor.SignalSignatures>(
             signal: K,
-            callback: TestMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TestMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TestMonitor.SignalSignatures>(
             signal: K,
-            ...args: TestMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TestMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

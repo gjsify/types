@@ -25,25 +25,19 @@ export namespace Bump {
         (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): any;
     }
     namespace AsyncPriorityQueue {
-        // Signal callback interfaces
-
-        interface ConsumerShortage {
-            (_source: AsyncPriorityQueue): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gee.PriorityQueue.SignalSignatures {
-            'consumer-shortage': ConsumerShortage;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::waiting-threads': GObject.Object.Notify;
-            'notify::capacity': GObject.Object.Notify;
-            'notify::remaining-capacity': GObject.Object.Notify;
-            'notify::is-full': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
+            'consumer-shortage': () => void;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::waiting-threads': (pspec: GObject.ParamSpec) => void;
+            'notify::capacity': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining-capacity': (pspec: GObject.ParamSpec) => void;
+            'notify::is-full': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -75,6 +69,14 @@ export namespace Bump {
         set waiting_threads(val: number);
         get waitingThreads(): number;
         set waitingThreads(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AsyncPriorityQueue.SignalSignatures;
 
         // Constructors
 
@@ -95,17 +97,17 @@ export namespace Bump {
 
         connect<K extends keyof AsyncPriorityQueue.SignalSignatures>(
             signal: K,
-            callback: AsyncPriorityQueue.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AsyncPriorityQueue.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AsyncPriorityQueue.SignalSignatures>(
             signal: K,
-            callback: AsyncPriorityQueue.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AsyncPriorityQueue.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AsyncPriorityQueue.SignalSignatures>(
             signal: K,
-            ...args: AsyncPriorityQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AsyncPriorityQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -120,10 +122,10 @@ export namespace Bump {
     namespace Claim {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::active': GObject.Object.Notify;
-            'notify::time-acquired': GObject.Object.Notify;
-            'notify::time-released': GObject.Object.Notify;
-            'notify::duration-held': GObject.Object.Notify;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::time-acquired': (pspec: GObject.ParamSpec) => void;
+            'notify::time-released': (pspec: GObject.ParamSpec) => void;
+            'notify::duration-held': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -158,6 +160,14 @@ export namespace Bump {
         set timeReleased(val: number);
         get duration_held(): GLib.TimeSpan;
         get durationHeld(): GLib.TimeSpan;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Claim.SignalSignatures;
 
         // Constructors
 
@@ -169,13 +179,19 @@ export namespace Bump {
 
         // Signals
 
-        connect<K extends keyof Claim.SignalSignatures>(signal: K, callback: Claim.SignalSignatures[K]): number;
+        connect<K extends keyof Claim.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Claim.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Claim.SignalSignatures>(signal: K, callback: Claim.SignalSignatures[K]): number;
+        connect_after<K extends keyof Claim.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Claim.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Claim.SignalSignatures>(
             signal: K,
-            ...args: Claim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Claim.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -667,12 +683,12 @@ export namespace Bump {
     namespace Event {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::t-type': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::pool': GObject.Object.Notify;
-            'notify::auto-reset': GObject.Object.Notify;
-            'notify::triggered': GObject.Object.Notify;
+            'notify::t-type': (pspec: GObject.ParamSpec) => void;
+            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::pool': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-reset': (pspec: GObject.ParamSpec) => void;
+            'notify::triggered': (pspec: GObject.ParamSpec) => void;
         }
 
         interface Callback {
@@ -720,6 +736,14 @@ export namespace Bump {
         get autoReset(): boolean;
         get triggered(): boolean;
         set triggered(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Event.SignalSignatures;
 
         // Constructors
 
@@ -731,13 +755,19 @@ export namespace Bump {
 
         // Signals
 
-        connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect_after<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Event.SignalSignatures>(
             signal: K,
-            ...args: Event.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Event.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -813,9 +843,9 @@ export namespace Bump {
     namespace Factory {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -841,6 +871,14 @@ export namespace Bump {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Factory.SignalSignatures;
 
         // Constructors
 
@@ -850,16 +888,19 @@ export namespace Bump {
 
         // Signals
 
-        connect<K extends keyof Factory.SignalSignatures>(signal: K, callback: Factory.SignalSignatures[K]): number;
+        connect<K extends keyof Factory.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Factory.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Factory.SignalSignatures>(
             signal: K,
-            callback: Factory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Factory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Factory.SignalSignatures>(
             signal: K,
-            ...args: Factory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Factory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -943,15 +984,15 @@ export namespace Bump {
     namespace Lazy {
         // Signal signatures
         interface SignalSignatures extends Factory.SignalSignatures {
-            'notify::t-type': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::pool': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::is-initialized': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::t-type': (pspec: GObject.ParamSpec) => void;
+            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::pool': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::is-initialized': (pspec: GObject.ParamSpec) => void;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -985,6 +1026,14 @@ export namespace Bump {
         get value(): any;
         get is_initialized(): boolean;
         get isInitialized(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Lazy.SignalSignatures;
 
         // Constructors
 
@@ -996,13 +1045,19 @@ export namespace Bump {
 
         // Signals
 
-        connect<K extends keyof Lazy.SignalSignatures>(signal: K, callback: Lazy.SignalSignatures[K]): number;
+        connect<K extends keyof Lazy.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Lazy.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Lazy.SignalSignatures>(signal: K, callback: Lazy.SignalSignatures[K]): number;
+        connect_after<K extends keyof Lazy.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Lazy.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Lazy.SignalSignatures>(
             signal: K,
-            ...args: Lazy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Lazy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1016,15 +1071,15 @@ export namespace Bump {
     namespace ResourceClaim {
         // Signal signatures
         interface SignalSignatures extends Claim.SignalSignatures {
-            'notify::t-type': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::pool': GObject.Object.Notify;
-            'notify::resource': GObject.Object.Notify;
-            'notify::active': GObject.Object.Notify;
-            'notify::time-acquired': GObject.Object.Notify;
-            'notify::time-released': GObject.Object.Notify;
-            'notify::duration-held': GObject.Object.Notify;
+            'notify::t-type': (pspec: GObject.ParamSpec) => void;
+            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::pool': (pspec: GObject.ParamSpec) => void;
+            'notify::resource': (pspec: GObject.ParamSpec) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::time-acquired': (pspec: GObject.ParamSpec) => void;
+            'notify::time-released': (pspec: GObject.ParamSpec) => void;
+            'notify::duration-held': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1054,6 +1109,14 @@ export namespace Bump {
         get tDestroyFunc(): GLib.DestroyNotify;
         get pool(): ResourcePool;
         get resource(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ResourceClaim.SignalSignatures;
 
         // Constructors
 
@@ -1070,17 +1133,17 @@ export namespace Bump {
 
         connect<K extends keyof ResourceClaim.SignalSignatures>(
             signal: K,
-            callback: ResourceClaim.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ResourceClaim.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResourceClaim.SignalSignatures>(
             signal: K,
-            callback: ResourceClaim.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ResourceClaim.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResourceClaim.SignalSignatures>(
             signal: K,
-            ...args: ResourceClaim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ResourceClaim.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1093,18 +1156,18 @@ export namespace Bump {
     namespace ResourcePool {
         // Signal signatures
         interface SignalSignatures extends Factory.SignalSignatures {
-            'notify::t-type': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::max-resources': GObject.Object.Notify;
-            'notify::max-idle-time': GObject.Object.Notify;
-            'notify::num-resources': GObject.Object.Notify;
-            'notify::idle-resources': GObject.Object.Notify;
-            'notify::active-resources': GObject.Object.Notify;
-            'notify::pool': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::t-type': (pspec: GObject.ParamSpec) => void;
+            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::max-resources': (pspec: GObject.ParamSpec) => void;
+            'notify::max-idle-time': (pspec: GObject.ParamSpec) => void;
+            'notify::num-resources': (pspec: GObject.ParamSpec) => void;
+            'notify::idle-resources': (pspec: GObject.ParamSpec) => void;
+            'notify::active-resources': (pspec: GObject.ParamSpec) => void;
+            'notify::pool': (pspec: GObject.ParamSpec) => void;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
         }
 
         interface Callback {
@@ -1166,6 +1229,14 @@ export namespace Bump {
         get active_resources(): number;
         get activeResources(): number;
         get pool(): TaskQueue;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ResourcePool.SignalSignatures;
 
         // Constructors
 
@@ -1179,17 +1250,17 @@ export namespace Bump {
 
         connect<K extends keyof ResourcePool.SignalSignatures>(
             signal: K,
-            callback: ResourcePool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ResourcePool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResourcePool.SignalSignatures>(
             signal: K,
-            callback: ResourcePool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ResourcePool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResourcePool.SignalSignatures>(
             signal: K,
-            ...args: ResourcePool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ResourcePool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1280,9 +1351,9 @@ export namespace Bump {
     namespace Semaphore {
         // Signal signatures
         interface SignalSignatures extends TaskQueue.SignalSignatures {
-            'notify::max-claims': GObject.Object.Notify;
-            'notify::claims': GObject.Object.Notify;
-            'notify::pool': GObject.Object.Notify;
+            'notify::max-claims': (pspec: GObject.ParamSpec) => void;
+            'notify::claims': (pspec: GObject.ParamSpec) => void;
+            'notify::pool': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1305,6 +1376,14 @@ export namespace Bump {
         get claims(): number;
         set claims(val: number);
         get pool(): TaskQueue;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Semaphore.SignalSignatures;
 
         // Constructors
 
@@ -1319,16 +1398,19 @@ export namespace Bump {
 
         // Signals
 
-        connect<K extends keyof Semaphore.SignalSignatures>(signal: K, callback: Semaphore.SignalSignatures[K]): number;
+        connect<K extends keyof Semaphore.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Semaphore.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Semaphore.SignalSignatures>(
             signal: K,
-            callback: Semaphore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Semaphore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Semaphore.SignalSignatures>(
             signal: K,
-            ...args: Semaphore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Semaphore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1371,11 +1453,11 @@ export namespace Bump {
     namespace SemaphoreClaim {
         // Signal signatures
         interface SignalSignatures extends Claim.SignalSignatures {
-            'notify::semaphore': GObject.Object.Notify;
-            'notify::active': GObject.Object.Notify;
-            'notify::time-acquired': GObject.Object.Notify;
-            'notify::time-released': GObject.Object.Notify;
-            'notify::duration-held': GObject.Object.Notify;
+            'notify::semaphore': (pspec: GObject.ParamSpec) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::time-acquired': (pspec: GObject.ParamSpec) => void;
+            'notify::time-released': (pspec: GObject.ParamSpec) => void;
+            'notify::duration-held': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1391,6 +1473,14 @@ export namespace Bump {
         // Properties
 
         get semaphore(): Semaphore;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SemaphoreClaim.SignalSignatures;
 
         // Constructors
 
@@ -1402,17 +1492,17 @@ export namespace Bump {
 
         connect<K extends keyof SemaphoreClaim.SignalSignatures>(
             signal: K,
-            callback: SemaphoreClaim.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SemaphoreClaim.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SemaphoreClaim.SignalSignatures>(
             signal: K,
-            callback: SemaphoreClaim.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SemaphoreClaim.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SemaphoreClaim.SignalSignatures>(
             signal: K,
-            ...args: SemaphoreClaim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SemaphoreClaim.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1424,7 +1514,7 @@ export namespace Bump {
     namespace TaskQueue {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::length': GObject.Object.Notify;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1437,6 +1527,14 @@ export namespace Bump {
 
     class TaskQueue extends GObject.Object implements Queue, Threading {
         static $gtype: GObject.GType<TaskQueue>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TaskQueue.SignalSignatures;
 
         // Constructors
 
@@ -1448,16 +1546,19 @@ export namespace Bump {
 
         // Signals
 
-        connect<K extends keyof TaskQueue.SignalSignatures>(signal: K, callback: TaskQueue.SignalSignatures[K]): number;
+        connect<K extends keyof TaskQueue.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TaskQueue.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TaskQueue.SignalSignatures>(
             signal: K,
-            callback: TaskQueue.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TaskQueue.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TaskQueue.SignalSignatures>(
             signal: K,
-            ...args: TaskQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TaskQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

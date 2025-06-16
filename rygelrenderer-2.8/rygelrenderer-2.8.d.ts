@@ -30,16 +30,16 @@ export namespace RygelRenderer {
     namespace MediaRendererPlugin {
         // Signal signatures
         interface SignalSignatures extends RygelCore.Plugin.SignalSignatures {
-            'notify::supported-profiles': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::desc-path': GObject.Object.Notify;
-            'notify::active': GObject.Object.Notify;
-            'notify::resource-infos': GObject.Object.Notify;
-            'notify::icon-infos': GObject.Object.Notify;
-            'notify::default-icons': GObject.Object.Notify;
+            'notify::supported-profiles': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::desc-path': (pspec: GObject.ParamSpec) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::resource-infos': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-infos': (pspec: GObject.ParamSpec) => void;
+            'notify::default-icons': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -59,6 +59,14 @@ export namespace RygelRenderer {
         set supported_profiles(val: RygelCore.DLNAProfile[]);
         get supportedProfiles(): RygelCore.DLNAProfile[];
         set supportedProfiles(val: RygelCore.DLNAProfile[]);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MediaRendererPlugin.SignalSignatures;
 
         // Constructors
 
@@ -80,17 +88,19 @@ export namespace RygelRenderer {
 
         connect<K extends keyof MediaRendererPlugin.SignalSignatures>(
             signal: K,
-            callback: MediaRendererPlugin.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaRendererPlugin.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaRendererPlugin.SignalSignatures>(
             signal: K,
-            callback: MediaRendererPlugin.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaRendererPlugin.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaRendererPlugin.SignalSignatures>(
             signal: K,
-            ...args: MediaRendererPlugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MediaRendererPlugin.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -111,10 +121,10 @@ export namespace RygelRenderer {
     namespace MediaRenderer {
         // Signal signatures
         interface SignalSignatures extends RygelCore.MediaDevice.SignalSignatures {
-            'notify::player': GObject.Object.Notify;
-            'notify::plugin': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
+            'notify::player': (pspec: GObject.ParamSpec) => void;
+            'notify::plugin': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -130,6 +140,14 @@ export namespace RygelRenderer {
         // Properties
 
         get player(): MediaPlayer;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MediaRenderer.SignalSignatures;
 
         // Constructors
 
@@ -143,17 +161,17 @@ export namespace RygelRenderer {
 
         connect<K extends keyof MediaRenderer.SignalSignatures>(
             signal: K,
-            callback: MediaRenderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaRenderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaRenderer.SignalSignatures>(
             signal: K,
-            callback: MediaRenderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaRenderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaRenderer.SignalSignatures>(
             signal: K,
-            ...args: MediaRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MediaRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

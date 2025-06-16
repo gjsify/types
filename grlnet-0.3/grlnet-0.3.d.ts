@@ -79,11 +79,11 @@ export namespace GrlNet {
     namespace Wc {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::cache': GObject.Object.Notify;
-            'notify::cache-size': GObject.Object.Notify;
-            'notify::loglevel': GObject.Object.Notify;
-            'notify::throttling': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
+            'notify::cache': (pspec: GObject.ParamSpec) => void;
+            'notify::cache-size': (pspec: GObject.ParamSpec) => void;
+            'notify::loglevel': (pspec: GObject.ParamSpec) => void;
+            'notify::throttling': (pspec: GObject.ParamSpec) => void;
+            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -118,6 +118,14 @@ export namespace GrlNet {
         set user_agent(val: string);
         get userAgent(): string;
         set userAgent(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Wc.SignalSignatures;
 
         // Constructors
 
@@ -129,13 +137,19 @@ export namespace GrlNet {
 
         // Signals
 
-        connect<K extends keyof Wc.SignalSignatures>(signal: K, callback: Wc.SignalSignatures[K]): number;
+        connect<K extends keyof Wc.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Wc.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Wc.SignalSignatures>(signal: K, callback: Wc.SignalSignatures[K]): number;
+        connect_after<K extends keyof Wc.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Wc.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Wc.SignalSignatures>(
             signal: K,
-            ...args: Wc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Wc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

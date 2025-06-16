@@ -54,16 +54,10 @@ export namespace GtkSpell {
 
     function error_quark(): GLib.Quark;
     namespace Checker {
-        // Signal callback interfaces
-
-        interface LanguageChanged {
-            (_source: Checker, lang: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-            'language-changed': LanguageChanged;
-            'notify::decode-language-codes': GObject.Object.Notify;
+            'language-changed': (arg0: string) => void;
+            'notify::decode-language-codes': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -86,6 +80,14 @@ export namespace GtkSpell {
         set decode_language_codes(val: boolean);
         get decodeLanguageCodes(): boolean;
         set decodeLanguageCodes(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Checker.SignalSignatures;
 
         // Constructors
 
@@ -97,16 +99,19 @@ export namespace GtkSpell {
 
         // Signals
 
-        connect<K extends keyof Checker.SignalSignatures>(signal: K, callback: Checker.SignalSignatures[K]): number;
+        connect<K extends keyof Checker.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Checker.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Checker.SignalSignatures>(
             signal: K,
-            callback: Checker.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Checker.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Checker.SignalSignatures>(
             signal: K,
-            ...args: Checker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Checker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

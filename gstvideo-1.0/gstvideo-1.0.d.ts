@@ -4583,15 +4583,9 @@ export namespace GstVideo {
         INTERLACED,
     }
     namespace ColorBalanceChannel {
-        // Signal callback interfaces
-
-        interface ValueChanged {
-            (_source: ColorBalanceChannel, value: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'value-changed': ValueChanged;
+            'value-changed': (arg0: number) => void;
         }
 
         // Constructor properties interface
@@ -4606,6 +4600,14 @@ export namespace GstVideo {
      */
     class ColorBalanceChannel extends GObject.Object {
         static $gtype: GObject.GType<ColorBalanceChannel>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ColorBalanceChannel.SignalSignatures;
 
         // Fields
 
@@ -4623,17 +4625,19 @@ export namespace GstVideo {
 
         connect<K extends keyof ColorBalanceChannel.SignalSignatures>(
             signal: K,
-            callback: ColorBalanceChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColorBalanceChannel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColorBalanceChannel.SignalSignatures>(
             signal: K,
-            callback: ColorBalanceChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColorBalanceChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColorBalanceChannel.SignalSignatures>(
             signal: K,
-            ...args: ColorBalanceChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ColorBalanceChannel.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4649,14 +4653,14 @@ export namespace GstVideo {
     namespace VideoAggregator {
         // Signal signatures
         interface SignalSignatures extends GstBase.Aggregator.SignalSignatures {
-            'notify::force-live': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
-            'notify::latency': GObject.Object.Notify;
-            'notify::min-upstream-latency': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
-            'notify::start-time-selection': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::force-live': (pspec: GObject.ParamSpec) => void;
+            'notify::emit-signals': (pspec: GObject.ParamSpec) => void;
+            'notify::latency': (pspec: GObject.ParamSpec) => void;
+            'notify::min-upstream-latency': (pspec: GObject.ParamSpec) => void;
+            'notify::start-time': (pspec: GObject.ParamSpec) => void;
+            'notify::start-time-selection': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4697,6 +4701,14 @@ export namespace GstVideo {
          * live sources with a non-zero latency, you should set it to a non-zero value.
          */
         get forceLive(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VideoAggregator.SignalSignatures;
 
         // Fields
 
@@ -4712,17 +4724,17 @@ export namespace GstVideo {
 
         connect<K extends keyof VideoAggregator.SignalSignatures>(
             signal: K,
-            callback: VideoAggregator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoAggregator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoAggregator.SignalSignatures>(
             signal: K,
-            callback: VideoAggregator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoAggregator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoAggregator.SignalSignatures>(
             signal: K,
-            ...args: VideoAggregator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VideoAggregator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4770,17 +4782,17 @@ export namespace GstVideo {
     namespace VideoAggregatorConvertPad {
         // Signal signatures
         interface SignalSignatures extends VideoAggregatorPad.SignalSignatures {
-            'notify::converter-config': GObject.Object.Notify;
-            'notify::max-last-buffer-repeat': GObject.Object.Notify;
-            'notify::repeat-after-eos': GObject.Object.Notify;
-            'notify::zorder': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
-            'notify::caps': GObject.Object.Notify;
-            'notify::direction': GObject.Object.Notify;
-            'notify::offset': GObject.Object.Notify;
-            'notify::template': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::converter-config': (pspec: GObject.ParamSpec) => void;
+            'notify::max-last-buffer-repeat': (pspec: GObject.ParamSpec) => void;
+            'notify::repeat-after-eos': (pspec: GObject.ParamSpec) => void;
+            'notify::zorder': (pspec: GObject.ParamSpec) => void;
+            'notify::emit-signals': (pspec: GObject.ParamSpec) => void;
+            'notify::caps': (pspec: GObject.ParamSpec) => void;
+            'notify::direction': (pspec: GObject.ParamSpec) => void;
+            'notify::offset': (pspec: GObject.ParamSpec) => void;
+            'notify::template': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4805,6 +4817,14 @@ export namespace GstVideo {
         set converter_config(val: Gst.Structure);
         get converterConfig(): Gst.Structure;
         set converterConfig(val: Gst.Structure);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VideoAggregatorConvertPad.SignalSignatures;
 
         // Constructors
 
@@ -4816,17 +4836,19 @@ export namespace GstVideo {
 
         connect<K extends keyof VideoAggregatorConvertPad.SignalSignatures>(
             signal: K,
-            callback: VideoAggregatorConvertPad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoAggregatorConvertPad.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoAggregatorConvertPad.SignalSignatures>(
             signal: K,
-            callback: VideoAggregatorConvertPad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoAggregatorConvertPad.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoAggregatorConvertPad.SignalSignatures>(
             signal: K,
-            ...args: VideoAggregatorConvertPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VideoAggregatorConvertPad.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4846,16 +4868,16 @@ export namespace GstVideo {
     namespace VideoAggregatorPad {
         // Signal signatures
         interface SignalSignatures extends GstBase.AggregatorPad.SignalSignatures {
-            'notify::max-last-buffer-repeat': GObject.Object.Notify;
-            'notify::repeat-after-eos': GObject.Object.Notify;
-            'notify::zorder': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
-            'notify::caps': GObject.Object.Notify;
-            'notify::direction': GObject.Object.Notify;
-            'notify::offset': GObject.Object.Notify;
-            'notify::template': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::max-last-buffer-repeat': (pspec: GObject.ParamSpec) => void;
+            'notify::repeat-after-eos': (pspec: GObject.ParamSpec) => void;
+            'notify::zorder': (pspec: GObject.ParamSpec) => void;
+            'notify::emit-signals': (pspec: GObject.ParamSpec) => void;
+            'notify::caps': (pspec: GObject.ParamSpec) => void;
+            'notify::direction': (pspec: GObject.ParamSpec) => void;
+            'notify::offset': (pspec: GObject.ParamSpec) => void;
+            'notify::template': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4884,6 +4906,14 @@ export namespace GstVideo {
         set repeatAfterEos(val: boolean);
         get zorder(): number;
         set zorder(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VideoAggregatorPad.SignalSignatures;
 
         // Constructors
 
@@ -4895,17 +4925,17 @@ export namespace GstVideo {
 
         connect<K extends keyof VideoAggregatorPad.SignalSignatures>(
             signal: K,
-            callback: VideoAggregatorPad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoAggregatorPad.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoAggregatorPad.SignalSignatures>(
             signal: K,
-            callback: VideoAggregatorPad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoAggregatorPad.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoAggregatorPad.SignalSignatures>(
             signal: K,
-            ...args: VideoAggregatorPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VideoAggregatorPad.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4998,17 +5028,17 @@ export namespace GstVideo {
     namespace VideoAggregatorParallelConvertPad {
         // Signal signatures
         interface SignalSignatures extends VideoAggregatorConvertPad.SignalSignatures {
-            'notify::converter-config': GObject.Object.Notify;
-            'notify::max-last-buffer-repeat': GObject.Object.Notify;
-            'notify::repeat-after-eos': GObject.Object.Notify;
-            'notify::zorder': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
-            'notify::caps': GObject.Object.Notify;
-            'notify::direction': GObject.Object.Notify;
-            'notify::offset': GObject.Object.Notify;
-            'notify::template': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::converter-config': (pspec: GObject.ParamSpec) => void;
+            'notify::max-last-buffer-repeat': (pspec: GObject.ParamSpec) => void;
+            'notify::repeat-after-eos': (pspec: GObject.ParamSpec) => void;
+            'notify::zorder': (pspec: GObject.ParamSpec) => void;
+            'notify::emit-signals': (pspec: GObject.ParamSpec) => void;
+            'notify::caps': (pspec: GObject.ParamSpec) => void;
+            'notify::direction': (pspec: GObject.ParamSpec) => void;
+            'notify::offset': (pspec: GObject.ParamSpec) => void;
+            'notify::template': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5023,6 +5053,14 @@ export namespace GstVideo {
      */
     class VideoAggregatorParallelConvertPad extends VideoAggregatorConvertPad {
         static $gtype: GObject.GType<VideoAggregatorParallelConvertPad>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VideoAggregatorParallelConvertPad.SignalSignatures;
 
         // Constructors
 
@@ -5034,17 +5072,22 @@ export namespace GstVideo {
 
         connect<K extends keyof VideoAggregatorParallelConvertPad.SignalSignatures>(
             signal: K,
-            callback: VideoAggregatorParallelConvertPad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoAggregatorParallelConvertPad.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoAggregatorParallelConvertPad.SignalSignatures>(
             signal: K,
-            callback: VideoAggregatorParallelConvertPad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoAggregatorParallelConvertPad.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoAggregatorParallelConvertPad.SignalSignatures>(
             signal: K,
-            ...args: VideoAggregatorParallelConvertPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VideoAggregatorParallelConvertPad.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -5052,8 +5095,8 @@ export namespace GstVideo {
     namespace VideoBufferPool {
         // Signal signatures
         interface SignalSignatures extends Gst.BufferPool.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5063,6 +5106,14 @@ export namespace GstVideo {
 
     class VideoBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VideoBufferPool>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VideoBufferPool.SignalSignatures;
 
         // Fields
 
@@ -5080,17 +5131,17 @@ export namespace GstVideo {
 
         connect<K extends keyof VideoBufferPool.SignalSignatures>(
             signal: K,
-            callback: VideoBufferPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoBufferPool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoBufferPool.SignalSignatures>(
             signal: K,
-            callback: VideoBufferPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoBufferPool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoBufferPool.SignalSignatures>(
             signal: K,
-            ...args: VideoBufferPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VideoBufferPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -5098,14 +5149,14 @@ export namespace GstVideo {
     namespace VideoDecoder {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
+            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
+            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
+            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5328,6 +5379,14 @@ export namespace GstVideo {
          */
         get qos(): boolean;
         set qos(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VideoDecoder.SignalSignatures;
 
         // Constructors
 
@@ -5339,17 +5398,17 @@ export namespace GstVideo {
 
         connect<K extends keyof VideoDecoder.SignalSignatures>(
             signal: K,
-            callback: VideoDecoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoDecoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoDecoder.SignalSignatures>(
             signal: K,
-            callback: VideoDecoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoDecoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoDecoder.SignalSignatures>(
             signal: K,
-            ...args: VideoDecoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VideoDecoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5875,10 +5934,10 @@ export namespace GstVideo {
     namespace VideoEncoder {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5969,6 +6028,14 @@ export namespace GstVideo {
         set minForceKeyUnitInterval(val: number);
         get qos(): boolean;
         set qos(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VideoEncoder.SignalSignatures;
 
         // Constructors
 
@@ -5980,17 +6047,17 @@ export namespace GstVideo {
 
         connect<K extends keyof VideoEncoder.SignalSignatures>(
             signal: K,
-            callback: VideoEncoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoEncoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoEncoder.SignalSignatures>(
             signal: K,
-            callback: VideoEncoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoEncoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoEncoder.SignalSignatures>(
             signal: K,
-            ...args: VideoEncoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VideoEncoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6889,9 +6956,9 @@ export namespace GstVideo {
     namespace VideoFilter {
         // Signal signatures
         interface SignalSignatures extends GstBase.BaseTransform.SignalSignatures {
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6907,6 +6974,14 @@ export namespace GstVideo {
      */
     abstract class VideoFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<VideoFilter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VideoFilter.SignalSignatures;
 
         // Fields
 
@@ -6923,17 +6998,17 @@ export namespace GstVideo {
 
         connect<K extends keyof VideoFilter.SignalSignatures>(
             signal: K,
-            callback: VideoFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoFilter.SignalSignatures>(
             signal: K,
-            callback: VideoFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoFilter.SignalSignatures>(
             signal: K,
-            ...args: VideoFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VideoFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6979,17 +7054,19 @@ export namespace GstVideo {
 
         connect<K extends keyof VideoMultiviewFlagsSet.SignalSignatures>(
             signal: K,
-            callback: VideoMultiviewFlagsSet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoMultiviewFlagsSet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoMultiviewFlagsSet.SignalSignatures>(
             signal: K,
-            callback: VideoMultiviewFlagsSet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoMultiviewFlagsSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoMultiviewFlagsSet.SignalSignatures>(
             signal: K,
-            ...args: VideoMultiviewFlagsSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VideoMultiviewFlagsSet.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -6997,22 +7074,22 @@ export namespace GstVideo {
     namespace VideoSink {
         // Signal signatures
         interface SignalSignatures extends GstBase.BaseSink.SignalSignatures {
-            'notify::show-preroll-frame': GObject.Object.Notify;
-            'notify::async': GObject.Object.Notify;
-            'notify::blocksize': GObject.Object.Notify;
-            'notify::enable-last-sample': GObject.Object.Notify;
-            'notify::last-sample': GObject.Object.Notify;
-            'notify::max-bitrate': GObject.Object.Notify;
-            'notify::max-lateness': GObject.Object.Notify;
-            'notify::processing-deadline': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::render-delay': GObject.Object.Notify;
-            'notify::stats': GObject.Object.Notify;
-            'notify::sync': GObject.Object.Notify;
-            'notify::throttle-time': GObject.Object.Notify;
-            'notify::ts-offset': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::show-preroll-frame': (pspec: GObject.ParamSpec) => void;
+            'notify::async': (pspec: GObject.ParamSpec) => void;
+            'notify::blocksize': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-last-sample': (pspec: GObject.ParamSpec) => void;
+            'notify::last-sample': (pspec: GObject.ParamSpec) => void;
+            'notify::max-bitrate': (pspec: GObject.ParamSpec) => void;
+            'notify::max-lateness': (pspec: GObject.ParamSpec) => void;
+            'notify::processing-deadline': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::render-delay': (pspec: GObject.ParamSpec) => void;
+            'notify::stats': (pspec: GObject.ParamSpec) => void;
+            'notify::sync': (pspec: GObject.ParamSpec) => void;
+            'notify::throttle-time': (pspec: GObject.ParamSpec) => void;
+            'notify::ts-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7047,6 +7124,14 @@ export namespace GstVideo {
          */
         get showPrerollFrame(): boolean;
         set showPrerollFrame(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VideoSink.SignalSignatures;
 
         // Fields
 
@@ -7062,16 +7147,19 @@ export namespace GstVideo {
 
         // Signals
 
-        connect<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: VideoSink.SignalSignatures[K]): number;
+        connect<K extends keyof VideoSink.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
-            callback: VideoSink.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
-            ...args: VideoSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VideoSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

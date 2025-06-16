@@ -938,21 +938,21 @@ export namespace Secret {
     namespace Collection {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::created': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::locked': GObject.Object.Notify;
-            'notify::modified': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
+            'notify::created': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::locked': (pspec: GObject.ParamSpec) => void;
+            'notify::modified': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1028,6 +1028,14 @@ export namespace Secret {
          * uses to interact with the actual D-Bus Secret Service.
          */
         get service(): Service;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Collection.SignalSignatures;
 
         // Constructors
 
@@ -1039,17 +1047,17 @@ export namespace Secret {
 
         connect<K extends keyof Collection.SignalSignatures>(
             signal: K,
-            callback: Collection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Collection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Collection.SignalSignatures>(
             signal: K,
-            callback: Collection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Collection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Collection.SignalSignatures>(
             signal: K,
-            ...args: Collection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Collection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2274,22 +2282,22 @@ export namespace Secret {
     namespace Item {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::flags': GObject.Object.Notify;
-            'notify::locked': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::attributes': GObject.Object.Notify;
-            'notify::created': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::modified': GObject.Object.Notify;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::locked': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
+            'notify::attributes': (pspec: GObject.ParamSpec) => void;
+            'notify::created': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::modified': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2353,6 +2361,14 @@ export namespace Secret {
          * uses to interact with the actual D-Bus Secret Service.
          */
         get service(): Service;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Item.SignalSignatures;
 
         // Constructors
 
@@ -2362,13 +2378,19 @@ export namespace Secret {
 
         // Signals
 
-        connect<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect<K extends keyof Item.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect_after<K extends keyof Item.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Item.SignalSignatures>(
             signal: K,
-            ...args: Item.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Item.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3724,15 +3746,15 @@ export namespace Secret {
     namespace Prompt {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3762,6 +3784,14 @@ export namespace Secret {
      */
     class Prompt extends Gio.DBusProxy implements Gio.AsyncInitable<Prompt>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Prompt>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Prompt.SignalSignatures;
 
         // Constructors
 
@@ -3771,13 +3801,19 @@ export namespace Secret {
 
         // Signals
 
-        connect<K extends keyof Prompt.SignalSignatures>(signal: K, callback: Prompt.SignalSignatures[K]): number;
+        connect<K extends keyof Prompt.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Prompt.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Prompt.SignalSignatures>(signal: K, callback: Prompt.SignalSignatures[K]): number;
+        connect_after<K extends keyof Prompt.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Prompt.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Prompt.SignalSignatures>(
             signal: K,
-            ...args: Prompt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Prompt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4674,16 +4710,16 @@ export namespace Secret {
     namespace Service {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4739,6 +4775,14 @@ export namespace Secret {
         implements Gio.AsyncInitable<Service>, Gio.DBusInterface, Gio.Initable, Backend
     {
         static $gtype: GObject.GType<Service>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Service.SignalSignatures;
 
         // Constructors
 
@@ -4748,16 +4792,19 @@ export namespace Secret {
 
         // Signals
 
-        connect<K extends keyof Service.SignalSignatures>(signal: K, callback: Service.SignalSignatures[K]): number;
+        connect<K extends keyof Service.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Service.SignalSignatures>(
             signal: K,
-            callback: Service.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Service.SignalSignatures>(
             signal: K,
-            ...args: Service.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Service.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

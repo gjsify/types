@@ -102,9 +102,9 @@ export namespace Gm {
     namespace Cutout {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::bounds': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
+            'notify::bounds': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -145,6 +145,14 @@ export namespace Gm {
          * The SVG path that describes the display cutout or notch.
          */
         get path(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Cutout.SignalSignatures;
 
         // Constructors
 
@@ -156,13 +164,19 @@ export namespace Gm {
 
         // Signals
 
-        connect<K extends keyof Cutout.SignalSignatures>(signal: K, callback: Cutout.SignalSignatures[K]): number;
+        connect<K extends keyof Cutout.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Cutout.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Cutout.SignalSignatures>(signal: K, callback: Cutout.SignalSignatures[K]): number;
+        connect_after<K extends keyof Cutout.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Cutout.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Cutout.SignalSignatures>(
             signal: K,
-            ...args: Cutout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Cutout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -188,7 +202,7 @@ export namespace Gm {
     namespace DeviceInfo {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::compatibles': GObject.Object.Notify;
+            'notify::compatibles': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -216,6 +230,14 @@ export namespace Gm {
          * The compatibles to look up device information for.
          */
         get compatibles(): string[];
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceInfo.SignalSignatures;
 
         // Constructors
 
@@ -229,17 +251,17 @@ export namespace Gm {
 
         connect<K extends keyof DeviceInfo.SignalSignatures>(
             signal: K,
-            callback: DeviceInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceInfo.SignalSignatures>(
             signal: K,
-            callback: DeviceInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceInfo.SignalSignatures>(
             signal: K,
-            ...args: DeviceInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -256,13 +278,13 @@ export namespace Gm {
     namespace DisplayPanel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::border-radius': GObject.Object.Notify;
-            'notify::cutouts': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x-res': GObject.Object.Notify;
-            'notify::y-res': GObject.Object.Notify;
+            'notify::border-radius': (pspec: GObject.ParamSpec) => void;
+            'notify::cutouts': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x-res': (pspec: GObject.ParamSpec) => void;
+            'notify::y-res': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -342,6 +364,14 @@ export namespace Gm {
          */
         get yRes(): number;
         set yRes(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DisplayPanel.SignalSignatures;
 
         // Constructors
 
@@ -359,17 +389,17 @@ export namespace Gm {
 
         connect<K extends keyof DisplayPanel.SignalSignatures>(
             signal: K,
-            callback: DisplayPanel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DisplayPanel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DisplayPanel.SignalSignatures>(
             signal: K,
-            callback: DisplayPanel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DisplayPanel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DisplayPanel.SignalSignatures>(
             signal: K,
-            ...args: DisplayPanel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DisplayPanel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

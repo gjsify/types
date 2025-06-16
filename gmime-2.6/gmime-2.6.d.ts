@@ -1194,6 +1194,14 @@ export namespace GMime {
      */
     class Certificate extends GObject.Object {
         static $gtype: GObject.GType<Certificate>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Certificate.SignalSignatures;
 
         // Fields
 
@@ -1222,17 +1230,17 @@ export namespace GMime {
 
         connect<K extends keyof Certificate.SignalSignatures>(
             signal: K,
-            callback: Certificate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Certificate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Certificate.SignalSignatures>(
             signal: K,
-            callback: Certificate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Certificate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Certificate.SignalSignatures>(
             signal: K,
-            ...args: Certificate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Certificate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1364,6 +1372,14 @@ export namespace GMime {
      */
     class CertificateList extends GObject.Object {
         static $gtype: GObject.GType<CertificateList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertificateList.SignalSignatures;
 
         // Fields
 
@@ -1382,17 +1398,17 @@ export namespace GMime {
 
         connect<K extends keyof CertificateList.SignalSignatures>(
             signal: K,
-            callback: CertificateList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificateList.SignalSignatures>(
             signal: K,
-            callback: CertificateList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificateList.SignalSignatures>(
             signal: K,
-            ...args: CertificateList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CertificateList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1475,6 +1491,14 @@ export namespace GMime {
      */
     class ContentDisposition extends GObject.Object {
         static $gtype: GObject.GType<ContentDisposition>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ContentDisposition.SignalSignatures;
 
         // Fields
 
@@ -1496,17 +1520,17 @@ export namespace GMime {
 
         connect<K extends keyof ContentDisposition.SignalSignatures>(
             signal: K,
-            callback: ContentDisposition.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContentDisposition.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContentDisposition.SignalSignatures>(
             signal: K,
-            callback: ContentDisposition.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContentDisposition.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContentDisposition.SignalSignatures>(
             signal: K,
-            ...args: ContentDisposition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ContentDisposition.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1578,6 +1602,14 @@ export namespace GMime {
      */
     class ContentType extends GObject.Object {
         static $gtype: GObject.GType<ContentType>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ContentType.SignalSignatures;
 
         // Fields
 
@@ -1600,17 +1632,17 @@ export namespace GMime {
 
         connect<K extends keyof ContentType.SignalSignatures>(
             signal: K,
-            callback: ContentType.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContentType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContentType.SignalSignatures>(
             signal: K,
-            callback: ContentType.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContentType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContentType.SignalSignatures>(
             signal: K,
-            ...args: ContentType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ContentType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1691,6 +1723,14 @@ export namespace GMime {
      */
     class CryptoContext extends GObject.Object {
         static $gtype: GObject.GType<CryptoContext>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CryptoContext.SignalSignatures;
 
         // Fields
 
@@ -1707,17 +1747,17 @@ export namespace GMime {
 
         connect<K extends keyof CryptoContext.SignalSignatures>(
             signal: K,
-            callback: CryptoContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CryptoContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CryptoContext.SignalSignatures>(
             signal: K,
-            callback: CryptoContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CryptoContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CryptoContext.SignalSignatures>(
             signal: K,
-            ...args: CryptoContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CryptoContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2016,6 +2056,14 @@ export namespace GMime {
      */
     class DataWrapper extends GObject.Object {
         static $gtype: GObject.GType<DataWrapper>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DataWrapper.SignalSignatures;
 
         // Fields
 
@@ -2037,17 +2085,17 @@ export namespace GMime {
 
         connect<K extends keyof DataWrapper.SignalSignatures>(
             signal: K,
-            callback: DataWrapper.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataWrapper.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataWrapper.SignalSignatures>(
             signal: K,
-            callback: DataWrapper.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataWrapper.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataWrapper.SignalSignatures>(
             signal: K,
-            ...args: DataWrapper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DataWrapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2108,6 +2156,14 @@ export namespace GMime {
      */
     class DecryptResult extends GObject.Object {
         static $gtype: GObject.GType<DecryptResult>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DecryptResult.SignalSignatures;
 
         // Fields
 
@@ -2130,17 +2186,17 @@ export namespace GMime {
 
         connect<K extends keyof DecryptResult.SignalSignatures>(
             signal: K,
-            callback: DecryptResult.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DecryptResult.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DecryptResult.SignalSignatures>(
             signal: K,
-            callback: DecryptResult.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DecryptResult.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DecryptResult.SignalSignatures>(
             signal: K,
-            ...args: DecryptResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DecryptResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2215,6 +2271,14 @@ export namespace GMime {
      */
     abstract class Filter extends GObject.Object {
         static $gtype: GObject.GType<Filter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Filter.SignalSignatures;
 
         // Fields
 
@@ -2237,13 +2301,19 @@ export namespace GMime {
 
         // Signals
 
-        connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        connect<K extends keyof Filter.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        connect_after<K extends keyof Filter.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Filter.SignalSignatures>(
             signal: K,
-            ...args: Filter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Filter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2321,6 +2391,14 @@ export namespace GMime {
      */
     class FilterBasic extends Filter {
         static $gtype: GObject.GType<FilterBasic>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FilterBasic.SignalSignatures;
 
         // Fields
 
@@ -2338,17 +2416,17 @@ export namespace GMime {
 
         connect<K extends keyof FilterBasic.SignalSignatures>(
             signal: K,
-            callback: FilterBasic.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterBasic.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterBasic.SignalSignatures>(
             signal: K,
-            callback: FilterBasic.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterBasic.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterBasic.SignalSignatures>(
             signal: K,
-            ...args: FilterBasic.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FilterBasic.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2368,6 +2446,14 @@ export namespace GMime {
      */
     class FilterBest extends Filter {
         static $gtype: GObject.GType<FilterBest>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FilterBest.SignalSignatures;
 
         // Fields
 
@@ -2396,17 +2482,17 @@ export namespace GMime {
 
         connect<K extends keyof FilterBest.SignalSignatures>(
             signal: K,
-            callback: FilterBest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterBest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterBest.SignalSignatures>(
             signal: K,
-            callback: FilterBest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterBest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterBest.SignalSignatures>(
             signal: K,
-            ...args: FilterBest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FilterBest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2443,6 +2529,14 @@ export namespace GMime {
      */
     class FilterCRLF extends Filter {
         static $gtype: GObject.GType<FilterCRLF>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FilterCRLF.SignalSignatures;
 
         // Fields
 
@@ -2465,17 +2559,17 @@ export namespace GMime {
 
         connect<K extends keyof FilterCRLF.SignalSignatures>(
             signal: K,
-            callback: FilterCRLF.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterCRLF.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterCRLF.SignalSignatures>(
             signal: K,
-            callback: FilterCRLF.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterCRLF.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterCRLF.SignalSignatures>(
             signal: K,
-            ...args: FilterCRLF.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FilterCRLF.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2494,6 +2588,14 @@ export namespace GMime {
      */
     class FilterCharset extends Filter {
         static $gtype: GObject.GType<FilterCharset>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FilterCharset.SignalSignatures;
 
         // Fields
 
@@ -2513,17 +2615,17 @@ export namespace GMime {
 
         connect<K extends keyof FilterCharset.SignalSignatures>(
             signal: K,
-            callback: FilterCharset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterCharset.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterCharset.SignalSignatures>(
             signal: K,
-            callback: FilterCharset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterCharset.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterCharset.SignalSignatures>(
             signal: K,
-            ...args: FilterCharset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FilterCharset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2543,6 +2645,14 @@ export namespace GMime {
      */
     class FilterEnriched extends Filter {
         static $gtype: GObject.GType<FilterEnriched>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FilterEnriched.SignalSignatures;
 
         // Fields
 
@@ -2562,17 +2672,17 @@ export namespace GMime {
 
         connect<K extends keyof FilterEnriched.SignalSignatures>(
             signal: K,
-            callback: FilterEnriched.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterEnriched.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterEnriched.SignalSignatures>(
             signal: K,
-            callback: FilterEnriched.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterEnriched.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterEnriched.SignalSignatures>(
             signal: K,
-            ...args: FilterEnriched.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FilterEnriched.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2591,6 +2701,14 @@ export namespace GMime {
      */
     class FilterFrom extends Filter {
         static $gtype: GObject.GType<FilterFrom>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FilterFrom.SignalSignatures;
 
         // Fields
 
@@ -2610,17 +2728,17 @@ export namespace GMime {
 
         connect<K extends keyof FilterFrom.SignalSignatures>(
             signal: K,
-            callback: FilterFrom.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterFrom.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterFrom.SignalSignatures>(
             signal: K,
-            callback: FilterFrom.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterFrom.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterFrom.SignalSignatures>(
             signal: K,
-            ...args: FilterFrom.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FilterFrom.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2639,6 +2757,14 @@ export namespace GMime {
      */
     class FilterGZip extends Filter {
         static $gtype: GObject.GType<FilterGZip>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FilterGZip.SignalSignatures;
 
         // Fields
 
@@ -2659,17 +2785,17 @@ export namespace GMime {
 
         connect<K extends keyof FilterGZip.SignalSignatures>(
             signal: K,
-            callback: FilterGZip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterGZip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterGZip.SignalSignatures>(
             signal: K,
-            callback: FilterGZip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterGZip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterGZip.SignalSignatures>(
             signal: K,
-            ...args: FilterGZip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FilterGZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2688,6 +2814,14 @@ export namespace GMime {
      */
     class FilterHTML extends Filter {
         static $gtype: GObject.GType<FilterHTML>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FilterHTML.SignalSignatures;
 
         // Fields
 
@@ -2710,17 +2844,17 @@ export namespace GMime {
 
         connect<K extends keyof FilterHTML.SignalSignatures>(
             signal: K,
-            callback: FilterHTML.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterHTML.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterHTML.SignalSignatures>(
             signal: K,
-            callback: FilterHTML.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterHTML.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterHTML.SignalSignatures>(
             signal: K,
-            ...args: FilterHTML.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FilterHTML.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2739,6 +2873,14 @@ export namespace GMime {
      */
     class FilterMd5 extends Filter {
         static $gtype: GObject.GType<FilterMd5>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FilterMd5.SignalSignatures;
 
         // Fields
 
@@ -2755,16 +2897,19 @@ export namespace GMime {
 
         // Signals
 
-        connect<K extends keyof FilterMd5.SignalSignatures>(signal: K, callback: FilterMd5.SignalSignatures[K]): number;
+        connect<K extends keyof FilterMd5.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, FilterMd5.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterMd5.SignalSignatures>(
             signal: K,
-            callback: FilterMd5.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterMd5.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterMd5.SignalSignatures>(
             signal: K,
-            ...args: FilterMd5.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FilterMd5.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2791,6 +2936,14 @@ export namespace GMime {
      */
     class FilterStrip extends Filter {
         static $gtype: GObject.GType<FilterStrip>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FilterStrip.SignalSignatures;
 
         // Fields
 
@@ -2808,17 +2961,17 @@ export namespace GMime {
 
         connect<K extends keyof FilterStrip.SignalSignatures>(
             signal: K,
-            callback: FilterStrip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterStrip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterStrip.SignalSignatures>(
             signal: K,
-            callback: FilterStrip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterStrip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterStrip.SignalSignatures>(
             signal: K,
-            ...args: FilterStrip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FilterStrip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2839,6 +2992,14 @@ export namespace GMime {
      */
     class FilterWindows extends Filter {
         static $gtype: GObject.GType<FilterWindows>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FilterWindows.SignalSignatures;
 
         // Fields
 
@@ -2858,17 +3019,17 @@ export namespace GMime {
 
         connect<K extends keyof FilterWindows.SignalSignatures>(
             signal: K,
-            callback: FilterWindows.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterWindows.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterWindows.SignalSignatures>(
             signal: K,
-            callback: FilterWindows.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterWindows.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterWindows.SignalSignatures>(
             signal: K,
-            ...args: FilterWindows.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FilterWindows.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2901,6 +3062,14 @@ export namespace GMime {
      */
     class FilterYenc extends Filter {
         static $gtype: GObject.GType<FilterYenc>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FilterYenc.SignalSignatures;
 
         // Fields
 
@@ -2923,17 +3092,17 @@ export namespace GMime {
 
         connect<K extends keyof FilterYenc.SignalSignatures>(
             signal: K,
-            callback: FilterYenc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterYenc.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterYenc.SignalSignatures>(
             signal: K,
-            callback: FilterYenc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterYenc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterYenc.SignalSignatures>(
             signal: K,
-            ...args: FilterYenc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FilterYenc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2975,6 +3144,14 @@ export namespace GMime {
      */
     class GpgContext extends CryptoContext {
         static $gtype: GObject.GType<GpgContext>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GpgContext.SignalSignatures;
 
         // Fields
 
@@ -2996,17 +3173,17 @@ export namespace GMime {
 
         connect<K extends keyof GpgContext.SignalSignatures>(
             signal: K,
-            callback: GpgContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GpgContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GpgContext.SignalSignatures>(
             signal: K,
-            callback: GpgContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GpgContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GpgContext.SignalSignatures>(
             signal: K,
-            ...args: GpgContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GpgContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3062,6 +3239,14 @@ export namespace GMime {
      */
     abstract class InternetAddress extends GObject.Object {
         static $gtype: GObject.GType<InternetAddress>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InternetAddress.SignalSignatures;
 
         // Fields
 
@@ -3079,17 +3264,17 @@ export namespace GMime {
 
         connect<K extends keyof InternetAddress.SignalSignatures>(
             signal: K,
-            callback: InternetAddress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InternetAddress.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InternetAddress.SignalSignatures>(
             signal: K,
-            callback: InternetAddress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InternetAddress.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InternetAddress.SignalSignatures>(
             signal: K,
-            ...args: InternetAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InternetAddress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3134,6 +3319,14 @@ export namespace GMime {
      */
     class InternetAddressGroup extends InternetAddress {
         static $gtype: GObject.GType<InternetAddressGroup>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InternetAddressGroup.SignalSignatures;
 
         // Fields
 
@@ -3152,17 +3345,19 @@ export namespace GMime {
 
         connect<K extends keyof InternetAddressGroup.SignalSignatures>(
             signal: K,
-            callback: InternetAddressGroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InternetAddressGroup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InternetAddressGroup.SignalSignatures>(
             signal: K,
-            callback: InternetAddressGroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InternetAddressGroup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InternetAddressGroup.SignalSignatures>(
             signal: K,
-            ...args: InternetAddressGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InternetAddressGroup.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3201,6 +3396,14 @@ export namespace GMime {
      */
     class InternetAddressList extends GObject.Object {
         static $gtype: GObject.GType<InternetAddressList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InternetAddressList.SignalSignatures;
 
         // Fields
 
@@ -3220,17 +3423,19 @@ export namespace GMime {
 
         connect<K extends keyof InternetAddressList.SignalSignatures>(
             signal: K,
-            callback: InternetAddressList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InternetAddressList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InternetAddressList.SignalSignatures>(
             signal: K,
-            callback: InternetAddressList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InternetAddressList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InternetAddressList.SignalSignatures>(
             signal: K,
-            ...args: InternetAddressList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InternetAddressList.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3344,6 +3549,14 @@ export namespace GMime {
      */
     class InternetAddressMailbox extends InternetAddress {
         static $gtype: GObject.GType<InternetAddressMailbox>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InternetAddressMailbox.SignalSignatures;
 
         // Fields
 
@@ -3362,17 +3575,19 @@ export namespace GMime {
 
         connect<K extends keyof InternetAddressMailbox.SignalSignatures>(
             signal: K,
-            callback: InternetAddressMailbox.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InternetAddressMailbox.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InternetAddressMailbox.SignalSignatures>(
             signal: K,
-            callback: InternetAddressMailbox.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InternetAddressMailbox.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InternetAddressMailbox.SignalSignatures>(
             signal: K,
-            ...args: InternetAddressMailbox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InternetAddressMailbox.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3404,6 +3619,14 @@ export namespace GMime {
      */
     class Message extends Object {
         static $gtype: GObject.GType<Message>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Message.SignalSignatures;
 
         // Fields
 
@@ -3430,16 +3653,19 @@ export namespace GMime {
 
         // Signals
 
-        connect<K extends keyof Message.SignalSignatures>(signal: K, callback: Message.SignalSignatures[K]): number;
+        connect<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Message.SignalSignatures>(
             signal: K,
-            callback: Message.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Message.SignalSignatures>(
             signal: K,
-            ...args: Message.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Message.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3585,6 +3811,14 @@ export namespace GMime {
      */
     class MessagePart extends Object {
         static $gtype: GObject.GType<MessagePart>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MessagePart.SignalSignatures;
 
         // Fields
 
@@ -3608,17 +3842,17 @@ export namespace GMime {
 
         connect<K extends keyof MessagePart.SignalSignatures>(
             signal: K,
-            callback: MessagePart.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MessagePart.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MessagePart.SignalSignatures>(
             signal: K,
-            callback: MessagePart.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MessagePart.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MessagePart.SignalSignatures>(
             signal: K,
-            ...args: MessagePart.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MessagePart.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3650,6 +3884,14 @@ export namespace GMime {
      */
     class MessagePartial extends Part {
         static $gtype: GObject.GType<MessagePartial>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MessagePartial.SignalSignatures;
 
         // Fields
 
@@ -3673,17 +3915,17 @@ export namespace GMime {
 
         connect<K extends keyof MessagePartial.SignalSignatures>(
             signal: K,
-            callback: MessagePartial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MessagePartial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MessagePartial.SignalSignatures>(
             signal: K,
-            callback: MessagePartial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MessagePartial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MessagePartial.SignalSignatures>(
             signal: K,
-            ...args: MessagePartial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MessagePartial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3731,6 +3973,14 @@ export namespace GMime {
      */
     class Multipart extends Object {
         static $gtype: GObject.GType<Multipart>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Multipart.SignalSignatures;
 
         // Fields
 
@@ -3752,16 +4002,19 @@ export namespace GMime {
 
         // Signals
 
-        connect<K extends keyof Multipart.SignalSignatures>(signal: K, callback: Multipart.SignalSignatures[K]): number;
+        connect<K extends keyof Multipart.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Multipart.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Multipart.SignalSignatures>(
             signal: K,
-            callback: Multipart.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Multipart.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Multipart.SignalSignatures>(
             signal: K,
-            ...args: Multipart.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Multipart.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3945,6 +4198,14 @@ export namespace GMime {
      */
     class MultipartEncrypted extends Multipart {
         static $gtype: GObject.GType<MultipartEncrypted>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MultipartEncrypted.SignalSignatures;
 
         // Fields
 
@@ -3962,17 +4223,17 @@ export namespace GMime {
 
         connect<K extends keyof MultipartEncrypted.SignalSignatures>(
             signal: K,
-            callback: MultipartEncrypted.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MultipartEncrypted.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MultipartEncrypted.SignalSignatures>(
             signal: K,
-            callback: MultipartEncrypted.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MultipartEncrypted.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MultipartEncrypted.SignalSignatures>(
             signal: K,
-            ...args: MultipartEncrypted.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MultipartEncrypted.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4051,6 +4312,14 @@ export namespace GMime {
      */
     class MultipartSigned extends Multipart {
         static $gtype: GObject.GType<MultipartSigned>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MultipartSigned.SignalSignatures;
 
         // Fields
 
@@ -4068,17 +4337,17 @@ export namespace GMime {
 
         connect<K extends keyof MultipartSigned.SignalSignatures>(
             signal: K,
-            callback: MultipartSigned.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MultipartSigned.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MultipartSigned.SignalSignatures>(
             signal: K,
-            callback: MultipartSigned.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MultipartSigned.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MultipartSigned.SignalSignatures>(
             signal: K,
-            ...args: MultipartSigned.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MultipartSigned.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4119,6 +4388,14 @@ export namespace GMime {
      */
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Object.SignalSignatures;
 
         // Fields
 
@@ -4139,13 +4416,19 @@ export namespace GMime {
 
         // Signals
 
-        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
-            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4392,6 +4675,14 @@ export namespace GMime {
      */
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Parser.SignalSignatures;
 
         // Fields
 
@@ -4410,13 +4701,19 @@ export namespace GMime {
 
         // Signals
 
-        connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect_after<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Parser.SignalSignatures>(
             signal: K,
-            ...args: Parser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Parser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4554,6 +4851,14 @@ export namespace GMime {
      */
     class Part extends Object {
         static $gtype: GObject.GType<Part>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Part.SignalSignatures;
 
         // Fields
 
@@ -4576,13 +4881,19 @@ export namespace GMime {
 
         // Signals
 
-        connect<K extends keyof Part.SignalSignatures>(signal: K, callback: Part.SignalSignatures[K]): number;
+        connect<K extends keyof Part.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Part.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Part.SignalSignatures>(signal: K, callback: Part.SignalSignatures[K]): number;
+        connect_after<K extends keyof Part.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Part.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Part.SignalSignatures>(
             signal: K,
-            ...args: Part.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Part.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4709,6 +5020,14 @@ export namespace GMime {
      */
     class Pkcs7Context extends CryptoContext {
         static $gtype: GObject.GType<Pkcs7Context>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Pkcs7Context.SignalSignatures;
 
         // Fields
 
@@ -4725,17 +5044,17 @@ export namespace GMime {
 
         connect<K extends keyof Pkcs7Context.SignalSignatures>(
             signal: K,
-            callback: Pkcs7Context.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Pkcs7Context.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Pkcs7Context.SignalSignatures>(
             signal: K,
-            callback: Pkcs7Context.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Pkcs7Context.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Pkcs7Context.SignalSignatures>(
             signal: K,
-            ...args: Pkcs7Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Pkcs7Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4768,6 +5087,14 @@ export namespace GMime {
      */
     class Signature extends GObject.Object {
         static $gtype: GObject.GType<Signature>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Signature.SignalSignatures;
 
         // Fields
 
@@ -4788,16 +5115,19 @@ export namespace GMime {
 
         // Signals
 
-        connect<K extends keyof Signature.SignalSignatures>(signal: K, callback: Signature.SignalSignatures[K]): number;
+        connect<K extends keyof Signature.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Signature.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Signature.SignalSignatures>(
             signal: K,
-            callback: Signature.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Signature.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Signature.SignalSignatures>(
             signal: K,
-            ...args: Signature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Signature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4871,6 +5201,14 @@ export namespace GMime {
      */
     class SignatureList extends GObject.Object {
         static $gtype: GObject.GType<SignatureList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SignatureList.SignalSignatures;
 
         // Fields
 
@@ -4889,17 +5227,17 @@ export namespace GMime {
 
         connect<K extends keyof SignatureList.SignalSignatures>(
             signal: K,
-            callback: SignatureList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SignatureList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SignatureList.SignalSignatures>(
             signal: K,
-            callback: SignatureList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SignatureList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SignatureList.SignalSignatures>(
             signal: K,
-            ...args: SignatureList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SignatureList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4982,6 +5320,14 @@ export namespace GMime {
      */
     abstract class Stream extends GObject.Object {
         static $gtype: GObject.GType<Stream>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Stream.SignalSignatures;
 
         // Fields
 
@@ -4995,13 +5341,19 @@ export namespace GMime {
 
         // Signals
 
-        connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        connect<K extends keyof Stream.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stream.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Stream.SignalSignatures>(
             signal: K,
-            ...args: Stream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Stream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5199,6 +5551,14 @@ export namespace GMime {
      */
     class StreamBuffer extends Stream {
         static $gtype: GObject.GType<StreamBuffer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamBuffer.SignalSignatures;
 
         // Fields
 
@@ -5222,17 +5582,17 @@ export namespace GMime {
 
         connect<K extends keyof StreamBuffer.SignalSignatures>(
             signal: K,
-            callback: StreamBuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamBuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamBuffer.SignalSignatures>(
             signal: K,
-            callback: StreamBuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamBuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamBuffer.SignalSignatures>(
             signal: K,
-            ...args: StreamBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -5251,6 +5611,14 @@ export namespace GMime {
      */
     class StreamCat extends Stream {
         static $gtype: GObject.GType<StreamCat>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamCat.SignalSignatures;
 
         // Fields
 
@@ -5268,16 +5636,19 @@ export namespace GMime {
 
         // Signals
 
-        connect<K extends keyof StreamCat.SignalSignatures>(signal: K, callback: StreamCat.SignalSignatures[K]): number;
+        connect<K extends keyof StreamCat.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, StreamCat.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamCat.SignalSignatures>(
             signal: K,
-            callback: StreamCat.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamCat.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamCat.SignalSignatures>(
             signal: K,
-            ...args: StreamCat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamCat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5305,6 +5676,14 @@ export namespace GMime {
      */
     class StreamFile extends Stream {
         static $gtype: GObject.GType<StreamFile>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamFile.SignalSignatures;
 
         // Fields
 
@@ -5328,17 +5707,17 @@ export namespace GMime {
 
         connect<K extends keyof StreamFile.SignalSignatures>(
             signal: K,
-            callback: StreamFile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamFile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamFile.SignalSignatures>(
             signal: K,
-            callback: StreamFile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamFile.SignalSignatures>(
             signal: K,
-            ...args: StreamFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5373,6 +5752,14 @@ export namespace GMime {
      */
     class StreamFilter extends Stream {
         static $gtype: GObject.GType<StreamFilter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamFilter.SignalSignatures;
 
         // Fields
 
@@ -5392,17 +5779,17 @@ export namespace GMime {
 
         connect<K extends keyof StreamFilter.SignalSignatures>(
             signal: K,
-            callback: StreamFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamFilter.SignalSignatures>(
             signal: K,
-            callback: StreamFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamFilter.SignalSignatures>(
             signal: K,
-            ...args: StreamFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5437,6 +5824,14 @@ export namespace GMime {
      */
     class StreamFs extends Stream {
         static $gtype: GObject.GType<StreamFs>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamFs.SignalSignatures;
 
         // Fields
 
@@ -5461,16 +5856,19 @@ export namespace GMime {
 
         // Signals
 
-        connect<K extends keyof StreamFs.SignalSignatures>(signal: K, callback: StreamFs.SignalSignatures[K]): number;
+        connect<K extends keyof StreamFs.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, StreamFs.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamFs.SignalSignatures>(
             signal: K,
-            callback: StreamFs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamFs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamFs.SignalSignatures>(
             signal: K,
-            ...args: StreamFs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamFs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5505,6 +5903,14 @@ export namespace GMime {
      */
     class StreamGIO extends Stream {
         static $gtype: GObject.GType<StreamGIO>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamGIO.SignalSignatures;
 
         // Fields
 
@@ -5529,16 +5935,19 @@ export namespace GMime {
 
         // Signals
 
-        connect<K extends keyof StreamGIO.SignalSignatures>(signal: K, callback: StreamGIO.SignalSignatures[K]): number;
+        connect<K extends keyof StreamGIO.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, StreamGIO.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamGIO.SignalSignatures>(
             signal: K,
-            callback: StreamGIO.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamGIO.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamGIO.SignalSignatures>(
             signal: K,
-            ...args: StreamGIO.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamGIO.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5573,6 +5982,14 @@ export namespace GMime {
      */
     class StreamMem extends Stream {
         static $gtype: GObject.GType<StreamMem>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamMem.SignalSignatures;
 
         // Fields
 
@@ -5594,16 +6011,19 @@ export namespace GMime {
 
         // Signals
 
-        connect<K extends keyof StreamMem.SignalSignatures>(signal: K, callback: StreamMem.SignalSignatures[K]): number;
+        connect<K extends keyof StreamMem.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, StreamMem.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamMem.SignalSignatures>(
             signal: K,
-            callback: StreamMem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamMem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamMem.SignalSignatures>(
             signal: K,
-            ...args: StreamMem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamMem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5651,6 +6071,14 @@ export namespace GMime {
      */
     class StreamMmap extends Stream {
         static $gtype: GObject.GType<StreamMmap>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamMmap.SignalSignatures;
 
         // Fields
 
@@ -5677,17 +6105,17 @@ export namespace GMime {
 
         connect<K extends keyof StreamMmap.SignalSignatures>(
             signal: K,
-            callback: StreamMmap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamMmap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamMmap.SignalSignatures>(
             signal: K,
-            callback: StreamMmap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamMmap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamMmap.SignalSignatures>(
             signal: K,
-            ...args: StreamMmap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamMmap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -5706,6 +6134,14 @@ export namespace GMime {
      */
     class StreamNull extends Stream {
         static $gtype: GObject.GType<StreamNull>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamNull.SignalSignatures;
 
         // Fields
 
@@ -5725,17 +6161,17 @@ export namespace GMime {
 
         connect<K extends keyof StreamNull.SignalSignatures>(
             signal: K,
-            callback: StreamNull.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamNull.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamNull.SignalSignatures>(
             signal: K,
-            callback: StreamNull.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamNull.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamNull.SignalSignatures>(
             signal: K,
-            ...args: StreamNull.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamNull.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -5754,6 +6190,14 @@ export namespace GMime {
      */
     class StreamPipe extends Stream {
         static $gtype: GObject.GType<StreamPipe>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamPipe.SignalSignatures;
 
         // Fields
 
@@ -5776,17 +6220,17 @@ export namespace GMime {
 
         connect<K extends keyof StreamPipe.SignalSignatures>(
             signal: K,
-            callback: StreamPipe.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamPipe.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamPipe.SignalSignatures>(
             signal: K,
-            callback: StreamPipe.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamPipe.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamPipe.SignalSignatures>(
             signal: K,
-            ...args: StreamPipe.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamPipe.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

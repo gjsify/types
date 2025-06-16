@@ -154,24 +154,14 @@ export namespace UPowerGlib {
      */
     function wakeups_glue_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     namespace Client {
-        // Signal callback interfaces
-
-        interface DeviceAdded {
-            (_source: Client, device: Device): void;
-        }
-
-        interface DeviceRemoved {
-            (_source: Client, object_path: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'device-added': DeviceAdded;
-            'device-removed': DeviceRemoved;
-            'notify::daemon-version': GObject.Object.Notify;
-            'notify::lid-is-closed': GObject.Object.Notify;
-            'notify::lid-is-present': GObject.Object.Notify;
-            'notify::on-battery': GObject.Object.Notify;
+            'device-added': (arg0: Device) => void;
+            'device-removed': (arg0: string) => void;
+            'notify::daemon-version': (pspec: GObject.ParamSpec) => void;
+            'notify::lid-is-closed': (pspec: GObject.ParamSpec) => void;
+            'notify::lid-is-present': (pspec: GObject.ParamSpec) => void;
+            'notify::on-battery': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -225,6 +215,14 @@ export namespace UPowerGlib {
          * If the computer is on battery power.
          */
         get onBattery(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -236,13 +234,19 @@ export namespace UPowerGlib {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -294,19 +298,19 @@ export namespace UPowerGlib {
     namespace ClientGlueProxy {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::daemon-version': GObject.Object.Notify;
-            'notify::lid-is-closed': GObject.Object.Notify;
-            'notify::lid-is-present': GObject.Object.Notify;
-            'notify::on-battery': GObject.Object.Notify;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
+            'notify::daemon-version': (pspec: GObject.ParamSpec) => void;
+            'notify::lid-is-closed': (pspec: GObject.ParamSpec) => void;
+            'notify::lid-is-present': (pspec: GObject.ParamSpec) => void;
+            'notify::on-battery': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -327,6 +331,14 @@ export namespace UPowerGlib {
         implements Gio.AsyncInitable<ClientGlueProxy>, Gio.DBusInterface, Gio.Initable, ClientGlue
     {
         static $gtype: GObject.GType<ClientGlueProxy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientGlueProxy.SignalSignatures;
 
         // Constructors
 
@@ -367,17 +379,17 @@ export namespace UPowerGlib {
 
         connect<K extends keyof ClientGlueProxy.SignalSignatures>(
             signal: K,
-            callback: ClientGlueProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientGlueProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientGlueProxy.SignalSignatures>(
             signal: K,
-            callback: ClientGlueProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientGlueProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientGlueProxy.SignalSignatures>(
             signal: K,
-            ...args: ClientGlueProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientGlueProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1441,11 +1453,11 @@ export namespace UPowerGlib {
     namespace ClientGlueSkeleton {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::daemon-version': GObject.Object.Notify;
-            'notify::lid-is-closed': GObject.Object.Notify;
-            'notify::lid-is-present': GObject.Object.Notify;
-            'notify::on-battery': GObject.Object.Notify;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::daemon-version': (pspec: GObject.ParamSpec) => void;
+            'notify::lid-is-closed': (pspec: GObject.ParamSpec) => void;
+            'notify::lid-is-present': (pspec: GObject.ParamSpec) => void;
+            'notify::on-battery': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1461,6 +1473,14 @@ export namespace UPowerGlib {
      */
     class ClientGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, ClientGlue {
         static $gtype: GObject.GType<ClientGlueSkeleton>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientGlueSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -1474,17 +1494,17 @@ export namespace UPowerGlib {
 
         connect<K extends keyof ClientGlueSkeleton.SignalSignatures>(
             signal: K,
-            callback: ClientGlueSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientGlueSkeleton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientGlueSkeleton.SignalSignatures>(
             signal: K,
-            callback: ClientGlueSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientGlueSkeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientGlueSkeleton.SignalSignatures>(
             signal: K,
-            ...args: ClientGlueSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientGlueSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2211,34 +2231,34 @@ export namespace UPowerGlib {
     namespace Device {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::capacity': GObject.Object.Notify;
-            'notify::energy': GObject.Object.Notify;
-            'notify::energy-empty': GObject.Object.Notify;
-            'notify::energy-full': GObject.Object.Notify;
-            'notify::energy-full-design': GObject.Object.Notify;
-            'notify::energy-rate': GObject.Object.Notify;
-            'notify::has-history': GObject.Object.Notify;
-            'notify::has-statistics': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
-            'notify::is-present': GObject.Object.Notify;
-            'notify::is-rechargeable': GObject.Object.Notify;
-            'notify::kind': GObject.Object.Notify;
-            'notify::luminosity': GObject.Object.Notify;
-            'notify::model': GObject.Object.Notify;
-            'notify::native-path': GObject.Object.Notify;
-            'notify::online': GObject.Object.Notify;
-            'notify::percentage': GObject.Object.Notify;
-            'notify::power-supply': GObject.Object.Notify;
-            'notify::serial': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::technology': GObject.Object.Notify;
-            'notify::temperature': GObject.Object.Notify;
-            'notify::time-to-empty': GObject.Object.Notify;
-            'notify::time-to-full': GObject.Object.Notify;
-            'notify::update-time': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::voltage': GObject.Object.Notify;
-            'notify::warning-level': GObject.Object.Notify;
+            'notify::capacity': (pspec: GObject.ParamSpec) => void;
+            'notify::energy': (pspec: GObject.ParamSpec) => void;
+            'notify::energy-empty': (pspec: GObject.ParamSpec) => void;
+            'notify::energy-full': (pspec: GObject.ParamSpec) => void;
+            'notify::energy-full-design': (pspec: GObject.ParamSpec) => void;
+            'notify::energy-rate': (pspec: GObject.ParamSpec) => void;
+            'notify::has-history': (pspec: GObject.ParamSpec) => void;
+            'notify::has-statistics': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
+            'notify::is-present': (pspec: GObject.ParamSpec) => void;
+            'notify::is-rechargeable': (pspec: GObject.ParamSpec) => void;
+            'notify::kind': (pspec: GObject.ParamSpec) => void;
+            'notify::luminosity': (pspec: GObject.ParamSpec) => void;
+            'notify::model': (pspec: GObject.ParamSpec) => void;
+            'notify::native-path': (pspec: GObject.ParamSpec) => void;
+            'notify::online': (pspec: GObject.ParamSpec) => void;
+            'notify::percentage': (pspec: GObject.ParamSpec) => void;
+            'notify::power-supply': (pspec: GObject.ParamSpec) => void;
+            'notify::serial': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::technology': (pspec: GObject.ParamSpec) => void;
+            'notify::temperature': (pspec: GObject.ParamSpec) => void;
+            'notify::time-to-empty': (pspec: GObject.ParamSpec) => void;
+            'notify::time-to-full': (pspec: GObject.ParamSpec) => void;
+            'notify::update-time': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::voltage': (pspec: GObject.ParamSpec) => void;
+            'notify::warning-level': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2517,6 +2537,14 @@ export namespace UPowerGlib {
          */
         get warningLevel(): number;
         set warningLevel(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -2528,13 +2556,19 @@ export namespace UPowerGlib {
 
         // Signals
 
-        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
-            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2633,43 +2667,43 @@ export namespace UPowerGlib {
     namespace DeviceGlueProxy {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::capacity': GObject.Object.Notify;
-            'notify::energy': GObject.Object.Notify;
-            'notify::energy-empty': GObject.Object.Notify;
-            'notify::energy-full': GObject.Object.Notify;
-            'notify::energy-full-design': GObject.Object.Notify;
-            'notify::energy-rate': GObject.Object.Notify;
-            'notify::has-history': GObject.Object.Notify;
-            'notify::has-statistics': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
-            'notify::is-present': GObject.Object.Notify;
-            'notify::is-rechargeable': GObject.Object.Notify;
-            'notify::luminosity': GObject.Object.Notify;
-            'notify::model': GObject.Object.Notify;
-            'notify::native-path': GObject.Object.Notify;
-            'notify::online': GObject.Object.Notify;
-            'notify::percentage': GObject.Object.Notify;
-            'notify::power-supply': GObject.Object.Notify;
-            'notify::serial': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::technology': GObject.Object.Notify;
-            'notify::temperature': GObject.Object.Notify;
-            'notify::time-to-empty': GObject.Object.Notify;
-            'notify::time-to-full': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::update-time': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::voltage': GObject.Object.Notify;
-            'notify::warning-level': GObject.Object.Notify;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
+            'notify::capacity': (pspec: GObject.ParamSpec) => void;
+            'notify::energy': (pspec: GObject.ParamSpec) => void;
+            'notify::energy-empty': (pspec: GObject.ParamSpec) => void;
+            'notify::energy-full': (pspec: GObject.ParamSpec) => void;
+            'notify::energy-full-design': (pspec: GObject.ParamSpec) => void;
+            'notify::energy-rate': (pspec: GObject.ParamSpec) => void;
+            'notify::has-history': (pspec: GObject.ParamSpec) => void;
+            'notify::has-statistics': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
+            'notify::is-present': (pspec: GObject.ParamSpec) => void;
+            'notify::is-rechargeable': (pspec: GObject.ParamSpec) => void;
+            'notify::luminosity': (pspec: GObject.ParamSpec) => void;
+            'notify::model': (pspec: GObject.ParamSpec) => void;
+            'notify::native-path': (pspec: GObject.ParamSpec) => void;
+            'notify::online': (pspec: GObject.ParamSpec) => void;
+            'notify::percentage': (pspec: GObject.ParamSpec) => void;
+            'notify::power-supply': (pspec: GObject.ParamSpec) => void;
+            'notify::serial': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::technology': (pspec: GObject.ParamSpec) => void;
+            'notify::temperature': (pspec: GObject.ParamSpec) => void;
+            'notify::time-to-empty': (pspec: GObject.ParamSpec) => void;
+            'notify::time-to-full': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::update-time': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::voltage': (pspec: GObject.ParamSpec) => void;
+            'notify::warning-level': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2690,6 +2724,14 @@ export namespace UPowerGlib {
         implements Gio.AsyncInitable<DeviceGlueProxy>, Gio.DBusInterface, Gio.Initable, DeviceGlue
     {
         static $gtype: GObject.GType<DeviceGlueProxy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceGlueProxy.SignalSignatures;
 
         // Constructors
 
@@ -2730,17 +2772,17 @@ export namespace UPowerGlib {
 
         connect<K extends keyof DeviceGlueProxy.SignalSignatures>(
             signal: K,
-            callback: DeviceGlueProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceGlueProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceGlueProxy.SignalSignatures>(
             signal: K,
-            callback: DeviceGlueProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceGlueProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceGlueProxy.SignalSignatures>(
             signal: K,
-            ...args: DeviceGlueProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceGlueProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4072,35 +4114,35 @@ export namespace UPowerGlib {
     namespace DeviceGlueSkeleton {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::capacity': GObject.Object.Notify;
-            'notify::energy': GObject.Object.Notify;
-            'notify::energy-empty': GObject.Object.Notify;
-            'notify::energy-full': GObject.Object.Notify;
-            'notify::energy-full-design': GObject.Object.Notify;
-            'notify::energy-rate': GObject.Object.Notify;
-            'notify::has-history': GObject.Object.Notify;
-            'notify::has-statistics': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
-            'notify::is-present': GObject.Object.Notify;
-            'notify::is-rechargeable': GObject.Object.Notify;
-            'notify::luminosity': GObject.Object.Notify;
-            'notify::model': GObject.Object.Notify;
-            'notify::native-path': GObject.Object.Notify;
-            'notify::online': GObject.Object.Notify;
-            'notify::percentage': GObject.Object.Notify;
-            'notify::power-supply': GObject.Object.Notify;
-            'notify::serial': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::technology': GObject.Object.Notify;
-            'notify::temperature': GObject.Object.Notify;
-            'notify::time-to-empty': GObject.Object.Notify;
-            'notify::time-to-full': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::update-time': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::voltage': GObject.Object.Notify;
-            'notify::warning-level': GObject.Object.Notify;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::capacity': (pspec: GObject.ParamSpec) => void;
+            'notify::energy': (pspec: GObject.ParamSpec) => void;
+            'notify::energy-empty': (pspec: GObject.ParamSpec) => void;
+            'notify::energy-full': (pspec: GObject.ParamSpec) => void;
+            'notify::energy-full-design': (pspec: GObject.ParamSpec) => void;
+            'notify::energy-rate': (pspec: GObject.ParamSpec) => void;
+            'notify::has-history': (pspec: GObject.ParamSpec) => void;
+            'notify::has-statistics': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
+            'notify::is-present': (pspec: GObject.ParamSpec) => void;
+            'notify::is-rechargeable': (pspec: GObject.ParamSpec) => void;
+            'notify::luminosity': (pspec: GObject.ParamSpec) => void;
+            'notify::model': (pspec: GObject.ParamSpec) => void;
+            'notify::native-path': (pspec: GObject.ParamSpec) => void;
+            'notify::online': (pspec: GObject.ParamSpec) => void;
+            'notify::percentage': (pspec: GObject.ParamSpec) => void;
+            'notify::power-supply': (pspec: GObject.ParamSpec) => void;
+            'notify::serial': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::technology': (pspec: GObject.ParamSpec) => void;
+            'notify::temperature': (pspec: GObject.ParamSpec) => void;
+            'notify::time-to-empty': (pspec: GObject.ParamSpec) => void;
+            'notify::time-to-full': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::update-time': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::voltage': (pspec: GObject.ParamSpec) => void;
+            'notify::warning-level': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4116,6 +4158,14 @@ export namespace UPowerGlib {
      */
     class DeviceGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, DeviceGlue {
         static $gtype: GObject.GType<DeviceGlueSkeleton>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceGlueSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -4129,17 +4179,17 @@ export namespace UPowerGlib {
 
         connect<K extends keyof DeviceGlueSkeleton.SignalSignatures>(
             signal: K,
-            callback: DeviceGlueSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceGlueSkeleton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceGlueSkeleton.SignalSignatures>(
             signal: K,
-            callback: DeviceGlueSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceGlueSkeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceGlueSkeleton.SignalSignatures>(
             signal: K,
-            ...args: DeviceGlueSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceGlueSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5134,9 +5184,9 @@ export namespace UPowerGlib {
     namespace HistoryItem {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::state': GObject.Object.Notify;
-            'notify::time': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::time': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5159,6 +5209,14 @@ export namespace UPowerGlib {
         set time(val: number);
         get value(): number;
         set value(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HistoryItem.SignalSignatures;
 
         // Constructors
 
@@ -5172,17 +5230,17 @@ export namespace UPowerGlib {
 
         connect<K extends keyof HistoryItem.SignalSignatures>(
             signal: K,
-            callback: HistoryItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HistoryItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HistoryItem.SignalSignatures>(
             signal: K,
-            callback: HistoryItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HistoryItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HistoryItem.SignalSignatures>(
             signal: K,
-            ...args: HistoryItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HistoryItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5233,8 +5291,8 @@ export namespace UPowerGlib {
     namespace StatsItem {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::accuracy': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::accuracy': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5254,6 +5312,14 @@ export namespace UPowerGlib {
         set accuracy(val: number);
         get value(): number;
         set value(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StatsItem.SignalSignatures;
 
         // Constructors
 
@@ -5265,16 +5331,19 @@ export namespace UPowerGlib {
 
         // Signals
 
-        connect<K extends keyof StatsItem.SignalSignatures>(signal: K, callback: StatsItem.SignalSignatures[K]): number;
+        connect<K extends keyof StatsItem.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, StatsItem.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StatsItem.SignalSignatures>(
             signal: K,
-            callback: StatsItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StatsItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StatsItem.SignalSignatures>(
             signal: K,
-            ...args: StatsItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StatsItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5303,12 +5372,12 @@ export namespace UPowerGlib {
     namespace WakeupItem {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::cmdline': GObject.Object.Notify;
-            'notify::details': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-userspace': GObject.Object.Notify;
-            'notify::old': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::cmdline': (pspec: GObject.ParamSpec) => void;
+            'notify::details': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-userspace': (pspec: GObject.ParamSpec) => void;
+            'notify::old': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5343,6 +5412,14 @@ export namespace UPowerGlib {
         set old(val: number);
         get value(): number;
         set value(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WakeupItem.SignalSignatures;
 
         // Constructors
 
@@ -5356,17 +5433,17 @@ export namespace UPowerGlib {
 
         connect<K extends keyof WakeupItem.SignalSignatures>(
             signal: K,
-            callback: WakeupItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WakeupItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WakeupItem.SignalSignatures>(
             signal: K,
-            callback: WakeupItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WakeupItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WakeupItem.SignalSignatures>(
             signal: K,
-            ...args: WakeupItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WakeupItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5435,20 +5512,10 @@ export namespace UPowerGlib {
     }
 
     namespace Wakeups {
-        // Signal callback interfaces
-
-        interface DataChanged {
-            (_source: Wakeups): void;
-        }
-
-        interface TotalChanged {
-            (_source: Wakeups, object: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'data-changed': DataChanged;
-            'total-changed': TotalChanged;
+            'data-changed': () => void;
+            'total-changed': (arg0: number) => void;
         }
 
         // Constructor properties interface
@@ -5458,6 +5525,14 @@ export namespace UPowerGlib {
 
     class Wakeups extends GObject.Object {
         static $gtype: GObject.GType<Wakeups>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Wakeups.SignalSignatures;
 
         // Constructors
 
@@ -5469,16 +5544,19 @@ export namespace UPowerGlib {
 
         // Signals
 
-        connect<K extends keyof Wakeups.SignalSignatures>(signal: K, callback: Wakeups.SignalSignatures[K]): number;
+        connect<K extends keyof Wakeups.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Wakeups.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Wakeups.SignalSignatures>(
             signal: K,
-            callback: Wakeups.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Wakeups.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Wakeups.SignalSignatures>(
             signal: K,
-            ...args: Wakeups.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Wakeups.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5517,16 +5595,16 @@ export namespace UPowerGlib {
     namespace WakeupsGlueProxy {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::has-capability': GObject.Object.Notify;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
+            'notify::has-capability': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5547,6 +5625,14 @@ export namespace UPowerGlib {
         implements Gio.AsyncInitable<WakeupsGlueProxy>, Gio.DBusInterface, Gio.Initable, WakeupsGlue
     {
         static $gtype: GObject.GType<WakeupsGlueProxy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WakeupsGlueProxy.SignalSignatures;
 
         // Constructors
 
@@ -5587,17 +5673,17 @@ export namespace UPowerGlib {
 
         connect<K extends keyof WakeupsGlueProxy.SignalSignatures>(
             signal: K,
-            callback: WakeupsGlueProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WakeupsGlueProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WakeupsGlueProxy.SignalSignatures>(
             signal: K,
-            callback: WakeupsGlueProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WakeupsGlueProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WakeupsGlueProxy.SignalSignatures>(
             signal: K,
-            ...args: WakeupsGlueProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WakeupsGlueProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6554,8 +6640,8 @@ export namespace UPowerGlib {
     namespace WakeupsGlueSkeleton {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::has-capability': GObject.Object.Notify;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::has-capability': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6571,6 +6657,14 @@ export namespace UPowerGlib {
      */
     class WakeupsGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, WakeupsGlue {
         static $gtype: GObject.GType<WakeupsGlueSkeleton>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WakeupsGlueSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -6584,17 +6678,19 @@ export namespace UPowerGlib {
 
         connect<K extends keyof WakeupsGlueSkeleton.SignalSignatures>(
             signal: K,
-            callback: WakeupsGlueSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WakeupsGlueSkeleton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WakeupsGlueSkeleton.SignalSignatures>(
             signal: K,
-            callback: WakeupsGlueSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WakeupsGlueSkeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WakeupsGlueSkeleton.SignalSignatures>(
             signal: K,
-            ...args: WakeupsGlueSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WakeupsGlueSkeleton.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

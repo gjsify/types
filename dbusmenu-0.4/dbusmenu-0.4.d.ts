@@ -375,43 +375,23 @@ export namespace Dbusmenu {
         (mi: Menuitem, properties?: string | null): GLib.Variant;
     }
     namespace Client {
-        // Signal callback interfaces
-
-        interface EventResult {
-            (_source: Client, object: GObject.Object, p0: string, p1: GLib.Variant, p2: number, p3?: any | null): void;
-        }
-
-        interface IconThemeDirsChanged {
-            (_source: Client, arg1?: any | null): void;
-        }
-
-        interface ItemActivate {
-            (_source: Client, arg1: GObject.Object, arg2: number): void;
-        }
-
-        interface LayoutUpdated {
-            (_source: Client): void;
-        }
-
-        interface NewMenuitem {
-            (_source: Client, arg1: GObject.Object): void;
-        }
-
-        interface RootChanged {
-            (_source: Client, arg1: GObject.Object): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'event-result': EventResult;
-            'icon-theme-dirs-changed': IconThemeDirsChanged;
-            'item-activate': ItemActivate;
-            'layout-updated': LayoutUpdated;
-            'new-menuitem': NewMenuitem;
-            'root-changed': RootChanged;
-            'notify::dbus-name': GObject.Object.Notify;
-            'notify::dbus-object': GObject.Object.Notify;
-            'notify::group-events': GObject.Object.Notify;
+            'event-result': (
+                arg0: GObject.Object,
+                arg1: string,
+                arg2: GLib.Variant,
+                arg3: number,
+                arg4: any | null,
+            ) => void;
+            'icon-theme-dirs-changed': (arg0: any | null) => void;
+            'item-activate': (arg0: GObject.Object, arg1: number) => void;
+            'layout-updated': () => void;
+            'new-menuitem': (arg0: GObject.Object) => void;
+            'root-changed': (arg0: GObject.Object) => void;
+            'notify::dbus-name': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-object': (pspec: GObject.ParamSpec) => void;
+            'notify::group-events': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -443,6 +423,14 @@ export namespace Dbusmenu {
         set group_events(val: boolean);
         get groupEvents(): boolean;
         set groupEvents(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -454,13 +442,19 @@ export namespace Dbusmenu {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -535,57 +529,19 @@ export namespace Dbusmenu {
     }
 
     namespace Menuitem {
-        // Signal callback interfaces
-
-        interface AboutToShow {
-            (_source: Menuitem): boolean | void;
-        }
-
-        interface ChildAdded {
-            (_source: Menuitem, arg1: GObject.Object, arg2: number): void;
-        }
-
-        interface ChildMoved {
-            (_source: Menuitem, arg1: GObject.Object, arg2: number, arg3: number): void;
-        }
-
-        interface ChildRemoved {
-            (_source: Menuitem, arg1: GObject.Object): void;
-        }
-
-        interface Event {
-            (_source: Menuitem, arg1: string, arg2: GLib.Variant, arg3: number): boolean | void;
-        }
-
-        interface ItemActivated {
-            (_source: Menuitem, arg1: number): void;
-        }
-
-        interface PropertyChanged {
-            (_source: Menuitem, arg1: string, arg2: GLib.Variant): void;
-        }
-
-        interface Realized {
-            (_source: Menuitem): void;
-        }
-
-        interface ShowToUser {
-            (_source: Menuitem, arg1: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'about-to-show': AboutToShow;
-            'child-added': ChildAdded;
-            'child-moved': ChildMoved;
-            'child-removed': ChildRemoved;
-            event: Event;
-            'item-activated': ItemActivated;
-            'property-changed': PropertyChanged;
-            realized: Realized;
-            'show-to-user': ShowToUser;
-            'notify::id': GObject.Object.Notify;
-            'event::id': Event;
+            'about-to-show': () => boolean | void;
+            'child-added': (arg0: GObject.Object, arg1: number) => void;
+            'child-moved': (arg0: GObject.Object, arg1: number, arg2: number) => void;
+            'child-removed': (arg0: GObject.Object) => void;
+            event: (arg0: string, arg1: GLib.Variant, arg2: number) => boolean | void;
+            'item-activated': (arg0: number) => void;
+            'property-changed': (arg0: string, arg1: GLib.Variant) => void;
+            realized: () => void;
+            'show-to-user': (arg0: number) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'event::id': (arg0: string, arg1: GLib.Variant, arg2: number) => boolean;
         }
 
         // Constructor properties interface
@@ -609,6 +565,14 @@ export namespace Dbusmenu {
         // Properties
 
         get id(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Menuitem.SignalSignatures;
 
         // Constructors
 
@@ -622,16 +586,19 @@ export namespace Dbusmenu {
 
         // Signals
 
-        connect<K extends keyof Menuitem.SignalSignatures>(signal: K, callback: Menuitem.SignalSignatures[K]): number;
+        connect<K extends keyof Menuitem.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Menuitem.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Menuitem.SignalSignatures>(
             signal: K,
-            callback: Menuitem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Menuitem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Menuitem.SignalSignatures>(
             signal: K,
-            ...args: Menuitem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Menuitem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -980,8 +947,8 @@ export namespace Dbusmenu {
     namespace MenuitemProxy {
         // Signal signatures
         interface SignalSignatures extends Menuitem.SignalSignatures {
-            'notify::menu-item': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
+            'notify::menu-item': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1002,6 +969,14 @@ export namespace Dbusmenu {
 
         get menu_item(): Menuitem;
         get menuItem(): Menuitem;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MenuitemProxy.SignalSignatures;
 
         // Constructors
 
@@ -1018,17 +993,17 @@ export namespace Dbusmenu {
 
         connect<K extends keyof MenuitemProxy.SignalSignatures>(
             signal: K,
-            callback: MenuitemProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuitemProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuitemProxy.SignalSignatures>(
             signal: K,
-            callback: MenuitemProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuitemProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuitemProxy.SignalSignatures>(
             signal: K,
-            ...args: MenuitemProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MenuitemProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1043,33 +1018,15 @@ export namespace Dbusmenu {
     }
 
     namespace Server {
-        // Signal callback interfaces
-
-        interface ItemActivationRequested {
-            (_source: Server, arg1: number, arg2: number): void;
-        }
-
-        interface ItemPropertyUpdated {
-            (_source: Server, object: number, p0: string, p1: GLib.Variant): void;
-        }
-
-        interface ItemUpdated {
-            (_source: Server, object: number): void;
-        }
-
-        interface LayoutUpdated {
-            (_source: Server, arg1: number, arg2: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'item-activation-requested': ItemActivationRequested;
-            'item-property-updated': ItemPropertyUpdated;
-            'item-updated': ItemUpdated;
-            'layout-updated': LayoutUpdated;
-            'notify::dbus-object': GObject.Object.Notify;
-            'notify::root-node': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
+            'item-activation-requested': (arg0: number, arg1: number) => void;
+            'item-property-updated': (arg0: number, arg1: string, arg2: GLib.Variant) => void;
+            'item-updated': (arg0: number) => void;
+            'layout-updated': (arg0: number, arg1: number) => void;
+            'notify::dbus-object': (pspec: GObject.ParamSpec) => void;
+            'notify::root-node': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1099,6 +1056,14 @@ export namespace Dbusmenu {
         get rootNode(): Menuitem;
         set rootNode(val: Menuitem);
         get version(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Server.SignalSignatures;
 
         // Constructors
 
@@ -1110,13 +1075,19 @@ export namespace Dbusmenu {
 
         // Signals
 
-        connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect_after<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Server.SignalSignatures>(
             signal: K,
-            ...args: Server.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Server.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

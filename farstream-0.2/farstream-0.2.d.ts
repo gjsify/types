@@ -524,10 +524,10 @@ export namespace Farstream {
     namespace Conference {
         // Signal signatures
         interface SignalSignatures extends Gst.Bin.SignalSignatures {
-            'notify::async-handling': GObject.Object.Notify;
-            'notify::message-forward': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::async-handling': (pspec: GObject.ParamSpec) => void;
+            'notify::message-forward': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -540,6 +540,14 @@ export namespace Farstream {
      */
     abstract class Conference extends Gst.Bin implements Gst.ChildProxy {
         static $gtype: GObject.GType<Conference>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Conference.SignalSignatures;
 
         // Constructors
 
@@ -551,17 +559,17 @@ export namespace Farstream {
 
         connect<K extends keyof Conference.SignalSignatures>(
             signal: K,
-            callback: Conference.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Conference.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Conference.SignalSignatures>(
             signal: K,
-            callback: Conference.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Conference.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Conference.SignalSignatures>(
             signal: K,
-            ...args: Conference.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Conference.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1111,15 +1119,9 @@ export namespace Farstream {
     }
 
     namespace ElementAddedNotifier {
-        // Signal callback interfaces
-
-        interface ElementAdded {
-            (_source: ElementAddedNotifier, bin: Gst.Bin, element: Gst.Element): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'element-added': ElementAdded;
+            'element-added': (arg0: Gst.Bin, arg1: Gst.Element) => void;
         }
 
         // Constructor properties interface
@@ -1132,6 +1134,14 @@ export namespace Farstream {
      */
     class ElementAddedNotifier extends GObject.Object {
         static $gtype: GObject.GType<ElementAddedNotifier>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ElementAddedNotifier.SignalSignatures;
 
         // Constructors
 
@@ -1145,17 +1155,19 @@ export namespace Farstream {
 
         connect<K extends keyof ElementAddedNotifier.SignalSignatures>(
             signal: K,
-            callback: ElementAddedNotifier.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ElementAddedNotifier.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ElementAddedNotifier.SignalSignatures>(
             signal: K,
-            callback: ElementAddedNotifier.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ElementAddedNotifier.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ElementAddedNotifier.SignalSignatures>(
             signal: K,
-            ...args: ElementAddedNotifier.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ElementAddedNotifier.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1218,6 +1230,14 @@ export namespace Farstream {
      */
     abstract class Participant extends GObject.Object {
         static $gtype: GObject.GType<Participant>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Participant.SignalSignatures;
 
         // Constructors
 
@@ -1229,17 +1249,17 @@ export namespace Farstream {
 
         connect<K extends keyof Participant.SignalSignatures>(
             signal: K,
-            callback: Participant.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Participant.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Participant.SignalSignatures>(
             signal: K,
-            callback: Participant.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Participant.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Participant.SignalSignatures>(
             signal: K,
-            ...args: Participant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Participant.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1258,6 +1278,14 @@ export namespace Farstream {
      */
     class Plugin extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<Plugin>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Plugin.SignalSignatures;
 
         // Constructors
 
@@ -1267,13 +1295,19 @@ export namespace Farstream {
 
         // Signals
 
-        connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect_after<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Plugin.SignalSignatures>(
             signal: K,
-            ...args: Plugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1764,27 +1798,21 @@ export namespace Farstream {
     }
 
     namespace Session {
-        // Signal callback interfaces
-
-        interface Error {
-            (_source: Session, object: GObject.Object, error_no: Error, error_msg: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            error: Error;
-            'notify::allowed-sink-caps': GObject.Object.Notify;
-            'notify::allowed-src-caps': GObject.Object.Notify;
-            'notify::codec-preferences': GObject.Object.Notify;
-            'notify::codecs': GObject.Object.Notify;
-            'notify::codecs-without-config': GObject.Object.Notify;
-            'notify::conference': GObject.Object.Notify;
-            'notify::current-send-codec': GObject.Object.Notify;
-            'notify::encryption-parameters': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::media-type': GObject.Object.Notify;
-            'notify::sink-pad': GObject.Object.Notify;
-            'notify::tos': GObject.Object.Notify;
+            error: (arg0: GObject.Object, arg1: Error, arg2: string) => void;
+            'notify::allowed-sink-caps': (pspec: GObject.ParamSpec) => void;
+            'notify::allowed-src-caps': (pspec: GObject.ParamSpec) => void;
+            'notify::codec-preferences': (pspec: GObject.ParamSpec) => void;
+            'notify::codecs': (pspec: GObject.ParamSpec) => void;
+            'notify::codecs-without-config': (pspec: GObject.ParamSpec) => void;
+            'notify::conference': (pspec: GObject.ParamSpec) => void;
+            'notify::current-send-codec': (pspec: GObject.ParamSpec) => void;
+            'notify::encryption-parameters': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::media-type': (pspec: GObject.ParamSpec) => void;
+            'notify::sink-pad': (pspec: GObject.ParamSpec) => void;
+            'notify::tos': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1990,6 +2018,14 @@ export namespace Farstream {
          */
         get tos(): number;
         set tos(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -1999,16 +2035,19 @@ export namespace Farstream {
 
         // Signals
 
-        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
-            callback: Session.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2267,27 +2306,17 @@ export namespace Farstream {
     }
 
     namespace Stream {
-        // Signal callback interfaces
-
-        interface Error {
-            (_source: Stream, errorno: Error, error_msg: string): void;
-        }
-
-        interface SrcPadAdded {
-            (_source: Stream, pad: Gst.Pad, codec: Codec): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            error: Error;
-            'src-pad-added': SrcPadAdded;
-            'notify::current-recv-codecs': GObject.Object.Notify;
-            'notify::decryption-parameters': GObject.Object.Notify;
-            'notify::direction': GObject.Object.Notify;
-            'notify::negotiated-codecs': GObject.Object.Notify;
-            'notify::participant': GObject.Object.Notify;
-            'notify::remote-codecs': GObject.Object.Notify;
-            'notify::session': GObject.Object.Notify;
+            error: (arg0: Error, arg1: string) => void;
+            'src-pad-added': (arg0: Gst.Pad, arg1: Codec) => void;
+            'notify::current-recv-codecs': (pspec: GObject.ParamSpec) => void;
+            'notify::decryption-parameters': (pspec: GObject.ParamSpec) => void;
+            'notify::direction': (pspec: GObject.ParamSpec) => void;
+            'notify::negotiated-codecs': (pspec: GObject.ParamSpec) => void;
+            'notify::participant': (pspec: GObject.ParamSpec) => void;
+            'notify::remote-codecs': (pspec: GObject.ParamSpec) => void;
+            'notify::session': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2390,6 +2419,14 @@ export namespace Farstream {
          * is read-only construction.
          */
         get session(): Session;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Stream.SignalSignatures;
 
         // Constructors
 
@@ -2399,13 +2436,19 @@ export namespace Farstream {
 
         // Signals
 
-        connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        connect<K extends keyof Stream.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stream.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Stream.SignalSignatures>(
             signal: K,
-            ...args: Stream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Stream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2618,43 +2661,17 @@ export namespace Farstream {
     }
 
     namespace StreamTransmitter {
-        // Signal callback interfaces
-
-        interface Error {
-            (_source: StreamTransmitter, errorno: Error, error_msg: string): void;
-        }
-
-        interface KnownSourcePacketReceived {
-            (_source: StreamTransmitter, component: number, buffer: any): void;
-        }
-
-        interface LocalCandidatesPrepared {
-            (_source: StreamTransmitter): void;
-        }
-
-        interface NewActiveCandidatePair {
-            (_source: StreamTransmitter, local_candidate: Candidate, remote_candidate: Candidate): void;
-        }
-
-        interface NewLocalCandidate {
-            (_source: StreamTransmitter, local_candidate: Candidate): void;
-        }
-
-        interface StateChanged {
-            (_source: StreamTransmitter, component: number, state: StreamState): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            error: Error;
-            'known-source-packet-received': KnownSourcePacketReceived;
-            'local-candidates-prepared': LocalCandidatesPrepared;
-            'new-active-candidate-pair': NewActiveCandidatePair;
-            'new-local-candidate': NewLocalCandidate;
-            'state-changed': StateChanged;
-            'notify::associate-on-source': GObject.Object.Notify;
-            'notify::preferred-local-candidates': GObject.Object.Notify;
-            'notify::sending': GObject.Object.Notify;
+            error: (arg0: Error, arg1: string) => void;
+            'known-source-packet-received': (arg0: number, arg1: any) => void;
+            'local-candidates-prepared': () => void;
+            'new-active-candidate-pair': (arg0: Candidate, arg1: Candidate) => void;
+            'new-local-candidate': (arg0: Candidate) => void;
+            'state-changed': (arg0: number, arg1: StreamState) => void;
+            'notify::associate-on-source': (pspec: GObject.ParamSpec) => void;
+            'notify::preferred-local-candidates': (pspec: GObject.ParamSpec) => void;
+            'notify::sending': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2693,6 +2710,14 @@ export namespace Farstream {
          */
         get sending(): boolean;
         set sending(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamTransmitter.SignalSignatures;
 
         // Constructors
 
@@ -2704,17 +2729,17 @@ export namespace Farstream {
 
         connect<K extends keyof StreamTransmitter.SignalSignatures>(
             signal: K,
-            callback: StreamTransmitter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamTransmitter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamTransmitter.SignalSignatures>(
             signal: K,
-            callback: StreamTransmitter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamTransmitter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamTransmitter.SignalSignatures>(
             signal: K,
-            ...args: StreamTransmitter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamTransmitter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2782,20 +2807,14 @@ export namespace Farstream {
     }
 
     namespace Transmitter {
-        // Signal callback interfaces
-
-        interface Error {
-            (_source: Transmitter, errorno: Error, error_msg: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            error: Error;
-            'notify::components': GObject.Object.Notify;
-            'notify::do-timestamp': GObject.Object.Notify;
-            'notify::gst-sink': GObject.Object.Notify;
-            'notify::gst-src': GObject.Object.Notify;
-            'notify::tos': GObject.Object.Notify;
+            error: (arg0: Error, arg1: string) => void;
+            'notify::components': (pspec: GObject.ParamSpec) => void;
+            'notify::do-timestamp': (pspec: GObject.ParamSpec) => void;
+            'notify::gst-sink': (pspec: GObject.ParamSpec) => void;
+            'notify::gst-src': (pspec: GObject.ParamSpec) => void;
+            'notify::tos': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2875,6 +2894,14 @@ export namespace Farstream {
          */
         get tos(): number;
         set tos(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Transmitter.SignalSignatures;
 
         // Constructors
 
@@ -2888,17 +2915,17 @@ export namespace Farstream {
 
         connect<K extends keyof Transmitter.SignalSignatures>(
             signal: K,
-            callback: Transmitter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Transmitter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Transmitter.SignalSignatures>(
             signal: K,
-            callback: Transmitter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Transmitter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Transmitter.SignalSignatures>(
             signal: K,
-            ...args: Transmitter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Transmitter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -26,23 +26,23 @@ export namespace FolksLibsocialweb {
     namespace Persona {
         // Signal signatures
         interface SignalSignatures extends Folks.Persona.SignalSignatures {
-            'notify::lsw-contact': GObject.Object.Notify;
-            'notify::iid': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
-            'notify::display-id': GObject.Object.Notify;
-            'notify::is-user': GObject.Object.Notify;
-            'notify::store': GObject.Object.Notify;
-            'notify::individual': GObject.Object.Notify;
-            'notify::linkable-properties': GObject.Object.Notify;
-            'notify::writeable-properties': GObject.Object.Notify;
-            'notify::avatar': GObject.Object.Notify;
-            'notify::gender': GObject.Object.Notify;
-            'notify::im-addresses': GObject.Object.Notify;
-            'notify::structured-name': GObject.Object.Notify;
-            'notify::full-name': GObject.Object.Notify;
-            'notify::nickname': GObject.Object.Notify;
-            'notify::urls': GObject.Object.Notify;
-            'notify::web-service-addresses': GObject.Object.Notify;
+            'notify::lsw-contact': (pspec: GObject.ParamSpec) => void;
+            'notify::iid': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::display-id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-user': (pspec: GObject.ParamSpec) => void;
+            'notify::store': (pspec: GObject.ParamSpec) => void;
+            'notify::individual': (pspec: GObject.ParamSpec) => void;
+            'notify::linkable-properties': (pspec: GObject.ParamSpec) => void;
+            'notify::writeable-properties': (pspec: GObject.ParamSpec) => void;
+            'notify::avatar': (pspec: GObject.ParamSpec) => void;
+            'notify::gender': (pspec: GObject.ParamSpec) => void;
+            'notify::im-addresses': (pspec: GObject.ParamSpec) => void;
+            'notify::structured-name': (pspec: GObject.ParamSpec) => void;
+            'notify::full-name': (pspec: GObject.ParamSpec) => void;
+            'notify::nickname': (pspec: GObject.ParamSpec) => void;
+            'notify::urls': (pspec: GObject.ParamSpec) => void;
+            'notify::web-service-addresses': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -76,6 +76,14 @@ export namespace FolksLibsocialweb {
 
         get lsw_contact(): SocialWebClient.Contact;
         get lswContact(): SocialWebClient.Contact;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Persona.SignalSignatures;
 
         // Constructors
 
@@ -87,16 +95,19 @@ export namespace FolksLibsocialweb {
 
         // Signals
 
-        connect<K extends keyof Persona.SignalSignatures>(signal: K, callback: Persona.SignalSignatures[K]): number;
+        connect<K extends keyof Persona.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Persona.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Persona.SignalSignatures>(
             signal: K,
-            callback: Persona.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Persona.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Persona.SignalSignatures>(
             signal: K,
-            ...args: Persona.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Persona.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -675,22 +686,22 @@ export namespace FolksLibsocialweb {
     namespace PersonaStore {
         // Signal signatures
         interface SignalSignatures extends Folks.PersonaStore.SignalSignatures {
-            'notify::service': GObject.Object.Notify;
-            'notify::type-id': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::personas': GObject.Object.Notify;
-            'notify::can-add-personas': GObject.Object.Notify;
-            'notify::can-alias-personas': GObject.Object.Notify;
-            'notify::can-group-personas': GObject.Object.Notify;
-            'notify::can-remove-personas': GObject.Object.Notify;
-            'notify::is-prepared': GObject.Object.Notify;
-            'notify::is-quiescent': GObject.Object.Notify;
-            'notify::is-writeable': GObject.Object.Notify;
-            'notify::trust-level': GObject.Object.Notify;
-            'notify::always-writeable-properties': GObject.Object.Notify;
-            'notify::is-primary-store': GObject.Object.Notify;
-            'notify::is-user-set-default': GObject.Object.Notify;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::type-id': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::personas': (pspec: GObject.ParamSpec) => void;
+            'notify::can-add-personas': (pspec: GObject.ParamSpec) => void;
+            'notify::can-alias-personas': (pspec: GObject.ParamSpec) => void;
+            'notify::can-group-personas': (pspec: GObject.ParamSpec) => void;
+            'notify::can-remove-personas': (pspec: GObject.ParamSpec) => void;
+            'notify::is-prepared': (pspec: GObject.ParamSpec) => void;
+            'notify::is-quiescent': (pspec: GObject.ParamSpec) => void;
+            'notify::is-writeable': (pspec: GObject.ParamSpec) => void;
+            'notify::trust-level': (pspec: GObject.ParamSpec) => void;
+            'notify::always-writeable-properties': (pspec: GObject.ParamSpec) => void;
+            'notify::is-primary-store': (pspec: GObject.ParamSpec) => void;
+            'notify::is-user-set-default': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -706,6 +717,14 @@ export namespace FolksLibsocialweb {
         // Properties
 
         get service(): SocialWebClient.ClientService;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PersonaStore.SignalSignatures;
 
         // Constructors
 
@@ -719,17 +738,17 @@ export namespace FolksLibsocialweb {
 
         connect<K extends keyof PersonaStore.SignalSignatures>(
             signal: K,
-            callback: PersonaStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PersonaStore.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PersonaStore.SignalSignatures>(
             signal: K,
-            callback: PersonaStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PersonaStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PersonaStore.SignalSignatures>(
             signal: K,
-            ...args: PersonaStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PersonaStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

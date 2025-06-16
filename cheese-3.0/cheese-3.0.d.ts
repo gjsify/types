@@ -97,34 +97,16 @@ export namespace Cheese {
      */
     const VIDEO_NAME_SUFFIX: string;
     namespace Camera {
-        // Signal callback interfaces
-
-        interface PhotoSaved {
-            (_source: Camera): void;
-        }
-
-        interface PhotoTaken {
-            (_source: Camera, pixbuf: GdkPixbuf.Pixbuf): void;
-        }
-
-        interface StateFlagsChanged {
-            (_source: Camera, state: number): void;
-        }
-
-        interface VideoSaved {
-            (_source: Camera): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'photo-saved': PhotoSaved;
-            'photo-taken': PhotoTaken;
-            'state-flags-changed': StateFlagsChanged;
-            'video-saved': VideoSaved;
-            'notify::device': GObject.Object.Notify;
-            'notify::format': GObject.Object.Notify;
-            'notify::num-camera-devices': GObject.Object.Notify;
-            'notify::video-texture': GObject.Object.Notify;
+            'photo-saved': () => void;
+            'photo-taken': (arg0: GdkPixbuf.Pixbuf) => void;
+            'state-flags-changed': (arg0: number) => void;
+            'video-saved': () => void;
+            'notify::device': (pspec: GObject.ParamSpec) => void;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::num-camera-devices': (pspec: GObject.ParamSpec) => void;
+            'notify::video-texture': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -175,6 +157,14 @@ export namespace Cheese {
          */
         get videoTexture(): any;
         set videoTexture(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Camera.SignalSignatures;
 
         // Constructors
 
@@ -191,13 +181,19 @@ export namespace Cheese {
 
         // Signals
 
-        connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
+        connect<K extends keyof Camera.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
+        connect_after<K extends keyof Camera.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Camera.SignalSignatures>(
             signal: K,
-            ...args: Camera.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Camera.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -323,9 +319,9 @@ export namespace Cheese {
     namespace CameraDevice {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::device': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
+            'notify::device': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -357,6 +353,14 @@ export namespace Cheese {
          * Path of the video capture device.
          */
         get path(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CameraDevice.SignalSignatures;
 
         // Constructors
 
@@ -370,17 +374,17 @@ export namespace Cheese {
 
         connect<K extends keyof CameraDevice.SignalSignatures>(
             signal: K,
-            callback: CameraDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CameraDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CameraDevice.SignalSignatures>(
             signal: K,
-            callback: CameraDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CameraDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CameraDevice.SignalSignatures>(
             signal: K,
-            ...args: CameraDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CameraDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -956,20 +960,10 @@ export namespace Cheese {
     }
 
     namespace CameraDeviceMonitor {
-        // Signal callback interfaces
-
-        interface Added {
-            (_source: CameraDeviceMonitor, device: CameraDevice): void;
-        }
-
-        interface Removed {
-            (_source: CameraDeviceMonitor, device: CameraDevice): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            added: Added;
-            removed: Removed;
+            added: (arg0: CameraDevice) => void;
+            removed: (arg0: CameraDevice) => void;
         }
 
         // Constructor properties interface
@@ -985,6 +979,14 @@ export namespace Cheese {
      */
     class CameraDeviceMonitor extends GObject.Object implements Gio.AsyncInitable<CameraDeviceMonitor>, Gio.Initable {
         static $gtype: GObject.GType<CameraDeviceMonitor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CameraDeviceMonitor.SignalSignatures;
 
         // Constructors
 
@@ -1003,17 +1005,19 @@ export namespace Cheese {
 
         connect<K extends keyof CameraDeviceMonitor.SignalSignatures>(
             signal: K,
-            callback: CameraDeviceMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CameraDeviceMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CameraDeviceMonitor.SignalSignatures>(
             signal: K,
-            callback: CameraDeviceMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CameraDeviceMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CameraDeviceMonitor.SignalSignatures>(
             signal: K,
-            ...args: CameraDeviceMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CameraDeviceMonitor.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1776,9 +1780,9 @@ export namespace Cheese {
     namespace Effect {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::control-valve': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::pipeline-desc': GObject.Object.Notify;
+            'notify::control-valve': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::pipeline-desc': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1824,6 +1828,14 @@ export namespace Cheese {
          * Description of the GStreamer pipeline associated with the effect.
          */
         get pipelineDesc(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Effect.SignalSignatures;
 
         // Constructors
 
@@ -1835,13 +1847,19 @@ export namespace Cheese {
 
         // Signals
 
-        connect<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
+        connect<K extends keyof Effect.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Effect.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
+        connect_after<K extends keyof Effect.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Effect.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Effect.SignalSignatures>(
             signal: K,
-            ...args: Effect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Effect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1898,6 +1916,14 @@ export namespace Cheese {
      */
     class FileUtil extends GObject.Object {
         static $gtype: GObject.GType<FileUtil>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FileUtil.SignalSignatures;
 
         // Constructors
 
@@ -1909,16 +1935,19 @@ export namespace Cheese {
 
         // Signals
 
-        connect<K extends keyof FileUtil.SignalSignatures>(signal: K, callback: FileUtil.SignalSignatures[K]): number;
+        connect<K extends keyof FileUtil.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, FileUtil.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileUtil.SignalSignatures>(
             signal: K,
-            callback: FileUtil.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileUtil.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileUtil.SignalSignatures>(
             signal: K,
-            ...args: FileUtil.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FileUtil.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -33,24 +33,24 @@ export namespace GdkWayland {
     namespace WaylandDevice {
         // Signal signatures
         interface SignalSignatures extends Gdk.Device.SignalSignatures {
-            'notify::active-layout-index': GObject.Object.Notify;
-            'notify::caps-lock-state': GObject.Object.Notify;
-            'notify::direction': GObject.Object.Notify;
-            'notify::display': GObject.Object.Notify;
-            'notify::has-bidi-layouts': GObject.Object.Notify;
-            'notify::has-cursor': GObject.Object.Notify;
-            'notify::layout-names': GObject.Object.Notify;
-            'notify::modifier-state': GObject.Object.Notify;
-            'notify::n-axes': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::num-lock-state': GObject.Object.Notify;
-            'notify::num-touches': GObject.Object.Notify;
-            'notify::product-id': GObject.Object.Notify;
-            'notify::scroll-lock-state': GObject.Object.Notify;
-            'notify::seat': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
-            'notify::tool': GObject.Object.Notify;
-            'notify::vendor-id': GObject.Object.Notify;
+            'notify::active-layout-index': (pspec: GObject.ParamSpec) => void;
+            'notify::caps-lock-state': (pspec: GObject.ParamSpec) => void;
+            'notify::direction': (pspec: GObject.ParamSpec) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::has-bidi-layouts': (pspec: GObject.ParamSpec) => void;
+            'notify::has-cursor': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-names': (pspec: GObject.ParamSpec) => void;
+            'notify::modifier-state': (pspec: GObject.ParamSpec) => void;
+            'notify::n-axes': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::num-lock-state': (pspec: GObject.ParamSpec) => void;
+            'notify::num-touches': (pspec: GObject.ParamSpec) => void;
+            'notify::product-id': (pspec: GObject.ParamSpec) => void;
+            'notify::scroll-lock-state': (pspec: GObject.ParamSpec) => void;
+            'notify::seat': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::tool': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor-id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -69,6 +69,14 @@ export namespace GdkWayland {
      */
     class WaylandDevice extends Gdk.Device {
         static $gtype: GObject.GType<WaylandDevice>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WaylandDevice.SignalSignatures;
 
         // Constructors
 
@@ -80,17 +88,17 @@ export namespace GdkWayland {
 
         connect<K extends keyof WaylandDevice.SignalSignatures>(
             signal: K,
-            callback: WaylandDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WaylandDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaylandDevice.SignalSignatures>(
             signal: K,
-            callback: WaylandDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WaylandDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaylandDevice.SignalSignatures>(
             signal: K,
-            ...args: WaylandDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WaylandDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -118,11 +126,11 @@ export namespace GdkWayland {
     namespace WaylandDisplay {
         // Signal signatures
         interface SignalSignatures extends Gdk.Display.SignalSignatures {
-            'notify::composited': GObject.Object.Notify;
-            'notify::dmabuf-formats': GObject.Object.Notify;
-            'notify::input-shapes': GObject.Object.Notify;
-            'notify::rgba': GObject.Object.Notify;
-            'notify::shadow-width': GObject.Object.Notify;
+            'notify::composited': (pspec: GObject.ParamSpec) => void;
+            'notify::dmabuf-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::input-shapes': (pspec: GObject.ParamSpec) => void;
+            'notify::rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::shadow-width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -143,6 +151,14 @@ export namespace GdkWayland {
      */
     class WaylandDisplay extends Gdk.Display {
         static $gtype: GObject.GType<WaylandDisplay>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WaylandDisplay.SignalSignatures;
 
         // Constructors
 
@@ -154,17 +170,17 @@ export namespace GdkWayland {
 
         connect<K extends keyof WaylandDisplay.SignalSignatures>(
             signal: K,
-            callback: WaylandDisplay.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WaylandDisplay.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaylandDisplay.SignalSignatures>(
             signal: K,
-            callback: WaylandDisplay.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WaylandDisplay.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaylandDisplay.SignalSignatures>(
             signal: K,
-            ...args: WaylandDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WaylandDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -212,11 +228,11 @@ export namespace GdkWayland {
     namespace WaylandGLContext {
         // Signal signatures
         interface SignalSignatures extends Gdk.GLContext.SignalSignatures {
-            'notify::allowed-apis': GObject.Object.Notify;
-            'notify::api': GObject.Object.Notify;
-            'notify::shared-context': GObject.Object.Notify;
-            'notify::display': GObject.Object.Notify;
-            'notify::surface': GObject.Object.Notify;
+            'notify::allowed-apis': (pspec: GObject.ParamSpec) => void;
+            'notify::api': (pspec: GObject.ParamSpec) => void;
+            'notify::shared-context': (pspec: GObject.ParamSpec) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::surface': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -229,6 +245,14 @@ export namespace GdkWayland {
      */
     class WaylandGLContext extends Gdk.GLContext {
         static $gtype: GObject.GType<WaylandGLContext>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WaylandGLContext.SignalSignatures;
 
         // Constructors
 
@@ -240,17 +264,17 @@ export namespace GdkWayland {
 
         connect<K extends keyof WaylandGLContext.SignalSignatures>(
             signal: K,
-            callback: WaylandGLContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WaylandGLContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaylandGLContext.SignalSignatures>(
             signal: K,
-            callback: WaylandGLContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WaylandGLContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaylandGLContext.SignalSignatures>(
             signal: K,
-            ...args: WaylandGLContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WaylandGLContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -258,19 +282,19 @@ export namespace GdkWayland {
     namespace WaylandMonitor {
         // Signal signatures
         interface SignalSignatures extends Gdk.Monitor.SignalSignatures {
-            'notify::connector': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::display': GObject.Object.Notify;
-            'notify::geometry': GObject.Object.Notify;
-            'notify::height-mm': GObject.Object.Notify;
-            'notify::manufacturer': GObject.Object.Notify;
-            'notify::model': GObject.Object.Notify;
-            'notify::refresh-rate': GObject.Object.Notify;
-            'notify::scale': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::subpixel-layout': GObject.Object.Notify;
-            'notify::valid': GObject.Object.Notify;
-            'notify::width-mm': GObject.Object.Notify;
+            'notify::connector': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::geometry': (pspec: GObject.ParamSpec) => void;
+            'notify::height-mm': (pspec: GObject.ParamSpec) => void;
+            'notify::manufacturer': (pspec: GObject.ParamSpec) => void;
+            'notify::model': (pspec: GObject.ParamSpec) => void;
+            'notify::refresh-rate': (pspec: GObject.ParamSpec) => void;
+            'notify::scale': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::subpixel-layout': (pspec: GObject.ParamSpec) => void;
+            'notify::valid': (pspec: GObject.ParamSpec) => void;
+            'notify::width-mm': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -287,6 +311,14 @@ export namespace GdkWayland {
      */
     class WaylandMonitor extends Gdk.Monitor {
         static $gtype: GObject.GType<WaylandMonitor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WaylandMonitor.SignalSignatures;
 
         // Constructors
 
@@ -298,17 +330,17 @@ export namespace GdkWayland {
 
         connect<K extends keyof WaylandMonitor.SignalSignatures>(
             signal: K,
-            callback: WaylandMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WaylandMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaylandMonitor.SignalSignatures>(
             signal: K,
-            callback: WaylandMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WaylandMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaylandMonitor.SignalSignatures>(
             signal: K,
-            ...args: WaylandMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WaylandMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -316,16 +348,16 @@ export namespace GdkWayland {
     namespace WaylandPopup {
         // Signal signatures
         interface SignalSignatures extends WaylandSurface.SignalSignatures {
-            'notify::cursor': GObject.Object.Notify;
-            'notify::display': GObject.Object.Notify;
-            'notify::frame-clock': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::mapped': GObject.Object.Notify;
-            'notify::scale': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::autohide': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::cursor': (pspec: GObject.ParamSpec) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::frame-clock': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::mapped': (pspec: GObject.ParamSpec) => void;
+            'notify::scale': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::autohide': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -338,6 +370,14 @@ export namespace GdkWayland {
      */
     class WaylandPopup extends WaylandSurface implements Gdk.Popup {
         static $gtype: GObject.GType<WaylandPopup>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WaylandPopup.SignalSignatures;
 
         // Constructors
 
@@ -349,17 +389,17 @@ export namespace GdkWayland {
 
         connect<K extends keyof WaylandPopup.SignalSignatures>(
             signal: K,
-            callback: WaylandPopup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WaylandPopup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaylandPopup.SignalSignatures>(
             signal: K,
-            callback: WaylandPopup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WaylandPopup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaylandPopup.SignalSignatures>(
             signal: K,
-            ...args: WaylandPopup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WaylandPopup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -744,7 +784,7 @@ export namespace GdkWayland {
     namespace WaylandSeat {
         // Signal signatures
         interface SignalSignatures extends Gdk.Seat.SignalSignatures {
-            'notify::display': GObject.Object.Notify;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -761,6 +801,14 @@ export namespace GdkWayland {
      */
     class WaylandSeat extends Gdk.Seat {
         static $gtype: GObject.GType<WaylandSeat>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WaylandSeat.SignalSignatures;
 
         // Constructors
 
@@ -772,17 +820,17 @@ export namespace GdkWayland {
 
         connect<K extends keyof WaylandSeat.SignalSignatures>(
             signal: K,
-            callback: WaylandSeat.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WaylandSeat.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaylandSeat.SignalSignatures>(
             signal: K,
-            callback: WaylandSeat.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WaylandSeat.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaylandSeat.SignalSignatures>(
             signal: K,
-            ...args: WaylandSeat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WaylandSeat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -790,14 +838,14 @@ export namespace GdkWayland {
     namespace WaylandSurface {
         // Signal signatures
         interface SignalSignatures extends Gdk.Surface.SignalSignatures {
-            'notify::cursor': GObject.Object.Notify;
-            'notify::display': GObject.Object.Notify;
-            'notify::frame-clock': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::mapped': GObject.Object.Notify;
-            'notify::scale': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::cursor': (pspec: GObject.ParamSpec) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::frame-clock': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::mapped': (pspec: GObject.ParamSpec) => void;
+            'notify::scale': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -814,6 +862,14 @@ export namespace GdkWayland {
      */
     class WaylandSurface extends Gdk.Surface {
         static $gtype: GObject.GType<WaylandSurface>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WaylandSurface.SignalSignatures;
 
         // Constructors
 
@@ -825,17 +881,17 @@ export namespace GdkWayland {
 
         connect<K extends keyof WaylandSurface.SignalSignatures>(
             signal: K,
-            callback: WaylandSurface.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WaylandSurface.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaylandSurface.SignalSignatures>(
             signal: K,
-            callback: WaylandSurface.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WaylandSurface.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaylandSurface.SignalSignatures>(
             signal: K,
-            ...args: WaylandSurface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WaylandSurface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -850,24 +906,24 @@ export namespace GdkWayland {
     namespace WaylandToplevel {
         // Signal signatures
         interface SignalSignatures extends WaylandSurface.SignalSignatures {
-            'notify::cursor': GObject.Object.Notify;
-            'notify::display': GObject.Object.Notify;
-            'notify::frame-clock': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::mapped': GObject.Object.Notify;
-            'notify::scale': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::decorated': GObject.Object.Notify;
-            'notify::deletable': GObject.Object.Notify;
-            'notify::fullscreen-mode': GObject.Object.Notify;
-            'notify::icon-list': GObject.Object.Notify;
-            'notify::modal': GObject.Object.Notify;
-            'notify::shortcuts-inhibited': GObject.Object.Notify;
-            'notify::startup-id': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::transient-for': GObject.Object.Notify;
+            'notify::cursor': (pspec: GObject.ParamSpec) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::frame-clock': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::mapped': (pspec: GObject.ParamSpec) => void;
+            'notify::scale': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::decorated': (pspec: GObject.ParamSpec) => void;
+            'notify::deletable': (pspec: GObject.ParamSpec) => void;
+            'notify::fullscreen-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-list': (pspec: GObject.ParamSpec) => void;
+            'notify::modal': (pspec: GObject.ParamSpec) => void;
+            'notify::shortcuts-inhibited': (pspec: GObject.ParamSpec) => void;
+            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -885,6 +941,14 @@ export namespace GdkWayland {
      */
     class WaylandToplevel extends WaylandSurface implements Gdk.Toplevel {
         static $gtype: GObject.GType<WaylandToplevel>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WaylandToplevel.SignalSignatures;
 
         // Constructors
 
@@ -896,17 +960,17 @@ export namespace GdkWayland {
 
         connect<K extends keyof WaylandToplevel.SignalSignatures>(
             signal: K,
-            callback: WaylandToplevel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WaylandToplevel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaylandToplevel.SignalSignatures>(
             signal: K,
-            callback: WaylandToplevel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WaylandToplevel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaylandToplevel.SignalSignatures>(
             signal: K,
-            ...args: WaylandToplevel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WaylandToplevel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

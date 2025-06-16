@@ -41,7 +41,7 @@ export namespace Parquet {
     namespace ArrowFileReader {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::arrow-file-reader': GObject.Object.Notify;
+            'notify::arrow-file-reader': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -59,6 +59,14 @@ export namespace Parquet {
 
         set arrow_file_reader(val: any);
         set arrowFileReader(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ArrowFileReader.SignalSignatures;
 
         // Constructors
 
@@ -74,17 +82,17 @@ export namespace Parquet {
 
         connect<K extends keyof ArrowFileReader.SignalSignatures>(
             signal: K,
-            callback: ArrowFileReader.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ArrowFileReader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ArrowFileReader.SignalSignatures>(
             signal: K,
-            callback: ArrowFileReader.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ArrowFileReader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ArrowFileReader.SignalSignatures>(
             signal: K,
-            ...args: ArrowFileReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ArrowFileReader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -101,7 +109,7 @@ export namespace Parquet {
     namespace ArrowFileWriter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::arrow-file-writer': GObject.Object.Notify;
+            'notify::arrow-file-writer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -119,6 +127,14 @@ export namespace Parquet {
 
         set arrow_file_writer(val: any);
         set arrowFileWriter(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ArrowFileWriter.SignalSignatures;
 
         // Constructors
 
@@ -142,17 +158,17 @@ export namespace Parquet {
 
         connect<K extends keyof ArrowFileWriter.SignalSignatures>(
             signal: K,
-            callback: ArrowFileWriter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ArrowFileWriter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ArrowFileWriter.SignalSignatures>(
             signal: K,
-            callback: ArrowFileWriter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ArrowFileWriter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ArrowFileWriter.SignalSignatures>(
             signal: K,
-            ...args: ArrowFileWriter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ArrowFileWriter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -173,6 +189,14 @@ export namespace Parquet {
 
     class WriterProperties extends GObject.Object {
         static $gtype: GObject.GType<WriterProperties>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WriterProperties.SignalSignatures;
 
         // Constructors
 
@@ -186,17 +210,17 @@ export namespace Parquet {
 
         connect<K extends keyof WriterProperties.SignalSignatures>(
             signal: K,
-            callback: WriterProperties.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WriterProperties.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WriterProperties.SignalSignatures>(
             signal: K,
-            callback: WriterProperties.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WriterProperties.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WriterProperties.SignalSignatures>(
             signal: K,
-            ...args: WriterProperties.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WriterProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -32,6 +32,14 @@ export namespace GVncPulse {
 
     class AudioPulse extends GVnc.BaseAudio implements GVnc.Audio {
         static $gtype: GObject.GType<AudioPulse>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioPulse.SignalSignatures;
 
         // Constructors
 
@@ -45,17 +53,17 @@ export namespace GVncPulse {
 
         connect<K extends keyof AudioPulse.SignalSignatures>(
             signal: K,
-            callback: AudioPulse.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioPulse.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioPulse.SignalSignatures>(
             signal: K,
-            callback: AudioPulse.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioPulse.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioPulse.SignalSignatures>(
             signal: K,
-            ...args: AudioPulse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioPulse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

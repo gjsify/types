@@ -177,6 +177,14 @@ export namespace PackageKitPlugin {
 
     class Backend extends GObject.Object {
         static $gtype: GObject.GType<Backend>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Backend.SignalSignatures;
 
         // Constructors
 
@@ -188,16 +196,19 @@ export namespace PackageKitPlugin {
 
         // Signals
 
-        connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: Backend.SignalSignatures[K]): number;
+        connect<K extends keyof Backend.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            callback: Backend.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            ...args: Backend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Backend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -346,6 +357,14 @@ export namespace PackageKitPlugin {
 
     class BackendJob extends GObject.Object {
         static $gtype: GObject.GType<BackendJob>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BackendJob.SignalSignatures;
 
         // Constructors
 
@@ -359,17 +378,17 @@ export namespace PackageKitPlugin {
 
         connect<K extends keyof BackendJob.SignalSignatures>(
             signal: K,
-            callback: BackendJob.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BackendJob.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BackendJob.SignalSignatures>(
             signal: K,
-            callback: BackendJob.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BackendJob.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BackendJob.SignalSignatures>(
             signal: K,
-            ...args: BackendJob.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BackendJob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -508,15 +527,9 @@ export namespace PackageKitPlugin {
     }
 
     namespace Transaction {
-        // Signal callback interfaces
-
-        interface Finished {
-            (_source: Transaction): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            finished: Finished;
+            finished: () => void;
         }
 
         // Constructor properties interface
@@ -526,6 +539,14 @@ export namespace PackageKitPlugin {
 
     class Transaction extends GObject.Object {
         static $gtype: GObject.GType<Transaction>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Transaction.SignalSignatures;
 
         // Constructors
 
@@ -539,17 +560,17 @@ export namespace PackageKitPlugin {
 
         connect<K extends keyof Transaction.SignalSignatures>(
             signal: K,
-            callback: Transaction.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Transaction.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Transaction.SignalSignatures>(
             signal: K,
-            callback: Transaction.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Transaction.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Transaction.SignalSignatures>(
             signal: K,
-            ...args: Transaction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Transaction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

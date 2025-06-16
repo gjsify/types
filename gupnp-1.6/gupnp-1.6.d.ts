@@ -304,25 +304,25 @@ export namespace GUPnP {
     namespace Context {
         // Signal signatures
         interface SignalSignatures extends GSSDP.Client.SignalSignatures {
-            'notify::acl': GObject.Object.Notify;
-            'notify::default-language': GObject.Object.Notify;
-            'notify::server': GObject.Object.Notify;
-            'notify::session': GObject.Object.Notify;
-            'notify::subscription-timeout': GObject.Object.Notify;
-            'notify::active': GObject.Object.Notify;
-            'notify::address': GObject.Object.Notify;
-            'notify::address-family': GObject.Object.Notify;
-            'notify::boot-id': GObject.Object.Notify;
-            'notify::config-id': GObject.Object.Notify;
-            'notify::host-ip': GObject.Object.Notify;
-            'notify::host-mask': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::msearch-port': GObject.Object.Notify;
-            'notify::network': GObject.Object.Notify;
-            'notify::port': GObject.Object.Notify;
-            'notify::server-id': GObject.Object.Notify;
-            'notify::socket-ttl': GObject.Object.Notify;
-            'notify::uda-version': GObject.Object.Notify;
+            'notify::acl': (pspec: GObject.ParamSpec) => void;
+            'notify::default-language': (pspec: GObject.ParamSpec) => void;
+            'notify::server': (pspec: GObject.ParamSpec) => void;
+            'notify::session': (pspec: GObject.ParamSpec) => void;
+            'notify::subscription-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::address': (pspec: GObject.ParamSpec) => void;
+            'notify::address-family': (pspec: GObject.ParamSpec) => void;
+            'notify::boot-id': (pspec: GObject.ParamSpec) => void;
+            'notify::config-id': (pspec: GObject.ParamSpec) => void;
+            'notify::host-ip': (pspec: GObject.ParamSpec) => void;
+            'notify::host-mask': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::msearch-port': (pspec: GObject.ParamSpec) => void;
+            'notify::network': (pspec: GObject.ParamSpec) => void;
+            'notify::port': (pspec: GObject.ParamSpec) => void;
+            'notify::server-id': (pspec: GObject.ParamSpec) => void;
+            'notify::socket-ttl': (pspec: GObject.ParamSpec) => void;
+            'notify::uda-version': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -391,6 +391,14 @@ export namespace GUPnP {
          * are never to time out.
          */
         get subscriptionTimeout(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -414,16 +422,19 @@ export namespace GUPnP {
 
         // Signals
 
-        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
-            callback: Context.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1062,8 +1073,8 @@ export namespace GUPnP {
     namespace ContextFilter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::enabled': GObject.Object.Notify;
-            'notify::entries': GObject.Object.Notify;
+            'notify::enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::entries': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1128,6 +1139,14 @@ export namespace GUPnP {
          * A list of items to filter for.
          */
         get entries(): string[];
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ContextFilter.SignalSignatures;
 
         // Constructors
 
@@ -1139,17 +1158,17 @@ export namespace GUPnP {
 
         connect<K extends keyof ContextFilter.SignalSignatures>(
             signal: K,
-            callback: ContextFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContextFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContextFilter.SignalSignatures>(
             signal: K,
-            callback: ContextFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContextFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContextFilter.SignalSignatures>(
             signal: K,
-            ...args: ContextFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ContextFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1215,24 +1234,14 @@ export namespace GUPnP {
     }
 
     namespace ContextManager {
-        // Signal callback interfaces
-
-        interface ContextAvailable {
-            (_source: ContextManager, context: Context): void;
-        }
-
-        interface ContextUnavailable {
-            (_source: ContextManager, context: Context): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'context-available': ContextAvailable;
-            'context-unavailable': ContextUnavailable;
-            'notify::context-filter': GObject.Object.Notify;
-            'notify::family': GObject.Object.Notify;
-            'notify::port': GObject.Object.Notify;
-            'notify::uda-version': GObject.Object.Notify;
+            'context-available': (arg0: Context) => void;
+            'context-unavailable': (arg0: Context) => void;
+            'notify::context-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::family': (pspec: GObject.ParamSpec) => void;
+            'notify::port': (pspec: GObject.ParamSpec) => void;
+            'notify::uda-version': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1294,6 +1303,14 @@ export namespace GUPnP {
          * for using the default UDA version.
          */
         get udaVersion(): GSSDP.UDAVersion;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ContextManager.SignalSignatures;
 
         // Constructors
 
@@ -1305,17 +1322,17 @@ export namespace GUPnP {
 
         connect<K extends keyof ContextManager.SignalSignatures>(
             signal: K,
-            callback: ContextManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContextManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContextManager.SignalSignatures>(
             signal: K,
-            callback: ContextManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContextManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContextManager.SignalSignatures>(
             signal: K,
-            ...args: ContextManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ContextManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1425,35 +1442,17 @@ export namespace GUPnP {
     }
 
     namespace ControlPoint {
-        // Signal callback interfaces
-
-        interface DeviceProxyAvailable {
-            (_source: ControlPoint, proxy: DeviceProxy): void;
-        }
-
-        interface DeviceProxyUnavailable {
-            (_source: ControlPoint, proxy: DeviceProxy): void;
-        }
-
-        interface ServiceProxyAvailable {
-            (_source: ControlPoint, proxy: ServiceProxy): void;
-        }
-
-        interface ServiceProxyUnavailable {
-            (_source: ControlPoint, proxy: ServiceProxy): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GSSDP.ResourceBrowser.SignalSignatures {
-            'device-proxy-available': DeviceProxyAvailable;
-            'device-proxy-unavailable': DeviceProxyUnavailable;
-            'service-proxy-available': ServiceProxyAvailable;
-            'service-proxy-unavailable': ServiceProxyUnavailable;
-            'notify::resource-factory': GObject.Object.Notify;
-            'notify::active': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
-            'notify::mx': GObject.Object.Notify;
-            'notify::target': GObject.Object.Notify;
+            'device-proxy-available': (arg0: DeviceProxy) => void;
+            'device-proxy-unavailable': (arg0: DeviceProxy) => void;
+            'service-proxy-available': (arg0: ServiceProxy) => void;
+            'service-proxy-unavailable': (arg0: ServiceProxy) => void;
+            'notify::resource-factory': (pspec: GObject.ParamSpec) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::mx': (pspec: GObject.ParamSpec) => void;
+            'notify::target': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1489,6 +1488,14 @@ export namespace GUPnP {
          * The resource factory to use. Set to NULL for default factory.
          */
         get resourceFactory(): ResourceFactory;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ControlPoint.SignalSignatures;
 
         // Constructors
 
@@ -1504,17 +1511,17 @@ export namespace GUPnP {
 
         connect<K extends keyof ControlPoint.SignalSignatures>(
             signal: K,
-            callback: ControlPoint.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ControlPoint.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ControlPoint.SignalSignatures>(
             signal: K,
-            callback: ControlPoint.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ControlPoint.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ControlPoint.SignalSignatures>(
             signal: K,
-            ...args: ControlPoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ControlPoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1568,15 +1575,15 @@ export namespace GUPnP {
     namespace Device {
         // Signal signatures
         interface SignalSignatures extends DeviceInfo.SignalSignatures {
-            'notify::root-device': GObject.Object.Notify;
-            'notify::context': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::element': GObject.Object.Notify;
-            'notify::location': GObject.Object.Notify;
-            'notify::resource-factory': GObject.Object.Notify;
-            'notify::udn': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
+            'notify::root-device': (pspec: GObject.ParamSpec) => void;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::element': (pspec: GObject.ParamSpec) => void;
+            'notify::location': (pspec: GObject.ParamSpec) => void;
+            'notify::resource-factory': (pspec: GObject.ParamSpec) => void;
+            'notify::udn': (pspec: GObject.ParamSpec) => void;
+            'notify::url-base': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1609,6 +1616,14 @@ export namespace GUPnP {
          * device.
          */
         get rootDevice(): RootDevice;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -1618,13 +1633,19 @@ export namespace GUPnP {
 
         // Signals
 
-        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
-            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1632,14 +1653,14 @@ export namespace GUPnP {
     namespace DeviceInfo {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::element': GObject.Object.Notify;
-            'notify::location': GObject.Object.Notify;
-            'notify::resource-factory': GObject.Object.Notify;
-            'notify::udn': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::element': (pspec: GObject.ParamSpec) => void;
+            'notify::location': (pspec: GObject.ParamSpec) => void;
+            'notify::resource-factory': (pspec: GObject.ParamSpec) => void;
+            'notify::udn': (pspec: GObject.ParamSpec) => void;
+            'notify::url-base': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1718,6 +1739,14 @@ export namespace GUPnP {
          */
         get urlBase(): GLib.Uri;
         set urlBase(val: GLib.Uri);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceInfo.SignalSignatures;
 
         // Constructors
 
@@ -1729,17 +1758,17 @@ export namespace GUPnP {
 
         connect<K extends keyof DeviceInfo.SignalSignatures>(
             signal: K,
-            callback: DeviceInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceInfo.SignalSignatures>(
             signal: K,
-            callback: DeviceInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceInfo.SignalSignatures>(
             signal: K,
-            ...args: DeviceInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1991,14 +2020,14 @@ export namespace GUPnP {
     namespace DeviceProxy {
         // Signal signatures
         interface SignalSignatures extends DeviceInfo.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::element': GObject.Object.Notify;
-            'notify::location': GObject.Object.Notify;
-            'notify::resource-factory': GObject.Object.Notify;
-            'notify::udn': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::element': (pspec: GObject.ParamSpec) => void;
+            'notify::location': (pspec: GObject.ParamSpec) => void;
+            'notify::resource-factory': (pspec: GObject.ParamSpec) => void;
+            'notify::udn': (pspec: GObject.ParamSpec) => void;
+            'notify::url-base': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2014,6 +2043,14 @@ export namespace GUPnP {
      */
     class DeviceProxy extends DeviceInfo {
         static $gtype: GObject.GType<DeviceProxy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceProxy.SignalSignatures;
 
         // Constructors
 
@@ -2025,17 +2062,17 @@ export namespace GUPnP {
 
         connect<K extends keyof DeviceProxy.SignalSignatures>(
             signal: K,
-            callback: DeviceProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceProxy.SignalSignatures>(
             signal: K,
-            callback: DeviceProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceProxy.SignalSignatures>(
             signal: K,
-            ...args: DeviceProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2064,6 +2101,14 @@ export namespace GUPnP {
      */
     class ResourceFactory extends GObject.Object {
         static $gtype: GObject.GType<ResourceFactory>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ResourceFactory.SignalSignatures;
 
         // Constructors
 
@@ -2077,17 +2122,17 @@ export namespace GUPnP {
 
         connect<K extends keyof ResourceFactory.SignalSignatures>(
             signal: K,
-            callback: ResourceFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ResourceFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResourceFactory.SignalSignatures>(
             signal: K,
-            callback: ResourceFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ResourceFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResourceFactory.SignalSignatures>(
             signal: K,
-            ...args: ResourceFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ResourceFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2145,18 +2190,18 @@ export namespace GUPnP {
     namespace RootDevice {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::available': GObject.Object.Notify;
-            'notify::description-dir': GObject.Object.Notify;
-            'notify::description-path': GObject.Object.Notify;
-            'notify::root-device': GObject.Object.Notify;
-            'notify::context': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::element': GObject.Object.Notify;
-            'notify::location': GObject.Object.Notify;
-            'notify::resource-factory': GObject.Object.Notify;
-            'notify::udn': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
+            'notify::available': (pspec: GObject.ParamSpec) => void;
+            'notify::description-dir': (pspec: GObject.ParamSpec) => void;
+            'notify::description-path': (pspec: GObject.ParamSpec) => void;
+            'notify::root-device': (pspec: GObject.ParamSpec) => void;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::element': (pspec: GObject.ParamSpec) => void;
+            'notify::location': (pspec: GObject.ParamSpec) => void;
+            'notify::resource-factory': (pspec: GObject.ParamSpec) => void;
+            'notify::udn': (pspec: GObject.ParamSpec) => void;
+            'notify::url-base': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2203,6 +2248,14 @@ export namespace GUPnP {
          * absolute path or path relative to GUPnPRootDevice:description-dir.
          */
         get descriptionPath(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RootDevice.SignalSignatures;
 
         // Constructors
 
@@ -2224,17 +2277,17 @@ export namespace GUPnP {
 
         connect<K extends keyof RootDevice.SignalSignatures>(
             signal: K,
-            callback: RootDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RootDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RootDevice.SignalSignatures>(
             signal: K,
-            callback: RootDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RootDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RootDevice.SignalSignatures>(
             signal: K,
-            ...args: RootDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RootDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2801,49 +2854,35 @@ export namespace GUPnP {
     }
 
     namespace Service {
-        // Signal callback interfaces
-
-        interface ActionInvoked {
-            (_source: Service, action: ServiceAction): void;
-        }
-
-        interface NotifyFailed {
-            (_source: Service, callback_url: GLib.Uri[], reason: GLib.Error): void;
-        }
-
-        interface QueryVariable {
-            (_source: Service, variable: string, value: GObject.Value | any): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends ServiceInfo.SignalSignatures {
-            'action-invoked': ActionInvoked;
-            'notify-failed': NotifyFailed;
-            'query-variable': QueryVariable;
-            'notify::root-device': GObject.Object.Notify;
-            'notify::context': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::element': GObject.Object.Notify;
-            'notify::location': GObject.Object.Notify;
-            'notify::service-type': GObject.Object.Notify;
-            'notify::udn': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
-            'action-invoked::root-device': ActionInvoked;
-            'action-invoked::context': ActionInvoked;
-            'action-invoked::document': ActionInvoked;
-            'action-invoked::element': ActionInvoked;
-            'action-invoked::location': ActionInvoked;
-            'action-invoked::service-type': ActionInvoked;
-            'action-invoked::udn': ActionInvoked;
-            'action-invoked::url-base': ActionInvoked;
-            'query-variable::root-device': QueryVariable;
-            'query-variable::context': QueryVariable;
-            'query-variable::document': QueryVariable;
-            'query-variable::element': QueryVariable;
-            'query-variable::location': QueryVariable;
-            'query-variable::service-type': QueryVariable;
-            'query-variable::udn': QueryVariable;
-            'query-variable::url-base': QueryVariable;
+            'action-invoked': (arg0: ServiceAction) => void;
+            'notify-failed': (arg0: GLib.Uri[], arg1: GLib.Error) => void;
+            'query-variable': (arg0: string, arg1: GObject.Value) => void;
+            'notify::root-device': (pspec: GObject.ParamSpec) => void;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::element': (pspec: GObject.ParamSpec) => void;
+            'notify::location': (pspec: GObject.ParamSpec) => void;
+            'notify::service-type': (pspec: GObject.ParamSpec) => void;
+            'notify::udn': (pspec: GObject.ParamSpec) => void;
+            'notify::url-base': (pspec: GObject.ParamSpec) => void;
+            'action-invoked::root-device': (arg0: ServiceAction) => void;
+            'action-invoked::context': (arg0: ServiceAction) => void;
+            'action-invoked::document': (arg0: ServiceAction) => void;
+            'action-invoked::element': (arg0: ServiceAction) => void;
+            'action-invoked::location': (arg0: ServiceAction) => void;
+            'action-invoked::service-type': (arg0: ServiceAction) => void;
+            'action-invoked::udn': (arg0: ServiceAction) => void;
+            'action-invoked::url-base': (arg0: ServiceAction) => void;
+            'query-variable::root-device': (arg0: string, arg1: GObject.Value) => void;
+            'query-variable::context': (arg0: string, arg1: GObject.Value) => void;
+            'query-variable::document': (arg0: string, arg1: GObject.Value) => void;
+            'query-variable::element': (arg0: string, arg1: GObject.Value) => void;
+            'query-variable::location': (arg0: string, arg1: GObject.Value) => void;
+            'query-variable::service-type': (arg0: string, arg1: GObject.Value) => void;
+            'query-variable::udn': (arg0: string, arg1: GObject.Value) => void;
+            'query-variable::url-base': (arg0: string, arg1: GObject.Value) => void;
         }
 
         // Constructor properties interface
@@ -2879,6 +2918,14 @@ export namespace GUPnP {
          * The containing #GUPnPRootDevice.
          */
         get rootDevice(): RootDevice;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Service.SignalSignatures;
 
         // Constructors
 
@@ -2888,16 +2935,19 @@ export namespace GUPnP {
 
         // Signals
 
-        connect<K extends keyof Service.SignalSignatures>(signal: K, callback: Service.SignalSignatures[K]): number;
+        connect<K extends keyof Service.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Service.SignalSignatures>(
             signal: K,
-            callback: Service.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Service.SignalSignatures>(
             signal: K,
-            ...args: Service.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Service.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2973,13 +3023,13 @@ export namespace GUPnP {
     namespace ServiceInfo {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::element': GObject.Object.Notify;
-            'notify::location': GObject.Object.Notify;
-            'notify::service-type': GObject.Object.Notify;
-            'notify::udn': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::element': (pspec: GObject.ParamSpec) => void;
+            'notify::location': (pspec: GObject.ParamSpec) => void;
+            'notify::service-type': (pspec: GObject.ParamSpec) => void;
+            'notify::udn': (pspec: GObject.ParamSpec) => void;
+            'notify::url-base': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3043,6 +3093,14 @@ export namespace GUPnP {
          * The URL base (#SoupURI).
          */
         get urlBase(): GLib.Uri;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ServiceInfo.SignalSignatures;
 
         // Constructors
 
@@ -3054,17 +3112,17 @@ export namespace GUPnP {
 
         connect<K extends keyof ServiceInfo.SignalSignatures>(
             signal: K,
-            callback: ServiceInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServiceInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServiceInfo.SignalSignatures>(
             signal: K,
-            callback: ServiceInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServiceInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServiceInfo.SignalSignatures>(
             signal: K,
-            ...args: ServiceInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ServiceInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3169,7 +3227,7 @@ export namespace GUPnP {
     namespace ServiceIntrospection {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::scpd': GObject.Object.Notify;
+            'notify::scpd': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3206,6 +3264,14 @@ export namespace GUPnP {
          * The scpd of the device description file.
          */
         set scpd(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ServiceIntrospection.SignalSignatures;
 
         // Constructors
 
@@ -3217,17 +3283,19 @@ export namespace GUPnP {
 
         connect<K extends keyof ServiceIntrospection.SignalSignatures>(
             signal: K,
-            callback: ServiceIntrospection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServiceIntrospection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServiceIntrospection.SignalSignatures>(
             signal: K,
-            callback: ServiceIntrospection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServiceIntrospection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServiceIntrospection.SignalSignatures>(
             signal: K,
-            ...args: ServiceIntrospection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ServiceIntrospection.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3796,23 +3864,17 @@ export namespace GUPnP {
     }
 
     namespace ServiceProxy {
-        // Signal callback interfaces
-
-        interface SubscriptionLost {
-            (_source: ServiceProxy, error: GLib.Error): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends ServiceInfo.SignalSignatures {
-            'subscription-lost': SubscriptionLost;
-            'notify::subscribed': GObject.Object.Notify;
-            'notify::context': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::element': GObject.Object.Notify;
-            'notify::location': GObject.Object.Notify;
-            'notify::service-type': GObject.Object.Notify;
-            'notify::udn': GObject.Object.Notify;
-            'notify::url-base': GObject.Object.Notify;
+            'subscription-lost': (arg0: GLib.Error) => void;
+            'notify::subscribed': (pspec: GObject.ParamSpec) => void;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::element': (pspec: GObject.ParamSpec) => void;
+            'notify::location': (pspec: GObject.ParamSpec) => void;
+            'notify::service-type': (pspec: GObject.ParamSpec) => void;
+            'notify::udn': (pspec: GObject.ParamSpec) => void;
+            'notify::url-base': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3838,6 +3900,14 @@ export namespace GUPnP {
          */
         get subscribed(): boolean;
         set subscribed(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ServiceProxy.SignalSignatures;
 
         // Constructors
 
@@ -3849,17 +3919,17 @@ export namespace GUPnP {
 
         connect<K extends keyof ServiceProxy.SignalSignatures>(
             signal: K,
-            callback: ServiceProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServiceProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServiceProxy.SignalSignatures>(
             signal: K,
-            callback: ServiceProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServiceProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServiceProxy.SignalSignatures>(
             signal: K,
-            ...args: ServiceProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ServiceProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4002,8 +4072,8 @@ export namespace GUPnP {
     namespace XMLDoc {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::doc': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
+            'notify::doc': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4024,6 +4094,14 @@ export namespace GUPnP {
 
         set doc(val: any);
         set path(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XMLDoc.SignalSignatures;
 
         // Constructors
 
@@ -4037,13 +4115,19 @@ export namespace GUPnP {
 
         // Signals
 
-        connect<K extends keyof XMLDoc.SignalSignatures>(signal: K, callback: XMLDoc.SignalSignatures[K]): number;
+        connect<K extends keyof XMLDoc.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XMLDoc.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof XMLDoc.SignalSignatures>(signal: K, callback: XMLDoc.SignalSignatures[K]): number;
+        connect_after<K extends keyof XMLDoc.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XMLDoc.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XMLDoc.SignalSignatures>(
             signal: K,
-            ...args: XMLDoc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XMLDoc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

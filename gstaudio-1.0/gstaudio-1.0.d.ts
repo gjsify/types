@@ -1675,19 +1675,19 @@ export namespace GstAudio {
     namespace AudioAggregator {
         // Signal signatures
         interface SignalSignatures extends GstBase.Aggregator.SignalSignatures {
-            'notify::alignment-threshold': GObject.Object.Notify;
-            'notify::discont-wait': GObject.Object.Notify;
-            'notify::force-live': GObject.Object.Notify;
-            'notify::ignore-inactive-pads': GObject.Object.Notify;
-            'notify::output-buffer-duration': GObject.Object.Notify;
-            'notify::output-buffer-duration-fraction': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
-            'notify::latency': GObject.Object.Notify;
-            'notify::min-upstream-latency': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
-            'notify::start-time-selection': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::alignment-threshold': (pspec: GObject.ParamSpec) => void;
+            'notify::discont-wait': (pspec: GObject.ParamSpec) => void;
+            'notify::force-live': (pspec: GObject.ParamSpec) => void;
+            'notify::ignore-inactive-pads': (pspec: GObject.ParamSpec) => void;
+            'notify::output-buffer-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::output-buffer-duration-fraction': (pspec: GObject.ParamSpec) => void;
+            'notify::emit-signals': (pspec: GObject.ParamSpec) => void;
+            'notify::latency': (pspec: GObject.ParamSpec) => void;
+            'notify::min-upstream-latency': (pspec: GObject.ParamSpec) => void;
+            'notify::start-time': (pspec: GObject.ParamSpec) => void;
+            'notify::start-time-selection': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1819,6 +1819,14 @@ export namespace GstAudio {
          */
         get outputBufferDurationFraction(): Gst.Fraction;
         set outputBufferDurationFraction(val: Gst.Fraction);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioAggregator.SignalSignatures;
 
         // Constructors
 
@@ -1830,17 +1838,17 @@ export namespace GstAudio {
 
         connect<K extends keyof AudioAggregator.SignalSignatures>(
             signal: K,
-            callback: AudioAggregator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioAggregator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioAggregator.SignalSignatures>(
             signal: K,
-            callback: AudioAggregator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioAggregator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioAggregator.SignalSignatures>(
             signal: K,
-            ...args: AudioAggregator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioAggregator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1864,15 +1872,15 @@ export namespace GstAudio {
     namespace AudioAggregatorConvertPad {
         // Signal signatures
         interface SignalSignatures extends AudioAggregatorPad.SignalSignatures {
-            'notify::converter-config': GObject.Object.Notify;
-            'notify::qos-messages': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
-            'notify::caps': GObject.Object.Notify;
-            'notify::direction': GObject.Object.Notify;
-            'notify::offset': GObject.Object.Notify;
-            'notify::template': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::converter-config': (pspec: GObject.ParamSpec) => void;
+            'notify::qos-messages': (pspec: GObject.ParamSpec) => void;
+            'notify::emit-signals': (pspec: GObject.ParamSpec) => void;
+            'notify::caps': (pspec: GObject.ParamSpec) => void;
+            'notify::direction': (pspec: GObject.ParamSpec) => void;
+            'notify::offset': (pspec: GObject.ParamSpec) => void;
+            'notify::template': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1897,6 +1905,14 @@ export namespace GstAudio {
         set converter_config(val: Gst.Structure);
         get converterConfig(): Gst.Structure;
         set converterConfig(val: Gst.Structure);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioAggregatorConvertPad.SignalSignatures;
 
         // Constructors
 
@@ -1908,17 +1924,19 @@ export namespace GstAudio {
 
         connect<K extends keyof AudioAggregatorConvertPad.SignalSignatures>(
             signal: K,
-            callback: AudioAggregatorConvertPad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioAggregatorConvertPad.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioAggregatorConvertPad.SignalSignatures>(
             signal: K,
-            callback: AudioAggregatorConvertPad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioAggregatorConvertPad.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioAggregatorConvertPad.SignalSignatures>(
             signal: K,
-            ...args: AudioAggregatorConvertPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioAggregatorConvertPad.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1926,14 +1944,14 @@ export namespace GstAudio {
     namespace AudioAggregatorPad {
         // Signal signatures
         interface SignalSignatures extends GstBase.AggregatorPad.SignalSignatures {
-            'notify::qos-messages': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
-            'notify::caps': GObject.Object.Notify;
-            'notify::direction': GObject.Object.Notify;
-            'notify::offset': GObject.Object.Notify;
-            'notify::template': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::qos-messages': (pspec: GObject.ParamSpec) => void;
+            'notify::emit-signals': (pspec: GObject.ParamSpec) => void;
+            'notify::caps': (pspec: GObject.ParamSpec) => void;
+            'notify::direction': (pspec: GObject.ParamSpec) => void;
+            'notify::offset': (pspec: GObject.ParamSpec) => void;
+            'notify::template': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1962,6 +1980,14 @@ export namespace GstAudio {
          */
         get qosMessages(): boolean;
         set qosMessages(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioAggregatorPad.SignalSignatures;
 
         // Constructors
 
@@ -1973,17 +1999,17 @@ export namespace GstAudio {
 
         connect<K extends keyof AudioAggregatorPad.SignalSignatures>(
             signal: K,
-            callback: AudioAggregatorPad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioAggregatorPad.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioAggregatorPad.SignalSignatures>(
             signal: K,
-            callback: AudioAggregatorPad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioAggregatorPad.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioAggregatorPad.SignalSignatures>(
             signal: K,
-            ...args: AudioAggregatorPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioAggregatorPad.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1996,29 +2022,29 @@ export namespace GstAudio {
     namespace AudioBaseSink {
         // Signal signatures
         interface SignalSignatures extends GstBase.BaseSink.SignalSignatures {
-            'notify::alignment-threshold': GObject.Object.Notify;
-            'notify::buffer-time': GObject.Object.Notify;
-            'notify::can-activate-pull': GObject.Object.Notify;
-            'notify::discont-wait': GObject.Object.Notify;
-            'notify::drift-tolerance': GObject.Object.Notify;
-            'notify::latency-time': GObject.Object.Notify;
-            'notify::provide-clock': GObject.Object.Notify;
-            'notify::slave-method': GObject.Object.Notify;
-            'notify::async': GObject.Object.Notify;
-            'notify::blocksize': GObject.Object.Notify;
-            'notify::enable-last-sample': GObject.Object.Notify;
-            'notify::last-sample': GObject.Object.Notify;
-            'notify::max-bitrate': GObject.Object.Notify;
-            'notify::max-lateness': GObject.Object.Notify;
-            'notify::processing-deadline': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::render-delay': GObject.Object.Notify;
-            'notify::stats': GObject.Object.Notify;
-            'notify::sync': GObject.Object.Notify;
-            'notify::throttle-time': GObject.Object.Notify;
-            'notify::ts-offset': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::alignment-threshold': (pspec: GObject.ParamSpec) => void;
+            'notify::buffer-time': (pspec: GObject.ParamSpec) => void;
+            'notify::can-activate-pull': (pspec: GObject.ParamSpec) => void;
+            'notify::discont-wait': (pspec: GObject.ParamSpec) => void;
+            'notify::drift-tolerance': (pspec: GObject.ParamSpec) => void;
+            'notify::latency-time': (pspec: GObject.ParamSpec) => void;
+            'notify::provide-clock': (pspec: GObject.ParamSpec) => void;
+            'notify::slave-method': (pspec: GObject.ParamSpec) => void;
+            'notify::async': (pspec: GObject.ParamSpec) => void;
+            'notify::blocksize': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-last-sample': (pspec: GObject.ParamSpec) => void;
+            'notify::last-sample': (pspec: GObject.ParamSpec) => void;
+            'notify::max-bitrate': (pspec: GObject.ParamSpec) => void;
+            'notify::max-lateness': (pspec: GObject.ParamSpec) => void;
+            'notify::processing-deadline': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::render-delay': (pspec: GObject.ParamSpec) => void;
+            'notify::stats': (pspec: GObject.ParamSpec) => void;
+            'notify::sync': (pspec: GObject.ParamSpec) => void;
+            'notify::throttle-time': (pspec: GObject.ParamSpec) => void;
+            'notify::ts-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2101,6 +2127,14 @@ export namespace GstAudio {
         set slave_method(val: AudioBaseSinkSlaveMethod);
         get slaveMethod(): AudioBaseSinkSlaveMethod;
         set slaveMethod(val: AudioBaseSinkSlaveMethod);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioBaseSink.SignalSignatures;
 
         // Fields
 
@@ -2120,17 +2154,17 @@ export namespace GstAudio {
 
         connect<K extends keyof AudioBaseSink.SignalSignatures>(
             signal: K,
-            callback: AudioBaseSink.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioBaseSink.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioBaseSink.SignalSignatures>(
             signal: K,
-            callback: AudioBaseSink.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioBaseSink.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioBaseSink.SignalSignatures>(
             signal: K,
-            ...args: AudioBaseSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioBaseSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2232,19 +2266,19 @@ export namespace GstAudio {
     namespace AudioBaseSrc {
         // Signal signatures
         interface SignalSignatures extends GstBase.PushSrc.SignalSignatures {
-            'notify::actual-buffer-time': GObject.Object.Notify;
-            'notify::actual-latency-time': GObject.Object.Notify;
-            'notify::buffer-time': GObject.Object.Notify;
-            'notify::latency-time': GObject.Object.Notify;
-            'notify::provide-clock': GObject.Object.Notify;
-            'notify::slave-method': GObject.Object.Notify;
-            'notify::automatic-eos': GObject.Object.Notify;
-            'notify::blocksize': GObject.Object.Notify;
-            'notify::do-timestamp': GObject.Object.Notify;
-            'notify::num-buffers': GObject.Object.Notify;
-            'notify::typefind': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::actual-buffer-time': (pspec: GObject.ParamSpec) => void;
+            'notify::actual-latency-time': (pspec: GObject.ParamSpec) => void;
+            'notify::buffer-time': (pspec: GObject.ParamSpec) => void;
+            'notify::latency-time': (pspec: GObject.ParamSpec) => void;
+            'notify::provide-clock': (pspec: GObject.ParamSpec) => void;
+            'notify::slave-method': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-eos': (pspec: GObject.ParamSpec) => void;
+            'notify::blocksize': (pspec: GObject.ParamSpec) => void;
+            'notify::do-timestamp': (pspec: GObject.ParamSpec) => void;
+            'notify::num-buffers': (pspec: GObject.ParamSpec) => void;
+            'notify::typefind': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2307,6 +2341,14 @@ export namespace GstAudio {
         set slave_method(val: AudioBaseSrcSlaveMethod);
         get slaveMethod(): AudioBaseSrcSlaveMethod;
         set slaveMethod(val: AudioBaseSrcSlaveMethod);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioBaseSrc.SignalSignatures;
 
         // Fields
 
@@ -2325,17 +2367,17 @@ export namespace GstAudio {
 
         connect<K extends keyof AudioBaseSrc.SignalSignatures>(
             signal: K,
-            callback: AudioBaseSrc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioBaseSrc.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioBaseSrc.SignalSignatures>(
             signal: K,
-            callback: AudioBaseSrc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioBaseSrc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioBaseSrc.SignalSignatures>(
             signal: K,
-            ...args: AudioBaseSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioBaseSrc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2385,16 +2427,16 @@ export namespace GstAudio {
     namespace AudioCdSrc {
         // Signal signatures
         interface SignalSignatures extends GstBase.PushSrc.SignalSignatures {
-            'notify::device': GObject.Object.Notify;
-            'notify::mode': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::automatic-eos': GObject.Object.Notify;
-            'notify::blocksize': GObject.Object.Notify;
-            'notify::do-timestamp': GObject.Object.Notify;
-            'notify::num-buffers': GObject.Object.Notify;
-            'notify::typefind': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::device': (pspec: GObject.ParamSpec) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-eos': (pspec: GObject.ParamSpec) => void;
+            'notify::blocksize': (pspec: GObject.ParamSpec) => void;
+            'notify::do-timestamp': (pspec: GObject.ParamSpec) => void;
+            'notify::num-buffers': (pspec: GObject.ParamSpec) => void;
+            'notify::typefind': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2462,6 +2504,14 @@ export namespace GstAudio {
         set mode(val: AudioCdSrcMode);
         get track(): number;
         set track(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioCdSrc.SignalSignatures;
 
         // Fields
 
@@ -2477,17 +2527,17 @@ export namespace GstAudio {
 
         connect<K extends keyof AudioCdSrc.SignalSignatures>(
             signal: K,
-            callback: AudioCdSrc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioCdSrc.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioCdSrc.SignalSignatures>(
             signal: K,
-            callback: AudioCdSrc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioCdSrc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioCdSrc.SignalSignatures>(
             signal: K,
-            ...args: AudioCdSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioCdSrc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2987,12 +3037,12 @@ export namespace GstAudio {
     namespace AudioClock {
         // Signal signatures
         interface SignalSignatures extends Gst.SystemClock.SignalSignatures {
-            'notify::clock-type': GObject.Object.Notify;
-            'notify::timeout': GObject.Object.Notify;
-            'notify::window-size': GObject.Object.Notify;
-            'notify::window-threshold': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::clock-type': (pspec: GObject.ParamSpec) => void;
+            'notify::timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::window-size': (pspec: GObject.ParamSpec) => void;
+            'notify::window-threshold': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3008,6 +3058,14 @@ export namespace GstAudio {
      */
     class AudioClock extends Gst.SystemClock {
         static $gtype: GObject.GType<AudioClock>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioClock.SignalSignatures;
 
         // Fields
 
@@ -3028,17 +3086,17 @@ export namespace GstAudio {
 
         connect<K extends keyof AudioClock.SignalSignatures>(
             signal: K,
-            callback: AudioClock.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioClock.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioClock.SignalSignatures>(
             signal: K,
-            callback: AudioClock.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioClock.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioClock.SignalSignatures>(
             signal: K,
-            ...args: AudioClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3078,12 +3136,12 @@ export namespace GstAudio {
     namespace AudioDecoder {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-latency': GObject.Object.Notify;
-            'notify::plc': GObject.Object.Notify;
-            'notify::tolerance': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
+            'notify::min-latency': (pspec: GObject.ParamSpec) => void;
+            'notify::plc': (pspec: GObject.ParamSpec) => void;
+            'notify::tolerance': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3214,6 +3272,14 @@ export namespace GstAudio {
         set plc(val: boolean);
         get tolerance(): number;
         set tolerance(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioDecoder.SignalSignatures;
 
         // Fields
 
@@ -3231,17 +3297,17 @@ export namespace GstAudio {
 
         connect<K extends keyof AudioDecoder.SignalSignatures>(
             signal: K,
-            callback: AudioDecoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioDecoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioDecoder.SignalSignatures>(
             signal: K,
-            callback: AudioDecoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioDecoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioDecoder.SignalSignatures>(
             signal: K,
-            ...args: AudioDecoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioDecoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3495,12 +3561,12 @@ export namespace GstAudio {
     namespace AudioEncoder {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
-            'notify::hard-resync': GObject.Object.Notify;
-            'notify::mark-granule': GObject.Object.Notify;
-            'notify::perfect-timestamp': GObject.Object.Notify;
-            'notify::tolerance': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::hard-resync': (pspec: GObject.ParamSpec) => void;
+            'notify::mark-granule': (pspec: GObject.ParamSpec) => void;
+            'notify::perfect-timestamp': (pspec: GObject.ParamSpec) => void;
+            'notify::tolerance': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3627,6 +3693,14 @@ export namespace GstAudio {
         set perfectTimestamp(val: boolean);
         get tolerance(): number;
         set tolerance(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioEncoder.SignalSignatures;
 
         // Fields
 
@@ -3644,17 +3718,17 @@ export namespace GstAudio {
 
         connect<K extends keyof AudioEncoder.SignalSignatures>(
             signal: K,
-            callback: AudioEncoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioEncoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioEncoder.SignalSignatures>(
             signal: K,
-            callback: AudioEncoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioEncoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioEncoder.SignalSignatures>(
             signal: K,
-            ...args: AudioEncoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioEncoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4445,9 +4519,9 @@ export namespace GstAudio {
     namespace AudioFilter {
         // Signal signatures
         interface SignalSignatures extends GstBase.BaseTransform.SignalSignatures {
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4472,6 +4546,14 @@ export namespace GstAudio {
      */
     abstract class AudioFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<AudioFilter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioFilter.SignalSignatures;
 
         // Fields
 
@@ -4487,17 +4569,17 @@ export namespace GstAudio {
 
         connect<K extends keyof AudioFilter.SignalSignatures>(
             signal: K,
-            callback: AudioFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioFilter.SignalSignatures>(
             signal: K,
-            callback: AudioFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioFilter.SignalSignatures>(
             signal: K,
-            ...args: AudioFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4513,8 +4595,8 @@ export namespace GstAudio {
     namespace AudioRingBuffer {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4534,6 +4616,14 @@ export namespace GstAudio {
      */
     abstract class AudioRingBuffer extends Gst.Object {
         static $gtype: GObject.GType<AudioRingBuffer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioRingBuffer.SignalSignatures;
 
         // Fields
 
@@ -4559,17 +4649,17 @@ export namespace GstAudio {
 
         connect<K extends keyof AudioRingBuffer.SignalSignatures>(
             signal: K,
-            callback: AudioRingBuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioRingBuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioRingBuffer.SignalSignatures>(
             signal: K,
-            callback: AudioRingBuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioRingBuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioRingBuffer.SignalSignatures>(
             signal: K,
-            ...args: AudioRingBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioRingBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4909,29 +4999,29 @@ export namespace GstAudio {
     namespace AudioSink {
         // Signal signatures
         interface SignalSignatures extends AudioBaseSink.SignalSignatures {
-            'notify::alignment-threshold': GObject.Object.Notify;
-            'notify::buffer-time': GObject.Object.Notify;
-            'notify::can-activate-pull': GObject.Object.Notify;
-            'notify::discont-wait': GObject.Object.Notify;
-            'notify::drift-tolerance': GObject.Object.Notify;
-            'notify::latency-time': GObject.Object.Notify;
-            'notify::provide-clock': GObject.Object.Notify;
-            'notify::slave-method': GObject.Object.Notify;
-            'notify::async': GObject.Object.Notify;
-            'notify::blocksize': GObject.Object.Notify;
-            'notify::enable-last-sample': GObject.Object.Notify;
-            'notify::last-sample': GObject.Object.Notify;
-            'notify::max-bitrate': GObject.Object.Notify;
-            'notify::max-lateness': GObject.Object.Notify;
-            'notify::processing-deadline': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::render-delay': GObject.Object.Notify;
-            'notify::stats': GObject.Object.Notify;
-            'notify::sync': GObject.Object.Notify;
-            'notify::throttle-time': GObject.Object.Notify;
-            'notify::ts-offset': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::alignment-threshold': (pspec: GObject.ParamSpec) => void;
+            'notify::buffer-time': (pspec: GObject.ParamSpec) => void;
+            'notify::can-activate-pull': (pspec: GObject.ParamSpec) => void;
+            'notify::discont-wait': (pspec: GObject.ParamSpec) => void;
+            'notify::drift-tolerance': (pspec: GObject.ParamSpec) => void;
+            'notify::latency-time': (pspec: GObject.ParamSpec) => void;
+            'notify::provide-clock': (pspec: GObject.ParamSpec) => void;
+            'notify::slave-method': (pspec: GObject.ParamSpec) => void;
+            'notify::async': (pspec: GObject.ParamSpec) => void;
+            'notify::blocksize': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-last-sample': (pspec: GObject.ParamSpec) => void;
+            'notify::last-sample': (pspec: GObject.ParamSpec) => void;
+            'notify::max-bitrate': (pspec: GObject.ParamSpec) => void;
+            'notify::max-lateness': (pspec: GObject.ParamSpec) => void;
+            'notify::processing-deadline': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::render-delay': (pspec: GObject.ParamSpec) => void;
+            'notify::stats': (pspec: GObject.ParamSpec) => void;
+            'notify::sync': (pspec: GObject.ParamSpec) => void;
+            'notify::throttle-time': (pspec: GObject.ParamSpec) => void;
+            'notify::ts-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4964,6 +5054,14 @@ export namespace GstAudio {
      */
     class AudioSink extends AudioBaseSink {
         static $gtype: GObject.GType<AudioSink>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioSink.SignalSignatures;
 
         // Fields
 
@@ -4977,16 +5075,19 @@ export namespace GstAudio {
 
         // Signals
 
-        connect<K extends keyof AudioSink.SignalSignatures>(signal: K, callback: AudioSink.SignalSignatures[K]): number;
+        connect<K extends keyof AudioSink.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AudioSink.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioSink.SignalSignatures>(
             signal: K,
-            callback: AudioSink.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioSink.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioSink.SignalSignatures>(
             signal: K,
-            ...args: AudioSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5015,19 +5116,19 @@ export namespace GstAudio {
     namespace AudioSrc {
         // Signal signatures
         interface SignalSignatures extends AudioBaseSrc.SignalSignatures {
-            'notify::actual-buffer-time': GObject.Object.Notify;
-            'notify::actual-latency-time': GObject.Object.Notify;
-            'notify::buffer-time': GObject.Object.Notify;
-            'notify::latency-time': GObject.Object.Notify;
-            'notify::provide-clock': GObject.Object.Notify;
-            'notify::slave-method': GObject.Object.Notify;
-            'notify::automatic-eos': GObject.Object.Notify;
-            'notify::blocksize': GObject.Object.Notify;
-            'notify::do-timestamp': GObject.Object.Notify;
-            'notify::num-buffers': GObject.Object.Notify;
-            'notify::typefind': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::actual-buffer-time': (pspec: GObject.ParamSpec) => void;
+            'notify::actual-latency-time': (pspec: GObject.ParamSpec) => void;
+            'notify::buffer-time': (pspec: GObject.ParamSpec) => void;
+            'notify::latency-time': (pspec: GObject.ParamSpec) => void;
+            'notify::provide-clock': (pspec: GObject.ParamSpec) => void;
+            'notify::slave-method': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-eos': (pspec: GObject.ParamSpec) => void;
+            'notify::blocksize': (pspec: GObject.ParamSpec) => void;
+            'notify::do-timestamp': (pspec: GObject.ParamSpec) => void;
+            'notify::num-buffers': (pspec: GObject.ParamSpec) => void;
+            'notify::typefind': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5053,6 +5154,14 @@ export namespace GstAudio {
      */
     class AudioSrc extends AudioBaseSrc {
         static $gtype: GObject.GType<AudioSrc>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioSrc.SignalSignatures;
 
         // Fields
 
@@ -5066,16 +5175,19 @@ export namespace GstAudio {
 
         // Signals
 
-        connect<K extends keyof AudioSrc.SignalSignatures>(signal: K, callback: AudioSrc.SignalSignatures[K]): number;
+        connect<K extends keyof AudioSrc.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AudioSrc.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioSrc.SignalSignatures>(
             signal: K,
-            callback: AudioSrc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioSrc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioSrc.SignalSignatures>(
             signal: K,
-            ...args: AudioSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioSrc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

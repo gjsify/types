@@ -65,14 +65,14 @@ export namespace Nautilus {
     namespace Column {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::attribute': GObject.Object.Notify;
-            'notify::attribute-q': GObject.Object.Notify;
-            'notify::default-sort-order': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::xalign': GObject.Object.Notify;
+            'notify::attribute': (pspec: GObject.ParamSpec) => void;
+            'notify::attribute-q': (pspec: GObject.ParamSpec) => void;
+            'notify::default-sort-order': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::xalign': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -150,6 +150,14 @@ export namespace Nautilus {
          */
         get xalign(): number;
         set xalign(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Column.SignalSignatures;
 
         // Constructors
 
@@ -161,13 +169,19 @@ export namespace Nautilus {
 
         // Signals
 
-        connect<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
+        connect<K extends keyof Column.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Column.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
+        connect_after<K extends keyof Column.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Column.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Column.SignalSignatures>(
             signal: K,
-            ...args: Column.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Column.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -183,6 +197,14 @@ export namespace Nautilus {
 
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Menu.SignalSignatures;
 
         // Constructors
 
@@ -194,13 +216,19 @@ export namespace Nautilus {
 
         // Signals
 
-        connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        connect<K extends keyof Menu.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        connect_after<K extends keyof Menu.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Menu.SignalSignatures>(
             signal: K,
-            ...args: Menu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Menu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -211,22 +239,16 @@ export namespace Nautilus {
     }
 
     namespace MenuItem {
-        // Signal callback interfaces
-
-        interface Activate {
-            (_source: MenuItem): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            activate: Activate;
-            'notify::icon': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::menu': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::tip': GObject.Object.Notify;
+            activate: () => void;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::menu': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::tip': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -260,6 +282,14 @@ export namespace Nautilus {
         set sensitive(val: boolean);
         get tip(): string;
         set tip(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MenuItem.SignalSignatures;
 
         // Constructors
 
@@ -271,16 +301,19 @@ export namespace Nautilus {
 
         // Signals
 
-        connect<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: MenuItem.SignalSignatures[K]): number;
+        connect<K extends keyof MenuItem.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
-            callback: MenuItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
-            ...args: MenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -311,8 +344,8 @@ export namespace Nautilus {
     namespace PropertiesItem {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -330,6 +363,14 @@ export namespace Nautilus {
 
         get name(): string;
         get value(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PropertiesItem.SignalSignatures;
 
         // Constructors
 
@@ -343,17 +384,17 @@ export namespace Nautilus {
 
         connect<K extends keyof PropertiesItem.SignalSignatures>(
             signal: K,
-            callback: PropertiesItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PropertiesItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PropertiesItem.SignalSignatures>(
             signal: K,
-            callback: PropertiesItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PropertiesItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PropertiesItem.SignalSignatures>(
             signal: K,
-            ...args: PropertiesItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PropertiesItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -366,8 +407,8 @@ export namespace Nautilus {
     namespace PropertiesModel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::model': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
+            'notify::model': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -386,6 +427,14 @@ export namespace Nautilus {
         get model(): Gio.ListModel;
         get title(): string;
         set title(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PropertiesModel.SignalSignatures;
 
         // Constructors
 
@@ -399,17 +448,17 @@ export namespace Nautilus {
 
         connect<K extends keyof PropertiesModel.SignalSignatures>(
             signal: K,
-            callback: PropertiesModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PropertiesModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PropertiesModel.SignalSignatures>(
             signal: K,
-            callback: PropertiesModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PropertiesModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PropertiesModel.SignalSignatures>(
             signal: K,
-            ...args: PropertiesModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PropertiesModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

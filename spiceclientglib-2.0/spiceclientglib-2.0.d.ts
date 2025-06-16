@@ -665,8 +665,8 @@ export namespace SpiceClientGLib {
     namespace Audio {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::main-context': GObject.Object.Notify;
-            'notify::session': GObject.Object.Notify;
+            'notify::main-context': (pspec: GObject.ParamSpec) => void;
+            'notify::session': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -692,6 +692,14 @@ export namespace SpiceClientGLib {
          * #SpiceSession this #SpiceAudio is associated with
          */
         get session(): Session;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Audio.SignalSignatures;
 
         // Constructors
 
@@ -703,13 +711,19 @@ export namespace SpiceClientGLib {
 
         // Signals
 
-        connect<K extends keyof Audio.SignalSignatures>(signal: K, callback: Audio.SignalSignatures[K]): number;
+        connect<K extends keyof Audio.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Audio.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Audio.SignalSignatures>(signal: K, callback: Audio.SignalSignatures[K]): number;
+        connect_after<K extends keyof Audio.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Audio.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Audio.SignalSignatures>(
             signal: K,
-            ...args: Audio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Audio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -755,25 +769,15 @@ export namespace SpiceClientGLib {
     }
 
     namespace Channel {
-        // Signal callback interfaces
-
-        interface ChannelEvent {
-            (_source: Channel, event: ChannelEvent): void;
-        }
-
-        interface OpenFd {
-            (_source: Channel, with_tls: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'channel-event': ChannelEvent;
-            'open-fd': OpenFd;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
-            'notify::socket': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
+            'channel-event': (arg0: ChannelEvent) => void;
+            'open-fd': (arg0: number) => void;
+            'notify::channel-id': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-type': (pspec: GObject.ParamSpec) => void;
+            'notify::socket': (pspec: GObject.ParamSpec) => void;
+            'notify::spice-session': (pspec: GObject.ParamSpec) => void;
+            'notify::total-read-bytes': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -814,6 +818,14 @@ export namespace SpiceClientGLib {
         get spiceSession(): Session;
         get total_read_bytes(): number;
         get totalReadBytes(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Channel.SignalSignatures;
 
         // Constructors
 
@@ -825,16 +837,19 @@ export namespace SpiceClientGLib {
 
         // Signals
 
-        connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: Channel.SignalSignatures[K]): number;
+        connect<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            callback: Channel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            ...args: Channel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Channel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -959,43 +974,18 @@ export namespace SpiceClientGLib {
     }
 
     namespace CursorChannel {
-        // Signal callback interfaces
-
-        interface CursorHide {
-            (_source: CursorChannel): void;
-        }
-
-        interface CursorMove {
-            (_source: CursorChannel, x: number, y: number): void;
-        }
-
-        interface CursorReset {
-            (_source: CursorChannel): void;
-        }
-
-        interface CursorSet {
-            (
-                _source: CursorChannel,
-                width: number,
-                height: number,
-                hot_x: number,
-                hot_y: number,
-                rgba?: any | null,
-            ): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
-            'cursor-hide': CursorHide;
-            'cursor-move': CursorMove;
-            'cursor-reset': CursorReset;
-            'cursor-set': CursorSet;
-            'notify::cursor': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
-            'notify::socket': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
+            'cursor-hide': () => void;
+            'cursor-move': (arg0: number, arg1: number) => void;
+            'cursor-reset': () => void;
+            'cursor-set': (arg0: number, arg1: number, arg2: number, arg3: number, arg4: any | null) => void;
+            'notify::cursor': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-id': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-type': (pspec: GObject.ParamSpec) => void;
+            'notify::socket': (pspec: GObject.ParamSpec) => void;
+            'notify::spice-session': (pspec: GObject.ParamSpec) => void;
+            'notify::total-read-bytes': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1017,6 +1007,14 @@ export namespace SpiceClientGLib {
          * The last #SpiceCursorShape received.
          */
         get cursor(): CursorShape;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CursorChannel.SignalSignatures;
 
         // Constructors
 
@@ -1028,12 +1026,12 @@ export namespace SpiceClientGLib {
 
         connect_after<K extends keyof CursorChannel.SignalSignatures>(
             signal: K,
-            callback: CursorChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CursorChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CursorChannel.SignalSignatures>(
             signal: K,
-            ...args: CursorChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CursorChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1046,63 +1044,32 @@ export namespace SpiceClientGLib {
     }
 
     namespace DisplayChannel {
-        // Signal callback interfaces
-
-        interface DisplayInvalidate {
-            (_source: DisplayChannel, x: number, y: number, width: number, height: number): void;
-        }
-
-        interface DisplayMark {
-            (_source: DisplayChannel, mark: number): void;
-        }
-
-        interface DisplayPrimaryCreate {
-            (
-                _source: DisplayChannel,
-                format: number,
-                width: number,
-                height: number,
-                stride: number,
-                shmid: number,
-                imgdata?: any | null,
-            ): void;
-        }
-
-        interface DisplayPrimaryDestroy {
-            (_source: DisplayChannel): void;
-        }
-
-        interface GlDraw {
-            (_source: DisplayChannel, x: number, y: number, width: number, height: number): void;
-        }
-
-        interface GstVideoOverlay {
-            (_source: DisplayChannel, pipeline: Gst.Pipeline): boolean | void;
-        }
-
-        interface StreamingMode {
-            (_source: DisplayChannel, streaming_mode: boolean): any | null;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
-            'display-invalidate': DisplayInvalidate;
-            'display-mark': DisplayMark;
-            'display-primary-create': DisplayPrimaryCreate;
-            'display-primary-destroy': DisplayPrimaryDestroy;
-            'gl-draw': GlDraw;
-            'gst-video-overlay': GstVideoOverlay;
-            'streaming-mode': StreamingMode;
-            'notify::gl-scanout': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::monitors': GObject.Object.Notify;
-            'notify::monitors-max': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
-            'notify::socket': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
+            'display-invalidate': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            'display-mark': (arg0: number) => void;
+            'display-primary-create': (
+                arg0: number,
+                arg1: number,
+                arg2: number,
+                arg3: number,
+                arg4: number,
+                arg5: any | null,
+            ) => void;
+            'display-primary-destroy': () => void;
+            'gl-draw': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            'gst-video-overlay': (arg0: Gst.Pipeline) => boolean | void;
+            'streaming-mode': (arg0: boolean) => any | null;
+            'notify::gl-scanout': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::monitors': (pspec: GObject.ParamSpec) => void;
+            'notify::monitors-max': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-id': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-type': (pspec: GObject.ParamSpec) => void;
+            'notify::socket': (pspec: GObject.ParamSpec) => void;
+            'notify::spice-session': (pspec: GObject.ParamSpec) => void;
+            'notify::total-read-bytes': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1152,6 +1119,14 @@ export namespace SpiceClientGLib {
          */
         get monitorsMax(): number;
         get width(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DisplayChannel.SignalSignatures;
 
         // Constructors
 
@@ -1163,12 +1138,12 @@ export namespace SpiceClientGLib {
 
         connect_after<K extends keyof DisplayChannel.SignalSignatures>(
             signal: K,
-            callback: DisplayChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DisplayChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DisplayChannel.SignalSignatures>(
             signal: K,
-            ...args: DisplayChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DisplayChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1214,22 +1189,16 @@ export namespace SpiceClientGLib {
     }
 
     namespace FileTransferTask {
-        // Signal callback interfaces
-
-        interface Finished {
-            (_source: FileTransferTask, object: GLib.Error): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            finished: Finished;
-            'notify::cancellable': GObject.Object.Notify;
-            'notify::channel': GObject.Object.Notify;
-            'notify::file': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::progress': GObject.Object.Notify;
-            'notify::total-bytes': GObject.Object.Notify;
-            'notify::transferred-bytes': GObject.Object.Notify;
+            finished: (arg0: GLib.Error) => void;
+            'notify::cancellable': (pspec: GObject.ParamSpec) => void;
+            'notify::channel': (pspec: GObject.ParamSpec) => void;
+            'notify::file': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::progress': (pspec: GObject.ParamSpec) => void;
+            'notify::total-bytes': (pspec: GObject.ParamSpec) => void;
+            'notify::transferred-bytes': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1261,6 +1230,14 @@ export namespace SpiceClientGLib {
         get totalBytes(): number;
         get transferred_bytes(): number;
         get transferredBytes(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FileTransferTask.SignalSignatures;
 
         // Constructors
 
@@ -1272,17 +1249,17 @@ export namespace SpiceClientGLib {
 
         connect<K extends keyof FileTransferTask.SignalSignatures>(
             signal: K,
-            callback: FileTransferTask.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileTransferTask.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileTransferTask.SignalSignatures>(
             signal: K,
-            callback: FileTransferTask.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileTransferTask.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileTransferTask.SignalSignatures>(
             signal: K,
-            ...args: FileTransferTask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FileTransferTask.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1296,21 +1273,15 @@ export namespace SpiceClientGLib {
     }
 
     namespace InputsChannel {
-        // Signal callback interfaces
-
-        interface InputsModifiers {
-            (_source: InputsChannel): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
-            'inputs-modifiers': InputsModifiers;
-            'notify::key-modifiers': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
-            'notify::socket': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
+            'inputs-modifiers': () => void;
+            'notify::key-modifiers': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-id': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-type': (pspec: GObject.ParamSpec) => void;
+            'notify::socket': (pspec: GObject.ParamSpec) => void;
+            'notify::spice-session': (pspec: GObject.ParamSpec) => void;
+            'notify::total-read-bytes': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1331,6 +1302,14 @@ export namespace SpiceClientGLib {
 
         get key_modifiers(): number;
         get keyModifiers(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InputsChannel.SignalSignatures;
 
         // Constructors
 
@@ -1342,12 +1321,12 @@ export namespace SpiceClientGLib {
 
         connect_after<K extends keyof InputsChannel.SignalSignatures>(
             signal: K,
-            callback: InputsChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputsChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputsChannel.SignalSignatures>(
             signal: K,
-            ...args: InputsChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InputsChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1403,86 +1382,36 @@ export namespace SpiceClientGLib {
     }
 
     namespace MainChannel {
-        // Signal callback interfaces
-
-        interface MainAgentUpdate {
-            (_source: MainChannel): void;
-        }
-
-        interface MainClipboard {
-            (_source: MainChannel, type: number, data: any | null, size: number): void;
-        }
-
-        interface MainClipboardGrab {
-            (_source: MainChannel, types: any | null, ntypes: number): boolean | void;
-        }
-
-        interface MainClipboardRelease {
-            (_source: MainChannel): void;
-        }
-
-        interface MainClipboardRequest {
-            (_source: MainChannel, types: number): boolean | void;
-        }
-
-        interface MainClipboardSelection {
-            (_source: MainChannel, selection: number, type: number, data: any | null, size: number): void;
-        }
-
-        interface MainClipboardSelectionGrab {
-            (_source: MainChannel, selection: number, types: any | null, ntypes: number): boolean | void;
-        }
-
-        interface MainClipboardSelectionRelease {
-            (_source: MainChannel, selection: number): void;
-        }
-
-        interface MainClipboardSelectionRequest {
-            (_source: MainChannel, selection: number, types: number): boolean | void;
-        }
-
-        interface MainMouseUpdate {
-            (_source: MainChannel): void;
-        }
-
-        interface MigrationStarted {
-            (_source: MainChannel, session: GObject.Object): void;
-        }
-
-        interface NewFileTransfer {
-            (_source: MainChannel, task: GObject.Object): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
-            'main-agent-update': MainAgentUpdate;
-            'main-clipboard': MainClipboard;
-            'main-clipboard-grab': MainClipboardGrab;
-            'main-clipboard-release': MainClipboardRelease;
-            'main-clipboard-request': MainClipboardRequest;
-            'main-clipboard-selection': MainClipboardSelection;
-            'main-clipboard-selection-grab': MainClipboardSelectionGrab;
-            'main-clipboard-selection-release': MainClipboardSelectionRelease;
-            'main-clipboard-selection-request': MainClipboardSelectionRequest;
-            'main-mouse-update': MainMouseUpdate;
-            'migration-started': MigrationStarted;
-            'new-file-transfer': NewFileTransfer;
-            'notify::agent-caps-0': GObject.Object.Notify;
-            'notify::agent-caps0': GObject.Object.Notify;
-            'notify::agent-connected': GObject.Object.Notify;
-            'notify::color-depth': GObject.Object.Notify;
-            'notify::disable-animation': GObject.Object.Notify;
-            'notify::disable-display-align': GObject.Object.Notify;
-            'notify::disable-display-position': GObject.Object.Notify;
-            'notify::disable-font-smooth': GObject.Object.Notify;
-            'notify::disable-wallpaper': GObject.Object.Notify;
-            'notify::max-clipboard': GObject.Object.Notify;
-            'notify::mouse-mode': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
-            'notify::socket': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
+            'main-agent-update': () => void;
+            'main-clipboard': (arg0: number, arg1: any | null, arg2: number) => void;
+            'main-clipboard-grab': (arg0: any | null, arg1: number) => boolean | void;
+            'main-clipboard-release': () => void;
+            'main-clipboard-request': (arg0: number) => boolean | void;
+            'main-clipboard-selection': (arg0: number, arg1: number, arg2: any | null, arg3: number) => void;
+            'main-clipboard-selection-grab': (arg0: number, arg1: any | null, arg2: number) => boolean | void;
+            'main-clipboard-selection-release': (arg0: number) => void;
+            'main-clipboard-selection-request': (arg0: number, arg1: number) => boolean | void;
+            'main-mouse-update': () => void;
+            'migration-started': (arg0: GObject.Object) => void;
+            'new-file-transfer': (arg0: GObject.Object) => void;
+            'notify::agent-caps-0': (pspec: GObject.ParamSpec) => void;
+            'notify::agent-caps0': (pspec: GObject.ParamSpec) => void;
+            'notify::agent-connected': (pspec: GObject.ParamSpec) => void;
+            'notify::color-depth': (pspec: GObject.ParamSpec) => void;
+            'notify::disable-animation': (pspec: GObject.ParamSpec) => void;
+            'notify::disable-display-align': (pspec: GObject.ParamSpec) => void;
+            'notify::disable-display-position': (pspec: GObject.ParamSpec) => void;
+            'notify::disable-font-smooth': (pspec: GObject.ParamSpec) => void;
+            'notify::disable-wallpaper': (pspec: GObject.ParamSpec) => void;
+            'notify::max-clipboard': (pspec: GObject.ParamSpec) => void;
+            'notify::mouse-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-id': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-type': (pspec: GObject.ParamSpec) => void;
+            'notify::socket': (pspec: GObject.ParamSpec) => void;
+            'notify::spice-session': (pspec: GObject.ParamSpec) => void;
+            'notify::total-read-bytes': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1585,6 +1514,14 @@ export namespace SpiceClientGLib {
          * position and shape commands.
          */
         get mouseMode(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MainChannel.SignalSignatures;
 
         // Constructors
 
@@ -1596,12 +1533,12 @@ export namespace SpiceClientGLib {
 
         connect_after<K extends keyof MainChannel.SignalSignatures>(
             signal: K,
-            callback: MainChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MainChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MainChannel.SignalSignatures>(
             signal: K,
-            ...args: MainChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MainChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1802,39 +1739,21 @@ export namespace SpiceClientGLib {
     }
 
     namespace PlaybackChannel {
-        // Signal callback interfaces
-
-        interface PlaybackData {
-            (_source: PlaybackChannel, data: any | null, data_size: number): void;
-        }
-
-        interface PlaybackGetDelay {
-            (_source: PlaybackChannel): void;
-        }
-
-        interface PlaybackStart {
-            (_source: PlaybackChannel, format: number, channels: number, rate: number): void;
-        }
-
-        interface PlaybackStop {
-            (_source: PlaybackChannel): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
-            'playback-data': PlaybackData;
-            'playback-get-delay': PlaybackGetDelay;
-            'playback-start': PlaybackStart;
-            'playback-stop': PlaybackStop;
-            'notify::min-latency': GObject.Object.Notify;
-            'notify::mute': GObject.Object.Notify;
-            'notify::nchannels': GObject.Object.Notify;
-            'notify::volume': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
-            'notify::socket': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
+            'playback-data': (arg0: any | null, arg1: number) => void;
+            'playback-get-delay': () => void;
+            'playback-start': (arg0: number, arg1: number, arg2: number) => void;
+            'playback-stop': () => void;
+            'notify::min-latency': (pspec: GObject.ParamSpec) => void;
+            'notify::mute': (pspec: GObject.ParamSpec) => void;
+            'notify::nchannels': (pspec: GObject.ParamSpec) => void;
+            'notify::volume': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-id': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-type': (pspec: GObject.ParamSpec) => void;
+            'notify::socket': (pspec: GObject.ParamSpec) => void;
+            'notify::spice-session': (pspec: GObject.ParamSpec) => void;
+            'notify::total-read-bytes': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1866,6 +1785,14 @@ export namespace SpiceClientGLib {
         set nchannels(val: number);
         get volume(): any;
         set volume(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PlaybackChannel.SignalSignatures;
 
         // Constructors
 
@@ -1877,12 +1804,12 @@ export namespace SpiceClientGLib {
 
         connect_after<K extends keyof PlaybackChannel.SignalSignatures>(
             signal: K,
-            callback: PlaybackChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlaybackChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlaybackChannel.SignalSignatures>(
             signal: K,
-            ...args: PlaybackChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PlaybackChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1902,27 +1829,17 @@ export namespace SpiceClientGLib {
     }
 
     namespace PortChannel {
-        // Signal callback interfaces
-
-        interface PortData {
-            (_source: PortChannel, data: any | null, size: number): void;
-        }
-
-        interface PortEvent {
-            (_source: PortChannel, event: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
-            'port-data': PortData;
-            'port-event': PortEvent;
-            'notify::port-name': GObject.Object.Notify;
-            'notify::port-opened': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
-            'notify::socket': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
+            'port-data': (arg0: any | null, arg1: number) => void;
+            'port-event': (arg0: number) => void;
+            'notify::port-name': (pspec: GObject.ParamSpec) => void;
+            'notify::port-opened': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-id': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-type': (pspec: GObject.ParamSpec) => void;
+            'notify::socket': (pspec: GObject.ParamSpec) => void;
+            'notify::spice-session': (pspec: GObject.ParamSpec) => void;
+            'notify::total-read-bytes': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1947,6 +1864,14 @@ export namespace SpiceClientGLib {
         get portName(): string;
         get port_opened(): boolean;
         get portOpened(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PortChannel.SignalSignatures;
 
         // Constructors
 
@@ -1958,12 +1883,12 @@ export namespace SpiceClientGLib {
 
         connect_after<K extends keyof PortChannel.SignalSignatures>(
             signal: K,
-            callback: PortChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PortChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PortChannel.SignalSignatures>(
             signal: K,
-            ...args: PortChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PortChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2024,17 +1949,11 @@ export namespace SpiceClientGLib {
     }
 
     namespace QmpPort {
-        // Signal callback interfaces
-
-        interface Event {
-            (_source: QmpPort, name: string, node?: any | null): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            event: Event;
-            'notify::channel': GObject.Object.Notify;
-            'notify::ready': GObject.Object.Notify;
+            event: (arg0: string, arg1: any | null) => void;
+            'notify::channel': (pspec: GObject.ParamSpec) => void;
+            'notify::ready': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2055,6 +1974,14 @@ export namespace SpiceClientGLib {
 
         get channel(): PortChannel;
         get ready(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: QmpPort.SignalSignatures;
 
         // Constructors
 
@@ -2064,16 +1991,19 @@ export namespace SpiceClientGLib {
 
         // Signals
 
-        connect<K extends keyof QmpPort.SignalSignatures>(signal: K, callback: QmpPort.SignalSignatures[K]): number;
+        connect<K extends keyof QmpPort.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, QmpPort.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof QmpPort.SignalSignatures>(
             signal: K,
-            callback: QmpPort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, QmpPort.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof QmpPort.SignalSignatures>(
             signal: K,
-            ...args: QmpPort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<QmpPort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2150,28 +2080,18 @@ export namespace SpiceClientGLib {
     }
 
     namespace RecordChannel {
-        // Signal callback interfaces
-
-        interface RecordStart {
-            (_source: RecordChannel, format: number, channels: number, rate: number): void;
-        }
-
-        interface RecordStop {
-            (_source: RecordChannel): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
-            'record-start': RecordStart;
-            'record-stop': RecordStop;
-            'notify::mute': GObject.Object.Notify;
-            'notify::nchannels': GObject.Object.Notify;
-            'notify::volume': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
-            'notify::socket': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
+            'record-start': (arg0: number, arg1: number, arg2: number) => void;
+            'record-stop': () => void;
+            'notify::mute': (pspec: GObject.ParamSpec) => void;
+            'notify::nchannels': (pspec: GObject.ParamSpec) => void;
+            'notify::volume': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-id': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-type': (pspec: GObject.ParamSpec) => void;
+            'notify::socket': (pspec: GObject.ParamSpec) => void;
+            'notify::spice-session': (pspec: GObject.ParamSpec) => void;
+            'notify::total-read-bytes': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2197,6 +2117,14 @@ export namespace SpiceClientGLib {
         set nchannels(val: number);
         get volume(): any;
         set volume(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RecordChannel.SignalSignatures;
 
         // Constructors
 
@@ -2208,12 +2136,12 @@ export namespace SpiceClientGLib {
 
         connect_after<K extends keyof RecordChannel.SignalSignatures>(
             signal: K,
-            callback: RecordChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RecordChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecordChannel.SignalSignatures>(
             signal: K,
-            ...args: RecordChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RecordChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2235,64 +2163,46 @@ export namespace SpiceClientGLib {
     }
 
     namespace Session {
-        // Signal callback interfaces
-
-        interface ChannelDestroy {
-            (_source: Session, channel: Channel): void;
-        }
-
-        interface ChannelNew {
-            (_source: Session, channel: Channel): void;
-        }
-
-        interface Disconnected {
-            (_source: Session): void;
-        }
-
-        interface MmTimeReset {
-            (_source: Session): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'channel-destroy': ChannelDestroy;
-            'channel-new': ChannelNew;
-            disconnected: Disconnected;
-            'mm-time-reset': MmTimeReset;
-            'notify::ca': GObject.Object.Notify;
-            'notify::ca-file': GObject.Object.Notify;
-            'notify::cache-size': GObject.Object.Notify;
-            'notify::cert-subject': GObject.Object.Notify;
-            'notify::ciphers': GObject.Object.Notify;
-            'notify::client-sockets': GObject.Object.Notify;
-            'notify::color-depth': GObject.Object.Notify;
-            'notify::disable-effects': GObject.Object.Notify;
-            'notify::enable-audio': GObject.Object.Notify;
-            'notify::enable-smartcard': GObject.Object.Notify;
-            'notify::enable-usbredir': GObject.Object.Notify;
-            'notify::gl-scanout': GObject.Object.Notify;
-            'notify::glz-window-size': GObject.Object.Notify;
-            'notify::host': GObject.Object.Notify;
-            'notify::inhibit-keyboard-grab': GObject.Object.Notify;
-            'notify::migration-state': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::port': GObject.Object.Notify;
-            'notify::protocol': GObject.Object.Notify;
-            'notify::proxy': GObject.Object.Notify;
-            'notify::pubkey': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::secure-channels': GObject.Object.Notify;
-            'notify::share-dir-ro': GObject.Object.Notify;
-            'notify::shared-dir': GObject.Object.Notify;
-            'notify::smartcard-certificates': GObject.Object.Notify;
-            'notify::smartcard-db': GObject.Object.Notify;
-            'notify::tls-port': GObject.Object.Notify;
-            'notify::unix-path': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
-            'notify::uuid': GObject.Object.Notify;
-            'notify::verify': GObject.Object.Notify;
+            'channel-destroy': (arg0: Channel) => void;
+            'channel-new': (arg0: Channel) => void;
+            disconnected: () => void;
+            'mm-time-reset': () => void;
+            'notify::ca': (pspec: GObject.ParamSpec) => void;
+            'notify::ca-file': (pspec: GObject.ParamSpec) => void;
+            'notify::cache-size': (pspec: GObject.ParamSpec) => void;
+            'notify::cert-subject': (pspec: GObject.ParamSpec) => void;
+            'notify::ciphers': (pspec: GObject.ParamSpec) => void;
+            'notify::client-sockets': (pspec: GObject.ParamSpec) => void;
+            'notify::color-depth': (pspec: GObject.ParamSpec) => void;
+            'notify::disable-effects': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-audio': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-smartcard': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-usbredir': (pspec: GObject.ParamSpec) => void;
+            'notify::gl-scanout': (pspec: GObject.ParamSpec) => void;
+            'notify::glz-window-size': (pspec: GObject.ParamSpec) => void;
+            'notify::host': (pspec: GObject.ParamSpec) => void;
+            'notify::inhibit-keyboard-grab': (pspec: GObject.ParamSpec) => void;
+            'notify::migration-state': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::port': (pspec: GObject.ParamSpec) => void;
+            'notify::protocol': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::pubkey': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            'notify::secure-channels': (pspec: GObject.ParamSpec) => void;
+            'notify::share-dir-ro': (pspec: GObject.ParamSpec) => void;
+            'notify::shared-dir': (pspec: GObject.ParamSpec) => void;
+            'notify::smartcard-certificates': (pspec: GObject.ParamSpec) => void;
+            'notify::smartcard-db': (pspec: GObject.ParamSpec) => void;
+            'notify::tls-port': (pspec: GObject.ParamSpec) => void;
+            'notify::unix-path': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
+            'notify::uuid': (pspec: GObject.ParamSpec) => void;
+            'notify::verify': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2649,6 +2559,14 @@ export namespace SpiceClientGLib {
          */
         get verify(): SessionVerify;
         set verify(val: SessionVerify);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -2660,16 +2578,19 @@ export namespace SpiceClientGLib {
 
         // Signals
 
-        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
-            callback: Session.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2745,11 +2666,11 @@ export namespace SpiceClientGLib {
     namespace SmartcardChannel {
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
-            'notify::socket': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
+            'notify::channel-id': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-type': (pspec: GObject.ParamSpec) => void;
+            'notify::socket': (pspec: GObject.ParamSpec) => void;
+            'notify::spice-session': (pspec: GObject.ParamSpec) => void;
+            'notify::total-read-bytes': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2762,6 +2683,14 @@ export namespace SpiceClientGLib {
      */
     class SmartcardChannel extends Channel {
         static $gtype: GObject.GType<SmartcardChannel>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SmartcardChannel.SignalSignatures;
 
         // Constructors
 
@@ -2773,41 +2702,23 @@ export namespace SpiceClientGLib {
 
         connect_after<K extends keyof SmartcardChannel.SignalSignatures>(
             signal: K,
-            callback: SmartcardChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SmartcardChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SmartcardChannel.SignalSignatures>(
             signal: K,
-            ...args: SmartcardChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SmartcardChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace SmartcardManager {
-        // Signal callback interfaces
-
-        interface CardInserted {
-            (_source: SmartcardManager, vreader: VReader): void;
-        }
-
-        interface CardRemoved {
-            (_source: SmartcardManager, vreader: VReader): void;
-        }
-
-        interface ReaderAdded {
-            (_source: SmartcardManager, vreader: VReader): void;
-        }
-
-        interface ReaderRemoved {
-            (_source: SmartcardManager, vreader: VReader): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'card-inserted': CardInserted;
-            'card-removed': CardRemoved;
-            'reader-added': ReaderAdded;
-            'reader-removed': ReaderRemoved;
+            'card-inserted': (arg0: VReader) => void;
+            'card-removed': (arg0: VReader) => void;
+            'reader-added': (arg0: VReader) => void;
+            'reader-removed': (arg0: VReader) => void;
         }
 
         // Constructor properties interface
@@ -2820,6 +2731,14 @@ export namespace SpiceClientGLib {
      */
     class SmartcardManager extends GObject.Object {
         static $gtype: GObject.GType<SmartcardManager>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SmartcardManager.SignalSignatures;
 
         // Constructors
 
@@ -2831,17 +2750,17 @@ export namespace SpiceClientGLib {
 
         connect<K extends keyof SmartcardManager.SignalSignatures>(
             signal: K,
-            callback: SmartcardManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SmartcardManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SmartcardManager.SignalSignatures>(
             signal: K,
-            callback: SmartcardManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SmartcardManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SmartcardManager.SignalSignatures>(
             signal: K,
-            ...args: SmartcardManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SmartcardManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2890,11 +2809,11 @@ export namespace SpiceClientGLib {
     namespace URI {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::hostname': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::port': GObject.Object.Notify;
-            'notify::scheme': GObject.Object.Notify;
-            'notify::user': GObject.Object.Notify;
+            'notify::hostname': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::port': (pspec: GObject.ParamSpec) => void;
+            'notify::scheme': (pspec: GObject.ParamSpec) => void;
+            'notify::user': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2926,6 +2845,14 @@ export namespace SpiceClientGLib {
         set scheme(val: string);
         get user(): string;
         set user(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: URI.SignalSignatures;
 
         // Constructors
 
@@ -2935,13 +2862,19 @@ export namespace SpiceClientGLib {
 
         // Signals
 
-        connect<K extends keyof URI.SignalSignatures>(signal: K, callback: URI.SignalSignatures[K]): number;
+        connect<K extends keyof URI.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, URI.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof URI.SignalSignatures>(signal: K, callback: URI.SignalSignatures[K]): number;
+        connect_after<K extends keyof URI.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, URI.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof URI.SignalSignatures>(
             signal: K,
-            ...args: URI.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<URI.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2961,35 +2894,17 @@ export namespace SpiceClientGLib {
     }
 
     namespace UsbDeviceManager {
-        // Signal callback interfaces
-
-        interface AutoConnectFailed {
-            (_source: UsbDeviceManager, device: UsbDevice, error: GLib.Error): void;
-        }
-
-        interface DeviceAdded {
-            (_source: UsbDeviceManager, device: UsbDevice): void;
-        }
-
-        interface DeviceError {
-            (_source: UsbDeviceManager, device: UsbDevice, error: GLib.Error): void;
-        }
-
-        interface DeviceRemoved {
-            (_source: UsbDeviceManager, device: UsbDevice): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'auto-connect-failed': AutoConnectFailed;
-            'device-added': DeviceAdded;
-            'device-error': DeviceError;
-            'device-removed': DeviceRemoved;
-            'notify::auto-connect': GObject.Object.Notify;
-            'notify::auto-connect-filter': GObject.Object.Notify;
-            'notify::free-channels': GObject.Object.Notify;
-            'notify::redirect-on-connect': GObject.Object.Notify;
-            'notify::session': GObject.Object.Notify;
+            'auto-connect-failed': (arg0: UsbDevice, arg1: GLib.Error) => void;
+            'device-added': (arg0: UsbDevice) => void;
+            'device-error': (arg0: UsbDevice, arg1: GLib.Error) => void;
+            'device-removed': (arg0: UsbDevice) => void;
+            'notify::auto-connect': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-connect-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::free-channels': (pspec: GObject.ParamSpec) => void;
+            'notify::redirect-on-connect': (pspec: GObject.ParamSpec) => void;
+            'notify::session': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3107,6 +3022,14 @@ export namespace SpiceClientGLib {
          * #SpiceSession this #SpiceUsbDeviceManager is associated with
          */
         get session(): Session;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UsbDeviceManager.SignalSignatures;
 
         // Constructors
 
@@ -3118,17 +3041,17 @@ export namespace SpiceClientGLib {
 
         connect<K extends keyof UsbDeviceManager.SignalSignatures>(
             signal: K,
-            callback: UsbDeviceManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UsbDeviceManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UsbDeviceManager.SignalSignatures>(
             signal: K,
-            callback: UsbDeviceManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UsbDeviceManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UsbDeviceManager.SignalSignatures>(
             signal: K,
-            ...args: UsbDeviceManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UsbDeviceManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3798,11 +3721,11 @@ export namespace SpiceClientGLib {
     namespace UsbredirChannel {
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
-            'notify::socket': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
+            'notify::channel-id': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-type': (pspec: GObject.ParamSpec) => void;
+            'notify::socket': (pspec: GObject.ParamSpec) => void;
+            'notify::spice-session': (pspec: GObject.ParamSpec) => void;
+            'notify::total-read-bytes': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3815,6 +3738,14 @@ export namespace SpiceClientGLib {
      */
     class UsbredirChannel extends Channel {
         static $gtype: GObject.GType<UsbredirChannel>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UsbredirChannel.SignalSignatures;
 
         // Constructors
 
@@ -3826,12 +3757,12 @@ export namespace SpiceClientGLib {
 
         connect_after<K extends keyof UsbredirChannel.SignalSignatures>(
             signal: K,
-            callback: UsbredirChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UsbredirChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UsbredirChannel.SignalSignatures>(
             signal: K,
-            ...args: UsbredirChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UsbredirChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3839,13 +3770,13 @@ export namespace SpiceClientGLib {
     namespace WebdavChannel {
         // Signal signatures
         interface SignalSignatures extends PortChannel.SignalSignatures {
-            'notify::port-name': GObject.Object.Notify;
-            'notify::port-opened': GObject.Object.Notify;
-            'notify::channel-id': GObject.Object.Notify;
-            'notify::channel-type': GObject.Object.Notify;
-            'notify::socket': GObject.Object.Notify;
-            'notify::spice-session': GObject.Object.Notify;
-            'notify::total-read-bytes': GObject.Object.Notify;
+            'notify::port-name': (pspec: GObject.ParamSpec) => void;
+            'notify::port-opened': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-id': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-type': (pspec: GObject.ParamSpec) => void;
+            'notify::socket': (pspec: GObject.ParamSpec) => void;
+            'notify::spice-session': (pspec: GObject.ParamSpec) => void;
+            'notify::total-read-bytes': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3858,6 +3789,14 @@ export namespace SpiceClientGLib {
      */
     class WebdavChannel extends PortChannel {
         static $gtype: GObject.GType<WebdavChannel>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WebdavChannel.SignalSignatures;
 
         // Constructors
 
@@ -3869,12 +3808,12 @@ export namespace SpiceClientGLib {
 
         connect_after<K extends keyof WebdavChannel.SignalSignatures>(
             signal: K,
-            callback: WebdavChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebdavChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebdavChannel.SignalSignatures>(
             signal: K,
-            ...args: WebdavChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WebdavChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

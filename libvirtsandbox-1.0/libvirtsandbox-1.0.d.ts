@@ -31,7 +31,7 @@ export namespace LibvirtSandbox {
     namespace Builder {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::connection': GObject.Object.Notify;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -47,6 +47,14 @@ export namespace LibvirtSandbox {
         // Properties
 
         get connection(): LibvirtGObject.Connection;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Builder.SignalSignatures;
 
         // Constructors
 
@@ -56,16 +64,19 @@ export namespace LibvirtSandbox {
 
         // Signals
 
-        connect<K extends keyof Builder.SignalSignatures>(signal: K, callback: Builder.SignalSignatures[K]): number;
+        connect<K extends keyof Builder.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Builder.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Builder.SignalSignatures>(
             signal: K,
-            callback: Builder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Builder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Builder.SignalSignatures>(
             signal: K,
-            ...args: Builder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Builder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -138,7 +149,7 @@ export namespace LibvirtSandbox {
     namespace BuilderContainer {
         // Signal signatures
         interface SignalSignatures extends Builder.SignalSignatures {
-            'notify::connection': GObject.Object.Notify;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -148,6 +159,14 @@ export namespace LibvirtSandbox {
 
     class BuilderContainer extends Builder {
         static $gtype: GObject.GType<BuilderContainer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BuilderContainer.SignalSignatures;
 
         // Constructors
 
@@ -161,17 +180,17 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof BuilderContainer.SignalSignatures>(
             signal: K,
-            callback: BuilderContainer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BuilderContainer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BuilderContainer.SignalSignatures>(
             signal: K,
-            callback: BuilderContainer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BuilderContainer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BuilderContainer.SignalSignatures>(
             signal: K,
-            ...args: BuilderContainer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BuilderContainer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -187,6 +206,14 @@ export namespace LibvirtSandbox {
 
     class BuilderInitrd extends GObject.Object {
         static $gtype: GObject.GType<BuilderInitrd>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BuilderInitrd.SignalSignatures;
 
         // Constructors
 
@@ -200,17 +227,17 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof BuilderInitrd.SignalSignatures>(
             signal: K,
-            callback: BuilderInitrd.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BuilderInitrd.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BuilderInitrd.SignalSignatures>(
             signal: K,
-            callback: BuilderInitrd.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BuilderInitrd.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BuilderInitrd.SignalSignatures>(
             signal: K,
-            ...args: BuilderInitrd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BuilderInitrd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -222,7 +249,7 @@ export namespace LibvirtSandbox {
     namespace BuilderMachine {
         // Signal signatures
         interface SignalSignatures extends Builder.SignalSignatures {
-            'notify::connection': GObject.Object.Notify;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -232,6 +259,14 @@ export namespace LibvirtSandbox {
 
     class BuilderMachine extends Builder {
         static $gtype: GObject.GType<BuilderMachine>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BuilderMachine.SignalSignatures;
 
         // Constructors
 
@@ -245,17 +280,17 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof BuilderMachine.SignalSignatures>(
             signal: K,
-            callback: BuilderMachine.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BuilderMachine.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BuilderMachine.SignalSignatures>(
             signal: K,
-            callback: BuilderMachine.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BuilderMachine.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BuilderMachine.SignalSignatures>(
             signal: K,
-            ...args: BuilderMachine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BuilderMachine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -263,20 +298,20 @@ export namespace LibvirtSandbox {
     namespace Config {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::arch': GObject.Object.Notify;
-            'notify::gid': GObject.Object.Notify;
-            'notify::homedir': GObject.Object.Notify;
-            'notify::kernpath': GObject.Object.Notify;
-            'notify::kernrelease': GObject.Object.Notify;
-            'notify::kmodpath': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::root': GObject.Object.Notify;
-            'notify::security-dynamic': GObject.Object.Notify;
-            'notify::security-label': GObject.Object.Notify;
-            'notify::shell': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
-            'notify::uuid': GObject.Object.Notify;
+            'notify::arch': (pspec: GObject.ParamSpec) => void;
+            'notify::gid': (pspec: GObject.ParamSpec) => void;
+            'notify::homedir': (pspec: GObject.ParamSpec) => void;
+            'notify::kernpath': (pspec: GObject.ParamSpec) => void;
+            'notify::kernrelease': (pspec: GObject.ParamSpec) => void;
+            'notify::kmodpath': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::root': (pspec: GObject.ParamSpec) => void;
+            'notify::security-dynamic': (pspec: GObject.ParamSpec) => void;
+            'notify::security-label': (pspec: GObject.ParamSpec) => void;
+            'notify::shell': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
+            'notify::uuid': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -336,6 +371,14 @@ export namespace LibvirtSandbox {
         get username(): string;
         set username(val: string);
         get uuid(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Config.SignalSignatures;
 
         // Constructors
 
@@ -345,13 +388,19 @@ export namespace LibvirtSandbox {
 
         // Signals
 
-        connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect_after<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Config.SignalSignatures>(
             signal: K,
-            ...args: Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -702,10 +751,10 @@ export namespace LibvirtSandbox {
     namespace ConfigDisk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::format': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
-            'notify::tag': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::tag': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -727,6 +776,14 @@ export namespace LibvirtSandbox {
         get source(): string;
         get tag(): string;
         get type(): LibvirtGConfig.DomainDiskType;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigDisk.SignalSignatures;
 
         // Constructors
 
@@ -738,17 +795,17 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConfigDisk.SignalSignatures>(
             signal: K,
-            callback: ConfigDisk.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigDisk.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigDisk.SignalSignatures>(
             signal: K,
-            callback: ConfigDisk.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigDisk.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigDisk.SignalSignatures>(
             signal: K,
-            ...args: ConfigDisk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigDisk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -779,9 +836,9 @@ export namespace LibvirtSandbox {
     namespace ConfigInitrd {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::init': GObject.Object.Notify;
-            'notify::kmoddir': GObject.Object.Notify;
-            'notify::kver': GObject.Object.Notify;
+            'notify::init': (pspec: GObject.ParamSpec) => void;
+            'notify::kmoddir': (pspec: GObject.ParamSpec) => void;
+            'notify::kver': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -804,6 +861,14 @@ export namespace LibvirtSandbox {
         set kmoddir(val: string);
         get kver(): string;
         set kver(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigInitrd.SignalSignatures;
 
         // Constructors
 
@@ -817,17 +882,17 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConfigInitrd.SignalSignatures>(
             signal: K,
-            callback: ConfigInitrd.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigInitrd.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigInitrd.SignalSignatures>(
             signal: K,
-            callback: ConfigInitrd.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigInitrd.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigInitrd.SignalSignatures>(
             signal: K,
-            ...args: ConfigInitrd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigInitrd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -881,21 +946,21 @@ export namespace LibvirtSandbox {
     namespace ConfigInteractive {
         // Signal signatures
         interface SignalSignatures extends Config.SignalSignatures {
-            'notify::tty': GObject.Object.Notify;
-            'notify::arch': GObject.Object.Notify;
-            'notify::gid': GObject.Object.Notify;
-            'notify::homedir': GObject.Object.Notify;
-            'notify::kernpath': GObject.Object.Notify;
-            'notify::kernrelease': GObject.Object.Notify;
-            'notify::kmodpath': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::root': GObject.Object.Notify;
-            'notify::security-dynamic': GObject.Object.Notify;
-            'notify::security-label': GObject.Object.Notify;
-            'notify::shell': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
-            'notify::uuid': GObject.Object.Notify;
+            'notify::tty': (pspec: GObject.ParamSpec) => void;
+            'notify::arch': (pspec: GObject.ParamSpec) => void;
+            'notify::gid': (pspec: GObject.ParamSpec) => void;
+            'notify::homedir': (pspec: GObject.ParamSpec) => void;
+            'notify::kernpath': (pspec: GObject.ParamSpec) => void;
+            'notify::kernrelease': (pspec: GObject.ParamSpec) => void;
+            'notify::kmodpath': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::root': (pspec: GObject.ParamSpec) => void;
+            'notify::security-dynamic': (pspec: GObject.ParamSpec) => void;
+            'notify::security-label': (pspec: GObject.ParamSpec) => void;
+            'notify::shell': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
+            'notify::uuid': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -912,6 +977,14 @@ export namespace LibvirtSandbox {
 
         get tty(): string;
         set tty(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigInteractive.SignalSignatures;
 
         // Constructors
 
@@ -925,17 +998,17 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConfigInteractive.SignalSignatures>(
             signal: K,
-            callback: ConfigInteractive.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigInteractive.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigInteractive.SignalSignatures>(
             signal: K,
-            callback: ConfigInteractive.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigInteractive.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigInteractive.SignalSignatures>(
             signal: K,
-            ...args: ConfigInteractive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigInteractive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -962,7 +1035,7 @@ export namespace LibvirtSandbox {
     namespace ConfigMount {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::target': GObject.Object.Notify;
+            'notify::target': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -978,6 +1051,14 @@ export namespace LibvirtSandbox {
         // Properties
 
         get target(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigMount.SignalSignatures;
 
         // Constructors
 
@@ -989,17 +1070,17 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConfigMount.SignalSignatures>(
             signal: K,
-            callback: ConfigMount.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigMount.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigMount.SignalSignatures>(
             signal: K,
-            callback: ConfigMount.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigMount.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigMount.SignalSignatures>(
             signal: K,
-            ...args: ConfigMount.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigMount.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1027,8 +1108,8 @@ export namespace LibvirtSandbox {
     namespace ConfigMountFile {
         // Signal signatures
         interface SignalSignatures extends ConfigMount.SignalSignatures {
-            'notify::source': GObject.Object.Notify;
-            'notify::target': GObject.Object.Notify;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::target': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1045,6 +1126,14 @@ export namespace LibvirtSandbox {
 
         get source(): string;
         set source(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigMountFile.SignalSignatures;
 
         // Constructors
 
@@ -1056,17 +1145,17 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConfigMountFile.SignalSignatures>(
             signal: K,
-            callback: ConfigMountFile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigMountFile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigMountFile.SignalSignatures>(
             signal: K,
-            callback: ConfigMountFile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigMountFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigMountFile.SignalSignatures>(
             signal: K,
-            ...args: ConfigMountFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigMountFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1089,8 +1178,8 @@ export namespace LibvirtSandbox {
     namespace ConfigMountGuestBind {
         // Signal signatures
         interface SignalSignatures extends ConfigMountFile.SignalSignatures {
-            'notify::source': GObject.Object.Notify;
-            'notify::target': GObject.Object.Notify;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::target': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1100,6 +1189,14 @@ export namespace LibvirtSandbox {
 
     class ConfigMountGuestBind extends ConfigMountFile {
         static $gtype: GObject.GType<ConfigMountGuestBind>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigMountGuestBind.SignalSignatures;
 
         // Constructors
 
@@ -1113,17 +1210,19 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConfigMountGuestBind.SignalSignatures>(
             signal: K,
-            callback: ConfigMountGuestBind.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigMountGuestBind.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigMountGuestBind.SignalSignatures>(
             signal: K,
-            callback: ConfigMountGuestBind.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigMountGuestBind.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigMountGuestBind.SignalSignatures>(
             signal: K,
-            ...args: ConfigMountGuestBind.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigMountGuestBind.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1131,8 +1230,8 @@ export namespace LibvirtSandbox {
     namespace ConfigMountHostBind {
         // Signal signatures
         interface SignalSignatures extends ConfigMountFile.SignalSignatures {
-            'notify::source': GObject.Object.Notify;
-            'notify::target': GObject.Object.Notify;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::target': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1142,6 +1241,14 @@ export namespace LibvirtSandbox {
 
     class ConfigMountHostBind extends ConfigMountFile {
         static $gtype: GObject.GType<ConfigMountHostBind>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigMountHostBind.SignalSignatures;
 
         // Constructors
 
@@ -1155,17 +1262,19 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConfigMountHostBind.SignalSignatures>(
             signal: K,
-            callback: ConfigMountHostBind.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigMountHostBind.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigMountHostBind.SignalSignatures>(
             signal: K,
-            callback: ConfigMountHostBind.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigMountHostBind.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigMountHostBind.SignalSignatures>(
             signal: K,
-            ...args: ConfigMountHostBind.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigMountHostBind.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1173,9 +1282,9 @@ export namespace LibvirtSandbox {
     namespace ConfigMountHostImage {
         // Signal signatures
         interface SignalSignatures extends ConfigMountFile.SignalSignatures {
-            'notify::format': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
-            'notify::target': GObject.Object.Notify;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::target': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1191,6 +1300,14 @@ export namespace LibvirtSandbox {
         // Properties
 
         get format(): LibvirtGConfig.DomainDiskFormat;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigMountHostImage.SignalSignatures;
 
         // Constructors
 
@@ -1208,17 +1325,19 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConfigMountHostImage.SignalSignatures>(
             signal: K,
-            callback: ConfigMountHostImage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigMountHostImage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigMountHostImage.SignalSignatures>(
             signal: K,
-            callback: ConfigMountHostImage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigMountHostImage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigMountHostImage.SignalSignatures>(
             signal: K,
-            ...args: ConfigMountHostImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigMountHostImage.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1234,8 +1353,8 @@ export namespace LibvirtSandbox {
     namespace ConfigMountRam {
         // Signal signatures
         interface SignalSignatures extends ConfigMount.SignalSignatures {
-            'notify::usage': GObject.Object.Notify;
-            'notify::target': GObject.Object.Notify;
+            'notify::usage': (pspec: GObject.ParamSpec) => void;
+            'notify::target': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1251,6 +1370,14 @@ export namespace LibvirtSandbox {
         // Properties
 
         get usage(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigMountRam.SignalSignatures;
 
         // Constructors
 
@@ -1264,17 +1391,17 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConfigMountRam.SignalSignatures>(
             signal: K,
-            callback: ConfigMountRam.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigMountRam.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigMountRam.SignalSignatures>(
             signal: K,
-            callback: ConfigMountRam.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigMountRam.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigMountRam.SignalSignatures>(
             signal: K,
-            ...args: ConfigMountRam.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigMountRam.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1295,9 +1422,9 @@ export namespace LibvirtSandbox {
     namespace ConfigNetwork {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::dhcp': GObject.Object.Notify;
-            'notify::mac': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
+            'notify::dhcp': (pspec: GObject.ParamSpec) => void;
+            'notify::mac': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1320,6 +1447,14 @@ export namespace LibvirtSandbox {
         set mac(val: string);
         get source(): string;
         set source(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigNetwork.SignalSignatures;
 
         // Constructors
 
@@ -1333,17 +1468,17 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConfigNetwork.SignalSignatures>(
             signal: K,
-            callback: ConfigNetwork.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigNetwork.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigNetwork.SignalSignatures>(
             signal: K,
-            callback: ConfigNetwork.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigNetwork.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigNetwork.SignalSignatures>(
             signal: K,
-            ...args: ConfigNetwork.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigNetwork.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1392,9 +1527,9 @@ export namespace LibvirtSandbox {
     namespace ConfigNetworkAddress {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::broadcast': GObject.Object.Notify;
-            'notify::prefix': GObject.Object.Notify;
-            'notify::primary': GObject.Object.Notify;
+            'notify::broadcast': (pspec: GObject.ParamSpec) => void;
+            'notify::prefix': (pspec: GObject.ParamSpec) => void;
+            'notify::primary': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1414,6 +1549,14 @@ export namespace LibvirtSandbox {
         get broadcast(): Gio.InetAddress;
         get prefix(): number;
         get primary(): Gio.InetAddress;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigNetworkAddress.SignalSignatures;
 
         // Constructors
 
@@ -1427,17 +1570,19 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConfigNetworkAddress.SignalSignatures>(
             signal: K,
-            callback: ConfigNetworkAddress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigNetworkAddress.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigNetworkAddress.SignalSignatures>(
             signal: K,
-            callback: ConfigNetworkAddress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigNetworkAddress.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigNetworkAddress.SignalSignatures>(
             signal: K,
-            ...args: ConfigNetworkAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigNetworkAddress.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1478,7 +1623,7 @@ export namespace LibvirtSandbox {
     namespace ConfigNetworkFilterref {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1495,6 +1640,14 @@ export namespace LibvirtSandbox {
 
         get name(): string;
         set name(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigNetworkFilterref.SignalSignatures;
 
         // Constructors
 
@@ -1508,17 +1661,19 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConfigNetworkFilterref.SignalSignatures>(
             signal: K,
-            callback: ConfigNetworkFilterref.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigNetworkFilterref.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigNetworkFilterref.SignalSignatures>(
             signal: K,
-            callback: ConfigNetworkFilterref.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigNetworkFilterref.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigNetworkFilterref.SignalSignatures>(
             signal: K,
-            ...args: ConfigNetworkFilterref.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigNetworkFilterref.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1545,8 +1700,8 @@ export namespace LibvirtSandbox {
     namespace ConfigNetworkFilterrefParameter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1566,6 +1721,14 @@ export namespace LibvirtSandbox {
         set name(val: string);
         get value(): string;
         set value(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigNetworkFilterrefParameter.SignalSignatures;
 
         // Constructors
 
@@ -1579,17 +1742,22 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConfigNetworkFilterrefParameter.SignalSignatures>(
             signal: K,
-            callback: ConfigNetworkFilterrefParameter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigNetworkFilterrefParameter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigNetworkFilterrefParameter.SignalSignatures>(
             signal: K,
-            callback: ConfigNetworkFilterrefParameter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigNetworkFilterrefParameter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigNetworkFilterrefParameter.SignalSignatures>(
             signal: K,
-            ...args: ConfigNetworkFilterrefParameter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigNetworkFilterrefParameter.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1604,9 +1772,9 @@ export namespace LibvirtSandbox {
     namespace ConfigNetworkRoute {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::gateway': GObject.Object.Notify;
-            'notify::prefix': GObject.Object.Notify;
-            'notify::target': GObject.Object.Notify;
+            'notify::gateway': (pspec: GObject.ParamSpec) => void;
+            'notify::prefix': (pspec: GObject.ParamSpec) => void;
+            'notify::target': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1626,6 +1794,14 @@ export namespace LibvirtSandbox {
         get gateway(): Gio.InetAddress;
         get prefix(): number;
         get target(): Gio.InetAddress;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigNetworkRoute.SignalSignatures;
 
         // Constructors
 
@@ -1639,17 +1815,17 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConfigNetworkRoute.SignalSignatures>(
             signal: K,
-            callback: ConfigNetworkRoute.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigNetworkRoute.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigNetworkRoute.SignalSignatures>(
             signal: K,
-            callback: ConfigNetworkRoute.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigNetworkRoute.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigNetworkRoute.SignalSignatures>(
             signal: K,
-            ...args: ConfigNetworkRoute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigNetworkRoute.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1690,20 +1866,20 @@ export namespace LibvirtSandbox {
     namespace ConfigService {
         // Signal signatures
         interface SignalSignatures extends Config.SignalSignatures {
-            'notify::arch': GObject.Object.Notify;
-            'notify::gid': GObject.Object.Notify;
-            'notify::homedir': GObject.Object.Notify;
-            'notify::kernpath': GObject.Object.Notify;
-            'notify::kernrelease': GObject.Object.Notify;
-            'notify::kmodpath': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::root': GObject.Object.Notify;
-            'notify::security-dynamic': GObject.Object.Notify;
-            'notify::security-label': GObject.Object.Notify;
-            'notify::shell': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
-            'notify::uuid': GObject.Object.Notify;
+            'notify::arch': (pspec: GObject.ParamSpec) => void;
+            'notify::gid': (pspec: GObject.ParamSpec) => void;
+            'notify::homedir': (pspec: GObject.ParamSpec) => void;
+            'notify::kernpath': (pspec: GObject.ParamSpec) => void;
+            'notify::kernrelease': (pspec: GObject.ParamSpec) => void;
+            'notify::kmodpath': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::root': (pspec: GObject.ParamSpec) => void;
+            'notify::security-dynamic': (pspec: GObject.ParamSpec) => void;
+            'notify::security-label': (pspec: GObject.ParamSpec) => void;
+            'notify::shell': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
+            'notify::uuid': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1713,6 +1889,14 @@ export namespace LibvirtSandbox {
 
     abstract class ConfigService extends Config {
         static $gtype: GObject.GType<ConfigService>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigService.SignalSignatures;
 
         // Constructors
 
@@ -1724,17 +1908,17 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConfigService.SignalSignatures>(
             signal: K,
-            callback: ConfigService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigService.SignalSignatures>(
             signal: K,
-            callback: ConfigService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigService.SignalSignatures>(
             signal: K,
-            ...args: ConfigService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1742,20 +1926,20 @@ export namespace LibvirtSandbox {
     namespace ConfigServiceGeneric {
         // Signal signatures
         interface SignalSignatures extends ConfigService.SignalSignatures {
-            'notify::arch': GObject.Object.Notify;
-            'notify::gid': GObject.Object.Notify;
-            'notify::homedir': GObject.Object.Notify;
-            'notify::kernpath': GObject.Object.Notify;
-            'notify::kernrelease': GObject.Object.Notify;
-            'notify::kmodpath': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::root': GObject.Object.Notify;
-            'notify::security-dynamic': GObject.Object.Notify;
-            'notify::security-label': GObject.Object.Notify;
-            'notify::shell': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
-            'notify::uuid': GObject.Object.Notify;
+            'notify::arch': (pspec: GObject.ParamSpec) => void;
+            'notify::gid': (pspec: GObject.ParamSpec) => void;
+            'notify::homedir': (pspec: GObject.ParamSpec) => void;
+            'notify::kernpath': (pspec: GObject.ParamSpec) => void;
+            'notify::kernrelease': (pspec: GObject.ParamSpec) => void;
+            'notify::kmodpath': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::root': (pspec: GObject.ParamSpec) => void;
+            'notify::security-dynamic': (pspec: GObject.ParamSpec) => void;
+            'notify::security-label': (pspec: GObject.ParamSpec) => void;
+            'notify::shell': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
+            'notify::uuid': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1765,6 +1949,14 @@ export namespace LibvirtSandbox {
 
     class ConfigServiceGeneric extends ConfigService {
         static $gtype: GObject.GType<ConfigServiceGeneric>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigServiceGeneric.SignalSignatures;
 
         // Constructors
 
@@ -1778,17 +1970,19 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConfigServiceGeneric.SignalSignatures>(
             signal: K,
-            callback: ConfigServiceGeneric.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigServiceGeneric.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigServiceGeneric.SignalSignatures>(
             signal: K,
-            callback: ConfigServiceGeneric.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigServiceGeneric.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigServiceGeneric.SignalSignatures>(
             signal: K,
-            ...args: ConfigServiceGeneric.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigServiceGeneric.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1805,20 +1999,20 @@ export namespace LibvirtSandbox {
     namespace ConfigServiceSystemd {
         // Signal signatures
         interface SignalSignatures extends ConfigService.SignalSignatures {
-            'notify::arch': GObject.Object.Notify;
-            'notify::gid': GObject.Object.Notify;
-            'notify::homedir': GObject.Object.Notify;
-            'notify::kernpath': GObject.Object.Notify;
-            'notify::kernrelease': GObject.Object.Notify;
-            'notify::kmodpath': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::root': GObject.Object.Notify;
-            'notify::security-dynamic': GObject.Object.Notify;
-            'notify::security-label': GObject.Object.Notify;
-            'notify::shell': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
-            'notify::uuid': GObject.Object.Notify;
+            'notify::arch': (pspec: GObject.ParamSpec) => void;
+            'notify::gid': (pspec: GObject.ParamSpec) => void;
+            'notify::homedir': (pspec: GObject.ParamSpec) => void;
+            'notify::kernpath': (pspec: GObject.ParamSpec) => void;
+            'notify::kernrelease': (pspec: GObject.ParamSpec) => void;
+            'notify::kmodpath': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::root': (pspec: GObject.ParamSpec) => void;
+            'notify::security-dynamic': (pspec: GObject.ParamSpec) => void;
+            'notify::security-label': (pspec: GObject.ParamSpec) => void;
+            'notify::shell': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
+            'notify::uuid': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1828,6 +2022,14 @@ export namespace LibvirtSandbox {
 
     class ConfigServiceSystemd extends ConfigService {
         static $gtype: GObject.GType<ConfigServiceSystemd>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConfigServiceSystemd.SignalSignatures;
 
         // Constructors
 
@@ -1841,17 +2043,19 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConfigServiceSystemd.SignalSignatures>(
             signal: K,
-            callback: ConfigServiceSystemd.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigServiceSystemd.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigServiceSystemd.SignalSignatures>(
             signal: K,
-            callback: ConfigServiceSystemd.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigServiceSystemd.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigServiceSystemd.SignalSignatures>(
             signal: K,
-            ...args: ConfigServiceSystemd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigServiceSystemd.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1862,20 +2066,14 @@ export namespace LibvirtSandbox {
     }
 
     namespace Console {
-        // Signal callback interfaces
-
-        interface Closed {
-            (_source: Console, object: boolean): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            closed: Closed;
-            'notify::connection': GObject.Object.Notify;
-            'notify::devname': GObject.Object.Notify;
-            'notify::direct': GObject.Object.Notify;
-            'notify::domain': GObject.Object.Notify;
-            'notify::escape': GObject.Object.Notify;
+            closed: (arg0: boolean) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::devname': (pspec: GObject.ParamSpec) => void;
+            'notify::direct': (pspec: GObject.ParamSpec) => void;
+            'notify::domain': (pspec: GObject.ParamSpec) => void;
+            'notify::escape': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1899,6 +2097,14 @@ export namespace LibvirtSandbox {
         get direct(): boolean;
         get domain(): LibvirtGObject.Domain;
         get escape(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Console.SignalSignatures;
 
         // Constructors
 
@@ -1908,16 +2114,19 @@ export namespace LibvirtSandbox {
 
         // Signals
 
-        connect<K extends keyof Console.SignalSignatures>(signal: K, callback: Console.SignalSignatures[K]): number;
+        connect<K extends keyof Console.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Console.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Console.SignalSignatures>(
             signal: K,
-            callback: Console.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Console.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Console.SignalSignatures>(
             signal: K,
-            ...args: Console.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Console.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1951,11 +2160,11 @@ export namespace LibvirtSandbox {
     namespace ConsoleRaw {
         // Signal signatures
         interface SignalSignatures extends Console.SignalSignatures {
-            'notify::connection': GObject.Object.Notify;
-            'notify::devname': GObject.Object.Notify;
-            'notify::direct': GObject.Object.Notify;
-            'notify::domain': GObject.Object.Notify;
-            'notify::escape': GObject.Object.Notify;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::devname': (pspec: GObject.ParamSpec) => void;
+            'notify::direct': (pspec: GObject.ParamSpec) => void;
+            'notify::domain': (pspec: GObject.ParamSpec) => void;
+            'notify::escape': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1965,6 +2174,14 @@ export namespace LibvirtSandbox {
 
     class ConsoleRaw extends Console {
         static $gtype: GObject.GType<ConsoleRaw>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConsoleRaw.SignalSignatures;
 
         // Constructors
 
@@ -1982,17 +2199,17 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConsoleRaw.SignalSignatures>(
             signal: K,
-            callback: ConsoleRaw.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConsoleRaw.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConsoleRaw.SignalSignatures>(
             signal: K,
-            callback: ConsoleRaw.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConsoleRaw.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConsoleRaw.SignalSignatures>(
             signal: K,
-            ...args: ConsoleRaw.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConsoleRaw.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2002,20 +2219,14 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConsoleRpc {
-        // Signal callback interfaces
-
-        interface Exited {
-            (_source: ConsoleRpc, object: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Console.SignalSignatures {
-            exited: Exited;
-            'notify::connection': GObject.Object.Notify;
-            'notify::devname': GObject.Object.Notify;
-            'notify::direct': GObject.Object.Notify;
-            'notify::domain': GObject.Object.Notify;
-            'notify::escape': GObject.Object.Notify;
+            exited: (arg0: number) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::devname': (pspec: GObject.ParamSpec) => void;
+            'notify::direct': (pspec: GObject.ParamSpec) => void;
+            'notify::domain': (pspec: GObject.ParamSpec) => void;
+            'notify::escape': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2025,6 +2236,14 @@ export namespace LibvirtSandbox {
 
     class ConsoleRpc extends Console {
         static $gtype: GObject.GType<ConsoleRpc>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ConsoleRpc.SignalSignatures;
 
         // Constructors
 
@@ -2042,17 +2261,17 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ConsoleRpc.SignalSignatures>(
             signal: K,
-            callback: ConsoleRpc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConsoleRpc.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConsoleRpc.SignalSignatures>(
             signal: K,
-            callback: ConsoleRpc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConsoleRpc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConsoleRpc.SignalSignatures>(
             signal: K,
-            ...args: ConsoleRpc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConsoleRpc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2065,9 +2284,9 @@ export namespace LibvirtSandbox {
     namespace Context {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::config': GObject.Object.Notify;
-            'notify::connection': GObject.Object.Notify;
-            'notify::domain': GObject.Object.Notify;
+            'notify::config': (pspec: GObject.ParamSpec) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::domain': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2088,6 +2307,14 @@ export namespace LibvirtSandbox {
         get connection(): LibvirtGObject.Connection;
         get domain(): LibvirtGObject.Domain;
         set domain(val: LibvirtGObject.Domain);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -2097,16 +2324,19 @@ export namespace LibvirtSandbox {
 
         // Signals
 
-        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
-            callback: Context.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2146,9 +2376,9 @@ export namespace LibvirtSandbox {
     namespace ContextInteractive {
         // Signal signatures
         interface SignalSignatures extends Context.SignalSignatures {
-            'notify::config': GObject.Object.Notify;
-            'notify::connection': GObject.Object.Notify;
-            'notify::domain': GObject.Object.Notify;
+            'notify::config': (pspec: GObject.ParamSpec) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::domain': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2158,6 +2388,14 @@ export namespace LibvirtSandbox {
 
     class ContextInteractive extends Context {
         static $gtype: GObject.GType<ContextInteractive>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ContextInteractive.SignalSignatures;
 
         // Constructors
 
@@ -2171,17 +2409,17 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ContextInteractive.SignalSignatures>(
             signal: K,
-            callback: ContextInteractive.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContextInteractive.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContextInteractive.SignalSignatures>(
             signal: K,
-            callback: ContextInteractive.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContextInteractive.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContextInteractive.SignalSignatures>(
             signal: K,
-            ...args: ContextInteractive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ContextInteractive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2193,9 +2431,9 @@ export namespace LibvirtSandbox {
     namespace ContextService {
         // Signal signatures
         interface SignalSignatures extends Context.SignalSignatures {
-            'notify::config': GObject.Object.Notify;
-            'notify::connection': GObject.Object.Notify;
-            'notify::domain': GObject.Object.Notify;
+            'notify::config': (pspec: GObject.ParamSpec) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::domain': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2205,6 +2443,14 @@ export namespace LibvirtSandbox {
 
     class ContextService extends Context {
         static $gtype: GObject.GType<ContextService>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ContextService.SignalSignatures;
 
         // Constructors
 
@@ -2218,17 +2464,17 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof ContextService.SignalSignatures>(
             signal: K,
-            callback: ContextService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContextService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContextService.SignalSignatures>(
             signal: K,
-            callback: ContextService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContextService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContextService.SignalSignatures>(
             signal: K,
-            ...args: ContextService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ContextService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -357,6 +357,14 @@ export namespace GXml {
 
     class ArrayList extends BaseCollection implements List {
         static $gtype: GObject.GType<ArrayList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ArrayList.SignalSignatures;
 
         // Constructors
 
@@ -368,16 +376,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof ArrayList.SignalSignatures>(signal: K, callback: ArrayList.SignalSignatures[K]): number;
+        connect<K extends keyof ArrayList.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ArrayList.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ArrayList.SignalSignatures>(
             signal: K,
-            callback: ArrayList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ArrayList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ArrayList.SignalSignatures>(
             signal: K,
-            ...args: ArrayList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ArrayList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -826,12 +837,12 @@ export namespace GXml {
     namespace Attr {
         // Signal signatures
         interface SignalSignatures extends Node.SignalSignatures {
-            'notify::is-referenced': GObject.Object.Notify;
-            'notify::namespace-uri': GObject.Object.Notify;
-            'notify::prefix': GObject.Object.Notify;
-            'notify::local-name': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::is-referenced': (pspec: GObject.ParamSpec) => void;
+            'notify::namespace-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::prefix': (pspec: GObject.ParamSpec) => void;
+            'notify::local-name': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -849,6 +860,14 @@ export namespace GXml {
 
         get is_referenced(): boolean;
         get isReferenced(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Attr.SignalSignatures;
 
         // Fields
 
@@ -877,13 +896,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof Attr.SignalSignatures>(signal: K, callback: Attr.SignalSignatures[K]): number;
+        connect<K extends keyof Attr.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Attr.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Attr.SignalSignatures>(signal: K, callback: Attr.SignalSignatures[K]): number;
+        connect_after<K extends keyof Attr.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Attr.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Attr.SignalSignatures>(
             signal: K,
-            ...args: Attr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Attr.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1360,10 +1385,10 @@ export namespace GXml {
     namespace BaseCollection {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::nodes-index': GObject.Object.Notify;
-            'notify::element': GObject.Object.Notify;
-            'notify::items-name': GObject.Object.Notify;
-            'notify::items-type': GObject.Object.Notify;
+            'notify::nodes-index': (pspec: GObject.ParamSpec) => void;
+            'notify::element': (pspec: GObject.ParamSpec) => void;
+            'notify::items-name': (pspec: GObject.ParamSpec) => void;
+            'notify::items-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1377,6 +1402,14 @@ export namespace GXml {
 
     abstract class BaseCollection extends GObject.Object implements Gee.Traversable, Gee.Iterable, Collection {
         static $gtype: GObject.GType<BaseCollection>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BaseCollection.SignalSignatures;
 
         // Constructors
 
@@ -1388,17 +1421,17 @@ export namespace GXml {
 
         connect<K extends keyof BaseCollection.SignalSignatures>(
             signal: K,
-            callback: BaseCollection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BaseCollection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseCollection.SignalSignatures>(
             signal: K,
-            callback: BaseCollection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BaseCollection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseCollection.SignalSignatures>(
             signal: K,
-            ...args: BaseCollection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BaseCollection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1928,10 +1961,10 @@ export namespace GXml {
     namespace CssSelector {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::selector-type': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::combiner': GObject.Object.Notify;
+            'notify::selector-type': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::combiner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1960,6 +1993,14 @@ export namespace GXml {
         set value(val: string);
         get combiner(): CssCombiner;
         set combiner(val: CssCombiner);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CssSelector.SignalSignatures;
 
         // Constructors
 
@@ -1975,17 +2016,17 @@ export namespace GXml {
 
         connect<K extends keyof CssSelector.SignalSignatures>(
             signal: K,
-            callback: CssSelector.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CssSelector.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CssSelector.SignalSignatures>(
             signal: K,
-            callback: CssSelector.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CssSelector.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CssSelector.SignalSignatures>(
             signal: K,
-            ...args: CssSelector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CssSelector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2004,13 +2045,13 @@ export namespace GXml {
     namespace CssElementSelector {
         // Signal signatures
         interface SignalSignatures extends CssSelector.SignalSignatures {
-            'notify::prefixed': GObject.Object.Notify;
-            'notify::prefix': GObject.Object.Notify;
-            'notify::local-name': GObject.Object.Notify;
-            'notify::selector-type': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::combiner': GObject.Object.Notify;
+            'notify::prefixed': (pspec: GObject.ParamSpec) => void;
+            'notify::prefix': (pspec: GObject.ParamSpec) => void;
+            'notify::local-name': (pspec: GObject.ParamSpec) => void;
+            'notify::selector-type': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::combiner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2035,6 +2076,14 @@ export namespace GXml {
         set local_name(val: string);
         get localName(): string;
         set localName(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CssElementSelector.SignalSignatures;
 
         // Constructors
 
@@ -2051,17 +2100,17 @@ export namespace GXml {
 
         connect<K extends keyof CssElementSelector.SignalSignatures>(
             signal: K,
-            callback: CssElementSelector.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CssElementSelector.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CssElementSelector.SignalSignatures>(
             signal: K,
-            callback: CssElementSelector.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CssElementSelector.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CssElementSelector.SignalSignatures>(
             signal: K,
-            ...args: CssElementSelector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CssElementSelector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2077,12 +2126,12 @@ export namespace GXml {
     namespace CssAttributeSelector {
         // Signal signatures
         interface SignalSignatures extends CssSelector.SignalSignatures {
-            'notify::prefix': GObject.Object.Notify;
-            'notify::local-name': GObject.Object.Notify;
-            'notify::selector-type': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::combiner': GObject.Object.Notify;
+            'notify::prefix': (pspec: GObject.ParamSpec) => void;
+            'notify::local-name': (pspec: GObject.ParamSpec) => void;
+            'notify::selector-type': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::combiner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2105,6 +2154,14 @@ export namespace GXml {
         set local_name(val: string);
         get localName(): string;
         set localName(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CssAttributeSelector.SignalSignatures;
 
         // Constructors
 
@@ -2121,17 +2178,19 @@ export namespace GXml {
 
         connect<K extends keyof CssAttributeSelector.SignalSignatures>(
             signal: K,
-            callback: CssAttributeSelector.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CssAttributeSelector.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CssAttributeSelector.SignalSignatures>(
             signal: K,
-            callback: CssAttributeSelector.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CssAttributeSelector.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CssAttributeSelector.SignalSignatures>(
             signal: K,
-            ...args: CssAttributeSelector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CssAttributeSelector.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2146,11 +2205,11 @@ export namespace GXml {
     namespace CssNotSelector {
         // Signal signatures
         interface SignalSignatures extends CssSelector.SignalSignatures {
-            'notify::selectors': GObject.Object.Notify;
-            'notify::selector-type': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::combiner': GObject.Object.Notify;
+            'notify::selectors': (pspec: GObject.ParamSpec) => void;
+            'notify::selector-type': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::combiner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2166,6 +2225,14 @@ export namespace GXml {
         // Properties
 
         get selectors(): Gee.List;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CssNotSelector.SignalSignatures;
 
         // Constructors
 
@@ -2179,17 +2246,17 @@ export namespace GXml {
 
         connect<K extends keyof CssNotSelector.SignalSignatures>(
             signal: K,
-            callback: CssNotSelector.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CssNotSelector.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CssNotSelector.SignalSignatures>(
             signal: K,
-            callback: CssNotSelector.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CssNotSelector.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CssNotSelector.SignalSignatures>(
             signal: K,
-            ...args: CssNotSelector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CssNotSelector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2201,7 +2268,7 @@ export namespace GXml {
     namespace CssSelectorParser {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::selectors': GObject.Object.Notify;
+            'notify::selectors': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2217,6 +2284,14 @@ export namespace GXml {
         // Properties
 
         get selectors(): Gee.List;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CssSelectorParser.SignalSignatures;
 
         // Constructors
 
@@ -2230,17 +2305,17 @@ export namespace GXml {
 
         connect<K extends keyof CssSelectorParser.SignalSignatures>(
             signal: K,
-            callback: CssSelectorParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CssSelectorParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CssSelectorParser.SignalSignatures>(
             signal: K,
-            callback: CssSelectorParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CssSelectorParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CssSelectorParser.SignalSignatures>(
             signal: K,
-            ...args: CssSelectorParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CssSelectorParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2255,19 +2330,19 @@ export namespace GXml {
     namespace Document {
         // Signal signatures
         interface SignalSignatures extends Node.SignalSignatures {
-            'notify::children': GObject.Object.Notify;
-            'notify::first-element-child': GObject.Object.Notify;
-            'notify::last-element-child': GObject.Object.Notify;
-            'notify::child-element-count': GObject.Object.Notify;
-            'notify::implementation': GObject.Object.Notify;
-            'notify::url': GObject.Object.Notify;
-            'notify::document-uri': GObject.Object.Notify;
-            'notify::origin': GObject.Object.Notify;
-            'notify::compat-mode': GObject.Object.Notify;
-            'notify::character-set': GObject.Object.Notify;
-            'notify::content-type': GObject.Object.Notify;
-            'notify::doctype': GObject.Object.Notify;
-            'notify::document-element': GObject.Object.Notify;
+            'notify::children': (pspec: GObject.ParamSpec) => void;
+            'notify::first-element-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-element-child': (pspec: GObject.ParamSpec) => void;
+            'notify::child-element-count': (pspec: GObject.ParamSpec) => void;
+            'notify::implementation': (pspec: GObject.ParamSpec) => void;
+            'notify::url': (pspec: GObject.ParamSpec) => void;
+            'notify::document-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::origin': (pspec: GObject.ParamSpec) => void;
+            'notify::compat-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::character-set': (pspec: GObject.ParamSpec) => void;
+            'notify::content-type': (pspec: GObject.ParamSpec) => void;
+            'notify::doctype': (pspec: GObject.ParamSpec) => void;
+            'notify::document-element': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2282,6 +2357,14 @@ export namespace GXml {
 
     class Document extends Node implements DomParentNode, DomNonElementParentNode, DomDocument, DomXMLDocument {
         static $gtype: GObject.GType<Document>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Document.SignalSignatures;
 
         // Constructors
 
@@ -2303,16 +2386,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof Document.SignalSignatures>(signal: K, callback: Document.SignalSignatures[K]): number;
+        connect<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Document.SignalSignatures>(
             signal: K,
-            callback: Document.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Document.SignalSignatures>(
             signal: K,
-            ...args: Document.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Document.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2992,6 +3078,14 @@ export namespace GXml {
 
     class Implementation extends GObject.Object implements DomImplementation {
         static $gtype: GObject.GType<Implementation>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Implementation.SignalSignatures;
 
         // Constructors
 
@@ -3005,17 +3099,17 @@ export namespace GXml {
 
         connect<K extends keyof Implementation.SignalSignatures>(
             signal: K,
-            callback: Implementation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Implementation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Implementation.SignalSignatures>(
             signal: K,
-            callback: Implementation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Implementation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Implementation.SignalSignatures>(
             signal: K,
-            ...args: Implementation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Implementation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3480,9 +3574,9 @@ export namespace GXml {
     namespace DocumentType {
         // Signal signatures
         interface SignalSignatures extends Node.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::public-id': GObject.Object.Notify;
-            'notify::system-id': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::public-id': (pspec: GObject.ParamSpec) => void;
+            'notify::system-id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3495,6 +3589,14 @@ export namespace GXml {
 
     class DocumentType extends Node implements DomChildNode, DomDocumentType {
         static $gtype: GObject.GType<DocumentType>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentType.SignalSignatures;
 
         // Constructors
 
@@ -3520,17 +3622,17 @@ export namespace GXml {
 
         connect<K extends keyof DocumentType.SignalSignatures>(
             signal: K,
-            callback: DocumentType.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentType.SignalSignatures>(
             signal: K,
-            callback: DocumentType.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentType.SignalSignatures>(
             signal: K,
-            ...args: DocumentType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3994,10 +4096,10 @@ export namespace GXml {
     namespace DocumentFragment {
         // Signal signatures
         interface SignalSignatures extends Node.SignalSignatures {
-            'notify::children': GObject.Object.Notify;
-            'notify::first-element-child': GObject.Object.Notify;
-            'notify::last-element-child': GObject.Object.Notify;
-            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': (pspec: GObject.ParamSpec) => void;
+            'notify::first-element-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-element-child': (pspec: GObject.ParamSpec) => void;
+            'notify::child-element-count': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4011,6 +4113,14 @@ export namespace GXml {
 
     class DocumentFragment extends Node implements DomParentNode, DomNonElementParentNode, DomDocumentFragment {
         static $gtype: GObject.GType<DocumentFragment>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentFragment.SignalSignatures;
 
         // Constructors
 
@@ -4027,17 +4137,17 @@ export namespace GXml {
 
         connect<K extends keyof DocumentFragment.SignalSignatures>(
             signal: K,
-            callback: DocumentFragment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentFragment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentFragment.SignalSignatures>(
             signal: K,
-            callback: DocumentFragment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentFragment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentFragment.SignalSignatures>(
             signal: K,
-            ...args: DocumentFragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentFragment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4519,6 +4629,14 @@ export namespace GXml {
 
     class DomNodeFilter extends GObject.Object {
         static $gtype: GObject.GType<DomNodeFilter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomNodeFilter.SignalSignatures;
 
         // Constructors
 
@@ -4532,17 +4650,17 @@ export namespace GXml {
 
         connect<K extends keyof DomNodeFilter.SignalSignatures>(
             signal: K,
-            callback: DomNodeFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomNodeFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomNodeFilter.SignalSignatures>(
             signal: K,
-            callback: DomNodeFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomNodeFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomNodeFilter.SignalSignatures>(
             signal: K,
-            ...args: DomNodeFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomNodeFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -4550,12 +4668,12 @@ export namespace GXml {
     namespace DomElementList {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4565,6 +4683,14 @@ export namespace GXml {
 
     class DomElementList extends Gee.ArrayList implements DomHTMLCollection {
         static $gtype: GObject.GType<DomElementList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomElementList.SignalSignatures;
 
         // Constructors
 
@@ -4578,17 +4704,17 @@ export namespace GXml {
 
         connect<K extends keyof DomElementList.SignalSignatures>(
             signal: K,
-            callback: DomElementList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomElementList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomElementList.SignalSignatures>(
             signal: K,
-            callback: DomElementList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomElementList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomElementList.SignalSignatures>(
             signal: K,
-            ...args: DomElementList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomElementList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5053,8 +5179,8 @@ export namespace GXml {
     namespace DomEventInit {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::bubbles': GObject.Object.Notify;
-            'notify::cancelable': GObject.Object.Notify;
+            'notify::bubbles': (pspec: GObject.ParamSpec) => void;
+            'notify::cancelable': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5074,6 +5200,14 @@ export namespace GXml {
         set bubbles(val: boolean);
         get cancelable(): boolean;
         set cancelable(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomEventInit.SignalSignatures;
 
         // Constructors
 
@@ -5087,17 +5221,17 @@ export namespace GXml {
 
         connect<K extends keyof DomEventInit.SignalSignatures>(
             signal: K,
-            callback: DomEventInit.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomEventInit.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomEventInit.SignalSignatures>(
             signal: K,
-            callback: DomEventInit.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomEventInit.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomEventInit.SignalSignatures>(
             signal: K,
-            ...args: DomEventInit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomEventInit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5112,9 +5246,9 @@ export namespace GXml {
     namespace DomCustomEventInit {
         // Signal signatures
         interface SignalSignatures extends DomEventInit.SignalSignatures {
-            'notify::detail': GObject.Object.Notify;
-            'notify::bubbles': GObject.Object.Notify;
-            'notify::cancelable': GObject.Object.Notify;
+            'notify::detail': (pspec: GObject.ParamSpec) => void;
+            'notify::bubbles': (pspec: GObject.ParamSpec) => void;
+            'notify::cancelable': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5131,6 +5265,14 @@ export namespace GXml {
 
         get detail(): GObject.Value;
         set detail(val: GObject.Value);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomCustomEventInit.SignalSignatures;
 
         // Constructors
 
@@ -5144,17 +5286,17 @@ export namespace GXml {
 
         connect<K extends keyof DomCustomEventInit.SignalSignatures>(
             signal: K,
-            callback: DomCustomEventInit.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomCustomEventInit.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomCustomEventInit.SignalSignatures>(
             signal: K,
-            callback: DomCustomEventInit.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomCustomEventInit.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomCustomEventInit.SignalSignatures>(
             signal: K,
-            ...args: DomCustomEventInit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomCustomEventInit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5167,7 +5309,7 @@ export namespace GXml {
     namespace DomTimeStamp {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::time': GObject.Object.Notify;
+            'notify::time': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5184,6 +5326,14 @@ export namespace GXml {
 
         get time(): GLib.DateTime;
         set time(val: GLib.DateTime);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomTimeStamp.SignalSignatures;
 
         // Constructors
 
@@ -5197,17 +5347,17 @@ export namespace GXml {
 
         connect<K extends keyof DomTimeStamp.SignalSignatures>(
             signal: K,
-            callback: DomTimeStamp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomTimeStamp.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomTimeStamp.SignalSignatures>(
             signal: K,
-            callback: DomTimeStamp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomTimeStamp.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomTimeStamp.SignalSignatures>(
             signal: K,
-            ...args: DomTimeStamp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomTimeStamp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5221,13 +5371,13 @@ export namespace GXml {
     namespace DomMutationObserverInit {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::child-list': GObject.Object.Notify;
-            'notify::attributes': GObject.Object.Notify;
-            'notify::character-data': GObject.Object.Notify;
-            'notify::subtree': GObject.Object.Notify;
-            'notify::attribute-old-value': GObject.Object.Notify;
-            'notify::character-data-old-value': GObject.Object.Notify;
-            'notify::attribute-filter': GObject.Object.Notify;
+            'notify::child-list': (pspec: GObject.ParamSpec) => void;
+            'notify::attributes': (pspec: GObject.ParamSpec) => void;
+            'notify::character-data': (pspec: GObject.ParamSpec) => void;
+            'notify::subtree': (pspec: GObject.ParamSpec) => void;
+            'notify::attribute-old-value': (pspec: GObject.ParamSpec) => void;
+            'notify::character-data-old-value': (pspec: GObject.ParamSpec) => void;
+            'notify::attribute-filter': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5277,6 +5427,14 @@ export namespace GXml {
         set attribute_filter(val: Gee.List);
         get attributeFilter(): Gee.List;
         set attributeFilter(val: Gee.List);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomMutationObserverInit.SignalSignatures;
 
         // Constructors
 
@@ -5290,17 +5448,19 @@ export namespace GXml {
 
         connect<K extends keyof DomMutationObserverInit.SignalSignatures>(
             signal: K,
-            callback: DomMutationObserverInit.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomMutationObserverInit.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomMutationObserverInit.SignalSignatures>(
             signal: K,
-            callback: DomMutationObserverInit.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomMutationObserverInit.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomMutationObserverInit.SignalSignatures>(
             signal: K,
-            ...args: DomMutationObserverInit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomMutationObserverInit.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5333,6 +5493,14 @@ export namespace GXml {
 
     class DomErrorName extends GObject.Object {
         static $gtype: GObject.GType<DomErrorName>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomErrorName.SignalSignatures;
 
         // Constructors
 
@@ -5346,17 +5514,17 @@ export namespace GXml {
 
         connect<K extends keyof DomErrorName.SignalSignatures>(
             signal: K,
-            callback: DomErrorName.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomErrorName.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomErrorName.SignalSignatures>(
             signal: K,
-            callback: DomErrorName.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomErrorName.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomErrorName.SignalSignatures>(
             signal: K,
-            ...args: DomErrorName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomErrorName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5369,23 +5537,23 @@ export namespace GXml {
     namespace Element {
         // Signal signatures
         interface SignalSignatures extends Node.SignalSignatures {
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
-            'notify::previous-element-sibling': GObject.Object.Notify;
-            'notify::next-element-sibling': GObject.Object.Notify;
-            'notify::children': GObject.Object.Notify;
-            'notify::first-element-child': GObject.Object.Notify;
-            'notify::last-element-child': GObject.Object.Notify;
-            'notify::child-element-count': GObject.Object.Notify;
-            'notify::namespace-uri': GObject.Object.Notify;
-            'notify::prefix': GObject.Object.Notify;
-            'notify::local-name': GObject.Object.Notify;
-            'notify::tag-name': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::class-name': GObject.Object.Notify;
-            'notify::class-list': GObject.Object.Notify;
-            'notify::attributes': GObject.Object.Notify;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-element-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::next-element-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::children': (pspec: GObject.ParamSpec) => void;
+            'notify::first-element-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-element-child': (pspec: GObject.ParamSpec) => void;
+            'notify::child-element-count': (pspec: GObject.ParamSpec) => void;
+            'notify::namespace-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::prefix': (pspec: GObject.ParamSpec) => void;
+            'notify::local-name': (pspec: GObject.ParamSpec) => void;
+            'notify::tag-name': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::class-name': (pspec: GObject.ParamSpec) => void;
+            'notify::class-list': (pspec: GObject.ParamSpec) => void;
+            'notify::attributes': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5420,6 +5588,14 @@ export namespace GXml {
         set read_buffer(val: Gio.MemoryOutputStream);
         get readBuffer(): Gio.MemoryOutputStream;
         set readBuffer(val: Gio.MemoryOutputStream);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Element.SignalSignatures;
 
         // Constructors
 
@@ -5431,16 +5607,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof Element.SignalSignatures>(signal: K, callback: Element.SignalSignatures[K]): number;
+        connect<K extends keyof Element.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Element.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Element.SignalSignatures>(
             signal: K,
-            callback: Element.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Element.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Element.SignalSignatures>(
             signal: K,
-            ...args: Element.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Element.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6185,19 +6364,19 @@ export namespace GXml {
     namespace ElementAttributes {
         // Signal signatures
         interface SignalSignatures extends Gee.HashMap.SignalSignatures {
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::keys': GObject.Object.Notify;
-            'notify::values': GObject.Object.Notify;
-            'notify::entries': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::length': GObject.Object.Notify;
+            'notify::k-type': (pspec: GObject.ParamSpec) => void;
+            'notify::k-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::k-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::v-type': (pspec: GObject.ParamSpec) => void;
+            'notify::v-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::v-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            'notify::keys': (pspec: GObject.ParamSpec) => void;
+            'notify::values': (pspec: GObject.ParamSpec) => void;
+            'notify::entries': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6207,6 +6386,14 @@ export namespace GXml {
 
     class ElementAttributes extends Gee.HashMap implements DomNamedNodeMap {
         static $gtype: GObject.GType<ElementAttributes>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ElementAttributes.SignalSignatures;
 
         // Constructors
 
@@ -6223,17 +6410,17 @@ export namespace GXml {
 
         connect<K extends keyof ElementAttributes.SignalSignatures>(
             signal: K,
-            callback: ElementAttributes.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ElementAttributes.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ElementAttributes.SignalSignatures>(
             signal: K,
-            callback: ElementAttributes.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ElementAttributes.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ElementAttributes.SignalSignatures>(
             signal: K,
-            ...args: ElementAttributes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ElementAttributes.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6726,17 +6913,17 @@ export namespace GXml {
 
         connect<K extends keyof Enumeration.SignalSignatures>(
             signal: K,
-            callback: Enumeration.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Enumeration.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Enumeration.SignalSignatures>(
             signal: K,
-            callback: Enumeration.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Enumeration.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Enumeration.SignalSignatures>(
             signal: K,
-            ...args: Enumeration.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Enumeration.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6754,15 +6941,15 @@ export namespace GXml {
     namespace Event {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::etype': GObject.Object.Notify;
-            'notify::event-target': GObject.Object.Notify;
-            'notify::current-target': GObject.Object.Notify;
-            'notify::bubbles': GObject.Object.Notify;
-            'notify::cancelable': GObject.Object.Notify;
-            'notify::is-trusted': GObject.Object.Notify;
-            'notify::time-stamp': GObject.Object.Notify;
-            'notify::default-prevented': GObject.Object.Notify;
-            'notify::event-phase': GObject.Object.Notify;
+            'notify::etype': (pspec: GObject.ParamSpec) => void;
+            'notify::event-target': (pspec: GObject.ParamSpec) => void;
+            'notify::current-target': (pspec: GObject.ParamSpec) => void;
+            'notify::bubbles': (pspec: GObject.ParamSpec) => void;
+            'notify::cancelable': (pspec: GObject.ParamSpec) => void;
+            'notify::is-trusted': (pspec: GObject.ParamSpec) => void;
+            'notify::time-stamp': (pspec: GObject.ParamSpec) => void;
+            'notify::default-prevented': (pspec: GObject.ParamSpec) => void;
+            'notify::event-phase': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6772,6 +6959,14 @@ export namespace GXml {
 
     class Event extends GObject.Object implements DomEvent {
         static $gtype: GObject.GType<Event>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Event.SignalSignatures;
 
         // Constructors
 
@@ -6783,13 +6978,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect_after<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Event.SignalSignatures>(
             signal: K,
-            ...args: Event.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Event.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7281,7 +7482,7 @@ export namespace GXml {
     namespace CustomEvent {
         // Signal signatures
         interface SignalSignatures extends Event.SignalSignatures {
-            'notify::detail': GObject.Object.Notify;
+            'notify::detail': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7297,6 +7498,14 @@ export namespace GXml {
         // Properties
 
         get detail(): GObject.Value;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CustomEvent.SignalSignatures;
 
         // Constructors
 
@@ -7310,17 +7519,17 @@ export namespace GXml {
 
         connect<K extends keyof CustomEvent.SignalSignatures>(
             signal: K,
-            callback: CustomEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CustomEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CustomEvent.SignalSignatures>(
             signal: K,
-            callback: CustomEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CustomEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CustomEvent.SignalSignatures>(
             signal: K,
-            ...args: CustomEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CustomEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7333,8 +7542,8 @@ export namespace GXml {
     namespace HashMap {
         // Signal signatures
         interface SignalSignatures extends BaseCollection.SignalSignatures {
-            'notify::attribute-key': GObject.Object.Notify;
-            'notify::keys-set': GObject.Object.Notify;
+            'notify::attribute-key': (pspec: GObject.ParamSpec) => void;
+            'notify::keys-set': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7344,6 +7553,14 @@ export namespace GXml {
 
     class HashMap extends BaseCollection implements Map {
         static $gtype: GObject.GType<HashMap>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HashMap.SignalSignatures;
 
         // Constructors
 
@@ -7355,16 +7572,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof HashMap.SignalSignatures>(signal: K, callback: HashMap.SignalSignatures[K]): number;
+        connect<K extends keyof HashMap.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, HashMap.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HashMap.SignalSignatures>(
             signal: K,
-            callback: HashMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HashMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HashMap.SignalSignatures>(
             signal: K,
-            ...args: HashMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HashMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7838,9 +8058,9 @@ export namespace GXml {
     namespace HashPairedMap {
         // Signal signatures
         interface SignalSignatures extends BaseCollection.SignalSignatures {
-            'notify::attribute-primary-key': GObject.Object.Notify;
-            'notify::attribute-secondary-key': GObject.Object.Notify;
-            'notify::primary-keys-set': GObject.Object.Notify;
+            'notify::attribute-primary-key': (pspec: GObject.ParamSpec) => void;
+            'notify::attribute-secondary-key': (pspec: GObject.ParamSpec) => void;
+            'notify::primary-keys-set': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7850,6 +8070,14 @@ export namespace GXml {
 
     class HashPairedMap extends BaseCollection implements PairedMap {
         static $gtype: GObject.GType<HashPairedMap>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HashPairedMap.SignalSignatures;
 
         // Constructors
 
@@ -7863,17 +8091,17 @@ export namespace GXml {
 
         connect<K extends keyof HashPairedMap.SignalSignatures>(
             signal: K,
-            callback: HashPairedMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HashPairedMap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HashPairedMap.SignalSignatures>(
             signal: K,
-            callback: HashPairedMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HashPairedMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HashPairedMap.SignalSignatures>(
             signal: K,
-            ...args: HashPairedMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HashPairedMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8369,10 +8597,10 @@ export namespace GXml {
     namespace HashThreeMap {
         // Signal signatures
         interface SignalSignatures extends BaseCollection.SignalSignatures {
-            'notify::attribute-primary-key': GObject.Object.Notify;
-            'notify::attribute-secondary-key': GObject.Object.Notify;
-            'notify::attribute-third-key': GObject.Object.Notify;
-            'notify::primary-keys-set': GObject.Object.Notify;
+            'notify::attribute-primary-key': (pspec: GObject.ParamSpec) => void;
+            'notify::attribute-secondary-key': (pspec: GObject.ParamSpec) => void;
+            'notify::attribute-third-key': (pspec: GObject.ParamSpec) => void;
+            'notify::primary-keys-set': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8382,6 +8610,14 @@ export namespace GXml {
 
     class HashThreeMap extends BaseCollection implements ThreeMap {
         static $gtype: GObject.GType<HashThreeMap>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HashThreeMap.SignalSignatures;
 
         // Constructors
 
@@ -8395,17 +8631,17 @@ export namespace GXml {
 
         connect<K extends keyof HashThreeMap.SignalSignatures>(
             signal: K,
-            callback: HashThreeMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HashThreeMap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HashThreeMap.SignalSignatures>(
             signal: K,
-            callback: HashThreeMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HashThreeMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HashThreeMap.SignalSignatures>(
             signal: K,
-            ...args: HashThreeMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HashThreeMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8916,12 +9152,12 @@ export namespace GXml {
     namespace HTMLCollection {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8931,6 +9167,14 @@ export namespace GXml {
 
     class HTMLCollection extends Gee.ArrayList implements DomHTMLCollection {
         static $gtype: GObject.GType<HTMLCollection>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HTMLCollection.SignalSignatures;
 
         // Constructors
 
@@ -8944,17 +9188,17 @@ export namespace GXml {
 
         connect<K extends keyof HTMLCollection.SignalSignatures>(
             signal: K,
-            callback: HTMLCollection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HTMLCollection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HTMLCollection.SignalSignatures>(
             signal: K,
-            callback: HTMLCollection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HTMLCollection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HTMLCollection.SignalSignatures>(
             signal: K,
-            ...args: HTMLCollection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HTMLCollection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9419,7 +9663,7 @@ export namespace GXml {
     namespace HtmlDocument {
         // Signal signatures
         interface SignalSignatures extends Document.SignalSignatures {
-            'notify::html': GObject.Object.Notify;
+            'notify::html': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9436,6 +9680,14 @@ export namespace GXml {
 
         get html(): DomElement;
         set html(val: DomElement);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HtmlDocument.SignalSignatures;
 
         // Constructors
 
@@ -9449,17 +9701,17 @@ export namespace GXml {
 
         connect<K extends keyof HtmlDocument.SignalSignatures>(
             signal: K,
-            callback: HtmlDocument.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HtmlDocument.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HtmlDocument.SignalSignatures>(
             signal: K,
-            callback: HtmlDocument.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HtmlDocument.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HtmlDocument.SignalSignatures>(
             signal: K,
-            ...args: HtmlDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HtmlDocument.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9472,9 +9724,9 @@ export namespace GXml {
     namespace HtmlElement {
         // Signal signatures
         interface SignalSignatures extends Element.SignalSignatures {
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9484,6 +9736,14 @@ export namespace GXml {
 
     class HtmlElement extends Element {
         static $gtype: GObject.GType<HtmlElement>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HtmlElement.SignalSignatures;
 
         // Constructors
 
@@ -9497,17 +9757,17 @@ export namespace GXml {
 
         connect<K extends keyof HtmlElement.SignalSignatures>(
             signal: K,
-            callback: HtmlElement.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HtmlElement.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HtmlElement.SignalSignatures>(
             signal: K,
-            callback: HtmlElement.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HtmlElement.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HtmlElement.SignalSignatures>(
             signal: K,
-            ...args: HtmlElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HtmlElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -9515,11 +9775,11 @@ export namespace GXml {
     namespace LXPathObject {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::object-type': GObject.Object.Notify;
-            'notify::boolean-value': GObject.Object.Notify;
-            'notify::string-value': GObject.Object.Notify;
-            'notify::number-value': GObject.Object.Notify;
-            'notify::nodeset': GObject.Object.Notify;
+            'notify::object-type': (pspec: GObject.ParamSpec) => void;
+            'notify::boolean-value': (pspec: GObject.ParamSpec) => void;
+            'notify::string-value': (pspec: GObject.ParamSpec) => void;
+            'notify::number-value': (pspec: GObject.ParamSpec) => void;
+            'notify::nodeset': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9529,6 +9789,14 @@ export namespace GXml {
 
     class LXPathObject extends GObject.Object implements XPathObject {
         static $gtype: GObject.GType<LXPathObject>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LXPathObject.SignalSignatures;
 
         // Constructors
 
@@ -9542,17 +9810,17 @@ export namespace GXml {
 
         connect<K extends keyof LXPathObject.SignalSignatures>(
             signal: K,
-            callback: LXPathObject.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LXPathObject.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LXPathObject.SignalSignatures>(
             signal: K,
-            callback: LXPathObject.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LXPathObject.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LXPathObject.SignalSignatures>(
             signal: K,
-            ...args: LXPathObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LXPathObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10022,19 +10290,19 @@ export namespace GXml {
     namespace Node {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::node-type': GObject.Object.Notify;
-            'notify::node-name': GObject.Object.Notify;
-            'notify::base-uri': GObject.Object.Notify;
-            'notify::owner-document': GObject.Object.Notify;
-            'notify::parent-node': GObject.Object.Notify;
-            'notify::parent-element': GObject.Object.Notify;
-            'notify::child-nodes': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::node-value': GObject.Object.Notify;
-            'notify::text-content': GObject.Object.Notify;
+            'notify::node-type': (pspec: GObject.ParamSpec) => void;
+            'notify::node-name': (pspec: GObject.ParamSpec) => void;
+            'notify::base-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::owner-document': (pspec: GObject.ParamSpec) => void;
+            'notify::parent-node': (pspec: GObject.ParamSpec) => void;
+            'notify::parent-element': (pspec: GObject.ParamSpec) => void;
+            'notify::child-nodes': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::node-value': (pspec: GObject.ParamSpec) => void;
+            'notify::text-content': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10047,6 +10315,14 @@ export namespace GXml {
 
     class Node extends GObject.Object implements DomEventTarget, DomNode {
         static $gtype: GObject.GType<Node>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Node.SignalSignatures;
 
         // Constructors
 
@@ -10058,13 +10334,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect_after<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Node.SignalSignatures>(
             signal: K,
-            ...args: Node.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Node.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10609,13 +10891,13 @@ export namespace GXml {
     namespace NodeList {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::length': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10625,6 +10907,14 @@ export namespace GXml {
 
     class NodeList extends Gee.ArrayList implements DomNodeList {
         static $gtype: GObject.GType<NodeList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NodeList.SignalSignatures;
 
         // Constructors
 
@@ -10636,16 +10926,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof NodeList.SignalSignatures>(signal: K, callback: NodeList.SignalSignatures[K]): number;
+        connect<K extends keyof NodeList.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, NodeList.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NodeList.SignalSignatures>(
             signal: K,
-            callback: NodeList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NodeList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NodeList.SignalSignatures>(
             signal: K,
-            ...args: NodeList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NodeList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11103,10 +11396,10 @@ export namespace GXml {
     namespace NodeIterator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::root': GObject.Object.Notify;
-            'notify::reference-node': GObject.Object.Notify;
-            'notify::pointer-before-reference-node': GObject.Object.Notify;
-            'notify::what-to-show': GObject.Object.Notify;
+            'notify::root': (pspec: GObject.ParamSpec) => void;
+            'notify::reference-node': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-before-reference-node': (pspec: GObject.ParamSpec) => void;
+            'notify::what-to-show': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11116,6 +11409,14 @@ export namespace GXml {
 
     class NodeIterator extends GObject.Object implements DomNodeIterator {
         static $gtype: GObject.GType<NodeIterator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NodeIterator.SignalSignatures;
 
         // Constructors
 
@@ -11129,17 +11430,17 @@ export namespace GXml {
 
         connect<K extends keyof NodeIterator.SignalSignatures>(
             signal: K,
-            callback: NodeIterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NodeIterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NodeIterator.SignalSignatures>(
             signal: K,
-            callback: NodeIterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NodeIterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NodeIterator.SignalSignatures>(
             signal: K,
-            ...args: NodeIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NodeIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11611,7 +11912,7 @@ export namespace GXml {
     namespace BaseProperty {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::value': GObject.Object.Notify;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11628,6 +11929,14 @@ export namespace GXml {
 
         get value(): string;
         set value(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BaseProperty.SignalSignatures;
 
         // Constructors
 
@@ -11639,17 +11948,17 @@ export namespace GXml {
 
         connect<K extends keyof BaseProperty.SignalSignatures>(
             signal: K,
-            callback: BaseProperty.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BaseProperty.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseProperty.SignalSignatures>(
             signal: K,
-            callback: BaseProperty.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BaseProperty.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseProperty.SignalSignatures>(
             signal: K,
-            ...args: BaseProperty.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BaseProperty.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12110,7 +12419,7 @@ export namespace GXml {
     namespace String {
         // Signal signatures
         interface SignalSignatures extends BaseProperty.SignalSignatures {
-            'notify::value': GObject.Object.Notify;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12120,6 +12429,14 @@ export namespace GXml {
 
     class String extends BaseProperty {
         static $gtype: GObject.GType<String>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: String.SignalSignatures;
 
         // Constructors
 
@@ -12133,13 +12450,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof String.SignalSignatures>(signal: K, callback: String.SignalSignatures[K]): number;
+        connect<K extends keyof String.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, String.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof String.SignalSignatures>(signal: K, callback: String.SignalSignatures[K]): number;
+        connect_after<K extends keyof String.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, String.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof String.SignalSignatures>(
             signal: K,
-            ...args: String.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<String.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -12147,7 +12470,7 @@ export namespace GXml {
     namespace ArrayString {
         // Signal signatures
         interface SignalSignatures extends BaseProperty.SignalSignatures {
-            'notify::value': GObject.Object.Notify;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12157,6 +12480,14 @@ export namespace GXml {
 
     class ArrayString extends BaseProperty {
         static $gtype: GObject.GType<ArrayString>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ArrayString.SignalSignatures;
 
         // Constructors
 
@@ -12170,17 +12501,17 @@ export namespace GXml {
 
         connect<K extends keyof ArrayString.SignalSignatures>(
             signal: K,
-            callback: ArrayString.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ArrayString.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ArrayString.SignalSignatures>(
             signal: K,
-            callback: ArrayString.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ArrayString.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ArrayString.SignalSignatures>(
             signal: K,
-            ...args: ArrayString.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ArrayString.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12196,9 +12527,9 @@ export namespace GXml {
     namespace XsdArrayString {
         // Signal signatures
         interface SignalSignatures extends ArrayString.SignalSignatures {
-            'notify::simple-type': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::simple-type': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12221,6 +12552,14 @@ export namespace GXml {
         set simpleType(val: string);
         get source(): Gio.File;
         set source(val: Gio.File);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdArrayString.SignalSignatures;
 
         // Constructors
 
@@ -12234,17 +12573,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdArrayString.SignalSignatures>(
             signal: K,
-            callback: XsdArrayString.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdArrayString.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdArrayString.SignalSignatures>(
             signal: K,
-            callback: XsdArrayString.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdArrayString.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdArrayString.SignalSignatures>(
             signal: K,
-            ...args: XsdArrayString.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdArrayString.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12260,8 +12599,8 @@ export namespace GXml {
     namespace Double {
         // Signal signatures
         interface SignalSignatures extends BaseProperty.SignalSignatures {
-            'notify::decimals': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::decimals': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12278,6 +12617,14 @@ export namespace GXml {
 
         get decimals(): number;
         set decimals(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Double.SignalSignatures;
 
         // Constructors
 
@@ -12289,13 +12636,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof Double.SignalSignatures>(signal: K, callback: Double.SignalSignatures[K]): number;
+        connect<K extends keyof Double.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Double.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Double.SignalSignatures>(signal: K, callback: Double.SignalSignatures[K]): number;
+        connect_after<K extends keyof Double.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Double.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Double.SignalSignatures>(
             signal: K,
-            ...args: Double.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Double.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12310,8 +12663,8 @@ export namespace GXml {
     namespace Float {
         // Signal signatures
         interface SignalSignatures extends Double.SignalSignatures {
-            'notify::decimals': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::decimals': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12321,6 +12674,14 @@ export namespace GXml {
 
     class Float extends Double {
         static $gtype: GObject.GType<Float>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Float.SignalSignatures;
 
         // Constructors
 
@@ -12332,13 +12693,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof Float.SignalSignatures>(signal: K, callback: Float.SignalSignatures[K]): number;
+        connect<K extends keyof Float.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Float.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Float.SignalSignatures>(signal: K, callback: Float.SignalSignatures[K]): number;
+        connect_after<K extends keyof Float.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Float.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Float.SignalSignatures>(
             signal: K,
-            ...args: Float.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Float.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12351,7 +12718,7 @@ export namespace GXml {
     namespace Int {
         // Signal signatures
         interface SignalSignatures extends BaseProperty.SignalSignatures {
-            'notify::value': GObject.Object.Notify;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12361,6 +12728,14 @@ export namespace GXml {
 
     class Int extends BaseProperty {
         static $gtype: GObject.GType<Int>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Int.SignalSignatures;
 
         // Constructors
 
@@ -12372,13 +12747,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof Int.SignalSignatures>(signal: K, callback: Int.SignalSignatures[K]): number;
+        connect<K extends keyof Int.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Int.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Int.SignalSignatures>(signal: K, callback: Int.SignalSignatures[K]): number;
+        connect_after<K extends keyof Int.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Int.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int.SignalSignatures>(
             signal: K,
-            ...args: Int.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Int.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12391,7 +12772,7 @@ export namespace GXml {
     namespace Boolean {
         // Signal signatures
         interface SignalSignatures extends BaseProperty.SignalSignatures {
-            'notify::value': GObject.Object.Notify;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12401,6 +12782,14 @@ export namespace GXml {
 
     class Boolean extends BaseProperty {
         static $gtype: GObject.GType<Boolean>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Boolean.SignalSignatures;
 
         // Constructors
 
@@ -12412,16 +12801,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof Boolean.SignalSignatures>(signal: K, callback: Boolean.SignalSignatures[K]): number;
+        connect<K extends keyof Boolean.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Boolean.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Boolean.SignalSignatures>(
             signal: K,
-            callback: Boolean.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Boolean.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Boolean.SignalSignatures>(
             signal: K,
-            ...args: Boolean.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Boolean.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12434,11 +12826,11 @@ export namespace GXml {
     namespace Enum {
         // Signal signatures
         interface SignalSignatures extends BaseProperty.SignalSignatures {
-            'notify::use-nick': GObject.Object.Notify;
-            'notify::camel-case': GObject.Object.Notify;
-            'notify::upper-case': GObject.Object.Notify;
-            'notify::enum-type': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::use-nick': (pspec: GObject.ParamSpec) => void;
+            'notify::camel-case': (pspec: GObject.ParamSpec) => void;
+            'notify::upper-case': (pspec: GObject.ParamSpec) => void;
+            'notify::enum-type': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12476,6 +12868,14 @@ export namespace GXml {
         set enum_type(val: GObject.GType);
         get enumType(): GObject.GType;
         set enumType(val: GObject.GType);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Enum.SignalSignatures;
 
         // Constructors
 
@@ -12487,13 +12887,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof Enum.SignalSignatures>(signal: K, callback: Enum.SignalSignatures[K]): number;
+        connect<K extends keyof Enum.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Enum.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Enum.SignalSignatures>(signal: K, callback: Enum.SignalSignatures[K]): number;
+        connect_after<K extends keyof Enum.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Enum.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Enum.SignalSignatures>(
             signal: K,
-            ...args: Enum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Enum.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12516,7 +12922,7 @@ export namespace GXml {
     namespace Date {
         // Signal signatures
         interface SignalSignatures extends BaseProperty.SignalSignatures {
-            'notify::value': GObject.Object.Notify;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12526,6 +12932,14 @@ export namespace GXml {
 
     class Date extends BaseProperty {
         static $gtype: GObject.GType<Date>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Date.SignalSignatures;
 
         // Constructors
 
@@ -12537,13 +12951,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof Date.SignalSignatures>(signal: K, callback: Date.SignalSignatures[K]): number;
+        connect<K extends keyof Date.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Date.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Date.SignalSignatures>(signal: K, callback: Date.SignalSignatures[K]): number;
+        connect_after<K extends keyof Date.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Date.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Date.SignalSignatures>(
             signal: K,
-            ...args: Date.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Date.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12556,8 +12976,8 @@ export namespace GXml {
     namespace DateTime {
         // Signal signatures
         interface SignalSignatures extends BaseProperty.SignalSignatures {
-            'notify::format': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12574,6 +12994,14 @@ export namespace GXml {
 
         get format(): string;
         set format(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DateTime.SignalSignatures;
 
         // Constructors
 
@@ -12585,16 +13013,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof DateTime.SignalSignatures>(signal: K, callback: DateTime.SignalSignatures[K]): number;
+        connect<K extends keyof DateTime.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DateTime.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DateTime.SignalSignatures>(
             signal: K,
-            callback: DateTime.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DateTime.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DateTime.SignalSignatures>(
             signal: K,
-            ...args: DateTime.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DateTime.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12609,12 +13040,12 @@ export namespace GXml {
     namespace Range {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::start-container': GObject.Object.Notify;
-            'notify::start-offset': GObject.Object.Notify;
-            'notify::end-container': GObject.Object.Notify;
-            'notify::end-offset': GObject.Object.Notify;
-            'notify::collapsed': GObject.Object.Notify;
-            'notify::common-ancestor-container': GObject.Object.Notify;
+            'notify::start-container': (pspec: GObject.ParamSpec) => void;
+            'notify::start-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::end-container': (pspec: GObject.ParamSpec) => void;
+            'notify::end-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::collapsed': (pspec: GObject.ParamSpec) => void;
+            'notify::common-ancestor-container': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12624,6 +13055,14 @@ export namespace GXml {
 
     class Range extends GObject.Object implements DomRange {
         static $gtype: GObject.GType<Range>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Range.SignalSignatures;
 
         // Constructors
 
@@ -12635,13 +13074,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof Range.SignalSignatures>(signal: K, callback: Range.SignalSignatures[K]): number;
+        connect<K extends keyof Range.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Range.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Range.SignalSignatures>(signal: K, callback: Range.SignalSignatures[K]): number;
+        connect_after<K extends keyof Range.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Range.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Range.SignalSignatures>(
             signal: K,
-            ...args: Range.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Range.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13157,13 +13602,13 @@ export namespace GXml {
     namespace SettableTokenList {
         // Signal signatures
         interface SignalSignatures extends TokenList.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13173,6 +13618,14 @@ export namespace GXml {
 
     class SettableTokenList extends TokenList implements DomSettableTokenList {
         static $gtype: GObject.GType<SettableTokenList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettableTokenList.SignalSignatures;
 
         // Constructors
 
@@ -13189,17 +13642,17 @@ export namespace GXml {
 
         connect<K extends keyof SettableTokenList.SignalSignatures>(
             signal: K,
-            callback: SettableTokenList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettableTokenList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettableTokenList.SignalSignatures>(
             signal: K,
-            callback: SettableTokenList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettableTokenList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettableTokenList.SignalSignatures>(
             signal: K,
-            ...args: SettableTokenList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettableTokenList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13658,7 +14111,7 @@ export namespace GXml {
     namespace StringRef {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::value': GObject.Object.Notify;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13668,6 +14121,14 @@ export namespace GXml {
 
     class StringRef extends GObject.Object implements Property {
         static $gtype: GObject.GType<StringRef>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StringRef.SignalSignatures;
 
         // Constructors
 
@@ -13679,16 +14140,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof StringRef.SignalSignatures>(signal: K, callback: StringRef.SignalSignatures[K]): number;
+        connect<K extends keyof StringRef.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, StringRef.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StringRef.SignalSignatures>(
             signal: K,
-            callback: StringRef.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StringRef.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StringRef.SignalSignatures>(
             signal: K,
-            ...args: StringRef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StringRef.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14147,9 +14611,9 @@ export namespace GXml {
     namespace CharacterData {
         // Signal signatures
         interface SignalSignatures extends Node.SignalSignatures {
-            'notify::previous-element-sibling': GObject.Object.Notify;
-            'notify::next-element-sibling': GObject.Object.Notify;
-            'notify::data': GObject.Object.Notify;
+            'notify::previous-element-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::next-element-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14163,6 +14627,14 @@ export namespace GXml {
 
     class CharacterData extends Node implements DomNonDocumentTypeChildNode, DomChildNode, DomCharacterData {
         static $gtype: GObject.GType<CharacterData>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CharacterData.SignalSignatures;
 
         // Constructors
 
@@ -14176,17 +14648,17 @@ export namespace GXml {
 
         connect<K extends keyof CharacterData.SignalSignatures>(
             signal: K,
-            callback: CharacterData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CharacterData.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CharacterData.SignalSignatures>(
             signal: K,
-            callback: CharacterData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CharacterData.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CharacterData.SignalSignatures>(
             signal: K,
-            ...args: CharacterData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CharacterData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14646,7 +15118,7 @@ export namespace GXml {
     namespace Text {
         // Signal signatures
         interface SignalSignatures extends CharacterData.SignalSignatures {
-            'notify::data': GObject.Object.Notify;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14656,6 +15128,14 @@ export namespace GXml {
 
     class Text extends CharacterData implements DomText {
         static $gtype: GObject.GType<Text>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Text.SignalSignatures;
 
         // Constructors
 
@@ -14670,13 +15150,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
+        connect<K extends keyof Text.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Text.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
+        connect_after<K extends keyof Text.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Text.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Text.SignalSignatures>(
             signal: K,
-            ...args: Text.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Text.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14712,8 +15198,8 @@ export namespace GXml {
     namespace ProcessingInstruction {
         // Signal signatures
         interface SignalSignatures extends CharacterData.SignalSignatures {
-            'notify::target': GObject.Object.Notify;
-            'notify::data': GObject.Object.Notify;
+            'notify::target': (pspec: GObject.ParamSpec) => void;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14723,6 +15209,14 @@ export namespace GXml {
 
     class ProcessingInstruction extends CharacterData implements DomProcessingInstruction {
         static $gtype: GObject.GType<ProcessingInstruction>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ProcessingInstruction.SignalSignatures;
 
         // Constructors
 
@@ -14739,17 +15233,19 @@ export namespace GXml {
 
         connect<K extends keyof ProcessingInstruction.SignalSignatures>(
             signal: K,
-            callback: ProcessingInstruction.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProcessingInstruction.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProcessingInstruction.SignalSignatures>(
             signal: K,
-            callback: ProcessingInstruction.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProcessingInstruction.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProcessingInstruction.SignalSignatures>(
             signal: K,
-            ...args: ProcessingInstruction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ProcessingInstruction.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14784,7 +15280,7 @@ export namespace GXml {
     namespace Comment {
         // Signal signatures
         interface SignalSignatures extends CharacterData.SignalSignatures {
-            'notify::data': GObject.Object.Notify;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14794,6 +15290,14 @@ export namespace GXml {
 
     class Comment extends CharacterData implements DomComment {
         static $gtype: GObject.GType<Comment>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Comment.SignalSignatures;
 
         // Constructors
 
@@ -14808,16 +15312,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof Comment.SignalSignatures>(signal: K, callback: Comment.SignalSignatures[K]): number;
+        connect<K extends keyof Comment.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Comment.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Comment.SignalSignatures>(
             signal: K,
-            callback: Comment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Comment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Comment.SignalSignatures>(
             signal: K,
-            ...args: Comment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Comment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14849,13 +15356,13 @@ export namespace GXml {
     namespace TokenList {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::length': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14865,6 +15372,14 @@ export namespace GXml {
 
     class TokenList extends Gee.ArrayList implements DomTokenList {
         static $gtype: GObject.GType<TokenList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TokenList.SignalSignatures;
 
         // Constructors
 
@@ -14879,16 +15394,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof TokenList.SignalSignatures>(signal: K, callback: TokenList.SignalSignatures[K]): number;
+        connect<K extends keyof TokenList.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TokenList.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TokenList.SignalSignatures>(
             signal: K,
-            callback: TokenList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TokenList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TokenList.SignalSignatures>(
             signal: K,
-            ...args: TokenList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TokenList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -15372,9 +15890,9 @@ export namespace GXml {
     namespace TreeWalker {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::root': GObject.Object.Notify;
-            'notify::what-to-show': GObject.Object.Notify;
-            'notify::current-node': GObject.Object.Notify;
+            'notify::root': (pspec: GObject.ParamSpec) => void;
+            'notify::what-to-show': (pspec: GObject.ParamSpec) => void;
+            'notify::current-node': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15384,6 +15902,14 @@ export namespace GXml {
 
     class TreeWalker extends GObject.Object implements DomTreeWalker {
         static $gtype: GObject.GType<TreeWalker>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TreeWalker.SignalSignatures;
 
         // Constructors
 
@@ -15397,17 +15923,17 @@ export namespace GXml {
 
         connect<K extends keyof TreeWalker.SignalSignatures>(
             signal: K,
-            callback: TreeWalker.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TreeWalker.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TreeWalker.SignalSignatures>(
             signal: K,
-            callback: TreeWalker.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TreeWalker.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TreeWalker.SignalSignatures>(
             signal: K,
-            ...args: TreeWalker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TreeWalker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -15883,16 +16409,16 @@ export namespace GXml {
     namespace XAttribute {
         // Signal signatures
         interface SignalSignatures extends XNode.SignalSignatures {
-            'notify::attrs': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::namespace-uri': GObject.Object.Notify;
-            'notify::prefix': GObject.Object.Notify;
-            'notify::local-name': GObject.Object.Notify;
+            'notify::attrs': (pspec: GObject.ParamSpec) => void;
+            'notify::children-nodes': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::type-node': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::namespace-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::prefix': (pspec: GObject.ParamSpec) => void;
+            'notify::local-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15902,6 +16428,14 @@ export namespace GXml {
 
     class XAttribute extends XNode implements DomAttr {
         static $gtype: GObject.GType<XAttribute>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XAttribute.SignalSignatures;
 
         // Constructors
 
@@ -15915,17 +16449,17 @@ export namespace GXml {
 
         connect<K extends keyof XAttribute.SignalSignatures>(
             signal: K,
-            callback: XAttribute.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XAttribute.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XAttribute.SignalSignatures>(
             signal: K,
-            callback: XAttribute.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XAttribute.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XAttribute.SignalSignatures>(
             signal: K,
-            ...args: XAttribute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XAttribute.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -16398,15 +16932,15 @@ export namespace GXml {
     namespace XCharacterData {
         // Signal signatures
         interface SignalSignatures extends XNonDocumentChildNode.SignalSignatures {
-            'notify::str': GObject.Object.Notify;
-            'notify::attrs': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::data': GObject.Object.Notify;
+            'notify::str': (pspec: GObject.ParamSpec) => void;
+            'notify::attrs': (pspec: GObject.ParamSpec) => void;
+            'notify::children-nodes': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::type-node': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -16423,6 +16957,14 @@ export namespace GXml {
 
         get str(): string;
         set str(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XCharacterData.SignalSignatures;
 
         // Constructors
 
@@ -16436,17 +16978,17 @@ export namespace GXml {
 
         connect<K extends keyof XCharacterData.SignalSignatures>(
             signal: K,
-            callback: XCharacterData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XCharacterData.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XCharacterData.SignalSignatures>(
             signal: K,
-            callback: XCharacterData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XCharacterData.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XCharacterData.SignalSignatures>(
             signal: K,
-            ...args: XCharacterData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XCharacterData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -16901,13 +17443,13 @@ export namespace GXml {
     namespace XChildNode {
         // Signal signatures
         interface SignalSignatures extends XNode.SignalSignatures {
-            'notify::attrs': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::attrs': (pspec: GObject.ParamSpec) => void;
+            'notify::children-nodes': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::type-node': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -16917,6 +17459,14 @@ export namespace GXml {
 
     class XChildNode extends XNode implements DomChildNode {
         static $gtype: GObject.GType<XChildNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XChildNode.SignalSignatures;
 
         // Constructors
 
@@ -16930,17 +17480,17 @@ export namespace GXml {
 
         connect<K extends keyof XChildNode.SignalSignatures>(
             signal: K,
-            callback: XChildNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XChildNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XChildNode.SignalSignatures>(
             signal: K,
-            callback: XChildNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XChildNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XChildNode.SignalSignatures>(
             signal: K,
-            ...args: XChildNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XChildNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -17391,15 +17941,15 @@ export namespace GXml {
     namespace XNonDocumentChildNode {
         // Signal signatures
         interface SignalSignatures extends XChildNode.SignalSignatures {
-            'notify::attrs': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::previous-element-sibling': GObject.Object.Notify;
-            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::attrs': (pspec: GObject.ParamSpec) => void;
+            'notify::children-nodes': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::type-node': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-element-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::next-element-sibling': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -17409,6 +17959,14 @@ export namespace GXml {
 
     class XNonDocumentChildNode extends XChildNode implements DomNonDocumentTypeChildNode {
         static $gtype: GObject.GType<XNonDocumentChildNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XNonDocumentChildNode.SignalSignatures;
 
         // Constructors
 
@@ -17422,17 +17980,19 @@ export namespace GXml {
 
         connect<K extends keyof XNonDocumentChildNode.SignalSignatures>(
             signal: K,
-            callback: XNonDocumentChildNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XNonDocumentChildNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XNonDocumentChildNode.SignalSignatures>(
             signal: K,
-            callback: XNonDocumentChildNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XNonDocumentChildNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XNonDocumentChildNode.SignalSignatures>(
             signal: K,
-            ...args: XNonDocumentChildNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XNonDocumentChildNode.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -17891,15 +18451,15 @@ export namespace GXml {
     namespace XComment {
         // Signal signatures
         interface SignalSignatures extends XCharacterData.SignalSignatures {
-            'notify::str': GObject.Object.Notify;
-            'notify::attrs': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::data': GObject.Object.Notify;
+            'notify::str': (pspec: GObject.ParamSpec) => void;
+            'notify::attrs': (pspec: GObject.ParamSpec) => void;
+            'notify::children-nodes': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::type-node': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -17909,6 +18469,14 @@ export namespace GXml {
 
     class XComment extends XCharacterData implements DomComment {
         static $gtype: GObject.GType<XComment>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XComment.SignalSignatures;
 
         // Constructors
 
@@ -17923,16 +18491,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof XComment.SignalSignatures>(signal: K, callback: XComment.SignalSignatures[K]): number;
+        connect<K extends keyof XComment.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XComment.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XComment.SignalSignatures>(
             signal: K,
-            callback: XComment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XComment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XComment.SignalSignatures>(
             signal: K,
-            ...args: XComment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XComment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -17964,32 +18535,32 @@ export namespace GXml {
     namespace XDocument {
         // Signal signatures
         interface SignalSignatures extends XNode.SignalSignatures {
-            'notify::indent': GObject.Object.Notify;
-            'notify::ns-top': GObject.Object.Notify;
-            'notify::prefix-default-ns': GObject.Object.Notify;
-            'notify::backup': GObject.Object.Notify;
-            'notify::file': GObject.Object.Notify;
-            'notify::root': GObject.Object.Notify;
-            'notify::attrs': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::children': GObject.Object.Notify;
-            'notify::first-element-child': GObject.Object.Notify;
-            'notify::last-element-child': GObject.Object.Notify;
-            'notify::child-element-count': GObject.Object.Notify;
-            'notify::implementation': GObject.Object.Notify;
-            'notify::url': GObject.Object.Notify;
-            'notify::document-uri': GObject.Object.Notify;
-            'notify::origin': GObject.Object.Notify;
-            'notify::compat-mode': GObject.Object.Notify;
-            'notify::character-set': GObject.Object.Notify;
-            'notify::content-type': GObject.Object.Notify;
-            'notify::doctype': GObject.Object.Notify;
-            'notify::document-element': GObject.Object.Notify;
+            'notify::indent': (pspec: GObject.ParamSpec) => void;
+            'notify::ns-top': (pspec: GObject.ParamSpec) => void;
+            'notify::prefix-default-ns': (pspec: GObject.ParamSpec) => void;
+            'notify::backup': (pspec: GObject.ParamSpec) => void;
+            'notify::file': (pspec: GObject.ParamSpec) => void;
+            'notify::root': (pspec: GObject.ParamSpec) => void;
+            'notify::attrs': (pspec: GObject.ParamSpec) => void;
+            'notify::children-nodes': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::type-node': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::children': (pspec: GObject.ParamSpec) => void;
+            'notify::first-element-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-element-child': (pspec: GObject.ParamSpec) => void;
+            'notify::child-element-count': (pspec: GObject.ParamSpec) => void;
+            'notify::implementation': (pspec: GObject.ParamSpec) => void;
+            'notify::url': (pspec: GObject.ParamSpec) => void;
+            'notify::document-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::origin': (pspec: GObject.ParamSpec) => void;
+            'notify::compat-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::character-set': (pspec: GObject.ParamSpec) => void;
+            'notify::content-type': (pspec: GObject.ParamSpec) => void;
+            'notify::doctype': (pspec: GObject.ParamSpec) => void;
+            'notify::document-element': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -18035,6 +18606,14 @@ export namespace GXml {
         get file(): Gio.File;
         set file(val: Gio.File);
         get root(): DomNode;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XDocument.SignalSignatures;
 
         // Fields
 
@@ -18062,16 +18641,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof XDocument.SignalSignatures>(signal: K, callback: XDocument.SignalSignatures[K]): number;
+        connect<K extends keyof XDocument.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XDocument.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XDocument.SignalSignatures>(
             signal: K,
-            callback: XDocument.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XDocument.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XDocument.SignalSignatures>(
             signal: K,
-            ...args: XDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XDocument.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -18765,26 +19347,26 @@ export namespace GXml {
     namespace XElement {
         // Signal signatures
         interface SignalSignatures extends XNonDocumentChildNode.SignalSignatures {
-            'notify::content': GObject.Object.Notify;
-            'notify::attrs': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::children': GObject.Object.Notify;
-            'notify::first-element-child': GObject.Object.Notify;
-            'notify::last-element-child': GObject.Object.Notify;
-            'notify::child-element-count': GObject.Object.Notify;
-            'notify::namespace-uri': GObject.Object.Notify;
-            'notify::prefix': GObject.Object.Notify;
-            'notify::local-name': GObject.Object.Notify;
-            'notify::tag-name': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::class-name': GObject.Object.Notify;
-            'notify::class-list': GObject.Object.Notify;
-            'notify::attributes': GObject.Object.Notify;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::attrs': (pspec: GObject.ParamSpec) => void;
+            'notify::children-nodes': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::type-node': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::children': (pspec: GObject.ParamSpec) => void;
+            'notify::first-element-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-element-child': (pspec: GObject.ParamSpec) => void;
+            'notify::child-element-count': (pspec: GObject.ParamSpec) => void;
+            'notify::namespace-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::prefix': (pspec: GObject.ParamSpec) => void;
+            'notify::local-name': (pspec: GObject.ParamSpec) => void;
+            'notify::tag-name': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::class-name': (pspec: GObject.ParamSpec) => void;
+            'notify::class-list': (pspec: GObject.ParamSpec) => void;
+            'notify::attributes': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -18805,6 +19387,14 @@ export namespace GXml {
 
         get content(): string;
         set content(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XElement.SignalSignatures;
 
         // Constructors
 
@@ -18819,16 +19409,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof XElement.SignalSignatures>(signal: K, callback: XElement.SignalSignatures[K]): number;
+        connect<K extends keyof XElement.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XElement.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XElement.SignalSignatures>(
             signal: K,
-            callback: XElement.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XElement.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XElement.SignalSignatures>(
             signal: K,
-            ...args: XElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -19522,19 +20115,19 @@ export namespace GXml {
     namespace XHashMapAttr {
         // Signal signatures
         interface SignalSignatures extends Gee.AbstractMap.SignalSignatures {
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::keys': GObject.Object.Notify;
-            'notify::values': GObject.Object.Notify;
-            'notify::entries': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::length': GObject.Object.Notify;
+            'notify::k-type': (pspec: GObject.ParamSpec) => void;
+            'notify::k-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::k-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::v-type': (pspec: GObject.ParamSpec) => void;
+            'notify::v-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::v-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            'notify::keys': (pspec: GObject.ParamSpec) => void;
+            'notify::values': (pspec: GObject.ParamSpec) => void;
+            'notify::entries': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19544,6 +20137,14 @@ export namespace GXml {
 
     class XHashMapAttr extends Gee.AbstractMap implements DomNamedNodeMap {
         static $gtype: GObject.GType<XHashMapAttr>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XHashMapAttr.SignalSignatures;
 
         // Constructors
 
@@ -19557,17 +20158,17 @@ export namespace GXml {
 
         connect<K extends keyof XHashMapAttr.SignalSignatures>(
             signal: K,
-            callback: XHashMapAttr.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XHashMapAttr.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XHashMapAttr.SignalSignatures>(
             signal: K,
-            callback: XHashMapAttr.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XHashMapAttr.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XHashMapAttr.SignalSignatures>(
             signal: K,
-            ...args: XHashMapAttr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XHashMapAttr.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -20037,15 +20638,15 @@ export namespace GXml {
     namespace XHashMapAttrEntry {
         // Signal signatures
         interface SignalSignatures extends Gee.MapEntry.SignalSignatures {
-            'notify::k-type': GObject.Object.Notify;
-            'notify::k-dup-func': GObject.Object.Notify;
-            'notify::k-destroy-func': GObject.Object.Notify;
-            'notify::v-type': GObject.Object.Notify;
-            'notify::v-dup-func': GObject.Object.Notify;
-            'notify::v-destroy-func': GObject.Object.Notify;
-            'notify::key': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::k-type': (pspec: GObject.ParamSpec) => void;
+            'notify::k-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::k-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::v-type': (pspec: GObject.ParamSpec) => void;
+            'notify::v-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::v-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::key': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -20055,6 +20656,14 @@ export namespace GXml {
 
     class XHashMapAttrEntry extends Gee.MapEntry {
         static $gtype: GObject.GType<XHashMapAttrEntry>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XHashMapAttrEntry.SignalSignatures;
 
         // Constructors
 
@@ -20068,17 +20677,17 @@ export namespace GXml {
 
         connect<K extends keyof XHashMapAttrEntry.SignalSignatures>(
             signal: K,
-            callback: XHashMapAttrEntry.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XHashMapAttrEntry.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XHashMapAttrEntry.SignalSignatures>(
             signal: K,
-            callback: XHashMapAttrEntry.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XHashMapAttrEntry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XHashMapAttrEntry.SignalSignatures>(
             signal: K,
-            ...args: XHashMapAttrEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XHashMapAttrEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -20086,9 +20695,9 @@ export namespace GXml {
     namespace XHashMapAttrIterator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::valid': GObject.Object.Notify;
-            'notify::mutable': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::valid': (pspec: GObject.ParamSpec) => void;
+            'notify::mutable': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -20098,6 +20707,14 @@ export namespace GXml {
 
     class XHashMapAttrIterator extends GObject.Object implements Gee.MapIterator {
         static $gtype: GObject.GType<XHashMapAttrIterator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XHashMapAttrIterator.SignalSignatures;
 
         // Constructors
 
@@ -20111,17 +20728,19 @@ export namespace GXml {
 
         connect<K extends keyof XHashMapAttrIterator.SignalSignatures>(
             signal: K,
-            callback: XHashMapAttrIterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XHashMapAttrIterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XHashMapAttrIterator.SignalSignatures>(
             signal: K,
-            callback: XHashMapAttrIterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XHashMapAttrIterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XHashMapAttrIterator.SignalSignatures>(
             signal: K,
-            ...args: XHashMapAttrIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XHashMapAttrIterator.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -20598,19 +21217,19 @@ export namespace GXml {
     namespace XHtmlDocument {
         // Signal signatures
         interface SignalSignatures extends XDocument.SignalSignatures {
-            'notify::indent': GObject.Object.Notify;
-            'notify::ns-top': GObject.Object.Notify;
-            'notify::prefix-default-ns': GObject.Object.Notify;
-            'notify::backup': GObject.Object.Notify;
-            'notify::file': GObject.Object.Notify;
-            'notify::root': GObject.Object.Notify;
-            'notify::attrs': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::indent': (pspec: GObject.ParamSpec) => void;
+            'notify::ns-top': (pspec: GObject.ParamSpec) => void;
+            'notify::prefix-default-ns': (pspec: GObject.ParamSpec) => void;
+            'notify::backup': (pspec: GObject.ParamSpec) => void;
+            'notify::file': (pspec: GObject.ParamSpec) => void;
+            'notify::root': (pspec: GObject.ParamSpec) => void;
+            'notify::attrs': (pspec: GObject.ParamSpec) => void;
+            'notify::children-nodes': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::type-node': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -20620,6 +21239,14 @@ export namespace GXml {
 
     class XHtmlDocument extends XDocument implements DomHtmlDocument {
         static $gtype: GObject.GType<XHtmlDocument>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XHtmlDocument.SignalSignatures;
 
         // Constructors
 
@@ -20645,17 +21272,17 @@ export namespace GXml {
 
         connect<K extends keyof XHtmlDocument.SignalSignatures>(
             signal: K,
-            callback: XHtmlDocument.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XHtmlDocument.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XHtmlDocument.SignalSignatures>(
             signal: K,
-            callback: XHtmlDocument.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XHtmlDocument.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XHtmlDocument.SignalSignatures>(
             signal: K,
-            ...args: XHtmlDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XHtmlDocument.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21114,13 +21741,13 @@ export namespace GXml {
     namespace XListChildren {
         // Signal signatures
         interface SignalSignatures extends Gee.AbstractBidirList.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::read-only-view': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::length': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21133,6 +21760,14 @@ export namespace GXml {
 
     class XListChildren extends Gee.AbstractBidirList implements DomNodeList, DomHTMLCollection {
         static $gtype: GObject.GType<XListChildren>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XListChildren.SignalSignatures;
 
         // Constructors
 
@@ -21146,17 +21781,17 @@ export namespace GXml {
 
         connect<K extends keyof XListChildren.SignalSignatures>(
             signal: K,
-            callback: XListChildren.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XListChildren.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XListChildren.SignalSignatures>(
             signal: K,
-            callback: XListChildren.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XListChildren.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XListChildren.SignalSignatures>(
             signal: K,
-            ...args: XListChildren.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XListChildren.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21628,8 +22263,8 @@ export namespace GXml {
     namespace XListChildrenIterator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::valid': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::valid': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21648,6 +22283,14 @@ export namespace GXml {
         implements Gee.Traversable, Gee.Iterator, Gee.BidirIterator, Gee.ListIterator, Gee.BidirListIterator
     {
         static $gtype: GObject.GType<XListChildrenIterator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XListChildrenIterator.SignalSignatures;
 
         // Constructors
 
@@ -21661,17 +22304,19 @@ export namespace GXml {
 
         connect<K extends keyof XListChildrenIterator.SignalSignatures>(
             signal: K,
-            callback: XListChildrenIterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XListChildrenIterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XListChildrenIterator.SignalSignatures>(
             signal: K,
-            callback: XListChildrenIterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XListChildrenIterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XListChildrenIterator.SignalSignatures>(
             signal: K,
-            ...args: XListChildrenIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XListChildrenIterator.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22182,26 +22827,26 @@ export namespace GXml {
     namespace XNode {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::attrs': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::node-type': GObject.Object.Notify;
-            'notify::node-name': GObject.Object.Notify;
-            'notify::base-uri': GObject.Object.Notify;
-            'notify::owner-document': GObject.Object.Notify;
-            'notify::parent-node': GObject.Object.Notify;
-            'notify::parent-element': GObject.Object.Notify;
-            'notify::child-nodes': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::node-value': GObject.Object.Notify;
-            'notify::text-content': GObject.Object.Notify;
+            'notify::attrs': (pspec: GObject.ParamSpec) => void;
+            'notify::children-nodes': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::type-node': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::node-type': (pspec: GObject.ParamSpec) => void;
+            'notify::node-name': (pspec: GObject.ParamSpec) => void;
+            'notify::base-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::owner-document': (pspec: GObject.ParamSpec) => void;
+            'notify::parent-node': (pspec: GObject.ParamSpec) => void;
+            'notify::parent-element': (pspec: GObject.ParamSpec) => void;
+            'notify::child-nodes': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::node-value': (pspec: GObject.ParamSpec) => void;
+            'notify::text-content': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22237,6 +22882,14 @@ export namespace GXml {
         get name(): string;
         get value(): string;
         set value(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XNode.SignalSignatures;
 
         // Fields
 
@@ -22250,13 +22903,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof XNode.SignalSignatures>(signal: K, callback: XNode.SignalSignatures[K]): number;
+        connect<K extends keyof XNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XNode.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof XNode.SignalSignatures>(signal: K, callback: XNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof XNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XNode.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XNode.SignalSignatures>(
             signal: K,
-            ...args: XNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22833,11 +23492,11 @@ export namespace GXml {
     namespace XParser {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::backup': GObject.Object.Notify;
-            'notify::indent': GObject.Object.Notify;
-            'notify::cancellable': GObject.Object.Notify;
-            'notify::node': GObject.Object.Notify;
-            'notify::types': GObject.Object.Notify;
+            'notify::backup': (pspec: GObject.ParamSpec) => void;
+            'notify::indent': (pspec: GObject.ParamSpec) => void;
+            'notify::cancellable': (pspec: GObject.ParamSpec) => void;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::types': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22847,6 +23506,14 @@ export namespace GXml {
 
     class XParser extends GObject.Object implements Parser {
         static $gtype: GObject.GType<XParser>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XParser.SignalSignatures;
 
         // Constructors
 
@@ -22858,16 +23525,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof XParser.SignalSignatures>(signal: K, callback: XParser.SignalSignatures[K]): number;
+        connect<K extends keyof XParser.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XParser.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XParser.SignalSignatures>(
             signal: K,
-            callback: XParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XParser.SignalSignatures>(
             signal: K,
-            ...args: XParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23451,16 +24121,16 @@ export namespace GXml {
     namespace XProcessingInstruction {
         // Signal signatures
         interface SignalSignatures extends XCharacterData.SignalSignatures {
-            'notify::data': GObject.Object.Notify;
-            'notify::str': GObject.Object.Notify;
-            'notify::attrs': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::target': GObject.Object.Notify;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
+            'notify::str': (pspec: GObject.ParamSpec) => void;
+            'notify::attrs': (pspec: GObject.ParamSpec) => void;
+            'notify::children-nodes': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::type-node': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::target': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23477,6 +24147,14 @@ export namespace GXml {
 
         get data(): string;
         set data(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XProcessingInstruction.SignalSignatures;
 
         // Constructors
 
@@ -23493,17 +24171,19 @@ export namespace GXml {
 
         connect<K extends keyof XProcessingInstruction.SignalSignatures>(
             signal: K,
-            callback: XProcessingInstruction.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XProcessingInstruction.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XProcessingInstruction.SignalSignatures>(
             signal: K,
-            callback: XProcessingInstruction.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XProcessingInstruction.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XProcessingInstruction.SignalSignatures>(
             signal: K,
-            ...args: XProcessingInstruction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XProcessingInstruction.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23539,12 +24219,12 @@ export namespace GXml {
     namespace XsdSchema {
         // Signal signatures
         interface SignalSignatures extends Element.SignalSignatures {
-            'notify::element-definitions': GObject.Object.Notify;
-            'notify::simple-type-definitions': GObject.Object.Notify;
-            'notify::complex-type-definitions': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::element-definitions': (pspec: GObject.ParamSpec) => void;
+            'notify::simple-type-definitions': (pspec: GObject.ParamSpec) => void;
+            'notify::complex-type-definitions': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23576,6 +24256,14 @@ export namespace GXml {
         set complex_type_definitions(val: XsdListComplexTypes);
         get complexTypeDefinitions(): XsdListComplexTypes;
         set complexTypeDefinitions(val: XsdListComplexTypes);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdSchema.SignalSignatures;
 
         // Constructors
 
@@ -23587,16 +24275,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof XsdSchema.SignalSignatures>(signal: K, callback: XsdSchema.SignalSignatures[K]): number;
+        connect<K extends keyof XsdSchema.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XsdSchema.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdSchema.SignalSignatures>(
             signal: K,
-            callback: XsdSchema.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdSchema.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdSchema.SignalSignatures>(
             signal: K,
-            ...args: XsdSchema.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdSchema.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23613,15 +24304,15 @@ export namespace GXml {
     namespace XsdSimpleType {
         // Signal signatures
         interface SignalSignatures extends Element.SignalSignatures {
-            'notify::final': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::annotation': GObject.Object.Notify;
-            'notify::list': GObject.Object.Notify;
-            'notify::union': GObject.Object.Notify;
-            'notify::restriction': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::final': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::list': (pspec: GObject.ParamSpec) => void;
+            'notify::union': (pspec: GObject.ParamSpec) => void;
+            'notify::restriction': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23653,6 +24344,14 @@ export namespace GXml {
         set union(val: XsdTypeUnion);
         get restriction(): XsdTypeRestriction;
         set restriction(val: XsdTypeRestriction);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdSimpleType.SignalSignatures;
 
         // Constructors
 
@@ -23666,17 +24365,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdSimpleType.SignalSignatures>(
             signal: K,
-            callback: XsdSimpleType.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdSimpleType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdSimpleType.SignalSignatures>(
             signal: K,
-            callback: XsdSimpleType.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdSimpleType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdSimpleType.SignalSignatures>(
             signal: K,
-            ...args: XsdSimpleType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdSimpleType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23699,10 +24398,10 @@ export namespace GXml {
     namespace XsdTypeDefinition {
         // Signal signatures
         interface SignalSignatures extends Element.SignalSignatures {
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23719,6 +24418,14 @@ export namespace GXml {
 
         get annotation(): XsdAnnotation;
         set annotation(val: XsdAnnotation);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeDefinition.SignalSignatures;
 
         // Constructors
 
@@ -23732,17 +24439,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeDefinition.SignalSignatures>(
             signal: K,
-            callback: XsdTypeDefinition.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeDefinition.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeDefinition.SignalSignatures>(
             signal: K,
-            callback: XsdTypeDefinition.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeDefinition.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeDefinition.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeDefinition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeDefinition.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23755,10 +24462,10 @@ export namespace GXml {
     namespace XsdTypeList {
         // Signal signatures
         interface SignalSignatures extends XsdTypeDefinition.SignalSignatures {
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23768,6 +24475,14 @@ export namespace GXml {
 
     class XsdTypeList extends XsdTypeDefinition {
         static $gtype: GObject.GType<XsdTypeList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeList.SignalSignatures;
 
         // Constructors
 
@@ -23781,17 +24496,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeList.SignalSignatures>(
             signal: K,
-            callback: XsdTypeList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeList.SignalSignatures>(
             signal: K,
-            callback: XsdTypeList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeList.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -23799,10 +24514,10 @@ export namespace GXml {
     namespace XsdTypeUnion {
         // Signal signatures
         interface SignalSignatures extends XsdTypeDefinition.SignalSignatures {
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23812,6 +24527,14 @@ export namespace GXml {
 
     class XsdTypeUnion extends XsdTypeDefinition {
         static $gtype: GObject.GType<XsdTypeUnion>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeUnion.SignalSignatures;
 
         // Constructors
 
@@ -23825,17 +24548,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeUnion.SignalSignatures>(
             signal: K,
-            callback: XsdTypeUnion.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeUnion.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeUnion.SignalSignatures>(
             signal: K,
-            callback: XsdTypeUnion.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeUnion.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeUnion.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeUnion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeUnion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -23843,14 +24566,14 @@ export namespace GXml {
     namespace XsdTypeRestriction {
         // Signal signatures
         interface SignalSignatures extends XsdTypeDefinition.SignalSignatures {
-            'notify::base': GObject.Object.Notify;
-            'notify::simple-type': GObject.Object.Notify;
-            'notify::enumerations': GObject.Object.Notify;
-            'notify::white-spaces': GObject.Object.Notify;
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::base': (pspec: GObject.ParamSpec) => void;
+            'notify::simple-type': (pspec: GObject.ParamSpec) => void;
+            'notify::enumerations': (pspec: GObject.ParamSpec) => void;
+            'notify::white-spaces': (pspec: GObject.ParamSpec) => void;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23882,6 +24605,14 @@ export namespace GXml {
         set white_spaces(val: XsdListTypeRestrictionWhiteSpaces);
         get whiteSpaces(): XsdListTypeRestrictionWhiteSpaces;
         set whiteSpaces(val: XsdListTypeRestrictionWhiteSpaces);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeRestriction.SignalSignatures;
 
         // Constructors
 
@@ -23895,17 +24626,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeRestriction.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestriction.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestriction.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeRestriction.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestriction.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestriction.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeRestriction.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeRestriction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeRestriction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23924,10 +24655,10 @@ export namespace GXml {
     namespace XsdTypeRestrictionDef {
         // Signal signatures
         interface SignalSignatures extends Element.SignalSignatures {
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23944,6 +24675,14 @@ export namespace GXml {
 
         get annotation(): XsdAnnotation;
         set annotation(val: XsdAnnotation);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeRestrictionDef.SignalSignatures;
 
         // Constructors
 
@@ -23957,17 +24696,19 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeRestrictionDef.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionDef.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionDef.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeRestrictionDef.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionDef.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionDef.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeRestrictionDef.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeRestrictionDef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeRestrictionDef.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23980,10 +24721,10 @@ export namespace GXml {
     namespace XsdTypeRestrictionMinExclusive {
         // Signal signatures
         interface SignalSignatures extends XsdTypeRestrictionDef.SignalSignatures {
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23993,6 +24734,14 @@ export namespace GXml {
 
     class XsdTypeRestrictionMinExclusive extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionMinExclusive>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeRestrictionMinExclusive.SignalSignatures;
 
         // Constructors
 
@@ -24006,17 +24755,19 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeRestrictionMinExclusive.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionMinExclusive.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionMinExclusive.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeRestrictionMinExclusive.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionMinExclusive.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionMinExclusive.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeRestrictionMinExclusive.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeRestrictionMinExclusive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeRestrictionMinExclusive.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -24024,10 +24775,10 @@ export namespace GXml {
     namespace XsdTypeRestrictionMinInclusive {
         // Signal signatures
         interface SignalSignatures extends XsdTypeRestrictionDef.SignalSignatures {
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24037,6 +24788,14 @@ export namespace GXml {
 
     class XsdTypeRestrictionMinInclusive extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionMinInclusive>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeRestrictionMinInclusive.SignalSignatures;
 
         // Constructors
 
@@ -24050,17 +24809,19 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeRestrictionMinInclusive.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionMinInclusive.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionMinInclusive.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeRestrictionMinInclusive.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionMinInclusive.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionMinInclusive.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeRestrictionMinInclusive.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeRestrictionMinInclusive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeRestrictionMinInclusive.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -24068,10 +24829,10 @@ export namespace GXml {
     namespace XsdTypeRestrictionMaxExclusive {
         // Signal signatures
         interface SignalSignatures extends XsdTypeRestrictionDef.SignalSignatures {
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24081,6 +24842,14 @@ export namespace GXml {
 
     class XsdTypeRestrictionMaxExclusive extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionMaxExclusive>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeRestrictionMaxExclusive.SignalSignatures;
 
         // Constructors
 
@@ -24094,17 +24863,19 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeRestrictionMaxExclusive.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionMaxExclusive.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionMaxExclusive.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeRestrictionMaxExclusive.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionMaxExclusive.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionMaxExclusive.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeRestrictionMaxExclusive.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeRestrictionMaxExclusive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeRestrictionMaxExclusive.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -24112,10 +24883,10 @@ export namespace GXml {
     namespace XsdTypeRestrictionMaxInclusive {
         // Signal signatures
         interface SignalSignatures extends XsdTypeRestrictionDef.SignalSignatures {
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24125,6 +24896,14 @@ export namespace GXml {
 
     class XsdTypeRestrictionMaxInclusive extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionMaxInclusive>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeRestrictionMaxInclusive.SignalSignatures;
 
         // Constructors
 
@@ -24138,17 +24917,19 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeRestrictionMaxInclusive.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionMaxInclusive.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionMaxInclusive.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeRestrictionMaxInclusive.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionMaxInclusive.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionMaxInclusive.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeRestrictionMaxInclusive.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeRestrictionMaxInclusive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeRestrictionMaxInclusive.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -24156,10 +24937,10 @@ export namespace GXml {
     namespace XsdTypeRestrictionTotalDigits {
         // Signal signatures
         interface SignalSignatures extends XsdTypeRestrictionDef.SignalSignatures {
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24169,6 +24950,14 @@ export namespace GXml {
 
     class XsdTypeRestrictionTotalDigits extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionTotalDigits>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeRestrictionTotalDigits.SignalSignatures;
 
         // Constructors
 
@@ -24182,17 +24971,19 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeRestrictionTotalDigits.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionTotalDigits.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionTotalDigits.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeRestrictionTotalDigits.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionTotalDigits.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionTotalDigits.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeRestrictionTotalDigits.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeRestrictionTotalDigits.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeRestrictionTotalDigits.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -24200,10 +24991,10 @@ export namespace GXml {
     namespace XsdTypeRestrictionFractionDigits {
         // Signal signatures
         interface SignalSignatures extends XsdTypeRestrictionDef.SignalSignatures {
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24213,6 +25004,14 @@ export namespace GXml {
 
     class XsdTypeRestrictionFractionDigits extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionFractionDigits>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeRestrictionFractionDigits.SignalSignatures;
 
         // Constructors
 
@@ -24226,17 +25025,22 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeRestrictionFractionDigits.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionFractionDigits.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionFractionDigits.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeRestrictionFractionDigits.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionFractionDigits.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionFractionDigits.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeRestrictionFractionDigits.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeRestrictionFractionDigits.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeRestrictionFractionDigits.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -24244,10 +25048,10 @@ export namespace GXml {
     namespace XsdTypeRestrictionLength {
         // Signal signatures
         interface SignalSignatures extends XsdTypeRestrictionDef.SignalSignatures {
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24257,6 +25061,14 @@ export namespace GXml {
 
     class XsdTypeRestrictionLength extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionLength>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeRestrictionLength.SignalSignatures;
 
         // Constructors
 
@@ -24270,17 +25082,19 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeRestrictionLength.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionLength.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionLength.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeRestrictionLength.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionLength.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionLength.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeRestrictionLength.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeRestrictionLength.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeRestrictionLength.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -24288,10 +25102,10 @@ export namespace GXml {
     namespace XsdTypeRestrictionMinLength {
         // Signal signatures
         interface SignalSignatures extends XsdTypeRestrictionDef.SignalSignatures {
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24301,6 +25115,14 @@ export namespace GXml {
 
     class XsdTypeRestrictionMinLength extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionMinLength>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeRestrictionMinLength.SignalSignatures;
 
         // Constructors
 
@@ -24314,17 +25136,19 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeRestrictionMinLength.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionMinLength.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionMinLength.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeRestrictionMinLength.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionMinLength.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionMinLength.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeRestrictionMinLength.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeRestrictionMinLength.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeRestrictionMinLength.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -24332,10 +25156,10 @@ export namespace GXml {
     namespace XsdTypeRestrictionMaxLength {
         // Signal signatures
         interface SignalSignatures extends XsdTypeRestrictionDef.SignalSignatures {
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24345,6 +25169,14 @@ export namespace GXml {
 
     class XsdTypeRestrictionMaxLength extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionMaxLength>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeRestrictionMaxLength.SignalSignatures;
 
         // Constructors
 
@@ -24358,17 +25190,19 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeRestrictionMaxLength.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionMaxLength.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionMaxLength.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeRestrictionMaxLength.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionMaxLength.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionMaxLength.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeRestrictionMaxLength.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeRestrictionMaxLength.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeRestrictionMaxLength.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -24376,11 +25210,11 @@ export namespace GXml {
     namespace XsdTypeRestrictionEnumeration {
         // Signal signatures
         interface SignalSignatures extends XsdTypeRestrictionDef.SignalSignatures {
-            'notify::value': GObject.Object.Notify;
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24397,6 +25231,14 @@ export namespace GXml {
 
         get value(): string;
         set value(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeRestrictionEnumeration.SignalSignatures;
 
         // Constructors
 
@@ -24410,17 +25252,19 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeRestrictionEnumeration.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionEnumeration.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionEnumeration.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeRestrictionEnumeration.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionEnumeration.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionEnumeration.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeRestrictionEnumeration.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeRestrictionEnumeration.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeRestrictionEnumeration.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -24433,12 +25277,12 @@ export namespace GXml {
     namespace XsdTypeRestrictionWhiteSpace {
         // Signal signatures
         interface SignalSignatures extends XsdTypeRestrictionDef.SignalSignatures {
-            'notify::fixed': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::fixed': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24458,6 +25302,14 @@ export namespace GXml {
         set fixed(val: XsdTypeRestrictionWhiteSpaceFixed);
         get value(): string;
         set value(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeRestrictionWhiteSpace.SignalSignatures;
 
         // Constructors
 
@@ -24471,17 +25323,19 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeRestrictionWhiteSpace.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionWhiteSpace.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionWhiteSpace.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeRestrictionWhiteSpace.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionWhiteSpace.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionWhiteSpace.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeRestrictionWhiteSpace.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeRestrictionWhiteSpace.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeRestrictionWhiteSpace.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -24496,7 +25350,7 @@ export namespace GXml {
     namespace XsdTypeRestrictionWhiteSpaceFixed {
         // Signal signatures
         interface SignalSignatures extends Boolean.SignalSignatures {
-            'notify::value': GObject.Object.Notify;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24506,6 +25360,14 @@ export namespace GXml {
 
     class XsdTypeRestrictionWhiteSpaceFixed extends Boolean {
         static $gtype: GObject.GType<XsdTypeRestrictionWhiteSpaceFixed>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeRestrictionWhiteSpaceFixed.SignalSignatures;
 
         // Constructors
 
@@ -24519,17 +25381,22 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeRestrictionWhiteSpaceFixed.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionWhiteSpaceFixed.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionWhiteSpaceFixed.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeRestrictionWhiteSpaceFixed.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionWhiteSpaceFixed.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionWhiteSpaceFixed.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeRestrictionWhiteSpaceFixed.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeRestrictionWhiteSpaceFixed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeRestrictionWhiteSpaceFixed.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -24537,10 +25404,10 @@ export namespace GXml {
     namespace XsdTypeRestrictionPattern {
         // Signal signatures
         interface SignalSignatures extends XsdTypeRestrictionDef.SignalSignatures {
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24550,6 +25417,14 @@ export namespace GXml {
 
     class XsdTypeRestrictionPattern extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionPattern>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeRestrictionPattern.SignalSignatures;
 
         // Constructors
 
@@ -24563,17 +25438,19 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeRestrictionPattern.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionPattern.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionPattern.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeRestrictionPattern.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionPattern.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionPattern.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeRestrictionPattern.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeRestrictionPattern.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeRestrictionPattern.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -24581,10 +25458,10 @@ export namespace GXml {
     namespace XsdTypeRestrictionAssertion {
         // Signal signatures
         interface SignalSignatures extends XsdTypeRestrictionDef.SignalSignatures {
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24594,6 +25471,14 @@ export namespace GXml {
 
     class XsdTypeRestrictionAssertion extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionAssertion>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeRestrictionAssertion.SignalSignatures;
 
         // Constructors
 
@@ -24607,17 +25492,19 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeRestrictionAssertion.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionAssertion.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionAssertion.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeRestrictionAssertion.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionAssertion.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionAssertion.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeRestrictionAssertion.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeRestrictionAssertion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdTypeRestrictionAssertion.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -24625,10 +25512,10 @@ export namespace GXml {
     namespace XsdTypeRestrictionExplicitTimezone {
         // Signal signatures
         interface SignalSignatures extends XsdTypeRestrictionDef.SignalSignatures {
-            'notify::annotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::annotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24638,6 +25525,14 @@ export namespace GXml {
 
     class XsdTypeRestrictionExplicitTimezone extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionExplicitTimezone>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdTypeRestrictionExplicitTimezone.SignalSignatures;
 
         // Constructors
 
@@ -24651,18 +25546,21 @@ export namespace GXml {
 
         connect<K extends keyof XsdTypeRestrictionExplicitTimezone.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionExplicitTimezone.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionExplicitTimezone.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdTypeRestrictionExplicitTimezone.SignalSignatures>(
             signal: K,
-            callback: XsdTypeRestrictionExplicitTimezone.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdTypeRestrictionExplicitTimezone.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdTypeRestrictionExplicitTimezone.SignalSignatures>(
             signal: K,
-            ...args: XsdTypeRestrictionExplicitTimezone.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<XsdTypeRestrictionExplicitTimezone.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -24671,19 +25569,19 @@ export namespace GXml {
     namespace XsdComplexType {
         // Signal signatures
         interface SignalSignatures extends XsdBaseType.SignalSignatures {
-            'notify::abstract': GObject.Object.Notify;
-            'notify::block': GObject.Object.Notify;
-            'notify::final': GObject.Object.Notify;
-            'notify::mixed': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::default-attributes-apply': GObject.Object.Notify;
-            'notify::content-type': GObject.Object.Notify;
-            'notify::type-attributes': GObject.Object.Notify;
-            'notify::group-attributes': GObject.Object.Notify;
-            'notify::anotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::abstract': (pspec: GObject.ParamSpec) => void;
+            'notify::block': (pspec: GObject.ParamSpec) => void;
+            'notify::final': (pspec: GObject.ParamSpec) => void;
+            'notify::mixed': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::default-attributes-apply': (pspec: GObject.ParamSpec) => void;
+            'notify::content-type': (pspec: GObject.ParamSpec) => void;
+            'notify::type-attributes': (pspec: GObject.ParamSpec) => void;
+            'notify::group-attributes': (pspec: GObject.ParamSpec) => void;
+            'notify::anotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24732,6 +25630,14 @@ export namespace GXml {
         get typeAttributes(): XsdList;
         get group_attributes(): XsdList;
         get groupAttributes(): XsdList;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdComplexType.SignalSignatures;
 
         // Constructors
 
@@ -24745,17 +25651,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdComplexType.SignalSignatures>(
             signal: K,
-            callback: XsdComplexType.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdComplexType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdComplexType.SignalSignatures>(
             signal: K,
-            callback: XsdComplexType.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdComplexType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdComplexType.SignalSignatures>(
             signal: K,
-            ...args: XsdComplexType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdComplexType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -24782,10 +25688,10 @@ export namespace GXml {
     namespace XsdExtension {
         // Signal signatures
         interface SignalSignatures extends Element.SignalSignatures {
-            'notify::base': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::base': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24802,6 +25708,14 @@ export namespace GXml {
 
         get base(): string;
         set base(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdExtension.SignalSignatures;
 
         // Constructors
 
@@ -24815,17 +25729,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdExtension.SignalSignatures>(
             signal: K,
-            callback: XsdExtension.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdExtension.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdExtension.SignalSignatures>(
             signal: K,
-            callback: XsdExtension.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdExtension.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdExtension.SignalSignatures>(
             signal: K,
-            ...args: XsdExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdExtension.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -24838,26 +25752,26 @@ export namespace GXml {
     namespace XsdElement {
         // Signal signatures
         interface SignalSignatures extends Element.SignalSignatures {
-            'notify::abstract': GObject.Object.Notify;
-            'notify::block': GObject.Object.Notify;
-            'notify::default': GObject.Object.Notify;
-            'notify::final': GObject.Object.Notify;
-            'notify::fixed': GObject.Object.Notify;
-            'notify::form': GObject.Object.Notify;
-            'notify::max-occurs': GObject.Object.Notify;
-            'notify::min-occurs': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::nillable': GObject.Object.Notify;
-            'notify::ref': GObject.Object.Notify;
-            'notify::substitution-group': GObject.Object.Notify;
-            'notify::target-namespace': GObject.Object.Notify;
-            'notify::object-type': GObject.Object.Notify;
-            'notify::anotation': GObject.Object.Notify;
-            'notify::simple-type': GObject.Object.Notify;
-            'notify::complex-type': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::abstract': (pspec: GObject.ParamSpec) => void;
+            'notify::block': (pspec: GObject.ParamSpec) => void;
+            'notify::default': (pspec: GObject.ParamSpec) => void;
+            'notify::final': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed': (pspec: GObject.ParamSpec) => void;
+            'notify::form': (pspec: GObject.ParamSpec) => void;
+            'notify::max-occurs': (pspec: GObject.ParamSpec) => void;
+            'notify::min-occurs': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::nillable': (pspec: GObject.ParamSpec) => void;
+            'notify::ref': (pspec: GObject.ParamSpec) => void;
+            'notify::substitution-group': (pspec: GObject.ParamSpec) => void;
+            'notify::target-namespace': (pspec: GObject.ParamSpec) => void;
+            'notify::object-type': (pspec: GObject.ParamSpec) => void;
+            'notify::anotation': (pspec: GObject.ParamSpec) => void;
+            'notify::simple-type': (pspec: GObject.ParamSpec) => void;
+            'notify::complex-type': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24943,6 +25857,14 @@ export namespace GXml {
         set complex_type(val: XsdComplexType);
         get complexType(): XsdComplexType;
         set complexType(val: XsdComplexType);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdElement.SignalSignatures;
 
         // Constructors
 
@@ -24956,17 +25878,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdElement.SignalSignatures>(
             signal: K,
-            callback: XsdElement.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdElement.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdElement.SignalSignatures>(
             signal: K,
-            callback: XsdElement.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdElement.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdElement.SignalSignatures>(
             signal: K,
-            ...args: XsdElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -25011,9 +25933,9 @@ export namespace GXml {
     namespace XsdAnnotation {
         // Signal signatures
         interface SignalSignatures extends Element.SignalSignatures {
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25023,6 +25945,14 @@ export namespace GXml {
 
     class XsdAnnotation extends Element {
         static $gtype: GObject.GType<XsdAnnotation>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdAnnotation.SignalSignatures;
 
         // Constructors
 
@@ -25036,17 +25966,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdAnnotation.SignalSignatures>(
             signal: K,
-            callback: XsdAnnotation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdAnnotation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdAnnotation.SignalSignatures>(
             signal: K,
-            callback: XsdAnnotation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdAnnotation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdAnnotation.SignalSignatures>(
             signal: K,
-            ...args: XsdAnnotation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdAnnotation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -25054,10 +25984,10 @@ export namespace GXml {
     namespace XsdBaseType {
         // Signal signatures
         interface SignalSignatures extends Element.SignalSignatures {
-            'notify::anotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::anotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25074,6 +26004,14 @@ export namespace GXml {
 
         get anotation(): XsdAnnotation;
         set anotation(val: XsdAnnotation);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdBaseType.SignalSignatures;
 
         // Constructors
 
@@ -25087,17 +26025,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdBaseType.SignalSignatures>(
             signal: K,
-            callback: XsdBaseType.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdBaseType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdBaseType.SignalSignatures>(
             signal: K,
-            callback: XsdBaseType.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdBaseType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdBaseType.SignalSignatures>(
             signal: K,
-            ...args: XsdBaseType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdBaseType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -25110,10 +26048,10 @@ export namespace GXml {
     namespace XsdBaseContent {
         // Signal signatures
         interface SignalSignatures extends Element.SignalSignatures {
-            'notify::anotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::anotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25130,6 +26068,14 @@ export namespace GXml {
 
         get anotation(): XsdAnnotation;
         set anotation(val: XsdAnnotation);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdBaseContent.SignalSignatures;
 
         // Constructors
 
@@ -25143,17 +26089,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdBaseContent.SignalSignatures>(
             signal: K,
-            callback: XsdBaseContent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdBaseContent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdBaseContent.SignalSignatures>(
             signal: K,
-            callback: XsdBaseContent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdBaseContent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdBaseContent.SignalSignatures>(
             signal: K,
-            ...args: XsdBaseContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdBaseContent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -25166,10 +26112,10 @@ export namespace GXml {
     namespace XsdSimpleContent {
         // Signal signatures
         interface SignalSignatures extends XsdBaseContent.SignalSignatures {
-            'notify::anotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::anotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25179,6 +26125,14 @@ export namespace GXml {
 
     class XsdSimpleContent extends XsdBaseContent {
         static $gtype: GObject.GType<XsdSimpleContent>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdSimpleContent.SignalSignatures;
 
         // Constructors
 
@@ -25192,17 +26146,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdSimpleContent.SignalSignatures>(
             signal: K,
-            callback: XsdSimpleContent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdSimpleContent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdSimpleContent.SignalSignatures>(
             signal: K,
-            callback: XsdSimpleContent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdSimpleContent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdSimpleContent.SignalSignatures>(
             signal: K,
-            ...args: XsdSimpleContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdSimpleContent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -25210,10 +26164,10 @@ export namespace GXml {
     namespace XsdComplexContent {
         // Signal signatures
         interface SignalSignatures extends XsdBaseContent.SignalSignatures {
-            'notify::anotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::anotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25223,6 +26177,14 @@ export namespace GXml {
 
     class XsdComplexContent extends XsdBaseContent {
         static $gtype: GObject.GType<XsdComplexContent>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdComplexContent.SignalSignatures;
 
         // Constructors
 
@@ -25236,17 +26198,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdComplexContent.SignalSignatures>(
             signal: K,
-            callback: XsdComplexContent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdComplexContent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdComplexContent.SignalSignatures>(
             signal: K,
-            callback: XsdComplexContent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdComplexContent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdComplexContent.SignalSignatures>(
             signal: K,
-            ...args: XsdComplexContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdComplexContent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -25254,10 +26216,10 @@ export namespace GXml {
     namespace XsdOpenContent {
         // Signal signatures
         interface SignalSignatures extends XsdBaseContent.SignalSignatures {
-            'notify::anotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::anotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25267,6 +26229,14 @@ export namespace GXml {
 
     class XsdOpenContent extends XsdBaseContent {
         static $gtype: GObject.GType<XsdOpenContent>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdOpenContent.SignalSignatures;
 
         // Constructors
 
@@ -25280,17 +26250,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdOpenContent.SignalSignatures>(
             signal: K,
-            callback: XsdOpenContent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdOpenContent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdOpenContent.SignalSignatures>(
             signal: K,
-            callback: XsdOpenContent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdOpenContent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdOpenContent.SignalSignatures>(
             signal: K,
-            ...args: XsdOpenContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdOpenContent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -25298,10 +26268,10 @@ export namespace GXml {
     namespace XsdBaseAttribute {
         // Signal signatures
         interface SignalSignatures extends Element.SignalSignatures {
-            'notify::anotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::anotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25318,6 +26288,14 @@ export namespace GXml {
 
         get anotation(): XsdAnnotation;
         set anotation(val: XsdAnnotation);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdBaseAttribute.SignalSignatures;
 
         // Constructors
 
@@ -25331,17 +26309,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdBaseAttribute.SignalSignatures>(
             signal: K,
-            callback: XsdBaseAttribute.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdBaseAttribute.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdBaseAttribute.SignalSignatures>(
             signal: K,
-            callback: XsdBaseAttribute.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdBaseAttribute.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdBaseAttribute.SignalSignatures>(
             signal: K,
-            ...args: XsdBaseAttribute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdBaseAttribute.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -25354,10 +26332,10 @@ export namespace GXml {
     namespace XsdAttribute {
         // Signal signatures
         interface SignalSignatures extends XsdBaseAttribute.SignalSignatures {
-            'notify::anotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::anotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25367,6 +26345,14 @@ export namespace GXml {
 
     class XsdAttribute extends XsdBaseAttribute {
         static $gtype: GObject.GType<XsdAttribute>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdAttribute.SignalSignatures;
 
         // Constructors
 
@@ -25380,17 +26366,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdAttribute.SignalSignatures>(
             signal: K,
-            callback: XsdAttribute.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdAttribute.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdAttribute.SignalSignatures>(
             signal: K,
-            callback: XsdAttribute.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdAttribute.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdAttribute.SignalSignatures>(
             signal: K,
-            ...args: XsdAttribute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdAttribute.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -25398,10 +26384,10 @@ export namespace GXml {
     namespace XsdAttributeGroup {
         // Signal signatures
         interface SignalSignatures extends XsdBaseAttribute.SignalSignatures {
-            'notify::anotation': GObject.Object.Notify;
-            'notify::parse-children': GObject.Object.Notify;
-            'notify::unparsed': GObject.Object.Notify;
-            'notify::read-buffer': GObject.Object.Notify;
+            'notify::anotation': (pspec: GObject.ParamSpec) => void;
+            'notify::parse-children': (pspec: GObject.ParamSpec) => void;
+            'notify::unparsed': (pspec: GObject.ParamSpec) => void;
+            'notify::read-buffer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25411,6 +26397,14 @@ export namespace GXml {
 
     class XsdAttributeGroup extends XsdBaseAttribute {
         static $gtype: GObject.GType<XsdAttributeGroup>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdAttributeGroup.SignalSignatures;
 
         // Constructors
 
@@ -25424,17 +26418,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdAttributeGroup.SignalSignatures>(
             signal: K,
-            callback: XsdAttributeGroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdAttributeGroup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdAttributeGroup.SignalSignatures>(
             signal: K,
-            callback: XsdAttributeGroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdAttributeGroup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdAttributeGroup.SignalSignatures>(
             signal: K,
-            ...args: XsdAttributeGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdAttributeGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -25442,7 +26436,7 @@ export namespace GXml {
     namespace XsdList {
         // Signal signatures
         interface SignalSignatures extends ArrayList.SignalSignatures {
-            'notify::length': GObject.Object.Notify;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25458,6 +26452,14 @@ export namespace GXml {
         // Properties
 
         get length(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdList.SignalSignatures;
 
         // Constructors
 
@@ -25469,16 +26471,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof XsdList.SignalSignatures>(signal: K, callback: XsdList.SignalSignatures[K]): number;
+        connect<K extends keyof XsdList.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XsdList.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdList.SignalSignatures>(
             signal: K,
-            callback: XsdList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdList.SignalSignatures>(
             signal: K,
-            ...args: XsdList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -25492,7 +26497,7 @@ export namespace GXml {
     namespace XsdListElements {
         // Signal signatures
         interface SignalSignatures extends XsdList.SignalSignatures {
-            'notify::length': GObject.Object.Notify;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25502,6 +26507,14 @@ export namespace GXml {
 
     class XsdListElements extends XsdList {
         static $gtype: GObject.GType<XsdListElements>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdListElements.SignalSignatures;
 
         // Constructors
 
@@ -25515,17 +26528,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdListElements.SignalSignatures>(
             signal: K,
-            callback: XsdListElements.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdListElements.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdListElements.SignalSignatures>(
             signal: K,
-            callback: XsdListElements.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdListElements.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdListElements.SignalSignatures>(
             signal: K,
-            ...args: XsdListElements.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdListElements.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -25533,7 +26546,7 @@ export namespace GXml {
     namespace XsdListSimpleTypes {
         // Signal signatures
         interface SignalSignatures extends XsdList.SignalSignatures {
-            'notify::length': GObject.Object.Notify;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25543,6 +26556,14 @@ export namespace GXml {
 
     class XsdListSimpleTypes extends XsdList {
         static $gtype: GObject.GType<XsdListSimpleTypes>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdListSimpleTypes.SignalSignatures;
 
         // Constructors
 
@@ -25556,17 +26577,17 @@ export namespace GXml {
 
         connect<K extends keyof XsdListSimpleTypes.SignalSignatures>(
             signal: K,
-            callback: XsdListSimpleTypes.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdListSimpleTypes.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdListSimpleTypes.SignalSignatures>(
             signal: K,
-            callback: XsdListSimpleTypes.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdListSimpleTypes.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdListSimpleTypes.SignalSignatures>(
             signal: K,
-            ...args: XsdListSimpleTypes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdListSimpleTypes.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -25574,7 +26595,7 @@ export namespace GXml {
     namespace XsdListComplexTypes {
         // Signal signatures
         interface SignalSignatures extends XsdList.SignalSignatures {
-            'notify::length': GObject.Object.Notify;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25584,6 +26605,14 @@ export namespace GXml {
 
     class XsdListComplexTypes extends XsdList {
         static $gtype: GObject.GType<XsdListComplexTypes>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdListComplexTypes.SignalSignatures;
 
         // Constructors
 
@@ -25597,17 +26626,19 @@ export namespace GXml {
 
         connect<K extends keyof XsdListComplexTypes.SignalSignatures>(
             signal: K,
-            callback: XsdListComplexTypes.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdListComplexTypes.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdListComplexTypes.SignalSignatures>(
             signal: K,
-            callback: XsdListComplexTypes.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdListComplexTypes.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdListComplexTypes.SignalSignatures>(
             signal: K,
-            ...args: XsdListComplexTypes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdListComplexTypes.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -25615,7 +26646,7 @@ export namespace GXml {
     namespace XsdListTypeRestrictionEnumerations {
         // Signal signatures
         interface SignalSignatures extends XsdList.SignalSignatures {
-            'notify::length': GObject.Object.Notify;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25625,6 +26656,14 @@ export namespace GXml {
 
     class XsdListTypeRestrictionEnumerations extends XsdList {
         static $gtype: GObject.GType<XsdListTypeRestrictionEnumerations>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdListTypeRestrictionEnumerations.SignalSignatures;
 
         // Constructors
 
@@ -25638,18 +26677,21 @@ export namespace GXml {
 
         connect<K extends keyof XsdListTypeRestrictionEnumerations.SignalSignatures>(
             signal: K,
-            callback: XsdListTypeRestrictionEnumerations.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdListTypeRestrictionEnumerations.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdListTypeRestrictionEnumerations.SignalSignatures>(
             signal: K,
-            callback: XsdListTypeRestrictionEnumerations.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdListTypeRestrictionEnumerations.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdListTypeRestrictionEnumerations.SignalSignatures>(
             signal: K,
-            ...args: XsdListTypeRestrictionEnumerations.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<XsdListTypeRestrictionEnumerations.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -25658,7 +26700,7 @@ export namespace GXml {
     namespace XsdListTypeRestrictionWhiteSpaces {
         // Signal signatures
         interface SignalSignatures extends XsdList.SignalSignatures {
-            'notify::length': GObject.Object.Notify;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25668,6 +26710,14 @@ export namespace GXml {
 
     class XsdListTypeRestrictionWhiteSpaces extends XsdList {
         static $gtype: GObject.GType<XsdListTypeRestrictionWhiteSpaces>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XsdListTypeRestrictionWhiteSpaces.SignalSignatures;
 
         // Constructors
 
@@ -25681,17 +26731,22 @@ export namespace GXml {
 
         connect<K extends keyof XsdListTypeRestrictionWhiteSpaces.SignalSignatures>(
             signal: K,
-            callback: XsdListTypeRestrictionWhiteSpaces.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdListTypeRestrictionWhiteSpaces.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XsdListTypeRestrictionWhiteSpaces.SignalSignatures>(
             signal: K,
-            callback: XsdListTypeRestrictionWhiteSpaces.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XsdListTypeRestrictionWhiteSpaces.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XsdListTypeRestrictionWhiteSpaces.SignalSignatures>(
             signal: K,
-            ...args: XsdListTypeRestrictionWhiteSpaces.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XsdListTypeRestrictionWhiteSpaces.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -25699,15 +26754,15 @@ export namespace GXml {
     namespace XText {
         // Signal signatures
         interface SignalSignatures extends XCharacterData.SignalSignatures {
-            'notify::str': GObject.Object.Notify;
-            'notify::attrs': GObject.Object.Notify;
-            'notify::children-nodes': GObject.Object.Notify;
-            'notify::document': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::type-node': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::data': GObject.Object.Notify;
+            'notify::str': (pspec: GObject.ParamSpec) => void;
+            'notify::attrs': (pspec: GObject.ParamSpec) => void;
+            'notify::children-nodes': (pspec: GObject.ParamSpec) => void;
+            'notify::document': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::type-node': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25717,6 +26772,14 @@ export namespace GXml {
 
     class XText extends XCharacterData implements DomText {
         static $gtype: GObject.GType<XText>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XText.SignalSignatures;
 
         // Constructors
 
@@ -25731,13 +26794,19 @@ export namespace GXml {
 
         // Signals
 
-        connect<K extends keyof XText.SignalSignatures>(signal: K, callback: XText.SignalSignatures[K]): number;
+        connect<K extends keyof XText.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XText.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof XText.SignalSignatures>(signal: K, callback: XText.SignalSignatures[K]): number;
+        connect_after<K extends keyof XText.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XText.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XText.SignalSignatures>(
             signal: K,
-            ...args: XText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

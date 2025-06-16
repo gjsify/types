@@ -41,6 +41,14 @@ export namespace Govf {
 
     class Disk extends GObject.Object {
         static $gtype: GObject.GType<Disk>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Disk.SignalSignatures;
 
         // Constructors
 
@@ -52,13 +60,19 @@ export namespace Govf {
 
         // Signals
 
-        connect<K extends keyof Disk.SignalSignatures>(signal: K, callback: Disk.SignalSignatures[K]): number;
+        connect<K extends keyof Disk.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Disk.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Disk.SignalSignatures>(signal: K, callback: Disk.SignalSignatures[K]): number;
+        connect_after<K extends keyof Disk.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Disk.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Disk.SignalSignatures>(
             signal: K,
-            ...args: Disk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Disk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -117,6 +131,14 @@ export namespace Govf {
 
     class Package extends GObject.Object {
         static $gtype: GObject.GType<Package>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Package.SignalSignatures;
 
         // Constructors
 
@@ -128,16 +150,19 @@ export namespace Govf {
 
         // Signals
 
-        connect<K extends keyof Package.SignalSignatures>(signal: K, callback: Package.SignalSignatures[K]): number;
+        connect<K extends keyof Package.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Package.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Package.SignalSignatures>(
             signal: K,
-            callback: Package.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Package.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Package.SignalSignatures>(
             signal: K,
-            ...args: Package.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Package.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

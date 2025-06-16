@@ -144,25 +144,11 @@ export namespace GConf {
         NAMES,
     }
     namespace Client {
-        // Signal callback interfaces
-
-        interface Error {
-            (_source: Client, object?: any | null): void;
-        }
-
-        interface UnreturnedError {
-            (_source: Client, object?: any | null): void;
-        }
-
-        interface ValueChanged {
-            (_source: Client, object: string, p0?: any | null): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            error: Error;
-            'unreturned-error': UnreturnedError;
-            'value-changed': ValueChanged;
+            error: (arg0: any | null) => void;
+            'unreturned-error': (arg0: any | null) => void;
+            'value-changed': (arg0: string, arg1: any | null) => void;
         }
 
         // Constructor properties interface
@@ -172,6 +158,14 @@ export namespace GConf {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Fields
 
@@ -185,13 +179,19 @@ export namespace GConf {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

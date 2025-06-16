@@ -56,7 +56,7 @@ export namespace Uhm {
     namespace Resolver {
         // Signal signatures
         interface SignalSignatures extends Gio.Resolver.SignalSignatures {
-            'notify::timeout': GObject.Object.Notify;
+            'notify::timeout': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -69,6 +69,14 @@ export namespace Uhm {
      */
     class Resolver extends Gio.Resolver {
         static $gtype: GObject.GType<Resolver>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Resolver.SignalSignatures;
 
         // Constructors
 
@@ -80,16 +88,19 @@ export namespace Uhm {
 
         // Signals
 
-        connect<K extends keyof Resolver.SignalSignatures>(signal: K, callback: Resolver.SignalSignatures[K]): number;
+        connect<K extends keyof Resolver.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Resolver.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Resolver.SignalSignatures>(
             signal: K,
-            callback: Resolver.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Resolver.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Resolver.SignalSignatures>(
             signal: K,
-            ...args: Resolver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Resolver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -119,32 +130,17 @@ export namespace Uhm {
     }
 
     namespace Server {
-        // Signal callback interfaces
-
-        interface CompareMessages {
-            (
-                _source: Server,
-                expected_message: Soup.Message,
-                actual_message: Soup.Message,
-                actual_client: Soup.ClientContext,
-            ): boolean | void;
-        }
-
-        interface HandleMessage {
-            (_source: Server, message: Soup.Message, client: Soup.ClientContext): boolean | void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'compare-messages': CompareMessages;
-            'handle-message': HandleMessage;
-            'notify::address': GObject.Object.Notify;
-            'notify::enable-logging': GObject.Object.Notify;
-            'notify::enable-online': GObject.Object.Notify;
-            'notify::port': GObject.Object.Notify;
-            'notify::resolver': GObject.Object.Notify;
-            'notify::tls-certificate': GObject.Object.Notify;
-            'notify::trace-directory': GObject.Object.Notify;
+            'compare-messages': (arg0: Soup.Message, arg1: Soup.Message, arg2: Soup.ClientContext) => boolean | void;
+            'handle-message': (arg0: Soup.Message, arg1: Soup.ClientContext) => boolean | void;
+            'notify::address': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-logging': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-online': (pspec: GObject.ParamSpec) => void;
+            'notify::port': (pspec: GObject.ParamSpec) => void;
+            'notify::resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::tls-certificate': (pspec: GObject.ParamSpec) => void;
+            'notify::trace-directory': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -265,6 +261,14 @@ export namespace Uhm {
          */
         get traceDirectory(): Gio.File;
         set traceDirectory(val: Gio.File);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Server.SignalSignatures;
 
         // Constructors
 
@@ -276,13 +280,19 @@ export namespace Uhm {
 
         // Signals
 
-        connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect_after<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Server.SignalSignatures>(
             signal: K,
-            ...args: Server.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Server.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

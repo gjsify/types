@@ -81,16 +81,16 @@ export namespace GoVirt {
     namespace Proxy {
         // Signal signatures
         interface SignalSignatures extends Rest.Proxy.SignalSignatures {
-            'notify::admin': GObject.Object.Notify;
-            'notify::ca-cert': GObject.Object.Notify;
-            'notify::binding-required': GObject.Object.Notify;
-            'notify::disable-cookies': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::ssl-ca-file': GObject.Object.Notify;
-            'notify::ssl-strict': GObject.Object.Notify;
-            'notify::url-format': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
+            'notify::admin': (pspec: GObject.ParamSpec) => void;
+            'notify::ca-cert': (pspec: GObject.ParamSpec) => void;
+            'notify::binding-required': (pspec: GObject.ParamSpec) => void;
+            'notify::disable-cookies': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::ssl-ca-file': (pspec: GObject.ParamSpec) => void;
+            'notify::ssl-strict': (pspec: GObject.ParamSpec) => void;
+            'notify::url-format': (pspec: GObject.ParamSpec) => void;
+            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -113,6 +113,14 @@ export namespace GoVirt {
         set ca_cert(val: any[]);
         get caCert(): any[];
         set caCert(val: any[]);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Proxy.SignalSignatures;
 
         // Constructors
 
@@ -124,13 +132,19 @@ export namespace GoVirt {
 
         // Signals
 
-        connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect_after<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Proxy.SignalSignatures>(
             signal: K,
-            ...args: Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Proxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -171,11 +185,11 @@ export namespace GoVirt {
     namespace Vm {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::display': GObject.Object.Notify;
-            'notify::href': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::uuid': GObject.Object.Notify;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::href': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::uuid': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -204,6 +218,14 @@ export namespace GoVirt {
         set state(val: VmState);
         get uuid(): string;
         set uuid(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Vm.SignalSignatures;
 
         // Constructors
 
@@ -215,13 +237,19 @@ export namespace GoVirt {
 
         // Signals
 
-        connect<K extends keyof Vm.SignalSignatures>(signal: K, callback: Vm.SignalSignatures[K]): number;
+        connect<K extends keyof Vm.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Vm.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Vm.SignalSignatures>(signal: K, callback: Vm.SignalSignatures[K]): number;
+        connect_after<K extends keyof Vm.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Vm.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Vm.SignalSignatures>(
             signal: K,
-            ...args: Vm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Vm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -259,13 +287,13 @@ export namespace GoVirt {
     namespace VmDisplay {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::address': GObject.Object.Notify;
-            'notify::expiry': GObject.Object.Notify;
-            'notify::monitor-count': GObject.Object.Notify;
-            'notify::port': GObject.Object.Notify;
-            'notify::secure-port': GObject.Object.Notify;
-            'notify::ticket': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
+            'notify::address': (pspec: GObject.ParamSpec) => void;
+            'notify::expiry': (pspec: GObject.ParamSpec) => void;
+            'notify::monitor-count': (pspec: GObject.ParamSpec) => void;
+            'notify::port': (pspec: GObject.ParamSpec) => void;
+            'notify::secure-port': (pspec: GObject.ParamSpec) => void;
+            'notify::ticket': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -306,6 +334,14 @@ export namespace GoVirt {
         set ticket(val: string);
         get type(): VmDisplayType;
         set type(val: VmDisplayType);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VmDisplay.SignalSignatures;
 
         // Constructors
 
@@ -317,16 +353,19 @@ export namespace GoVirt {
 
         // Signals
 
-        connect<K extends keyof VmDisplay.SignalSignatures>(signal: K, callback: VmDisplay.SignalSignatures[K]): number;
+        connect<K extends keyof VmDisplay.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, VmDisplay.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VmDisplay.SignalSignatures>(
             signal: K,
-            callback: VmDisplay.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VmDisplay.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VmDisplay.SignalSignatures>(
             signal: K,
-            ...args: VmDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VmDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

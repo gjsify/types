@@ -78,21 +78,11 @@ export namespace Qrtr {
      */
     function get_uri_for_node(node_id: number): string;
     namespace Bus {
-        // Signal callback interfaces
-
-        interface NodeAdded {
-            (_source: Bus, node: number): void;
-        }
-
-        interface NodeRemoved {
-            (_source: Bus, node: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'node-added': NodeAdded;
-            'node-removed': NodeRemoved;
-            'notify::lookup-timeout': GObject.Object.Notify;
+            'node-added': (arg0: number) => void;
+            'node-removed': (arg0: number) => void;
+            'notify::lookup-timeout': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -114,6 +104,14 @@ export namespace Qrtr {
 
         get lookup_timeout(): number;
         get lookupTimeout(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Bus.SignalSignatures;
 
         // Constructors
 
@@ -128,13 +126,19 @@ export namespace Qrtr {
 
         // Signals
 
-        connect<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
+        connect<K extends keyof Bus.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Bus.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
+        connect_after<K extends keyof Bus.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Bus.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Bus.SignalSignatures>(
             signal: K,
-            ...args: Bus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Bus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -887,17 +891,11 @@ export namespace Qrtr {
     }
 
     namespace Client {
-        // Signal callback interfaces
-
-        interface ClientMessage {
-            (_source: Client, message: Uint8Array | string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'client-message': ClientMessage;
-            'notify::client-node': GObject.Object.Notify;
-            'notify::client-port': GObject.Object.Notify;
+            'client-message': (arg0: Uint8Array) => void;
+            'notify::client-node': (pspec: GObject.ParamSpec) => void;
+            'notify::client-port': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -923,6 +921,14 @@ export namespace Qrtr {
         get clientNode(): Node;
         get client_port(): number;
         get clientPort(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -934,13 +940,19 @@ export namespace Qrtr {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1498,27 +1510,13 @@ export namespace Qrtr {
     }
 
     namespace Node {
-        // Signal callback interfaces
-
-        interface NodeRemoved {
-            (_source: Node): void;
-        }
-
-        interface ServiceAdded {
-            (_source: Node, service: number): void;
-        }
-
-        interface ServiceRemoved {
-            (_source: Node, service: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'node-removed': NodeRemoved;
-            'service-added': ServiceAdded;
-            'service-removed': ServiceRemoved;
-            'notify::bus': GObject.Object.Notify;
-            'notify::node-id': GObject.Object.Notify;
+            'node-removed': () => void;
+            'service-added': (arg0: number) => void;
+            'service-removed': (arg0: number) => void;
+            'notify::bus': (pspec: GObject.ParamSpec) => void;
+            'notify::node-id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1542,6 +1540,14 @@ export namespace Qrtr {
         get bus(): Bus;
         get node_id(): number;
         get nodeId(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Node.SignalSignatures;
 
         // Constructors
 
@@ -1551,13 +1557,19 @@ export namespace Qrtr {
 
         // Signals
 
-        connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect_after<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Node.SignalSignatures>(
             signal: K,
-            ...args: Node.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Node.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -159,7 +159,7 @@ export namespace Template {
     namespace Template {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::locator': GObject.Object.Notify;
+            'notify::locator': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -176,6 +176,14 @@ export namespace Template {
 
         get locator(): TemplateLocator;
         set locator(val: TemplateLocator);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Template.SignalSignatures;
 
         // Constructors
 
@@ -187,16 +195,19 @@ export namespace Template {
 
         // Signals
 
-        connect<K extends keyof Template.SignalSignatures>(signal: K, callback: Template.SignalSignatures[K]): number;
+        connect<K extends keyof Template.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Template.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Template.SignalSignatures>(
             signal: K,
-            callback: Template.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Template.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Template.SignalSignatures>(
             signal: K,
-            ...args: Template.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Template.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -256,6 +267,14 @@ export namespace Template {
      */
     class TemplateLocator extends GObject.Object {
         static $gtype: GObject.GType<TemplateLocator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TemplateLocator.SignalSignatures;
 
         // Constructors
 
@@ -269,17 +288,17 @@ export namespace Template {
 
         connect<K extends keyof TemplateLocator.SignalSignatures>(
             signal: K,
-            callback: TemplateLocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TemplateLocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TemplateLocator.SignalSignatures>(
             signal: K,
-            callback: TemplateLocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TemplateLocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TemplateLocator.SignalSignatures>(
             signal: K,
-            ...args: TemplateLocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TemplateLocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

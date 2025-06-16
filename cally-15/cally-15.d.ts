@@ -47,23 +47,23 @@ export namespace Cally {
     namespace Actor {
         // Signal signatures
         interface SignalSignatures extends Atk.GObjectAccessible.SignalSignatures {
-            'notify::accessible-component-layer': GObject.Object.Notify;
-            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
-            'notify::accessible-description': GObject.Object.Notify;
-            'notify::accessible-help-text': GObject.Object.Notify;
-            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
-            'notify::accessible-id': GObject.Object.Notify;
-            'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-parent': GObject.Object.Notify;
-            'notify::accessible-role': GObject.Object.Notify;
-            'notify::accessible-table-caption': GObject.Object.Notify;
-            'notify::accessible-table-caption-object': GObject.Object.Notify;
-            'notify::accessible-table-column-description': GObject.Object.Notify;
-            'notify::accessible-table-column-header': GObject.Object.Notify;
-            'notify::accessible-table-row-description': GObject.Object.Notify;
-            'notify::accessible-table-row-header': GObject.Object.Notify;
-            'notify::accessible-table-summary': GObject.Object.Notify;
-            'notify::accessible-value': GObject.Object.Notify;
+            'notify::accessible-component-layer': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-component-mdi-zorder': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-description': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-help-text': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-hypertext-nlinks': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-id': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-caption': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-caption-object': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-column-description': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-column-header': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-row-description': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-row-header': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-summary': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -79,6 +79,14 @@ export namespace Cally {
      */
     class Actor extends Atk.GObjectAccessible implements Atk.Component {
         static $gtype: GObject.GType<Actor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Actor.SignalSignatures;
 
         // Constructors
 
@@ -90,13 +98,19 @@ export namespace Cally {
 
         // Signals
 
-        connect<K extends keyof Actor.SignalSignatures>(signal: K, callback: Actor.SignalSignatures[K]): number;
+        connect<K extends keyof Actor.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Actor.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Actor.SignalSignatures>(signal: K, callback: Actor.SignalSignatures[K]): number;
+        connect_after<K extends keyof Actor.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Actor.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Actor.SignalSignatures>(
             signal: K,
-            ...args: Actor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Actor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -779,23 +793,23 @@ export namespace Cally {
     namespace Clone {
         // Signal signatures
         interface SignalSignatures extends Actor.SignalSignatures {
-            'notify::accessible-component-layer': GObject.Object.Notify;
-            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
-            'notify::accessible-description': GObject.Object.Notify;
-            'notify::accessible-help-text': GObject.Object.Notify;
-            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
-            'notify::accessible-id': GObject.Object.Notify;
-            'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-parent': GObject.Object.Notify;
-            'notify::accessible-role': GObject.Object.Notify;
-            'notify::accessible-table-caption': GObject.Object.Notify;
-            'notify::accessible-table-caption-object': GObject.Object.Notify;
-            'notify::accessible-table-column-description': GObject.Object.Notify;
-            'notify::accessible-table-column-header': GObject.Object.Notify;
-            'notify::accessible-table-row-description': GObject.Object.Notify;
-            'notify::accessible-table-row-header': GObject.Object.Notify;
-            'notify::accessible-table-summary': GObject.Object.Notify;
-            'notify::accessible-value': GObject.Object.Notify;
+            'notify::accessible-component-layer': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-component-mdi-zorder': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-description': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-help-text': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-hypertext-nlinks': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-id': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-caption': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-caption-object': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-column-description': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-column-header': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-row-description': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-row-header': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-summary': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -813,6 +827,14 @@ export namespace Cally {
      */
     class Clone extends Actor implements Atk.Component {
         static $gtype: GObject.GType<Clone>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Clone.SignalSignatures;
 
         // Constructors
 
@@ -824,13 +846,19 @@ export namespace Cally {
 
         // Signals
 
-        connect<K extends keyof Clone.SignalSignatures>(signal: K, callback: Clone.SignalSignatures[K]): number;
+        connect<K extends keyof Clone.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Clone.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Clone.SignalSignatures>(signal: K, callback: Clone.SignalSignatures[K]): number;
+        connect_after<K extends keyof Clone.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Clone.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Clone.SignalSignatures>(
             signal: K,
-            ...args: Clone.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Clone.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1513,23 +1541,23 @@ export namespace Cally {
     namespace Root {
         // Signal signatures
         interface SignalSignatures extends Atk.GObjectAccessible.SignalSignatures {
-            'notify::accessible-component-layer': GObject.Object.Notify;
-            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
-            'notify::accessible-description': GObject.Object.Notify;
-            'notify::accessible-help-text': GObject.Object.Notify;
-            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
-            'notify::accessible-id': GObject.Object.Notify;
-            'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-parent': GObject.Object.Notify;
-            'notify::accessible-role': GObject.Object.Notify;
-            'notify::accessible-table-caption': GObject.Object.Notify;
-            'notify::accessible-table-caption-object': GObject.Object.Notify;
-            'notify::accessible-table-column-description': GObject.Object.Notify;
-            'notify::accessible-table-column-header': GObject.Object.Notify;
-            'notify::accessible-table-row-description': GObject.Object.Notify;
-            'notify::accessible-table-row-header': GObject.Object.Notify;
-            'notify::accessible-table-summary': GObject.Object.Notify;
-            'notify::accessible-value': GObject.Object.Notify;
+            'notify::accessible-component-layer': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-component-mdi-zorder': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-description': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-help-text': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-hypertext-nlinks': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-id': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-caption': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-caption-object': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-column-description': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-column-header': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-row-description': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-row-header': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-summary': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1551,6 +1579,14 @@ export namespace Cally {
      */
     class Root extends Atk.GObjectAccessible {
         static $gtype: GObject.GType<Root>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Root.SignalSignatures;
 
         // Constructors
 
@@ -1562,13 +1598,19 @@ export namespace Cally {
 
         // Signals
 
-        connect<K extends keyof Root.SignalSignatures>(signal: K, callback: Root.SignalSignatures[K]): number;
+        connect<K extends keyof Root.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Root.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Root.SignalSignatures>(signal: K, callback: Root.SignalSignatures[K]): number;
+        connect_after<K extends keyof Root.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Root.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Root.SignalSignatures>(
             signal: K,
-            ...args: Root.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Root.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1576,23 +1618,23 @@ export namespace Cally {
     namespace Stage {
         // Signal signatures
         interface SignalSignatures extends Actor.SignalSignatures {
-            'notify::accessible-component-layer': GObject.Object.Notify;
-            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
-            'notify::accessible-description': GObject.Object.Notify;
-            'notify::accessible-help-text': GObject.Object.Notify;
-            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
-            'notify::accessible-id': GObject.Object.Notify;
-            'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-parent': GObject.Object.Notify;
-            'notify::accessible-role': GObject.Object.Notify;
-            'notify::accessible-table-caption': GObject.Object.Notify;
-            'notify::accessible-table-caption-object': GObject.Object.Notify;
-            'notify::accessible-table-column-description': GObject.Object.Notify;
-            'notify::accessible-table-column-header': GObject.Object.Notify;
-            'notify::accessible-table-row-description': GObject.Object.Notify;
-            'notify::accessible-table-row-header': GObject.Object.Notify;
-            'notify::accessible-table-summary': GObject.Object.Notify;
-            'notify::accessible-value': GObject.Object.Notify;
+            'notify::accessible-component-layer': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-component-mdi-zorder': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-description': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-help-text': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-hypertext-nlinks': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-id': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-caption': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-caption-object': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-column-description': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-column-header': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-row-description': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-row-header': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-summary': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1616,6 +1658,14 @@ export namespace Cally {
      */
     class Stage extends Actor implements Atk.Component, Atk.Window {
         static $gtype: GObject.GType<Stage>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Stage.SignalSignatures;
 
         // Constructors
 
@@ -1627,13 +1677,19 @@ export namespace Cally {
 
         // Signals
 
-        connect<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
+        connect<K extends keyof Stage.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Stage.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stage.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Stage.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Stage.SignalSignatures>(
             signal: K,
-            ...args: Stage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Stage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2690,23 +2746,23 @@ export namespace Cally {
     namespace Text {
         // Signal signatures
         interface SignalSignatures extends Actor.SignalSignatures {
-            'notify::accessible-component-layer': GObject.Object.Notify;
-            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
-            'notify::accessible-description': GObject.Object.Notify;
-            'notify::accessible-help-text': GObject.Object.Notify;
-            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
-            'notify::accessible-id': GObject.Object.Notify;
-            'notify::accessible-name': GObject.Object.Notify;
-            'notify::accessible-parent': GObject.Object.Notify;
-            'notify::accessible-role': GObject.Object.Notify;
-            'notify::accessible-table-caption': GObject.Object.Notify;
-            'notify::accessible-table-caption-object': GObject.Object.Notify;
-            'notify::accessible-table-column-description': GObject.Object.Notify;
-            'notify::accessible-table-column-header': GObject.Object.Notify;
-            'notify::accessible-table-row-description': GObject.Object.Notify;
-            'notify::accessible-table-row-header': GObject.Object.Notify;
-            'notify::accessible-table-summary': GObject.Object.Notify;
-            'notify::accessible-value': GObject.Object.Notify;
+            'notify::accessible-component-layer': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-component-mdi-zorder': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-description': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-help-text': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-hypertext-nlinks': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-id': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-caption': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-caption-object': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-column-description': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-column-header': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-row-description': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-row-header': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-table-summary': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2727,6 +2783,14 @@ export namespace Cally {
      */
     class Text extends Actor implements Atk.Action, Atk.Component, Atk.EditableText, Atk.Text {
         static $gtype: GObject.GType<Text>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Text.SignalSignatures;
 
         // Constructors
 
@@ -2738,13 +2802,19 @@ export namespace Cally {
 
         // Signals
 
-        connect<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
+        connect<K extends keyof Text.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Text.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
+        connect_after<K extends keyof Text.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Text.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Text.SignalSignatures>(
             signal: K,
-            ...args: Text.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Text.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4189,6 +4259,14 @@ export namespace Cally {
      */
     class Util extends Atk.Util {
         static $gtype: GObject.GType<Util>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Util.SignalSignatures;
 
         // Constructors
 
@@ -4198,13 +4276,19 @@ export namespace Cally {
 
         // Signals
 
-        connect<K extends keyof Util.SignalSignatures>(signal: K, callback: Util.SignalSignatures[K]): number;
+        connect<K extends keyof Util.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Util.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Util.SignalSignatures>(signal: K, callback: Util.SignalSignatures[K]): number;
+        connect_after<K extends keyof Util.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Util.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Util.SignalSignatures>(
             signal: K,
-            ...args: Util.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Util.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

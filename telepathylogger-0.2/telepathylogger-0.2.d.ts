@@ -88,16 +88,16 @@ export namespace TelepathyLogger {
     namespace CallEvent {
         // Signal signatures
         interface SignalSignatures extends Event.SignalSignatures {
-            'notify::detailed-end-reason': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::end-actor': GObject.Object.Notify;
-            'notify::end-reason': GObject.Object.Notify;
-            'notify::account': GObject.Object.Notify;
-            'notify::account-path': GObject.Object.Notify;
-            'notify::channel-path': GObject.Object.Notify;
-            'notify::receiver': GObject.Object.Notify;
-            'notify::sender': GObject.Object.Notify;
-            'notify::timestamp': GObject.Object.Notify;
+            'notify::detailed-end-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::end-actor': (pspec: GObject.ParamSpec) => void;
+            'notify::end-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::account': (pspec: GObject.ParamSpec) => void;
+            'notify::account-path': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-path': (pspec: GObject.ParamSpec) => void;
+            'notify::receiver': (pspec: GObject.ParamSpec) => void;
+            'notify::sender': (pspec: GObject.ParamSpec) => void;
+            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -128,6 +128,14 @@ export namespace TelepathyLogger {
         get endActor(): Entity;
         get end_reason(): number;
         get endReason(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CallEvent.SignalSignatures;
 
         // Constructors
 
@@ -137,16 +145,19 @@ export namespace TelepathyLogger {
 
         // Signals
 
-        connect<K extends keyof CallEvent.SignalSignatures>(signal: K, callback: CallEvent.SignalSignatures[K]): number;
+        connect<K extends keyof CallEvent.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, CallEvent.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CallEvent.SignalSignatures>(
             signal: K,
-            callback: CallEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CallEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CallEvent.SignalSignatures>(
             signal: K,
-            ...args: CallEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CallEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -161,10 +172,10 @@ export namespace TelepathyLogger {
     namespace Entity {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::alias': GObject.Object.Notify;
-            'notify::avatar-token': GObject.Object.Notify;
-            'notify::identifier': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
+            'notify::alias': (pspec: GObject.ParamSpec) => void;
+            'notify::avatar-token': (pspec: GObject.ParamSpec) => void;
+            'notify::identifier': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -206,6 +217,14 @@ export namespace TelepathyLogger {
          * The entity's type (see #TplEntityType).
          */
         get type(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Entity.SignalSignatures;
 
         // Constructors
 
@@ -221,13 +240,19 @@ export namespace TelepathyLogger {
 
         // Signals
 
-        connect<K extends keyof Entity.SignalSignatures>(signal: K, callback: Entity.SignalSignatures[K]): number;
+        connect<K extends keyof Entity.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Entity.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Entity.SignalSignatures>(signal: K, callback: Entity.SignalSignatures[K]): number;
+        connect_after<K extends keyof Entity.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Entity.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Entity.SignalSignatures>(
             signal: K,
-            ...args: Entity.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Entity.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -242,12 +267,12 @@ export namespace TelepathyLogger {
     namespace Event {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::account': GObject.Object.Notify;
-            'notify::account-path': GObject.Object.Notify;
-            'notify::channel-path': GObject.Object.Notify;
-            'notify::receiver': GObject.Object.Notify;
-            'notify::sender': GObject.Object.Notify;
-            'notify::timestamp': GObject.Object.Notify;
+            'notify::account': (pspec: GObject.ParamSpec) => void;
+            'notify::account-path': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-path': (pspec: GObject.ParamSpec) => void;
+            'notify::receiver': (pspec: GObject.ParamSpec) => void;
+            'notify::sender': (pspec: GObject.ParamSpec) => void;
+            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -280,6 +305,14 @@ export namespace TelepathyLogger {
         get receiver(): Entity;
         get sender(): Entity;
         get timestamp(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Event.SignalSignatures;
 
         // Constructors
 
@@ -289,13 +322,19 @@ export namespace TelepathyLogger {
 
         // Signals
 
-        connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect_after<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Event.SignalSignatures>(
             signal: K,
-            ...args: Event.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Event.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -336,6 +375,14 @@ export namespace TelepathyLogger {
      */
     class LogManager extends GObject.Object {
         static $gtype: GObject.GType<LogManager>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LogManager.SignalSignatures;
 
         // Fields
 
@@ -351,17 +398,17 @@ export namespace TelepathyLogger {
 
         connect<K extends keyof LogManager.SignalSignatures>(
             signal: K,
-            callback: LogManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LogManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LogManager.SignalSignatures>(
             signal: K,
-            callback: LogManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LogManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LogManager.SignalSignatures>(
             signal: K,
-            ...args: LogManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LogManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -611,8 +658,8 @@ export namespace TelepathyLogger {
     namespace LogWalker {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::filter': GObject.Object.Notify;
-            'notify::filter-data': GObject.Object.Notify;
+            'notify::filter': (pspec: GObject.ParamSpec) => void;
+            'notify::filter-data': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -635,6 +682,14 @@ export namespace TelepathyLogger {
         get filter(): any;
         get filter_data(): any;
         get filterData(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LogWalker.SignalSignatures;
 
         // Constructors
 
@@ -644,16 +699,19 @@ export namespace TelepathyLogger {
 
         // Signals
 
-        connect<K extends keyof LogWalker.SignalSignatures>(signal: K, callback: LogWalker.SignalSignatures[K]): number;
+        connect<K extends keyof LogWalker.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, LogWalker.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LogWalker.SignalSignatures>(
             signal: K,
-            callback: LogWalker.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LogWalker.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LogWalker.SignalSignatures>(
             signal: K,
-            ...args: LogWalker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LogWalker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -716,17 +774,17 @@ export namespace TelepathyLogger {
     namespace TextEvent {
         // Signal signatures
         interface SignalSignatures extends Event.SignalSignatures {
-            'notify::edit-timestamp': GObject.Object.Notify;
-            'notify::message': GObject.Object.Notify;
-            'notify::message-token': GObject.Object.Notify;
-            'notify::message-type': GObject.Object.Notify;
-            'notify::supersedes-token': GObject.Object.Notify;
-            'notify::account': GObject.Object.Notify;
-            'notify::account-path': GObject.Object.Notify;
-            'notify::channel-path': GObject.Object.Notify;
-            'notify::receiver': GObject.Object.Notify;
-            'notify::sender': GObject.Object.Notify;
-            'notify::timestamp': GObject.Object.Notify;
+            'notify::edit-timestamp': (pspec: GObject.ParamSpec) => void;
+            'notify::message': (pspec: GObject.ParamSpec) => void;
+            'notify::message-token': (pspec: GObject.ParamSpec) => void;
+            'notify::message-type': (pspec: GObject.ParamSpec) => void;
+            'notify::supersedes-token': (pspec: GObject.ParamSpec) => void;
+            'notify::account': (pspec: GObject.ParamSpec) => void;
+            'notify::account-path': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-path': (pspec: GObject.ParamSpec) => void;
+            'notify::receiver': (pspec: GObject.ParamSpec) => void;
+            'notify::sender': (pspec: GObject.ParamSpec) => void;
+            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -761,6 +819,14 @@ export namespace TelepathyLogger {
         get messageType(): number;
         get supersedes_token(): string;
         get supersedesToken(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TextEvent.SignalSignatures;
 
         // Constructors
 
@@ -770,16 +836,19 @@ export namespace TelepathyLogger {
 
         // Signals
 
-        connect<K extends keyof TextEvent.SignalSignatures>(signal: K, callback: TextEvent.SignalSignatures[K]): number;
+        connect<K extends keyof TextEvent.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TextEvent.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextEvent.SignalSignatures>(
             signal: K,
-            callback: TextEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextEvent.SignalSignatures>(
             signal: K,
-            ...args: TextEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TextEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

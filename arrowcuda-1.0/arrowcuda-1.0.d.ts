@@ -24,9 +24,9 @@ export namespace ArrowCUDA {
     namespace Buffer {
         // Signal signatures
         interface SignalSignatures extends Arrow.Buffer.SignalSignatures {
-            'notify::buffer': GObject.Object.Notify;
-            'notify::data': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::buffer': (pspec: GObject.ParamSpec) => void;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -36,6 +36,14 @@ export namespace ArrowCUDA {
 
     class Buffer extends Arrow.Buffer {
         static $gtype: GObject.GType<Buffer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Buffer.SignalSignatures;
 
         // Constructors
 
@@ -54,13 +62,19 @@ export namespace ArrowCUDA {
 
         // Signals
 
-        connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Buffer.SignalSignatures>(
             signal: K,
-            ...args: Buffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Buffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -76,8 +90,8 @@ export namespace ArrowCUDA {
     namespace BufferInputStream {
         // Signal signatures
         interface SignalSignatures extends Arrow.BufferInputStream.SignalSignatures {
-            'notify::buffer': GObject.Object.Notify;
-            'notify::input-stream': GObject.Object.Notify;
+            'notify::buffer': (pspec: GObject.ParamSpec) => void;
+            'notify::input-stream': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -90,6 +104,14 @@ export namespace ArrowCUDA {
 
     class BufferInputStream extends Arrow.BufferInputStream implements Arrow.File, Arrow.Readable {
         static $gtype: GObject.GType<BufferInputStream>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BufferInputStream.SignalSignatures;
 
         // Constructors
 
@@ -103,17 +125,17 @@ export namespace ArrowCUDA {
 
         connect<K extends keyof BufferInputStream.SignalSignatures>(
             signal: K,
-            callback: BufferInputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BufferInputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BufferInputStream.SignalSignatures>(
             signal: K,
-            callback: BufferInputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BufferInputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BufferInputStream.SignalSignatures>(
             signal: K,
-            ...args: BufferInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BufferInputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -562,7 +584,7 @@ export namespace ArrowCUDA {
     namespace BufferOutputStream {
         // Signal signatures
         interface SignalSignatures extends Arrow.OutputStream.SignalSignatures {
-            'notify::output-stream': GObject.Object.Notify;
+            'notify::output-stream': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -575,6 +597,14 @@ export namespace ArrowCUDA {
 
     class BufferOutputStream extends Arrow.OutputStream implements Arrow.File, Arrow.Writable {
         static $gtype: GObject.GType<BufferOutputStream>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BufferOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -588,17 +618,17 @@ export namespace ArrowCUDA {
 
         connect<K extends keyof BufferOutputStream.SignalSignatures>(
             signal: K,
-            callback: BufferOutputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BufferOutputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BufferOutputStream.SignalSignatures>(
             signal: K,
-            callback: BufferOutputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BufferOutputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BufferOutputStream.SignalSignatures>(
             signal: K,
-            ...args: BufferOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BufferOutputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1063,7 +1093,7 @@ export namespace ArrowCUDA {
     namespace Context {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1079,6 +1109,14 @@ export namespace ArrowCUDA {
         // Properties
 
         set context(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -1088,16 +1126,19 @@ export namespace ArrowCUDA {
 
         // Signals
 
-        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
-            callback: Context.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1117,6 +1158,14 @@ export namespace ArrowCUDA {
 
     class DeviceManager extends GObject.Object {
         static $gtype: GObject.GType<DeviceManager>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceManager.SignalSignatures;
 
         // Constructors
 
@@ -1130,17 +1179,17 @@ export namespace ArrowCUDA {
 
         connect<K extends keyof DeviceManager.SignalSignatures>(
             signal: K,
-            callback: DeviceManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceManager.SignalSignatures>(
             signal: K,
-            callback: DeviceManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceManager.SignalSignatures>(
             signal: K,
-            ...args: DeviceManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1153,9 +1202,9 @@ export namespace ArrowCUDA {
     namespace HostBuffer {
         // Signal signatures
         interface SignalSignatures extends Arrow.MutableBuffer.SignalSignatures {
-            'notify::buffer': GObject.Object.Notify;
-            'notify::data': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::buffer': (pspec: GObject.ParamSpec) => void;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1165,6 +1214,14 @@ export namespace ArrowCUDA {
 
     class HostBuffer extends Arrow.MutableBuffer {
         static $gtype: GObject.GType<HostBuffer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HostBuffer.SignalSignatures;
 
         // Constructors
 
@@ -1181,17 +1238,17 @@ export namespace ArrowCUDA {
 
         connect<K extends keyof HostBuffer.SignalSignatures>(
             signal: K,
-            callback: HostBuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HostBuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HostBuffer.SignalSignatures>(
             signal: K,
-            callback: HostBuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HostBuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HostBuffer.SignalSignatures>(
             signal: K,
-            ...args: HostBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HostBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1199,7 +1256,7 @@ export namespace ArrowCUDA {
     namespace IPCMemoryHandle {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::ipc-memory-handle': GObject.Object.Notify;
+            'notify::ipc-memory-handle': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1217,6 +1274,14 @@ export namespace ArrowCUDA {
 
         set ipc_memory_handle(val: any);
         set ipcMemoryHandle(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IPCMemoryHandle.SignalSignatures;
 
         // Constructors
 
@@ -1230,17 +1295,17 @@ export namespace ArrowCUDA {
 
         connect<K extends keyof IPCMemoryHandle.SignalSignatures>(
             signal: K,
-            callback: IPCMemoryHandle.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IPCMemoryHandle.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IPCMemoryHandle.SignalSignatures>(
             signal: K,
-            callback: IPCMemoryHandle.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IPCMemoryHandle.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IPCMemoryHandle.SignalSignatures>(
             signal: K,
-            ...args: IPCMemoryHandle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IPCMemoryHandle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

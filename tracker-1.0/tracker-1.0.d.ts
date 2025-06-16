@@ -66,9 +66,9 @@ export namespace Tracker {
     namespace SparqlBuilder {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::result': GObject.Object.Notify;
-            'notify::length': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
+            'notify::result': (pspec: GObject.ParamSpec) => void;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -89,6 +89,14 @@ export namespace Tracker {
         get length(): number;
         set length(val: number);
         get state(): SparqlBuilderState;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SparqlBuilder.SignalSignatures;
 
         // Constructors
 
@@ -106,17 +114,17 @@ export namespace Tracker {
 
         connect<K extends keyof SparqlBuilder.SignalSignatures>(
             signal: K,
-            callback: SparqlBuilder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SparqlBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SparqlBuilder.SignalSignatures>(
             signal: K,
-            callback: SparqlBuilder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SparqlBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SparqlBuilder.SignalSignatures>(
             signal: K,
-            ...args: SparqlBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SparqlBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -165,6 +173,14 @@ export namespace Tracker {
 
     abstract class SparqlConnection extends GObject.Object {
         static $gtype: GObject.GType<SparqlConnection>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SparqlConnection.SignalSignatures;
 
         // Constructors
 
@@ -176,17 +192,17 @@ export namespace Tracker {
 
         connect<K extends keyof SparqlConnection.SignalSignatures>(
             signal: K,
-            callback: SparqlConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SparqlConnection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SparqlConnection.SignalSignatures>(
             signal: K,
-            callback: SparqlConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SparqlConnection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SparqlConnection.SignalSignatures>(
             signal: K,
-            ...args: SparqlConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SparqlConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -315,8 +331,8 @@ export namespace Tracker {
     namespace SparqlCursor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::connection': GObject.Object.Notify;
-            'notify::n-columns': GObject.Object.Notify;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::n-columns': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -337,6 +353,14 @@ export namespace Tracker {
         set connection(val: SparqlConnection);
         get n_columns(): number;
         get nColumns(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SparqlCursor.SignalSignatures;
 
         // Constructors
 
@@ -348,17 +372,17 @@ export namespace Tracker {
 
         connect<K extends keyof SparqlCursor.SignalSignatures>(
             signal: K,
-            callback: SparqlCursor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SparqlCursor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SparqlCursor.SignalSignatures>(
             signal: K,
-            callback: SparqlCursor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SparqlCursor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SparqlCursor.SignalSignatures>(
             signal: K,
-            ...args: SparqlCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SparqlCursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

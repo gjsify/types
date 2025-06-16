@@ -143,30 +143,12 @@ export namespace SugarExt {
      */
     function xsmp_shutdown(): void;
     namespace Client {
-        // Signal callback interfaces
-
-        interface Quit {
-            (_source: Client): void;
-        }
-
-        interface QuitCancelled {
-            (_source: Client): void;
-        }
-
-        interface QuitRequested {
-            (_source: Client): void;
-        }
-
-        interface SaveState {
-            (_source: Client, object?: any | null): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            quit: Quit;
-            'quit-cancelled': QuitCancelled;
-            'quit-requested': QuitRequested;
-            'save-state': SaveState;
+            quit: () => void;
+            'quit-cancelled': () => void;
+            'quit-requested': () => void;
+            'save-state': (arg0: any | null) => void;
         }
 
         // Constructor properties interface
@@ -176,6 +158,14 @@ export namespace SugarExt {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -185,13 +175,19 @@ export namespace SugarExt {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -300,6 +296,14 @@ export namespace SugarExt {
 
     class ClientXSMP extends Client {
         static $gtype: GObject.GType<ClientXSMP>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientXSMP.SignalSignatures;
 
         // Fields
 
@@ -330,17 +334,17 @@ export namespace SugarExt {
 
         connect<K extends keyof ClientXSMP.SignalSignatures>(
             signal: K,
-            callback: ClientXSMP.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientXSMP.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientXSMP.SignalSignatures>(
             signal: K,
-            callback: ClientXSMP.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientXSMP.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientXSMP.SignalSignatures>(
             signal: K,
-            ...args: ClientXSMP.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientXSMP.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -356,6 +360,14 @@ export namespace SugarExt {
 
     class CursorTracker extends GObject.Object {
         static $gtype: GObject.GType<CursorTracker>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CursorTracker.SignalSignatures;
 
         // Constructors
 
@@ -369,17 +381,17 @@ export namespace SugarExt {
 
         connect<K extends keyof CursorTracker.SignalSignatures>(
             signal: K,
-            callback: CursorTracker.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CursorTracker.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CursorTracker.SignalSignatures>(
             signal: K,
-            callback: CursorTracker.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CursorTracker.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CursorTracker.SignalSignatures>(
             signal: K,
-            ...args: CursorTracker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CursorTracker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -395,6 +407,14 @@ export namespace SugarExt {
 
     class GestureGrabber extends GObject.Object {
         static $gtype: GObject.GType<GestureGrabber>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GestureGrabber.SignalSignatures;
 
         // Constructors
 
@@ -408,17 +428,17 @@ export namespace SugarExt {
 
         connect<K extends keyof GestureGrabber.SignalSignatures>(
             signal: K,
-            callback: GestureGrabber.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GestureGrabber.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GestureGrabber.SignalSignatures>(
             signal: K,
-            callback: GestureGrabber.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GestureGrabber.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GestureGrabber.SignalSignatures>(
             signal: K,
-            ...args: GestureGrabber.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GestureGrabber.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -439,6 +459,14 @@ export namespace SugarExt {
 
     class Grid extends GObject.Object {
         static $gtype: GObject.GType<Grid>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Grid.SignalSignatures;
 
         // Fields
 
@@ -455,13 +483,19 @@ export namespace SugarExt {
 
         // Signals
 
-        connect<K extends keyof Grid.SignalSignatures>(signal: K, callback: Grid.SignalSignatures[K]): number;
+        connect<K extends keyof Grid.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Grid.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Grid.SignalSignatures>(signal: K, callback: Grid.SignalSignatures[K]): number;
+        connect_after<K extends keyof Grid.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Grid.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Grid.SignalSignatures>(
             signal: K,
-            ...args: Grid.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Grid.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -474,20 +508,10 @@ export namespace SugarExt {
     }
 
     namespace KeyGrabber {
-        // Signal callback interfaces
-
-        interface KeyPressed {
-            (_source: KeyGrabber, object: number, p0: number, p1: number): boolean | void;
-        }
-
-        interface KeyReleased {
-            (_source: KeyGrabber, object: number, p0: number, p1: number): boolean | void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'key-pressed': KeyPressed;
-            'key-released': KeyReleased;
+            'key-pressed': (arg0: number, arg1: number, arg2: number) => boolean | void;
+            'key-released': (arg0: number, arg1: number, arg2: number) => boolean | void;
         }
 
         // Constructor properties interface
@@ -497,6 +521,14 @@ export namespace SugarExt {
 
     class KeyGrabber extends GObject.Object {
         static $gtype: GObject.GType<KeyGrabber>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: KeyGrabber.SignalSignatures;
 
         // Fields
 
@@ -514,17 +546,17 @@ export namespace SugarExt {
 
         connect<K extends keyof KeyGrabber.SignalSignatures>(
             signal: K,
-            callback: KeyGrabber.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, KeyGrabber.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyGrabber.SignalSignatures>(
             signal: K,
-            callback: KeyGrabber.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, KeyGrabber.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyGrabber.SignalSignatures>(
             signal: K,
-            ...args: KeyGrabber.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<KeyGrabber.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -545,15 +577,9 @@ export namespace SugarExt {
     }
 
     namespace Session {
-        // Signal callback interfaces
-
-        interface ShutdownCompleted {
-            (_source: Session): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'shutdown-completed': ShutdownCompleted;
+            'shutdown-completed': () => void;
         }
 
         // Constructor properties interface
@@ -563,6 +589,14 @@ export namespace SugarExt {
 
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -572,16 +606,19 @@ export namespace SugarExt {
 
         // Signals
 
-        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
-            callback: Session.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -617,6 +654,14 @@ export namespace SugarExt {
 
     class Volume extends GObject.Object {
         static $gtype: GObject.GType<Volume>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Volume.SignalSignatures;
 
         // Constructors
 
@@ -628,13 +673,19 @@ export namespace SugarExt {
 
         // Signals
 
-        connect<K extends keyof Volume.SignalSignatures>(signal: K, callback: Volume.SignalSignatures[K]): number;
+        connect<K extends keyof Volume.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Volume.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Volume.SignalSignatures>(signal: K, callback: Volume.SignalSignatures[K]): number;
+        connect_after<K extends keyof Volume.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Volume.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Volume.SignalSignatures>(
             signal: K,
-            ...args: Volume.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Volume.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -667,6 +718,14 @@ export namespace SugarExt {
 
     class VolumeAlsa extends Volume {
         static $gtype: GObject.GType<VolumeAlsa>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VolumeAlsa.SignalSignatures;
 
         // Constructors
 
@@ -683,17 +742,17 @@ export namespace SugarExt {
 
         connect<K extends keyof VolumeAlsa.SignalSignatures>(
             signal: K,
-            callback: VolumeAlsa.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VolumeAlsa.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VolumeAlsa.SignalSignatures>(
             signal: K,
-            callback: VolumeAlsa.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VolumeAlsa.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VolumeAlsa.SignalSignatures>(
             signal: K,
-            ...args: VolumeAlsa.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VolumeAlsa.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

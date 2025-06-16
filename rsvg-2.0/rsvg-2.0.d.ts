@@ -323,17 +323,17 @@ export namespace Rsvg {
     namespace Handle {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::base-uri': GObject.Object.Notify;
-            'notify::desc': GObject.Object.Notify;
-            'notify::dpi-x': GObject.Object.Notify;
-            'notify::dpi-y': GObject.Object.Notify;
-            'notify::em': GObject.Object.Notify;
-            'notify::ex': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::metadata': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::base-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::desc': (pspec: GObject.ParamSpec) => void;
+            'notify::dpi-x': (pspec: GObject.ParamSpec) => void;
+            'notify::dpi-y': (pspec: GObject.ParamSpec) => void;
+            'notify::em': (pspec: GObject.ParamSpec) => void;
+            'notify::ex': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::metadata': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -605,6 +605,14 @@ export namespace Rsvg {
          * as specified by [method`Rsvg`.Handle.set_size_callback].
          */
         get width(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Handle.SignalSignatures;
 
         // Constructors
 
@@ -631,13 +639,19 @@ export namespace Rsvg {
 
         // Signals
 
-        connect<K extends keyof Handle.SignalSignatures>(signal: K, callback: Handle.SignalSignatures[K]): number;
+        connect<K extends keyof Handle.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Handle.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Handle.SignalSignatures>(signal: K, callback: Handle.SignalSignatures[K]): number;
+        connect_after<K extends keyof Handle.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Handle.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Handle.SignalSignatures>(
             signal: K,
-            ...args: Handle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Handle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

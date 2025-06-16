@@ -316,47 +316,31 @@ export namespace DMAP {
         (connection: Connection, status: number, structure: GLib.Node): void;
     }
     namespace Connection {
-        // Signal callback interfaces
-
-        interface Authenticate {
-            (_source: Connection, object: string, p0: Soup.Session, p1: Soup.Message, p2: Soup.Auth, p3: boolean): void;
-        }
-
-        interface Connected {
-            (_source: Connection): void;
-        }
-
-        interface Connecting {
-            (_source: Connection, object: number, p0: number): void;
-        }
-
-        interface Disconnected {
-            (_source: Connection): void;
-        }
-
-        interface OperationDone {
-            (_source: Connection): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            authenticate: Authenticate;
-            connected: Connected;
-            connecting: Connecting;
-            disconnected: Disconnected;
-            'operation-done': OperationDone;
-            'notify::base-uri': GObject.Object.Notify;
-            'notify::database-id': GObject.Object.Notify;
-            'notify::db': GObject.Object.Notify;
-            'notify::dmap-version': GObject.Object.Notify;
-            'notify::factory': GObject.Object.Notify;
-            'notify::host': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::port': GObject.Object.Notify;
-            'notify::revision-number': GObject.Object.Notify;
-            'notify::session-id': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
+            authenticate: (
+                arg0: string,
+                arg1: Soup.Session,
+                arg2: Soup.Message,
+                arg3: Soup.Auth,
+                arg4: boolean,
+            ) => void;
+            connected: () => void;
+            connecting: (arg0: number, arg1: number) => void;
+            disconnected: () => void;
+            'operation-done': () => void;
+            'notify::base-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::database-id': (pspec: GObject.ParamSpec) => void;
+            'notify::db': (pspec: GObject.ParamSpec) => void;
+            'notify::dmap-version': (pspec: GObject.ParamSpec) => void;
+            'notify::factory': (pspec: GObject.ParamSpec) => void;
+            'notify::host': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::port': (pspec: GObject.ParamSpec) => void;
+            'notify::revision-number': (pspec: GObject.ParamSpec) => void;
+            'notify::session-id': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -414,6 +398,14 @@ export namespace DMAP {
         get sessionId(): number;
         set sessionId(val: number);
         get username(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Connection.SignalSignatures;
 
         // Constructors
 
@@ -425,17 +417,17 @@ export namespace DMAP {
 
         connect<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            callback: Connection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            callback: Connection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -479,6 +471,14 @@ export namespace DMAP {
 
     class GstInputStream extends Gio.InputStream implements Gio.Seekable {
         static $gtype: GObject.GType<GstInputStream>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GstInputStream.SignalSignatures;
 
         // Constructors
 
@@ -492,17 +492,17 @@ export namespace DMAP {
 
         connect<K extends keyof GstInputStream.SignalSignatures>(
             signal: K,
-            callback: GstInputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GstInputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GstInputStream.SignalSignatures>(
             signal: K,
-            callback: GstInputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GstInputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GstInputStream.SignalSignatures>(
             signal: K,
-            ...args: GstInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GstInputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1052,20 +1052,10 @@ export namespace DMAP {
     }
 
     namespace MdnsBrowser {
-        // Signal callback interfaces
-
-        interface ServiceAdded {
-            (_source: MdnsBrowser, service: any): void;
-        }
-
-        interface ServiceRemoved {
-            (_source: MdnsBrowser, object: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'service-added': ServiceAdded;
-            'service-removed': ServiceRemoved;
+            'service-added': (arg0: any) => void;
+            'service-removed': (arg0: string) => void;
         }
 
         // Constructor properties interface
@@ -1075,6 +1065,14 @@ export namespace DMAP {
 
     class MdnsBrowser extends GObject.Object {
         static $gtype: GObject.GType<MdnsBrowser>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MdnsBrowser.SignalSignatures;
 
         // Fields
 
@@ -1092,17 +1090,17 @@ export namespace DMAP {
 
         connect<K extends keyof MdnsBrowser.SignalSignatures>(
             signal: K,
-            callback: MdnsBrowser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MdnsBrowser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MdnsBrowser.SignalSignatures>(
             signal: K,
-            callback: MdnsBrowser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MdnsBrowser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MdnsBrowser.SignalSignatures>(
             signal: K,
-            ...args: MdnsBrowser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MdnsBrowser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1127,20 +1125,10 @@ export namespace DMAP {
     }
 
     namespace MdnsPublisher {
-        // Signal callback interfaces
-
-        interface NameCollision {
-            (_source: MdnsPublisher, object: string): void;
-        }
-
-        interface Published {
-            (_source: MdnsPublisher, object: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'name-collision': NameCollision;
-            published: Published;
+            'name-collision': (arg0: string) => void;
+            published: (arg0: string) => void;
         }
 
         // Constructor properties interface
@@ -1150,6 +1138,14 @@ export namespace DMAP {
 
     class MdnsPublisher extends GObject.Object {
         static $gtype: GObject.GType<MdnsPublisher>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MdnsPublisher.SignalSignatures;
 
         // Fields
 
@@ -1167,17 +1163,17 @@ export namespace DMAP {
 
         connect<K extends keyof MdnsPublisher.SignalSignatures>(
             signal: K,
-            callback: MdnsPublisher.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MdnsPublisher.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MdnsPublisher.SignalSignatures>(
             signal: K,
-            callback: MdnsPublisher.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MdnsPublisher.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MdnsPublisher.SignalSignatures>(
             signal: K,
-            ...args: MdnsPublisher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MdnsPublisher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1202,16 +1198,16 @@ export namespace DMAP {
     namespace Share {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::auth-method': GObject.Object.Notify;
-            'notify::container-db': GObject.Object.Notify;
-            'notify::db': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::revision-number': GObject.Object.Notify;
-            'notify::server-ipv4': GObject.Object.Notify;
-            'notify::server-ipv6': GObject.Object.Notify;
-            'notify::transcode-mimetype': GObject.Object.Notify;
-            'notify::txt-records': GObject.Object.Notify;
+            'notify::auth-method': (pspec: GObject.ParamSpec) => void;
+            'notify::container-db': (pspec: GObject.ParamSpec) => void;
+            'notify::db': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::revision-number': (pspec: GObject.ParamSpec) => void;
+            'notify::server-ipv4': (pspec: GObject.ParamSpec) => void;
+            'notify::server-ipv6': (pspec: GObject.ParamSpec) => void;
+            'notify::transcode-mimetype': (pspec: GObject.ParamSpec) => void;
+            'notify::txt-records': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1267,6 +1263,14 @@ export namespace DMAP {
         set txt_records(val: string[]);
         get txtRecords(): string[];
         set txtRecords(val: string[]);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Share.SignalSignatures;
 
         // Constructors
 
@@ -1276,13 +1280,19 @@ export namespace DMAP {
 
         // Signals
 
-        connect<K extends keyof Share.SignalSignatures>(signal: K, callback: Share.SignalSignatures[K]): number;
+        connect<K extends keyof Share.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Share.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Share.SignalSignatures>(signal: K, callback: Share.SignalSignatures[K]): number;
+        connect_after<K extends keyof Share.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Share.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Share.SignalSignatures>(
             signal: K,
-            ...args: Share.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Share.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

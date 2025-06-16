@@ -419,29 +419,19 @@ export namespace EDataBook {
         FETCH,
     }
     namespace BookBackend {
-        // Signal callback interfaces
-
-        interface Closed {
-            (_source: BookBackend, sender: string): void;
-        }
-
-        interface Shutdown {
-            (_source: BookBackend): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends EBackend.Backend.SignalSignatures {
-            closed: Closed;
-            shutdown: Shutdown;
-            'notify::cache-dir': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::registry': GObject.Object.Notify;
-            'notify::writable': GObject.Object.Notify;
-            'notify::connectable': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
-            'notify::online': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
-            'notify::user-prompter': GObject.Object.Notify;
+            closed: (arg0: string) => void;
+            shutdown: () => void;
+            'notify::cache-dir': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::registry': (pspec: GObject.ParamSpec) => void;
+            'notify::writable': (pspec: GObject.ParamSpec) => void;
+            'notify::connectable': (pspec: GObject.ParamSpec) => void;
+            'notify::main-context': (pspec: GObject.ParamSpec) => void;
+            'notify::online': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::user-prompter': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -474,6 +464,14 @@ export namespace EDataBook {
         get registry(): EDataServer.SourceRegistry;
         get writable(): boolean;
         set writable(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BookBackend.SignalSignatures;
 
         // Constructors
 
@@ -485,17 +483,17 @@ export namespace EDataBook {
 
         connect<K extends keyof BookBackend.SignalSignatures>(
             signal: K,
-            callback: BookBackend.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookBackend.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookBackend.SignalSignatures>(
             signal: K,
-            callback: BookBackend.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookBackend.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookBackend.SignalSignatures>(
             signal: K,
-            ...args: BookBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BookBackend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1563,7 +1561,7 @@ export namespace EDataBook {
     namespace BookBackendFactory {
         // Signal signatures
         interface SignalSignatures extends EBackend.BackendFactory.SignalSignatures {
-            'notify::extensible': GObject.Object.Notify;
+            'notify::extensible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1577,6 +1575,14 @@ export namespace EDataBook {
      */
     abstract class BookBackendFactory extends EBackend.BackendFactory {
         static $gtype: GObject.GType<BookBackendFactory>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BookBackendFactory.SignalSignatures;
 
         // Constructors
 
@@ -1588,17 +1594,17 @@ export namespace EDataBook {
 
         connect<K extends keyof BookBackendFactory.SignalSignatures>(
             signal: K,
-            callback: BookBackendFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookBackendFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookBackendFactory.SignalSignatures>(
             signal: K,
-            callback: BookBackendFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookBackendFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookBackendFactory.SignalSignatures>(
             signal: K,
-            ...args: BookBackendFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BookBackendFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1614,6 +1620,14 @@ export namespace EDataBook {
 
     class BookBackendSExp extends GObject.Object {
         static $gtype: GObject.GType<BookBackendSExp>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BookBackendSExp.SignalSignatures;
 
         // Constructors
 
@@ -1627,17 +1641,17 @@ export namespace EDataBook {
 
         connect<K extends keyof BookBackendSExp.SignalSignatures>(
             signal: K,
-            callback: BookBackendSExp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookBackendSExp.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookBackendSExp.SignalSignatures>(
             signal: K,
-            callback: BookBackendSExp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookBackendSExp.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookBackendSExp.SignalSignatures>(
             signal: K,
-            ...args: BookBackendSExp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BookBackendSExp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1689,15 +1703,15 @@ export namespace EDataBook {
     namespace BookBackendSync {
         // Signal signatures
         interface SignalSignatures extends BookBackend.SignalSignatures {
-            'notify::cache-dir': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::registry': GObject.Object.Notify;
-            'notify::writable': GObject.Object.Notify;
-            'notify::connectable': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
-            'notify::online': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
-            'notify::user-prompter': GObject.Object.Notify;
+            'notify::cache-dir': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::registry': (pspec: GObject.ParamSpec) => void;
+            'notify::writable': (pspec: GObject.ParamSpec) => void;
+            'notify::connectable': (pspec: GObject.ParamSpec) => void;
+            'notify::main-context': (pspec: GObject.ParamSpec) => void;
+            'notify::online': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::user-prompter': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1711,6 +1725,14 @@ export namespace EDataBook {
      */
     class BookBackendSync extends BookBackend {
         static $gtype: GObject.GType<BookBackendSync>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BookBackendSync.SignalSignatures;
 
         // Constructors
 
@@ -1722,17 +1744,17 @@ export namespace EDataBook {
 
         connect<K extends keyof BookBackendSync.SignalSignatures>(
             signal: K,
-            callback: BookBackendSync.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookBackendSync.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookBackendSync.SignalSignatures>(
             signal: K,
-            callback: BookBackendSync.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookBackendSync.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookBackendSync.SignalSignatures>(
             signal: K,
-            ...args: BookBackendSync.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BookBackendSync.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1882,26 +1904,12 @@ export namespace EDataBook {
     }
 
     namespace BookCache {
-        // Signal callback interfaces
-
-        interface CategoriesChanged {
-            (_source: BookCache, object: string): void;
-        }
-
-        interface DupContactRevision {
-            (_source: BookCache, object: EBookContacts.Contact): string;
-        }
-
-        interface E164Changed {
-            (_source: BookCache, object: EBookContacts.Contact, p0: boolean): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends EBackend.Cache.SignalSignatures {
-            'categories-changed': CategoriesChanged;
-            'dup-contact-revision': DupContactRevision;
-            'e164-changed': E164Changed;
-            'notify::locale': GObject.Object.Notify;
+            'categories-changed': (arg0: string) => void;
+            'dup-contact-revision': (arg0: EBookContacts.Contact) => string;
+            'e164-changed': (arg0: EBookContacts.Contact, arg1: boolean) => void;
+            'notify::locale': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1921,6 +1929,14 @@ export namespace EDataBook {
         // Properties
 
         get locale(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BookCache.SignalSignatures;
 
         // Constructors
 
@@ -1943,16 +1959,19 @@ export namespace EDataBook {
 
         // Signals
 
-        connect<K extends keyof BookCache.SignalSignatures>(signal: K, callback: BookCache.SignalSignatures[K]): number;
+        connect<K extends keyof BookCache.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, BookCache.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookCache.SignalSignatures>(
             signal: K,
-            callback: BookCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookCache.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookCache.SignalSignatures>(
             signal: K,
-            ...args: BookCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BookCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2840,30 +2859,20 @@ export namespace EDataBook {
     }
 
     namespace BookMetaBackend {
-        // Signal callback interfaces
-
-        interface RefreshCompleted {
-            (_source: BookMetaBackend): void;
-        }
-
-        interface SourceChanged {
-            (_source: BookMetaBackend): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends BookBackendSync.SignalSignatures {
-            'refresh-completed': RefreshCompleted;
-            'source-changed': SourceChanged;
-            'notify::cache': GObject.Object.Notify;
-            'notify::cache-dir': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::registry': GObject.Object.Notify;
-            'notify::writable': GObject.Object.Notify;
-            'notify::connectable': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
-            'notify::online': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
-            'notify::user-prompter': GObject.Object.Notify;
+            'refresh-completed': () => void;
+            'source-changed': () => void;
+            'notify::cache': (pspec: GObject.ParamSpec) => void;
+            'notify::cache-dir': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::registry': (pspec: GObject.ParamSpec) => void;
+            'notify::writable': (pspec: GObject.ParamSpec) => void;
+            'notify::connectable': (pspec: GObject.ParamSpec) => void;
+            'notify::main-context': (pspec: GObject.ParamSpec) => void;
+            'notify::online': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::user-prompter': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2887,6 +2896,14 @@ export namespace EDataBook {
          */
         get cache(): BookCache;
         set cache(val: BookCache);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BookMetaBackend.SignalSignatures;
 
         // Constructors
 
@@ -2898,17 +2915,17 @@ export namespace EDataBook {
 
         connect<K extends keyof BookMetaBackend.SignalSignatures>(
             signal: K,
-            callback: BookMetaBackend.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookMetaBackend.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookMetaBackend.SignalSignatures>(
             signal: K,
-            callback: BookMetaBackend.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookMetaBackend.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookMetaBackend.SignalSignatures>(
             signal: K,
-            ...args: BookMetaBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BookMetaBackend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3527,34 +3544,22 @@ export namespace EDataBook {
     }
 
     namespace BookSqlite {
-        // Signal callback interfaces
-
-        interface BeforeInsertContact {
-            (
-                _source: BookSqlite,
-                object: any | null,
-                p0: EBookContacts.Contact,
-                p1: string,
-                p2: boolean,
-                p3: GObject.Object,
-                p4?: any | null,
-            ): boolean | void;
-        }
-
-        interface BeforeRemoveContact {
-            (
-                _source: BookSqlite,
-                object: any | null,
-                p0: string,
-                p1?: Gio.Cancellable | null,
-                p2?: any | null,
-            ): boolean | void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'before-insert-contact': BeforeInsertContact;
-            'before-remove-contact': BeforeRemoveContact;
+            'before-insert-contact': (
+                arg0: any | null,
+                arg1: EBookContacts.Contact,
+                arg2: string,
+                arg3: boolean,
+                arg4: GObject.Object,
+                arg5: any | null,
+            ) => boolean | void;
+            'before-remove-contact': (
+                arg0: any | null,
+                arg1: string,
+                arg2: Gio.Cancellable | null,
+                arg3: any | null,
+            ) => boolean | void;
         }
 
         // Constructor properties interface
@@ -3568,6 +3573,14 @@ export namespace EDataBook {
      */
     class BookSqlite extends GObject.Object implements EDataServer.Extensible {
         static $gtype: GObject.GType<BookSqlite>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BookSqlite.SignalSignatures;
 
         // Constructors
 
@@ -3595,17 +3608,17 @@ export namespace EDataBook {
 
         connect<K extends keyof BookSqlite.SignalSignatures>(
             signal: K,
-            callback: BookSqlite.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookSqlite.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookSqlite.SignalSignatures>(
             signal: K,
-            callback: BookSqlite.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookSqlite.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookSqlite.SignalSignatures>(
             signal: K,
-            ...args: BookSqlite.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BookSqlite.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4407,9 +4420,9 @@ export namespace EDataBook {
     namespace DataBook {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::backend': GObject.Object.Notify;
-            'notify::connection': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
+            'notify::backend': (pspec: GObject.ParamSpec) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4431,6 +4444,14 @@ export namespace EDataBook {
         get connection(): Gio.DBusConnection;
         get object_path(): string;
         get objectPath(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DataBook.SignalSignatures;
 
         // Constructors
 
@@ -4442,16 +4463,19 @@ export namespace EDataBook {
 
         // Signals
 
-        connect<K extends keyof DataBook.SignalSignatures>(signal: K, callback: DataBook.SignalSignatures[K]): number;
+        connect<K extends keyof DataBook.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DataBook.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBook.SignalSignatures>(
             signal: K,
-            callback: DataBook.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBook.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBook.SignalSignatures>(
             signal: K,
-            ...args: DataBook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DataBook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5099,9 +5123,9 @@ export namespace EDataBook {
     namespace DataBookCursor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::backend': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::total': GObject.Object.Notify;
+            'notify::backend': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::total': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5124,6 +5148,14 @@ export namespace EDataBook {
         get backend(): BookBackend;
         get position(): number;
         get total(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DataBookCursor.SignalSignatures;
 
         // Constructors
 
@@ -5135,17 +5167,17 @@ export namespace EDataBook {
 
         connect<K extends keyof DataBookCursor.SignalSignatures>(
             signal: K,
-            callback: DataBookCursor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBookCursor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBookCursor.SignalSignatures>(
             signal: K,
-            callback: DataBookCursor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBookCursor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBookCursor.SignalSignatures>(
             signal: K,
-            ...args: DataBookCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DataBookCursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5322,11 +5354,11 @@ export namespace EDataBook {
     namespace DataBookCursorCache {
         // Signal signatures
         interface SignalSignatures extends DataBookCursor.SignalSignatures {
-            'notify::book-cache': GObject.Object.Notify;
-            'notify::cursor': GObject.Object.Notify;
-            'notify::backend': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::total': GObject.Object.Notify;
+            'notify::book-cache': (pspec: GObject.ParamSpec) => void;
+            'notify::cursor': (pspec: GObject.ParamSpec) => void;
+            'notify::backend': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::total': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5349,6 +5381,14 @@ export namespace EDataBook {
         set book_cache(val: BookCache);
         set bookCache(val: BookCache);
         set cursor(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DataBookCursorCache.SignalSignatures;
 
         // Constructors
 
@@ -5367,17 +5407,19 @@ export namespace EDataBook {
 
         connect<K extends keyof DataBookCursorCache.SignalSignatures>(
             signal: K,
-            callback: DataBookCursorCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBookCursorCache.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBookCursorCache.SignalSignatures>(
             signal: K,
-            callback: DataBookCursorCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBookCursorCache.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBookCursorCache.SignalSignatures>(
             signal: K,
-            ...args: DataBookCursorCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DataBookCursorCache.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -5385,12 +5427,12 @@ export namespace EDataBook {
     namespace DataBookCursorSqlite {
         // Signal signatures
         interface SignalSignatures extends DataBookCursor.SignalSignatures {
-            'notify::cursor': GObject.Object.Notify;
-            'notify::ebsql': GObject.Object.Notify;
-            'notify::revision-key': GObject.Object.Notify;
-            'notify::backend': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::total': GObject.Object.Notify;
+            'notify::cursor': (pspec: GObject.ParamSpec) => void;
+            'notify::ebsql': (pspec: GObject.ParamSpec) => void;
+            'notify::revision-key': (pspec: GObject.ParamSpec) => void;
+            'notify::backend': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::total': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5415,6 +5457,14 @@ export namespace EDataBook {
         set ebsql(val: BookSqlite);
         set revision_key(val: string);
         set revisionKey(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DataBookCursorSqlite.SignalSignatures;
 
         // Constructors
 
@@ -5434,17 +5484,19 @@ export namespace EDataBook {
 
         connect<K extends keyof DataBookCursorSqlite.SignalSignatures>(
             signal: K,
-            callback: DataBookCursorSqlite.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBookCursorSqlite.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBookCursorSqlite.SignalSignatures>(
             signal: K,
-            callback: DataBookCursorSqlite.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBookCursorSqlite.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBookCursorSqlite.SignalSignatures>(
             signal: K,
-            ...args: DataBookCursorSqlite.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DataBookCursorSqlite.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -5460,6 +5512,14 @@ export namespace EDataBook {
 
     class DataBookDirect extends GObject.Object {
         static $gtype: GObject.GType<DataBookDirect>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DataBookDirect.SignalSignatures;
 
         // Constructors
 
@@ -5473,17 +5533,17 @@ export namespace EDataBook {
 
         connect<K extends keyof DataBookDirect.SignalSignatures>(
             signal: K,
-            callback: DataBookDirect.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBookDirect.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBookDirect.SignalSignatures>(
             signal: K,
-            callback: DataBookDirect.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBookDirect.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBookDirect.SignalSignatures>(
             signal: K,
-            ...args: DataBookDirect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DataBookDirect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5500,9 +5560,9 @@ export namespace EDataBook {
     namespace DataBookFactory {
         // Signal signatures
         interface SignalSignatures extends EBackend.DataFactory.SignalSignatures {
-            'notify::backend-per-process': GObject.Object.Notify;
-            'notify::registry': GObject.Object.Notify;
-            'notify::reload-supported': GObject.Object.Notify;
+            'notify::backend-per-process': (pspec: GObject.ParamSpec) => void;
+            'notify::registry': (pspec: GObject.ParamSpec) => void;
+            'notify::reload-supported': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5515,6 +5575,14 @@ export namespace EDataBook {
 
     class DataBookFactory extends EBackend.DataFactory implements EDataServer.Extensible, Gio.Initable {
         static $gtype: GObject.GType<DataBookFactory>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DataBookFactory.SignalSignatures;
 
         // Constructors
 
@@ -5528,17 +5596,17 @@ export namespace EDataBook {
 
         connect<K extends keyof DataBookFactory.SignalSignatures>(
             signal: K,
-            callback: DataBookFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBookFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBookFactory.SignalSignatures>(
             signal: K,
-            callback: DataBookFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBookFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBookFactory.SignalSignatures>(
             signal: K,
-            ...args: DataBookFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DataBookFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6070,31 +6138,17 @@ export namespace EDataBook {
     }
 
     namespace DataBookView {
-        // Signal callback interfaces
-
-        interface ObjectsAdded {
-            (_source: DataBookView, vcards: string[]): void;
-        }
-
-        interface ObjectsModified {
-            (_source: DataBookView, vcards: string[]): void;
-        }
-
-        interface ObjectsRemoved {
-            (_source: DataBookView, uids: string[]): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'objects-added': ObjectsAdded;
-            'objects-modified': ObjectsModified;
-            'objects-removed': ObjectsRemoved;
-            'notify::backend': GObject.Object.Notify;
-            'notify::connection': GObject.Object.Notify;
-            'notify::indices': GObject.Object.Notify;
-            'notify::n-total': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
-            'notify::sexp': GObject.Object.Notify;
+            'objects-added': (arg0: string[]) => void;
+            'objects-modified': (arg0: string[]) => void;
+            'objects-removed': (arg0: string[]) => void;
+            'notify::backend': (pspec: GObject.ParamSpec) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::indices': (pspec: GObject.ParamSpec) => void;
+            'notify::n-total': (pspec: GObject.ParamSpec) => void;
+            'notify::object-path': (pspec: GObject.ParamSpec) => void;
+            'notify::sexp': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6127,6 +6181,14 @@ export namespace EDataBook {
         get object_path(): string;
         get objectPath(): string;
         get sexp(): BookBackendSExp;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DataBookView.SignalSignatures;
 
         // Constructors
 
@@ -6145,17 +6207,17 @@ export namespace EDataBook {
 
         connect<K extends keyof DataBookView.SignalSignatures>(
             signal: K,
-            callback: DataBookView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBookView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBookView.SignalSignatures>(
             signal: K,
-            callback: DataBookView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBookView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBookView.SignalSignatures>(
             signal: K,
-            ...args: DataBookView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DataBookView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6894,6 +6956,14 @@ export namespace EDataBook {
      */
     class DataBookViewWatcherCache extends EBookContacts.BookIndicesUpdater {
         static $gtype: GObject.GType<DataBookViewWatcherCache>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DataBookViewWatcherCache.SignalSignatures;
 
         // Constructors
 
@@ -6907,17 +6977,19 @@ export namespace EDataBook {
 
         connect<K extends keyof DataBookViewWatcherCache.SignalSignatures>(
             signal: K,
-            callback: DataBookViewWatcherCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBookViewWatcherCache.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBookViewWatcherCache.SignalSignatures>(
             signal: K,
-            callback: DataBookViewWatcherCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBookViewWatcherCache.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBookViewWatcherCache.SignalSignatures>(
             signal: K,
-            ...args: DataBookViewWatcherCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DataBookViewWatcherCache.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6957,6 +7029,14 @@ export namespace EDataBook {
      */
     class DataBookViewWatcherMemory extends EBookContacts.BookIndicesUpdater {
         static $gtype: GObject.GType<DataBookViewWatcherMemory>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DataBookViewWatcherMemory.SignalSignatures;
 
         // Constructors
 
@@ -6970,17 +7050,19 @@ export namespace EDataBook {
 
         connect<K extends keyof DataBookViewWatcherMemory.SignalSignatures>(
             signal: K,
-            callback: DataBookViewWatcherMemory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBookViewWatcherMemory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBookViewWatcherMemory.SignalSignatures>(
             signal: K,
-            callback: DataBookViewWatcherMemory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBookViewWatcherMemory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBookViewWatcherMemory.SignalSignatures>(
             signal: K,
-            ...args: DataBookViewWatcherMemory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DataBookViewWatcherMemory.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7026,6 +7108,14 @@ export namespace EDataBook {
      */
     class DataBookViewWatcherSqlite extends EBookContacts.BookIndicesUpdater {
         static $gtype: GObject.GType<DataBookViewWatcherSqlite>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DataBookViewWatcherSqlite.SignalSignatures;
 
         // Constructors
 
@@ -7039,17 +7129,19 @@ export namespace EDataBook {
 
         connect<K extends keyof DataBookViewWatcherSqlite.SignalSignatures>(
             signal: K,
-            callback: DataBookViewWatcherSqlite.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBookViewWatcherSqlite.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBookViewWatcherSqlite.SignalSignatures>(
             signal: K,
-            callback: DataBookViewWatcherSqlite.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataBookViewWatcherSqlite.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBookViewWatcherSqlite.SignalSignatures>(
             signal: K,
-            ...args: DataBookViewWatcherSqlite.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DataBookViewWatcherSqlite.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7077,7 +7169,7 @@ export namespace EDataBook {
     namespace SubprocessBookFactory {
         // Signal signatures
         interface SignalSignatures extends EBackend.SubprocessFactory.SignalSignatures {
-            'notify::registry': GObject.Object.Notify;
+            'notify::registry': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7087,6 +7179,14 @@ export namespace EDataBook {
 
     class SubprocessBookFactory extends EBackend.SubprocessFactory implements Gio.Initable {
         static $gtype: GObject.GType<SubprocessBookFactory>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SubprocessBookFactory.SignalSignatures;
 
         // Constructors
 
@@ -7100,17 +7200,19 @@ export namespace EDataBook {
 
         connect<K extends keyof SubprocessBookFactory.SignalSignatures>(
             signal: K,
-            callback: SubprocessBookFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SubprocessBookFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubprocessBookFactory.SignalSignatures>(
             signal: K,
-            callback: SubprocessBookFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SubprocessBookFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubprocessBookFactory.SignalSignatures>(
             signal: K,
-            ...args: SubprocessBookFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SubprocessBookFactory.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7644,7 +7746,7 @@ export namespace EDataBook {
     namespace SystemLocaleWatcher {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::locale': GObject.Object.Notify;
+            'notify::locale': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7668,6 +7770,14 @@ export namespace EDataBook {
          * was not detected yet.
          */
         get locale(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SystemLocaleWatcher.SignalSignatures;
 
         // Constructors
 
@@ -7681,17 +7791,19 @@ export namespace EDataBook {
 
         connect<K extends keyof SystemLocaleWatcher.SignalSignatures>(
             signal: K,
-            callback: SystemLocaleWatcher.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SystemLocaleWatcher.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SystemLocaleWatcher.SignalSignatures>(
             signal: K,
-            callback: SystemLocaleWatcher.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SystemLocaleWatcher.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SystemLocaleWatcher.SignalSignatures>(
             signal: K,
-            ...args: SystemLocaleWatcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SystemLocaleWatcher.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

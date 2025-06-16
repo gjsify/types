@@ -109,15 +109,15 @@ export namespace Guestfs {
     namespace AddDomain {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::allowuuid': GObject.Object.Notify;
-            'notify::cachemode': GObject.Object.Notify;
-            'notify::copyonread': GObject.Object.Notify;
-            'notify::discard': GObject.Object.Notify;
-            'notify::iface': GObject.Object.Notify;
-            'notify::libvirturi': GObject.Object.Notify;
-            'notify::live': GObject.Object.Notify;
-            'notify::readonly': GObject.Object.Notify;
-            'notify::readonlydisk': GObject.Object.Notify;
+            'notify::allowuuid': (pspec: GObject.ParamSpec) => void;
+            'notify::cachemode': (pspec: GObject.ParamSpec) => void;
+            'notify::copyonread': (pspec: GObject.ParamSpec) => void;
+            'notify::discard': (pspec: GObject.ParamSpec) => void;
+            'notify::iface': (pspec: GObject.ParamSpec) => void;
+            'notify::libvirturi': (pspec: GObject.ParamSpec) => void;
+            'notify::live': (pspec: GObject.ParamSpec) => void;
+            'notify::readonly': (pspec: GObject.ParamSpec) => void;
+            'notify::readonlydisk': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -188,6 +188,14 @@ export namespace Guestfs {
          */
         get readonlydisk(): string;
         set readonlydisk(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AddDomain.SignalSignatures;
 
         // Constructors
 
@@ -199,16 +207,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof AddDomain.SignalSignatures>(signal: K, callback: AddDomain.SignalSignatures[K]): number;
+        connect<K extends keyof AddDomain.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AddDomain.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AddDomain.SignalSignatures>(
             signal: K,
-            callback: AddDomain.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AddDomain.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AddDomain.SignalSignatures>(
             signal: K,
-            ...args: AddDomain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AddDomain.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -216,17 +227,17 @@ export namespace Guestfs {
     namespace AddDrive {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::cachemode': GObject.Object.Notify;
-            'notify::copyonread': GObject.Object.Notify;
-            'notify::discard': GObject.Object.Notify;
-            'notify::format': GObject.Object.Notify;
-            'notify::iface': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::protocol': GObject.Object.Notify;
-            'notify::readonly': GObject.Object.Notify;
-            'notify::secret': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
+            'notify::cachemode': (pspec: GObject.ParamSpec) => void;
+            'notify::copyonread': (pspec: GObject.ParamSpec) => void;
+            'notify::discard': (pspec: GObject.ParamSpec) => void;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::iface': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::protocol': (pspec: GObject.ParamSpec) => void;
+            'notify::readonly': (pspec: GObject.ParamSpec) => void;
+            'notify::secret': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -309,6 +320,14 @@ export namespace Guestfs {
          */
         get username(): string;
         set username(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AddDrive.SignalSignatures;
 
         // Constructors
 
@@ -320,16 +339,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof AddDrive.SignalSignatures>(signal: K, callback: AddDrive.SignalSignatures[K]): number;
+        connect<K extends keyof AddDrive.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AddDrive.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AddDrive.SignalSignatures>(
             signal: K,
-            callback: AddDrive.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AddDrive.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AddDrive.SignalSignatures>(
             signal: K,
-            ...args: AddDrive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AddDrive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -337,8 +359,8 @@ export namespace Guestfs {
     namespace AddDriveScratch {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::label': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -367,6 +389,14 @@ export namespace Guestfs {
          */
         get name(): string;
         set name(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AddDriveScratch.SignalSignatures;
 
         // Constructors
 
@@ -380,17 +410,17 @@ export namespace Guestfs {
 
         connect<K extends keyof AddDriveScratch.SignalSignatures>(
             signal: K,
-            callback: AddDriveScratch.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AddDriveScratch.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AddDriveScratch.SignalSignatures>(
             signal: K,
-            callback: AddDriveScratch.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AddDriveScratch.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AddDriveScratch.SignalSignatures>(
             signal: K,
-            ...args: AddDriveScratch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AddDriveScratch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -398,13 +428,13 @@ export namespace Guestfs {
     namespace AddLibvirtDom {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::cachemode': GObject.Object.Notify;
-            'notify::copyonread': GObject.Object.Notify;
-            'notify::discard': GObject.Object.Notify;
-            'notify::iface': GObject.Object.Notify;
-            'notify::live': GObject.Object.Notify;
-            'notify::readonly': GObject.Object.Notify;
-            'notify::readonlydisk': GObject.Object.Notify;
+            'notify::cachemode': (pspec: GObject.ParamSpec) => void;
+            'notify::copyonread': (pspec: GObject.ParamSpec) => void;
+            'notify::discard': (pspec: GObject.ParamSpec) => void;
+            'notify::iface': (pspec: GObject.ParamSpec) => void;
+            'notify::live': (pspec: GObject.ParamSpec) => void;
+            'notify::readonly': (pspec: GObject.ParamSpec) => void;
+            'notify::readonlydisk': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -463,6 +493,14 @@ export namespace Guestfs {
          */
         get readonlydisk(): string;
         set readonlydisk(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AddLibvirtDom.SignalSignatures;
 
         // Constructors
 
@@ -476,17 +514,17 @@ export namespace Guestfs {
 
         connect<K extends keyof AddLibvirtDom.SignalSignatures>(
             signal: K,
-            callback: AddLibvirtDom.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AddLibvirtDom.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AddLibvirtDom.SignalSignatures>(
             signal: K,
-            callback: AddLibvirtDom.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AddLibvirtDom.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AddLibvirtDom.SignalSignatures>(
             signal: K,
-            ...args: AddLibvirtDom.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AddLibvirtDom.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -494,7 +532,7 @@ export namespace Guestfs {
     namespace AugTransform {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::remove': GObject.Object.Notify;
+            'notify::remove': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -517,6 +555,14 @@ export namespace Guestfs {
          */
         get remove(): Tristate;
         set remove(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AugTransform.SignalSignatures;
 
         // Constructors
 
@@ -530,17 +576,17 @@ export namespace Guestfs {
 
         connect<K extends keyof AugTransform.SignalSignatures>(
             signal: K,
-            callback: AugTransform.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AugTransform.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AugTransform.SignalSignatures>(
             signal: K,
-            callback: AugTransform.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AugTransform.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AugTransform.SignalSignatures>(
             signal: K,
-            ...args: AugTransform.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AugTransform.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -548,8 +594,8 @@ export namespace Guestfs {
     namespace BTRFSFilesystemDefragment {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::compress': GObject.Object.Notify;
-            'notify::flush': GObject.Object.Notify;
+            'notify::compress': (pspec: GObject.ParamSpec) => void;
+            'notify::flush': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -578,6 +624,14 @@ export namespace Guestfs {
          */
         get flush(): Tristate;
         set flush(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BTRFSFilesystemDefragment.SignalSignatures;
 
         // Constructors
 
@@ -591,17 +645,19 @@ export namespace Guestfs {
 
         connect<K extends keyof BTRFSFilesystemDefragment.SignalSignatures>(
             signal: K,
-            callback: BTRFSFilesystemDefragment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BTRFSFilesystemDefragment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BTRFSFilesystemDefragment.SignalSignatures>(
             signal: K,
-            callback: BTRFSFilesystemDefragment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BTRFSFilesystemDefragment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BTRFSFilesystemDefragment.SignalSignatures>(
             signal: K,
-            ...args: BTRFSFilesystemDefragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BTRFSFilesystemDefragment.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -609,7 +665,7 @@ export namespace Guestfs {
     namespace BTRFSFilesystemResize {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::size': GObject.Object.Notify;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -632,6 +688,14 @@ export namespace Guestfs {
          */
         get size(): number;
         set size(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BTRFSFilesystemResize.SignalSignatures;
 
         // Constructors
 
@@ -645,17 +709,19 @@ export namespace Guestfs {
 
         connect<K extends keyof BTRFSFilesystemResize.SignalSignatures>(
             signal: K,
-            callback: BTRFSFilesystemResize.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BTRFSFilesystemResize.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BTRFSFilesystemResize.SignalSignatures>(
             signal: K,
-            callback: BTRFSFilesystemResize.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BTRFSFilesystemResize.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BTRFSFilesystemResize.SignalSignatures>(
             signal: K,
-            ...args: BTRFSFilesystemResize.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BTRFSFilesystemResize.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -663,7 +729,7 @@ export namespace Guestfs {
     namespace BTRFSImage {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::compresslevel': GObject.Object.Notify;
+            'notify::compresslevel': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -686,6 +752,14 @@ export namespace Guestfs {
          */
         get compresslevel(): number;
         set compresslevel(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BTRFSImage.SignalSignatures;
 
         // Constructors
 
@@ -699,17 +773,17 @@ export namespace Guestfs {
 
         connect<K extends keyof BTRFSImage.SignalSignatures>(
             signal: K,
-            callback: BTRFSImage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BTRFSImage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BTRFSImage.SignalSignatures>(
             signal: K,
-            callback: BTRFSImage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BTRFSImage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BTRFSImage.SignalSignatures>(
             signal: K,
-            ...args: BTRFSImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BTRFSImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -717,7 +791,7 @@ export namespace Guestfs {
     namespace BTRFSSubvolumeCreate {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::qgroupid': GObject.Object.Notify;
+            'notify::qgroupid': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -740,6 +814,14 @@ export namespace Guestfs {
          */
         get qgroupid(): string;
         set qgroupid(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BTRFSSubvolumeCreate.SignalSignatures;
 
         // Constructors
 
@@ -753,17 +835,19 @@ export namespace Guestfs {
 
         connect<K extends keyof BTRFSSubvolumeCreate.SignalSignatures>(
             signal: K,
-            callback: BTRFSSubvolumeCreate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BTRFSSubvolumeCreate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BTRFSSubvolumeCreate.SignalSignatures>(
             signal: K,
-            callback: BTRFSSubvolumeCreate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BTRFSSubvolumeCreate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BTRFSSubvolumeCreate.SignalSignatures>(
             signal: K,
-            ...args: BTRFSSubvolumeCreate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BTRFSSubvolumeCreate.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -771,8 +855,8 @@ export namespace Guestfs {
     namespace BTRFSSubvolumeSnapshot {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::qgroupid': GObject.Object.Notify;
-            'notify::ro': GObject.Object.Notify;
+            'notify::qgroupid': (pspec: GObject.ParamSpec) => void;
+            'notify::ro': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -801,6 +885,14 @@ export namespace Guestfs {
          */
         get ro(): Tristate;
         set ro(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BTRFSSubvolumeSnapshot.SignalSignatures;
 
         // Constructors
 
@@ -814,17 +906,19 @@ export namespace Guestfs {
 
         connect<K extends keyof BTRFSSubvolumeSnapshot.SignalSignatures>(
             signal: K,
-            callback: BTRFSSubvolumeSnapshot.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BTRFSSubvolumeSnapshot.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BTRFSSubvolumeSnapshot.SignalSignatures>(
             signal: K,
-            callback: BTRFSSubvolumeSnapshot.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BTRFSSubvolumeSnapshot.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BTRFSSubvolumeSnapshot.SignalSignatures>(
             signal: K,
-            ...args: BTRFSSubvolumeSnapshot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BTRFSSubvolumeSnapshot.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -832,8 +926,8 @@ export namespace Guestfs {
     namespace BtrfsFsck {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::repair': GObject.Object.Notify;
-            'notify::superblock': GObject.Object.Notify;
+            'notify::repair': (pspec: GObject.ParamSpec) => void;
+            'notify::superblock': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -862,6 +956,14 @@ export namespace Guestfs {
          */
         get superblock(): number;
         set superblock(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BtrfsFsck.SignalSignatures;
 
         // Constructors
 
@@ -873,16 +975,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof BtrfsFsck.SignalSignatures>(signal: K, callback: BtrfsFsck.SignalSignatures[K]): number;
+        connect<K extends keyof BtrfsFsck.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, BtrfsFsck.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BtrfsFsck.SignalSignatures>(
             signal: K,
-            callback: BtrfsFsck.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BtrfsFsck.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BtrfsFsck.SignalSignatures>(
             signal: K,
-            ...args: BtrfsFsck.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BtrfsFsck.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -890,7 +995,7 @@ export namespace Guestfs {
     namespace CompressDeviceOut {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::level': GObject.Object.Notify;
+            'notify::level': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -913,6 +1018,14 @@ export namespace Guestfs {
          */
         get level(): number;
         set level(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CompressDeviceOut.SignalSignatures;
 
         // Constructors
 
@@ -926,17 +1039,17 @@ export namespace Guestfs {
 
         connect<K extends keyof CompressDeviceOut.SignalSignatures>(
             signal: K,
-            callback: CompressDeviceOut.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CompressDeviceOut.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CompressDeviceOut.SignalSignatures>(
             signal: K,
-            callback: CompressDeviceOut.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CompressDeviceOut.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CompressDeviceOut.SignalSignatures>(
             signal: K,
-            ...args: CompressDeviceOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CompressDeviceOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -944,7 +1057,7 @@ export namespace Guestfs {
     namespace CompressOut {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::level': GObject.Object.Notify;
+            'notify::level': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -967,6 +1080,14 @@ export namespace Guestfs {
          */
         get level(): number;
         set level(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CompressOut.SignalSignatures;
 
         // Constructors
 
@@ -980,17 +1101,17 @@ export namespace Guestfs {
 
         connect<K extends keyof CompressOut.SignalSignatures>(
             signal: K,
-            callback: CompressOut.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CompressOut.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CompressOut.SignalSignatures>(
             signal: K,
-            callback: CompressOut.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CompressOut.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CompressOut.SignalSignatures>(
             signal: K,
-            ...args: CompressOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CompressOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -998,10 +1119,10 @@ export namespace Guestfs {
     namespace CopyAttributes {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::all': GObject.Object.Notify;
-            'notify::mode': GObject.Object.Notify;
-            'notify::ownership': GObject.Object.Notify;
-            'notify::xattributes': GObject.Object.Notify;
+            'notify::all': (pspec: GObject.ParamSpec) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::ownership': (pspec: GObject.ParamSpec) => void;
+            'notify::xattributes': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1042,6 +1163,14 @@ export namespace Guestfs {
          */
         get xattributes(): Tristate;
         set xattributes(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CopyAttributes.SignalSignatures;
 
         // Constructors
 
@@ -1055,17 +1184,17 @@ export namespace Guestfs {
 
         connect<K extends keyof CopyAttributes.SignalSignatures>(
             signal: K,
-            callback: CopyAttributes.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CopyAttributes.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CopyAttributes.SignalSignatures>(
             signal: K,
-            callback: CopyAttributes.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CopyAttributes.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CopyAttributes.SignalSignatures>(
             signal: K,
-            ...args: CopyAttributes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CopyAttributes.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1073,11 +1202,11 @@ export namespace Guestfs {
     namespace CopyDeviceToDevice {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::append': GObject.Object.Notify;
-            'notify::destoffset': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::sparse': GObject.Object.Notify;
-            'notify::srcoffset': GObject.Object.Notify;
+            'notify::append': (pspec: GObject.ParamSpec) => void;
+            'notify::destoffset': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::sparse': (pspec: GObject.ParamSpec) => void;
+            'notify::srcoffset': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1124,6 +1253,14 @@ export namespace Guestfs {
          */
         get srcoffset(): number;
         set srcoffset(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CopyDeviceToDevice.SignalSignatures;
 
         // Constructors
 
@@ -1137,17 +1274,17 @@ export namespace Guestfs {
 
         connect<K extends keyof CopyDeviceToDevice.SignalSignatures>(
             signal: K,
-            callback: CopyDeviceToDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CopyDeviceToDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CopyDeviceToDevice.SignalSignatures>(
             signal: K,
-            callback: CopyDeviceToDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CopyDeviceToDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CopyDeviceToDevice.SignalSignatures>(
             signal: K,
-            ...args: CopyDeviceToDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CopyDeviceToDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1155,11 +1292,11 @@ export namespace Guestfs {
     namespace CopyDeviceToFile {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::append': GObject.Object.Notify;
-            'notify::destoffset': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::sparse': GObject.Object.Notify;
-            'notify::srcoffset': GObject.Object.Notify;
+            'notify::append': (pspec: GObject.ParamSpec) => void;
+            'notify::destoffset': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::sparse': (pspec: GObject.ParamSpec) => void;
+            'notify::srcoffset': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1206,6 +1343,14 @@ export namespace Guestfs {
          */
         get srcoffset(): number;
         set srcoffset(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CopyDeviceToFile.SignalSignatures;
 
         // Constructors
 
@@ -1219,17 +1364,17 @@ export namespace Guestfs {
 
         connect<K extends keyof CopyDeviceToFile.SignalSignatures>(
             signal: K,
-            callback: CopyDeviceToFile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CopyDeviceToFile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CopyDeviceToFile.SignalSignatures>(
             signal: K,
-            callback: CopyDeviceToFile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CopyDeviceToFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CopyDeviceToFile.SignalSignatures>(
             signal: K,
-            ...args: CopyDeviceToFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CopyDeviceToFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1237,11 +1382,11 @@ export namespace Guestfs {
     namespace CopyFileToDevice {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::append': GObject.Object.Notify;
-            'notify::destoffset': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::sparse': GObject.Object.Notify;
-            'notify::srcoffset': GObject.Object.Notify;
+            'notify::append': (pspec: GObject.ParamSpec) => void;
+            'notify::destoffset': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::sparse': (pspec: GObject.ParamSpec) => void;
+            'notify::srcoffset': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1288,6 +1433,14 @@ export namespace Guestfs {
          */
         get srcoffset(): number;
         set srcoffset(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CopyFileToDevice.SignalSignatures;
 
         // Constructors
 
@@ -1301,17 +1454,17 @@ export namespace Guestfs {
 
         connect<K extends keyof CopyFileToDevice.SignalSignatures>(
             signal: K,
-            callback: CopyFileToDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CopyFileToDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CopyFileToDevice.SignalSignatures>(
             signal: K,
-            callback: CopyFileToDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CopyFileToDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CopyFileToDevice.SignalSignatures>(
             signal: K,
-            ...args: CopyFileToDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CopyFileToDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1319,11 +1472,11 @@ export namespace Guestfs {
     namespace CopyFileToFile {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::append': GObject.Object.Notify;
-            'notify::destoffset': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::sparse': GObject.Object.Notify;
-            'notify::srcoffset': GObject.Object.Notify;
+            'notify::append': (pspec: GObject.ParamSpec) => void;
+            'notify::destoffset': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::sparse': (pspec: GObject.ParamSpec) => void;
+            'notify::srcoffset': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1370,6 +1523,14 @@ export namespace Guestfs {
          */
         get srcoffset(): number;
         set srcoffset(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CopyFileToFile.SignalSignatures;
 
         // Constructors
 
@@ -1383,17 +1544,17 @@ export namespace Guestfs {
 
         connect<K extends keyof CopyFileToFile.SignalSignatures>(
             signal: K,
-            callback: CopyFileToFile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CopyFileToFile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CopyFileToFile.SignalSignatures>(
             signal: K,
-            callback: CopyFileToFile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CopyFileToFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CopyFileToFile.SignalSignatures>(
             signal: K,
-            ...args: CopyFileToFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CopyFileToFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1401,7 +1562,7 @@ export namespace Guestfs {
     namespace CpioOut {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::format': GObject.Object.Notify;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1424,6 +1585,14 @@ export namespace Guestfs {
          */
         get format(): string;
         set format(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CpioOut.SignalSignatures;
 
         // Constructors
 
@@ -1435,16 +1604,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof CpioOut.SignalSignatures>(signal: K, callback: CpioOut.SignalSignatures[K]): number;
+        connect<K extends keyof CpioOut.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, CpioOut.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CpioOut.SignalSignatures>(
             signal: K,
-            callback: CpioOut.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CpioOut.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CpioOut.SignalSignatures>(
             signal: K,
-            ...args: CpioOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CpioOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1452,11 +1624,11 @@ export namespace Guestfs {
     namespace DiskCreate {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::backingfile': GObject.Object.Notify;
-            'notify::backingformat': GObject.Object.Notify;
-            'notify::clustersize': GObject.Object.Notify;
-            'notify::compat': GObject.Object.Notify;
-            'notify::preallocation': GObject.Object.Notify;
+            'notify::backingfile': (pspec: GObject.ParamSpec) => void;
+            'notify::backingformat': (pspec: GObject.ParamSpec) => void;
+            'notify::clustersize': (pspec: GObject.ParamSpec) => void;
+            'notify::compat': (pspec: GObject.ParamSpec) => void;
+            'notify::preallocation': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1503,6 +1675,14 @@ export namespace Guestfs {
          */
         get preallocation(): string;
         set preallocation(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DiskCreate.SignalSignatures;
 
         // Constructors
 
@@ -1516,17 +1696,17 @@ export namespace Guestfs {
 
         connect<K extends keyof DiskCreate.SignalSignatures>(
             signal: K,
-            callback: DiskCreate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DiskCreate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DiskCreate.SignalSignatures>(
             signal: K,
-            callback: DiskCreate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DiskCreate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DiskCreate.SignalSignatures>(
             signal: K,
-            ...args: DiskCreate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DiskCreate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1534,7 +1714,7 @@ export namespace Guestfs {
     namespace DownloadBlocks {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::unallocated': GObject.Object.Notify;
+            'notify::unallocated': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1557,6 +1737,14 @@ export namespace Guestfs {
          */
         get unallocated(): Tristate;
         set unallocated(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DownloadBlocks.SignalSignatures;
 
         // Constructors
 
@@ -1570,17 +1758,17 @@ export namespace Guestfs {
 
         connect<K extends keyof DownloadBlocks.SignalSignatures>(
             signal: K,
-            callback: DownloadBlocks.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DownloadBlocks.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DownloadBlocks.SignalSignatures>(
             signal: K,
-            callback: DownloadBlocks.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DownloadBlocks.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DownloadBlocks.SignalSignatures>(
             signal: K,
-            ...args: DownloadBlocks.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DownloadBlocks.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1588,8 +1776,8 @@ export namespace Guestfs {
     namespace E2fsck {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::correct': GObject.Object.Notify;
-            'notify::forceall': GObject.Object.Notify;
+            'notify::correct': (pspec: GObject.ParamSpec) => void;
+            'notify::forceall': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1618,6 +1806,14 @@ export namespace Guestfs {
          */
         get forceall(): Tristate;
         set forceall(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: E2fsck.SignalSignatures;
 
         // Constructors
 
@@ -1629,13 +1825,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof E2fsck.SignalSignatures>(signal: K, callback: E2fsck.SignalSignatures[K]): number;
+        connect<K extends keyof E2fsck.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, E2fsck.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof E2fsck.SignalSignatures>(signal: K, callback: E2fsck.SignalSignatures[K]): number;
+        connect_after<K extends keyof E2fsck.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, E2fsck.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof E2fsck.SignalSignatures>(
             signal: K,
-            ...args: E2fsck.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<E2fsck.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1643,9 +1845,9 @@ export namespace Guestfs {
     namespace Fstrim {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::length': GObject.Object.Notify;
-            'notify::minimumfreeextent': GObject.Object.Notify;
-            'notify::offset': GObject.Object.Notify;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
+            'notify::minimumfreeextent': (pspec: GObject.ParamSpec) => void;
+            'notify::offset': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1680,6 +1882,14 @@ export namespace Guestfs {
          */
         get offset(): number;
         set offset(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Fstrim.SignalSignatures;
 
         // Constructors
 
@@ -1691,13 +1901,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof Fstrim.SignalSignatures>(signal: K, callback: Fstrim.SignalSignatures[K]): number;
+        connect<K extends keyof Fstrim.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Fstrim.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Fstrim.SignalSignatures>(signal: K, callback: Fstrim.SignalSignatures[K]): number;
+        connect_after<K extends keyof Fstrim.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Fstrim.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Fstrim.SignalSignatures>(
             signal: K,
-            ...args: Fstrim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Fstrim.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1705,7 +1921,7 @@ export namespace Guestfs {
     namespace GlobExpand {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::directoryslash': GObject.Object.Notify;
+            'notify::directoryslash': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1728,6 +1944,14 @@ export namespace Guestfs {
          */
         get directoryslash(): Tristate;
         set directoryslash(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GlobExpand.SignalSignatures;
 
         // Constructors
 
@@ -1741,17 +1965,17 @@ export namespace Guestfs {
 
         connect<K extends keyof GlobExpand.SignalSignatures>(
             signal: K,
-            callback: GlobExpand.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GlobExpand.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GlobExpand.SignalSignatures>(
             signal: K,
-            callback: GlobExpand.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GlobExpand.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GlobExpand.SignalSignatures>(
             signal: K,
-            ...args: GlobExpand.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GlobExpand.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1759,10 +1983,10 @@ export namespace Guestfs {
     namespace Grep {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::compressed': GObject.Object.Notify;
-            'notify::extended': GObject.Object.Notify;
-            'notify::fixed': GObject.Object.Notify;
-            'notify::insensitive': GObject.Object.Notify;
+            'notify::compressed': (pspec: GObject.ParamSpec) => void;
+            'notify::extended': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed': (pspec: GObject.ParamSpec) => void;
+            'notify::insensitive': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1803,6 +2027,14 @@ export namespace Guestfs {
          */
         get insensitive(): Tristate;
         set insensitive(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Grep.SignalSignatures;
 
         // Constructors
 
@@ -1814,13 +2046,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof Grep.SignalSignatures>(signal: K, callback: Grep.SignalSignatures[K]): number;
+        connect<K extends keyof Grep.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Grep.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Grep.SignalSignatures>(signal: K, callback: Grep.SignalSignatures[K]): number;
+        connect_after<K extends keyof Grep.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Grep.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Grep.SignalSignatures>(
             signal: K,
-            ...args: Grep.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Grep.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1828,10 +2066,10 @@ export namespace Guestfs {
     namespace HivexOpen {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::debug': GObject.Object.Notify;
-            'notify::unsafe': GObject.Object.Notify;
-            'notify::verbose': GObject.Object.Notify;
-            'notify::write': GObject.Object.Notify;
+            'notify::debug': (pspec: GObject.ParamSpec) => void;
+            'notify::unsafe': (pspec: GObject.ParamSpec) => void;
+            'notify::verbose': (pspec: GObject.ParamSpec) => void;
+            'notify::write': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1872,6 +2110,14 @@ export namespace Guestfs {
          */
         get write(): Tristate;
         set write(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HivexOpen.SignalSignatures;
 
         // Constructors
 
@@ -1883,16 +2129,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof HivexOpen.SignalSignatures>(signal: K, callback: HivexOpen.SignalSignatures[K]): number;
+        connect<K extends keyof HivexOpen.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, HivexOpen.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HivexOpen.SignalSignatures>(
             signal: K,
-            callback: HivexOpen.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HivexOpen.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HivexOpen.SignalSignatures>(
             signal: K,
-            ...args: HivexOpen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HivexOpen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1900,8 +2149,8 @@ export namespace Guestfs {
     namespace InspectGetIcon {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::favicon': GObject.Object.Notify;
-            'notify::highquality': GObject.Object.Notify;
+            'notify::favicon': (pspec: GObject.ParamSpec) => void;
+            'notify::highquality': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1930,6 +2179,14 @@ export namespace Guestfs {
          */
         get highquality(): Tristate;
         set highquality(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InspectGetIcon.SignalSignatures;
 
         // Constructors
 
@@ -1943,17 +2200,17 @@ export namespace Guestfs {
 
         connect<K extends keyof InspectGetIcon.SignalSignatures>(
             signal: K,
-            callback: InspectGetIcon.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InspectGetIcon.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InspectGetIcon.SignalSignatures>(
             signal: K,
-            callback: InspectGetIcon.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InspectGetIcon.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InspectGetIcon.SignalSignatures>(
             signal: K,
-            ...args: InspectGetIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InspectGetIcon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1961,10 +2218,10 @@ export namespace Guestfs {
     namespace InternalTest {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::obool': GObject.Object.Notify;
-            'notify::oint': GObject.Object.Notify;
-            'notify::oint64': GObject.Object.Notify;
-            'notify::ostring': GObject.Object.Notify;
+            'notify::obool': (pspec: GObject.ParamSpec) => void;
+            'notify::oint': (pspec: GObject.ParamSpec) => void;
+            'notify::oint64': (pspec: GObject.ParamSpec) => void;
+            'notify::ostring': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2005,6 +2262,14 @@ export namespace Guestfs {
          */
         get ostring(): string;
         set ostring(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InternalTest.SignalSignatures;
 
         // Constructors
 
@@ -2018,17 +2283,17 @@ export namespace Guestfs {
 
         connect<K extends keyof InternalTest.SignalSignatures>(
             signal: K,
-            callback: InternalTest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InternalTest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InternalTest.SignalSignatures>(
             signal: K,
-            callback: InternalTest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InternalTest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InternalTest.SignalSignatures>(
             signal: K,
-            ...args: InternalTest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InternalTest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2036,69 +2301,69 @@ export namespace Guestfs {
     namespace InternalTest63Optargs {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::opt1': GObject.Object.Notify;
-            'notify::opt10': GObject.Object.Notify;
-            'notify::opt11': GObject.Object.Notify;
-            'notify::opt12': GObject.Object.Notify;
-            'notify::opt13': GObject.Object.Notify;
-            'notify::opt14': GObject.Object.Notify;
-            'notify::opt15': GObject.Object.Notify;
-            'notify::opt16': GObject.Object.Notify;
-            'notify::opt17': GObject.Object.Notify;
-            'notify::opt18': GObject.Object.Notify;
-            'notify::opt19': GObject.Object.Notify;
-            'notify::opt2': GObject.Object.Notify;
-            'notify::opt20': GObject.Object.Notify;
-            'notify::opt21': GObject.Object.Notify;
-            'notify::opt22': GObject.Object.Notify;
-            'notify::opt23': GObject.Object.Notify;
-            'notify::opt24': GObject.Object.Notify;
-            'notify::opt25': GObject.Object.Notify;
-            'notify::opt26': GObject.Object.Notify;
-            'notify::opt27': GObject.Object.Notify;
-            'notify::opt28': GObject.Object.Notify;
-            'notify::opt29': GObject.Object.Notify;
-            'notify::opt3': GObject.Object.Notify;
-            'notify::opt30': GObject.Object.Notify;
-            'notify::opt31': GObject.Object.Notify;
-            'notify::opt32': GObject.Object.Notify;
-            'notify::opt33': GObject.Object.Notify;
-            'notify::opt34': GObject.Object.Notify;
-            'notify::opt35': GObject.Object.Notify;
-            'notify::opt36': GObject.Object.Notify;
-            'notify::opt37': GObject.Object.Notify;
-            'notify::opt38': GObject.Object.Notify;
-            'notify::opt39': GObject.Object.Notify;
-            'notify::opt4': GObject.Object.Notify;
-            'notify::opt40': GObject.Object.Notify;
-            'notify::opt41': GObject.Object.Notify;
-            'notify::opt42': GObject.Object.Notify;
-            'notify::opt43': GObject.Object.Notify;
-            'notify::opt44': GObject.Object.Notify;
-            'notify::opt45': GObject.Object.Notify;
-            'notify::opt46': GObject.Object.Notify;
-            'notify::opt47': GObject.Object.Notify;
-            'notify::opt48': GObject.Object.Notify;
-            'notify::opt49': GObject.Object.Notify;
-            'notify::opt5': GObject.Object.Notify;
-            'notify::opt50': GObject.Object.Notify;
-            'notify::opt51': GObject.Object.Notify;
-            'notify::opt52': GObject.Object.Notify;
-            'notify::opt53': GObject.Object.Notify;
-            'notify::opt54': GObject.Object.Notify;
-            'notify::opt55': GObject.Object.Notify;
-            'notify::opt56': GObject.Object.Notify;
-            'notify::opt57': GObject.Object.Notify;
-            'notify::opt58': GObject.Object.Notify;
-            'notify::opt59': GObject.Object.Notify;
-            'notify::opt6': GObject.Object.Notify;
-            'notify::opt60': GObject.Object.Notify;
-            'notify::opt61': GObject.Object.Notify;
-            'notify::opt62': GObject.Object.Notify;
-            'notify::opt63': GObject.Object.Notify;
-            'notify::opt7': GObject.Object.Notify;
-            'notify::opt8': GObject.Object.Notify;
-            'notify::opt9': GObject.Object.Notify;
+            'notify::opt1': (pspec: GObject.ParamSpec) => void;
+            'notify::opt10': (pspec: GObject.ParamSpec) => void;
+            'notify::opt11': (pspec: GObject.ParamSpec) => void;
+            'notify::opt12': (pspec: GObject.ParamSpec) => void;
+            'notify::opt13': (pspec: GObject.ParamSpec) => void;
+            'notify::opt14': (pspec: GObject.ParamSpec) => void;
+            'notify::opt15': (pspec: GObject.ParamSpec) => void;
+            'notify::opt16': (pspec: GObject.ParamSpec) => void;
+            'notify::opt17': (pspec: GObject.ParamSpec) => void;
+            'notify::opt18': (pspec: GObject.ParamSpec) => void;
+            'notify::opt19': (pspec: GObject.ParamSpec) => void;
+            'notify::opt2': (pspec: GObject.ParamSpec) => void;
+            'notify::opt20': (pspec: GObject.ParamSpec) => void;
+            'notify::opt21': (pspec: GObject.ParamSpec) => void;
+            'notify::opt22': (pspec: GObject.ParamSpec) => void;
+            'notify::opt23': (pspec: GObject.ParamSpec) => void;
+            'notify::opt24': (pspec: GObject.ParamSpec) => void;
+            'notify::opt25': (pspec: GObject.ParamSpec) => void;
+            'notify::opt26': (pspec: GObject.ParamSpec) => void;
+            'notify::opt27': (pspec: GObject.ParamSpec) => void;
+            'notify::opt28': (pspec: GObject.ParamSpec) => void;
+            'notify::opt29': (pspec: GObject.ParamSpec) => void;
+            'notify::opt3': (pspec: GObject.ParamSpec) => void;
+            'notify::opt30': (pspec: GObject.ParamSpec) => void;
+            'notify::opt31': (pspec: GObject.ParamSpec) => void;
+            'notify::opt32': (pspec: GObject.ParamSpec) => void;
+            'notify::opt33': (pspec: GObject.ParamSpec) => void;
+            'notify::opt34': (pspec: GObject.ParamSpec) => void;
+            'notify::opt35': (pspec: GObject.ParamSpec) => void;
+            'notify::opt36': (pspec: GObject.ParamSpec) => void;
+            'notify::opt37': (pspec: GObject.ParamSpec) => void;
+            'notify::opt38': (pspec: GObject.ParamSpec) => void;
+            'notify::opt39': (pspec: GObject.ParamSpec) => void;
+            'notify::opt4': (pspec: GObject.ParamSpec) => void;
+            'notify::opt40': (pspec: GObject.ParamSpec) => void;
+            'notify::opt41': (pspec: GObject.ParamSpec) => void;
+            'notify::opt42': (pspec: GObject.ParamSpec) => void;
+            'notify::opt43': (pspec: GObject.ParamSpec) => void;
+            'notify::opt44': (pspec: GObject.ParamSpec) => void;
+            'notify::opt45': (pspec: GObject.ParamSpec) => void;
+            'notify::opt46': (pspec: GObject.ParamSpec) => void;
+            'notify::opt47': (pspec: GObject.ParamSpec) => void;
+            'notify::opt48': (pspec: GObject.ParamSpec) => void;
+            'notify::opt49': (pspec: GObject.ParamSpec) => void;
+            'notify::opt5': (pspec: GObject.ParamSpec) => void;
+            'notify::opt50': (pspec: GObject.ParamSpec) => void;
+            'notify::opt51': (pspec: GObject.ParamSpec) => void;
+            'notify::opt52': (pspec: GObject.ParamSpec) => void;
+            'notify::opt53': (pspec: GObject.ParamSpec) => void;
+            'notify::opt54': (pspec: GObject.ParamSpec) => void;
+            'notify::opt55': (pspec: GObject.ParamSpec) => void;
+            'notify::opt56': (pspec: GObject.ParamSpec) => void;
+            'notify::opt57': (pspec: GObject.ParamSpec) => void;
+            'notify::opt58': (pspec: GObject.ParamSpec) => void;
+            'notify::opt59': (pspec: GObject.ParamSpec) => void;
+            'notify::opt6': (pspec: GObject.ParamSpec) => void;
+            'notify::opt60': (pspec: GObject.ParamSpec) => void;
+            'notify::opt61': (pspec: GObject.ParamSpec) => void;
+            'notify::opt62': (pspec: GObject.ParamSpec) => void;
+            'notify::opt63': (pspec: GObject.ParamSpec) => void;
+            'notify::opt7': (pspec: GObject.ParamSpec) => void;
+            'notify::opt8': (pspec: GObject.ParamSpec) => void;
+            'notify::opt9': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2493,6 +2758,14 @@ export namespace Guestfs {
          */
         get opt9(): number;
         set opt9(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InternalTest63Optargs.SignalSignatures;
 
         // Constructors
 
@@ -2506,17 +2779,19 @@ export namespace Guestfs {
 
         connect<K extends keyof InternalTest63Optargs.SignalSignatures>(
             signal: K,
-            callback: InternalTest63Optargs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InternalTest63Optargs.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InternalTest63Optargs.SignalSignatures>(
             signal: K,
-            callback: InternalTest63Optargs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InternalTest63Optargs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InternalTest63Optargs.SignalSignatures>(
             signal: K,
-            ...args: InternalTest63Optargs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InternalTest63Optargs.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2524,7 +2799,7 @@ export namespace Guestfs {
     namespace InternalTestOnlyOptargs {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::test': GObject.Object.Notify;
+            'notify::test': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2547,6 +2822,14 @@ export namespace Guestfs {
          */
         get test(): number;
         set test(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InternalTestOnlyOptargs.SignalSignatures;
 
         // Constructors
 
@@ -2560,17 +2843,19 @@ export namespace Guestfs {
 
         connect<K extends keyof InternalTestOnlyOptargs.SignalSignatures>(
             signal: K,
-            callback: InternalTestOnlyOptargs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InternalTestOnlyOptargs.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InternalTestOnlyOptargs.SignalSignatures>(
             signal: K,
-            callback: InternalTestOnlyOptargs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InternalTestOnlyOptargs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InternalTestOnlyOptargs.SignalSignatures>(
             signal: K,
-            ...args: InternalTestOnlyOptargs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InternalTestOnlyOptargs.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2578,7 +2863,7 @@ export namespace Guestfs {
     namespace IsBlockdev {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::followsymlinks': GObject.Object.Notify;
+            'notify::followsymlinks': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2601,6 +2886,14 @@ export namespace Guestfs {
          */
         get followsymlinks(): Tristate;
         set followsymlinks(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IsBlockdev.SignalSignatures;
 
         // Constructors
 
@@ -2614,17 +2907,17 @@ export namespace Guestfs {
 
         connect<K extends keyof IsBlockdev.SignalSignatures>(
             signal: K,
-            callback: IsBlockdev.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IsBlockdev.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IsBlockdev.SignalSignatures>(
             signal: K,
-            callback: IsBlockdev.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IsBlockdev.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IsBlockdev.SignalSignatures>(
             signal: K,
-            ...args: IsBlockdev.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IsBlockdev.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2632,7 +2925,7 @@ export namespace Guestfs {
     namespace IsChardev {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::followsymlinks': GObject.Object.Notify;
+            'notify::followsymlinks': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2655,6 +2948,14 @@ export namespace Guestfs {
          */
         get followsymlinks(): Tristate;
         set followsymlinks(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IsChardev.SignalSignatures;
 
         // Constructors
 
@@ -2666,16 +2967,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof IsChardev.SignalSignatures>(signal: K, callback: IsChardev.SignalSignatures[K]): number;
+        connect<K extends keyof IsChardev.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, IsChardev.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IsChardev.SignalSignatures>(
             signal: K,
-            callback: IsChardev.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IsChardev.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IsChardev.SignalSignatures>(
             signal: K,
-            ...args: IsChardev.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IsChardev.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2683,7 +2987,7 @@ export namespace Guestfs {
     namespace IsDir {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::followsymlinks': GObject.Object.Notify;
+            'notify::followsymlinks': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2706,6 +3010,14 @@ export namespace Guestfs {
          */
         get followsymlinks(): Tristate;
         set followsymlinks(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IsDir.SignalSignatures;
 
         // Constructors
 
@@ -2717,13 +3029,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof IsDir.SignalSignatures>(signal: K, callback: IsDir.SignalSignatures[K]): number;
+        connect<K extends keyof IsDir.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, IsDir.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof IsDir.SignalSignatures>(signal: K, callback: IsDir.SignalSignatures[K]): number;
+        connect_after<K extends keyof IsDir.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, IsDir.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IsDir.SignalSignatures>(
             signal: K,
-            ...args: IsDir.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IsDir.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2731,7 +3049,7 @@ export namespace Guestfs {
     namespace IsFifo {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::followsymlinks': GObject.Object.Notify;
+            'notify::followsymlinks': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2754,6 +3072,14 @@ export namespace Guestfs {
          */
         get followsymlinks(): Tristate;
         set followsymlinks(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IsFifo.SignalSignatures;
 
         // Constructors
 
@@ -2765,13 +3091,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof IsFifo.SignalSignatures>(signal: K, callback: IsFifo.SignalSignatures[K]): number;
+        connect<K extends keyof IsFifo.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, IsFifo.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof IsFifo.SignalSignatures>(signal: K, callback: IsFifo.SignalSignatures[K]): number;
+        connect_after<K extends keyof IsFifo.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, IsFifo.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IsFifo.SignalSignatures>(
             signal: K,
-            ...args: IsFifo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IsFifo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2779,7 +3111,7 @@ export namespace Guestfs {
     namespace IsFile {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::followsymlinks': GObject.Object.Notify;
+            'notify::followsymlinks': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2802,6 +3134,14 @@ export namespace Guestfs {
          */
         get followsymlinks(): Tristate;
         set followsymlinks(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IsFile.SignalSignatures;
 
         // Constructors
 
@@ -2813,13 +3153,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof IsFile.SignalSignatures>(signal: K, callback: IsFile.SignalSignatures[K]): number;
+        connect<K extends keyof IsFile.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, IsFile.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof IsFile.SignalSignatures>(signal: K, callback: IsFile.SignalSignatures[K]): number;
+        connect_after<K extends keyof IsFile.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, IsFile.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IsFile.SignalSignatures>(
             signal: K,
-            ...args: IsFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IsFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2827,7 +3173,7 @@ export namespace Guestfs {
     namespace IsSocket {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::followsymlinks': GObject.Object.Notify;
+            'notify::followsymlinks': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2850,6 +3196,14 @@ export namespace Guestfs {
          */
         get followsymlinks(): Tristate;
         set followsymlinks(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IsSocket.SignalSignatures;
 
         // Constructors
 
@@ -2861,16 +3215,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof IsSocket.SignalSignatures>(signal: K, callback: IsSocket.SignalSignatures[K]): number;
+        connect<K extends keyof IsSocket.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, IsSocket.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IsSocket.SignalSignatures>(
             signal: K,
-            callback: IsSocket.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IsSocket.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IsSocket.SignalSignatures>(
             signal: K,
-            ...args: IsSocket.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IsSocket.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2878,11 +3235,11 @@ export namespace Guestfs {
     namespace MDCreate {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::chunk': GObject.Object.Notify;
-            'notify::level': GObject.Object.Notify;
-            'notify::missingbitmap': GObject.Object.Notify;
-            'notify::nrdevices': GObject.Object.Notify;
-            'notify::spare': GObject.Object.Notify;
+            'notify::chunk': (pspec: GObject.ParamSpec) => void;
+            'notify::level': (pspec: GObject.ParamSpec) => void;
+            'notify::missingbitmap': (pspec: GObject.ParamSpec) => void;
+            'notify::nrdevices': (pspec: GObject.ParamSpec) => void;
+            'notify::spare': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2929,6 +3286,14 @@ export namespace Guestfs {
          */
         get spare(): number;
         set spare(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MDCreate.SignalSignatures;
 
         // Constructors
 
@@ -2940,16 +3305,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof MDCreate.SignalSignatures>(signal: K, callback: MDCreate.SignalSignatures[K]): number;
+        connect<K extends keyof MDCreate.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MDCreate.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MDCreate.SignalSignatures>(
             signal: K,
-            callback: MDCreate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MDCreate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MDCreate.SignalSignatures>(
             signal: K,
-            ...args: MDCreate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MDCreate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2957,44 +3325,44 @@ export namespace Guestfs {
     namespace Mke2fs {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::blockscount': GObject.Object.Notify;
-            'notify::blocksize': GObject.Object.Notify;
-            'notify::blockspergroup': GObject.Object.Notify;
-            'notify::bytesperinode': GObject.Object.Notify;
-            'notify::creatoros': GObject.Object.Notify;
-            'notify::discard': GObject.Object.Notify;
-            'notify::extent': GObject.Object.Notify;
-            'notify::filetype': GObject.Object.Notify;
-            'notify::flexbg': GObject.Object.Notify;
-            'notify::forcecreate': GObject.Object.Notify;
-            'notify::fragsize': GObject.Object.Notify;
-            'notify::fstype': GObject.Object.Notify;
-            'notify::hasjournal': GObject.Object.Notify;
-            'notify::inodesize': GObject.Object.Notify;
-            'notify::journaldev': GObject.Object.Notify;
-            'notify::journaldevice': GObject.Object.Notify;
-            'notify::journalsize': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::largefile': GObject.Object.Notify;
-            'notify::lastmounteddir': GObject.Object.Notify;
-            'notify::lazyitableinit': GObject.Object.Notify;
-            'notify::lazyjournalinit': GObject.Object.Notify;
-            'notify::maxonlineresize': GObject.Object.Notify;
-            'notify::mmpupdateinterval': GObject.Object.Notify;
-            'notify::numberofgroups': GObject.Object.Notify;
-            'notify::numberofinodes': GObject.Object.Notify;
-            'notify::quota': GObject.Object.Notify;
-            'notify::quotatype': GObject.Object.Notify;
-            'notify::reservedblockspercentage': GObject.Object.Notify;
-            'notify::resizeinode': GObject.Object.Notify;
-            'notify::sparsesuper': GObject.Object.Notify;
-            'notify::stridesize': GObject.Object.Notify;
-            'notify::stripewidth': GObject.Object.Notify;
-            'notify::testfs': GObject.Object.Notify;
-            'notify::uninitbg': GObject.Object.Notify;
-            'notify::usagetype': GObject.Object.Notify;
-            'notify::uuid': GObject.Object.Notify;
-            'notify::writesbandgrouponly': GObject.Object.Notify;
+            'notify::blockscount': (pspec: GObject.ParamSpec) => void;
+            'notify::blocksize': (pspec: GObject.ParamSpec) => void;
+            'notify::blockspergroup': (pspec: GObject.ParamSpec) => void;
+            'notify::bytesperinode': (pspec: GObject.ParamSpec) => void;
+            'notify::creatoros': (pspec: GObject.ParamSpec) => void;
+            'notify::discard': (pspec: GObject.ParamSpec) => void;
+            'notify::extent': (pspec: GObject.ParamSpec) => void;
+            'notify::filetype': (pspec: GObject.ParamSpec) => void;
+            'notify::flexbg': (pspec: GObject.ParamSpec) => void;
+            'notify::forcecreate': (pspec: GObject.ParamSpec) => void;
+            'notify::fragsize': (pspec: GObject.ParamSpec) => void;
+            'notify::fstype': (pspec: GObject.ParamSpec) => void;
+            'notify::hasjournal': (pspec: GObject.ParamSpec) => void;
+            'notify::inodesize': (pspec: GObject.ParamSpec) => void;
+            'notify::journaldev': (pspec: GObject.ParamSpec) => void;
+            'notify::journaldevice': (pspec: GObject.ParamSpec) => void;
+            'notify::journalsize': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::largefile': (pspec: GObject.ParamSpec) => void;
+            'notify::lastmounteddir': (pspec: GObject.ParamSpec) => void;
+            'notify::lazyitableinit': (pspec: GObject.ParamSpec) => void;
+            'notify::lazyjournalinit': (pspec: GObject.ParamSpec) => void;
+            'notify::maxonlineresize': (pspec: GObject.ParamSpec) => void;
+            'notify::mmpupdateinterval': (pspec: GObject.ParamSpec) => void;
+            'notify::numberofgroups': (pspec: GObject.ParamSpec) => void;
+            'notify::numberofinodes': (pspec: GObject.ParamSpec) => void;
+            'notify::quota': (pspec: GObject.ParamSpec) => void;
+            'notify::quotatype': (pspec: GObject.ParamSpec) => void;
+            'notify::reservedblockspercentage': (pspec: GObject.ParamSpec) => void;
+            'notify::resizeinode': (pspec: GObject.ParamSpec) => void;
+            'notify::sparsesuper': (pspec: GObject.ParamSpec) => void;
+            'notify::stridesize': (pspec: GObject.ParamSpec) => void;
+            'notify::stripewidth': (pspec: GObject.ParamSpec) => void;
+            'notify::testfs': (pspec: GObject.ParamSpec) => void;
+            'notify::uninitbg': (pspec: GObject.ParamSpec) => void;
+            'notify::usagetype': (pspec: GObject.ParamSpec) => void;
+            'notify::uuid': (pspec: GObject.ParamSpec) => void;
+            'notify::writesbandgrouponly': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3239,6 +3607,14 @@ export namespace Guestfs {
          */
         get writesbandgrouponly(): Tristate;
         set writesbandgrouponly(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Mke2fs.SignalSignatures;
 
         // Constructors
 
@@ -3250,13 +3626,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof Mke2fs.SignalSignatures>(signal: K, callback: Mke2fs.SignalSignatures[K]): number;
+        connect<K extends keyof Mke2fs.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Mke2fs.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Mke2fs.SignalSignatures>(signal: K, callback: Mke2fs.SignalSignatures[K]): number;
+        connect_after<K extends keyof Mke2fs.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Mke2fs.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Mke2fs.SignalSignatures>(
             signal: K,
-            ...args: Mke2fs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Mke2fs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3264,11 +3646,11 @@ export namespace Guestfs {
     namespace Mkfs {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::blocksize': GObject.Object.Notify;
-            'notify::features': GObject.Object.Notify;
-            'notify::inode': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::sectorsize': GObject.Object.Notify;
+            'notify::blocksize': (pspec: GObject.ParamSpec) => void;
+            'notify::features': (pspec: GObject.ParamSpec) => void;
+            'notify::inode': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::sectorsize': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3315,6 +3697,14 @@ export namespace Guestfs {
          */
         get sectorsize(): number;
         set sectorsize(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Mkfs.SignalSignatures;
 
         // Constructors
 
@@ -3326,13 +3716,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof Mkfs.SignalSignatures>(signal: K, callback: Mkfs.SignalSignatures[K]): number;
+        connect<K extends keyof Mkfs.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Mkfs.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Mkfs.SignalSignatures>(signal: K, callback: Mkfs.SignalSignatures[K]): number;
+        connect_after<K extends keyof Mkfs.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Mkfs.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Mkfs.SignalSignatures>(
             signal: K,
-            ...args: Mkfs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Mkfs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3340,14 +3736,14 @@ export namespace Guestfs {
     namespace MkfsBtrfs {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::allocstart': GObject.Object.Notify;
-            'notify::bytecount': GObject.Object.Notify;
-            'notify::datatype': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::leafsize': GObject.Object.Notify;
-            'notify::metadata': GObject.Object.Notify;
-            'notify::nodesize': GObject.Object.Notify;
-            'notify::sectorsize': GObject.Object.Notify;
+            'notify::allocstart': (pspec: GObject.ParamSpec) => void;
+            'notify::bytecount': (pspec: GObject.ParamSpec) => void;
+            'notify::datatype': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::leafsize': (pspec: GObject.ParamSpec) => void;
+            'notify::metadata': (pspec: GObject.ParamSpec) => void;
+            'notify::nodesize': (pspec: GObject.ParamSpec) => void;
+            'notify::sectorsize': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3412,6 +3808,14 @@ export namespace Guestfs {
          */
         get sectorsize(): number;
         set sectorsize(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MkfsBtrfs.SignalSignatures;
 
         // Constructors
 
@@ -3423,16 +3827,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof MkfsBtrfs.SignalSignatures>(signal: K, callback: MkfsBtrfs.SignalSignatures[K]): number;
+        connect<K extends keyof MkfsBtrfs.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MkfsBtrfs.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MkfsBtrfs.SignalSignatures>(
             signal: K,
-            callback: MkfsBtrfs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MkfsBtrfs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MkfsBtrfs.SignalSignatures>(
             signal: K,
-            ...args: MkfsBtrfs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MkfsBtrfs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3440,7 +3847,7 @@ export namespace Guestfs {
     namespace Mksquashfs {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::compress': GObject.Object.Notify;
+            'notify::compress': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3463,6 +3870,14 @@ export namespace Guestfs {
          */
         get compress(): string;
         set compress(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Mksquashfs.SignalSignatures;
 
         // Constructors
 
@@ -3476,17 +3891,17 @@ export namespace Guestfs {
 
         connect<K extends keyof Mksquashfs.SignalSignatures>(
             signal: K,
-            callback: Mksquashfs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Mksquashfs.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Mksquashfs.SignalSignatures>(
             signal: K,
-            callback: Mksquashfs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Mksquashfs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Mksquashfs.SignalSignatures>(
             signal: K,
-            ...args: Mksquashfs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Mksquashfs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3494,8 +3909,8 @@ export namespace Guestfs {
     namespace Mkswap {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::label': GObject.Object.Notify;
-            'notify::uuid': GObject.Object.Notify;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::uuid': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3524,6 +3939,14 @@ export namespace Guestfs {
          */
         get uuid(): string;
         set uuid(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Mkswap.SignalSignatures;
 
         // Constructors
 
@@ -3535,13 +3958,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof Mkswap.SignalSignatures>(signal: K, callback: Mkswap.SignalSignatures[K]): number;
+        connect<K extends keyof Mkswap.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Mkswap.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Mkswap.SignalSignatures>(signal: K, callback: Mkswap.SignalSignatures[K]): number;
+        connect_after<K extends keyof Mkswap.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Mkswap.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Mkswap.SignalSignatures>(
             signal: K,
-            ...args: Mkswap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Mkswap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3549,7 +3978,7 @@ export namespace Guestfs {
     namespace Mktemp {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::suffix': GObject.Object.Notify;
+            'notify::suffix': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3572,6 +4001,14 @@ export namespace Guestfs {
          */
         get suffix(): string;
         set suffix(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Mktemp.SignalSignatures;
 
         // Constructors
 
@@ -3583,13 +4020,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof Mktemp.SignalSignatures>(signal: K, callback: Mktemp.SignalSignatures[K]): number;
+        connect<K extends keyof Mktemp.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Mktemp.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Mktemp.SignalSignatures>(signal: K, callback: Mktemp.SignalSignatures[K]): number;
+        connect_after<K extends keyof Mktemp.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Mktemp.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Mktemp.SignalSignatures>(
             signal: K,
-            ...args: Mktemp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Mktemp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3597,7 +4040,7 @@ export namespace Guestfs {
     namespace Mount9P {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::options': GObject.Object.Notify;
+            'notify::options': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3620,6 +4063,14 @@ export namespace Guestfs {
          */
         get options(): string;
         set options(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Mount9P.SignalSignatures;
 
         // Constructors
 
@@ -3631,16 +4082,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof Mount9P.SignalSignatures>(signal: K, callback: Mount9P.SignalSignatures[K]): number;
+        connect<K extends keyof Mount9P.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Mount9P.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Mount9P.SignalSignatures>(
             signal: K,
-            callback: Mount9P.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Mount9P.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Mount9P.SignalSignatures>(
             signal: K,
-            ...args: Mount9P.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Mount9P.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3648,10 +4102,10 @@ export namespace Guestfs {
     namespace MountLocal {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::cachetimeout': GObject.Object.Notify;
-            'notify::debugcalls': GObject.Object.Notify;
-            'notify::options': GObject.Object.Notify;
-            'notify::readonly': GObject.Object.Notify;
+            'notify::cachetimeout': (pspec: GObject.ParamSpec) => void;
+            'notify::debugcalls': (pspec: GObject.ParamSpec) => void;
+            'notify::options': (pspec: GObject.ParamSpec) => void;
+            'notify::readonly': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3692,6 +4146,14 @@ export namespace Guestfs {
          */
         get readonly(): Tristate;
         set readonly(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MountLocal.SignalSignatures;
 
         // Constructors
 
@@ -3705,17 +4167,17 @@ export namespace Guestfs {
 
         connect<K extends keyof MountLocal.SignalSignatures>(
             signal: K,
-            callback: MountLocal.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MountLocal.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MountLocal.SignalSignatures>(
             signal: K,
-            callback: MountLocal.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MountLocal.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MountLocal.SignalSignatures>(
             signal: K,
-            ...args: MountLocal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MountLocal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3723,8 +4185,8 @@ export namespace Guestfs {
     namespace NTFSResizeOpts {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::force': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::force': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3753,6 +4215,14 @@ export namespace Guestfs {
          */
         get size(): number;
         set size(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NTFSResizeOpts.SignalSignatures;
 
         // Constructors
 
@@ -3766,17 +4236,17 @@ export namespace Guestfs {
 
         connect<K extends keyof NTFSResizeOpts.SignalSignatures>(
             signal: K,
-            callback: NTFSResizeOpts.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NTFSResizeOpts.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NTFSResizeOpts.SignalSignatures>(
             signal: K,
-            callback: NTFSResizeOpts.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NTFSResizeOpts.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NTFSResizeOpts.SignalSignatures>(
             signal: K,
-            ...args: NTFSResizeOpts.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NTFSResizeOpts.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3784,11 +4254,11 @@ export namespace Guestfs {
     namespace NtfscloneOut {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::force': GObject.Object.Notify;
-            'notify::ignorefscheck': GObject.Object.Notify;
-            'notify::metadataonly': GObject.Object.Notify;
-            'notify::preservetimestamps': GObject.Object.Notify;
-            'notify::rescue': GObject.Object.Notify;
+            'notify::force': (pspec: GObject.ParamSpec) => void;
+            'notify::ignorefscheck': (pspec: GObject.ParamSpec) => void;
+            'notify::metadataonly': (pspec: GObject.ParamSpec) => void;
+            'notify::preservetimestamps': (pspec: GObject.ParamSpec) => void;
+            'notify::rescue': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3835,6 +4305,14 @@ export namespace Guestfs {
          */
         get rescue(): Tristate;
         set rescue(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NtfscloneOut.SignalSignatures;
 
         // Constructors
 
@@ -3848,17 +4326,17 @@ export namespace Guestfs {
 
         connect<K extends keyof NtfscloneOut.SignalSignatures>(
             signal: K,
-            callback: NtfscloneOut.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NtfscloneOut.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NtfscloneOut.SignalSignatures>(
             signal: K,
-            callback: NtfscloneOut.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NtfscloneOut.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NtfscloneOut.SignalSignatures>(
             signal: K,
-            ...args: NtfscloneOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NtfscloneOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3866,7 +4344,7 @@ export namespace Guestfs {
     namespace Ntfsfix {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::clearbadsectors': GObject.Object.Notify;
+            'notify::clearbadsectors': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3889,6 +4367,14 @@ export namespace Guestfs {
          */
         get clearbadsectors(): Tristate;
         set clearbadsectors(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Ntfsfix.SignalSignatures;
 
         // Constructors
 
@@ -3900,16 +4386,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof Ntfsfix.SignalSignatures>(signal: K, callback: Ntfsfix.SignalSignatures[K]): number;
+        connect<K extends keyof Ntfsfix.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Ntfsfix.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Ntfsfix.SignalSignatures>(
             signal: K,
-            callback: Ntfsfix.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Ntfsfix.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Ntfsfix.SignalSignatures>(
             signal: K,
-            ...args: Ntfsfix.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Ntfsfix.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3917,7 +4406,7 @@ export namespace Guestfs {
     namespace Remount {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::rw': GObject.Object.Notify;
+            'notify::rw': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3940,6 +4429,14 @@ export namespace Guestfs {
          */
         get rw(): Tristate;
         set rw(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Remount.SignalSignatures;
 
         // Constructors
 
@@ -3951,16 +4448,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof Remount.SignalSignatures>(signal: K, callback: Remount.SignalSignatures[K]): number;
+        connect<K extends keyof Remount.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Remount.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Remount.SignalSignatures>(
             signal: K,
-            callback: Remount.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Remount.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Remount.SignalSignatures>(
             signal: K,
-            ...args: Remount.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Remount.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3968,8 +4468,8 @@ export namespace Guestfs {
     namespace Rsync {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::archive': GObject.Object.Notify;
-            'notify::deletedest': GObject.Object.Notify;
+            'notify::archive': (pspec: GObject.ParamSpec) => void;
+            'notify::deletedest': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3998,6 +4498,14 @@ export namespace Guestfs {
          */
         get deletedest(): Tristate;
         set deletedest(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Rsync.SignalSignatures;
 
         // Constructors
 
@@ -4009,13 +4517,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof Rsync.SignalSignatures>(signal: K, callback: Rsync.SignalSignatures[K]): number;
+        connect<K extends keyof Rsync.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Rsync.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Rsync.SignalSignatures>(signal: K, callback: Rsync.SignalSignatures[K]): number;
+        connect_after<K extends keyof Rsync.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Rsync.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Rsync.SignalSignatures>(
             signal: K,
-            ...args: Rsync.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Rsync.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -4023,8 +4537,8 @@ export namespace Guestfs {
     namespace RsyncIn {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::archive': GObject.Object.Notify;
-            'notify::deletedest': GObject.Object.Notify;
+            'notify::archive': (pspec: GObject.ParamSpec) => void;
+            'notify::deletedest': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4053,6 +4567,14 @@ export namespace Guestfs {
          */
         get deletedest(): Tristate;
         set deletedest(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RsyncIn.SignalSignatures;
 
         // Constructors
 
@@ -4064,16 +4586,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof RsyncIn.SignalSignatures>(signal: K, callback: RsyncIn.SignalSignatures[K]): number;
+        connect<K extends keyof RsyncIn.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, RsyncIn.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RsyncIn.SignalSignatures>(
             signal: K,
-            callback: RsyncIn.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RsyncIn.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RsyncIn.SignalSignatures>(
             signal: K,
-            ...args: RsyncIn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RsyncIn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -4081,8 +4606,8 @@ export namespace Guestfs {
     namespace RsyncOut {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::archive': GObject.Object.Notify;
-            'notify::deletedest': GObject.Object.Notify;
+            'notify::archive': (pspec: GObject.ParamSpec) => void;
+            'notify::deletedest': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4111,6 +4636,14 @@ export namespace Guestfs {
          */
         get deletedest(): Tristate;
         set deletedest(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RsyncOut.SignalSignatures;
 
         // Constructors
 
@@ -4122,16 +4655,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof RsyncOut.SignalSignatures>(signal: K, callback: RsyncOut.SignalSignatures[K]): number;
+        connect<K extends keyof RsyncOut.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, RsyncOut.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RsyncOut.SignalSignatures>(
             signal: K,
-            callback: RsyncOut.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RsyncOut.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RsyncOut.SignalSignatures>(
             signal: K,
-            ...args: RsyncOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RsyncOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -4139,7 +4675,7 @@ export namespace Guestfs {
     namespace SelinuxRelabel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::force': GObject.Object.Notify;
+            'notify::force': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4162,6 +4698,14 @@ export namespace Guestfs {
          */
         get force(): Tristate;
         set force(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SelinuxRelabel.SignalSignatures;
 
         // Constructors
 
@@ -4175,76 +4719,34 @@ export namespace Guestfs {
 
         connect<K extends keyof SelinuxRelabel.SignalSignatures>(
             signal: K,
-            callback: SelinuxRelabel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SelinuxRelabel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SelinuxRelabel.SignalSignatures>(
             signal: K,
-            callback: SelinuxRelabel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SelinuxRelabel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SelinuxRelabel.SignalSignatures>(
             signal: K,
-            ...args: SelinuxRelabel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SelinuxRelabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace Session {
-        // Signal callback interfaces
-
-        interface Appliance {
-            (_source: Session, params: SessionEventParams): void;
-        }
-
-        interface Close {
-            (_source: Session, params: SessionEventParams): void;
-        }
-
-        interface Enter {
-            (_source: Session, params: SessionEventParams): void;
-        }
-
-        interface LaunchDone {
-            (_source: Session, object: SessionEventParams): void;
-        }
-
-        interface Library {
-            (_source: Session, params: SessionEventParams): void;
-        }
-
-        interface LibvirtAuth {
-            (_source: Session, object: SessionEventParams): void;
-        }
-
-        interface Progress {
-            (_source: Session, params: SessionEventParams): void;
-        }
-
-        interface SubprocessQuit {
-            (_source: Session, object: SessionEventParams): void;
-        }
-
-        interface Trace {
-            (_source: Session, params: SessionEventParams): void;
-        }
-
-        interface Warning {
-            (_source: Session, params: SessionEventParams): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            appliance: Appliance;
-            close: Close;
-            enter: Enter;
-            'launch-done': LaunchDone;
-            library: Library;
-            'libvirt-auth': LibvirtAuth;
-            progress: Progress;
-            'subprocess-quit': SubprocessQuit;
-            trace: Trace;
-            warning: Warning;
+            appliance: (arg0: SessionEventParams) => void;
+            close: (arg0: SessionEventParams) => void;
+            enter: (arg0: SessionEventParams) => void;
+            'launch-done': (arg0: SessionEventParams) => void;
+            library: (arg0: SessionEventParams) => void;
+            'libvirt-auth': (arg0: SessionEventParams) => void;
+            progress: (arg0: SessionEventParams) => void;
+            'subprocess-quit': (arg0: SessionEventParams) => void;
+            trace: (arg0: SessionEventParams) => void;
+            warning: (arg0: SessionEventParams) => void;
         }
 
         // Constructor properties interface
@@ -4257,6 +4759,14 @@ export namespace Guestfs {
      */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -4268,16 +4778,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
-            callback: Session.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14781,7 +15294,7 @@ export namespace Guestfs {
     namespace SetE2attrs {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::clear': GObject.Object.Notify;
+            'notify::clear': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14804,6 +15317,14 @@ export namespace Guestfs {
          */
         get clear(): Tristate;
         set clear(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SetE2attrs.SignalSignatures;
 
         // Constructors
 
@@ -14817,17 +15338,17 @@ export namespace Guestfs {
 
         connect<K extends keyof SetE2attrs.SignalSignatures>(
             signal: K,
-            callback: SetE2attrs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SetE2attrs.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SetE2attrs.SignalSignatures>(
             signal: K,
-            callback: SetE2attrs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SetE2attrs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SetE2attrs.SignalSignatures>(
             signal: K,
-            ...args: SetE2attrs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SetE2attrs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -14835,7 +15356,7 @@ export namespace Guestfs {
     namespace Syslinux {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::directory': GObject.Object.Notify;
+            'notify::directory': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14858,6 +15379,14 @@ export namespace Guestfs {
          */
         get directory(): string;
         set directory(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Syslinux.SignalSignatures;
 
         // Constructors
 
@@ -14869,16 +15398,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof Syslinux.SignalSignatures>(signal: K, callback: Syslinux.SignalSignatures[K]): number;
+        connect<K extends keyof Syslinux.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Syslinux.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Syslinux.SignalSignatures>(
             signal: K,
-            callback: Syslinux.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Syslinux.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Syslinux.SignalSignatures>(
             signal: K,
-            ...args: Syslinux.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Syslinux.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -14886,10 +15418,10 @@ export namespace Guestfs {
     namespace TarIn {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::acls': GObject.Object.Notify;
-            'notify::compress': GObject.Object.Notify;
-            'notify::selinux': GObject.Object.Notify;
-            'notify::xattrs': GObject.Object.Notify;
+            'notify::acls': (pspec: GObject.ParamSpec) => void;
+            'notify::compress': (pspec: GObject.ParamSpec) => void;
+            'notify::selinux': (pspec: GObject.ParamSpec) => void;
+            'notify::xattrs': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14930,6 +15462,14 @@ export namespace Guestfs {
          */
         get xattrs(): Tristate;
         set xattrs(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TarIn.SignalSignatures;
 
         // Constructors
 
@@ -14941,13 +15481,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof TarIn.SignalSignatures>(signal: K, callback: TarIn.SignalSignatures[K]): number;
+        connect<K extends keyof TarIn.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TarIn.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof TarIn.SignalSignatures>(signal: K, callback: TarIn.SignalSignatures[K]): number;
+        connect_after<K extends keyof TarIn.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TarIn.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TarIn.SignalSignatures>(
             signal: K,
-            ...args: TarIn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TarIn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -14955,11 +15501,11 @@ export namespace Guestfs {
     namespace TarOut {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::acls': GObject.Object.Notify;
-            'notify::compress': GObject.Object.Notify;
-            'notify::numericowner': GObject.Object.Notify;
-            'notify::selinux': GObject.Object.Notify;
-            'notify::xattrs': GObject.Object.Notify;
+            'notify::acls': (pspec: GObject.ParamSpec) => void;
+            'notify::compress': (pspec: GObject.ParamSpec) => void;
+            'notify::numericowner': (pspec: GObject.ParamSpec) => void;
+            'notify::selinux': (pspec: GObject.ParamSpec) => void;
+            'notify::xattrs': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15006,6 +15552,14 @@ export namespace Guestfs {
          */
         get xattrs(): Tristate;
         set xattrs(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TarOut.SignalSignatures;
 
         // Constructors
 
@@ -15017,13 +15571,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof TarOut.SignalSignatures>(signal: K, callback: TarOut.SignalSignatures[K]): number;
+        connect<K extends keyof TarOut.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TarOut.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof TarOut.SignalSignatures>(signal: K, callback: TarOut.SignalSignatures[K]): number;
+        connect_after<K extends keyof TarOut.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TarOut.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TarOut.SignalSignatures>(
             signal: K,
-            ...args: TarOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TarOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -15031,16 +15591,16 @@ export namespace Guestfs {
     namespace Tune2FS {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::errorbehavior': GObject.Object.Notify;
-            'notify::force': GObject.Object.Notify;
-            'notify::group': GObject.Object.Notify;
-            'notify::intervalbetweenchecks': GObject.Object.Notify;
-            'notify::lastmounteddirectory': GObject.Object.Notify;
-            'notify::maxmountcount': GObject.Object.Notify;
-            'notify::mountcount': GObject.Object.Notify;
-            'notify::reservedblockscount': GObject.Object.Notify;
-            'notify::reservedblockspercentage': GObject.Object.Notify;
-            'notify::user': GObject.Object.Notify;
+            'notify::errorbehavior': (pspec: GObject.ParamSpec) => void;
+            'notify::force': (pspec: GObject.ParamSpec) => void;
+            'notify::group': (pspec: GObject.ParamSpec) => void;
+            'notify::intervalbetweenchecks': (pspec: GObject.ParamSpec) => void;
+            'notify::lastmounteddirectory': (pspec: GObject.ParamSpec) => void;
+            'notify::maxmountcount': (pspec: GObject.ParamSpec) => void;
+            'notify::mountcount': (pspec: GObject.ParamSpec) => void;
+            'notify::reservedblockscount': (pspec: GObject.ParamSpec) => void;
+            'notify::reservedblockspercentage': (pspec: GObject.ParamSpec) => void;
+            'notify::user': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15117,6 +15677,14 @@ export namespace Guestfs {
          */
         get user(): number;
         set user(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Tune2FS.SignalSignatures;
 
         // Constructors
 
@@ -15128,16 +15696,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof Tune2FS.SignalSignatures>(signal: K, callback: Tune2FS.SignalSignatures[K]): number;
+        connect<K extends keyof Tune2FS.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Tune2FS.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Tune2FS.SignalSignatures>(
             signal: K,
-            callback: Tune2FS.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Tune2FS.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Tune2FS.SignalSignatures>(
             signal: K,
-            ...args: Tune2FS.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Tune2FS.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -15145,8 +15716,8 @@ export namespace Guestfs {
     namespace Umount {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::force': GObject.Object.Notify;
-            'notify::lazyunmount': GObject.Object.Notify;
+            'notify::force': (pspec: GObject.ParamSpec) => void;
+            'notify::lazyunmount': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15175,6 +15746,14 @@ export namespace Guestfs {
          */
         get lazyunmount(): Tristate;
         set lazyunmount(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Umount.SignalSignatures;
 
         // Constructors
 
@@ -15186,13 +15765,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof Umount.SignalSignatures>(signal: K, callback: Umount.SignalSignatures[K]): number;
+        connect<K extends keyof Umount.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Umount.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Umount.SignalSignatures>(signal: K, callback: Umount.SignalSignatures[K]): number;
+        connect_after<K extends keyof Umount.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Umount.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Umount.SignalSignatures>(
             signal: K,
-            ...args: Umount.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Umount.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -15200,7 +15785,7 @@ export namespace Guestfs {
     namespace UmountLocal {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::retry': GObject.Object.Notify;
+            'notify::retry': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15223,6 +15808,14 @@ export namespace Guestfs {
          */
         get retry(): Tristate;
         set retry(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UmountLocal.SignalSignatures;
 
         // Constructors
 
@@ -15236,17 +15829,17 @@ export namespace Guestfs {
 
         connect<K extends keyof UmountLocal.SignalSignatures>(
             signal: K,
-            callback: UmountLocal.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UmountLocal.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UmountLocal.SignalSignatures>(
             signal: K,
-            callback: UmountLocal.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UmountLocal.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UmountLocal.SignalSignatures>(
             signal: K,
-            ...args: UmountLocal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UmountLocal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -15254,13 +15847,13 @@ export namespace Guestfs {
     namespace XfsAdmin {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::extunwritten': GObject.Object.Notify;
-            'notify::imgfile': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::lazycounter': GObject.Object.Notify;
-            'notify::projid32bit': GObject.Object.Notify;
-            'notify::uuid': GObject.Object.Notify;
-            'notify::v2log': GObject.Object.Notify;
+            'notify::extunwritten': (pspec: GObject.ParamSpec) => void;
+            'notify::imgfile': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::lazycounter': (pspec: GObject.ParamSpec) => void;
+            'notify::projid32bit': (pspec: GObject.ParamSpec) => void;
+            'notify::uuid': (pspec: GObject.ParamSpec) => void;
+            'notify::v2log': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15319,6 +15912,14 @@ export namespace Guestfs {
          */
         get v2log(): Tristate;
         set v2log(val: Tristate);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XfsAdmin.SignalSignatures;
 
         // Constructors
 
@@ -15330,16 +15931,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof XfsAdmin.SignalSignatures>(signal: K, callback: XfsAdmin.SignalSignatures[K]): number;
+        connect<K extends keyof XfsAdmin.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XfsAdmin.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XfsAdmin.SignalSignatures>(
             signal: K,
-            callback: XfsAdmin.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XfsAdmin.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XfsAdmin.SignalSignatures>(
             signal: K,
-            ...args: XfsAdmin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XfsAdmin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -15347,14 +15951,14 @@ export namespace Guestfs {
     namespace XfsGrowfs {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::datasec': GObject.Object.Notify;
-            'notify::datasize': GObject.Object.Notify;
-            'notify::logsec': GObject.Object.Notify;
-            'notify::logsize': GObject.Object.Notify;
-            'notify::maxpct': GObject.Object.Notify;
-            'notify::rtextsize': GObject.Object.Notify;
-            'notify::rtsec': GObject.Object.Notify;
-            'notify::rtsize': GObject.Object.Notify;
+            'notify::datasec': (pspec: GObject.ParamSpec) => void;
+            'notify::datasize': (pspec: GObject.ParamSpec) => void;
+            'notify::logsec': (pspec: GObject.ParamSpec) => void;
+            'notify::logsize': (pspec: GObject.ParamSpec) => void;
+            'notify::maxpct': (pspec: GObject.ParamSpec) => void;
+            'notify::rtextsize': (pspec: GObject.ParamSpec) => void;
+            'notify::rtsec': (pspec: GObject.ParamSpec) => void;
+            'notify::rtsize': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15419,6 +16023,14 @@ export namespace Guestfs {
          */
         get rtsize(): number;
         set rtsize(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XfsGrowfs.SignalSignatures;
 
         // Constructors
 
@@ -15430,16 +16042,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof XfsGrowfs.SignalSignatures>(signal: K, callback: XfsGrowfs.SignalSignatures[K]): number;
+        connect<K extends keyof XfsGrowfs.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XfsGrowfs.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XfsGrowfs.SignalSignatures>(
             signal: K,
-            callback: XfsGrowfs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XfsGrowfs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XfsGrowfs.SignalSignatures>(
             signal: K,
-            ...args: XfsGrowfs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XfsGrowfs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -15447,16 +16062,16 @@ export namespace Guestfs {
     namespace XfsRepair {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::agstride': GObject.Object.Notify;
-            'notify::bhashsize': GObject.Object.Notify;
-            'notify::forcegeometry': GObject.Object.Notify;
-            'notify::forcelogzero': GObject.Object.Notify;
-            'notify::ihashsize': GObject.Object.Notify;
-            'notify::logdev': GObject.Object.Notify;
-            'notify::maxmem': GObject.Object.Notify;
-            'notify::nomodify': GObject.Object.Notify;
-            'notify::noprefetch': GObject.Object.Notify;
-            'notify::rtdev': GObject.Object.Notify;
+            'notify::agstride': (pspec: GObject.ParamSpec) => void;
+            'notify::bhashsize': (pspec: GObject.ParamSpec) => void;
+            'notify::forcegeometry': (pspec: GObject.ParamSpec) => void;
+            'notify::forcelogzero': (pspec: GObject.ParamSpec) => void;
+            'notify::ihashsize': (pspec: GObject.ParamSpec) => void;
+            'notify::logdev': (pspec: GObject.ParamSpec) => void;
+            'notify::maxmem': (pspec: GObject.ParamSpec) => void;
+            'notify::nomodify': (pspec: GObject.ParamSpec) => void;
+            'notify::noprefetch': (pspec: GObject.ParamSpec) => void;
+            'notify::rtdev': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15533,6 +16148,14 @@ export namespace Guestfs {
          */
         get rtdev(): string;
         set rtdev(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XfsRepair.SignalSignatures;
 
         // Constructors
 
@@ -15544,16 +16167,19 @@ export namespace Guestfs {
 
         // Signals
 
-        connect<K extends keyof XfsRepair.SignalSignatures>(signal: K, callback: XfsRepair.SignalSignatures[K]): number;
+        connect<K extends keyof XfsRepair.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XfsRepair.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XfsRepair.SignalSignatures>(
             signal: K,
-            callback: XfsRepair.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XfsRepair.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XfsRepair.SignalSignatures>(
             signal: K,
-            ...args: XfsRepair.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XfsRepair.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

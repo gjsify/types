@@ -84,31 +84,17 @@ export namespace Bamf {
         (self: Tab, preview_data: string): void;
     }
     namespace Application {
-        // Signal callback interfaces
-
-        interface DesktopFileUpdated {
-            (_source: Application, object: string): void;
-        }
-
-        interface WindowAdded {
-            (_source: Application, object: Window): void;
-        }
-
-        interface WindowRemoved {
-            (_source: Application, object: Window): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends View.SignalSignatures {
-            'desktop-file-updated': DesktopFileUpdated;
-            'window-added': WindowAdded;
-            'window-removed': WindowRemoved;
-            'notify::active': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::running': GObject.Object.Notify;
-            'notify::starting': GObject.Object.Notify;
-            'notify::urgent': GObject.Object.Notify;
-            'notify::user-visible': GObject.Object.Notify;
+            'desktop-file-updated': (arg0: string) => void;
+            'window-added': (arg0: Window) => void;
+            'window-removed': (arg0: Window) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::running': (pspec: GObject.ParamSpec) => void;
+            'notify::starting': (pspec: GObject.ParamSpec) => void;
+            'notify::urgent': (pspec: GObject.ParamSpec) => void;
+            'notify::user-visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -118,6 +104,14 @@ export namespace Bamf {
 
     class Application extends View {
         static $gtype: GObject.GType<Application>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Application.SignalSignatures;
 
         // Constructors
 
@@ -129,17 +123,17 @@ export namespace Bamf {
 
         connect<K extends keyof Application.SignalSignatures>(
             signal: K,
-            callback: Application.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Application.SignalSignatures>(
             signal: K,
-            callback: Application.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -193,6 +187,14 @@ export namespace Bamf {
 
     class Control extends GObject.Object {
         static $gtype: GObject.GType<Control>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Control.SignalSignatures;
 
         // Constructors
 
@@ -202,16 +204,19 @@ export namespace Bamf {
 
         // Signals
 
-        connect<K extends keyof Control.SignalSignatures>(signal: K, callback: Control.SignalSignatures[K]): number;
+        connect<K extends keyof Control.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Control.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Control.SignalSignatures>(
             signal: K,
-            callback: Control.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Control.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Control.SignalSignatures>(
             signal: K,
-            ...args: Control.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Control.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -228,35 +233,13 @@ export namespace Bamf {
     }
 
     namespace Matcher {
-        // Signal callback interfaces
-
-        interface ActiveApplicationChanged {
-            (_source: Matcher, object: Application, p0: Application): void;
-        }
-
-        interface ActiveWindowChanged {
-            (_source: Matcher, object: Window, p0: Window): void;
-        }
-
-        interface StackingOrderChanged {
-            (_source: Matcher): void;
-        }
-
-        interface ViewClosed {
-            (_source: Matcher, object: View): void;
-        }
-
-        interface ViewOpened {
-            (_source: Matcher, object: View): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'active-application-changed': ActiveApplicationChanged;
-            'active-window-changed': ActiveWindowChanged;
-            'stacking-order-changed': StackingOrderChanged;
-            'view-closed': ViewClosed;
-            'view-opened': ViewOpened;
+            'active-application-changed': (arg0: Application, arg1: Application) => void;
+            'active-window-changed': (arg0: Window, arg1: Window) => void;
+            'stacking-order-changed': () => void;
+            'view-closed': (arg0: View) => void;
+            'view-opened': (arg0: View) => void;
         }
 
         // Constructor properties interface
@@ -266,6 +249,14 @@ export namespace Bamf {
 
     class Matcher extends GObject.Object {
         static $gtype: GObject.GType<Matcher>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Matcher.SignalSignatures;
 
         // Constructors
 
@@ -275,16 +266,19 @@ export namespace Bamf {
 
         // Signals
 
-        connect<K extends keyof Matcher.SignalSignatures>(signal: K, callback: Matcher.SignalSignatures[K]): number;
+        connect<K extends keyof Matcher.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Matcher.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Matcher.SignalSignatures>(
             signal: K,
-            callback: Matcher.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Matcher.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Matcher.SignalSignatures>(
             signal: K,
-            ...args: Matcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Matcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -375,16 +369,16 @@ export namespace Bamf {
     namespace Tab {
         // Signal signatures
         interface SignalSignatures extends View.SignalSignatures {
-            'notify::desktop-id': GObject.Object.Notify;
-            'notify::is-foreground-tab': GObject.Object.Notify;
-            'notify::location': GObject.Object.Notify;
-            'notify::xid': GObject.Object.Notify;
-            'notify::active': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::running': GObject.Object.Notify;
-            'notify::starting': GObject.Object.Notify;
-            'notify::urgent': GObject.Object.Notify;
-            'notify::user-visible': GObject.Object.Notify;
+            'notify::desktop-id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-foreground-tab': (pspec: GObject.ParamSpec) => void;
+            'notify::location': (pspec: GObject.ParamSpec) => void;
+            'notify::xid': (pspec: GObject.ParamSpec) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::running': (pspec: GObject.ParamSpec) => void;
+            'notify::starting': (pspec: GObject.ParamSpec) => void;
+            'notify::urgent': (pspec: GObject.ParamSpec) => void;
+            'notify::user-visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -410,6 +404,14 @@ export namespace Bamf {
         get isForegroundTab(): boolean;
         get location(): string;
         get xid(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Tab.SignalSignatures;
 
         // Constructors
 
@@ -419,13 +421,19 @@ export namespace Bamf {
 
         // Signals
 
-        connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
+        connect<K extends keyof Tab.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tab.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Tab.SignalSignatures>(
             signal: K,
-            ...args: Tab.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Tab.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -470,71 +478,25 @@ export namespace Bamf {
     }
 
     namespace View {
-        // Signal callback interfaces
-
-        interface ActiveChanged {
-            (_source: View, object: boolean): void;
-        }
-
-        interface ChildAdded {
-            (_source: View, object: View): void;
-        }
-
-        interface ChildMoved {
-            (_source: View, object: View): void;
-        }
-
-        interface ChildRemoved {
-            (_source: View, object: View): void;
-        }
-
-        interface Closed {
-            (_source: View): void;
-        }
-
-        interface IconChanged {
-            (_source: View, object: string): void;
-        }
-
-        interface NameChanged {
-            (_source: View, object: string, p0: string): void;
-        }
-
-        interface RunningChanged {
-            (_source: View, object: boolean): void;
-        }
-
-        interface StartingChanged {
-            (_source: View, object: boolean): void;
-        }
-
-        interface UrgentChanged {
-            (_source: View, object: boolean): void;
-        }
-
-        interface UserVisibleChanged {
-            (_source: View, object: boolean): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-            'active-changed': ActiveChanged;
-            'child-added': ChildAdded;
-            'child-moved': ChildMoved;
-            'child-removed': ChildRemoved;
-            closed: Closed;
-            'icon-changed': IconChanged;
-            'name-changed': NameChanged;
-            'running-changed': RunningChanged;
-            'starting-changed': StartingChanged;
-            'urgent-changed': UrgentChanged;
-            'user-visible-changed': UserVisibleChanged;
-            'notify::active': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::running': GObject.Object.Notify;
-            'notify::starting': GObject.Object.Notify;
-            'notify::urgent': GObject.Object.Notify;
-            'notify::user-visible': GObject.Object.Notify;
+            'active-changed': (arg0: boolean) => void;
+            'child-added': (arg0: View) => void;
+            'child-moved': (arg0: View) => void;
+            'child-removed': (arg0: View) => void;
+            closed: () => void;
+            'icon-changed': (arg0: string) => void;
+            'name-changed': (arg0: string, arg1: string) => void;
+            'running-changed': (arg0: boolean) => void;
+            'starting-changed': (arg0: boolean) => void;
+            'urgent-changed': (arg0: boolean) => void;
+            'user-visible-changed': (arg0: boolean) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::running': (pspec: GObject.ParamSpec) => void;
+            'notify::starting': (pspec: GObject.ParamSpec) => void;
+            'notify::urgent': (pspec: GObject.ParamSpec) => void;
+            'notify::user-visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -562,6 +524,14 @@ export namespace Bamf {
         get urgent(): boolean;
         get user_visible(): boolean;
         get userVisible(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: View.SignalSignatures;
 
         // Constructors
 
@@ -571,13 +541,19 @@ export namespace Bamf {
 
         // Signals
 
-        connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect<K extends keyof View.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, View.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect_after<K extends keyof View.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, View.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof View.SignalSignatures>(
             signal: K,
-            ...args: View.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<View.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -686,26 +662,16 @@ export namespace Bamf {
     }
 
     namespace Window {
-        // Signal callback interfaces
-
-        interface MaximizedChanged {
-            (_source: Window, object: number, p0: number): void;
-        }
-
-        interface MonitorChanged {
-            (_source: Window, object: number, p0: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends View.SignalSignatures {
-            'maximized-changed': MaximizedChanged;
-            'monitor-changed': MonitorChanged;
-            'notify::active': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::running': GObject.Object.Notify;
-            'notify::starting': GObject.Object.Notify;
-            'notify::urgent': GObject.Object.Notify;
-            'notify::user-visible': GObject.Object.Notify;
+            'maximized-changed': (arg0: number, arg1: number) => void;
+            'monitor-changed': (arg0: number, arg1: number) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::running': (pspec: GObject.ParamSpec) => void;
+            'notify::starting': (pspec: GObject.ParamSpec) => void;
+            'notify::urgent': (pspec: GObject.ParamSpec) => void;
+            'notify::user-visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -715,6 +681,14 @@ export namespace Bamf {
 
     class Window extends View {
         static $gtype: GObject.GType<Window>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Window.SignalSignatures;
 
         // Constructors
 
@@ -724,13 +698,19 @@ export namespace Bamf {
 
         // Signals
 
-        connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        connect<K extends keyof Window.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        connect_after<K extends keyof Window.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Window.SignalSignatures>(
             signal: K,
-            ...args: Window.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Window.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

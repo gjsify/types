@@ -380,35 +380,13 @@ export namespace ECalendar {
         ANYTYPE,
     }
     namespace Cal {
-        // Signal callback interfaces
-
-        interface BackendDied {
-            (_source: Cal): void;
-        }
-
-        interface BackendError {
-            (_source: Cal, object: string): void;
-        }
-
-        interface CalOpened {
-            (_source: Cal, object: number): void;
-        }
-
-        interface CalOpenedEx {
-            (_source: Cal, error: number): void;
-        }
-
-        interface CalSetMode {
-            (_source: Cal, object: CalSetModeStatusEnum, p0: unknown): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'backend-died': BackendDied;
-            'backend-error': BackendError;
-            'cal-opened': CalOpened;
-            'cal-opened-ex': CalOpenedEx;
-            'cal-set-mode': CalSetMode;
+            'backend-died': () => void;
+            'backend-error': (arg0: string) => void;
+            'cal-opened': (arg0: number) => void;
+            'cal-opened-ex': (arg0: number) => void;
+            'cal-set-mode': (arg0: CalSetModeStatusEnum, arg1: unknown) => void;
         }
 
         // Constructor properties interface
@@ -418,6 +396,14 @@ export namespace ECalendar {
 
     class Cal extends GObject.Object {
         static $gtype: GObject.GType<Cal>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Cal.SignalSignatures;
 
         // Fields
 
@@ -433,13 +419,19 @@ export namespace ECalendar {
 
         // Signals
 
-        connect<K extends keyof Cal.SignalSignatures>(signal: K, callback: Cal.SignalSignatures[K]): number;
+        connect<K extends keyof Cal.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Cal.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Cal.SignalSignatures>(signal: K, callback: Cal.SignalSignatures[K]): number;
+        connect_after<K extends keyof Cal.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Cal.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Cal.SignalSignatures>(
             signal: K,
-            ...args: Cal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Cal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -674,21 +666,15 @@ export namespace ECalendar {
     }
 
     namespace CalClient {
-        // Signal callback interfaces
-
-        interface FreeBusyData {
-            (_source: CalClient, object: any): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends EDataServer.Client.SignalSignatures {
-            'free-busy-data': FreeBusyData;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
-            'notify::online': GObject.Object.Notify;
-            'notify::opened': GObject.Object.Notify;
-            'notify::readonly': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
+            'free-busy-data': (arg0: any) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::main-context': (pspec: GObject.ParamSpec) => void;
+            'notify::online': (pspec: GObject.ParamSpec) => void;
+            'notify::opened': (pspec: GObject.ParamSpec) => void;
+            'notify::readonly': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -702,6 +688,14 @@ export namespace ECalendar {
      */
     class CalClient extends EDataServer.Client {
         static $gtype: GObject.GType<CalClient>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CalClient.SignalSignatures;
 
         // Constructors
 
@@ -713,16 +707,19 @@ export namespace ECalendar {
 
         // Signals
 
-        connect<K extends keyof CalClient.SignalSignatures>(signal: K, callback: CalClient.SignalSignatures[K]): number;
+        connect<K extends keyof CalClient.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, CalClient.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalClient.SignalSignatures>(
             signal: K,
-            callback: CalClient.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CalClient.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalClient.SignalSignatures>(
             signal: K,
-            ...args: CalClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CalClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1254,37 +1251,15 @@ export namespace ECalendar {
     }
 
     namespace CalClientView {
-        // Signal callback interfaces
-
-        interface Complete {
-            (_source: CalClientView, object: GLib.Error): void;
-        }
-
-        interface ObjectsAdded {
-            (_source: CalClientView, objects: number[]): void;
-        }
-
-        interface ObjectsModified {
-            (_source: CalClientView, objects: number[]): void;
-        }
-
-        interface ObjectsRemoved {
-            (_source: CalClientView, objects: CalComponentId[]): void;
-        }
-
-        interface Progress {
-            (_source: CalClientView, object: number, p0: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            complete: Complete;
-            'objects-added': ObjectsAdded;
-            'objects-modified': ObjectsModified;
-            'objects-removed': ObjectsRemoved;
-            progress: Progress;
-            'notify::client': GObject.Object.Notify;
-            'notify::view': GObject.Object.Notify;
+            complete: (arg0: GLib.Error) => void;
+            'objects-added': (arg0: number[]) => void;
+            'objects-modified': (arg0: number[]) => void;
+            'objects-removed': (arg0: CalComponentId[]) => void;
+            progress: (arg0: number, arg1: string) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::view': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1306,6 +1281,14 @@ export namespace ECalendar {
 
         get client(): CalClient;
         get view(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CalClientView.SignalSignatures;
 
         // Fields
 
@@ -1321,17 +1304,17 @@ export namespace ECalendar {
 
         connect<K extends keyof CalClientView.SignalSignatures>(
             signal: K,
-            callback: CalClientView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CalClientView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalClientView.SignalSignatures>(
             signal: K,
-            callback: CalClientView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CalClientView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalClientView.SignalSignatures>(
             signal: K,
-            ...args: CalClientView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CalClientView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1392,6 +1375,14 @@ export namespace ECalendar {
 
     class CalComponent extends GObject.Object {
         static $gtype: GObject.GType<CalComponent>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CalComponent.SignalSignatures;
 
         // Fields
 
@@ -1411,17 +1402,17 @@ export namespace ECalendar {
 
         connect<K extends keyof CalComponent.SignalSignatures>(
             signal: K,
-            callback: CalComponent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CalComponent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalComponent.SignalSignatures>(
             signal: K,
-            callback: CalComponent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CalComponent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalComponent.SignalSignatures>(
             signal: K,
-            ...args: CalComponent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CalComponent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1987,42 +1978,16 @@ export namespace ECalendar {
     }
 
     namespace CalView {
-        // Signal callback interfaces
-
-        interface ObjectsAdded {
-            (_source: CalView, objects: number[]): void;
-        }
-
-        interface ObjectsModified {
-            (_source: CalView, objects: number[]): void;
-        }
-
-        interface ObjectsRemoved {
-            (_source: CalView, objects: CalComponentId[]): void;
-        }
-
-        interface ViewComplete {
-            (_source: CalView, object: number, p0: string): void;
-        }
-
-        interface ViewDone {
-            (_source: CalView, object: number): void;
-        }
-
-        interface ViewProgress {
-            (_source: CalView, object: string, p0: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'objects-added': ObjectsAdded;
-            'objects-modified': ObjectsModified;
-            'objects-removed': ObjectsRemoved;
-            'view-complete': ViewComplete;
-            'view-done': ViewDone;
-            'view-progress': ViewProgress;
-            'notify::client': GObject.Object.Notify;
-            'notify::view': GObject.Object.Notify;
+            'objects-added': (arg0: number[]) => void;
+            'objects-modified': (arg0: number[]) => void;
+            'objects-removed': (arg0: CalComponentId[]) => void;
+            'view-complete': (arg0: number, arg1: string) => void;
+            'view-done': (arg0: number) => void;
+            'view-progress': (arg0: string, arg1: number) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::view': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2040,6 +2005,14 @@ export namespace ECalendar {
 
         get client(): Cal;
         get view(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CalView.SignalSignatures;
 
         // Fields
 
@@ -2053,16 +2026,19 @@ export namespace ECalendar {
 
         // Signals
 
-        connect<K extends keyof CalView.SignalSignatures>(signal: K, callback: CalView.SignalSignatures[K]): number;
+        connect<K extends keyof CalView.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, CalView.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalView.SignalSignatures>(
             signal: K,
-            callback: CalView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CalView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalView.SignalSignatures>(
             signal: K,
-            ...args: CalView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CalView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

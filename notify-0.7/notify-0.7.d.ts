@@ -165,22 +165,16 @@ export namespace Notify {
         (notification: Notification, action: string): void;
     }
     namespace Notification {
-        // Signal callback interfaces
-
-        interface Closed {
-            (_source: Notification): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            closed: Closed;
-            'notify::app-icon': GObject.Object.Notify;
-            'notify::app-name': GObject.Object.Notify;
-            'notify::body': GObject.Object.Notify;
-            'notify::closed-reason': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
+            closed: () => void;
+            'notify::app-icon': (pspec: GObject.ParamSpec) => void;
+            'notify::app-name': (pspec: GObject.ParamSpec) => void;
+            'notify::body': (pspec: GObject.ParamSpec) => void;
+            'notify::closed-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -272,6 +266,14 @@ export namespace Notify {
          */
         get summary(): string;
         set summary(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Notification.SignalSignatures;
 
         // Constructors
 
@@ -285,17 +287,17 @@ export namespace Notify {
 
         connect<K extends keyof Notification.SignalSignatures>(
             signal: K,
-            callback: Notification.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Notification.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Notification.SignalSignatures>(
             signal: K,
-            callback: Notification.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Notification.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Notification.SignalSignatures>(
             signal: K,
-            ...args: Notification.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Notification.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

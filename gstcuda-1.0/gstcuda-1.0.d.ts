@@ -194,8 +194,8 @@ export namespace GstCuda {
     namespace CudaAllocator {
         // Signal signatures
         interface SignalSignatures extends Gst.Allocator.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -208,6 +208,14 @@ export namespace GstCuda {
      */
     class CudaAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<CudaAllocator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CudaAllocator.SignalSignatures;
 
         // Constructors
 
@@ -219,17 +227,17 @@ export namespace GstCuda {
 
         connect<K extends keyof CudaAllocator.SignalSignatures>(
             signal: K,
-            callback: CudaAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CudaAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CudaAllocator.SignalSignatures>(
             signal: K,
-            callback: CudaAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CudaAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CudaAllocator.SignalSignatures>(
             signal: K,
-            ...args: CudaAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CudaAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -307,8 +315,8 @@ export namespace GstCuda {
     namespace CudaBufferPool {
         // Signal signatures
         interface SignalSignatures extends Gst.BufferPool.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -318,6 +326,14 @@ export namespace GstCuda {
 
     class CudaBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<CudaBufferPool>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CudaBufferPool.SignalSignatures;
 
         // Fields
 
@@ -338,17 +354,17 @@ export namespace GstCuda {
 
         connect<K extends keyof CudaBufferPool.SignalSignatures>(
             signal: K,
-            callback: CudaBufferPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CudaBufferPool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CudaBufferPool.SignalSignatures>(
             signal: K,
-            callback: CudaBufferPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CudaBufferPool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CudaBufferPool.SignalSignatures>(
             signal: K,
-            ...args: CudaBufferPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CudaBufferPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -356,11 +372,11 @@ export namespace GstCuda {
     namespace CudaContext {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::cuda-device-id': GObject.Object.Notify;
-            'notify::os-handle': GObject.Object.Notify;
-            'notify::virtual-memory': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::cuda-device-id': (pspec: GObject.ParamSpec) => void;
+            'notify::os-handle': (pspec: GObject.ParamSpec) => void;
+            'notify::virtual-memory': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -398,6 +414,14 @@ export namespace GstCuda {
          * Virtual memory management supportability
          */
         get virtualMemory(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CudaContext.SignalSignatures;
 
         // Fields
 
@@ -417,17 +441,17 @@ export namespace GstCuda {
 
         connect<K extends keyof CudaContext.SignalSignatures>(
             signal: K,
-            callback: CudaContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CudaContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CudaContext.SignalSignatures>(
             signal: K,
-            callback: CudaContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CudaContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CudaContext.SignalSignatures>(
             signal: K,
-            ...args: CudaContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CudaContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -470,8 +494,8 @@ export namespace GstCuda {
     namespace CudaPoolAllocator {
         // Signal signatures
         interface SignalSignatures extends CudaAllocator.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -484,6 +508,14 @@ export namespace GstCuda {
      */
     class CudaPoolAllocator extends CudaAllocator {
         static $gtype: GObject.GType<CudaPoolAllocator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CudaPoolAllocator.SignalSignatures;
 
         // Fields
 
@@ -509,17 +541,17 @@ export namespace GstCuda {
 
         connect<K extends keyof CudaPoolAllocator.SignalSignatures>(
             signal: K,
-            callback: CudaPoolAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CudaPoolAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CudaPoolAllocator.SignalSignatures>(
             signal: K,
-            callback: CudaPoolAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CudaPoolAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CudaPoolAllocator.SignalSignatures>(
             signal: K,
-            ...args: CudaPoolAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CudaPoolAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -332,15 +332,15 @@ export namespace GdkPixbuf {
     namespace Pixbuf {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::bits-per-sample': GObject.Object.Notify;
-            'notify::colorspace': GObject.Object.Notify;
-            'notify::has-alpha': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::n-channels': GObject.Object.Notify;
-            'notify::pixel-bytes': GObject.Object.Notify;
-            'notify::pixels': GObject.Object.Notify;
-            'notify::rowstride': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::bits-per-sample': (pspec: GObject.ParamSpec) => void;
+            'notify::colorspace': (pspec: GObject.ParamSpec) => void;
+            'notify::has-alpha': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::n-channels': (pspec: GObject.ParamSpec) => void;
+            'notify::pixel-bytes': (pspec: GObject.ParamSpec) => void;
+            'notify::pixels': (pspec: GObject.ParamSpec) => void;
+            'notify::rowstride': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -567,6 +567,14 @@ export namespace GdkPixbuf {
          * The number of columns of the pixbuf.
          */
         get width(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Pixbuf.SignalSignatures;
 
         // Constructors
 
@@ -641,13 +649,19 @@ export namespace GdkPixbuf {
 
         // Signals
 
-        connect<K extends keyof Pixbuf.SignalSignatures>(signal: K, callback: Pixbuf.SignalSignatures[K]): number;
+        connect<K extends keyof Pixbuf.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Pixbuf.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Pixbuf.SignalSignatures>(signal: K, callback: Pixbuf.SignalSignatures[K]): number;
+        connect_after<K extends keyof Pixbuf.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Pixbuf.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Pixbuf.SignalSignatures>(
             signal: K,
-            ...args: Pixbuf.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Pixbuf.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1913,6 +1927,14 @@ export namespace GdkPixbuf {
      */
     class PixbufAnimation extends GObject.Object {
         static $gtype: GObject.GType<PixbufAnimation>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PixbufAnimation.SignalSignatures;
 
         // Constructors
 
@@ -1932,17 +1954,17 @@ export namespace GdkPixbuf {
 
         connect<K extends keyof PixbufAnimation.SignalSignatures>(
             signal: K,
-            callback: PixbufAnimation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PixbufAnimation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PixbufAnimation.SignalSignatures>(
             signal: K,
-            callback: PixbufAnimation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PixbufAnimation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PixbufAnimation.SignalSignatures>(
             signal: K,
-            ...args: PixbufAnimation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PixbufAnimation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2130,6 +2152,14 @@ export namespace GdkPixbuf {
      */
     class PixbufAnimationIter extends GObject.Object {
         static $gtype: GObject.GType<PixbufAnimationIter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PixbufAnimationIter.SignalSignatures;
 
         // Constructors
 
@@ -2141,17 +2171,19 @@ export namespace GdkPixbuf {
 
         connect<K extends keyof PixbufAnimationIter.SignalSignatures>(
             signal: K,
-            callback: PixbufAnimationIter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PixbufAnimationIter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PixbufAnimationIter.SignalSignatures>(
             signal: K,
-            callback: PixbufAnimationIter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PixbufAnimationIter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PixbufAnimationIter.SignalSignatures>(
             signal: K,
-            ...args: PixbufAnimationIter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PixbufAnimationIter.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2295,30 +2327,12 @@ export namespace GdkPixbuf {
     }
 
     namespace PixbufLoader {
-        // Signal callback interfaces
-
-        interface AreaPrepared {
-            (_source: PixbufLoader): void;
-        }
-
-        interface AreaUpdated {
-            (_source: PixbufLoader, x: number, y: number, width: number, height: number): void;
-        }
-
-        interface Closed {
-            (_source: PixbufLoader): void;
-        }
-
-        interface SizePrepared {
-            (_source: PixbufLoader, width: number, height: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'area-prepared': AreaPrepared;
-            'area-updated': AreaUpdated;
-            closed: Closed;
-            'size-prepared': SizePrepared;
+            'area-prepared': () => void;
+            'area-updated': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            closed: () => void;
+            'size-prepared': (arg0: number, arg1: number) => void;
         }
 
         // Constructor properties interface
@@ -2375,6 +2389,14 @@ export namespace GdkPixbuf {
      */
     class PixbufLoader extends GObject.Object {
         static $gtype: GObject.GType<PixbufLoader>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PixbufLoader.SignalSignatures;
 
         // Constructors
 
@@ -2392,17 +2414,17 @@ export namespace GdkPixbuf {
 
         connect<K extends keyof PixbufLoader.SignalSignatures>(
             signal: K,
-            callback: PixbufLoader.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PixbufLoader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PixbufLoader.SignalSignatures>(
             signal: K,
-            callback: PixbufLoader.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PixbufLoader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PixbufLoader.SignalSignatures>(
             signal: K,
-            ...args: PixbufLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PixbufLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2509,6 +2531,14 @@ export namespace GdkPixbuf {
 
     class PixbufNonAnim extends PixbufAnimation {
         static $gtype: GObject.GType<PixbufNonAnim>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PixbufNonAnim.SignalSignatures;
 
         // Constructors
 
@@ -2522,17 +2552,17 @@ export namespace GdkPixbuf {
 
         connect<K extends keyof PixbufNonAnim.SignalSignatures>(
             signal: K,
-            callback: PixbufNonAnim.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PixbufNonAnim.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PixbufNonAnim.SignalSignatures>(
             signal: K,
-            callback: PixbufNonAnim.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PixbufNonAnim.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PixbufNonAnim.SignalSignatures>(
             signal: K,
-            ...args: PixbufNonAnim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PixbufNonAnim.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2540,7 +2570,7 @@ export namespace GdkPixbuf {
     namespace PixbufSimpleAnim {
         // Signal signatures
         interface SignalSignatures extends PixbufAnimation.SignalSignatures {
-            'notify::loop': GObject.Object.Notify;
+            'notify::loop': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2563,6 +2593,14 @@ export namespace GdkPixbuf {
          */
         get loop(): boolean;
         set loop(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PixbufSimpleAnim.SignalSignatures;
 
         // Constructors
 
@@ -2576,17 +2614,17 @@ export namespace GdkPixbuf {
 
         connect<K extends keyof PixbufSimpleAnim.SignalSignatures>(
             signal: K,
-            callback: PixbufSimpleAnim.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PixbufSimpleAnim.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PixbufSimpleAnim.SignalSignatures>(
             signal: K,
-            callback: PixbufSimpleAnim.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PixbufSimpleAnim.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PixbufSimpleAnim.SignalSignatures>(
             signal: K,
-            ...args: PixbufSimpleAnim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PixbufSimpleAnim.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2622,6 +2660,14 @@ export namespace GdkPixbuf {
 
     class PixbufSimpleAnimIter extends PixbufAnimationIter {
         static $gtype: GObject.GType<PixbufSimpleAnimIter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PixbufSimpleAnimIter.SignalSignatures;
 
         // Constructors
 
@@ -2633,17 +2679,19 @@ export namespace GdkPixbuf {
 
         connect<K extends keyof PixbufSimpleAnimIter.SignalSignatures>(
             signal: K,
-            callback: PixbufSimpleAnimIter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PixbufSimpleAnimIter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PixbufSimpleAnimIter.SignalSignatures>(
             signal: K,
-            callback: PixbufSimpleAnimIter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PixbufSimpleAnimIter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PixbufSimpleAnimIter.SignalSignatures>(
             signal: K,
-            ...args: PixbufSimpleAnimIter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PixbufSimpleAnimIter.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

@@ -71,27 +71,13 @@ export namespace SugarGestures {
         DOWN,
     }
     namespace EventController {
-        // Signal callback interfaces
-
-        interface Began {
-            (_source: EventController): void;
-        }
-
-        interface Ended {
-            (_source: EventController): void;
-        }
-
-        interface Updated {
-            (_source: EventController): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            began: Began;
-            ended: Ended;
-            updated: Updated;
-            'notify::state': GObject.Object.Notify;
-            'notify::widget': GObject.Object.Notify;
+            began: () => void;
+            ended: () => void;
+            updated: () => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::widget': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -110,6 +96,14 @@ export namespace SugarGestures {
         get state(): EventControllerState;
         get widget(): Gtk.Widget;
         set widget(val: Gtk.Widget);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: EventController.SignalSignatures;
 
         // Constructors
 
@@ -121,17 +115,17 @@ export namespace SugarGestures {
 
         connect<K extends keyof EventController.SignalSignatures>(
             signal: K,
-            callback: EventController.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EventController.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EventController.SignalSignatures>(
             signal: K,
-            callback: EventController.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EventController.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EventController.SignalSignatures>(
             signal: K,
-            ...args: EventController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<EventController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -154,19 +148,13 @@ export namespace SugarGestures {
     }
 
     namespace LongPressController {
-        // Signal callback interfaces
-
-        interface Pressed {
-            (_source: LongPressController, object: number, p0: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends EventController.SignalSignatures {
-            pressed: Pressed;
-            'notify::threshold': GObject.Object.Notify;
-            'notify::trigger-delay': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::widget': GObject.Object.Notify;
+            pressed: (arg0: number, arg1: number) => void;
+            'notify::threshold': (pspec: GObject.ParamSpec) => void;
+            'notify::trigger-delay': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::widget': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -189,6 +177,14 @@ export namespace SugarGestures {
         set trigger_delay(val: number);
         get triggerDelay(): number;
         set triggerDelay(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LongPressController.SignalSignatures;
 
         // Constructors
 
@@ -202,17 +198,19 @@ export namespace SugarGestures {
 
         connect<K extends keyof LongPressController.SignalSignatures>(
             signal: K,
-            callback: LongPressController.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LongPressController.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LongPressController.SignalSignatures>(
             signal: K,
-            callback: LongPressController.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LongPressController.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LongPressController.SignalSignatures>(
             signal: K,
-            ...args: LongPressController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LongPressController.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -222,19 +220,13 @@ export namespace SugarGestures {
     }
 
     namespace RotateController {
-        // Signal callback interfaces
-
-        interface AngleChanged {
-            (_source: RotateController, angle: number, angle_delta: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends TouchController.SignalSignatures {
-            'angle-changed': AngleChanged;
-            'notify::max-touches': GObject.Object.Notify;
-            'notify::min-touches': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::widget': GObject.Object.Notify;
+            'angle-changed': (arg0: number, arg1: number) => void;
+            'notify::max-touches': (pspec: GObject.ParamSpec) => void;
+            'notify::min-touches': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::widget': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -244,6 +236,14 @@ export namespace SugarGestures {
 
     class RotateController extends TouchController {
         static $gtype: GObject.GType<RotateController>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RotateController.SignalSignatures;
 
         // Fields
 
@@ -261,17 +261,17 @@ export namespace SugarGestures {
 
         connect<K extends keyof RotateController.SignalSignatures>(
             signal: K,
-            callback: RotateController.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RotateController.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RotateController.SignalSignatures>(
             signal: K,
-            callback: RotateController.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RotateController.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RotateController.SignalSignatures>(
             signal: K,
-            ...args: RotateController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RotateController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -291,18 +291,12 @@ export namespace SugarGestures {
     }
 
     namespace SwipeController {
-        // Signal callback interfaces
-
-        interface SwipeEnded {
-            (_source: SwipeController, object: SwipeDirection): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends EventController.SignalSignatures {
-            'swipe-ended': SwipeEnded;
-            'notify::directions': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::widget': GObject.Object.Notify;
+            'swipe-ended': (arg0: SwipeDirection) => void;
+            'notify::directions': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::widget': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -318,6 +312,14 @@ export namespace SugarGestures {
         // Properties
 
         get directions(): SwipeDirectionFlags;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SwipeController.SignalSignatures;
 
         // Constructors
 
@@ -331,17 +333,17 @@ export namespace SugarGestures {
 
         connect<K extends keyof SwipeController.SignalSignatures>(
             signal: K,
-            callback: SwipeController.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SwipeController.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SwipeController.SignalSignatures>(
             signal: K,
-            callback: SwipeController.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SwipeController.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SwipeController.SignalSignatures>(
             signal: K,
-            ...args: SwipeController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SwipeController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -353,10 +355,10 @@ export namespace SugarGestures {
     namespace TouchController {
         // Signal signatures
         interface SignalSignatures extends EventController.SignalSignatures {
-            'notify::max-touches': GObject.Object.Notify;
-            'notify::min-touches': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::widget': GObject.Object.Notify;
+            'notify::max-touches': (pspec: GObject.ParamSpec) => void;
+            'notify::min-touches': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::widget': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -382,6 +384,14 @@ export namespace SugarGestures {
         set min_touches(val: number);
         get minTouches(): number;
         set minTouches(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TouchController.SignalSignatures;
 
         // Constructors
 
@@ -393,17 +403,17 @@ export namespace SugarGestures {
 
         connect<K extends keyof TouchController.SignalSignatures>(
             signal: K,
-            callback: TouchController.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TouchController.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TouchController.SignalSignatures>(
             signal: K,
-            callback: TouchController.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TouchController.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TouchController.SignalSignatures>(
             signal: K,
-            ...args: TouchController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TouchController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -435,19 +445,13 @@ export namespace SugarGestures {
     }
 
     namespace ZoomController {
-        // Signal callback interfaces
-
-        interface ScaleChanged {
-            (_source: ZoomController, scale: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends TouchController.SignalSignatures {
-            'scale-changed': ScaleChanged;
-            'notify::max-touches': GObject.Object.Notify;
-            'notify::min-touches': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::widget': GObject.Object.Notify;
+            'scale-changed': (arg0: number) => void;
+            'notify::max-touches': (pspec: GObject.ParamSpec) => void;
+            'notify::min-touches': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::widget': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -457,6 +461,14 @@ export namespace SugarGestures {
 
     class ZoomController extends TouchController {
         static $gtype: GObject.GType<ZoomController>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ZoomController.SignalSignatures;
 
         // Fields
 
@@ -474,17 +486,17 @@ export namespace SugarGestures {
 
         connect<K extends keyof ZoomController.SignalSignatures>(
             signal: K,
-            callback: ZoomController.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ZoomController.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ZoomController.SignalSignatures>(
             signal: K,
-            callback: ZoomController.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ZoomController.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ZoomController.SignalSignatures>(
             signal: K,
-            ...args: ZoomController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ZoomController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

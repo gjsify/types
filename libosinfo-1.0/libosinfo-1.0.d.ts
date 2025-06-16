@@ -462,11 +462,11 @@ export namespace Libosinfo {
     namespace AvatarFormat {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::alpha': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::mime-types': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
+            'notify::alpha': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::mime-types': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -505,6 +505,14 @@ export namespace Libosinfo {
          * The required width (in pixels) of the avatar.
          */
         get width(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AvatarFormat.SignalSignatures;
 
         // Constructors
 
@@ -518,17 +526,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof AvatarFormat.SignalSignatures>(
             signal: K,
-            callback: AvatarFormat.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AvatarFormat.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AvatarFormat.SignalSignatures>(
             signal: K,
-            callback: AvatarFormat.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AvatarFormat.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AvatarFormat.SignalSignatures>(
             signal: K,
-            ...args: AvatarFormat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AvatarFormat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -543,7 +551,7 @@ export namespace Libosinfo {
     namespace Datamap {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -553,6 +561,14 @@ export namespace Libosinfo {
 
     class Datamap extends Entity {
         static $gtype: GObject.GType<Datamap>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Datamap.SignalSignatures;
 
         // Constructors
 
@@ -564,16 +580,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof Datamap.SignalSignatures>(signal: K, callback: Datamap.SignalSignatures[K]): number;
+        connect<K extends keyof Datamap.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Datamap.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Datamap.SignalSignatures>(
             signal: K,
-            callback: Datamap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Datamap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Datamap.SignalSignatures>(
             signal: K,
-            ...args: Datamap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Datamap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -601,7 +620,7 @@ export namespace Libosinfo {
     namespace DatamapList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -611,6 +630,14 @@ export namespace Libosinfo {
 
     class DatamapList extends List {
         static $gtype: GObject.GType<DatamapList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DatamapList.SignalSignatures;
 
         // Constructors
 
@@ -624,17 +651,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof DatamapList.SignalSignatures>(
             signal: K,
-            callback: DatamapList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DatamapList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DatamapList.SignalSignatures>(
             signal: K,
-            callback: DatamapList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DatamapList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DatamapList.SignalSignatures>(
             signal: K,
-            ...args: DatamapList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DatamapList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -650,6 +677,14 @@ export namespace Libosinfo {
 
     class Db extends GObject.Object {
         static $gtype: GObject.GType<Db>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Db.SignalSignatures;
 
         // Constructors
 
@@ -661,13 +696,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof Db.SignalSignatures>(signal: K, callback: Db.SignalSignatures[K]): number;
+        connect<K extends keyof Db.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Db.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Db.SignalSignatures>(signal: K, callback: Db.SignalSignatures[K]): number;
+        connect_after<K extends keyof Db.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Db.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Db.SignalSignatures>(
             signal: K,
-            ...args: Db.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Db.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -813,9 +854,9 @@ export namespace Libosinfo {
     namespace Deployment {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::os': GObject.Object.Notify;
-            'notify::platform': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
+            'notify::os': (pspec: GObject.ParamSpec) => void;
+            'notify::platform': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -839,6 +880,14 @@ export namespace Libosinfo {
          * The platform to deploy on
          */
         get platform(): Platform;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Deployment.SignalSignatures;
 
         // Constructors
 
@@ -852,17 +901,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof Deployment.SignalSignatures>(
             signal: K,
-            callback: Deployment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Deployment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Deployment.SignalSignatures>(
             signal: K,
-            callback: Deployment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Deployment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Deployment.SignalSignatures>(
             signal: K,
-            ...args: Deployment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Deployment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -917,7 +966,7 @@ export namespace Libosinfo {
     namespace DeploymentList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -927,6 +976,14 @@ export namespace Libosinfo {
 
     class DeploymentList extends List {
         static $gtype: GObject.GType<DeploymentList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeploymentList.SignalSignatures;
 
         // Constructors
 
@@ -940,17 +997,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof DeploymentList.SignalSignatures>(
             signal: K,
-            callback: DeploymentList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeploymentList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeploymentList.SignalSignatures>(
             signal: K,
-            callback: DeploymentList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeploymentList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeploymentList.SignalSignatures>(
             signal: K,
-            ...args: DeploymentList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeploymentList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -988,7 +1045,7 @@ export namespace Libosinfo {
     namespace Device {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -998,6 +1055,14 @@ export namespace Libosinfo {
 
     class Device extends Entity {
         static $gtype: GObject.GType<Device>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -1009,13 +1074,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
-            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1034,7 +1105,7 @@ export namespace Libosinfo {
     namespace DeviceDriver {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1044,6 +1115,14 @@ export namespace Libosinfo {
 
     class DeviceDriver extends Entity {
         static $gtype: GObject.GType<DeviceDriver>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceDriver.SignalSignatures;
 
         // Constructors
 
@@ -1055,17 +1134,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof DeviceDriver.SignalSignatures>(
             signal: K,
-            callback: DeviceDriver.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceDriver.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceDriver.SignalSignatures>(
             signal: K,
-            callback: DeviceDriver.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceDriver.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceDriver.SignalSignatures>(
             signal: K,
-            ...args: DeviceDriver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceDriver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1106,7 +1185,7 @@ export namespace Libosinfo {
     namespace DeviceDriverList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1116,6 +1195,14 @@ export namespace Libosinfo {
 
     class DeviceDriverList extends List {
         static $gtype: GObject.GType<DeviceDriverList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceDriverList.SignalSignatures;
 
         // Constructors
 
@@ -1129,17 +1216,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof DeviceDriverList.SignalSignatures>(
             signal: K,
-            callback: DeviceDriverList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceDriverList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceDriverList.SignalSignatures>(
             signal: K,
-            callback: DeviceDriverList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceDriverList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceDriverList.SignalSignatures>(
             signal: K,
-            ...args: DeviceDriverList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceDriverList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1147,8 +1234,8 @@ export namespace Libosinfo {
     namespace DeviceLink {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::target': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
+            'notify::target': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1167,6 +1254,14 @@ export namespace Libosinfo {
          * The target of the device link.
          */
         get target(): Device;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceLink.SignalSignatures;
 
         // Constructors
 
@@ -1180,17 +1275,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof DeviceLink.SignalSignatures>(
             signal: K,
-            callback: DeviceLink.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceLink.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceLink.SignalSignatures>(
             signal: K,
-            callback: DeviceLink.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceLink.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceLink.SignalSignatures>(
             signal: K,
-            ...args: DeviceLink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceLink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1207,7 +1302,7 @@ export namespace Libosinfo {
     namespace DeviceLinkFilter {
         // Signal signatures
         interface SignalSignatures extends Filter.SignalSignatures {
-            'notify::target-filter': GObject.Object.Notify;
+            'notify::target-filter': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1231,6 +1326,14 @@ export namespace Libosinfo {
          * The operating system to be deployed
          */
         get targetFilter(): Filter;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceLinkFilter.SignalSignatures;
 
         // Constructors
 
@@ -1247,17 +1350,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof DeviceLinkFilter.SignalSignatures>(
             signal: K,
-            callback: DeviceLinkFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceLinkFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceLinkFilter.SignalSignatures>(
             signal: K,
-            callback: DeviceLinkFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceLinkFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceLinkFilter.SignalSignatures>(
             signal: K,
-            ...args: DeviceLinkFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceLinkFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1274,7 +1377,7 @@ export namespace Libosinfo {
     namespace DeviceLinkList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1284,6 +1387,14 @@ export namespace Libosinfo {
 
     class DeviceLinkList extends List {
         static $gtype: GObject.GType<DeviceLinkList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceLinkList.SignalSignatures;
 
         // Constructors
 
@@ -1297,17 +1408,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof DeviceLinkList.SignalSignatures>(
             signal: K,
-            callback: DeviceLinkList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceLinkList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceLinkList.SignalSignatures>(
             signal: K,
-            callback: DeviceLinkList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceLinkList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceLinkList.SignalSignatures>(
             signal: K,
-            ...args: DeviceLinkList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceLinkList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1351,7 +1462,7 @@ export namespace Libosinfo {
     namespace DeviceList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1361,6 +1472,14 @@ export namespace Libosinfo {
 
     class DeviceList extends List {
         static $gtype: GObject.GType<DeviceList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceList.SignalSignatures;
 
         // Constructors
 
@@ -1374,17 +1493,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof DeviceList.SignalSignatures>(
             signal: K,
-            callback: DeviceList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceList.SignalSignatures>(
             signal: K,
-            callback: DeviceList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceList.SignalSignatures>(
             signal: K,
-            ...args: DeviceList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1422,7 +1541,7 @@ export namespace Libosinfo {
     namespace Entity {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1445,6 +1564,14 @@ export namespace Libosinfo {
          */
         get id(): string;
         set id(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Entity.SignalSignatures;
 
         // Constructors
 
@@ -1454,13 +1581,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof Entity.SignalSignatures>(signal: K, callback: Entity.SignalSignatures[K]): number;
+        connect<K extends keyof Entity.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Entity.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Entity.SignalSignatures>(signal: K, callback: Entity.SignalSignatures[K]): number;
+        connect_after<K extends keyof Entity.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Entity.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Entity.SignalSignatures>(
             signal: K,
-            ...args: Entity.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Entity.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1599,6 +1732,14 @@ export namespace Libosinfo {
 
     class Filter extends GObject.Object {
         static $gtype: GObject.GType<Filter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Filter.SignalSignatures;
 
         // Constructors
 
@@ -1610,13 +1751,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        connect<K extends keyof Filter.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        connect_after<K extends keyof Filter.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Filter.SignalSignatures>(
             signal: K,
-            ...args: Filter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Filter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1672,9 +1819,9 @@ export namespace Libosinfo {
     namespace Firmware {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::architecture': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
+            'notify::architecture': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1697,6 +1844,14 @@ export namespace Libosinfo {
         set architecture(val: string);
         get type(): string;
         set type(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Firmware.SignalSignatures;
 
         // Constructors
 
@@ -1708,16 +1863,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof Firmware.SignalSignatures>(signal: K, callback: Firmware.SignalSignatures[K]): number;
+        connect<K extends keyof Firmware.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Firmware.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Firmware.SignalSignatures>(
             signal: K,
-            callback: Firmware.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Firmware.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Firmware.SignalSignatures>(
             signal: K,
-            ...args: Firmware.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Firmware.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1743,7 +1901,7 @@ export namespace Libosinfo {
     namespace FirmwareList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1753,6 +1911,14 @@ export namespace Libosinfo {
 
     class FirmwareList extends List {
         static $gtype: GObject.GType<FirmwareList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FirmwareList.SignalSignatures;
 
         // Constructors
 
@@ -1766,17 +1932,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof FirmwareList.SignalSignatures>(
             signal: K,
-            callback: FirmwareList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FirmwareList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FirmwareList.SignalSignatures>(
             signal: K,
-            callback: FirmwareList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FirmwareList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FirmwareList.SignalSignatures>(
             signal: K,
-            ...args: FirmwareList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FirmwareList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1784,11 +1950,11 @@ export namespace Libosinfo {
     namespace Image {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::architecture': GObject.Object.Notify;
-            'notify::cloud-init': GObject.Object.Notify;
-            'notify::format': GObject.Object.Notify;
-            'notify::url': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
+            'notify::architecture': (pspec: GObject.ParamSpec) => void;
+            'notify::cloud-init': (pspec: GObject.ParamSpec) => void;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::url': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1832,6 +1998,14 @@ export namespace Libosinfo {
          */
         get url(): string;
         set url(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Image.SignalSignatures;
 
         // Constructors
 
@@ -1843,13 +2017,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect_after<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Image.SignalSignatures>(
             signal: K,
-            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1891,7 +2071,7 @@ export namespace Libosinfo {
     namespace ImageList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1901,6 +2081,14 @@ export namespace Libosinfo {
 
     class ImageList extends List {
         static $gtype: GObject.GType<ImageList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ImageList.SignalSignatures;
 
         // Constructors
 
@@ -1912,16 +2100,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof ImageList.SignalSignatures>(signal: K, callback: ImageList.SignalSignatures[K]): number;
+        connect<K extends keyof ImageList.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ImageList.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ImageList.SignalSignatures>(
             signal: K,
-            callback: ImageList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ImageList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ImageList.SignalSignatures>(
             signal: K,
-            ...args: ImageList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ImageList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1929,7 +2120,7 @@ export namespace Libosinfo {
     namespace InstallConfig {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1939,6 +2130,14 @@ export namespace Libosinfo {
 
     class InstallConfig extends Entity {
         static $gtype: GObject.GType<InstallConfig>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InstallConfig.SignalSignatures;
 
         // Constructors
 
@@ -1952,17 +2151,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof InstallConfig.SignalSignatures>(
             signal: K,
-            callback: InstallConfig.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InstallConfig.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InstallConfig.SignalSignatures>(
             signal: K,
-            callback: InstallConfig.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InstallConfig.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InstallConfig.SignalSignatures>(
             signal: K,
-            ...args: InstallConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InstallConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2197,10 +2396,10 @@ export namespace Libosinfo {
     namespace InstallConfigParam {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::policy': GObject.Object.Notify;
-            'notify::value-map': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::policy': (pspec: GObject.ParamSpec) => void;
+            'notify::value-map': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2238,6 +2437,14 @@ export namespace Libosinfo {
          */
         get valueMap(): Datamap;
         set valueMap(val: Datamap);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InstallConfigParam.SignalSignatures;
 
         // Constructors
 
@@ -2251,17 +2458,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof InstallConfigParam.SignalSignatures>(
             signal: K,
-            callback: InstallConfigParam.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InstallConfigParam.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InstallConfigParam.SignalSignatures>(
             signal: K,
-            callback: InstallConfigParam.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InstallConfigParam.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InstallConfigParam.SignalSignatures>(
             signal: K,
-            ...args: InstallConfigParam.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InstallConfigParam.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2284,7 +2491,7 @@ export namespace Libosinfo {
     namespace InstallConfigParamList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2294,6 +2501,14 @@ export namespace Libosinfo {
 
     class InstallConfigParamList extends List {
         static $gtype: GObject.GType<InstallConfigParamList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InstallConfigParamList.SignalSignatures;
 
         // Constructors
 
@@ -2307,17 +2522,19 @@ export namespace Libosinfo {
 
         connect<K extends keyof InstallConfigParamList.SignalSignatures>(
             signal: K,
-            callback: InstallConfigParamList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InstallConfigParamList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InstallConfigParamList.SignalSignatures>(
             signal: K,
-            callback: InstallConfigParamList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InstallConfigParamList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InstallConfigParamList.SignalSignatures>(
             signal: K,
-            ...args: InstallConfigParamList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InstallConfigParamList.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2325,15 +2542,15 @@ export namespace Libosinfo {
     namespace InstallScript {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::avatar-format': GObject.Object.Notify;
-            'notify::installation-source': GObject.Object.Notify;
-            'notify::path-format': GObject.Object.Notify;
-            'notify::preferred-injection-method': GObject.Object.Notify;
-            'notify::product-key-format': GObject.Object.Notify;
-            'notify::profile': GObject.Object.Notify;
-            'notify::template-data': GObject.Object.Notify;
-            'notify::template-uri': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
+            'notify::avatar-format': (pspec: GObject.ParamSpec) => void;
+            'notify::installation-source': (pspec: GObject.ParamSpec) => void;
+            'notify::path-format': (pspec: GObject.ParamSpec) => void;
+            'notify::preferred-injection-method': (pspec: GObject.ParamSpec) => void;
+            'notify::product-key-format': (pspec: GObject.ParamSpec) => void;
+            'notify::profile': (pspec: GObject.ParamSpec) => void;
+            'notify::template-data': (pspec: GObject.ParamSpec) => void;
+            'notify::template-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2379,6 +2596,14 @@ export namespace Libosinfo {
         get templateData(): string;
         get template_uri(): string;
         get templateUri(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InstallScript.SignalSignatures;
 
         // Constructors
 
@@ -2396,17 +2621,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof InstallScript.SignalSignatures>(
             signal: K,
-            callback: InstallScript.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InstallScript.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InstallScript.SignalSignatures>(
             signal: K,
-            callback: InstallScript.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InstallScript.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InstallScript.SignalSignatures>(
             signal: K,
-            ...args: InstallScript.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InstallScript.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2979,7 +3204,7 @@ export namespace Libosinfo {
     namespace InstallScriptList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2989,6 +3214,14 @@ export namespace Libosinfo {
 
     class InstallScriptList extends List {
         static $gtype: GObject.GType<InstallScriptList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InstallScriptList.SignalSignatures;
 
         // Constructors
 
@@ -3002,17 +3235,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof InstallScriptList.SignalSignatures>(
             signal: K,
-            callback: InstallScriptList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InstallScriptList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InstallScriptList.SignalSignatures>(
             signal: K,
-            callback: InstallScriptList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InstallScriptList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InstallScriptList.SignalSignatures>(
             signal: K,
-            ...args: InstallScriptList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InstallScriptList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3050,7 +3283,7 @@ export namespace Libosinfo {
     namespace List {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3078,6 +3311,14 @@ export namespace Libosinfo {
          * the specified type.
          */
         get elementType(): GObject.GType;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: List.SignalSignatures;
 
         // Constructors
 
@@ -3087,13 +3328,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof List.SignalSignatures>(signal: K, callback: List.SignalSignatures[K]): number;
+        connect<K extends keyof List.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, List.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof List.SignalSignatures>(signal: K, callback: List.SignalSignatures[K]): number;
+        connect_after<K extends keyof List.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, List.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof List.SignalSignatures>(
             signal: K,
-            ...args: List.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<List.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3209,6 +3456,14 @@ export namespace Libosinfo {
 
     class Loader extends GObject.Object {
         static $gtype: GObject.GType<Loader>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Loader.SignalSignatures;
 
         // Constructors
 
@@ -3220,13 +3475,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
+        connect<K extends keyof Loader.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Loader.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
+        connect_after<K extends keyof Loader.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Loader.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Loader.SignalSignatures>(
             signal: K,
-            ...args: Loader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Loader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3271,23 +3532,23 @@ export namespace Libosinfo {
     namespace Media {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::application-id': GObject.Object.Notify;
-            'notify::architecture': GObject.Object.Notify;
-            'notify::eject-after-install': GObject.Object.Notify;
-            'notify::initrd-path': GObject.Object.Notify;
-            'notify::installer': GObject.Object.Notify;
-            'notify::installer-reboots': GObject.Object.Notify;
-            'notify::installer-script': GObject.Object.Notify;
-            'notify::kernel-path': GObject.Object.Notify;
-            'notify::languages': GObject.Object.Notify;
-            'notify::live': GObject.Object.Notify;
-            'notify::os': GObject.Object.Notify;
-            'notify::publisher-id': GObject.Object.Notify;
-            'notify::system-id': GObject.Object.Notify;
-            'notify::url': GObject.Object.Notify;
-            'notify::volume-id': GObject.Object.Notify;
-            'notify::volume-size': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
+            'notify::application-id': (pspec: GObject.ParamSpec) => void;
+            'notify::architecture': (pspec: GObject.ParamSpec) => void;
+            'notify::eject-after-install': (pspec: GObject.ParamSpec) => void;
+            'notify::initrd-path': (pspec: GObject.ParamSpec) => void;
+            'notify::installer': (pspec: GObject.ParamSpec) => void;
+            'notify::installer-reboots': (pspec: GObject.ParamSpec) => void;
+            'notify::installer-script': (pspec: GObject.ParamSpec) => void;
+            'notify::kernel-path': (pspec: GObject.ParamSpec) => void;
+            'notify::languages': (pspec: GObject.ParamSpec) => void;
+            'notify::live': (pspec: GObject.ParamSpec) => void;
+            'notify::os': (pspec: GObject.ParamSpec) => void;
+            'notify::publisher-id': (pspec: GObject.ParamSpec) => void;
+            'notify::system-id': (pspec: GObject.ParamSpec) => void;
+            'notify::url': (pspec: GObject.ParamSpec) => void;
+            'notify::volume-id': (pspec: GObject.ParamSpec) => void;
+            'notify::volume-size': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3499,6 +3760,14 @@ export namespace Libosinfo {
          */
         get volumeSize(): number;
         set volumeSize(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Media.SignalSignatures;
 
         // Constructors
 
@@ -3510,13 +3779,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        connect<K extends keyof Media.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        connect_after<K extends keyof Media.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Media.SignalSignatures>(
             signal: K,
-            ...args: Media.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Media.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3725,7 +4000,7 @@ export namespace Libosinfo {
     namespace MediaList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3735,6 +4010,14 @@ export namespace Libosinfo {
 
     class MediaList extends List {
         static $gtype: GObject.GType<MediaList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MediaList.SignalSignatures;
 
         // Constructors
 
@@ -3746,16 +4029,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof MediaList.SignalSignatures>(signal: K, callback: MediaList.SignalSignatures[K]): number;
+        connect<K extends keyof MediaList.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MediaList.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaList.SignalSignatures>(
             signal: K,
-            callback: MediaList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaList.SignalSignatures>(
             signal: K,
-            ...args: MediaList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MediaList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3793,17 +4079,17 @@ export namespace Libosinfo {
     namespace Os {
         // Signal signatures
         interface SignalSignatures extends Product.SignalSignatures {
-            'notify::cloud-image-username': GObject.Object.Notify;
-            'notify::distro': GObject.Object.Notify;
-            'notify::family': GObject.Object.Notify;
-            'notify::kernel-url-argument': GObject.Object.Notify;
-            'notify::codename': GObject.Object.Notify;
-            'notify::logo': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::short-id': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
+            'notify::cloud-image-username': (pspec: GObject.ParamSpec) => void;
+            'notify::distro': (pspec: GObject.ParamSpec) => void;
+            'notify::family': (pspec: GObject.ParamSpec) => void;
+            'notify::kernel-url-argument': (pspec: GObject.ParamSpec) => void;
+            'notify::codename': (pspec: GObject.ParamSpec) => void;
+            'notify::logo': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::short-id': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3851,6 +4137,14 @@ export namespace Libosinfo {
          * tree based installation of this OS.
          */
         get kernelUrlArgument(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Os.SignalSignatures;
 
         // Constructors
 
@@ -3862,13 +4156,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof Os.SignalSignatures>(signal: K, callback: Os.SignalSignatures[K]): number;
+        connect<K extends keyof Os.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Os.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Os.SignalSignatures>(signal: K, callback: Os.SignalSignatures[K]): number;
+        connect_after<K extends keyof Os.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Os.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Os.SignalSignatures>(
             signal: K,
-            ...args: Os.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Os.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4075,7 +4375,7 @@ export namespace Libosinfo {
     namespace OsList {
         // Signal signatures
         interface SignalSignatures extends ProductList.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4085,6 +4385,14 @@ export namespace Libosinfo {
 
     class OsList extends ProductList {
         static $gtype: GObject.GType<OsList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OsList.SignalSignatures;
 
         // Constructors
 
@@ -4096,13 +4404,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof OsList.SignalSignatures>(signal: K, callback: OsList.SignalSignatures[K]): number;
+        connect<K extends keyof OsList.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, OsList.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof OsList.SignalSignatures>(signal: K, callback: OsList.SignalSignatures[K]): number;
+        connect_after<K extends keyof OsList.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, OsList.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OsList.SignalSignatures>(
             signal: K,
-            ...args: OsList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OsList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4140,8 +4454,8 @@ export namespace Libosinfo {
     namespace OsVariant {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4161,6 +4475,14 @@ export namespace Libosinfo {
          */
         get name(): string;
         set name(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OsVariant.SignalSignatures;
 
         // Constructors
 
@@ -4172,16 +4494,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof OsVariant.SignalSignatures>(signal: K, callback: OsVariant.SignalSignatures[K]): number;
+        connect<K extends keyof OsVariant.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, OsVariant.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OsVariant.SignalSignatures>(
             signal: K,
-            callback: OsVariant.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OsVariant.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OsVariant.SignalSignatures>(
             signal: K,
-            ...args: OsVariant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OsVariant.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4197,7 +4522,7 @@ export namespace Libosinfo {
     namespace OsVariantList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4207,6 +4532,14 @@ export namespace Libosinfo {
 
     class OsVariantList extends List {
         static $gtype: GObject.GType<OsVariantList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OsVariantList.SignalSignatures;
 
         // Constructors
 
@@ -4220,17 +4553,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof OsVariantList.SignalSignatures>(
             signal: K,
-            callback: OsVariantList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OsVariantList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OsVariantList.SignalSignatures>(
             signal: K,
-            callback: OsVariantList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OsVariantList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OsVariantList.SignalSignatures>(
             signal: K,
-            ...args: OsVariantList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OsVariantList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -4238,13 +4571,13 @@ export namespace Libosinfo {
     namespace Platform {
         // Signal signatures
         interface SignalSignatures extends Product.SignalSignatures {
-            'notify::codename': GObject.Object.Notify;
-            'notify::logo': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::short-id': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
+            'notify::codename': (pspec: GObject.ParamSpec) => void;
+            'notify::logo': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::short-id': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4254,6 +4587,14 @@ export namespace Libosinfo {
 
     class Platform extends Product {
         static $gtype: GObject.GType<Platform>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Platform.SignalSignatures;
 
         // Constructors
 
@@ -4265,16 +4606,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof Platform.SignalSignatures>(signal: K, callback: Platform.SignalSignatures[K]): number;
+        connect<K extends keyof Platform.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Platform.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Platform.SignalSignatures>(
             signal: K,
-            callback: Platform.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Platform.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Platform.SignalSignatures>(
             signal: K,
-            ...args: Platform.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Platform.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4314,7 +4658,7 @@ export namespace Libosinfo {
     namespace PlatformList {
         // Signal signatures
         interface SignalSignatures extends ProductList.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4324,6 +4668,14 @@ export namespace Libosinfo {
 
     class PlatformList extends ProductList {
         static $gtype: GObject.GType<PlatformList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PlatformList.SignalSignatures;
 
         // Constructors
 
@@ -4337,17 +4689,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof PlatformList.SignalSignatures>(
             signal: K,
-            callback: PlatformList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlatformList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlatformList.SignalSignatures>(
             signal: K,
-            callback: PlatformList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlatformList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlatformList.SignalSignatures>(
             signal: K,
-            ...args: PlatformList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PlatformList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4385,13 +4737,13 @@ export namespace Libosinfo {
     namespace Product {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::codename': GObject.Object.Notify;
-            'notify::logo': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::short-id': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
+            'notify::codename': (pspec: GObject.ParamSpec) => void;
+            'notify::logo': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::short-id': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4440,6 +4792,14 @@ export namespace Libosinfo {
          * The version of the product.
          */
         get version(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Product.SignalSignatures;
 
         // Constructors
 
@@ -4449,16 +4809,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof Product.SignalSignatures>(signal: K, callback: Product.SignalSignatures[K]): number;
+        connect<K extends keyof Product.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Product.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Product.SignalSignatures>(
             signal: K,
-            callback: Product.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Product.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Product.SignalSignatures>(
             signal: K,
-            ...args: Product.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Product.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4505,6 +4868,14 @@ export namespace Libosinfo {
 
     class ProductFilter extends Filter {
         static $gtype: GObject.GType<ProductFilter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ProductFilter.SignalSignatures;
 
         // Constructors
 
@@ -4518,17 +4889,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof ProductFilter.SignalSignatures>(
             signal: K,
-            callback: ProductFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProductFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProductFilter.SignalSignatures>(
             signal: K,
-            callback: ProductFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProductFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProductFilter.SignalSignatures>(
             signal: K,
-            ...args: ProductFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ProductFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4566,7 +4937,7 @@ export namespace Libosinfo {
     namespace ProductList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4576,6 +4947,14 @@ export namespace Libosinfo {
 
     class ProductList extends List {
         static $gtype: GObject.GType<ProductList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ProductList.SignalSignatures;
 
         // Constructors
 
@@ -4589,17 +4968,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof ProductList.SignalSignatures>(
             signal: K,
-            callback: ProductList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProductList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProductList.SignalSignatures>(
             signal: K,
-            callback: ProductList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProductList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProductList.SignalSignatures>(
             signal: K,
-            ...args: ProductList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ProductList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4637,12 +5016,12 @@ export namespace Libosinfo {
     namespace Resources {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::architecture': GObject.Object.Notify;
-            'notify::cpu': GObject.Object.Notify;
-            'notify::n-cpus': GObject.Object.Notify;
-            'notify::ram': GObject.Object.Notify;
-            'notify::storage': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
+            'notify::architecture': (pspec: GObject.ParamSpec) => void;
+            'notify::cpu': (pspec: GObject.ParamSpec) => void;
+            'notify::n-cpus': (pspec: GObject.ParamSpec) => void;
+            'notify::ram': (pspec: GObject.ParamSpec) => void;
+            'notify::storage': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4691,6 +5070,14 @@ export namespace Libosinfo {
          */
         get storage(): number;
         set storage(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Resources.SignalSignatures;
 
         // Constructors
 
@@ -4702,16 +5089,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof Resources.SignalSignatures>(signal: K, callback: Resources.SignalSignatures[K]): number;
+        connect<K extends keyof Resources.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Resources.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Resources.SignalSignatures>(
             signal: K,
-            callback: Resources.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Resources.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Resources.SignalSignatures>(
             signal: K,
-            ...args: Resources.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Resources.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4773,7 +5163,7 @@ export namespace Libosinfo {
     namespace ResourcesList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4783,6 +5173,14 @@ export namespace Libosinfo {
 
     class ResourcesList extends List {
         static $gtype: GObject.GType<ResourcesList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ResourcesList.SignalSignatures;
 
         // Constructors
 
@@ -4796,17 +5194,17 @@ export namespace Libosinfo {
 
         connect<K extends keyof ResourcesList.SignalSignatures>(
             signal: K,
-            callback: ResourcesList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ResourcesList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResourcesList.SignalSignatures>(
             signal: K,
-            callback: ResourcesList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ResourcesList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResourcesList.SignalSignatures>(
             signal: K,
-            ...args: ResourcesList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ResourcesList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4844,18 +5242,18 @@ export namespace Libosinfo {
     namespace Tree {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::architecture': GObject.Object.Notify;
-            'notify::boot-iso-path': GObject.Object.Notify;
-            'notify::has-treeinfo': GObject.Object.Notify;
-            'notify::initrd-path': GObject.Object.Notify;
-            'notify::kernel-path': GObject.Object.Notify;
-            'notify::os': GObject.Object.Notify;
-            'notify::treeinfo-arch': GObject.Object.Notify;
-            'notify::treeinfo-family': GObject.Object.Notify;
-            'notify::treeinfo-variant': GObject.Object.Notify;
-            'notify::treeinfo-version': GObject.Object.Notify;
-            'notify::url': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
+            'notify::architecture': (pspec: GObject.ParamSpec) => void;
+            'notify::boot-iso-path': (pspec: GObject.ParamSpec) => void;
+            'notify::has-treeinfo': (pspec: GObject.ParamSpec) => void;
+            'notify::initrd-path': (pspec: GObject.ParamSpec) => void;
+            'notify::kernel-path': (pspec: GObject.ParamSpec) => void;
+            'notify::os': (pspec: GObject.ParamSpec) => void;
+            'notify::treeinfo-arch': (pspec: GObject.ParamSpec) => void;
+            'notify::treeinfo-family': (pspec: GObject.ParamSpec) => void;
+            'notify::treeinfo-variant': (pspec: GObject.ParamSpec) => void;
+            'notify::treeinfo-version': (pspec: GObject.ParamSpec) => void;
+            'notify::url': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4986,6 +5384,14 @@ export namespace Libosinfo {
          */
         get url(): string;
         set url(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Tree.SignalSignatures;
 
         // Constructors
 
@@ -4997,13 +5403,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        connect<K extends keyof Tree.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tree.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Tree.SignalSignatures>(
             signal: K,
-            ...args: Tree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Tree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5133,7 +5545,7 @@ export namespace Libosinfo {
     namespace TreeList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5143,6 +5555,14 @@ export namespace Libosinfo {
 
     class TreeList extends List {
         static $gtype: GObject.GType<TreeList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TreeList.SignalSignatures;
 
         // Constructors
 
@@ -5154,16 +5574,19 @@ export namespace Libosinfo {
 
         // Signals
 
-        connect<K extends keyof TreeList.SignalSignatures>(signal: K, callback: TreeList.SignalSignatures[K]): number;
+        connect<K extends keyof TreeList.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TreeList.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TreeList.SignalSignatures>(
             signal: K,
-            callback: TreeList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TreeList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TreeList.SignalSignatures>(
             signal: K,
-            ...args: TreeList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TreeList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -1129,6 +1129,14 @@ export namespace Gcr {
      */
     class AccessDescription extends GObject.Object {
         static $gtype: GObject.GType<AccessDescription>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AccessDescription.SignalSignatures;
 
         // Constructors
 
@@ -1140,17 +1148,17 @@ export namespace Gcr {
 
         connect<K extends keyof AccessDescription.SignalSignatures>(
             signal: K,
-            callback: AccessDescription.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AccessDescription.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AccessDescription.SignalSignatures>(
             signal: K,
-            callback: AccessDescription.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AccessDescription.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AccessDescription.SignalSignatures>(
             signal: K,
-            ...args: AccessDescription.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AccessDescription.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1177,7 +1185,7 @@ export namespace Gcr {
     namespace CertificateChain {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::length': GObject.Object.Notify;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1227,6 +1235,14 @@ export namespace Gcr {
          * The length of the certificate chain.
          */
         get length(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertificateChain.SignalSignatures;
 
         // Constructors
 
@@ -1240,17 +1256,17 @@ export namespace Gcr {
 
         connect<K extends keyof CertificateChain.SignalSignatures>(
             signal: K,
-            callback: CertificateChain.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateChain.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificateChain.SignalSignatures>(
             signal: K,
-            callback: CertificateChain.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateChain.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificateChain.SignalSignatures>(
             signal: K,
-            ...args: CertificateChain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CertificateChain.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1489,9 +1505,9 @@ export namespace Gcr {
     namespace CertificateExtension {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::critical': GObject.Object.Notify;
-            'notify::oid': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::critical': (pspec: GObject.ParamSpec) => void;
+            'notify::oid': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1531,6 +1547,14 @@ export namespace Gcr {
          * The raw value in bytes of the extension.
          */
         get value(): GLib.Bytes;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertificateExtension.SignalSignatures;
 
         // Constructors
 
@@ -1542,17 +1566,19 @@ export namespace Gcr {
 
         connect<K extends keyof CertificateExtension.SignalSignatures>(
             signal: K,
-            callback: CertificateExtension.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtension.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificateExtension.SignalSignatures>(
             signal: K,
-            callback: CertificateExtension.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtension.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificateExtension.SignalSignatures>(
             signal: K,
-            ...args: CertificateExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CertificateExtension.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1583,10 +1609,10 @@ export namespace Gcr {
     namespace CertificateExtensionAuthorityInfoAccess {
         // Signal signatures
         interface SignalSignatures extends CertificateExtension.SignalSignatures {
-            'notify::n-items': GObject.Object.Notify;
-            'notify::critical': GObject.Object.Notify;
-            'notify::oid': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::n-items': (pspec: GObject.ParamSpec) => void;
+            'notify::critical': (pspec: GObject.ParamSpec) => void;
+            'notify::oid': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1625,6 +1651,14 @@ export namespace Gcr {
          * The number of items. See [method`Gio`.ListModel.get_n_items].
          */
         get nItems(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertificateExtensionAuthorityInfoAccess.SignalSignatures;
 
         // Constructors
 
@@ -1636,18 +1670,21 @@ export namespace Gcr {
 
         connect<K extends keyof CertificateExtensionAuthorityInfoAccess.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionAuthorityInfoAccess.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionAuthorityInfoAccess.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificateExtensionAuthorityInfoAccess.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionAuthorityInfoAccess.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionAuthorityInfoAccess.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificateExtensionAuthorityInfoAccess.SignalSignatures>(
             signal: K,
-            ...args: CertificateExtensionAuthorityInfoAccess.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<CertificateExtensionAuthorityInfoAccess.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -2202,9 +2239,9 @@ export namespace Gcr {
     namespace CertificateExtensionAuthorityKeyIdentifier {
         // Signal signatures
         interface SignalSignatures extends CertificateExtension.SignalSignatures {
-            'notify::critical': GObject.Object.Notify;
-            'notify::oid': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::critical': (pspec: GObject.ParamSpec) => void;
+            'notify::oid': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2223,6 +2260,14 @@ export namespace Gcr {
      */
     class CertificateExtensionAuthorityKeyIdentifier extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionAuthorityKeyIdentifier>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertificateExtensionAuthorityKeyIdentifier.SignalSignatures;
 
         // Constructors
 
@@ -2234,18 +2279,21 @@ export namespace Gcr {
 
         connect<K extends keyof CertificateExtensionAuthorityKeyIdentifier.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionAuthorityKeyIdentifier.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionAuthorityKeyIdentifier.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificateExtensionAuthorityKeyIdentifier.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionAuthorityKeyIdentifier.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionAuthorityKeyIdentifier.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificateExtensionAuthorityKeyIdentifier.SignalSignatures>(
             signal: K,
-            ...args: CertificateExtensionAuthorityKeyIdentifier.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<CertificateExtensionAuthorityKeyIdentifier.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -2273,9 +2321,9 @@ export namespace Gcr {
     namespace CertificateExtensionBasicConstraints {
         // Signal signatures
         interface SignalSignatures extends CertificateExtension.SignalSignatures {
-            'notify::critical': GObject.Object.Notify;
-            'notify::oid': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::critical': (pspec: GObject.ParamSpec) => void;
+            'notify::oid': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2289,6 +2337,14 @@ export namespace Gcr {
      */
     class CertificateExtensionBasicConstraints extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionBasicConstraints>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertificateExtensionBasicConstraints.SignalSignatures;
 
         // Constructors
 
@@ -2300,18 +2356,21 @@ export namespace Gcr {
 
         connect<K extends keyof CertificateExtensionBasicConstraints.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionBasicConstraints.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionBasicConstraints.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificateExtensionBasicConstraints.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionBasicConstraints.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionBasicConstraints.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificateExtensionBasicConstraints.SignalSignatures>(
             signal: K,
-            ...args: CertificateExtensionBasicConstraints.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<CertificateExtensionBasicConstraints.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -2340,10 +2399,10 @@ export namespace Gcr {
     namespace CertificateExtensionCertificatePolicies {
         // Signal signatures
         interface SignalSignatures extends CertificateExtension.SignalSignatures {
-            'notify::n-items': GObject.Object.Notify;
-            'notify::critical': GObject.Object.Notify;
-            'notify::oid': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::n-items': (pspec: GObject.ParamSpec) => void;
+            'notify::critical': (pspec: GObject.ParamSpec) => void;
+            'notify::oid': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2378,6 +2437,14 @@ export namespace Gcr {
          * The number of items. See [method`Gio`.ListModel.get_n_items].
          */
         get nItems(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertificateExtensionCertificatePolicies.SignalSignatures;
 
         // Constructors
 
@@ -2389,18 +2456,21 @@ export namespace Gcr {
 
         connect<K extends keyof CertificateExtensionCertificatePolicies.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionCertificatePolicies.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionCertificatePolicies.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificateExtensionCertificatePolicies.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionCertificatePolicies.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionCertificatePolicies.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificateExtensionCertificatePolicies.SignalSignatures>(
             signal: K,
-            ...args: CertificateExtensionCertificatePolicies.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<CertificateExtensionCertificatePolicies.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -2953,10 +3023,10 @@ export namespace Gcr {
     namespace CertificateExtensionCrlDistributionPoints {
         // Signal signatures
         interface SignalSignatures extends CertificateExtension.SignalSignatures {
-            'notify::n-items': GObject.Object.Notify;
-            'notify::critical': GObject.Object.Notify;
-            'notify::oid': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::n-items': (pspec: GObject.ParamSpec) => void;
+            'notify::critical': (pspec: GObject.ParamSpec) => void;
+            'notify::oid': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2991,6 +3061,14 @@ export namespace Gcr {
          * The number of items. See [method`Gio`.ListModel.get_n_items].
          */
         get nItems(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertificateExtensionCrlDistributionPoints.SignalSignatures;
 
         // Constructors
 
@@ -3002,18 +3080,21 @@ export namespace Gcr {
 
         connect<K extends keyof CertificateExtensionCrlDistributionPoints.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionCrlDistributionPoints.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionCrlDistributionPoints.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificateExtensionCrlDistributionPoints.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionCrlDistributionPoints.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionCrlDistributionPoints.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificateExtensionCrlDistributionPoints.SignalSignatures>(
             signal: K,
-            ...args: CertificateExtensionCrlDistributionPoints.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<CertificateExtensionCrlDistributionPoints.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -3568,9 +3649,9 @@ export namespace Gcr {
     namespace CertificateExtensionExtendedKeyUsage {
         // Signal signatures
         interface SignalSignatures extends CertificateExtension.SignalSignatures {
-            'notify::critical': GObject.Object.Notify;
-            'notify::oid': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::critical': (pspec: GObject.ParamSpec) => void;
+            'notify::oid': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3587,6 +3668,14 @@ export namespace Gcr {
      */
     class CertificateExtensionExtendedKeyUsage extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionExtendedKeyUsage>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertificateExtensionExtendedKeyUsage.SignalSignatures;
 
         // Constructors
 
@@ -3598,18 +3687,21 @@ export namespace Gcr {
 
         connect<K extends keyof CertificateExtensionExtendedKeyUsage.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionExtendedKeyUsage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionExtendedKeyUsage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificateExtensionExtendedKeyUsage.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionExtendedKeyUsage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionExtendedKeyUsage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificateExtensionExtendedKeyUsage.SignalSignatures>(
             signal: K,
-            ...args: CertificateExtensionExtendedKeyUsage.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<CertificateExtensionExtendedKeyUsage.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -3631,9 +3723,9 @@ export namespace Gcr {
     namespace CertificateExtensionKeyUsage {
         // Signal signatures
         interface SignalSignatures extends CertificateExtension.SignalSignatures {
-            'notify::critical': GObject.Object.Notify;
-            'notify::oid': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::critical': (pspec: GObject.ParamSpec) => void;
+            'notify::oid': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3650,6 +3742,14 @@ export namespace Gcr {
      */
     class CertificateExtensionKeyUsage extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionKeyUsage>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertificateExtensionKeyUsage.SignalSignatures;
 
         // Constructors
 
@@ -3661,17 +3761,19 @@ export namespace Gcr {
 
         connect<K extends keyof CertificateExtensionKeyUsage.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionKeyUsage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionKeyUsage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificateExtensionKeyUsage.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionKeyUsage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionKeyUsage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificateExtensionKeyUsage.SignalSignatures>(
             signal: K,
-            ...args: CertificateExtensionKeyUsage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CertificateExtensionKeyUsage.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3691,7 +3793,7 @@ export namespace Gcr {
     namespace CertificateExtensionList {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::n-items': GObject.Object.Notify;
+            'notify::n-items': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3717,6 +3819,14 @@ export namespace Gcr {
 
         get n_items(): number;
         get nItems(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertificateExtensionList.SignalSignatures;
 
         // Constructors
 
@@ -3728,17 +3838,19 @@ export namespace Gcr {
 
         connect<K extends keyof CertificateExtensionList.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificateExtensionList.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificateExtensionList.SignalSignatures>(
             signal: K,
-            ...args: CertificateExtensionList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CertificateExtensionList.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4298,9 +4410,9 @@ export namespace Gcr {
     namespace CertificateExtensionSubjectAltName {
         // Signal signatures
         interface SignalSignatures extends CertificateExtension.SignalSignatures {
-            'notify::critical': GObject.Object.Notify;
-            'notify::oid': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::critical': (pspec: GObject.ParamSpec) => void;
+            'notify::oid': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4323,6 +4435,14 @@ export namespace Gcr {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificateExtensionSubjectAltName>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertificateExtensionSubjectAltName.SignalSignatures;
 
         // Constructors
 
@@ -4334,18 +4454,21 @@ export namespace Gcr {
 
         connect<K extends keyof CertificateExtensionSubjectAltName.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionSubjectAltName.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionSubjectAltName.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificateExtensionSubjectAltName.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionSubjectAltName.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionSubjectAltName.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificateExtensionSubjectAltName.SignalSignatures>(
             signal: K,
-            ...args: CertificateExtensionSubjectAltName.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<CertificateExtensionSubjectAltName.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -4898,9 +5021,9 @@ export namespace Gcr {
     namespace CertificateExtensionSubjectKeyIdentifier {
         // Signal signatures
         interface SignalSignatures extends CertificateExtension.SignalSignatures {
-            'notify::critical': GObject.Object.Notify;
-            'notify::oid': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::critical': (pspec: GObject.ParamSpec) => void;
+            'notify::oid': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4913,6 +5036,14 @@ export namespace Gcr {
      */
     class CertificateExtensionSubjectKeyIdentifier extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionSubjectKeyIdentifier>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertificateExtensionSubjectKeyIdentifier.SignalSignatures;
 
         // Constructors
 
@@ -4924,18 +5055,21 @@ export namespace Gcr {
 
         connect<K extends keyof CertificateExtensionSubjectKeyIdentifier.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionSubjectKeyIdentifier.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionSubjectKeyIdentifier.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificateExtensionSubjectKeyIdentifier.SignalSignatures>(
             signal: K,
-            callback: CertificateExtensionSubjectKeyIdentifier.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateExtensionSubjectKeyIdentifier.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificateExtensionSubjectKeyIdentifier.SignalSignatures>(
             signal: K,
-            ...args: CertificateExtensionSubjectKeyIdentifier.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<CertificateExtensionSubjectKeyIdentifier.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -4952,9 +5086,9 @@ export namespace Gcr {
     namespace CertificateField {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::label': GObject.Object.Notify;
-            'notify::section': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::section': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4974,6 +5108,14 @@ export namespace Gcr {
         get label(): string;
         get section(): CertificateSection;
         get value(): GObject.Value;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertificateField.SignalSignatures;
 
         // Constructors
 
@@ -4985,17 +5127,17 @@ export namespace Gcr {
 
         connect<K extends keyof CertificateField.SignalSignatures>(
             signal: K,
-            callback: CertificateField.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateField.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificateField.SignalSignatures>(
             signal: K,
-            callback: CertificateField.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateField.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificateField.SignalSignatures>(
             signal: K,
-            ...args: CertificateField.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CertificateField.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5051,6 +5193,14 @@ export namespace Gcr {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificatePolicy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertificatePolicy.SignalSignatures;
 
         // Constructors
 
@@ -5062,17 +5212,17 @@ export namespace Gcr {
 
         connect<K extends keyof CertificatePolicy.SignalSignatures>(
             signal: K,
-            callback: CertificatePolicy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificatePolicy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificatePolicy.SignalSignatures>(
             signal: K,
-            callback: CertificatePolicy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificatePolicy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificatePolicy.SignalSignatures>(
             signal: K,
-            ...args: CertificatePolicy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CertificatePolicy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5642,6 +5792,14 @@ export namespace Gcr {
      */
     class CertificatePolicyQualifier extends GObject.Object {
         static $gtype: GObject.GType<CertificatePolicyQualifier>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertificatePolicyQualifier.SignalSignatures;
 
         // Constructors
 
@@ -5653,17 +5811,19 @@ export namespace Gcr {
 
         connect<K extends keyof CertificatePolicyQualifier.SignalSignatures>(
             signal: K,
-            callback: CertificatePolicyQualifier.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificatePolicyQualifier.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificatePolicyQualifier.SignalSignatures>(
             signal: K,
-            callback: CertificatePolicyQualifier.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificatePolicyQualifier.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificatePolicyQualifier.SignalSignatures>(
             signal: K,
-            ...args: CertificatePolicyQualifier.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CertificatePolicyQualifier.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5684,7 +5844,7 @@ export namespace Gcr {
     namespace CertificateRequest {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::private-key': GObject.Object.Notify;
+            'notify::private-key': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5717,6 +5877,14 @@ export namespace Gcr {
          * The private key that this certificate request is for.
          */
         get privateKey(): Gck.Object;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertificateRequest.SignalSignatures;
 
         // Constructors
 
@@ -5728,17 +5896,17 @@ export namespace Gcr {
 
         connect<K extends keyof CertificateRequest.SignalSignatures>(
             signal: K,
-            callback: CertificateRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificateRequest.SignalSignatures>(
             signal: K,
-            callback: CertificateRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificateRequest.SignalSignatures>(
             signal: K,
-            ...args: CertificateRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CertificateRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5856,8 +6024,8 @@ export namespace Gcr {
     namespace CertificateSection {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::fields': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
+            'notify::fields': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5875,6 +6043,14 @@ export namespace Gcr {
 
         get fields(): Gio.ListModel;
         get label(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CertificateSection.SignalSignatures;
 
         // Constructors
 
@@ -5886,17 +6062,17 @@ export namespace Gcr {
 
         connect<K extends keyof CertificateSection.SignalSignatures>(
             signal: K,
-            callback: CertificateSection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateSection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificateSection.SignalSignatures>(
             signal: K,
-            callback: CertificateSection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CertificateSection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificateSection.SignalSignatures>(
             signal: K,
-            ...args: CertificateSection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CertificateSection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5939,6 +6115,14 @@ export namespace Gcr {
      */
     class DistributionPoint extends GObject.Object {
         static $gtype: GObject.GType<DistributionPoint>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DistributionPoint.SignalSignatures;
 
         // Constructors
 
@@ -5950,17 +6134,17 @@ export namespace Gcr {
 
         connect<K extends keyof DistributionPoint.SignalSignatures>(
             signal: K,
-            callback: DistributionPoint.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DistributionPoint.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DistributionPoint.SignalSignatures>(
             signal: K,
-            callback: DistributionPoint.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DistributionPoint.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DistributionPoint.SignalSignatures>(
             signal: K,
-            ...args: DistributionPoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DistributionPoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5999,6 +6183,14 @@ export namespace Gcr {
      */
     class GeneralName extends GObject.Object {
         static $gtype: GObject.GType<GeneralName>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GeneralName.SignalSignatures;
 
         // Constructors
 
@@ -6010,17 +6202,17 @@ export namespace Gcr {
 
         connect<K extends keyof GeneralName.SignalSignatures>(
             signal: K,
-            callback: GeneralName.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GeneralName.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GeneralName.SignalSignatures>(
             signal: K,
-            callback: GeneralName.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GeneralName.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GeneralName.SignalSignatures>(
             signal: K,
-            ...args: GeneralName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GeneralName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6056,6 +6248,14 @@ export namespace Gcr {
      */
     class GeneralNames<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<GeneralNames>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GeneralNames.SignalSignatures;
 
         // Constructors
 
@@ -6067,17 +6267,17 @@ export namespace Gcr {
 
         connect<K extends keyof GeneralNames.SignalSignatures>(
             signal: K,
-            callback: GeneralNames.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GeneralNames.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GeneralNames.SignalSignatures>(
             signal: K,
-            callback: GeneralNames.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GeneralNames.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GeneralNames.SignalSignatures>(
             signal: K,
-            ...args: GeneralNames.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GeneralNames.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6630,23 +6830,13 @@ export namespace Gcr {
     }
 
     namespace Parser {
-        // Signal callback interfaces
-
-        interface Authenticate {
-            (_source: Parser, count: number): boolean | void;
-        }
-
-        interface Parsed {
-            (_source: Parser): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            authenticate: Authenticate;
-            parsed: Parsed;
-            'notify::parsed-attributes': GObject.Object.Notify;
-            'notify::parsed-description': GObject.Object.Notify;
-            'notify::parsed-label': GObject.Object.Notify;
+            authenticate: (arg0: number) => boolean | void;
+            parsed: () => void;
+            'notify::parsed-attributes': (pspec: GObject.ParamSpec) => void;
+            'notify::parsed-description': (pspec: GObject.ParamSpec) => void;
+            'notify::parsed-label': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6712,6 +6902,14 @@ export namespace Gcr {
          * only valid during a [signal`Parser:`:parsed] signal.
          */
         get parsedLabel(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Parser.SignalSignatures;
 
         // Constructors
 
@@ -6723,13 +6921,19 @@ export namespace Gcr {
 
         // Signals
 
-        connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect_after<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Parser.SignalSignatures>(
             signal: K,
-            ...args: Parser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Parser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6903,15 +7107,15 @@ export namespace Gcr {
     namespace Pkcs11Certificate {
         // Signal signatures
         interface SignalSignatures extends Gck.Object.SignalSignatures {
-            'notify::attributes': GObject.Object.Notify;
-            'notify::handle': GObject.Object.Notify;
-            'notify::module': GObject.Object.Notify;
-            'notify::session': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::expiry-date': GObject.Object.Notify;
-            'notify::issuer-name': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::subject-name': GObject.Object.Notify;
+            'notify::attributes': (pspec: GObject.ParamSpec) => void;
+            'notify::handle': (pspec: GObject.ParamSpec) => void;
+            'notify::module': (pspec: GObject.ParamSpec) => void;
+            'notify::session': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::expiry-date': (pspec: GObject.ParamSpec) => void;
+            'notify::issuer-name': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::subject-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6940,6 +7144,14 @@ export namespace Gcr {
          * Automatically loaded attributes for this certificate.
          */
         get attributes(): Gck.Attributes;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Pkcs11Certificate.SignalSignatures;
 
         // Constructors
 
@@ -6951,17 +7163,17 @@ export namespace Gcr {
 
         connect<K extends keyof Pkcs11Certificate.SignalSignatures>(
             signal: K,
-            callback: Pkcs11Certificate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Pkcs11Certificate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Pkcs11Certificate.SignalSignatures>(
             signal: K,
-            callback: Pkcs11Certificate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Pkcs11Certificate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Pkcs11Certificate.SignalSignatures>(
             signal: K,
-            ...args: Pkcs11Certificate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Pkcs11Certificate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7723,7 +7935,7 @@ export namespace Gcr {
     namespace SecretExchange {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::protocol': GObject.Object.Notify;
+            'notify::protocol': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7770,6 +7982,14 @@ export namespace Gcr {
          * have not been called successfully.
          */
         get protocol(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SecretExchange.SignalSignatures;
 
         // Constructors
 
@@ -7783,17 +8003,17 @@ export namespace Gcr {
 
         connect<K extends keyof SecretExchange.SignalSignatures>(
             signal: K,
-            callback: SecretExchange.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SecretExchange.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SecretExchange.SignalSignatures>(
             signal: K,
-            callback: SecretExchange.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SecretExchange.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SecretExchange.SignalSignatures>(
             signal: K,
-            ...args: SecretExchange.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SecretExchange.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7859,11 +8079,11 @@ export namespace Gcr {
     namespace SimpleCertificate {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::description': GObject.Object.Notify;
-            'notify::expiry-date': GObject.Object.Notify;
-            'notify::issuer-name': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::subject-name': GObject.Object.Notify;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::expiry-date': (pspec: GObject.ParamSpec) => void;
+            'notify::issuer-name': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::subject-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7880,6 +8100,14 @@ export namespace Gcr {
      */
     class SimpleCertificate extends GObject.Object implements Certificate {
         static $gtype: GObject.GType<SimpleCertificate>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SimpleCertificate.SignalSignatures;
 
         // Constructors
 
@@ -7893,17 +8121,17 @@ export namespace Gcr {
 
         connect<K extends keyof SimpleCertificate.SignalSignatures>(
             signal: K,
-            callback: SimpleCertificate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SimpleCertificate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleCertificate.SignalSignatures>(
             signal: K,
-            callback: SimpleCertificate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SimpleCertificate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleCertificate.SignalSignatures>(
             signal: K,
-            ...args: SimpleCertificate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SimpleCertificate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8574,7 +8802,7 @@ export namespace Gcr {
     namespace SshAskpass {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::interaction': GObject.Object.Notify;
+            'notify::interaction': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8597,6 +8825,14 @@ export namespace Gcr {
          * The interaction used to prompt for passwords.
          */
         get interaction(): Gio.TlsInteraction;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SshAskpass.SignalSignatures;
 
         // Constructors
 
@@ -8610,17 +8846,17 @@ export namespace Gcr {
 
         connect<K extends keyof SshAskpass.SignalSignatures>(
             signal: K,
-            callback: SshAskpass.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SshAskpass.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SshAskpass.SignalSignatures>(
             signal: K,
-            callback: SshAskpass.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SshAskpass.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SshAskpass.SignalSignatures>(
             signal: K,
-            ...args: SshAskpass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SshAskpass.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8645,20 +8881,20 @@ export namespace Gcr {
     namespace SystemPrompt {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::secret-exchange': GObject.Object.Notify;
-            'notify::timeout-seconds': GObject.Object.Notify;
-            'notify::caller-window': GObject.Object.Notify;
-            'notify::cancel-label': GObject.Object.Notify;
-            'notify::choice-chosen': GObject.Object.Notify;
-            'notify::choice-label': GObject.Object.Notify;
-            'notify::continue-label': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::message': GObject.Object.Notify;
-            'notify::password-new': GObject.Object.Notify;
-            'notify::password-strength': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::warning': GObject.Object.Notify;
+            'notify::bus-name': (pspec: GObject.ParamSpec) => void;
+            'notify::secret-exchange': (pspec: GObject.ParamSpec) => void;
+            'notify::timeout-seconds': (pspec: GObject.ParamSpec) => void;
+            'notify::caller-window': (pspec: GObject.ParamSpec) => void;
+            'notify::cancel-label': (pspec: GObject.ParamSpec) => void;
+            'notify::choice-chosen': (pspec: GObject.ParamSpec) => void;
+            'notify::choice-label': (pspec: GObject.ParamSpec) => void;
+            'notify::continue-label': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::message': (pspec: GObject.ParamSpec) => void;
+            'notify::password-new': (pspec: GObject.ParamSpec) => void;
+            'notify::password-strength': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::warning': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8725,6 +8961,14 @@ export namespace Gcr {
          * The timeout in seconds to wait when opening the prompt.
          */
         set timeoutSeconds(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SystemPrompt.SignalSignatures;
 
         // Constructors
 
@@ -8736,17 +8980,17 @@ export namespace Gcr {
 
         connect<K extends keyof SystemPrompt.SignalSignatures>(
             signal: K,
-            callback: SystemPrompt.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SystemPrompt.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SystemPrompt.SignalSignatures>(
             signal: K,
-            callback: SystemPrompt.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SystemPrompt.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SystemPrompt.SignalSignatures>(
             signal: K,
-            ...args: SystemPrompt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SystemPrompt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10157,17 +10401,11 @@ export namespace Gcr {
     }
 
     namespace SystemPrompter {
-        // Signal callback interfaces
-
-        interface NewPrompt {
-            (_source: SystemPrompter): Prompt;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'new-prompt': NewPrompt;
-            'notify::prompt-type': GObject.Object.Notify;
-            'notify::prompting': GObject.Object.Notify;
+            'new-prompt': () => Prompt;
+            'notify::prompt-type': (pspec: GObject.ParamSpec) => void;
+            'notify::prompting': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10210,6 +10448,14 @@ export namespace Gcr {
          * Whether the prompter is prompting or not.
          */
         get prompting(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SystemPrompter.SignalSignatures;
 
         // Constructors
 
@@ -10223,17 +10469,17 @@ export namespace Gcr {
 
         connect<K extends keyof SystemPrompter.SignalSignatures>(
             signal: K,
-            callback: SystemPrompter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SystemPrompter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SystemPrompter.SignalSignatures>(
             signal: K,
-            callback: SystemPrompter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SystemPrompter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SystemPrompter.SignalSignatures>(
             signal: K,
-            ...args: SystemPrompter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SystemPrompter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -31,15 +31,9 @@ export namespace UnityExtras {
         (): void;
     }
     namespace PreviewPlayer {
-        // Signal callback interfaces
-
-        interface Progress {
-            (_source: PreviewPlayer, uri: string, state: Unity.MusicPreviewTrackState, progress: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            progress: Progress;
+            progress: (arg0: string, arg1: Unity.MusicPreviewTrackState, arg2: number) => void;
         }
 
         // Constructor properties interface
@@ -49,6 +43,14 @@ export namespace UnityExtras {
 
     class PreviewPlayer extends GObject.Object {
         static $gtype: GObject.GType<PreviewPlayer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PreviewPlayer.SignalSignatures;
 
         // Constructors
 
@@ -62,17 +64,17 @@ export namespace UnityExtras {
 
         connect<K extends keyof PreviewPlayer.SignalSignatures>(
             signal: K,
-            callback: PreviewPlayer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PreviewPlayer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PreviewPlayer.SignalSignatures>(
             signal: K,
-            callback: PreviewPlayer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PreviewPlayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PreviewPlayer.SignalSignatures>(
             signal: K,
-            ...args: PreviewPlayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PreviewPlayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

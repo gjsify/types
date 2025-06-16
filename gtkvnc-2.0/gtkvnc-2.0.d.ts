@@ -65,14 +65,14 @@ export namespace GtkVnc {
     namespace CairoFramebuffer {
         // Signal signatures
         interface SignalSignatures extends GVnc.BaseFramebuffer.SignalSignatures {
-            'notify::surface': GObject.Object.Notify;
-            'notify::buffer': GObject.Object.Notify;
-            'notify::color-map': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::local-format': GObject.Object.Notify;
-            'notify::remote-format': GObject.Object.Notify;
-            'notify::rowstride': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::surface': (pspec: GObject.ParamSpec) => void;
+            'notify::buffer': (pspec: GObject.ParamSpec) => void;
+            'notify::color-map': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::local-format': (pspec: GObject.ParamSpec) => void;
+            'notify::remote-format': (pspec: GObject.ParamSpec) => void;
+            'notify::rowstride': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -88,6 +88,14 @@ export namespace GtkVnc {
         // Properties
 
         get surface(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CairoFramebuffer.SignalSignatures;
 
         // Constructors
 
@@ -104,17 +112,17 @@ export namespace GtkVnc {
 
         connect<K extends keyof CairoFramebuffer.SignalSignatures>(
             signal: K,
-            callback: CairoFramebuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CairoFramebuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CairoFramebuffer.SignalSignatures>(
             signal: K,
-            callback: CairoFramebuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CairoFramebuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CairoFramebuffer.SignalSignatures>(
             signal: K,
-            ...args: CairoFramebuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CairoFramebuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -741,152 +749,82 @@ export namespace GtkVnc {
     }
 
     namespace Display {
-        // Signal callback interfaces
-
-        interface VncAuthCredential {
-            (_source: Display, object: GObject.ValueArray): void;
-        }
-
-        interface VncAuthFailure {
-            (_source: Display, object: string): void;
-        }
-
-        interface VncAuthUnsupported {
-            (_source: Display, object: number): void;
-        }
-
-        interface VncBell {
-            (_source: Display): void;
-        }
-
-        interface VncConnected {
-            (_source: Display): void;
-        }
-
-        interface VncDesktopRename {
-            (_source: Display, object: string): void;
-        }
-
-        interface VncDesktopResize {
-            (_source: Display, object: number, p0: number): void;
-        }
-
-        interface VncDisconnected {
-            (_source: Display): void;
-        }
-
-        interface VncError {
-            (_source: Display, object: string): void;
-        }
-
-        interface VncInitialized {
-            (_source: Display): void;
-        }
-
-        interface VncKeyboardGrab {
-            (_source: Display): void;
-        }
-
-        interface VncKeyboardUngrab {
-            (_source: Display): void;
-        }
-
-        interface VncPointerGrab {
-            (_source: Display): void;
-        }
-
-        interface VncPointerUngrab {
-            (_source: Display): void;
-        }
-
-        interface VncPowerControlFailed {
-            (_source: Display): void;
-        }
-
-        interface VncPowerControlInitialized {
-            (_source: Display): void;
-        }
-
-        interface VncServerCutText {
-            (_source: Display, object: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
-            'vnc-auth-credential': VncAuthCredential;
-            'vnc-auth-failure': VncAuthFailure;
-            'vnc-auth-unsupported': VncAuthUnsupported;
-            'vnc-bell': VncBell;
-            'vnc-connected': VncConnected;
-            'vnc-desktop-rename': VncDesktopRename;
-            'vnc-desktop-resize': VncDesktopResize;
-            'vnc-disconnected': VncDisconnected;
-            'vnc-error': VncError;
-            'vnc-initialized': VncInitialized;
-            'vnc-keyboard-grab': VncKeyboardGrab;
-            'vnc-keyboard-ungrab': VncKeyboardUngrab;
-            'vnc-pointer-grab': VncPointerGrab;
-            'vnc-pointer-ungrab': VncPointerUngrab;
-            'vnc-power-control-failed': VncPowerControlFailed;
-            'vnc-power-control-initialized': VncPowerControlInitialized;
-            'vnc-server-cut-text': VncServerCutText;
-            'notify::allow-resize': GObject.Object.Notify;
-            'notify::connection': GObject.Object.Notify;
-            'notify::depth': GObject.Object.Notify;
-            'notify::force-size': GObject.Object.Notify;
-            'notify::grab-keyboard': GObject.Object.Notify;
-            'notify::grab-keys': GObject.Object.Notify;
-            'notify::grab-pointer': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::keep-aspect-ratio': GObject.Object.Notify;
-            'notify::local-pointer': GObject.Object.Notify;
-            'notify::lossy-encoding': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::rotation': GObject.Object.Notify;
-            'notify::scaling': GObject.Object.Notify;
-            'notify::shared-flag': GObject.Object.Notify;
-            'notify::smoothing': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::zoom-level': GObject.Object.Notify;
-            'notify::app-paintable': GObject.Object.Notify;
-            'notify::can-default': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::composite-child': GObject.Object.Notify;
-            'notify::double-buffered': GObject.Object.Notify;
-            'notify::events': GObject.Object.Notify;
-            'notify::expand': GObject.Object.Notify;
-            'notify::focus-on-click': GObject.Object.Notify;
-            'notify::halign': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
-            'notify::hexpand': GObject.Object.Notify;
-            'notify::hexpand-set': GObject.Object.Notify;
-            'notify::is-focus': GObject.Object.Notify;
-            'notify::margin': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-end': GObject.Object.Notify;
-            'notify::margin-left': GObject.Object.Notify;
-            'notify::margin-right': GObject.Object.Notify;
-            'notify::margin-start': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::no-show-all': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
-            'notify::valign': GObject.Object.Notify;
-            'notify::vexpand': GObject.Object.Notify;
-            'notify::vexpand-set': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
-            'notify::window': GObject.Object.Notify;
+            'vnc-auth-credential': (arg0: GObject.ValueArray) => void;
+            'vnc-auth-failure': (arg0: string) => void;
+            'vnc-auth-unsupported': (arg0: number) => void;
+            'vnc-bell': () => void;
+            'vnc-connected': () => void;
+            'vnc-desktop-rename': (arg0: string) => void;
+            'vnc-desktop-resize': (arg0: number, arg1: number) => void;
+            'vnc-disconnected': () => void;
+            'vnc-error': (arg0: string) => void;
+            'vnc-initialized': () => void;
+            'vnc-keyboard-grab': () => void;
+            'vnc-keyboard-ungrab': () => void;
+            'vnc-pointer-grab': () => void;
+            'vnc-pointer-ungrab': () => void;
+            'vnc-power-control-failed': () => void;
+            'vnc-power-control-initialized': () => void;
+            'vnc-server-cut-text': (arg0: string) => void;
+            'notify::allow-resize': (pspec: GObject.ParamSpec) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::depth': (pspec: GObject.ParamSpec) => void;
+            'notify::force-size': (pspec: GObject.ParamSpec) => void;
+            'notify::grab-keyboard': (pspec: GObject.ParamSpec) => void;
+            'notify::grab-keys': (pspec: GObject.ParamSpec) => void;
+            'notify::grab-pointer': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::keep-aspect-ratio': (pspec: GObject.ParamSpec) => void;
+            'notify::local-pointer': (pspec: GObject.ParamSpec) => void;
+            'notify::lossy-encoding': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation': (pspec: GObject.ParamSpec) => void;
+            'notify::scaling': (pspec: GObject.ParamSpec) => void;
+            'notify::shared-flag': (pspec: GObject.ParamSpec) => void;
+            'notify::smoothing': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::zoom-level': (pspec: GObject.ParamSpec) => void;
+            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
+            'notify::can-default': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
+            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
+            'notify::events': (pspec: GObject.ParamSpec) => void;
+            'notify::expand': (pspec: GObject.ParamSpec) => void;
+            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
+            'notify::halign': (pspec: GObject.ParamSpec) => void;
+            'notify::has-default': (pspec: GObject.ParamSpec) => void;
+            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::height-request': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::margin': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
+            'notify::valign': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -989,6 +927,14 @@ export namespace GtkVnc {
         set zoom_level(val: number);
         get zoomLevel(): number;
         set zoomLevel(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Display.SignalSignatures;
 
         // Constructors
 
@@ -1000,16 +946,19 @@ export namespace GtkVnc {
 
         // Signals
 
-        connect<K extends keyof Display.SignalSignatures>(signal: K, callback: Display.SignalSignatures[K]): number;
+        connect<K extends keyof Display.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Display.SignalSignatures>(
             signal: K,
-            callback: Display.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
-            ...args: Display.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

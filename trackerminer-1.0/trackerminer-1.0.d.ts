@@ -188,30 +188,20 @@ export namespace TrackerMiner {
         CHECK_DELETED,
     }
     namespace Decorator {
-        // Signal callback interfaces
-
-        interface Finished {
-            (_source: Decorator): void;
-        }
-
-        interface ItemsAvailable {
-            (_source: Decorator): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Miner.SignalSignatures {
-            finished: Finished;
-            'items-available': ItemsAvailable;
-            'notify::class-names': GObject.Object.Notify;
-            'notify::commit-batch-size': GObject.Object.Notify;
-            'notify::data-source': GObject.Object.Notify;
-            'notify::priority-rdf-types': GObject.Object.Notify;
-            'notify::introspection-handler': GObject.Object.Notify;
-            'notify::introspection-xml': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::progress': GObject.Object.Notify;
-            'notify::remaining-time': GObject.Object.Notify;
-            'notify::status': GObject.Object.Notify;
+            finished: () => void;
+            'items-available': () => void;
+            'notify::class-names': (pspec: GObject.ParamSpec) => void;
+            'notify::commit-batch-size': (pspec: GObject.ParamSpec) => void;
+            'notify::data-source': (pspec: GObject.ParamSpec) => void;
+            'notify::priority-rdf-types': (pspec: GObject.ParamSpec) => void;
+            'notify::introspection-handler': (pspec: GObject.ParamSpec) => void;
+            'notify::introspection-xml': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::progress': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining-time': (pspec: GObject.ParamSpec) => void;
+            'notify::status': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -249,6 +239,14 @@ export namespace TrackerMiner {
         get dataSource(): string;
         set priority_rdf_types(val: string[]);
         set priorityRdfTypes(val: string[]);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Decorator.SignalSignatures;
 
         // Fields
 
@@ -262,16 +260,19 @@ export namespace TrackerMiner {
 
         // Signals
 
-        connect<K extends keyof Decorator.SignalSignatures>(signal: K, callback: Decorator.SignalSignatures[K]): number;
+        connect<K extends keyof Decorator.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Decorator.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Decorator.SignalSignatures>(
             signal: K,
-            callback: Decorator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Decorator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Decorator.SignalSignatures>(
             signal: K,
-            ...args: Decorator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Decorator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -908,16 +909,16 @@ export namespace TrackerMiner {
     namespace DecoratorFS {
         // Signal signatures
         interface SignalSignatures extends Decorator.SignalSignatures {
-            'notify::class-names': GObject.Object.Notify;
-            'notify::commit-batch-size': GObject.Object.Notify;
-            'notify::data-source': GObject.Object.Notify;
-            'notify::priority-rdf-types': GObject.Object.Notify;
-            'notify::introspection-handler': GObject.Object.Notify;
-            'notify::introspection-xml': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::progress': GObject.Object.Notify;
-            'notify::remaining-time': GObject.Object.Notify;
-            'notify::status': GObject.Object.Notify;
+            'notify::class-names': (pspec: GObject.ParamSpec) => void;
+            'notify::commit-batch-size': (pspec: GObject.ParamSpec) => void;
+            'notify::data-source': (pspec: GObject.ParamSpec) => void;
+            'notify::priority-rdf-types': (pspec: GObject.ParamSpec) => void;
+            'notify::introspection-handler': (pspec: GObject.ParamSpec) => void;
+            'notify::introspection-xml': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::progress': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining-time': (pspec: GObject.ParamSpec) => void;
+            'notify::status': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -930,6 +931,14 @@ export namespace TrackerMiner {
      */
     abstract class DecoratorFS extends Decorator implements Gio.Initable {
         static $gtype: GObject.GType<DecoratorFS>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DecoratorFS.SignalSignatures;
 
         // Fields
 
@@ -945,17 +954,17 @@ export namespace TrackerMiner {
 
         connect<K extends keyof DecoratorFS.SignalSignatures>(
             signal: K,
-            callback: DecoratorFS.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DecoratorFS.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DecoratorFS.SignalSignatures>(
             signal: K,
-            callback: DecoratorFS.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DecoratorFS.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DecoratorFS.SignalSignatures>(
             signal: K,
-            ...args: DecoratorFS.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DecoratorFS.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1411,32 +1420,14 @@ export namespace TrackerMiner {
     }
 
     namespace IndexingTree {
-        // Signal callback interfaces
-
-        interface ChildUpdated {
-            (_source: IndexingTree, root: Gio.File, child: Gio.File): void;
-        }
-
-        interface DirectoryAdded {
-            (_source: IndexingTree, directory: Gio.File): void;
-        }
-
-        interface DirectoryRemoved {
-            (_source: IndexingTree, directory: Gio.File): void;
-        }
-
-        interface DirectoryUpdated {
-            (_source: IndexingTree, directory: Gio.File): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'child-updated': ChildUpdated;
-            'directory-added': DirectoryAdded;
-            'directory-removed': DirectoryRemoved;
-            'directory-updated': DirectoryUpdated;
-            'notify::filter-hidden': GObject.Object.Notify;
-            'notify::root': GObject.Object.Notify;
+            'child-updated': (arg0: Gio.File, arg1: Gio.File) => void;
+            'directory-added': (arg0: Gio.File) => void;
+            'directory-removed': (arg0: Gio.File) => void;
+            'directory-updated': (arg0: Gio.File) => void;
+            'notify::filter-hidden': (pspec: GObject.ParamSpec) => void;
+            'notify::root': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1461,6 +1452,14 @@ export namespace TrackerMiner {
         get filterHidden(): boolean;
         set filterHidden(val: boolean);
         get root(): Gio.File;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IndexingTree.SignalSignatures;
 
         // Fields
 
@@ -1480,17 +1479,17 @@ export namespace TrackerMiner {
 
         connect<K extends keyof IndexingTree.SignalSignatures>(
             signal: K,
-            callback: IndexingTree.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IndexingTree.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IndexingTree.SignalSignatures>(
             signal: K,
-            callback: IndexingTree.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IndexingTree.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IndexingTree.SignalSignatures>(
             signal: K,
-            ...args: IndexingTree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IndexingTree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1658,46 +1657,20 @@ export namespace TrackerMiner {
     }
 
     namespace Miner {
-        // Signal callback interfaces
-
-        interface IgnoreNextUpdate {
-            (_source: Miner, urls: string[]): void;
-        }
-
-        interface Paused {
-            (_source: Miner): void;
-        }
-
-        interface Progress {
-            (_source: Miner, status: string, progress: number, remaining_time: number): void;
-        }
-
-        interface Resumed {
-            (_source: Miner): void;
-        }
-
-        interface Started {
-            (_source: Miner): void;
-        }
-
-        interface Stopped {
-            (_source: Miner): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'ignore-next-update': IgnoreNextUpdate;
-            paused: Paused;
-            progress: Progress;
-            resumed: Resumed;
-            started: Started;
-            stopped: Stopped;
-            'notify::introspection-handler': GObject.Object.Notify;
-            'notify::introspection-xml': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::progress': GObject.Object.Notify;
-            'notify::remaining-time': GObject.Object.Notify;
-            'notify::status': GObject.Object.Notify;
+            'ignore-next-update': (arg0: string[]) => void;
+            paused: () => void;
+            progress: (arg0: string, arg1: number, arg2: number) => void;
+            resumed: () => void;
+            started: () => void;
+            stopped: () => void;
+            'notify::introspection-handler': (pspec: GObject.ParamSpec) => void;
+            'notify::introspection-xml': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::progress': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining-time': (pspec: GObject.ParamSpec) => void;
+            'notify::status': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1740,6 +1713,14 @@ export namespace TrackerMiner {
         set remainingTime(val: number);
         get status(): string;
         set status(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Miner.SignalSignatures;
 
         // Constructors
 
@@ -1749,13 +1730,19 @@ export namespace TrackerMiner {
 
         // Signals
 
-        connect<K extends keyof Miner.SignalSignatures>(signal: K, callback: Miner.SignalSignatures[K]): number;
+        connect<K extends keyof Miner.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Miner.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Miner.SignalSignatures>(signal: K, callback: Miner.SignalSignatures[K]): number;
+        connect_after<K extends keyof Miner.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Miner.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Miner.SignalSignatures>(
             signal: K,
-            ...args: Miner.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Miner.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2376,86 +2363,45 @@ export namespace TrackerMiner {
     }
 
     namespace MinerFS {
-        // Signal callback interfaces
-
-        interface Finished {
-            (
-                _source: MinerFS,
-                elapsed: number,
-                directories_found: number,
-                directories_ignored: number,
-                files_found: number,
-                files_ignored: number,
-            ): void;
-        }
-
-        interface FinishedRoot {
-            (_source: MinerFS, file: Gio.File): void;
-        }
-
-        interface IgnoreNextUpdateFile {
-            (
-                _source: MinerFS,
-                file: Gio.File,
-                builder: Tracker.SparqlBuilder,
-                cancellable?: Gio.Cancellable | null,
-            ): boolean | void;
-        }
-
-        interface ProcessFile {
-            (
-                _source: MinerFS,
-                file: Gio.File,
-                builder: Tracker.SparqlBuilder,
-                cancellable?: Gio.Cancellable | null,
-            ): boolean | void;
-        }
-
-        interface ProcessFileAttributes {
-            (
-                _source: MinerFS,
-                file: Gio.File,
-                builder: Tracker.SparqlBuilder,
-                cancellable?: Gio.Cancellable | null,
-            ): boolean | void;
-        }
-
-        interface RemoveFile {
-            (_source: MinerFS, file: Gio.File, children_only: boolean, builder: Tracker.SparqlBuilder): boolean | void;
-        }
-
-        interface WritebackFile {
-            (
-                _source: MinerFS,
-                file: Gio.File,
-                rdf_types: string[],
-                results: string[][],
-                cancellable?: Gio.Cancellable | null,
-            ): boolean | void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Miner.SignalSignatures {
-            finished: Finished;
-            'finished-root': FinishedRoot;
-            'ignore-next-update-file': IgnoreNextUpdateFile;
-            'process-file': ProcessFile;
-            'process-file-attributes': ProcessFileAttributes;
-            'remove-file': RemoveFile;
-            'writeback-file': WritebackFile;
-            'notify::data-provider': GObject.Object.Notify;
-            'notify::initial-crawling': GObject.Object.Notify;
-            'notify::mtime-checking': GObject.Object.Notify;
-            'notify::processing-pool-ready-limit': GObject.Object.Notify;
-            'notify::processing-pool-wait-limit': GObject.Object.Notify;
-            'notify::root': GObject.Object.Notify;
-            'notify::throttle': GObject.Object.Notify;
-            'notify::introspection-handler': GObject.Object.Notify;
-            'notify::introspection-xml': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::progress': GObject.Object.Notify;
-            'notify::remaining-time': GObject.Object.Notify;
-            'notify::status': GObject.Object.Notify;
+            finished: (arg0: number, arg1: number, arg2: number, arg3: number, arg4: number) => void;
+            'finished-root': (arg0: Gio.File) => void;
+            'ignore-next-update-file': (
+                arg0: Gio.File,
+                arg1: Tracker.SparqlBuilder,
+                arg2: Gio.Cancellable | null,
+            ) => boolean | void;
+            'process-file': (
+                arg0: Gio.File,
+                arg1: Tracker.SparqlBuilder,
+                arg2: Gio.Cancellable | null,
+            ) => boolean | void;
+            'process-file-attributes': (
+                arg0: Gio.File,
+                arg1: Tracker.SparqlBuilder,
+                arg2: Gio.Cancellable | null,
+            ) => boolean | void;
+            'remove-file': (arg0: Gio.File, arg1: boolean, arg2: Tracker.SparqlBuilder) => boolean | void;
+            'writeback-file': (
+                arg0: Gio.File,
+                arg1: string[],
+                arg2: string[][],
+                arg3: Gio.Cancellable | null,
+            ) => boolean | void;
+            'notify::data-provider': (pspec: GObject.ParamSpec) => void;
+            'notify::initial-crawling': (pspec: GObject.ParamSpec) => void;
+            'notify::mtime-checking': (pspec: GObject.ParamSpec) => void;
+            'notify::processing-pool-ready-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::processing-pool-wait-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::root': (pspec: GObject.ParamSpec) => void;
+            'notify::throttle': (pspec: GObject.ParamSpec) => void;
+            'notify::introspection-handler': (pspec: GObject.ParamSpec) => void;
+            'notify::introspection-xml': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::progress': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining-time': (pspec: GObject.ParamSpec) => void;
+            'notify::status': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2505,6 +2451,14 @@ export namespace TrackerMiner {
         get root(): Gio.File;
         get throttle(): number;
         set throttle(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MinerFS.SignalSignatures;
 
         // Constructors
 
@@ -2514,16 +2468,19 @@ export namespace TrackerMiner {
 
         // Signals
 
-        connect<K extends keyof MinerFS.SignalSignatures>(signal: K, callback: MinerFS.SignalSignatures[K]): number;
+        connect<K extends keyof MinerFS.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MinerFS.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MinerFS.SignalSignatures>(
             signal: K,
-            callback: MinerFS.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MinerFS.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MinerFS.SignalSignatures>(
             signal: K,
-            ...args: MinerFS.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MinerFS.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3315,27 +3272,17 @@ export namespace TrackerMiner {
     }
 
     namespace MinerOnline {
-        // Signal callback interfaces
-
-        interface Connected {
-            (_source: MinerOnline, type: NetworkType): boolean | void;
-        }
-
-        interface Disconnected {
-            (_source: MinerOnline): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Miner.SignalSignatures {
-            connected: Connected;
-            disconnected: Disconnected;
-            'notify::network-type': GObject.Object.Notify;
-            'notify::introspection-handler': GObject.Object.Notify;
-            'notify::introspection-xml': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::progress': GObject.Object.Notify;
-            'notify::remaining-time': GObject.Object.Notify;
-            'notify::status': GObject.Object.Notify;
+            connected: (arg0: NetworkType) => boolean | void;
+            disconnected: () => void;
+            'notify::network-type': (pspec: GObject.ParamSpec) => void;
+            'notify::introspection-handler': (pspec: GObject.ParamSpec) => void;
+            'notify::introspection-xml': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::progress': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining-time': (pspec: GObject.ParamSpec) => void;
+            'notify::status': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3356,6 +3303,14 @@ export namespace TrackerMiner {
 
         get network_type(): NetworkType;
         get networkType(): NetworkType;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MinerOnline.SignalSignatures;
 
         // Constructors
 
@@ -3367,17 +3322,17 @@ export namespace TrackerMiner {
 
         connect<K extends keyof MinerOnline.SignalSignatures>(
             signal: K,
-            callback: MinerOnline.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MinerOnline.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MinerOnline.SignalSignatures>(
             signal: K,
-            callback: MinerOnline.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MinerOnline.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MinerOnline.SignalSignatures>(
             signal: K,
-            ...args: MinerOnline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MinerOnline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

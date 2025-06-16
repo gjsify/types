@@ -27,8 +27,8 @@ export namespace GstVulkanXCB {
     namespace VulkanDisplayXCB {
         // Signal signatures
         interface SignalSignatures extends GstVulkan.VulkanDisplay.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -42,6 +42,14 @@ export namespace GstVulkanXCB {
      */
     class VulkanDisplayXCB extends GstVulkan.VulkanDisplay {
         static $gtype: GObject.GType<VulkanDisplayXCB>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanDisplayXCB.SignalSignatures;
 
         // Constructors
 
@@ -58,17 +66,17 @@ export namespace GstVulkanXCB {
 
         connect<K extends keyof VulkanDisplayXCB.SignalSignatures>(
             signal: K,
-            callback: VulkanDisplayXCB.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanDisplayXCB.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanDisplayXCB.SignalSignatures>(
             signal: K,
-            callback: VulkanDisplayXCB.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanDisplayXCB.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanDisplayXCB.SignalSignatures>(
             signal: K,
-            ...args: VulkanDisplayXCB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanDisplayXCB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

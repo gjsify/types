@@ -60,15 +60,15 @@ export namespace Gdm {
     namespace ChooserProxy {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -86,6 +86,14 @@ export namespace Gdm {
         implements Chooser, Gio.AsyncInitable<ChooserProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<ChooserProxy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ChooserProxy.SignalSignatures;
 
         // Constructors
 
@@ -97,17 +105,17 @@ export namespace Gdm {
 
         connect<K extends keyof ChooserProxy.SignalSignatures>(
             signal: K,
-            callback: ChooserProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ChooserProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ChooserProxy.SignalSignatures>(
             signal: K,
-            callback: ChooserProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ChooserProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ChooserProxy.SignalSignatures>(
             signal: K,
-            ...args: ChooserProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ChooserProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -924,7 +932,7 @@ export namespace Gdm {
     namespace ChooserSkeleton {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
-            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -937,6 +945,14 @@ export namespace Gdm {
 
     class ChooserSkeleton extends Gio.DBusInterfaceSkeleton implements Chooser, Gio.DBusInterface {
         static $gtype: GObject.GType<ChooserSkeleton>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ChooserSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -948,17 +964,17 @@ export namespace Gdm {
 
         connect<K extends keyof ChooserSkeleton.SignalSignatures>(
             signal: K,
-            callback: ChooserSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ChooserSkeleton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ChooserSkeleton.SignalSignatures>(
             signal: K,
-            callback: ChooserSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ChooserSkeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ChooserSkeleton.SignalSignatures>(
             signal: K,
-            ...args: ChooserSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ChooserSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1474,6 +1490,14 @@ export namespace Gdm {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -1485,13 +1509,19 @@ export namespace Gdm {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1717,15 +1747,15 @@ export namespace Gdm {
     namespace GreeterProxy {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1743,6 +1773,14 @@ export namespace Gdm {
         implements Greeter, Gio.AsyncInitable<GreeterProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<GreeterProxy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GreeterProxy.SignalSignatures;
 
         // Constructors
 
@@ -1754,17 +1792,17 @@ export namespace Gdm {
 
         connect<K extends keyof GreeterProxy.SignalSignatures>(
             signal: K,
-            callback: GreeterProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GreeterProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GreeterProxy.SignalSignatures>(
             signal: K,
-            callback: GreeterProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GreeterProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GreeterProxy.SignalSignatures>(
             signal: K,
-            ...args: GreeterProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GreeterProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2670,7 +2708,7 @@ export namespace Gdm {
     namespace GreeterSkeleton {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
-            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2683,6 +2721,14 @@ export namespace Gdm {
 
     class GreeterSkeleton extends Gio.DBusInterfaceSkeleton implements Greeter, Gio.DBusInterface {
         static $gtype: GObject.GType<GreeterSkeleton>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GreeterSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -2694,17 +2740,17 @@ export namespace Gdm {
 
         connect<K extends keyof GreeterSkeleton.SignalSignatures>(
             signal: K,
-            callback: GreeterSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GreeterSkeleton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GreeterSkeleton.SignalSignatures>(
             signal: K,
-            callback: GreeterSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GreeterSkeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GreeterSkeleton.SignalSignatures>(
             signal: K,
-            ...args: GreeterSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GreeterSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3301,16 +3347,16 @@ export namespace Gdm {
     namespace ManagerProxy {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3328,6 +3374,14 @@ export namespace Gdm {
         implements Manager, Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<ManagerProxy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ManagerProxy.SignalSignatures;
 
         // Constructors
 
@@ -3339,17 +3393,17 @@ export namespace Gdm {
 
         connect<K extends keyof ManagerProxy.SignalSignatures>(
             signal: K,
-            callback: ManagerProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ManagerProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ManagerProxy.SignalSignatures>(
             signal: K,
-            callback: ManagerProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ManagerProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ManagerProxy.SignalSignatures>(
             signal: K,
-            ...args: ManagerProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ManagerProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4211,8 +4265,8 @@ export namespace Gdm {
     namespace ManagerSkeleton {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4225,6 +4279,14 @@ export namespace Gdm {
 
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Manager, Gio.DBusInterface {
         static $gtype: GObject.GType<ManagerSkeleton>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ManagerSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -4236,17 +4298,17 @@ export namespace Gdm {
 
         connect<K extends keyof ManagerSkeleton.SignalSignatures>(
             signal: K,
-            callback: ManagerSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ManagerSkeleton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ManagerSkeleton.SignalSignatures>(
             signal: K,
-            callback: ManagerSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ManagerSkeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ManagerSkeleton.SignalSignatures>(
             signal: K,
-            ...args: ManagerSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ManagerSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4799,15 +4861,15 @@ export namespace Gdm {
     namespace RemoteGreeterProxy {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4825,6 +4887,14 @@ export namespace Gdm {
         implements RemoteGreeter, Gio.AsyncInitable<RemoteGreeterProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<RemoteGreeterProxy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RemoteGreeterProxy.SignalSignatures;
 
         // Constructors
 
@@ -4836,17 +4906,17 @@ export namespace Gdm {
 
         connect<K extends keyof RemoteGreeterProxy.SignalSignatures>(
             signal: K,
-            callback: RemoteGreeterProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RemoteGreeterProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RemoteGreeterProxy.SignalSignatures>(
             signal: K,
-            callback: RemoteGreeterProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RemoteGreeterProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RemoteGreeterProxy.SignalSignatures>(
             signal: K,
-            ...args: RemoteGreeterProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RemoteGreeterProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5648,7 +5718,7 @@ export namespace Gdm {
     namespace RemoteGreeterSkeleton {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
-            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5661,6 +5731,14 @@ export namespace Gdm {
 
     class RemoteGreeterSkeleton extends Gio.DBusInterfaceSkeleton implements RemoteGreeter, Gio.DBusInterface {
         static $gtype: GObject.GType<RemoteGreeterSkeleton>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RemoteGreeterSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -5672,17 +5750,19 @@ export namespace Gdm {
 
         connect<K extends keyof RemoteGreeterSkeleton.SignalSignatures>(
             signal: K,
-            callback: RemoteGreeterSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RemoteGreeterSkeleton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RemoteGreeterSkeleton.SignalSignatures>(
             signal: K,
-            callback: RemoteGreeterSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RemoteGreeterSkeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RemoteGreeterSkeleton.SignalSignatures>(
             signal: K,
-            ...args: RemoteGreeterSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RemoteGreeterSkeleton.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6175,15 +6255,15 @@ export namespace Gdm {
     namespace UserVerifierChoiceListProxy {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6205,6 +6285,14 @@ export namespace Gdm {
             Gio.Initable
     {
         static $gtype: GObject.GType<UserVerifierChoiceListProxy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UserVerifierChoiceListProxy.SignalSignatures;
 
         // Constructors
 
@@ -6216,17 +6304,19 @@ export namespace Gdm {
 
         connect<K extends keyof UserVerifierChoiceListProxy.SignalSignatures>(
             signal: K,
-            callback: UserVerifierChoiceListProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserVerifierChoiceListProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserVerifierChoiceListProxy.SignalSignatures>(
             signal: K,
-            callback: UserVerifierChoiceListProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserVerifierChoiceListProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserVerifierChoiceListProxy.SignalSignatures>(
             signal: K,
-            ...args: UserVerifierChoiceListProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UserVerifierChoiceListProxy.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7049,7 +7139,7 @@ export namespace Gdm {
     namespace UserVerifierChoiceListSkeleton {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
-            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7065,6 +7155,14 @@ export namespace Gdm {
         implements UserVerifierChoiceList, Gio.DBusInterface
     {
         static $gtype: GObject.GType<UserVerifierChoiceListSkeleton>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UserVerifierChoiceListSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -7076,17 +7174,19 @@ export namespace Gdm {
 
         connect<K extends keyof UserVerifierChoiceListSkeleton.SignalSignatures>(
             signal: K,
-            callback: UserVerifierChoiceListSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserVerifierChoiceListSkeleton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserVerifierChoiceListSkeleton.SignalSignatures>(
             signal: K,
-            callback: UserVerifierChoiceListSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserVerifierChoiceListSkeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserVerifierChoiceListSkeleton.SignalSignatures>(
             signal: K,
-            ...args: UserVerifierChoiceListSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UserVerifierChoiceListSkeleton.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7600,15 +7700,15 @@ export namespace Gdm {
     namespace UserVerifierProxy {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7626,6 +7726,14 @@ export namespace Gdm {
         implements UserVerifier, Gio.AsyncInitable<UserVerifierProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<UserVerifierProxy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UserVerifierProxy.SignalSignatures;
 
         // Constructors
 
@@ -7637,17 +7745,17 @@ export namespace Gdm {
 
         connect<K extends keyof UserVerifierProxy.SignalSignatures>(
             signal: K,
-            callback: UserVerifierProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserVerifierProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserVerifierProxy.SignalSignatures>(
             signal: K,
-            callback: UserVerifierProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserVerifierProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserVerifierProxy.SignalSignatures>(
             signal: K,
-            ...args: UserVerifierProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UserVerifierProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8559,7 +8667,7 @@ export namespace Gdm {
     namespace UserVerifierSkeleton {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
-            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8572,6 +8680,14 @@ export namespace Gdm {
 
     class UserVerifierSkeleton extends Gio.DBusInterfaceSkeleton implements UserVerifier, Gio.DBusInterface {
         static $gtype: GObject.GType<UserVerifierSkeleton>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UserVerifierSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -8583,17 +8699,19 @@ export namespace Gdm {
 
         connect<K extends keyof UserVerifierSkeleton.SignalSignatures>(
             signal: K,
-            callback: UserVerifierSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserVerifierSkeleton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserVerifierSkeleton.SignalSignatures>(
             signal: K,
-            callback: UserVerifierSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserVerifierSkeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserVerifierSkeleton.SignalSignatures>(
             signal: K,
-            ...args: UserVerifierSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UserVerifierSkeleton.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9196,15 +9314,15 @@ export namespace Gdm {
     namespace WorkerManagerProxy {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9222,6 +9340,14 @@ export namespace Gdm {
         implements WorkerManager, Gio.AsyncInitable<WorkerManagerProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<WorkerManagerProxy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WorkerManagerProxy.SignalSignatures;
 
         // Constructors
 
@@ -9233,17 +9359,17 @@ export namespace Gdm {
 
         connect<K extends keyof WorkerManagerProxy.SignalSignatures>(
             signal: K,
-            callback: WorkerManagerProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkerManagerProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkerManagerProxy.SignalSignatures>(
             signal: K,
-            callback: WorkerManagerProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkerManagerProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkerManagerProxy.SignalSignatures>(
             signal: K,
-            ...args: WorkerManagerProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WorkerManagerProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10182,7 +10308,7 @@ export namespace Gdm {
     namespace WorkerManagerSkeleton {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
-            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10195,6 +10321,14 @@ export namespace Gdm {
 
     class WorkerManagerSkeleton extends Gio.DBusInterfaceSkeleton implements WorkerManager, Gio.DBusInterface {
         static $gtype: GObject.GType<WorkerManagerSkeleton>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WorkerManagerSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -10206,17 +10340,19 @@ export namespace Gdm {
 
         connect<K extends keyof WorkerManagerSkeleton.SignalSignatures>(
             signal: K,
-            callback: WorkerManagerSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkerManagerSkeleton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkerManagerSkeleton.SignalSignatures>(
             signal: K,
-            callback: WorkerManagerSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkerManagerSkeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkerManagerSkeleton.SignalSignatures>(
             signal: K,
-            ...args: WorkerManagerSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WorkerManagerSkeleton.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -145,8 +145,8 @@ export namespace PangoFT2 {
     namespace FontMap {
         // Signal signatures
         interface SignalSignatures extends PangoFc.FontMap.SignalSignatures {
-            'notify::item-type': GObject.Object.Notify;
-            'notify::n-items': GObject.Object.Notify;
+            'notify::item-type': (pspec: GObject.ParamSpec) => void;
+            'notify::n-items': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -161,6 +161,14 @@ export namespace PangoFT2 {
      */
     class FontMap<A extends GObject.Object = GObject.Object> extends PangoFc.FontMap<A> implements Gio.ListModel<A> {
         static $gtype: GObject.GType<FontMap>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FontMap.SignalSignatures;
 
         // Constructors
 
@@ -172,16 +180,19 @@ export namespace PangoFT2 {
 
         // Signals
 
-        connect<K extends keyof FontMap.SignalSignatures>(signal: K, callback: FontMap.SignalSignatures[K]): number;
+        connect<K extends keyof FontMap.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, FontMap.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FontMap.SignalSignatures>(
             signal: K,
-            callback: FontMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FontMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FontMap.SignalSignatures>(
             signal: K,
-            ...args: FontMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FontMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

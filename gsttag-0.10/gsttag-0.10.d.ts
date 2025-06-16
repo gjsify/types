@@ -135,7 +135,7 @@ export namespace GstTag {
     namespace Demux {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -148,6 +148,14 @@ export namespace GstTag {
      */
     abstract class Demux extends Gst.Element {
         static $gtype: GObject.GType<Demux>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Demux.SignalSignatures;
 
         // Fields
 
@@ -162,13 +170,19 @@ export namespace GstTag {
 
         // Signals
 
-        connect<K extends keyof Demux.SignalSignatures>(signal: K, callback: Demux.SignalSignatures[K]): number;
+        connect<K extends keyof Demux.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Demux.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Demux.SignalSignatures>(signal: K, callback: Demux.SignalSignatures[K]): number;
+        connect_after<K extends keyof Demux.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Demux.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Demux.SignalSignatures>(
             signal: K,
-            ...args: Demux.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Demux.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

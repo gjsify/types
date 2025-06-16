@@ -479,6 +479,14 @@ export namespace Retro {
 
     class ControllerIterator extends GObject.Object {
         static $gtype: GObject.GType<ControllerIterator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ControllerIterator.SignalSignatures;
 
         // Constructors
 
@@ -490,17 +498,17 @@ export namespace Retro {
 
         connect<K extends keyof ControllerIterator.SignalSignatures>(
             signal: K,
-            callback: ControllerIterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ControllerIterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ControllerIterator.SignalSignatures>(
             signal: K,
-            callback: ControllerIterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ControllerIterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ControllerIterator.SignalSignatures>(
             signal: K,
-            ...args: ControllerIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ControllerIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -514,50 +522,24 @@ export namespace Retro {
     }
 
     namespace Core {
-        // Signal callback interfaces
-
-        interface AudioOutput {
-            (_source: Core, data: Uint8Array | string, sample_rate: number): void;
-        }
-
-        interface Log {
-            (_source: Core, log_domain: string, log_level: GLib.LogLevelFlags, message: string): void;
-        }
-
-        interface Message {
-            (_source: Core, message: string, frames: number): boolean | void;
-        }
-
-        interface OptionsSet {
-            (_source: Core): void;
-        }
-
-        interface Shutdown {
-            (_source: Core): boolean | void;
-        }
-
-        interface VideoOutput {
-            (_source: Core, pixdata: Pixdata): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'audio-output': AudioOutput;
-            log: Log;
-            message: Message;
-            'options-set': OptionsSet;
-            shutdown: Shutdown;
-            'video-output': VideoOutput;
-            'notify::api-version': GObject.Object.Notify;
-            'notify::content-directory': GObject.Object.Notify;
-            'notify::filename': GObject.Object.Notify;
-            'notify::frames-per-second': GObject.Object.Notify;
-            'notify::game-loaded': GObject.Object.Notify;
-            'notify::is-initiated': GObject.Object.Notify;
-            'notify::runahead': GObject.Object.Notify;
-            'notify::save-directory': GObject.Object.Notify;
-            'notify::support-no-game': GObject.Object.Notify;
-            'notify::system-directory': GObject.Object.Notify;
+            'audio-output': (arg0: Uint8Array, arg1: number) => void;
+            log: (arg0: string, arg1: GLib.LogLevelFlags, arg2: string) => void;
+            message: (arg0: string, arg1: number) => boolean | void;
+            'options-set': () => void;
+            shutdown: () => boolean | void;
+            'video-output': (arg0: Pixdata) => void;
+            'notify::api-version': (pspec: GObject.ParamSpec) => void;
+            'notify::content-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::filename': (pspec: GObject.ParamSpec) => void;
+            'notify::frames-per-second': (pspec: GObject.ParamSpec) => void;
+            'notify::game-loaded': (pspec: GObject.ParamSpec) => void;
+            'notify::is-initiated': (pspec: GObject.ParamSpec) => void;
+            'notify::runahead': (pspec: GObject.ParamSpec) => void;
+            'notify::save-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::support-no-game': (pspec: GObject.ParamSpec) => void;
+            'notify::system-directory': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -672,6 +654,14 @@ export namespace Retro {
          */
         get systemDirectory(): string;
         set systemDirectory(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Core.SignalSignatures;
 
         // Constructors
 
@@ -683,13 +673,19 @@ export namespace Retro {
 
         // Signals
 
-        connect<K extends keyof Core.SignalSignatures>(signal: K, callback: Core.SignalSignatures[K]): number;
+        connect<K extends keyof Core.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Core.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Core.SignalSignatures>(signal: K, callback: Core.SignalSignatures[K]): number;
+        connect_after<K extends keyof Core.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Core.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Core.SignalSignatures>(
             signal: K,
-            ...args: Core.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Core.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -875,6 +871,14 @@ export namespace Retro {
 
     class CoreDescriptor extends GObject.Object {
         static $gtype: GObject.GType<CoreDescriptor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CoreDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -888,17 +892,17 @@ export namespace Retro {
 
         connect<K extends keyof CoreDescriptor.SignalSignatures>(
             signal: K,
-            callback: CoreDescriptor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CoreDescriptor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CoreDescriptor.SignalSignatures>(
             signal: K,
-            callback: CoreDescriptor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CoreDescriptor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CoreDescriptor.SignalSignatures>(
             signal: K,
-            ...args: CoreDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CoreDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1021,52 +1025,52 @@ export namespace Retro {
     namespace CoreView {
         // Signal signatures
         interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
-            'notify::can-grab-pointer': GObject.Object.Notify;
-            'notify::snap-pointer-to-borders': GObject.Object.Notify;
-            'notify::above-child': GObject.Object.Notify;
-            'notify::visible-window': GObject.Object.Notify;
-            'notify::border-width': GObject.Object.Notify;
-            'notify::child': GObject.Object.Notify;
-            'notify::resize-mode': GObject.Object.Notify;
-            'notify::app-paintable': GObject.Object.Notify;
-            'notify::can-default': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::composite-child': GObject.Object.Notify;
-            'notify::double-buffered': GObject.Object.Notify;
-            'notify::events': GObject.Object.Notify;
-            'notify::expand': GObject.Object.Notify;
-            'notify::focus-on-click': GObject.Object.Notify;
-            'notify::halign': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
-            'notify::hexpand': GObject.Object.Notify;
-            'notify::hexpand-set': GObject.Object.Notify;
-            'notify::is-focus': GObject.Object.Notify;
-            'notify::margin': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-end': GObject.Object.Notify;
-            'notify::margin-left': GObject.Object.Notify;
-            'notify::margin-right': GObject.Object.Notify;
-            'notify::margin-start': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::no-show-all': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
-            'notify::valign': GObject.Object.Notify;
-            'notify::vexpand': GObject.Object.Notify;
-            'notify::vexpand-set': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
-            'notify::window': GObject.Object.Notify;
+            'notify::can-grab-pointer': (pspec: GObject.ParamSpec) => void;
+            'notify::snap-pointer-to-borders': (pspec: GObject.ParamSpec) => void;
+            'notify::above-child': (pspec: GObject.ParamSpec) => void;
+            'notify::visible-window': (pspec: GObject.ParamSpec) => void;
+            'notify::border-width': (pspec: GObject.ParamSpec) => void;
+            'notify::child': (pspec: GObject.ParamSpec) => void;
+            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
+            'notify::can-default': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
+            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
+            'notify::events': (pspec: GObject.ParamSpec) => void;
+            'notify::expand': (pspec: GObject.ParamSpec) => void;
+            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
+            'notify::halign': (pspec: GObject.ParamSpec) => void;
+            'notify::has-default': (pspec: GObject.ParamSpec) => void;
+            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::height-request': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::margin': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
+            'notify::valign': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1095,6 +1099,14 @@ export namespace Retro {
         set snap_pointer_to_borders(val: boolean);
         get snapPointerToBorders(): boolean;
         set snapPointerToBorders(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CoreView.SignalSignatures;
 
         // Constructors
 
@@ -1106,16 +1118,19 @@ export namespace Retro {
 
         // Signals
 
-        connect<K extends keyof CoreView.SignalSignatures>(signal: K, callback: CoreView.SignalSignatures[K]): number;
+        connect<K extends keyof CoreView.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, CoreView.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CoreView.SignalSignatures>(
             signal: K,
-            callback: CoreView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CoreView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CoreView.SignalSignatures>(
             signal: K,
-            ...args: CoreView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CoreView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1667,6 +1682,14 @@ export namespace Retro {
 
     class KeyJoypadMapping extends GObject.Object {
         static $gtype: GObject.GType<KeyJoypadMapping>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: KeyJoypadMapping.SignalSignatures;
 
         // Constructors
 
@@ -1682,17 +1705,17 @@ export namespace Retro {
 
         connect<K extends keyof KeyJoypadMapping.SignalSignatures>(
             signal: K,
-            callback: KeyJoypadMapping.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, KeyJoypadMapping.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyJoypadMapping.SignalSignatures>(
             signal: K,
-            callback: KeyJoypadMapping.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, KeyJoypadMapping.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyJoypadMapping.SignalSignatures>(
             signal: K,
-            ...args: KeyJoypadMapping.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<KeyJoypadMapping.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1715,8 +1738,8 @@ export namespace Retro {
     namespace MainLoop {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::core': GObject.Object.Notify;
-            'notify::speed-rate': GObject.Object.Notify;
+            'notify::core': (pspec: GObject.ParamSpec) => void;
+            'notify::speed-rate': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1739,6 +1762,14 @@ export namespace Retro {
         set speed_rate(val: number);
         get speedRate(): number;
         set speedRate(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MainLoop.SignalSignatures;
 
         // Constructors
 
@@ -1750,16 +1781,19 @@ export namespace Retro {
 
         // Signals
 
-        connect<K extends keyof MainLoop.SignalSignatures>(signal: K, callback: MainLoop.SignalSignatures[K]): number;
+        connect<K extends keyof MainLoop.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MainLoop.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MainLoop.SignalSignatures>(
             signal: K,
-            callback: MainLoop.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MainLoop.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MainLoop.SignalSignatures>(
             signal: K,
-            ...args: MainLoop.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MainLoop.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1810,6 +1844,14 @@ export namespace Retro {
 
     class ModuleIterator extends GObject.Object {
         static $gtype: GObject.GType<ModuleIterator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ModuleIterator.SignalSignatures;
 
         // Constructors
 
@@ -1823,17 +1865,17 @@ export namespace Retro {
 
         connect<K extends keyof ModuleIterator.SignalSignatures>(
             signal: K,
-            callback: ModuleIterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ModuleIterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ModuleIterator.SignalSignatures>(
             signal: K,
-            callback: ModuleIterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ModuleIterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ModuleIterator.SignalSignatures>(
             signal: K,
-            ...args: ModuleIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ModuleIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1863,6 +1905,14 @@ export namespace Retro {
 
     class ModuleQuery extends GObject.Object {
         static $gtype: GObject.GType<ModuleQuery>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ModuleQuery.SignalSignatures;
 
         // Constructors
 
@@ -1876,17 +1926,17 @@ export namespace Retro {
 
         connect<K extends keyof ModuleQuery.SignalSignatures>(
             signal: K,
-            callback: ModuleQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ModuleQuery.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ModuleQuery.SignalSignatures>(
             signal: K,
-            callback: ModuleQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ModuleQuery.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ModuleQuery.SignalSignatures>(
             signal: K,
-            ...args: ModuleQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ModuleQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1900,15 +1950,9 @@ export namespace Retro {
     }
 
     namespace Option {
-        // Signal callback interfaces
-
-        interface ValueChanged {
-            (_source: Option): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'value-changed': ValueChanged;
+            'value-changed': () => void;
         }
 
         // Constructor properties interface
@@ -1918,6 +1962,14 @@ export namespace Retro {
 
     class Option extends GObject.Object {
         static $gtype: GObject.GType<Option>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Option.SignalSignatures;
 
         // Constructors
 
@@ -1927,13 +1979,19 @@ export namespace Retro {
 
         // Signals
 
-        connect<K extends keyof Option.SignalSignatures>(signal: K, callback: Option.SignalSignatures[K]): number;
+        connect<K extends keyof Option.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Option.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Option.SignalSignatures>(signal: K, callback: Option.SignalSignatures[K]): number;
+        connect_after<K extends keyof Option.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Option.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Option.SignalSignatures>(
             signal: K,
-            ...args: Option.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Option.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1978,6 +2036,14 @@ export namespace Retro {
 
     class OptionIterator extends GObject.Object {
         static $gtype: GObject.GType<OptionIterator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OptionIterator.SignalSignatures;
 
         // Constructors
 
@@ -1989,17 +2055,17 @@ export namespace Retro {
 
         connect<K extends keyof OptionIterator.SignalSignatures>(
             signal: K,
-            callback: OptionIterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OptionIterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OptionIterator.SignalSignatures>(
             signal: K,
-            callback: OptionIterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OptionIterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OptionIterator.SignalSignatures>(
             signal: K,
-            ...args: OptionIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OptionIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

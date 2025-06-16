@@ -83,10 +83,10 @@ export namespace GstBadAudio {
     namespace NonstreamAudioDecoder {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
-            'notify::current-subsong': GObject.Object.Notify;
-            'notify::num-loops': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::current-subsong': (pspec: GObject.ParamSpec) => void;
+            'notify::num-loops': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -244,6 +244,14 @@ export namespace GstBadAudio {
         set num_loops(val: number);
         get numLoops(): number;
         set numLoops(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NonstreamAudioDecoder.SignalSignatures;
 
         // Fields
 
@@ -270,17 +278,19 @@ export namespace GstBadAudio {
 
         connect<K extends keyof NonstreamAudioDecoder.SignalSignatures>(
             signal: K,
-            callback: NonstreamAudioDecoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NonstreamAudioDecoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NonstreamAudioDecoder.SignalSignatures>(
             signal: K,
-            callback: NonstreamAudioDecoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NonstreamAudioDecoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NonstreamAudioDecoder.SignalSignatures>(
             signal: K,
-            ...args: NonstreamAudioDecoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NonstreamAudioDecoder.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -433,6 +443,14 @@ export namespace GstBadAudio {
      */
     class PlanarAudioAdapter extends GObject.Object {
         static $gtype: GObject.GType<PlanarAudioAdapter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PlanarAudioAdapter.SignalSignatures;
 
         // Constructors
 
@@ -446,17 +464,17 @@ export namespace GstBadAudio {
 
         connect<K extends keyof PlanarAudioAdapter.SignalSignatures>(
             signal: K,
-            callback: PlanarAudioAdapter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlanarAudioAdapter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlanarAudioAdapter.SignalSignatures>(
             signal: K,
-            callback: PlanarAudioAdapter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlanarAudioAdapter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlanarAudioAdapter.SignalSignatures>(
             signal: K,
-            ...args: PlanarAudioAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PlanarAudioAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

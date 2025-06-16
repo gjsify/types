@@ -223,27 +223,17 @@ export namespace GnomeBluetooth {
         SPEAKERS,
     }
     namespace Client {
-        // Signal callback interfaces
-
-        interface DeviceAdded {
-            (_source: Client, device: GObject.Object): void;
-        }
-
-        interface DeviceRemoved {
-            (_source: Client, device: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'device-added': DeviceAdded;
-            'device-removed': DeviceRemoved;
-            'notify::default-adapter': GObject.Object.Notify;
-            'notify::default-adapter-address': GObject.Object.Notify;
-            'notify::default-adapter-name': GObject.Object.Notify;
-            'notify::default-adapter-powered': GObject.Object.Notify;
-            'notify::default-adapter-setup-mode': GObject.Object.Notify;
-            'notify::default-adapter-state': GObject.Object.Notify;
-            'notify::num-adapters': GObject.Object.Notify;
+            'device-added': (arg0: GObject.Object) => void;
+            'device-removed': (arg0: string) => void;
+            'notify::default-adapter': (pspec: GObject.ParamSpec) => void;
+            'notify::default-adapter-address': (pspec: GObject.ParamSpec) => void;
+            'notify::default-adapter-name': (pspec: GObject.ParamSpec) => void;
+            'notify::default-adapter-powered': (pspec: GObject.ParamSpec) => void;
+            'notify::default-adapter-setup-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::default-adapter-state': (pspec: GObject.ParamSpec) => void;
+            'notify::num-adapters': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -333,6 +323,14 @@ export namespace GnomeBluetooth {
          * The number of detected Bluetooth adapters.
          */
         get numAdapters(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -344,13 +342,19 @@ export namespace GnomeBluetooth {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -443,21 +447,21 @@ export namespace GnomeBluetooth {
     namespace Device {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::address': GObject.Object.Notify;
-            'notify::alias': GObject.Object.Notify;
-            'notify::battery-level': GObject.Object.Notify;
-            'notify::battery-percentage': GObject.Object.Notify;
-            'notify::battery-type': GObject.Object.Notify;
-            'notify::connectable': GObject.Object.Notify;
-            'notify::connected': GObject.Object.Notify;
-            'notify::icon': GObject.Object.Notify;
-            'notify::legacy-pairing': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::paired': GObject.Object.Notify;
-            'notify::proxy': GObject.Object.Notify;
-            'notify::trusted': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::uuids': GObject.Object.Notify;
+            'notify::address': (pspec: GObject.ParamSpec) => void;
+            'notify::alias': (pspec: GObject.ParamSpec) => void;
+            'notify::battery-level': (pspec: GObject.ParamSpec) => void;
+            'notify::battery-percentage': (pspec: GObject.ParamSpec) => void;
+            'notify::battery-type': (pspec: GObject.ParamSpec) => void;
+            'notify::connectable': (pspec: GObject.ParamSpec) => void;
+            'notify::connected': (pspec: GObject.ParamSpec) => void;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::legacy-pairing': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::paired': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::trusted': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::uuids': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -527,6 +531,14 @@ export namespace GnomeBluetooth {
         set type(val: Type);
         get uuids(): string[];
         set uuids(val: string[]);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -536,13 +548,19 @@ export namespace GnomeBluetooth {
 
         // Signals
 
-        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
-            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -80,29 +80,23 @@ export namespace GSSDP {
     const ALL_RESOURCES: string;
     function error_quark(): GLib.Quark;
     namespace Client {
-        // Signal callback interfaces
-
-        interface MessageReceived {
-            (_source: Client, from_ip: string, from_port: number, type: number, headers: Soup.MessageHeaders): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'message-received': MessageReceived;
-            'notify::active': GObject.Object.Notify;
-            'notify::address': GObject.Object.Notify;
-            'notify::address-family': GObject.Object.Notify;
-            'notify::boot-id': GObject.Object.Notify;
-            'notify::config-id': GObject.Object.Notify;
-            'notify::host-ip': GObject.Object.Notify;
-            'notify::host-mask': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::msearch-port': GObject.Object.Notify;
-            'notify::network': GObject.Object.Notify;
-            'notify::port': GObject.Object.Notify;
-            'notify::server-id': GObject.Object.Notify;
-            'notify::socket-ttl': GObject.Object.Notify;
-            'notify::uda-version': GObject.Object.Notify;
+            'message-received': (arg0: string, arg1: number, arg2: number, arg3: Soup.MessageHeaders) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::address': (pspec: GObject.ParamSpec) => void;
+            'notify::address-family': (pspec: GObject.ParamSpec) => void;
+            'notify::boot-id': (pspec: GObject.ParamSpec) => void;
+            'notify::config-id': (pspec: GObject.ParamSpec) => void;
+            'notify::host-ip': (pspec: GObject.ParamSpec) => void;
+            'notify::host-mask': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::msearch-port': (pspec: GObject.ParamSpec) => void;
+            'notify::network': (pspec: GObject.ParamSpec) => void;
+            'notify::port': (pspec: GObject.ParamSpec) => void;
+            'notify::server-id': (pspec: GObject.ParamSpec) => void;
+            'notify::socket-ttl': (pspec: GObject.ParamSpec) => void;
+            'notify::uda-version': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -285,6 +279,14 @@ export namespace GSSDP {
          * The UPnP version the client adheres to.
          */
         get udaVersion(): UDAVersion;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -307,13 +309,19 @@ export namespace GSSDP {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -953,29 +961,15 @@ export namespace GSSDP {
     }
 
     namespace ResourceBrowser {
-        // Signal callback interfaces
-
-        interface ResourceAvailable {
-            (_source: ResourceBrowser, usn: string, locations: string[]): void;
-        }
-
-        interface ResourceUnavailable {
-            (_source: ResourceBrowser, usn: string): void;
-        }
-
-        interface ResourceUpdate {
-            (_source: ResourceBrowser, usn: string, boot_id: number, next_boot_id: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'resource-available': ResourceAvailable;
-            'resource-unavailable': ResourceUnavailable;
-            'resource-update': ResourceUpdate;
-            'notify::active': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
-            'notify::mx': GObject.Object.Notify;
-            'notify::target': GObject.Object.Notify;
+            'resource-available': (arg0: string, arg1: string[]) => void;
+            'resource-unavailable': (arg0: string) => void;
+            'resource-update': (arg0: string, arg1: number, arg2: number) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::mx': (pspec: GObject.ParamSpec) => void;
+            'notify::target': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1026,6 +1020,14 @@ export namespace GSSDP {
          */
         get target(): string;
         set target(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ResourceBrowser.SignalSignatures;
 
         // Constructors
 
@@ -1039,17 +1041,17 @@ export namespace GSSDP {
 
         connect<K extends keyof ResourceBrowser.SignalSignatures>(
             signal: K,
-            callback: ResourceBrowser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ResourceBrowser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResourceBrowser.SignalSignatures>(
             signal: K,
-            callback: ResourceBrowser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ResourceBrowser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResourceBrowser.SignalSignatures>(
             signal: K,
-            ...args: ResourceBrowser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ResourceBrowser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1106,10 +1108,10 @@ export namespace GSSDP {
     namespace ResourceGroup {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::available': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
-            'notify::max-age': GObject.Object.Notify;
-            'notify::message-delay': GObject.Object.Notify;
+            'notify::available': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::max-age': (pspec: GObject.ParamSpec) => void;
+            'notify::message-delay': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1167,6 +1169,14 @@ export namespace GSSDP {
          */
         get messageDelay(): number;
         set messageDelay(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ResourceGroup.SignalSignatures;
 
         // Constructors
 
@@ -1180,17 +1190,17 @@ export namespace GSSDP {
 
         connect<K extends keyof ResourceGroup.SignalSignatures>(
             signal: K,
-            callback: ResourceGroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ResourceGroup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResourceGroup.SignalSignatures>(
             signal: K,
-            callback: ResourceGroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ResourceGroup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResourceGroup.SignalSignatures>(
             signal: K,
-            ...args: ResourceGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ResourceGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

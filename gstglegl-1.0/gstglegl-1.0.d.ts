@@ -154,8 +154,8 @@ export namespace GstGLEGL {
     namespace GLDisplayEGL {
         // Signal signatures
         interface SignalSignatures extends GstGL.GLDisplay.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -169,6 +169,14 @@ export namespace GstGLEGL {
      */
     class GLDisplayEGL extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayEGL>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLDisplayEGL.SignalSignatures;
 
         // Constructors
 
@@ -184,17 +192,17 @@ export namespace GstGLEGL {
 
         connect<K extends keyof GLDisplayEGL.SignalSignatures>(
             signal: K,
-            callback: GLDisplayEGL.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLDisplayEGL.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLDisplayEGL.SignalSignatures>(
             signal: K,
-            callback: GLDisplayEGL.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLDisplayEGL.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLDisplayEGL.SignalSignatures>(
             signal: K,
-            ...args: GLDisplayEGL.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLDisplayEGL.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -221,8 +229,8 @@ export namespace GstGLEGL {
     namespace GLDisplayEGLDevice {
         // Signal signatures
         interface SignalSignatures extends GstGL.GLDisplay.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -236,6 +244,14 @@ export namespace GstGLEGL {
      */
     class GLDisplayEGLDevice extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayEGLDevice>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLDisplayEGLDevice.SignalSignatures;
 
         // Fields
 
@@ -258,17 +274,17 @@ export namespace GstGLEGL {
 
         connect<K extends keyof GLDisplayEGLDevice.SignalSignatures>(
             signal: K,
-            callback: GLDisplayEGLDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLDisplayEGLDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLDisplayEGLDevice.SignalSignatures>(
             signal: K,
-            callback: GLDisplayEGLDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLDisplayEGLDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLDisplayEGLDevice.SignalSignatures>(
             signal: K,
-            ...args: GLDisplayEGLDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLDisplayEGLDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -276,8 +292,8 @@ export namespace GstGLEGL {
     namespace GLMemoryEGLAllocator {
         // Signal signatures
         interface SignalSignatures extends GstGL.GLMemoryAllocator.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -290,6 +306,14 @@ export namespace GstGLEGL {
      */
     class GLMemoryEGLAllocator extends GstGL.GLMemoryAllocator {
         static $gtype: GObject.GType<GLMemoryEGLAllocator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLMemoryEGLAllocator.SignalSignatures;
 
         // Constructors
 
@@ -301,17 +325,19 @@ export namespace GstGLEGL {
 
         connect<K extends keyof GLMemoryEGLAllocator.SignalSignatures>(
             signal: K,
-            callback: GLMemoryEGLAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLMemoryEGLAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLMemoryEGLAllocator.SignalSignatures>(
             signal: K,
-            callback: GLMemoryEGLAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLMemoryEGLAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLMemoryEGLAllocator.SignalSignatures>(
             signal: K,
-            ...args: GLMemoryEGLAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLMemoryEGLAllocator.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

@@ -586,7 +586,7 @@ export namespace GioUnix {
     namespace DesktopAppInfo {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::filename': GObject.Object.Notify;
+            'notify::filename': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -613,6 +613,14 @@ export namespace GioUnix {
          * The origin filename of this [class`Gio`.DesktopAppInfo]
          */
         get filename(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DesktopAppInfo.SignalSignatures;
 
         // Constructors
 
@@ -630,17 +638,17 @@ export namespace GioUnix {
 
         connect<K extends keyof DesktopAppInfo.SignalSignatures>(
             signal: K,
-            callback: DesktopAppInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DesktopAppInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DesktopAppInfo.SignalSignatures>(
             signal: K,
-            callback: DesktopAppInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DesktopAppInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DesktopAppInfo.SignalSignatures>(
             signal: K,
-            ...args: DesktopAppInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DesktopAppInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1785,7 +1793,7 @@ export namespace GioUnix {
     namespace FDMessage {
         // Signal signatures
         interface SignalSignatures extends Gio.SocketControlMessage.SignalSignatures {
-            'notify::fd-list': GObject.Object.Notify;
+            'notify::fd-list': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1824,6 +1832,14 @@ export namespace GioUnix {
          * The [class`Gio`.UnixFDList] object to send with the message.
          */
         get fdList(): Gio.UnixFDList;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FDMessage.SignalSignatures;
 
         // Constructors
 
@@ -1837,16 +1853,19 @@ export namespace GioUnix {
 
         // Signals
 
-        connect<K extends keyof FDMessage.SignalSignatures>(signal: K, callback: FDMessage.SignalSignatures[K]): number;
+        connect<K extends keyof FDMessage.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, FDMessage.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FDMessage.SignalSignatures>(
             signal: K,
-            callback: FDMessage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FDMessage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FDMessage.SignalSignatures>(
             signal: K,
-            ...args: FDMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FDMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1898,8 +1917,8 @@ export namespace GioUnix {
     namespace InputStream {
         // Signal signatures
         interface SignalSignatures extends Gio.InputStream.SignalSignatures {
-            'notify::close-fd': GObject.Object.Notify;
-            'notify::fd': GObject.Object.Notify;
+            'notify::close-fd': (pspec: GObject.ParamSpec) => void;
+            'notify::fd': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1944,6 +1963,14 @@ export namespace GioUnix {
          * The file descriptor that the stream reads from.
          */
         get fd(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InputStream.SignalSignatures;
 
         // Constructors
 
@@ -1957,17 +1984,17 @@ export namespace GioUnix {
 
         connect<K extends keyof InputStream.SignalSignatures>(
             signal: K,
-            callback: InputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputStream.SignalSignatures>(
             signal: K,
-            callback: InputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputStream.SignalSignatures>(
             signal: K,
-            ...args: InputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3303,20 +3330,10 @@ export namespace GioUnix {
     }
 
     namespace MountMonitor {
-        // Signal callback interfaces
-
-        interface MountpointsChanged {
-            (_source: MountMonitor): void;
-        }
-
-        interface MountsChanged {
-            (_source: MountMonitor): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'mountpoints-changed': MountpointsChanged;
-            'mounts-changed': MountsChanged;
+            'mountpoints-changed': () => void;
+            'mounts-changed': () => void;
         }
 
         // Constructor properties interface
@@ -3336,6 +3353,14 @@ export namespace GioUnix {
      */
     class MountMonitor extends GObject.Object {
         static $gtype: GObject.GType<MountMonitor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MountMonitor.SignalSignatures;
 
         // Constructors
 
@@ -3349,17 +3374,17 @@ export namespace GioUnix {
 
         connect<K extends keyof MountMonitor.SignalSignatures>(
             signal: K,
-            callback: MountMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MountMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MountMonitor.SignalSignatures>(
             signal: K,
-            callback: MountMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MountMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MountMonitor.SignalSignatures>(
             signal: K,
-            ...args: MountMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MountMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3394,8 +3419,8 @@ export namespace GioUnix {
     namespace OutputStream {
         // Signal signatures
         interface SignalSignatures extends Gio.OutputStream.SignalSignatures {
-            'notify::close-fd': GObject.Object.Notify;
-            'notify::fd': GObject.Object.Notify;
+            'notify::close-fd': (pspec: GObject.ParamSpec) => void;
+            'notify::fd': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3440,6 +3465,14 @@ export namespace GioUnix {
          * The file descriptor that the stream writes to.
          */
         get fd(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OutputStream.SignalSignatures;
 
         // Constructors
 
@@ -3453,17 +3486,17 @@ export namespace GioUnix {
 
         connect<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
-            callback: OutputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
-            callback: OutputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
-            ...args: OutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OutputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

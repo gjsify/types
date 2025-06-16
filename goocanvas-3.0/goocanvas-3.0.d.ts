@@ -549,79 +549,73 @@ export namespace GooCanvas {
         ALL,
     }
     namespace Canvas {
-        // Signal callback interfaces
-
-        interface ItemCreated {
-            (_source: Canvas, item: CanvasItem, model: CanvasItemModel): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gtk.Container.SignalSignatures {
-            'item-created': ItemCreated;
-            'notify::anchor': GObject.Object.Notify;
-            'notify::automatic-bounds': GObject.Object.Notify;
-            'notify::background-color': GObject.Object.Notify;
-            'notify::background-color-gdk-rgba': GObject.Object.Notify;
-            'notify::background-color-rgb': GObject.Object.Notify;
-            'notify::bounds-from-origin': GObject.Object.Notify;
-            'notify::bounds-padding': GObject.Object.Notify;
-            'notify::clear-background': GObject.Object.Notify;
-            'notify::integer-layout': GObject.Object.Notify;
-            'notify::redraw-when-scrolled': GObject.Object.Notify;
-            'notify::resolution-x': GObject.Object.Notify;
-            'notify::resolution-y': GObject.Object.Notify;
-            'notify::scale': GObject.Object.Notify;
-            'notify::scale-x': GObject.Object.Notify;
-            'notify::scale-y': GObject.Object.Notify;
-            'notify::units': GObject.Object.Notify;
-            'notify::x1': GObject.Object.Notify;
-            'notify::x2': GObject.Object.Notify;
-            'notify::y1': GObject.Object.Notify;
-            'notify::y2': GObject.Object.Notify;
-            'notify::border-width': GObject.Object.Notify;
-            'notify::child': GObject.Object.Notify;
-            'notify::resize-mode': GObject.Object.Notify;
-            'notify::app-paintable': GObject.Object.Notify;
-            'notify::can-default': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::composite-child': GObject.Object.Notify;
-            'notify::double-buffered': GObject.Object.Notify;
-            'notify::events': GObject.Object.Notify;
-            'notify::expand': GObject.Object.Notify;
-            'notify::focus-on-click': GObject.Object.Notify;
-            'notify::halign': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
-            'notify::hexpand': GObject.Object.Notify;
-            'notify::hexpand-set': GObject.Object.Notify;
-            'notify::is-focus': GObject.Object.Notify;
-            'notify::margin': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-end': GObject.Object.Notify;
-            'notify::margin-left': GObject.Object.Notify;
-            'notify::margin-right': GObject.Object.Notify;
-            'notify::margin-start': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::no-show-all': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
-            'notify::valign': GObject.Object.Notify;
-            'notify::vexpand': GObject.Object.Notify;
-            'notify::vexpand-set': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
-            'notify::window': GObject.Object.Notify;
-            'notify::hscroll-policy': GObject.Object.Notify;
-            'notify::vscroll-policy': GObject.Object.Notify;
+            'item-created': (arg0: CanvasItem, arg1: CanvasItemModel) => void;
+            'notify::anchor': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-bounds': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color-rgb': (pspec: GObject.ParamSpec) => void;
+            'notify::bounds-from-origin': (pspec: GObject.ParamSpec) => void;
+            'notify::bounds-padding': (pspec: GObject.ParamSpec) => void;
+            'notify::clear-background': (pspec: GObject.ParamSpec) => void;
+            'notify::integer-layout': (pspec: GObject.ParamSpec) => void;
+            'notify::redraw-when-scrolled': (pspec: GObject.ParamSpec) => void;
+            'notify::resolution-x': (pspec: GObject.ParamSpec) => void;
+            'notify::resolution-y': (pspec: GObject.ParamSpec) => void;
+            'notify::scale': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
+            'notify::units': (pspec: GObject.ParamSpec) => void;
+            'notify::x1': (pspec: GObject.ParamSpec) => void;
+            'notify::x2': (pspec: GObject.ParamSpec) => void;
+            'notify::y1': (pspec: GObject.ParamSpec) => void;
+            'notify::y2': (pspec: GObject.ParamSpec) => void;
+            'notify::border-width': (pspec: GObject.ParamSpec) => void;
+            'notify::child': (pspec: GObject.ParamSpec) => void;
+            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
+            'notify::can-default': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
+            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
+            'notify::events': (pspec: GObject.ParamSpec) => void;
+            'notify::expand': (pspec: GObject.ParamSpec) => void;
+            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
+            'notify::halign': (pspec: GObject.ParamSpec) => void;
+            'notify::has-default': (pspec: GObject.ParamSpec) => void;
+            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::height-request': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::margin': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
+            'notify::valign': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
+            'notify::hscroll-policy': (pspec: GObject.ParamSpec) => void;
+            'notify::vscroll-policy': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -828,6 +822,14 @@ export namespace GooCanvas {
         set y1(val: number);
         get y2(): number;
         set y2(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Canvas.SignalSignatures;
 
         // Fields
 
@@ -868,13 +870,19 @@ export namespace GooCanvas {
 
         // Signals
 
-        connect<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
+        connect<K extends keyof Canvas.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Canvas.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
+        connect_after<K extends keyof Canvas.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Canvas.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Canvas.SignalSignatures>(
             signal: K,
-            ...args: Canvas.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Canvas.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1880,6 +1888,14 @@ export namespace GooCanvas {
 
     class CanvasAccessibleFactory extends Atk.ObjectFactory {
         static $gtype: GObject.GType<CanvasAccessibleFactory>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasAccessibleFactory.SignalSignatures;
 
         // Constructors
 
@@ -1891,17 +1907,19 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasAccessibleFactory.SignalSignatures>(
             signal: K,
-            callback: CanvasAccessibleFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasAccessibleFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasAccessibleFactory.SignalSignatures>(
             signal: K,
-            callback: CanvasAccessibleFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasAccessibleFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasAccessibleFactory.SignalSignatures>(
             signal: K,
-            ...args: CanvasAccessibleFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasAccessibleFactory.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1909,46 +1927,46 @@ export namespace GooCanvas {
     namespace CanvasEllipse {
         // Signal signatures
         interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
-            'notify::center-x': GObject.Object.Notify;
-            'notify::center-y': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::radius-x': GObject.Object.Notify;
-            'notify::radius-y': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::center-x': (pspec: GObject.ParamSpec) => void;
+            'notify::center-y': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-x': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-y': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2017,6 +2035,14 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasEllipse.SignalSignatures;
 
         // Fields
 
@@ -2033,17 +2059,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasEllipse.SignalSignatures>(
             signal: K,
-            callback: CanvasEllipse.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasEllipse.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasEllipse.SignalSignatures>(
             signal: K,
-            callback: CanvasEllipse.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasEllipse.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasEllipse.SignalSignatures>(
             signal: K,
-            ...args: CanvasEllipse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasEllipse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3157,46 +3183,46 @@ export namespace GooCanvas {
     namespace CanvasEllipseModel {
         // Signal signatures
         interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
-            'notify::center-x': GObject.Object.Notify;
-            'notify::center-y': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::radius-x': GObject.Object.Notify;
-            'notify::radius-y': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::center-x': (pspec: GObject.ParamSpec) => void;
+            'notify::center-y': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-x': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-y': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3269,6 +3295,14 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasEllipseModel.SignalSignatures;
 
         // Fields
 
@@ -3285,17 +3319,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasEllipseModel.SignalSignatures>(
             signal: K,
-            callback: CanvasEllipseModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasEllipseModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasEllipseModel.SignalSignatures>(
             signal: K,
-            callback: CanvasEllipseModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasEllipseModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasEllipseModel.SignalSignatures>(
             signal: K,
-            ...args: CanvasEllipseModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasEllipseModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4045,67 +4079,67 @@ export namespace GooCanvas {
     namespace CanvasGrid {
         // Signal signatures
         interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
-            'notify::border-color': GObject.Object.Notify;
-            'notify::border-color-gdk-rgba': GObject.Object.Notify;
-            'notify::border-color-rgba': GObject.Object.Notify;
-            'notify::border-pattern': GObject.Object.Notify;
-            'notify::border-pixbuf': GObject.Object.Notify;
-            'notify::border-width': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::horz-grid-line-color': GObject.Object.Notify;
-            'notify::horz-grid-line-color-gdk-rgba': GObject.Object.Notify;
-            'notify::horz-grid-line-color-rgba': GObject.Object.Notify;
-            'notify::horz-grid-line-pattern': GObject.Object.Notify;
-            'notify::horz-grid-line-pixbuf': GObject.Object.Notify;
-            'notify::horz-grid-line-width': GObject.Object.Notify;
-            'notify::show-horz-grid-lines': GObject.Object.Notify;
-            'notify::show-vert-grid-lines': GObject.Object.Notify;
-            'notify::vert-grid-line-color': GObject.Object.Notify;
-            'notify::vert-grid-line-color-gdk-rgba': GObject.Object.Notify;
-            'notify::vert-grid-line-color-rgba': GObject.Object.Notify;
-            'notify::vert-grid-line-pattern': GObject.Object.Notify;
-            'notify::vert-grid-line-pixbuf': GObject.Object.Notify;
-            'notify::vert-grid-line-width': GObject.Object.Notify;
-            'notify::vert-grid-lines-on-top': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::x-offset': GObject.Object.Notify;
-            'notify::x-step': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::y-offset': GObject.Object.Notify;
-            'notify::y-step': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::border-color': (pspec: GObject.ParamSpec) => void;
+            'notify::border-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::border-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::border-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::border-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::border-width': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::horz-grid-line-color': (pspec: GObject.ParamSpec) => void;
+            'notify::horz-grid-line-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::horz-grid-line-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::horz-grid-line-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::horz-grid-line-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::horz-grid-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::show-horz-grid-lines': (pspec: GObject.ParamSpec) => void;
+            'notify::show-vert-grid-lines': (pspec: GObject.ParamSpec) => void;
+            'notify::vert-grid-line-color': (pspec: GObject.ParamSpec) => void;
+            'notify::vert-grid-line-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::vert-grid-line-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::vert-grid-line-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::vert-grid-line-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::vert-grid-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::vert-grid-lines-on-top': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::x-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::x-step': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::y-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::y-step': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4326,6 +4360,14 @@ export namespace GooCanvas {
         set y_step(val: number);
         get yStep(): number;
         set yStep(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasGrid.SignalSignatures;
 
         // Fields
 
@@ -4341,17 +4383,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasGrid.SignalSignatures>(
             signal: K,
-            callback: CanvasGrid.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasGrid.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasGrid.SignalSignatures>(
             signal: K,
-            callback: CanvasGrid.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasGrid.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasGrid.SignalSignatures>(
             signal: K,
-            ...args: CanvasGrid.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasGrid.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5465,67 +5507,67 @@ export namespace GooCanvas {
     namespace CanvasGridModel {
         // Signal signatures
         interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
-            'notify::border-color': GObject.Object.Notify;
-            'notify::border-color-gdk-rgba': GObject.Object.Notify;
-            'notify::border-color-rgba': GObject.Object.Notify;
-            'notify::border-pattern': GObject.Object.Notify;
-            'notify::border-pixbuf': GObject.Object.Notify;
-            'notify::border-width': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::horz-grid-line-color': GObject.Object.Notify;
-            'notify::horz-grid-line-color-gdk-rgba': GObject.Object.Notify;
-            'notify::horz-grid-line-color-rgba': GObject.Object.Notify;
-            'notify::horz-grid-line-pattern': GObject.Object.Notify;
-            'notify::horz-grid-line-pixbuf': GObject.Object.Notify;
-            'notify::horz-grid-line-width': GObject.Object.Notify;
-            'notify::show-horz-grid-lines': GObject.Object.Notify;
-            'notify::show-vert-grid-lines': GObject.Object.Notify;
-            'notify::vert-grid-line-color': GObject.Object.Notify;
-            'notify::vert-grid-line-color-gdk-rgba': GObject.Object.Notify;
-            'notify::vert-grid-line-color-rgba': GObject.Object.Notify;
-            'notify::vert-grid-line-pattern': GObject.Object.Notify;
-            'notify::vert-grid-line-pixbuf': GObject.Object.Notify;
-            'notify::vert-grid-line-width': GObject.Object.Notify;
-            'notify::vert-grid-lines-on-top': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::x-offset': GObject.Object.Notify;
-            'notify::x-step': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::y-offset': GObject.Object.Notify;
-            'notify::y-step': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::border-color': (pspec: GObject.ParamSpec) => void;
+            'notify::border-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::border-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::border-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::border-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::border-width': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::horz-grid-line-color': (pspec: GObject.ParamSpec) => void;
+            'notify::horz-grid-line-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::horz-grid-line-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::horz-grid-line-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::horz-grid-line-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::horz-grid-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::show-horz-grid-lines': (pspec: GObject.ParamSpec) => void;
+            'notify::show-vert-grid-lines': (pspec: GObject.ParamSpec) => void;
+            'notify::vert-grid-line-color': (pspec: GObject.ParamSpec) => void;
+            'notify::vert-grid-line-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::vert-grid-line-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::vert-grid-line-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::vert-grid-line-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::vert-grid-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::vert-grid-lines-on-top': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::x-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::x-step': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::y-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::y-step': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5734,6 +5776,14 @@ export namespace GooCanvas {
         set y_step(val: number);
         get yStep(): number;
         set yStep(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasGridModel.SignalSignatures;
 
         // Fields
 
@@ -5749,17 +5799,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasGridModel.SignalSignatures>(
             signal: K,
-            callback: CanvasGridModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasGridModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasGridModel.SignalSignatures>(
             signal: K,
-            callback: CanvasGridModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasGridModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasGridModel.SignalSignatures>(
             signal: K,
-            ...args: CanvasGridModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasGridModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6509,42 +6559,42 @@ export namespace GooCanvas {
     namespace CanvasGroup {
         // Signal signatures
         interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6594,6 +6644,14 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasGroup.SignalSignatures;
 
         // Fields
 
@@ -6610,17 +6668,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasGroup.SignalSignatures>(
             signal: K,
-            callback: CanvasGroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasGroup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasGroup.SignalSignatures>(
             signal: K,
-            callback: CanvasGroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasGroup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasGroup.SignalSignatures>(
             signal: K,
-            ...args: CanvasGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7734,42 +7792,42 @@ export namespace GooCanvas {
     namespace CanvasGroupModel {
         // Signal signatures
         interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7820,6 +7878,14 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasGroupModel.SignalSignatures;
 
         // Fields
 
@@ -7836,17 +7902,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasGroupModel.SignalSignatures>(
             signal: K,
-            callback: CanvasGroupModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasGroupModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasGroupModel.SignalSignatures>(
             signal: K,
-            callback: CanvasGroupModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasGroupModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasGroupModel.SignalSignatures>(
             signal: K,
-            ...args: CanvasGroupModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasGroupModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8596,46 +8662,46 @@ export namespace GooCanvas {
     namespace CanvasImage {
         // Signal signatures
         interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
-            'notify::alpha': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::pattern': GObject.Object.Notify;
-            'notify::pixbuf': GObject.Object.Notify;
-            'notify::scale-to-fit': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::alpha': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-to-fit': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8695,6 +8761,14 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasImage.SignalSignatures;
 
         // Fields
 
@@ -8710,17 +8784,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasImage.SignalSignatures>(
             signal: K,
-            callback: CanvasImage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasImage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasImage.SignalSignatures>(
             signal: K,
-            callback: CanvasImage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasImage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasImage.SignalSignatures>(
             signal: K,
-            ...args: CanvasImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9834,46 +9908,46 @@ export namespace GooCanvas {
     namespace CanvasImageModel {
         // Signal signatures
         interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
-            'notify::alpha': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::pattern': GObject.Object.Notify;
-            'notify::pixbuf': GObject.Object.Notify;
-            'notify::scale-to-fit': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::alpha': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-to-fit': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9939,6 +10013,14 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasImageModel.SignalSignatures;
 
         // Fields
 
@@ -9954,17 +10036,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasImageModel.SignalSignatures>(
             signal: K,
-            callback: CanvasImageModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasImageModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasImageModel.SignalSignatures>(
             signal: K,
-            callback: CanvasImageModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasImageModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasImageModel.SignalSignatures>(
             signal: K,
-            ...args: CanvasImageModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasImageModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10722,6 +10804,14 @@ export namespace GooCanvas {
 
     class CanvasItemAccessibleFactory extends Atk.ObjectFactory {
         static $gtype: GObject.GType<CanvasItemAccessibleFactory>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasItemAccessibleFactory.SignalSignatures;
 
         // Constructors
 
@@ -10733,17 +10823,19 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(
             signal: K,
-            callback: CanvasItemAccessibleFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasItemAccessibleFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(
             signal: K,
-            callback: CanvasItemAccessibleFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasItemAccessibleFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(
             signal: K,
-            ...args: CanvasItemAccessibleFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasItemAccessibleFactory.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -10751,38 +10843,38 @@ export namespace GooCanvas {
     namespace CanvasItemModelSimple {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10944,6 +11036,14 @@ export namespace GooCanvas {
         set strokePattern(val: CairoPattern);
         set stroke_pixbuf(val: GdkPixbuf.Pixbuf);
         set strokePixbuf(val: GdkPixbuf.Pixbuf);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasItemModelSimple.SignalSignatures;
 
         // Fields
 
@@ -10959,17 +11059,19 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasItemModelSimple.SignalSignatures>(
             signal: K,
-            callback: CanvasItemModelSimple.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasItemModelSimple.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasItemModelSimple.SignalSignatures>(
             signal: K,
-            callback: CanvasItemModelSimple.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasItemModelSimple.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasItemModelSimple.SignalSignatures>(
             signal: K,
-            ...args: CanvasItemModelSimple.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasItemModelSimple.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11719,38 +11821,38 @@ export namespace GooCanvas {
     namespace CanvasItemSimple {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11925,6 +12027,14 @@ export namespace GooCanvas {
         set strokePattern(val: CairoPattern);
         set stroke_pixbuf(val: GdkPixbuf.Pixbuf);
         set strokePixbuf(val: GdkPixbuf.Pixbuf);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasItemSimple.SignalSignatures;
 
         // Fields
 
@@ -11944,17 +12054,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasItemSimple.SignalSignatures>(
             signal: K,
-            callback: CanvasItemSimple.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasItemSimple.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasItemSimple.SignalSignatures>(
             signal: K,
-            callback: CanvasItemSimple.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasItemSimple.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasItemSimple.SignalSignatures>(
             signal: K,
-            ...args: CanvasItemSimple.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasItemSimple.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13156,43 +13266,43 @@ export namespace GooCanvas {
     namespace CanvasPath {
         // Signal signatures
         interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
-            'notify::data': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13245,6 +13355,14 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasPath.SignalSignatures;
 
         // Fields
 
@@ -13260,17 +13378,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasPath.SignalSignatures>(
             signal: K,
-            callback: CanvasPath.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasPath.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasPath.SignalSignatures>(
             signal: K,
-            callback: CanvasPath.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasPath.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasPath.SignalSignatures>(
             signal: K,
-            ...args: CanvasPath.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasPath.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14384,43 +14502,43 @@ export namespace GooCanvas {
     namespace CanvasPathModel {
         // Signal signatures
         interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
-            'notify::data': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14472,6 +14590,14 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasPathModel.SignalSignatures;
 
         // Fields
 
@@ -14488,17 +14614,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasPathModel.SignalSignatures>(
             signal: K,
-            callback: CanvasPathModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasPathModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasPathModel.SignalSignatures>(
             signal: K,
-            callback: CanvasPathModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasPathModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasPathModel.SignalSignatures>(
             signal: K,
-            ...args: CanvasPathModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasPathModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -15248,49 +15374,49 @@ export namespace GooCanvas {
     namespace CanvasPolyline {
         // Signal signatures
         interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
-            'notify::arrow-length': GObject.Object.Notify;
-            'notify::arrow-tip-length': GObject.Object.Notify;
-            'notify::arrow-width': GObject.Object.Notify;
-            'notify::close-path': GObject.Object.Notify;
-            'notify::end-arrow': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::points': GObject.Object.Notify;
-            'notify::start-arrow': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::arrow-length': (pspec: GObject.ParamSpec) => void;
+            'notify::arrow-tip-length': (pspec: GObject.ParamSpec) => void;
+            'notify::arrow-width': (pspec: GObject.ParamSpec) => void;
+            'notify::close-path': (pspec: GObject.ParamSpec) => void;
+            'notify::end-arrow': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::points': (pspec: GObject.ParamSpec) => void;
+            'notify::start-arrow': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15372,6 +15498,14 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasPolyline.SignalSignatures;
 
         // Fields
 
@@ -15387,17 +15521,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasPolyline.SignalSignatures>(
             signal: K,
-            callback: CanvasPolyline.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasPolyline.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasPolyline.SignalSignatures>(
             signal: K,
-            callback: CanvasPolyline.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasPolyline.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasPolyline.SignalSignatures>(
             signal: K,
-            ...args: CanvasPolyline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasPolyline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -16511,49 +16645,49 @@ export namespace GooCanvas {
     namespace CanvasPolylineModel {
         // Signal signatures
         interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
-            'notify::arrow-length': GObject.Object.Notify;
-            'notify::arrow-tip-length': GObject.Object.Notify;
-            'notify::arrow-width': GObject.Object.Notify;
-            'notify::close-path': GObject.Object.Notify;
-            'notify::end-arrow': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::points': GObject.Object.Notify;
-            'notify::start-arrow': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::arrow-length': (pspec: GObject.ParamSpec) => void;
+            'notify::arrow-tip-length': (pspec: GObject.ParamSpec) => void;
+            'notify::arrow-width': (pspec: GObject.ParamSpec) => void;
+            'notify::close-path': (pspec: GObject.ParamSpec) => void;
+            'notify::end-arrow': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::points': (pspec: GObject.ParamSpec) => void;
+            'notify::start-arrow': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -16639,6 +16773,14 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasPolylineModel.SignalSignatures;
 
         // Fields
 
@@ -16655,17 +16797,19 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasPolylineModel.SignalSignatures>(
             signal: K,
-            callback: CanvasPolylineModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasPolylineModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasPolylineModel.SignalSignatures>(
             signal: K,
-            callback: CanvasPolylineModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasPolylineModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasPolylineModel.SignalSignatures>(
             signal: K,
-            ...args: CanvasPolylineModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasPolylineModel.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -17415,52 +17559,52 @@ export namespace GooCanvas {
     namespace CanvasRect {
         // Signal signatures
         interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
-            'notify::height': GObject.Object.Notify;
-            'notify::radius-bottom-left-x': GObject.Object.Notify;
-            'notify::radius-bottom-left-y': GObject.Object.Notify;
-            'notify::radius-bottom-right-x': GObject.Object.Notify;
-            'notify::radius-bottom-right-y': GObject.Object.Notify;
-            'notify::radius-top-left-x': GObject.Object.Notify;
-            'notify::radius-top-left-y': GObject.Object.Notify;
-            'notify::radius-top-right-x': GObject.Object.Notify;
-            'notify::radius-top-right-y': GObject.Object.Notify;
-            'notify::radius-x': GObject.Object.Notify;
-            'notify::radius-y': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-bottom-left-x': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-bottom-left-y': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-bottom-right-x': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-bottom-right-y': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-top-left-x': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-top-left-y': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-top-right-x': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-top-right-y': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-x': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-y': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -17561,6 +17705,14 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasRect.SignalSignatures;
 
         // Fields
 
@@ -17576,17 +17728,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasRect.SignalSignatures>(
             signal: K,
-            callback: CanvasRect.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasRect.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasRect.SignalSignatures>(
             signal: K,
-            callback: CanvasRect.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasRect.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasRect.SignalSignatures>(
             signal: K,
-            ...args: CanvasRect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasRect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -18700,52 +18852,52 @@ export namespace GooCanvas {
     namespace CanvasRectModel {
         // Signal signatures
         interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
-            'notify::height': GObject.Object.Notify;
-            'notify::radius-bottom-left-x': GObject.Object.Notify;
-            'notify::radius-bottom-left-y': GObject.Object.Notify;
-            'notify::radius-bottom-right-x': GObject.Object.Notify;
-            'notify::radius-bottom-right-y': GObject.Object.Notify;
-            'notify::radius-top-left-x': GObject.Object.Notify;
-            'notify::radius-top-left-y': GObject.Object.Notify;
-            'notify::radius-top-right-x': GObject.Object.Notify;
-            'notify::radius-top-right-y': GObject.Object.Notify;
-            'notify::radius-x': GObject.Object.Notify;
-            'notify::radius-y': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-bottom-left-x': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-bottom-left-y': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-bottom-right-x': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-bottom-right-y': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-top-left-x': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-top-left-y': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-top-right-x': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-top-right-y': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-x': (pspec: GObject.ParamSpec) => void;
+            'notify::radius-y': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -18850,6 +19002,14 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasRectModel.SignalSignatures;
 
         // Fields
 
@@ -18866,17 +19026,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasRectModel.SignalSignatures>(
             signal: K,
-            callback: CanvasRectModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasRectModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasRectModel.SignalSignatures>(
             signal: K,
-            callback: CanvasRectModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasRectModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasRectModel.SignalSignatures>(
             signal: K,
-            ...args: CanvasRectModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasRectModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -19651,6 +19811,14 @@ export namespace GooCanvas {
      */
     class CanvasStyle extends GObject.Object {
         static $gtype: GObject.GType<CanvasStyle>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasStyle.SignalSignatures;
 
         // Fields
 
@@ -19668,17 +19836,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasStyle.SignalSignatures>(
             signal: K,
-            callback: CanvasStyle.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasStyle.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasStyle.SignalSignatures>(
             signal: K,
-            callback: CanvasStyle.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasStyle.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasStyle.SignalSignatures>(
             signal: K,
-            ...args: CanvasStyle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasStyle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -19742,41 +19910,41 @@ export namespace GooCanvas {
     namespace CanvasTable {
         // Signal signatures
         interface SignalSignatures extends CanvasGroup.SignalSignatures {
-            'notify::column-spacing': GObject.Object.Notify;
-            'notify::homogeneous-columns': GObject.Object.Notify;
-            'notify::homogeneous-rows': GObject.Object.Notify;
-            'notify::horz-grid-line-width': GObject.Object.Notify;
-            'notify::row-spacing': GObject.Object.Notify;
-            'notify::vert-grid-line-width': GObject.Object.Notify;
-            'notify::x-border-spacing': GObject.Object.Notify;
-            'notify::y-border-spacing': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::column-spacing': (pspec: GObject.ParamSpec) => void;
+            'notify::homogeneous-columns': (pspec: GObject.ParamSpec) => void;
+            'notify::homogeneous-rows': (pspec: GObject.ParamSpec) => void;
+            'notify::horz-grid-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::row-spacing': (pspec: GObject.ParamSpec) => void;
+            'notify::vert-grid-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::x-border-spacing': (pspec: GObject.ParamSpec) => void;
+            'notify::y-border-spacing': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19865,6 +20033,14 @@ export namespace GooCanvas {
         set y_border_spacing(val: number);
         get yBorderSpacing(): number;
         set yBorderSpacing(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasTable.SignalSignatures;
 
         // Constructors
 
@@ -19876,17 +20052,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasTable.SignalSignatures>(
             signal: K,
-            callback: CanvasTable.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasTable.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasTable.SignalSignatures>(
             signal: K,
-            callback: CanvasTable.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasTable.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasTable.SignalSignatures>(
             signal: K,
-            ...args: CanvasTable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasTable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -20335,41 +20511,41 @@ export namespace GooCanvas {
     namespace CanvasTableModel {
         // Signal signatures
         interface SignalSignatures extends CanvasGroupModel.SignalSignatures {
-            'notify::column-spacing': GObject.Object.Notify;
-            'notify::homogeneous-columns': GObject.Object.Notify;
-            'notify::homogeneous-rows': GObject.Object.Notify;
-            'notify::horz-grid-line-width': GObject.Object.Notify;
-            'notify::row-spacing': GObject.Object.Notify;
-            'notify::vert-grid-line-width': GObject.Object.Notify;
-            'notify::x-border-spacing': GObject.Object.Notify;
-            'notify::y-border-spacing': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::column-spacing': (pspec: GObject.ParamSpec) => void;
+            'notify::homogeneous-columns': (pspec: GObject.ParamSpec) => void;
+            'notify::homogeneous-rows': (pspec: GObject.ParamSpec) => void;
+            'notify::horz-grid-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::row-spacing': (pspec: GObject.ParamSpec) => void;
+            'notify::vert-grid-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::x-border-spacing': (pspec: GObject.ParamSpec) => void;
+            'notify::y-border-spacing': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -20458,6 +20634,14 @@ export namespace GooCanvas {
         set y_border_spacing(val: number);
         get yBorderSpacing(): number;
         set yBorderSpacing(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasTableModel.SignalSignatures;
 
         // Fields
 
@@ -20473,17 +20657,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasTableModel.SignalSignatures>(
             signal: K,
-            callback: CanvasTableModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasTableModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasTableModel.SignalSignatures>(
             signal: K,
-            callback: CanvasTableModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasTableModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasTableModel.SignalSignatures>(
             signal: K,
-            ...args: CanvasTableModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasTableModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -20932,48 +21116,48 @@ export namespace GooCanvas {
     namespace CanvasText {
         // Signal signatures
         interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
-            'notify::alignment': GObject.Object.Notify;
-            'notify::anchor': GObject.Object.Notify;
-            'notify::ellipsize': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::text': GObject.Object.Notify;
-            'notify::use-markup': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::wrap': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::alignment': (pspec: GObject.ParamSpec) => void;
+            'notify::anchor': (pspec: GObject.ParamSpec) => void;
+            'notify::ellipsize': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::text': (pspec: GObject.ParamSpec) => void;
+            'notify::use-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::wrap': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21039,6 +21223,14 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasText.SignalSignatures;
 
         // Fields
 
@@ -21055,17 +21247,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasText.SignalSignatures>(
             signal: K,
-            callback: CanvasText.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasText.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasText.SignalSignatures>(
             signal: K,
-            callback: CanvasText.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasText.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasText.SignalSignatures>(
             signal: K,
-            ...args: CanvasText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22189,48 +22381,48 @@ export namespace GooCanvas {
     namespace CanvasTextModel {
         // Signal signatures
         interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
-            'notify::alignment': GObject.Object.Notify;
-            'notify::anchor': GObject.Object.Notify;
-            'notify::ellipsize': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::text': GObject.Object.Notify;
-            'notify::use-markup': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::wrap': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::alignment': (pspec: GObject.ParamSpec) => void;
+            'notify::anchor': (pspec: GObject.ParamSpec) => void;
+            'notify::ellipsize': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::text': (pspec: GObject.ParamSpec) => void;
+            'notify::use-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::wrap': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22296,6 +22488,14 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasTextModel.SignalSignatures;
 
         // Fields
 
@@ -22312,17 +22512,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasTextModel.SignalSignatures>(
             signal: K,
-            callback: CanvasTextModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasTextModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasTextModel.SignalSignatures>(
             signal: K,
-            callback: CanvasTextModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasTextModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasTextModel.SignalSignatures>(
             signal: K,
-            ...args: CanvasTextModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasTextModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23072,44 +23272,44 @@ export namespace GooCanvas {
     namespace CanvasWidget {
         // Signal signatures
         interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
-            'notify::anchor': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::widget': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::x': GObject.Object.Notify;
-            'notify::y': GObject.Object.Notify;
-            'notify::antialias': GObject.Object.Notify;
-            'notify::clip-fill-rule': GObject.Object.Notify;
-            'notify::clip-path': GObject.Object.Notify;
-            'notify::fill-color': GObject.Object.Notify;
-            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
-            'notify::fill-color-rgba': GObject.Object.Notify;
-            'notify::fill-pattern': GObject.Object.Notify;
-            'notify::fill-pixbuf': GObject.Object.Notify;
-            'notify::fill-rule': GObject.Object.Notify;
-            'notify::font': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::hint-metrics': GObject.Object.Notify;
-            'notify::line-cap': GObject.Object.Notify;
-            'notify::line-dash': GObject.Object.Notify;
-            'notify::line-join': GObject.Object.Notify;
-            'notify::line-join-miter-limit': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::operator': GObject.Object.Notify;
-            'notify::stroke-color': GObject.Object.Notify;
-            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
-            'notify::stroke-color-rgba': GObject.Object.Notify;
-            'notify::stroke-pattern': GObject.Object.Notify;
-            'notify::stroke-pixbuf': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::pointer-events': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tooltip': GObject.Object.Notify;
-            'notify::transform': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::anchor': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::widget': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::font': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
+            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
+            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join': (pspec: GObject.ParamSpec) => void;
+            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::operator': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
+            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23166,6 +23366,14 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasWidget.SignalSignatures;
 
         // Fields
 
@@ -23181,17 +23389,17 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasWidget.SignalSignatures>(
             signal: K,
-            callback: CanvasWidget.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasWidget.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasWidget.SignalSignatures>(
             signal: K,
-            callback: CanvasWidget.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasWidget.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasWidget.SignalSignatures>(
             signal: K,
-            ...args: CanvasWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -24313,6 +24521,14 @@ export namespace GooCanvas {
 
     class CanvasWidgetAccessibleFactory extends Atk.ObjectFactory {
         static $gtype: GObject.GType<CanvasWidgetAccessibleFactory>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CanvasWidgetAccessibleFactory.SignalSignatures;
 
         // Constructors
 
@@ -24324,17 +24540,19 @@ export namespace GooCanvas {
 
         connect<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(
             signal: K,
-            callback: CanvasWidgetAccessibleFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasWidgetAccessibleFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(
             signal: K,
-            callback: CanvasWidgetAccessibleFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CanvasWidgetAccessibleFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(
             signal: K,
-            ...args: CanvasWidgetAccessibleFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CanvasWidgetAccessibleFactory.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

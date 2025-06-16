@@ -45,7 +45,7 @@ export namespace ArrowDataset {
     namespace CSVFileFormat {
         // Signal signatures
         interface SignalSignatures extends FileFormat.SignalSignatures {
-            'notify::format': GObject.Object.Notify;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -55,6 +55,14 @@ export namespace ArrowDataset {
 
     class CSVFileFormat extends FileFormat {
         static $gtype: GObject.GType<CSVFileFormat>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CSVFileFormat.SignalSignatures;
 
         // Constructors
 
@@ -68,17 +76,17 @@ export namespace ArrowDataset {
 
         connect<K extends keyof CSVFileFormat.SignalSignatures>(
             signal: K,
-            callback: CSVFileFormat.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CSVFileFormat.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CSVFileFormat.SignalSignatures>(
             signal: K,
-            callback: CSVFileFormat.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CSVFileFormat.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CSVFileFormat.SignalSignatures>(
             signal: K,
-            ...args: CSVFileFormat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CSVFileFormat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -86,7 +94,7 @@ export namespace ArrowDataset {
     namespace Dataset {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::dataset': GObject.Object.Notify;
+            'notify::dataset': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -102,6 +110,14 @@ export namespace ArrowDataset {
         // Properties
 
         set dataset(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Dataset.SignalSignatures;
 
         // Constructors
 
@@ -111,16 +127,19 @@ export namespace ArrowDataset {
 
         // Signals
 
-        connect<K extends keyof Dataset.SignalSignatures>(signal: K, callback: Dataset.SignalSignatures[K]): number;
+        connect<K extends keyof Dataset.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Dataset.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Dataset.SignalSignatures>(
             signal: K,
-            callback: Dataset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Dataset.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Dataset.SignalSignatures>(
             signal: K,
-            ...args: Dataset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Dataset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -134,7 +153,7 @@ export namespace ArrowDataset {
     namespace DatasetFactory {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::dataset-factory': GObject.Object.Notify;
+            'notify::dataset-factory': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -152,6 +171,14 @@ export namespace ArrowDataset {
 
         set dataset_factory(val: any);
         set datasetFactory(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DatasetFactory.SignalSignatures;
 
         // Constructors
 
@@ -163,17 +190,17 @@ export namespace ArrowDataset {
 
         connect<K extends keyof DatasetFactory.SignalSignatures>(
             signal: K,
-            callback: DatasetFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DatasetFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DatasetFactory.SignalSignatures>(
             signal: K,
-            callback: DatasetFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DatasetFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DatasetFactory.SignalSignatures>(
             signal: K,
-            ...args: DatasetFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DatasetFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -185,7 +212,7 @@ export namespace ArrowDataset {
     namespace DirectoryPartitioning {
         // Signal signatures
         interface SignalSignatures extends KeyValuePartitioning.SignalSignatures {
-            'notify::partitioning': GObject.Object.Notify;
+            'notify::partitioning': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -195,6 +222,14 @@ export namespace ArrowDataset {
 
     class DirectoryPartitioning extends KeyValuePartitioning {
         static $gtype: GObject.GType<DirectoryPartitioning>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DirectoryPartitioning.SignalSignatures;
 
         // Constructors
 
@@ -215,17 +250,19 @@ export namespace ArrowDataset {
 
         connect<K extends keyof DirectoryPartitioning.SignalSignatures>(
             signal: K,
-            callback: DirectoryPartitioning.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DirectoryPartitioning.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DirectoryPartitioning.SignalSignatures>(
             signal: K,
-            callback: DirectoryPartitioning.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DirectoryPartitioning.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DirectoryPartitioning.SignalSignatures>(
             signal: K,
-            ...args: DirectoryPartitioning.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DirectoryPartitioning.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -233,7 +270,7 @@ export namespace ArrowDataset {
     namespace FileFormat {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::format': GObject.Object.Notify;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -249,6 +286,14 @@ export namespace ArrowDataset {
         // Properties
 
         set format(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FileFormat.SignalSignatures;
 
         // Constructors
 
@@ -260,17 +305,17 @@ export namespace ArrowDataset {
 
         connect<K extends keyof FileFormat.SignalSignatures>(
             signal: K,
-            callback: FileFormat.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileFormat.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileFormat.SignalSignatures>(
             signal: K,
-            callback: FileFormat.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileFormat.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileFormat.SignalSignatures>(
             signal: K,
-            ...args: FileFormat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FileFormat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -291,10 +336,10 @@ export namespace ArrowDataset {
     namespace FileSystemDataset {
         // Signal signatures
         interface SignalSignatures extends Dataset.SignalSignatures {
-            'notify::file-system': GObject.Object.Notify;
-            'notify::format': GObject.Object.Notify;
-            'notify::partitioning': GObject.Object.Notify;
-            'notify::dataset': GObject.Object.Notify;
+            'notify::file-system': (pspec: GObject.ParamSpec) => void;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::partitioning': (pspec: GObject.ParamSpec) => void;
+            'notify::dataset': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -328,6 +373,14 @@ export namespace ArrowDataset {
          * Partitioning of the dataset.
          */
         get partitioning(): Partitioning;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FileSystemDataset.SignalSignatures;
 
         // Constructors
 
@@ -339,17 +392,17 @@ export namespace ArrowDataset {
 
         connect<K extends keyof FileSystemDataset.SignalSignatures>(
             signal: K,
-            callback: FileSystemDataset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileSystemDataset.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileSystemDataset.SignalSignatures>(
             signal: K,
-            callback: FileSystemDataset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileSystemDataset.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileSystemDataset.SignalSignatures>(
             signal: K,
-            ...args: FileSystemDataset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FileSystemDataset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -361,11 +414,11 @@ export namespace ArrowDataset {
     namespace FileSystemDatasetFactory {
         // Signal signatures
         interface SignalSignatures extends DatasetFactory.SignalSignatures {
-            'notify::file-system': GObject.Object.Notify;
-            'notify::format': GObject.Object.Notify;
-            'notify::partition-base-dir': GObject.Object.Notify;
-            'notify::partitioning': GObject.Object.Notify;
-            'notify::dataset-factory': GObject.Object.Notify;
+            'notify::file-system': (pspec: GObject.ParamSpec) => void;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::partition-base-dir': (pspec: GObject.ParamSpec) => void;
+            'notify::partitioning': (pspec: GObject.ParamSpec) => void;
+            'notify::dataset-factory': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -412,6 +465,14 @@ export namespace ArrowDataset {
          */
         get partitioning(): Partitioning;
         set partitioning(val: Partitioning);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FileSystemDatasetFactory.SignalSignatures;
 
         // Constructors
 
@@ -425,17 +486,19 @@ export namespace ArrowDataset {
 
         connect<K extends keyof FileSystemDatasetFactory.SignalSignatures>(
             signal: K,
-            callback: FileSystemDatasetFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileSystemDatasetFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileSystemDatasetFactory.SignalSignatures>(
             signal: K,
-            callback: FileSystemDatasetFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileSystemDatasetFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileSystemDatasetFactory.SignalSignatures>(
             signal: K,
-            ...args: FileSystemDatasetFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FileSystemDatasetFactory.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -450,12 +513,12 @@ export namespace ArrowDataset {
     namespace FileSystemDatasetWriteOptions {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::base-dir': GObject.Object.Notify;
-            'notify::base-name-template': GObject.Object.Notify;
-            'notify::file-system': GObject.Object.Notify;
-            'notify::file-write-options': GObject.Object.Notify;
-            'notify::max-partitions': GObject.Object.Notify;
-            'notify::partitioning': GObject.Object.Notify;
+            'notify::base-dir': (pspec: GObject.ParamSpec) => void;
+            'notify::base-name-template': (pspec: GObject.ParamSpec) => void;
+            'notify::file-system': (pspec: GObject.ParamSpec) => void;
+            'notify::file-write-options': (pspec: GObject.ParamSpec) => void;
+            'notify::max-partitions': (pspec: GObject.ParamSpec) => void;
+            'notify::partitioning': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -519,6 +582,14 @@ export namespace ArrowDataset {
          */
         get partitioning(): Partitioning;
         set partitioning(val: Partitioning);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FileSystemDatasetWriteOptions.SignalSignatures;
 
         // Constructors
 
@@ -532,17 +603,19 @@ export namespace ArrowDataset {
 
         connect<K extends keyof FileSystemDatasetWriteOptions.SignalSignatures>(
             signal: K,
-            callback: FileSystemDatasetWriteOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileSystemDatasetWriteOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileSystemDatasetWriteOptions.SignalSignatures>(
             signal: K,
-            callback: FileSystemDatasetWriteOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileSystemDatasetWriteOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileSystemDatasetWriteOptions.SignalSignatures>(
             signal: K,
-            ...args: FileSystemDatasetWriteOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FileSystemDatasetWriteOptions.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -550,7 +623,7 @@ export namespace ArrowDataset {
     namespace FileWriteOptions {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::options': GObject.Object.Notify;
+            'notify::options': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -566,6 +639,14 @@ export namespace ArrowDataset {
         // Properties
 
         set options(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FileWriteOptions.SignalSignatures;
 
         // Constructors
 
@@ -577,17 +658,17 @@ export namespace ArrowDataset {
 
         connect<K extends keyof FileWriteOptions.SignalSignatures>(
             signal: K,
-            callback: FileWriteOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileWriteOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileWriteOptions.SignalSignatures>(
             signal: K,
-            callback: FileWriteOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileWriteOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileWriteOptions.SignalSignatures>(
             signal: K,
-            ...args: FileWriteOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FileWriteOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -595,7 +676,7 @@ export namespace ArrowDataset {
     namespace FileWriter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::writer': GObject.Object.Notify;
+            'notify::writer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -611,6 +692,14 @@ export namespace ArrowDataset {
         // Properties
 
         set writer(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FileWriter.SignalSignatures;
 
         // Constructors
 
@@ -622,17 +711,17 @@ export namespace ArrowDataset {
 
         connect<K extends keyof FileWriter.SignalSignatures>(
             signal: K,
-            callback: FileWriter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileWriter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileWriter.SignalSignatures>(
             signal: K,
-            callback: FileWriter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileWriter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileWriter.SignalSignatures>(
             signal: K,
-            ...args: FileWriter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FileWriter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -646,7 +735,7 @@ export namespace ArrowDataset {
     namespace Fragment {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::fragment': GObject.Object.Notify;
+            'notify::fragment': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -662,6 +751,14 @@ export namespace ArrowDataset {
         // Properties
 
         set fragment(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Fragment.SignalSignatures;
 
         // Constructors
 
@@ -671,16 +768,19 @@ export namespace ArrowDataset {
 
         // Signals
 
-        connect<K extends keyof Fragment.SignalSignatures>(signal: K, callback: Fragment.SignalSignatures[K]): number;
+        connect<K extends keyof Fragment.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Fragment.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Fragment.SignalSignatures>(
             signal: K,
-            callback: Fragment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Fragment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Fragment.SignalSignatures>(
             signal: K,
-            ...args: Fragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Fragment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -688,7 +788,7 @@ export namespace ArrowDataset {
     namespace IPCFileFormat {
         // Signal signatures
         interface SignalSignatures extends FileFormat.SignalSignatures {
-            'notify::format': GObject.Object.Notify;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -698,6 +798,14 @@ export namespace ArrowDataset {
 
     class IPCFileFormat extends FileFormat {
         static $gtype: GObject.GType<IPCFileFormat>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IPCFileFormat.SignalSignatures;
 
         // Constructors
 
@@ -711,17 +819,17 @@ export namespace ArrowDataset {
 
         connect<K extends keyof IPCFileFormat.SignalSignatures>(
             signal: K,
-            callback: IPCFileFormat.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IPCFileFormat.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IPCFileFormat.SignalSignatures>(
             signal: K,
-            callback: IPCFileFormat.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IPCFileFormat.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IPCFileFormat.SignalSignatures>(
             signal: K,
-            ...args: IPCFileFormat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IPCFileFormat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -729,7 +837,7 @@ export namespace ArrowDataset {
     namespace InMemoryFragment {
         // Signal signatures
         interface SignalSignatures extends Fragment.SignalSignatures {
-            'notify::fragment': GObject.Object.Notify;
+            'notify::fragment': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -739,6 +847,14 @@ export namespace ArrowDataset {
 
     class InMemoryFragment extends Fragment {
         static $gtype: GObject.GType<InMemoryFragment>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InMemoryFragment.SignalSignatures;
 
         // Constructors
 
@@ -752,17 +868,17 @@ export namespace ArrowDataset {
 
         connect<K extends keyof InMemoryFragment.SignalSignatures>(
             signal: K,
-            callback: InMemoryFragment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InMemoryFragment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InMemoryFragment.SignalSignatures>(
             signal: K,
-            callback: InMemoryFragment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InMemoryFragment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InMemoryFragment.SignalSignatures>(
             signal: K,
-            ...args: InMemoryFragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InMemoryFragment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -770,7 +886,7 @@ export namespace ArrowDataset {
     namespace KeyValuePartitioning {
         // Signal signatures
         interface SignalSignatures extends Partitioning.SignalSignatures {
-            'notify::partitioning': GObject.Object.Notify;
+            'notify::partitioning': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -780,6 +896,14 @@ export namespace ArrowDataset {
 
     class KeyValuePartitioning extends Partitioning {
         static $gtype: GObject.GType<KeyValuePartitioning>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: KeyValuePartitioning.SignalSignatures;
 
         // Constructors
 
@@ -791,17 +915,19 @@ export namespace ArrowDataset {
 
         connect<K extends keyof KeyValuePartitioning.SignalSignatures>(
             signal: K,
-            callback: KeyValuePartitioning.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, KeyValuePartitioning.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyValuePartitioning.SignalSignatures>(
             signal: K,
-            callback: KeyValuePartitioning.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, KeyValuePartitioning.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyValuePartitioning.SignalSignatures>(
             signal: K,
-            ...args: KeyValuePartitioning.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<KeyValuePartitioning.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -809,7 +935,7 @@ export namespace ArrowDataset {
     namespace ParquetFileFormat {
         // Signal signatures
         interface SignalSignatures extends FileFormat.SignalSignatures {
-            'notify::format': GObject.Object.Notify;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -819,6 +945,14 @@ export namespace ArrowDataset {
 
     class ParquetFileFormat extends FileFormat {
         static $gtype: GObject.GType<ParquetFileFormat>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ParquetFileFormat.SignalSignatures;
 
         // Constructors
 
@@ -832,17 +966,17 @@ export namespace ArrowDataset {
 
         connect<K extends keyof ParquetFileFormat.SignalSignatures>(
             signal: K,
-            callback: ParquetFileFormat.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParquetFileFormat.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParquetFileFormat.SignalSignatures>(
             signal: K,
-            callback: ParquetFileFormat.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParquetFileFormat.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParquetFileFormat.SignalSignatures>(
             signal: K,
-            ...args: ParquetFileFormat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParquetFileFormat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -850,7 +984,7 @@ export namespace ArrowDataset {
     namespace Partitioning {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::partitioning': GObject.Object.Notify;
+            'notify::partitioning': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -866,6 +1000,14 @@ export namespace ArrowDataset {
         // Properties
 
         set partitioning(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Partitioning.SignalSignatures;
 
         // Constructors
 
@@ -879,17 +1021,17 @@ export namespace ArrowDataset {
 
         connect<K extends keyof Partitioning.SignalSignatures>(
             signal: K,
-            callback: Partitioning.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Partitioning.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Partitioning.SignalSignatures>(
             signal: K,
-            callback: Partitioning.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Partitioning.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Partitioning.SignalSignatures>(
             signal: K,
-            ...args: Partitioning.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Partitioning.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -901,9 +1043,9 @@ export namespace ArrowDataset {
     namespace PartitioningOptions {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::infer-dictionary': GObject.Object.Notify;
-            'notify::schema': GObject.Object.Notify;
-            'notify::segment-encoding': GObject.Object.Notify;
+            'notify::infer-dictionary': (pspec: GObject.ParamSpec) => void;
+            'notify::schema': (pspec: GObject.ParamSpec) => void;
+            'notify::segment-encoding': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -959,6 +1101,14 @@ export namespace ArrowDataset {
          */
         get segmentEncoding(): SegmentEncoding;
         set segmentEncoding(val: SegmentEncoding);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PartitioningOptions.SignalSignatures;
 
         // Constructors
 
@@ -972,17 +1122,19 @@ export namespace ArrowDataset {
 
         connect<K extends keyof PartitioningOptions.SignalSignatures>(
             signal: K,
-            callback: PartitioningOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PartitioningOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PartitioningOptions.SignalSignatures>(
             signal: K,
-            callback: PartitioningOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PartitioningOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PartitioningOptions.SignalSignatures>(
             signal: K,
-            ...args: PartitioningOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PartitioningOptions.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -990,7 +1142,7 @@ export namespace ArrowDataset {
     namespace Scanner {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::scanner': GObject.Object.Notify;
+            'notify::scanner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1006,6 +1158,14 @@ export namespace ArrowDataset {
         // Properties
 
         set scanner(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Scanner.SignalSignatures;
 
         // Constructors
 
@@ -1015,16 +1175,19 @@ export namespace ArrowDataset {
 
         // Signals
 
-        connect<K extends keyof Scanner.SignalSignatures>(signal: K, callback: Scanner.SignalSignatures[K]): number;
+        connect<K extends keyof Scanner.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Scanner.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Scanner.SignalSignatures>(
             signal: K,
-            callback: Scanner.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Scanner.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Scanner.SignalSignatures>(
             signal: K,
-            ...args: Scanner.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Scanner.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1036,7 +1199,7 @@ export namespace ArrowDataset {
     namespace ScannerBuilder {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::scanner-builder': GObject.Object.Notify;
+            'notify::scanner-builder': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1054,6 +1217,14 @@ export namespace ArrowDataset {
 
         set scanner_builder(val: any);
         set scannerBuilder(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ScannerBuilder.SignalSignatures;
 
         // Constructors
 
@@ -1069,17 +1240,17 @@ export namespace ArrowDataset {
 
         connect<K extends keyof ScannerBuilder.SignalSignatures>(
             signal: K,
-            callback: ScannerBuilder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ScannerBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScannerBuilder.SignalSignatures>(
             signal: K,
-            callback: ScannerBuilder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ScannerBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScannerBuilder.SignalSignatures>(
             signal: K,
-            ...args: ScannerBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ScannerBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

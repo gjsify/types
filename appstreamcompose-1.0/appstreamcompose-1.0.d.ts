@@ -421,6 +421,14 @@ export namespace AppStreamCompose {
 
     class Canvas extends GObject.Object {
         static $gtype: GObject.GType<Canvas>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Canvas.SignalSignatures;
 
         // Constructors
 
@@ -432,13 +440,19 @@ export namespace AppStreamCompose {
 
         // Signals
 
-        connect<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
+        connect<K extends keyof Canvas.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Canvas.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
+        connect_after<K extends keyof Canvas.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Canvas.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Canvas.SignalSignatures>(
             signal: K,
-            ...args: Canvas.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Canvas.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -475,6 +489,14 @@ export namespace AppStreamCompose {
 
     class Compose extends GObject.Object {
         static $gtype: GObject.GType<Compose>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Compose.SignalSignatures;
 
         // Constructors
 
@@ -486,16 +508,19 @@ export namespace AppStreamCompose {
 
         // Signals
 
-        connect<K extends keyof Compose.SignalSignatures>(signal: K, callback: Compose.SignalSignatures[K]): number;
+        connect<K extends keyof Compose.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Compose.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Compose.SignalSignatures>(
             signal: K,
-            callback: Compose.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Compose.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Compose.SignalSignatures>(
             signal: K,
-            ...args: Compose.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Compose.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -728,6 +753,14 @@ export namespace AppStreamCompose {
 
     class DirectoryUnit extends Unit {
         static $gtype: GObject.GType<DirectoryUnit>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DirectoryUnit.SignalSignatures;
 
         // Constructors
 
@@ -744,17 +777,17 @@ export namespace AppStreamCompose {
 
         connect<K extends keyof DirectoryUnit.SignalSignatures>(
             signal: K,
-            callback: DirectoryUnit.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DirectoryUnit.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DirectoryUnit.SignalSignatures>(
             signal: K,
-            callback: DirectoryUnit.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DirectoryUnit.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DirectoryUnit.SignalSignatures>(
             signal: K,
-            ...args: DirectoryUnit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DirectoryUnit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -782,6 +815,14 @@ export namespace AppStreamCompose {
 
     class Hint extends GObject.Object {
         static $gtype: GObject.GType<Hint>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Hint.SignalSignatures;
 
         // Constructors
 
@@ -795,13 +836,19 @@ export namespace AppStreamCompose {
 
         // Signals
 
-        connect<K extends keyof Hint.SignalSignatures>(signal: K, callback: Hint.SignalSignatures[K]): number;
+        connect<K extends keyof Hint.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Hint.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Hint.SignalSignatures>(signal: K, callback: Hint.SignalSignatures[K]): number;
+        connect_after<K extends keyof Hint.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Hint.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Hint.SignalSignatures>(
             signal: K,
-            ...args: Hint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Hint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -872,6 +919,14 @@ export namespace AppStreamCompose {
 
     class IconPolicy extends GObject.Object {
         static $gtype: GObject.GType<IconPolicy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IconPolicy.SignalSignatures;
 
         // Constructors
 
@@ -885,17 +940,17 @@ export namespace AppStreamCompose {
 
         connect<K extends keyof IconPolicy.SignalSignatures>(
             signal: K,
-            callback: IconPolicy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IconPolicy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IconPolicy.SignalSignatures>(
             signal: K,
-            callback: IconPolicy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IconPolicy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IconPolicy.SignalSignatures>(
             signal: K,
-            ...args: IconPolicy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IconPolicy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -931,6 +986,14 @@ export namespace AppStreamCompose {
 
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Image.SignalSignatures;
 
         // Constructors
 
@@ -952,13 +1015,19 @@ export namespace AppStreamCompose {
 
         // Signals
 
-        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect_after<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Image.SignalSignatures>(
             signal: K,
-            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1053,6 +1122,14 @@ export namespace AppStreamCompose {
 
     class Result extends GObject.Object {
         static $gtype: GObject.GType<Result>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Result.SignalSignatures;
 
         // Constructors
 
@@ -1064,13 +1141,19 @@ export namespace AppStreamCompose {
 
         // Signals
 
-        connect<K extends keyof Result.SignalSignatures>(signal: K, callback: Result.SignalSignatures[K]): number;
+        connect<K extends keyof Result.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Result.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Result.SignalSignatures>(signal: K, callback: Result.SignalSignatures[K]): number;
+        connect_after<K extends keyof Result.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Result.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Result.SignalSignatures>(
             signal: K,
-            ...args: Result.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Result.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1234,6 +1317,14 @@ export namespace AppStreamCompose {
 
     class Unit extends GObject.Object {
         static $gtype: GObject.GType<Unit>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Unit.SignalSignatures;
 
         // Constructors
 
@@ -1245,13 +1336,19 @@ export namespace AppStreamCompose {
 
         // Signals
 
-        connect<K extends keyof Unit.SignalSignatures>(signal: K, callback: Unit.SignalSignatures[K]): number;
+        connect<K extends keyof Unit.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Unit.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Unit.SignalSignatures>(signal: K, callback: Unit.SignalSignatures[K]): number;
+        connect_after<K extends keyof Unit.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Unit.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Unit.SignalSignatures>(
             signal: K,
-            ...args: Unit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Unit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -497,6 +497,14 @@ export namespace GSystem {
      */
     class Console extends GObject.Object {
         static $gtype: GObject.GType<Console>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Console.SignalSignatures;
 
         // Constructors
 
@@ -506,16 +514,19 @@ export namespace GSystem {
 
         // Signals
 
-        connect<K extends keyof Console.SignalSignatures>(signal: K, callback: Console.SignalSignatures[K]): number;
+        connect<K extends keyof Console.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Console.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Console.SignalSignatures>(
             signal: K,
-            callback: Console.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Console.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Console.SignalSignatures>(
             signal: K,
-            ...args: Console.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Console.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -569,7 +580,7 @@ export namespace GSystem {
     namespace Subprocess {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -600,6 +611,14 @@ export namespace GSystem {
         // Properties
 
         get context(): SubprocessContext;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Subprocess.SignalSignatures;
 
         // Constructors
 
@@ -620,17 +639,17 @@ export namespace GSystem {
 
         connect<K extends keyof Subprocess.SignalSignatures>(
             signal: K,
-            callback: Subprocess.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Subprocess.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Subprocess.SignalSignatures>(
             signal: K,
-            callback: Subprocess.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Subprocess.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Subprocess.SignalSignatures>(
             signal: K,
-            ...args: Subprocess.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Subprocess.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1264,7 +1283,7 @@ export namespace GSystem {
     namespace SubprocessContext {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::argv': GObject.Object.Notify;
+            'notify::argv': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1303,6 +1322,14 @@ export namespace GSystem {
          */
         get argv(): string[];
         set argv(val: string[]);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SubprocessContext.SignalSignatures;
 
         // Constructors
 
@@ -1318,17 +1345,17 @@ export namespace GSystem {
 
         connect<K extends keyof SubprocessContext.SignalSignatures>(
             signal: K,
-            callback: SubprocessContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SubprocessContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubprocessContext.SignalSignatures>(
             signal: K,
-            callback: SubprocessContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SubprocessContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubprocessContext.SignalSignatures>(
             signal: K,
-            ...args: SubprocessContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SubprocessContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -287,20 +287,10 @@ export namespace CinnamonDesktop {
         REFLECT_Y,
     }
     namespace BG {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: BG): void;
-        }
-
-        interface Transitioned {
-            (_source: BG): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            transitioned: Transitioned;
+            changed: () => void;
+            transitioned: () => void;
         }
 
         // Constructor properties interface
@@ -310,6 +300,14 @@ export namespace CinnamonDesktop {
 
     class BG extends GObject.Object {
         static $gtype: GObject.GType<BG>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BG.SignalSignatures;
 
         // Constructors
 
@@ -321,13 +319,19 @@ export namespace CinnamonDesktop {
 
         // Signals
 
-        connect<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
+        connect<K extends keyof BG.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, BG.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
+        connect_after<K extends keyof BG.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, BG.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BG.SignalSignatures>(
             signal: K,
-            ...args: BG.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BG.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -426,17 +430,11 @@ export namespace CinnamonDesktop {
     }
 
     namespace BGCrossfade {
-        // Signal callback interfaces
-
-        interface Finished {
-            (_source: BGCrossfade, window: GObject.Object): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            finished: Finished;
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            finished: (arg0: GObject.Object) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -462,6 +460,14 @@ export namespace CinnamonDesktop {
          * surface.
          */
         get width(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BGCrossfade.SignalSignatures;
 
         // Fields
 
@@ -479,17 +485,17 @@ export namespace CinnamonDesktop {
 
         connect<K extends keyof BGCrossfade.SignalSignatures>(
             signal: K,
-            callback: BGCrossfade.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BGCrossfade.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BGCrossfade.SignalSignatures>(
             signal: K,
-            callback: BGCrossfade.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BGCrossfade.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BGCrossfade.SignalSignatures>(
             signal: K,
-            ...args: BGCrossfade.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BGCrossfade.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -550,6 +556,14 @@ export namespace CinnamonDesktop {
 
     class DesktopThumbnailFactory extends GObject.Object {
         static $gtype: GObject.GType<DesktopThumbnailFactory>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DesktopThumbnailFactory.SignalSignatures;
 
         // Constructors
 
@@ -563,17 +577,19 @@ export namespace CinnamonDesktop {
 
         connect<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
             signal: K,
-            callback: DesktopThumbnailFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DesktopThumbnailFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
             signal: K,
-            callback: DesktopThumbnailFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DesktopThumbnailFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
             signal: K,
-            ...args: DesktopThumbnailFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DesktopThumbnailFactory.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -652,6 +668,14 @@ export namespace CinnamonDesktop {
 
     class IdleMonitor extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<IdleMonitor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IdleMonitor.SignalSignatures;
 
         // Constructors
 
@@ -665,17 +689,17 @@ export namespace CinnamonDesktop {
 
         connect<K extends keyof IdleMonitor.SignalSignatures>(
             signal: K,
-            callback: IdleMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IdleMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IdleMonitor.SignalSignatures>(
             signal: K,
-            callback: IdleMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IdleMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IdleMonitor.SignalSignatures>(
             signal: K,
-            ...args: IdleMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IdleMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1230,6 +1254,14 @@ export namespace CinnamonDesktop {
 
     class PnpIds extends GObject.Object {
         static $gtype: GObject.GType<PnpIds>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PnpIds.SignalSignatures;
 
         // Constructors
 
@@ -1241,13 +1273,19 @@ export namespace CinnamonDesktop {
 
         // Signals
 
-        connect<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: PnpIds.SignalSignatures[K]): number;
+        connect<K extends keyof PnpIds.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, PnpIds.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: PnpIds.SignalSignatures[K]): number;
+        connect_after<K extends keyof PnpIds.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, PnpIds.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PnpIds.SignalSignatures>(
             signal: K,
-            ...args: PnpIds.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PnpIds.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1264,7 +1302,7 @@ export namespace CinnamonDesktop {
     namespace RRConfig {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::screen': GObject.Object.Notify;
+            'notify::screen': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1280,6 +1318,14 @@ export namespace CinnamonDesktop {
         // Properties
 
         set screen(val: RRScreen);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RRConfig.SignalSignatures;
 
         // Constructors
 
@@ -1293,16 +1339,19 @@ export namespace CinnamonDesktop {
 
         // Signals
 
-        connect<K extends keyof RRConfig.SignalSignatures>(signal: K, callback: RRConfig.SignalSignatures[K]): number;
+        connect<K extends keyof RRConfig.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, RRConfig.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RRConfig.SignalSignatures>(
             signal: K,
-            callback: RRConfig.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RRConfig.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RRConfig.SignalSignatures>(
             signal: K,
-            ...args: RRConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RRConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1336,7 +1385,7 @@ export namespace CinnamonDesktop {
     namespace RRLabeler {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::config': GObject.Object.Notify;
+            'notify::config': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1352,6 +1401,14 @@ export namespace CinnamonDesktop {
         // Properties
 
         set config(val: RRConfig);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RRLabeler.SignalSignatures;
 
         // Constructors
 
@@ -1363,16 +1420,19 @@ export namespace CinnamonDesktop {
 
         // Signals
 
-        connect<K extends keyof RRLabeler.SignalSignatures>(signal: K, callback: RRLabeler.SignalSignatures[K]): number;
+        connect<K extends keyof RRLabeler.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, RRLabeler.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RRLabeler.SignalSignatures>(
             signal: K,
-            callback: RRLabeler.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RRLabeler.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RRLabeler.SignalSignatures>(
             signal: K,
-            ...args: RRLabeler.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RRLabeler.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1404,6 +1464,14 @@ export namespace CinnamonDesktop {
 
     class RROutputInfo extends GObject.Object {
         static $gtype: GObject.GType<RROutputInfo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RROutputInfo.SignalSignatures;
 
         // Constructors
 
@@ -1415,17 +1483,17 @@ export namespace CinnamonDesktop {
 
         connect<K extends keyof RROutputInfo.SignalSignatures>(
             signal: K,
-            callback: RROutputInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RROutputInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RROutputInfo.SignalSignatures>(
             signal: K,
-            callback: RROutputInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RROutputInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RROutputInfo.SignalSignatures>(
             signal: K,
-            ...args: RROutputInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RROutputInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1459,26 +1527,12 @@ export namespace CinnamonDesktop {
     }
 
     namespace RRScreen {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: RRScreen): void;
-        }
-
-        interface OutputConnected {
-            (_source: RRScreen, output?: any | null): void;
-        }
-
-        interface OutputDisconnected {
-            (_source: RRScreen, output?: any | null): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            'output-connected': OutputConnected;
-            'output-disconnected': OutputDisconnected;
-            'notify::gdk-screen': GObject.Object.Notify;
+            changed: () => void;
+            'output-connected': (arg0: any | null) => void;
+            'output-disconnected': (arg0: any | null) => void;
+            'notify::gdk-screen': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1496,6 +1550,14 @@ export namespace CinnamonDesktop {
 
         get gdk_screen(): Gdk.Screen;
         get gdkScreen(): Gdk.Screen;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RRScreen.SignalSignatures;
 
         // Constructors
 
@@ -1507,16 +1569,19 @@ export namespace CinnamonDesktop {
 
         // Signals
 
-        connect<K extends keyof RRScreen.SignalSignatures>(signal: K, callback: RRScreen.SignalSignatures[K]): number;
+        connect<K extends keyof RRScreen.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, RRScreen.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RRScreen.SignalSignatures>(
             signal: K,
-            callback: RRScreen.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RRScreen.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RRScreen.SignalSignatures>(
             signal: K,
-            ...args: RRScreen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RRScreen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2105,8 +2170,8 @@ export namespace CinnamonDesktop {
     namespace WallClock {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::clock': GObject.Object.Notify;
-            'notify::format-string': GObject.Object.Notify;
+            'notify::clock': (pspec: GObject.ParamSpec) => void;
+            'notify::format-string': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2141,6 +2206,14 @@ export namespace CinnamonDesktop {
          */
         get formatString(): string;
         set formatString(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WallClock.SignalSignatures;
 
         // Fields
 
@@ -2156,16 +2229,19 @@ export namespace CinnamonDesktop {
 
         // Signals
 
-        connect<K extends keyof WallClock.SignalSignatures>(signal: K, callback: WallClock.SignalSignatures[K]): number;
+        connect<K extends keyof WallClock.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WallClock.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WallClock.SignalSignatures>(
             signal: K,
-            callback: WallClock.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WallClock.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WallClock.SignalSignatures>(
             signal: K,
-            ...args: WallClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WallClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2232,6 +2308,14 @@ export namespace CinnamonDesktop {
 
     class XkbInfo extends GObject.Object {
         static $gtype: GObject.GType<XkbInfo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XkbInfo.SignalSignatures;
 
         // Fields
 
@@ -2247,16 +2331,19 @@ export namespace CinnamonDesktop {
 
         // Signals
 
-        connect<K extends keyof XkbInfo.SignalSignatures>(signal: K, callback: XkbInfo.SignalSignatures[K]): number;
+        connect<K extends keyof XkbInfo.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XkbInfo.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XkbInfo.SignalSignatures>(
             signal: K,
-            callback: XkbInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XkbInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XkbInfo.SignalSignatures>(
             signal: K,
-            ...args: XkbInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XkbInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

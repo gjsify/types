@@ -369,8 +369,8 @@ export namespace Gck {
     namespace Enumerator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::chained': GObject.Object.Notify;
-            'notify::interaction': GObject.Object.Notify;
+            'notify::chained': (pspec: GObject.ParamSpec) => void;
+            'notify::interaction': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -407,6 +407,14 @@ export namespace Gck {
          */
         get interaction(): Gio.TlsInteraction;
         set interaction(val: Gio.TlsInteraction);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Enumerator.SignalSignatures;
 
         // Constructors
 
@@ -418,17 +426,17 @@ export namespace Gck {
 
         connect<K extends keyof Enumerator.SignalSignatures>(
             signal: K,
-            callback: Enumerator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Enumerator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Enumerator.SignalSignatures>(
             signal: K,
-            callback: Enumerator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Enumerator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Enumerator.SignalSignatures>(
             signal: K,
-            ...args: Enumerator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Enumerator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -545,8 +553,8 @@ export namespace Gck {
     namespace Module {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::functions': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
+            'notify::functions': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -583,6 +591,14 @@ export namespace Gck {
          * initialized module via the gck_module_new() function.
          */
         get path(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Module.SignalSignatures;
 
         // Constructors
 
@@ -592,13 +608,19 @@ export namespace Gck {
 
         // Signals
 
-        connect<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
+        connect<K extends keyof Module.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Module.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
+        connect_after<K extends keyof Module.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Module.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Module.SignalSignatures>(
             signal: K,
-            ...args: Module.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Module.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -678,9 +700,9 @@ export namespace Gck {
     namespace Object {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::handle': GObject.Object.Notify;
-            'notify::module': GObject.Object.Notify;
-            'notify::session': GObject.Object.Notify;
+            'notify::handle': (pspec: GObject.ParamSpec) => void;
+            'notify::module': (pspec: GObject.ParamSpec) => void;
+            'notify::session': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -718,6 +740,14 @@ export namespace Gck {
          * such as gck_object_get(), gck_object_set() or gck_object_destroy().
          */
         get session(): Session;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -729,13 +759,19 @@ export namespace Gck {
 
         // Signals
 
-        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
-            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1195,12 +1231,12 @@ export namespace Gck {
     namespace Password {
         // Signal signatures
         interface SignalSignatures extends Gio.TlsPassword.SignalSignatures {
-            'notify::key': GObject.Object.Notify;
-            'notify::module': GObject.Object.Notify;
-            'notify::token': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::warning': GObject.Object.Notify;
+            'notify::key': (pspec: GObject.ParamSpec) => void;
+            'notify::module': (pspec: GObject.ParamSpec) => void;
+            'notify::token': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::warning': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1238,6 +1274,14 @@ export namespace Gck {
          * the GckPassword:object property will be %NULL
          */
         get token(): Slot;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Password.SignalSignatures;
 
         // Constructors
 
@@ -1247,16 +1291,19 @@ export namespace Gck {
 
         // Signals
 
-        connect<K extends keyof Password.SignalSignatures>(signal: K, callback: Password.SignalSignatures[K]): number;
+        connect<K extends keyof Password.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Password.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Password.SignalSignatures>(
             signal: K,
-            callback: Password.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Password.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Password.SignalSignatures>(
             signal: K,
-            ...args: Password.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Password.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1282,22 +1329,16 @@ export namespace Gck {
     }
 
     namespace Session {
-        // Signal callback interfaces
-
-        interface DiscardHandle {
-            (_source: Session, handle: number): boolean | void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'discard-handle': DiscardHandle;
-            'notify::app-data': GObject.Object.Notify;
-            'notify::handle': GObject.Object.Notify;
-            'notify::interaction': GObject.Object.Notify;
-            'notify::module': GObject.Object.Notify;
-            'notify::opening-flags': GObject.Object.Notify;
-            'notify::options': GObject.Object.Notify;
-            'notify::slot': GObject.Object.Notify;
+            'discard-handle': (arg0: number) => boolean | void;
+            'notify::app-data': (pspec: GObject.ParamSpec) => void;
+            'notify::handle': (pspec: GObject.ParamSpec) => void;
+            'notify::interaction': (pspec: GObject.ParamSpec) => void;
+            'notify::module': (pspec: GObject.ParamSpec) => void;
+            'notify::opening-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::options': (pspec: GObject.ParamSpec) => void;
+            'notify::slot': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1368,6 +1409,14 @@ export namespace Gck {
          * The GckSlot this session is opened on.
          */
         get slot(): Slot;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -1377,16 +1426,19 @@ export namespace Gck {
 
         // Signals
 
-        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
-            callback: Session.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3326,8 +3378,8 @@ export namespace Gck {
     namespace Slot {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::handle': GObject.Object.Notify;
-            'notify::module': GObject.Object.Notify;
+            'notify::handle': (pspec: GObject.ParamSpec) => void;
+            'notify::module': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3358,6 +3410,14 @@ export namespace Gck {
          * The PKCS11 object that this slot is a part of.
          */
         get module(): Module;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Slot.SignalSignatures;
 
         // Constructors
 
@@ -3367,13 +3427,19 @@ export namespace Gck {
 
         // Signals
 
-        connect<K extends keyof Slot.SignalSignatures>(signal: K, callback: Slot.SignalSignatures[K]): number;
+        connect<K extends keyof Slot.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Slot.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Slot.SignalSignatures>(signal: K, callback: Slot.SignalSignatures[K]): number;
+        connect_after<K extends keyof Slot.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Slot.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Slot.SignalSignatures>(
             signal: K,
-            ...args: Slot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Slot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -239,21 +239,15 @@ export namespace Xfconf {
      */
     function value_set_uint16(value: GObject.Value | any, v_uint16: number): void;
     namespace Channel {
-        // Signal callback interfaces
-
-        interface PropertyChanged {
-            (_source: Channel, property: string, value: GObject.Value | any): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'property-changed': PropertyChanged;
-            'notify::channel-name': GObject.Object.Notify;
-            'notify::is-singleton': GObject.Object.Notify;
-            'notify::property-base': GObject.Object.Notify;
-            'property-changed::channel-name': PropertyChanged;
-            'property-changed::is-singleton': PropertyChanged;
-            'property-changed::property-base': PropertyChanged;
+            'property-changed': (arg0: string, arg1: GObject.Value) => void;
+            'notify::channel-name': (pspec: GObject.ParamSpec) => void;
+            'notify::is-singleton': (pspec: GObject.ParamSpec) => void;
+            'notify::property-base': (pspec: GObject.ParamSpec) => void;
+            'property-changed::channel-name': (arg0: string, arg1: GObject.Value) => void;
+            'property-changed::is-singleton': (arg0: string, arg1: GObject.Value) => void;
+            'property-changed::property-base': (arg0: string, arg1: GObject.Value) => void;
         }
 
         // Constructor properties interface
@@ -306,6 +300,14 @@ export namespace Xfconf {
          * This can be used to restrict a channel to a subset of properties.
          */
         get propertyBase(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Channel.SignalSignatures;
 
         // Constructors
 
@@ -319,16 +321,19 @@ export namespace Xfconf {
 
         // Signals
 
-        connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: Channel.SignalSignatures[K]): number;
+        connect<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            callback: Channel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            ...args: Channel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Channel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -611,13 +616,19 @@ export namespace Xfconf {
 
         // Signals
 
-        connect<K extends keyof Int16.SignalSignatures>(signal: K, callback: Int16.SignalSignatures[K]): number;
+        connect<K extends keyof Int16.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Int16.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Int16.SignalSignatures>(signal: K, callback: Int16.SignalSignatures[K]): number;
+        connect_after<K extends keyof Int16.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Int16.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int16.SignalSignatures>(
             signal: K,
-            ...args: Int16.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Int16.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -636,13 +647,19 @@ export namespace Xfconf {
 
         // Signals
 
-        connect<K extends keyof Uint16.SignalSignatures>(signal: K, callback: Uint16.SignalSignatures[K]): number;
+        connect<K extends keyof Uint16.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Uint16.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Uint16.SignalSignatures>(signal: K, callback: Uint16.SignalSignatures[K]): number;
+        connect_after<K extends keyof Uint16.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Uint16.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Uint16.SignalSignatures>(
             signal: K,
-            ...args: Uint16.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Uint16.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

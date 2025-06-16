@@ -89,13 +89,13 @@ export namespace EBook {
     namespace BookClient {
         // Signal signatures
         interface SignalSignatures extends EDataServer.Client.SignalSignatures {
-            'notify::locale': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
-            'notify::online': GObject.Object.Notify;
-            'notify::opened': GObject.Object.Notify;
-            'notify::readonly': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
+            'notify::locale': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::main-context': (pspec: GObject.ParamSpec) => void;
+            'notify::online': (pspec: GObject.ParamSpec) => void;
+            'notify::opened': (pspec: GObject.ParamSpec) => void;
+            'notify::readonly': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -121,6 +121,14 @@ export namespace EBook {
          * The currently active locale for this addressbook.
          */
         get locale(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BookClient.SignalSignatures;
 
         // Constructors
 
@@ -134,17 +142,17 @@ export namespace EBook {
 
         connect<K extends keyof BookClient.SignalSignatures>(
             signal: K,
-            callback: BookClient.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookClient.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookClient.SignalSignatures>(
             signal: K,
-            callback: BookClient.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookClient.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookClient.SignalSignatures>(
             signal: K,
-            ...args: BookClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BookClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1871,23 +1879,17 @@ export namespace EBook {
     }
 
     namespace BookClientCursor {
-        // Signal callback interfaces
-
-        interface Refresh {
-            (_source: BookClientCursor): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            refresh: Refresh;
-            'notify::alphabet': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
-            'notify::connection': GObject.Object.Notify;
-            'notify::context': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::sort-fields': GObject.Object.Notify;
-            'notify::total': GObject.Object.Notify;
+            refresh: () => void;
+            'notify::alphabet': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::object-path': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::sort-fields': (pspec: GObject.ParamSpec) => void;
+            'notify::total': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2012,6 +2014,14 @@ export namespace EBook {
          * default context at cursor creation time.
          */
         get total(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BookClientCursor.SignalSignatures;
 
         // Constructors
 
@@ -2023,17 +2033,17 @@ export namespace EBook {
 
         connect<K extends keyof BookClientCursor.SignalSignatures>(
             signal: K,
-            callback: BookClientCursor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookClientCursor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookClientCursor.SignalSignatures>(
             signal: K,
-            callback: BookClientCursor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookClientCursor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookClientCursor.SignalSignatures>(
             signal: K,
-            ...args: BookClientCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BookClientCursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2900,45 +2910,19 @@ export namespace EBook {
     }
 
     namespace BookClientView {
-        // Signal callback interfaces
-
-        interface Complete {
-            (_source: BookClientView, object: GLib.Error): void;
-        }
-
-        interface ContentChanged {
-            (_source: BookClientView): void;
-        }
-
-        interface ObjectsAdded {
-            (_source: BookClientView, objects: EBookContacts.Contact[]): void;
-        }
-
-        interface ObjectsModified {
-            (_source: BookClientView, objects: EBookContacts.Contact[]): void;
-        }
-
-        interface ObjectsRemoved {
-            (_source: BookClientView, uids: string[]): void;
-        }
-
-        interface Progress {
-            (_source: BookClientView, object: number, p0: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            complete: Complete;
-            'content-changed': ContentChanged;
-            'objects-added': ObjectsAdded;
-            'objects-modified': ObjectsModified;
-            'objects-removed': ObjectsRemoved;
-            progress: Progress;
-            'notify::client': GObject.Object.Notify;
-            'notify::connection': GObject.Object.Notify;
-            'notify::indices': GObject.Object.Notify;
-            'notify::n-total': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
+            complete: (arg0: GLib.Error) => void;
+            'content-changed': () => void;
+            'objects-added': (arg0: EBookContacts.Contact[]) => void;
+            'objects-modified': (arg0: EBookContacts.Contact[]) => void;
+            'objects-removed': (arg0: string[]) => void;
+            progress: (arg0: number, arg1: string) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::indices': (pspec: GObject.ParamSpec) => void;
+            'notify::n-total': (pspec: GObject.ParamSpec) => void;
+            'notify::object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2988,6 +2972,14 @@ export namespace EBook {
         get nTotal(): number;
         get object_path(): string;
         get objectPath(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BookClientView.SignalSignatures;
 
         // Constructors
 
@@ -2999,17 +2991,17 @@ export namespace EBook {
 
         connect<K extends keyof BookClientView.SignalSignatures>(
             signal: K,
-            callback: BookClientView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookClientView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookClientView.SignalSignatures>(
             signal: K,
-            callback: BookClientView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BookClientView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookClientView.SignalSignatures>(
             signal: K,
-            ...args: BookClientView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BookClientView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3673,15 +3665,9 @@ export namespace EBook {
     }
 
     namespace Destination {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: Destination): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
+            changed: () => void;
         }
 
         // Constructor properties interface
@@ -3691,6 +3677,14 @@ export namespace EBook {
 
     class Destination extends GObject.Object {
         static $gtype: GObject.GType<Destination>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Destination.SignalSignatures;
 
         // Fields
 
@@ -3708,17 +3702,17 @@ export namespace EBook {
 
         connect<K extends keyof Destination.SignalSignatures>(
             signal: K,
-            callback: Destination.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Destination.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Destination.SignalSignatures>(
             signal: K,
-            callback: Destination.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Destination.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Destination.SignalSignatures>(
             signal: K,
-            ...args: Destination.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Destination.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

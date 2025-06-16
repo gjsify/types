@@ -399,8 +399,8 @@ export namespace GstVulkan {
     namespace VulkanBufferMemoryAllocator {
         // Signal signatures
         interface SignalSignatures extends Gst.Allocator.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -413,6 +413,14 @@ export namespace GstVulkan {
      */
     class VulkanBufferMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanBufferMemoryAllocator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanBufferMemoryAllocator.SignalSignatures;
 
         // Constructors
 
@@ -424,17 +432,19 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanBufferMemoryAllocator.SignalSignatures>(
             signal: K,
-            callback: VulkanBufferMemoryAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanBufferMemoryAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanBufferMemoryAllocator.SignalSignatures>(
             signal: K,
-            callback: VulkanBufferMemoryAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanBufferMemoryAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanBufferMemoryAllocator.SignalSignatures>(
             signal: K,
-            ...args: VulkanBufferMemoryAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanBufferMemoryAllocator.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -442,8 +452,8 @@ export namespace GstVulkan {
     namespace VulkanBufferPool {
         // Signal signatures
         interface SignalSignatures extends Gst.BufferPool.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -456,6 +466,14 @@ export namespace GstVulkan {
      */
     class VulkanBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VulkanBufferPool>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanBufferPool.SignalSignatures;
 
         // Fields
 
@@ -477,17 +495,17 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanBufferPool.SignalSignatures>(
             signal: K,
-            callback: VulkanBufferPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanBufferPool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanBufferPool.SignalSignatures>(
             signal: K,
-            callback: VulkanBufferPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanBufferPool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanBufferPool.SignalSignatures>(
             signal: K,
-            ...args: VulkanBufferPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanBufferPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -495,8 +513,8 @@ export namespace GstVulkan {
     namespace VulkanCommandPool {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -506,6 +524,14 @@ export namespace GstVulkan {
 
     class VulkanCommandPool extends Gst.Object {
         static $gtype: GObject.GType<VulkanCommandPool>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanCommandPool.SignalSignatures;
 
         // Fields
 
@@ -521,17 +547,17 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanCommandPool.SignalSignatures>(
             signal: K,
-            callback: VulkanCommandPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanCommandPool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanCommandPool.SignalSignatures>(
             signal: K,
-            callback: VulkanCommandPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanCommandPool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanCommandPool.SignalSignatures>(
             signal: K,
-            ...args: VulkanCommandPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanCommandPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -558,8 +584,8 @@ export namespace GstVulkan {
     namespace VulkanDescriptorCache {
         // Signal signatures
         interface SignalSignatures extends VulkanHandlePool.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -569,6 +595,14 @@ export namespace GstVulkan {
 
     class VulkanDescriptorCache extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanDescriptorCache>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanDescriptorCache.SignalSignatures;
 
         // Fields
 
@@ -586,17 +620,19 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanDescriptorCache.SignalSignatures>(
             signal: K,
-            callback: VulkanDescriptorCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanDescriptorCache.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanDescriptorCache.SignalSignatures>(
             signal: K,
-            callback: VulkanDescriptorCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanDescriptorCache.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanDescriptorCache.SignalSignatures>(
             signal: K,
-            ...args: VulkanDescriptorCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanDescriptorCache.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -610,8 +646,8 @@ export namespace GstVulkan {
     namespace VulkanDescriptorPool {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -621,6 +657,14 @@ export namespace GstVulkan {
 
     class VulkanDescriptorPool extends Gst.Object {
         static $gtype: GObject.GType<VulkanDescriptorPool>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanDescriptorPool.SignalSignatures;
 
         // Fields
 
@@ -638,17 +682,19 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanDescriptorPool.SignalSignatures>(
             signal: K,
-            callback: VulkanDescriptorPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanDescriptorPool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanDescriptorPool.SignalSignatures>(
             signal: K,
-            callback: VulkanDescriptorPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanDescriptorPool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanDescriptorPool.SignalSignatures>(
             signal: K,
-            ...args: VulkanDescriptorPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanDescriptorPool.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -662,10 +708,10 @@ export namespace GstVulkan {
     namespace VulkanDevice {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::instance': GObject.Object.Notify;
-            'notify::physical-device': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::instance': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-device': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -685,6 +731,14 @@ export namespace GstVulkan {
         get instance(): VulkanInstance;
         get physical_device(): VulkanPhysicalDevice;
         get physicalDevice(): VulkanPhysicalDevice;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanDevice.SignalSignatures;
 
         // Constructors
 
@@ -700,17 +754,17 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanDevice.SignalSignatures>(
             signal: K,
-            callback: VulkanDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanDevice.SignalSignatures>(
             signal: K,
-            callback: VulkanDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanDevice.SignalSignatures>(
             signal: K,
-            ...args: VulkanDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -759,8 +813,8 @@ export namespace GstVulkan {
     namespace VulkanDisplay {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -774,6 +828,14 @@ export namespace GstVulkan {
      */
     class VulkanDisplay extends Gst.Object {
         static $gtype: GObject.GType<VulkanDisplay>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanDisplay.SignalSignatures;
 
         // Constructors
 
@@ -789,17 +851,17 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanDisplay.SignalSignatures>(
             signal: K,
-            callback: VulkanDisplay.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanDisplay.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanDisplay.SignalSignatures>(
             signal: K,
-            callback: VulkanDisplay.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanDisplay.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanDisplay.SignalSignatures>(
             signal: K,
-            ...args: VulkanDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -854,8 +916,8 @@ export namespace GstVulkan {
     namespace VulkanFenceCache {
         // Signal signatures
         interface SignalSignatures extends VulkanHandlePool.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -865,6 +927,14 @@ export namespace GstVulkan {
 
     class VulkanFenceCache extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanFenceCache>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanFenceCache.SignalSignatures;
 
         // Constructors
 
@@ -878,17 +948,17 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanFenceCache.SignalSignatures>(
             signal: K,
-            callback: VulkanFenceCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanFenceCache.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanFenceCache.SignalSignatures>(
             signal: K,
-            callback: VulkanFenceCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanFenceCache.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanFenceCache.SignalSignatures>(
             signal: K,
-            ...args: VulkanFenceCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanFenceCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -896,8 +966,8 @@ export namespace GstVulkan {
     namespace VulkanFullScreenQuad {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -907,6 +977,14 @@ export namespace GstVulkan {
 
     class VulkanFullScreenQuad extends Gst.Object {
         static $gtype: GObject.GType<VulkanFullScreenQuad>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanFullScreenQuad.SignalSignatures;
 
         // Fields
 
@@ -927,17 +1005,19 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanFullScreenQuad.SignalSignatures>(
             signal: K,
-            callback: VulkanFullScreenQuad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanFullScreenQuad.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanFullScreenQuad.SignalSignatures>(
             signal: K,
-            callback: VulkanFullScreenQuad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanFullScreenQuad.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanFullScreenQuad.SignalSignatures>(
             signal: K,
-            ...args: VulkanFullScreenQuad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanFullScreenQuad.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -960,8 +1040,8 @@ export namespace GstVulkan {
     namespace VulkanHandlePool {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -971,6 +1051,14 @@ export namespace GstVulkan {
 
     abstract class VulkanHandlePool extends Gst.Object {
         static $gtype: GObject.GType<VulkanHandlePool>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanHandlePool.SignalSignatures;
 
         // Fields
 
@@ -988,17 +1076,17 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanHandlePool.SignalSignatures>(
             signal: K,
-            callback: VulkanHandlePool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanHandlePool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanHandlePool.SignalSignatures>(
             signal: K,
-            callback: VulkanHandlePool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanHandlePool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanHandlePool.SignalSignatures>(
             signal: K,
-            ...args: VulkanHandlePool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanHandlePool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1019,8 +1107,8 @@ export namespace GstVulkan {
     namespace VulkanImageBufferPool {
         // Signal signatures
         interface SignalSignatures extends Gst.BufferPool.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1033,6 +1121,14 @@ export namespace GstVulkan {
      */
     class VulkanImageBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VulkanImageBufferPool>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanImageBufferPool.SignalSignatures;
 
         // Fields
 
@@ -1054,17 +1150,19 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanImageBufferPool.SignalSignatures>(
             signal: K,
-            callback: VulkanImageBufferPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanImageBufferPool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanImageBufferPool.SignalSignatures>(
             signal: K,
-            callback: VulkanImageBufferPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanImageBufferPool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanImageBufferPool.SignalSignatures>(
             signal: K,
-            ...args: VulkanImageBufferPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanImageBufferPool.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1072,8 +1170,8 @@ export namespace GstVulkan {
     namespace VulkanImageMemoryAllocator {
         // Signal signatures
         interface SignalSignatures extends Gst.Allocator.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1086,6 +1184,14 @@ export namespace GstVulkan {
      */
     class VulkanImageMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanImageMemoryAllocator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanImageMemoryAllocator.SignalSignatures;
 
         // Constructors
 
@@ -1097,33 +1203,29 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanImageMemoryAllocator.SignalSignatures>(
             signal: K,
-            callback: VulkanImageMemoryAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanImageMemoryAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanImageMemoryAllocator.SignalSignatures>(
             signal: K,
-            callback: VulkanImageMemoryAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanImageMemoryAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanImageMemoryAllocator.SignalSignatures>(
             signal: K,
-            ...args: VulkanImageMemoryAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanImageMemoryAllocator.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace VulkanInstance {
-        // Signal callback interfaces
-
-        interface CreateDevice {
-            (_source: VulkanInstance): VulkanDevice;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'create-device': CreateDevice;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'create-device': () => VulkanDevice;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1133,6 +1235,14 @@ export namespace GstVulkan {
 
     class VulkanInstance extends Gst.Object {
         static $gtype: GObject.GType<VulkanInstance>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanInstance.SignalSignatures;
 
         // Fields
 
@@ -1150,17 +1260,17 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanInstance.SignalSignatures>(
             signal: K,
-            callback: VulkanInstance.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanInstance.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanInstance.SignalSignatures>(
             signal: K,
-            callback: VulkanInstance.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanInstance.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanInstance.SignalSignatures>(
             signal: K,
-            ...args: VulkanInstance.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanInstance.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1199,8 +1309,8 @@ export namespace GstVulkan {
     namespace VulkanMemoryAllocator {
         // Signal signatures
         interface SignalSignatures extends Gst.Allocator.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1213,6 +1323,14 @@ export namespace GstVulkan {
      */
     class VulkanMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanMemoryAllocator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanMemoryAllocator.SignalSignatures;
 
         // Constructors
 
@@ -1224,17 +1342,19 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanMemoryAllocator.SignalSignatures>(
             signal: K,
-            callback: VulkanMemoryAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanMemoryAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanMemoryAllocator.SignalSignatures>(
             signal: K,
-            callback: VulkanMemoryAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanMemoryAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanMemoryAllocator.SignalSignatures>(
             signal: K,
-            ...args: VulkanMemoryAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanMemoryAllocator.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1242,10 +1362,10 @@ export namespace GstVulkan {
     namespace VulkanPhysicalDevice {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::device-index': GObject.Object.Notify;
-            'notify::instance': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::device-index': (pspec: GObject.ParamSpec) => void;
+            'notify::instance': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1267,6 +1387,14 @@ export namespace GstVulkan {
         get deviceIndex(): number;
         get instance(): VulkanInstance;
         get name(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanPhysicalDevice.SignalSignatures;
 
         // Fields
 
@@ -1286,17 +1414,19 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanPhysicalDevice.SignalSignatures>(
             signal: K,
-            callback: VulkanPhysicalDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanPhysicalDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanPhysicalDevice.SignalSignatures>(
             signal: K,
-            callback: VulkanPhysicalDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanPhysicalDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanPhysicalDevice.SignalSignatures>(
             signal: K,
-            ...args: VulkanPhysicalDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanPhysicalDevice.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1312,8 +1442,8 @@ export namespace GstVulkan {
     namespace VulkanQueue {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1323,6 +1453,14 @@ export namespace GstVulkan {
 
     class VulkanQueue extends Gst.Object {
         static $gtype: GObject.GType<VulkanQueue>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanQueue.SignalSignatures;
 
         // Fields
 
@@ -1340,17 +1478,17 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanQueue.SignalSignatures>(
             signal: K,
-            callback: VulkanQueue.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanQueue.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanQueue.SignalSignatures>(
             signal: K,
-            callback: VulkanQueue.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanQueue.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanQueue.SignalSignatures>(
             signal: K,
-            ...args: VulkanQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1395,10 +1533,10 @@ export namespace GstVulkan {
     namespace VulkanSwapper {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::force-aspect-ratio': GObject.Object.Notify;
-            'notify::pixel-aspect-ratio': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::force-aspect-ratio': (pspec: GObject.ParamSpec) => void;
+            'notify::pixel-aspect-ratio': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1424,6 +1562,14 @@ export namespace GstVulkan {
         set pixel_aspect_ratio(val: Gst.Fraction);
         get pixelAspectRatio(): Gst.Fraction;
         set pixelAspectRatio(val: Gst.Fraction);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanSwapper.SignalSignatures;
 
         // Fields
 
@@ -1444,17 +1590,17 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanSwapper.SignalSignatures>(
             signal: K,
-            callback: VulkanSwapper.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanSwapper.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanSwapper.SignalSignatures>(
             signal: K,
-            callback: VulkanSwapper.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanSwapper.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanSwapper.SignalSignatures>(
             signal: K,
-            ...args: VulkanSwapper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanSwapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1474,8 +1620,8 @@ export namespace GstVulkan {
     namespace VulkanTrashFenceList {
         // Signal signatures
         interface SignalSignatures extends VulkanTrashList.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1485,6 +1631,14 @@ export namespace GstVulkan {
 
     class VulkanTrashFenceList extends VulkanTrashList {
         static $gtype: GObject.GType<VulkanTrashFenceList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanTrashFenceList.SignalSignatures;
 
         // Constructors
 
@@ -1498,17 +1652,19 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanTrashFenceList.SignalSignatures>(
             signal: K,
-            callback: VulkanTrashFenceList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanTrashFenceList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanTrashFenceList.SignalSignatures>(
             signal: K,
-            callback: VulkanTrashFenceList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanTrashFenceList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanTrashFenceList.SignalSignatures>(
             signal: K,
-            ...args: VulkanTrashFenceList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanTrashFenceList.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1516,8 +1672,8 @@ export namespace GstVulkan {
     namespace VulkanTrashList {
         // Signal signatures
         interface SignalSignatures extends VulkanHandlePool.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1527,6 +1683,14 @@ export namespace GstVulkan {
 
     class VulkanTrashList extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanTrashList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanTrashList.SignalSignatures;
 
         // Constructors
 
@@ -1538,17 +1702,17 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanTrashList.SignalSignatures>(
             signal: K,
-            callback: VulkanTrashList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanTrashList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanTrashList.SignalSignatures>(
             signal: K,
-            callback: VulkanTrashList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanTrashList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanTrashList.SignalSignatures>(
             signal: K,
-            ...args: VulkanTrashList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanTrashList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1571,9 +1735,9 @@ export namespace GstVulkan {
     namespace VulkanVideoFilter {
         // Signal signatures
         interface SignalSignatures extends GstBase.BaseTransform.SignalSignatures {
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1583,6 +1747,14 @@ export namespace GstVulkan {
 
     class VulkanVideoFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<VulkanVideoFilter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanVideoFilter.SignalSignatures;
 
         // Fields
 
@@ -1600,54 +1772,32 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanVideoFilter.SignalSignatures>(
             signal: K,
-            callback: VulkanVideoFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanVideoFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanVideoFilter.SignalSignatures>(
             signal: K,
-            callback: VulkanVideoFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanVideoFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanVideoFilter.SignalSignatures>(
             signal: K,
-            ...args: VulkanVideoFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanVideoFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace VulkanWindow {
-        // Signal callback interfaces
-
-        interface Close {
-            (_source: VulkanWindow): boolean | void;
-        }
-
-        interface Draw {
-            (_source: VulkanWindow): void;
-        }
-
-        interface KeyEvent {
-            (_source: VulkanWindow, id: string, key: string): void;
-        }
-
-        interface MouseEvent {
-            (_source: VulkanWindow, id: string, button: number, x: number, y: number): void;
-        }
-
-        interface Resize {
-            (_source: VulkanWindow, object: number, p0: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            close: Close;
-            draw: Draw;
-            'key-event': KeyEvent;
-            'mouse-event': MouseEvent;
-            resize: Resize;
-            'notify::display': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            close: () => boolean | void;
+            draw: () => void;
+            'key-event': (arg0: string, arg1: string) => void;
+            'mouse-event': (arg0: string, arg1: number, arg2: number, arg3: number) => void;
+            resize: (arg0: number, arg1: number) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1667,6 +1817,14 @@ export namespace GstVulkan {
         // Properties
 
         get display(): VulkanDisplay;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanWindow.SignalSignatures;
 
         // Constructors
 
@@ -1680,17 +1838,17 @@ export namespace GstVulkan {
 
         connect<K extends keyof VulkanWindow.SignalSignatures>(
             signal: K,
-            callback: VulkanWindow.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanWindow.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanWindow.SignalSignatures>(
             signal: K,
-            callback: VulkanWindow.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanWindow.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanWindow.SignalSignatures>(
             signal: K,
-            ...args: VulkanWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

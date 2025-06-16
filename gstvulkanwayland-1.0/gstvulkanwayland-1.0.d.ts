@@ -27,8 +27,8 @@ export namespace GstVulkanWayland {
     namespace VulkanDisplayWayland {
         // Signal signatures
         interface SignalSignatures extends GstVulkan.VulkanDisplay.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -42,6 +42,14 @@ export namespace GstVulkanWayland {
      */
     class VulkanDisplayWayland extends GstVulkan.VulkanDisplay {
         static $gtype: GObject.GType<VulkanDisplayWayland>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanDisplayWayland.SignalSignatures;
 
         // Fields
 
@@ -68,17 +76,19 @@ export namespace GstVulkanWayland {
 
         connect<K extends keyof VulkanDisplayWayland.SignalSignatures>(
             signal: K,
-            callback: VulkanDisplayWayland.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanDisplayWayland.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanDisplayWayland.SignalSignatures>(
             signal: K,
-            callback: VulkanDisplayWayland.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanDisplayWayland.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanDisplayWayland.SignalSignatures>(
             signal: K,
-            ...args: VulkanDisplayWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanDisplayWayland.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

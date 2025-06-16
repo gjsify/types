@@ -72,19 +72,13 @@ export namespace Unique {
         PASSTHROUGH,
     }
     namespace App {
-        // Signal callback interfaces
-
-        interface MessageReceived {
-            (_source: App, command: number, message_data: MessageData, time_: number): Response;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'message-received': MessageReceived;
-            'notify::is-running': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::screen': GObject.Object.Notify;
-            'notify::startup-id': GObject.Object.Notify;
+            'message-received': (arg0: number, arg1: MessageData, arg2: number) => Response;
+            'notify::is-running': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::screen': (pspec: GObject.ParamSpec) => void;
+            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -139,6 +133,14 @@ export namespace Unique {
          * automatically given.
          */
         get startupId(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: App.SignalSignatures;
 
         // Constructors
 
@@ -150,13 +152,19 @@ export namespace Unique {
 
         // Signals
 
-        connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        connect<K extends keyof App.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, App.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        connect_after<K extends keyof App.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, App.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof App.SignalSignatures>(
             signal: K,
-            ...args: App.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<App.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -216,6 +224,14 @@ export namespace Unique {
      */
     abstract class Backend extends GObject.Object {
         static $gtype: GObject.GType<Backend>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Backend.SignalSignatures;
 
         // Constructors
 
@@ -225,16 +241,19 @@ export namespace Unique {
 
         // Signals
 
-        connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: Backend.SignalSignatures[K]): number;
+        connect<K extends keyof Backend.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            callback: Backend.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            ...args: Backend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Backend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

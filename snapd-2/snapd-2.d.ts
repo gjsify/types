@@ -882,12 +882,12 @@ export namespace Snapd {
     namespace Alias {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::app-auto': GObject.Object.Notify;
-            'notify::app-manual': GObject.Object.Notify;
-            'notify::command': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::snap': GObject.Object.Notify;
-            'notify::status': GObject.Object.Notify;
+            'notify::app-auto': (pspec: GObject.ParamSpec) => void;
+            'notify::app-manual': (pspec: GObject.ParamSpec) => void;
+            'notify::command': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::snap': (pspec: GObject.ParamSpec) => void;
+            'notify::status': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -922,6 +922,14 @@ export namespace Snapd {
         get name(): string;
         get snap(): string;
         get status(): AliasStatus;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Alias.SignalSignatures;
 
         // Constructors
 
@@ -931,13 +939,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof Alias.SignalSignatures>(signal: K, callback: Alias.SignalSignatures[K]): number;
+        connect<K extends keyof Alias.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Alias.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Alias.SignalSignatures>(signal: K, callback: Alias.SignalSignatures[K]): number;
+        connect_after<K extends keyof Alias.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Alias.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Alias.SignalSignatures>(
             signal: K,
-            ...args: Alias.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Alias.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -985,14 +999,14 @@ export namespace Snapd {
     namespace App {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::active': GObject.Object.Notify;
-            'notify::aliases': GObject.Object.Notify;
-            'notify::common-id': GObject.Object.Notify;
-            'notify::daemon-type': GObject.Object.Notify;
-            'notify::desktop-file': GObject.Object.Notify;
-            'notify::enabled': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::snap': GObject.Object.Notify;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::aliases': (pspec: GObject.ParamSpec) => void;
+            'notify::common-id': (pspec: GObject.ParamSpec) => void;
+            'notify::daemon-type': (pspec: GObject.ParamSpec) => void;
+            'notify::desktop-file': (pspec: GObject.ParamSpec) => void;
+            'notify::enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::snap': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1033,6 +1047,14 @@ export namespace Snapd {
         get enabled(): boolean;
         get name(): string;
         get snap(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: App.SignalSignatures;
 
         // Constructors
 
@@ -1042,13 +1064,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        connect<K extends keyof App.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, App.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        connect_after<K extends keyof App.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, App.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof App.SignalSignatures>(
             signal: K,
-            ...args: App.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<App.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1099,7 +1127,7 @@ export namespace Snapd {
     namespace Assertion {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::content': GObject.Object.Notify;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1121,6 +1149,14 @@ export namespace Snapd {
         // Properties
 
         get content(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Assertion.SignalSignatures;
 
         // Constructors
 
@@ -1132,16 +1168,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof Assertion.SignalSignatures>(signal: K, callback: Assertion.SignalSignatures[K]): number;
+        connect<K extends keyof Assertion.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Assertion.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Assertion.SignalSignatures>(
             signal: K,
-            callback: Assertion.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Assertion.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Assertion.SignalSignatures>(
             signal: K,
-            ...args: Assertion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Assertion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1173,8 +1212,8 @@ export namespace Snapd {
     namespace AuthData {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::discharges': GObject.Object.Notify;
-            'notify::macaroon': GObject.Object.Notify;
+            'notify::discharges': (pspec: GObject.ParamSpec) => void;
+            'notify::macaroon': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1199,6 +1238,14 @@ export namespace Snapd {
         set discharges(val: string[]);
         get macaroon(): string;
         set macaroon(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AuthData.SignalSignatures;
 
         // Constructors
 
@@ -1210,16 +1257,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof AuthData.SignalSignatures>(signal: K, callback: AuthData.SignalSignatures[K]): number;
+        connect<K extends keyof AuthData.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AuthData.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthData.SignalSignatures>(
             signal: K,
-            callback: AuthData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthData.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthData.SignalSignatures>(
             signal: K,
-            ...args: AuthData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AuthData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1240,8 +1290,8 @@ export namespace Snapd {
     namespace Category {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::featured': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::featured': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1263,6 +1313,14 @@ export namespace Snapd {
 
         get featured(): boolean;
         get name(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Category.SignalSignatures;
 
         // Constructors
 
@@ -1272,16 +1330,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof Category.SignalSignatures>(signal: K, callback: Category.SignalSignatures[K]): number;
+        connect<K extends keyof Category.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Category.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Category.SignalSignatures>(
             signal: K,
-            callback: Category.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Category.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Category.SignalSignatures>(
             signal: K,
-            ...args: Category.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Category.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1302,7 +1363,7 @@ export namespace Snapd {
     namespace CategoryDetails {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1322,6 +1383,14 @@ export namespace Snapd {
         // Properties
 
         get name(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CategoryDetails.SignalSignatures;
 
         // Constructors
 
@@ -1333,17 +1402,17 @@ export namespace Snapd {
 
         connect<K extends keyof CategoryDetails.SignalSignatures>(
             signal: K,
-            callback: CategoryDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CategoryDetails.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CategoryDetails.SignalSignatures>(
             signal: K,
-            callback: CategoryDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CategoryDetails.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CategoryDetails.SignalSignatures>(
             signal: K,
-            ...args: CategoryDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CategoryDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1359,15 +1428,15 @@ export namespace Snapd {
     namespace Change {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::error': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::kind': GObject.Object.Notify;
-            'notify::ready': GObject.Object.Notify;
-            'notify::ready-time': GObject.Object.Notify;
-            'notify::spawn-time': GObject.Object.Notify;
-            'notify::status': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::tasks': GObject.Object.Notify;
+            'notify::error': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::kind': (pspec: GObject.ParamSpec) => void;
+            'notify::ready': (pspec: GObject.ParamSpec) => void;
+            'notify::ready-time': (pspec: GObject.ParamSpec) => void;
+            'notify::spawn-time': (pspec: GObject.ParamSpec) => void;
+            'notify::status': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::tasks': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1406,6 +1475,14 @@ export namespace Snapd {
         get status(): string;
         get summary(): string;
         get tasks(): any[];
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Change.SignalSignatures;
 
         // Constructors
 
@@ -1415,13 +1492,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof Change.SignalSignatures>(signal: K, callback: Change.SignalSignatures[K]): number;
+        connect<K extends keyof Change.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Change.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Change.SignalSignatures>(signal: K, callback: Change.SignalSignatures[K]): number;
+        connect_after<K extends keyof Change.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Change.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Change.SignalSignatures>(
             signal: K,
-            ...args: Change.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Change.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1477,13 +1560,13 @@ export namespace Snapd {
     namespace Channel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::confinement': GObject.Object.Notify;
-            'notify::epoch': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::released-at': GObject.Object.Notify;
-            'notify::revision': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
+            'notify::confinement': (pspec: GObject.ParamSpec) => void;
+            'notify::epoch': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::released-at': (pspec: GObject.ParamSpec) => void;
+            'notify::revision': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1517,6 +1600,14 @@ export namespace Snapd {
         get revision(): string;
         get size(): number;
         get version(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Channel.SignalSignatures;
 
         // Constructors
 
@@ -1526,16 +1617,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: Channel.SignalSignatures[K]): number;
+        connect<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            callback: Channel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            ...args: Channel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Channel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1621,6 +1715,14 @@ export namespace Snapd {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -1634,13 +1736,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5173,15 +5281,15 @@ export namespace Snapd {
     namespace Connection {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::gadget': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::manual': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::plug': GObject.Object.Notify;
-            'notify::plug-attrs': GObject.Object.Notify;
-            'notify::slot': GObject.Object.Notify;
-            'notify::slot-attrs': GObject.Object.Notify;
-            'notify::snap': GObject.Object.Notify;
+            'notify::gadget': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::manual': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::plug': (pspec: GObject.ParamSpec) => void;
+            'notify::plug-attrs': (pspec: GObject.ParamSpec) => void;
+            'notify::slot': (pspec: GObject.ParamSpec) => void;
+            'notify::slot-attrs': (pspec: GObject.ParamSpec) => void;
+            'notify::snap': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5220,6 +5328,14 @@ export namespace Snapd {
         get slot_attrs(): GLib.HashTable<any, any>;
         get slotAttrs(): GLib.HashTable<any, any>;
         get snap(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Connection.SignalSignatures;
 
         // Constructors
 
@@ -5231,17 +5347,17 @@ export namespace Snapd {
 
         connect<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            callback: Connection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            callback: Connection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5321,8 +5437,8 @@ export namespace Snapd {
     namespace Icon {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::data': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
+            'notify::mime-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5345,6 +5461,14 @@ export namespace Snapd {
         get data(): GLib.Bytes;
         get mime_type(): string;
         get mimeType(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Icon.SignalSignatures;
 
         // Constructors
 
@@ -5354,13 +5478,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof Icon.SignalSignatures>(signal: K, callback: Icon.SignalSignatures[K]): number;
+        connect<K extends keyof Icon.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Icon.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Icon.SignalSignatures>(signal: K, callback: Icon.SignalSignatures[K]): number;
+        connect_after<K extends keyof Icon.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Icon.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Icon.SignalSignatures>(
             signal: K,
-            ...args: Icon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Icon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5383,11 +5513,11 @@ export namespace Snapd {
     namespace Interface {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::doc-url': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::plugs': GObject.Object.Notify;
-            'notify::slots': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
+            'notify::doc-url': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::plugs': (pspec: GObject.ParamSpec) => void;
+            'notify::slots': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5416,6 +5546,14 @@ export namespace Snapd {
         get plugs(): any[];
         get slots(): any[];
         get summary(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Interface.SignalSignatures;
 
         // Constructors
 
@@ -5425,16 +5563,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof Interface.SignalSignatures>(signal: K, callback: Interface.SignalSignatures[K]): number;
+        connect<K extends keyof Interface.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Interface.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Interface.SignalSignatures>(
             signal: K,
-            callback: Interface.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Interface.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Interface.SignalSignatures>(
             signal: K,
-            ...args: Interface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Interface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5475,10 +5616,10 @@ export namespace Snapd {
     namespace Log {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::message': GObject.Object.Notify;
-            'notify::pid': GObject.Object.Notify;
-            'notify::sid': GObject.Object.Notify;
-            'notify::timestamp': GObject.Object.Notify;
+            'notify::message': (pspec: GObject.ParamSpec) => void;
+            'notify::pid': (pspec: GObject.ParamSpec) => void;
+            'notify::sid': (pspec: GObject.ParamSpec) => void;
+            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5504,6 +5645,14 @@ export namespace Snapd {
         get pid(): string;
         get sid(): string;
         get timestamp(): GLib.DateTime;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Log.SignalSignatures;
 
         // Constructors
 
@@ -5513,13 +5662,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof Log.SignalSignatures>(signal: K, callback: Log.SignalSignatures[K]): number;
+        connect<K extends keyof Log.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Log.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Log.SignalSignatures>(signal: K, callback: Log.SignalSignatures[K]): number;
+        connect_after<K extends keyof Log.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Log.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Log.SignalSignatures>(
             signal: K,
-            ...args: Log.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Log.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5550,8 +5705,8 @@ export namespace Snapd {
     namespace Maintenance {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::kind': GObject.Object.Notify;
-            'notify::message': GObject.Object.Notify;
+            'notify::kind': (pspec: GObject.ParamSpec) => void;
+            'notify::message': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5572,6 +5727,14 @@ export namespace Snapd {
 
         get kind(): MaintenanceKind;
         get message(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Maintenance.SignalSignatures;
 
         // Constructors
 
@@ -5583,17 +5746,17 @@ export namespace Snapd {
 
         connect<K extends keyof Maintenance.SignalSignatures>(
             signal: K,
-            callback: Maintenance.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Maintenance.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Maintenance.SignalSignatures>(
             signal: K,
-            callback: Maintenance.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Maintenance.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Maintenance.SignalSignatures>(
             signal: K,
-            ...args: Maintenance.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Maintenance.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5614,9 +5777,9 @@ export namespace Snapd {
     namespace MarkdownNode {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::children': GObject.Object.Notify;
-            'notify::node-type': GObject.Object.Notify;
-            'notify::text': GObject.Object.Notify;
+            'notify::children': (pspec: GObject.ParamSpec) => void;
+            'notify::node-type': (pspec: GObject.ParamSpec) => void;
+            'notify::text': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5642,6 +5805,14 @@ export namespace Snapd {
         get node_type(): MarkdownNodeType;
         get nodeType(): MarkdownNodeType;
         get text(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MarkdownNode.SignalSignatures;
 
         // Constructors
 
@@ -5653,17 +5824,17 @@ export namespace Snapd {
 
         connect<K extends keyof MarkdownNode.SignalSignatures>(
             signal: K,
-            callback: MarkdownNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MarkdownNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MarkdownNode.SignalSignatures>(
             signal: K,
-            callback: MarkdownNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MarkdownNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MarkdownNode.SignalSignatures>(
             signal: K,
-            ...args: MarkdownNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MarkdownNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5702,6 +5873,14 @@ export namespace Snapd {
      */
     class MarkdownParser extends GObject.Object {
         static $gtype: GObject.GType<MarkdownParser>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MarkdownParser.SignalSignatures;
 
         // Constructors
 
@@ -5715,17 +5894,17 @@ export namespace Snapd {
 
         connect<K extends keyof MarkdownParser.SignalSignatures>(
             signal: K,
-            callback: MarkdownParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MarkdownParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MarkdownParser.SignalSignatures>(
             signal: K,
-            callback: MarkdownParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MarkdownParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MarkdownParser.SignalSignatures>(
             signal: K,
-            ...args: MarkdownParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MarkdownParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5755,10 +5934,10 @@ export namespace Snapd {
     namespace Media {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::height': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::url': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::url': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5783,6 +5962,14 @@ export namespace Snapd {
         get type(): string;
         get url(): string;
         get width(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Media.SignalSignatures;
 
         // Constructors
 
@@ -5792,13 +5979,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        connect<K extends keyof Media.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        connect_after<K extends keyof Media.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Media.SignalSignatures>(
             signal: K,
-            ...args: Media.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Media.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5829,12 +6022,12 @@ export namespace Snapd {
     namespace Plug {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::attributes': GObject.Object.Notify;
-            'notify::connections': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::snap': GObject.Object.Notify;
+            'notify::attributes': (pspec: GObject.ParamSpec) => void;
+            'notify::connections': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::snap': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5863,6 +6056,14 @@ export namespace Snapd {
         get label(): string;
         get name(): string;
         get snap(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Plug.SignalSignatures;
 
         // Constructors
 
@@ -5872,13 +6073,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof Plug.SignalSignatures>(signal: K, callback: Plug.SignalSignatures[K]): number;
+        connect<K extends keyof Plug.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Plug.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Plug.SignalSignatures>(signal: K, callback: Plug.SignalSignatures[K]): number;
+        connect_after<K extends keyof Plug.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Plug.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Plug.SignalSignatures>(
             signal: K,
-            ...args: Plug.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Plug.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5936,8 +6143,8 @@ export namespace Snapd {
     namespace PlugRef {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::plug': GObject.Object.Notify;
-            'notify::snap': GObject.Object.Notify;
+            'notify::plug': (pspec: GObject.ParamSpec) => void;
+            'notify::snap': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5958,6 +6165,14 @@ export namespace Snapd {
 
         get plug(): string;
         get snap(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PlugRef.SignalSignatures;
 
         // Constructors
 
@@ -5967,16 +6182,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof PlugRef.SignalSignatures>(signal: K, callback: PlugRef.SignalSignatures[K]): number;
+        connect<K extends keyof PlugRef.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, PlugRef.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlugRef.SignalSignatures>(
             signal: K,
-            callback: PlugRef.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlugRef.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlugRef.SignalSignatures>(
             signal: K,
-            ...args: PlugRef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PlugRef.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5997,8 +6215,8 @@ export namespace Snapd {
     namespace Price {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::amount': GObject.Object.Notify;
-            'notify::currency': GObject.Object.Notify;
+            'notify::amount': (pspec: GObject.ParamSpec) => void;
+            'notify::currency': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6019,6 +6237,14 @@ export namespace Snapd {
 
         get amount(): number;
         get currency(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Price.SignalSignatures;
 
         // Constructors
 
@@ -6028,13 +6254,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof Price.SignalSignatures>(signal: K, callback: Price.SignalSignatures[K]): number;
+        connect<K extends keyof Price.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Price.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Price.SignalSignatures>(signal: K, callback: Price.SignalSignatures[K]): number;
+        connect_after<K extends keyof Price.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Price.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Price.SignalSignatures>(
             signal: K,
-            ...args: Price.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Price.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6055,9 +6287,9 @@ export namespace Snapd {
     namespace Screenshot {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::height': GObject.Object.Notify;
-            'notify::url': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::url': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6080,6 +6312,14 @@ export namespace Snapd {
         get height(): number;
         get url(): string;
         get width(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Screenshot.SignalSignatures;
 
         // Constructors
 
@@ -6091,17 +6331,17 @@ export namespace Snapd {
 
         connect<K extends keyof Screenshot.SignalSignatures>(
             signal: K,
-            callback: Screenshot.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Screenshot.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Screenshot.SignalSignatures>(
             signal: K,
-            callback: Screenshot.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Screenshot.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Screenshot.SignalSignatures>(
             signal: K,
-            ...args: Screenshot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Screenshot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6127,12 +6367,12 @@ export namespace Snapd {
     namespace Slot {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::attributes': GObject.Object.Notify;
-            'notify::connections': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::snap': GObject.Object.Notify;
+            'notify::attributes': (pspec: GObject.ParamSpec) => void;
+            'notify::connections': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::snap': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6161,6 +6401,14 @@ export namespace Snapd {
         get label(): string;
         get name(): string;
         get snap(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Slot.SignalSignatures;
 
         // Constructors
 
@@ -6170,13 +6418,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof Slot.SignalSignatures>(signal: K, callback: Slot.SignalSignatures[K]): number;
+        connect<K extends keyof Slot.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Slot.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Slot.SignalSignatures>(signal: K, callback: Slot.SignalSignatures[K]): number;
+        connect_after<K extends keyof Slot.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Slot.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Slot.SignalSignatures>(
             signal: K,
-            ...args: Slot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Slot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6234,8 +6488,8 @@ export namespace Snapd {
     namespace SlotRef {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::slot': GObject.Object.Notify;
-            'notify::snap': GObject.Object.Notify;
+            'notify::slot': (pspec: GObject.ParamSpec) => void;
+            'notify::snap': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6256,6 +6510,14 @@ export namespace Snapd {
 
         get slot(): string;
         get snap(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SlotRef.SignalSignatures;
 
         // Constructors
 
@@ -6265,16 +6527,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof SlotRef.SignalSignatures>(signal: K, callback: SlotRef.SignalSignatures[K]): number;
+        connect<K extends keyof SlotRef.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, SlotRef.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SlotRef.SignalSignatures>(
             signal: K,
-            callback: SlotRef.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SlotRef.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SlotRef.SignalSignatures>(
             signal: K,
-            ...args: SlotRef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SlotRef.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6295,47 +6560,47 @@ export namespace Snapd {
     namespace Snap {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::apps': GObject.Object.Notify;
-            'notify::base': GObject.Object.Notify;
-            'notify::broken': GObject.Object.Notify;
-            'notify::categories': GObject.Object.Notify;
-            'notify::channel': GObject.Object.Notify;
-            'notify::channels': GObject.Object.Notify;
-            'notify::common-ids': GObject.Object.Notify;
-            'notify::confinement': GObject.Object.Notify;
-            'notify::contact': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::developer': GObject.Object.Notify;
-            'notify::devmode': GObject.Object.Notify;
-            'notify::download-size': GObject.Object.Notify;
-            'notify::hold': GObject.Object.Notify;
-            'notify::icon': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::install-date': GObject.Object.Notify;
-            'notify::installed-size': GObject.Object.Notify;
-            'notify::jailmode': GObject.Object.Notify;
-            'notify::license': GObject.Object.Notify;
-            'notify::media': GObject.Object.Notify;
-            'notify::mounted-from': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::prices': GObject.Object.Notify;
-            'notify::private': GObject.Object.Notify;
-            'notify::publisher-display-name': GObject.Object.Notify;
-            'notify::publisher-id': GObject.Object.Notify;
-            'notify::publisher-username': GObject.Object.Notify;
-            'notify::publisher-validation': GObject.Object.Notify;
-            'notify::revision': GObject.Object.Notify;
-            'notify::screenshots': GObject.Object.Notify;
-            'notify::snap-type': GObject.Object.Notify;
-            'notify::status': GObject.Object.Notify;
-            'notify::store-url': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::tracking-channel': GObject.Object.Notify;
-            'notify::tracks': GObject.Object.Notify;
-            'notify::trymode': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
-            'notify::website': GObject.Object.Notify;
+            'notify::apps': (pspec: GObject.ParamSpec) => void;
+            'notify::base': (pspec: GObject.ParamSpec) => void;
+            'notify::broken': (pspec: GObject.ParamSpec) => void;
+            'notify::categories': (pspec: GObject.ParamSpec) => void;
+            'notify::channel': (pspec: GObject.ParamSpec) => void;
+            'notify::channels': (pspec: GObject.ParamSpec) => void;
+            'notify::common-ids': (pspec: GObject.ParamSpec) => void;
+            'notify::confinement': (pspec: GObject.ParamSpec) => void;
+            'notify::contact': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::developer': (pspec: GObject.ParamSpec) => void;
+            'notify::devmode': (pspec: GObject.ParamSpec) => void;
+            'notify::download-size': (pspec: GObject.ParamSpec) => void;
+            'notify::hold': (pspec: GObject.ParamSpec) => void;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::install-date': (pspec: GObject.ParamSpec) => void;
+            'notify::installed-size': (pspec: GObject.ParamSpec) => void;
+            'notify::jailmode': (pspec: GObject.ParamSpec) => void;
+            'notify::license': (pspec: GObject.ParamSpec) => void;
+            'notify::media': (pspec: GObject.ParamSpec) => void;
+            'notify::mounted-from': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::prices': (pspec: GObject.ParamSpec) => void;
+            'notify::private': (pspec: GObject.ParamSpec) => void;
+            'notify::publisher-display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::publisher-id': (pspec: GObject.ParamSpec) => void;
+            'notify::publisher-username': (pspec: GObject.ParamSpec) => void;
+            'notify::publisher-validation': (pspec: GObject.ParamSpec) => void;
+            'notify::revision': (pspec: GObject.ParamSpec) => void;
+            'notify::screenshots': (pspec: GObject.ParamSpec) => void;
+            'notify::snap-type': (pspec: GObject.ParamSpec) => void;
+            'notify::status': (pspec: GObject.ParamSpec) => void;
+            'notify::store-url': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::tracking-channel': (pspec: GObject.ParamSpec) => void;
+            'notify::tracks': (pspec: GObject.ParamSpec) => void;
+            'notify::trymode': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
+            'notify::website': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6458,6 +6723,14 @@ export namespace Snapd {
         get trymode(): boolean;
         get version(): string;
         get website(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Snap.SignalSignatures;
 
         // Constructors
 
@@ -6467,13 +6740,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof Snap.SignalSignatures>(signal: K, callback: Snap.SignalSignatures[K]): number;
+        connect<K extends keyof Snap.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Snap.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Snap.SignalSignatures>(signal: K, callback: Snap.SignalSignatures[K]): number;
+        connect_after<K extends keyof Snap.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Snap.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Snap.SignalSignatures>(
             signal: K,
-            ...args: Snap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Snap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6703,25 +6982,25 @@ export namespace Snapd {
     namespace SystemInformation {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::architecture': GObject.Object.Notify;
-            'notify::binaries-directory': GObject.Object.Notify;
-            'notify::build-id': GObject.Object.Notify;
-            'notify::confinement': GObject.Object.Notify;
-            'notify::kernel-version': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::mount-directory': GObject.Object.Notify;
-            'notify::on-classic': GObject.Object.Notify;
-            'notify::os-id': GObject.Object.Notify;
-            'notify::os-version': GObject.Object.Notify;
-            'notify::refresh-hold': GObject.Object.Notify;
-            'notify::refresh-last': GObject.Object.Notify;
-            'notify::refresh-next': GObject.Object.Notify;
-            'notify::refresh-schedule': GObject.Object.Notify;
-            'notify::refresh-timer': GObject.Object.Notify;
-            'notify::sandbox-features': GObject.Object.Notify;
-            'notify::series': GObject.Object.Notify;
-            'notify::store': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
+            'notify::architecture': (pspec: GObject.ParamSpec) => void;
+            'notify::binaries-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::build-id': (pspec: GObject.ParamSpec) => void;
+            'notify::confinement': (pspec: GObject.ParamSpec) => void;
+            'notify::kernel-version': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::mount-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::on-classic': (pspec: GObject.ParamSpec) => void;
+            'notify::os-id': (pspec: GObject.ParamSpec) => void;
+            'notify::os-version': (pspec: GObject.ParamSpec) => void;
+            'notify::refresh-hold': (pspec: GObject.ParamSpec) => void;
+            'notify::refresh-last': (pspec: GObject.ParamSpec) => void;
+            'notify::refresh-next': (pspec: GObject.ParamSpec) => void;
+            'notify::refresh-schedule': (pspec: GObject.ParamSpec) => void;
+            'notify::refresh-timer': (pspec: GObject.ParamSpec) => void;
+            'notify::sandbox-features': (pspec: GObject.ParamSpec) => void;
+            'notify::series': (pspec: GObject.ParamSpec) => void;
+            'notify::store': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6802,6 +7081,14 @@ export namespace Snapd {
         get series(): string;
         get store(): string;
         get version(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SystemInformation.SignalSignatures;
 
         // Constructors
 
@@ -6813,17 +7100,17 @@ export namespace Snapd {
 
         connect<K extends keyof SystemInformation.SignalSignatures>(
             signal: K,
-            callback: SystemInformation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SystemInformation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SystemInformation.SignalSignatures>(
             signal: K,
-            callback: SystemInformation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SystemInformation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SystemInformation.SignalSignatures>(
             signal: K,
-            ...args: SystemInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SystemInformation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6931,16 +7218,16 @@ export namespace Snapd {
     namespace Task {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
-            'notify::kind': GObject.Object.Notify;
-            'notify::progress-done': GObject.Object.Notify;
-            'notify::progress-label': GObject.Object.Notify;
-            'notify::progress-total': GObject.Object.Notify;
-            'notify::ready': GObject.Object.Notify;
-            'notify::ready-time': GObject.Object.Notify;
-            'notify::spawn-time': GObject.Object.Notify;
-            'notify::status': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::kind': (pspec: GObject.ParamSpec) => void;
+            'notify::progress-done': (pspec: GObject.ParamSpec) => void;
+            'notify::progress-label': (pspec: GObject.ParamSpec) => void;
+            'notify::progress-total': (pspec: GObject.ParamSpec) => void;
+            'notify::ready': (pspec: GObject.ParamSpec) => void;
+            'notify::ready-time': (pspec: GObject.ParamSpec) => void;
+            'notify::spawn-time': (pspec: GObject.ParamSpec) => void;
+            'notify::status': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6987,6 +7274,14 @@ export namespace Snapd {
         get spawnTime(): GLib.DateTime;
         get status(): string;
         get summary(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Task.SignalSignatures;
 
         // Constructors
 
@@ -6996,13 +7291,19 @@ export namespace Snapd {
 
         // Signals
 
-        connect<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        connect<K extends keyof Task.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Task.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        connect_after<K extends keyof Task.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Task.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Task.SignalSignatures>(
             signal: K,
-            ...args: Task.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Task.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7063,11 +7364,11 @@ export namespace Snapd {
     namespace UserInformation {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::auth-data': GObject.Object.Notify;
-            'notify::email': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::ssh-keys': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
+            'notify::auth-data': (pspec: GObject.ParamSpec) => void;
+            'notify::email': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::ssh-keys': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7099,6 +7400,14 @@ export namespace Snapd {
         get ssh_keys(): string[];
         get sshKeys(): string[];
         get username(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UserInformation.SignalSignatures;
 
         // Constructors
 
@@ -7110,17 +7419,17 @@ export namespace Snapd {
 
         connect<K extends keyof UserInformation.SignalSignatures>(
             signal: K,
-            callback: UserInformation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserInformation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserInformation.SignalSignatures>(
             signal: K,
-            callback: UserInformation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserInformation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserInformation.SignalSignatures>(
             signal: K,
-            ...args: UserInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UserInformation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

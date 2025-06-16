@@ -175,6 +175,14 @@ export namespace Polkit {
      */
     class ActionDescription extends GObject.Object {
         static $gtype: GObject.GType<ActionDescription>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ActionDescription.SignalSignatures;
 
         // Constructors
 
@@ -186,17 +194,17 @@ export namespace Polkit {
 
         connect<K extends keyof ActionDescription.SignalSignatures>(
             signal: K,
-            callback: ActionDescription.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ActionDescription.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ActionDescription.SignalSignatures>(
             signal: K,
-            callback: ActionDescription.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ActionDescription.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ActionDescription.SignalSignatures>(
             signal: K,
-            ...args: ActionDescription.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ActionDescription.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -264,19 +272,13 @@ export namespace Polkit {
     }
 
     namespace Authority {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: Authority): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            'notify::backend-features': GObject.Object.Notify;
-            'notify::backend-name': GObject.Object.Notify;
-            'notify::backend-version': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
+            changed: () => void;
+            'notify::backend-features': (pspec: GObject.ParamSpec) => void;
+            'notify::backend-name': (pspec: GObject.ParamSpec) => void;
+            'notify::backend-version': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -336,6 +338,14 @@ export namespace Polkit {
          * #GObject::notify signal to track changes to this property.
          */
         get owner(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Authority.SignalSignatures;
 
         // Constructors
 
@@ -345,16 +355,19 @@ export namespace Polkit {
 
         // Signals
 
-        connect<K extends keyof Authority.SignalSignatures>(signal: K, callback: Authority.SignalSignatures[K]): number;
+        connect<K extends keyof Authority.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Authority.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Authority.SignalSignatures>(
             signal: K,
-            callback: Authority.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Authority.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Authority.SignalSignatures>(
             signal: K,
-            ...args: Authority.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Authority.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1968,6 +1981,14 @@ export namespace Polkit {
      */
     class AuthorizationResult extends GObject.Object {
         static $gtype: GObject.GType<AuthorizationResult>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AuthorizationResult.SignalSignatures;
 
         // Constructors
 
@@ -1981,17 +2002,19 @@ export namespace Polkit {
 
         connect<K extends keyof AuthorizationResult.SignalSignatures>(
             signal: K,
-            callback: AuthorizationResult.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthorizationResult.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthorizationResult.SignalSignatures>(
             signal: K,
-            callback: AuthorizationResult.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthorizationResult.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthorizationResult.SignalSignatures>(
             signal: K,
-            ...args: AuthorizationResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AuthorizationResult.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2071,6 +2094,14 @@ export namespace Polkit {
      */
     class Details extends GObject.Object {
         static $gtype: GObject.GType<Details>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Details.SignalSignatures;
 
         // Constructors
 
@@ -2082,16 +2113,19 @@ export namespace Polkit {
 
         // Signals
 
-        connect<K extends keyof Details.SignalSignatures>(signal: K, callback: Details.SignalSignatures[K]): number;
+        connect<K extends keyof Details.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Details.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Details.SignalSignatures>(
             signal: K,
-            callback: Details.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Details.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Details.SignalSignatures>(
             signal: K,
-            ...args: Details.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Details.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2121,11 +2155,11 @@ export namespace Polkit {
     namespace Permission {
         // Signal signatures
         interface SignalSignatures extends Gio.Permission.SignalSignatures {
-            'notify::action-id': GObject.Object.Notify;
-            'notify::subject': GObject.Object.Notify;
-            'notify::allowed': GObject.Object.Notify;
-            'notify::can-acquire': GObject.Object.Notify;
-            'notify::can-release': GObject.Object.Notify;
+            'notify::action-id': (pspec: GObject.ParamSpec) => void;
+            'notify::subject': (pspec: GObject.ParamSpec) => void;
+            'notify::allowed': (pspec: GObject.ParamSpec) => void;
+            'notify::can-acquire': (pspec: GObject.ParamSpec) => void;
+            'notify::can-release': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2163,6 +2197,14 @@ export namespace Polkit {
          * construction, it will be set to match the current process.
          */
         get subject(): Subject;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Permission.SignalSignatures;
 
         // Constructors
 
@@ -2181,17 +2223,17 @@ export namespace Polkit {
 
         connect<K extends keyof Permission.SignalSignatures>(
             signal: K,
-            callback: Permission.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Permission.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Permission.SignalSignatures>(
             signal: K,
-            callback: Permission.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Permission.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Permission.SignalSignatures>(
             signal: K,
-            ...args: Permission.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Permission.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2961,7 +3003,7 @@ export namespace Polkit {
     namespace SystemBusName {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2984,6 +3026,14 @@ export namespace Polkit {
          */
         get name(): string;
         set name(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SystemBusName.SignalSignatures;
 
         // Constructors
 
@@ -2995,17 +3045,17 @@ export namespace Polkit {
 
         connect<K extends keyof SystemBusName.SignalSignatures>(
             signal: K,
-            callback: SystemBusName.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SystemBusName.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SystemBusName.SignalSignatures>(
             signal: K,
-            callback: SystemBusName.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SystemBusName.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SystemBusName.SignalSignatures>(
             signal: K,
-            ...args: SystemBusName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SystemBusName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3619,6 +3669,14 @@ export namespace Polkit {
      */
     class TemporaryAuthorization extends GObject.Object {
         static $gtype: GObject.GType<TemporaryAuthorization>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TemporaryAuthorization.SignalSignatures;
 
         // Constructors
 
@@ -3630,17 +3688,19 @@ export namespace Polkit {
 
         connect<K extends keyof TemporaryAuthorization.SignalSignatures>(
             signal: K,
-            callback: TemporaryAuthorization.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TemporaryAuthorization.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TemporaryAuthorization.SignalSignatures>(
             signal: K,
-            callback: TemporaryAuthorization.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TemporaryAuthorization.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TemporaryAuthorization.SignalSignatures>(
             signal: K,
-            ...args: TemporaryAuthorization.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TemporaryAuthorization.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3682,7 +3742,7 @@ export namespace Polkit {
     namespace UnixGroup {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::gid': GObject.Object.Notify;
+            'notify::gid': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3705,6 +3765,14 @@ export namespace Polkit {
          */
         get gid(): number;
         set gid(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UnixGroup.SignalSignatures;
 
         // Constructors
 
@@ -3714,16 +3782,19 @@ export namespace Polkit {
 
         // Signals
 
-        connect<K extends keyof UnixGroup.SignalSignatures>(signal: K, callback: UnixGroup.SignalSignatures[K]): number;
+        connect<K extends keyof UnixGroup.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, UnixGroup.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnixGroup.SignalSignatures>(
             signal: K,
-            callback: UnixGroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UnixGroup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnixGroup.SignalSignatures>(
             signal: K,
-            ...args: UnixGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UnixGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4234,7 +4305,7 @@ export namespace Polkit {
     namespace UnixNetgroup {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4257,6 +4328,14 @@ export namespace Polkit {
          */
         get name(): string;
         set name(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UnixNetgroup.SignalSignatures;
 
         // Constructors
 
@@ -4268,17 +4347,17 @@ export namespace Polkit {
 
         connect<K extends keyof UnixNetgroup.SignalSignatures>(
             signal: K,
-            callback: UnixNetgroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UnixNetgroup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnixNetgroup.SignalSignatures>(
             signal: K,
-            callback: UnixNetgroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UnixNetgroup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnixNetgroup.SignalSignatures>(
             signal: K,
-            ...args: UnixNetgroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UnixNetgroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4783,9 +4862,9 @@ export namespace Polkit {
     namespace UnixProcess {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::pid': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
+            'notify::pid': (pspec: GObject.ParamSpec) => void;
+            'notify::start-time': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4843,6 +4922,14 @@ export namespace Polkit {
          */
         get uid(): number;
         set uid(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UnixProcess.SignalSignatures;
 
         // Constructors
 
@@ -4854,17 +4941,17 @@ export namespace Polkit {
 
         connect<K extends keyof UnixProcess.SignalSignatures>(
             signal: K,
-            callback: UnixProcess.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UnixProcess.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnixProcess.SignalSignatures>(
             signal: K,
-            callback: UnixProcess.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UnixProcess.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnixProcess.SignalSignatures>(
             signal: K,
-            ...args: UnixProcess.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UnixProcess.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5505,8 +5592,8 @@ export namespace Polkit {
     namespace UnixSession {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::pid': GObject.Object.Notify;
-            'notify::session-id': GObject.Object.Notify;
+            'notify::pid': (pspec: GObject.ParamSpec) => void;
+            'notify::session-id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5546,6 +5633,14 @@ export namespace Polkit {
          */
         get sessionId(): string;
         set sessionId(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UnixSession.SignalSignatures;
 
         // Constructors
 
@@ -5557,17 +5652,17 @@ export namespace Polkit {
 
         connect<K extends keyof UnixSession.SignalSignatures>(
             signal: K,
-            callback: UnixSession.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UnixSession.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnixSession.SignalSignatures>(
             signal: K,
-            callback: UnixSession.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UnixSession.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnixSession.SignalSignatures>(
             signal: K,
-            ...args: UnixSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UnixSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6477,7 +6572,7 @@ export namespace Polkit {
     namespace UnixUser {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::uid': GObject.Object.Notify;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6500,6 +6595,14 @@ export namespace Polkit {
          */
         get uid(): number;
         set uid(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UnixUser.SignalSignatures;
 
         // Constructors
 
@@ -6509,16 +6612,19 @@ export namespace Polkit {
 
         // Signals
 
-        connect<K extends keyof UnixUser.SignalSignatures>(signal: K, callback: UnixUser.SignalSignatures[K]): number;
+        connect<K extends keyof UnixUser.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, UnixUser.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnixUser.SignalSignatures>(
             signal: K,
-            callback: UnixUser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UnixUser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnixUser.SignalSignatures>(
             signal: K,
-            ...args: UnixUser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UnixUser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

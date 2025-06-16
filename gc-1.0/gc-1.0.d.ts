@@ -80,8 +80,8 @@ export namespace Gc {
     namespace SearchContext {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::criteria': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
+            'notify::criteria': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -99,6 +99,14 @@ export namespace Gc {
 
         set criteria(val: SearchCriteria);
         set flags(val: SearchFlag);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SearchContext.SignalSignatures;
 
         // Constructors
 
@@ -112,17 +120,17 @@ export namespace Gc {
 
         connect<K extends keyof SearchContext.SignalSignatures>(
             signal: K,
-            callback: SearchContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SearchContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SearchContext.SignalSignatures>(
             signal: K,
-            callback: SearchContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SearchContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SearchContext.SignalSignatures>(
             signal: K,
-            ...args: SearchContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SearchContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

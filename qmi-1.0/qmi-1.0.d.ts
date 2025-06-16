@@ -18899,12 +18899,12 @@ export namespace Qmi {
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -18956,6 +18956,14 @@ export namespace Qmi {
         set client_version_minor(val: number);
         get clientVersionMinor(): number;
         set clientVersionMinor(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -18965,13 +18973,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -19038,21 +19052,15 @@ export namespace Qmi {
     }
 
     namespace ClientAtr {
-        // Signal callback interfaces
-
-        interface Received {
-            (_source: ClientAtr, output: IndicationAtrReceivedOutput): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            received: Received;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            received: (arg0: IndicationAtrReceivedOutput) => void;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19066,6 +19074,14 @@ export namespace Qmi {
      */
     class ClientAtr extends Client {
         static $gtype: GObject.GType<ClientAtr>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientAtr.SignalSignatures;
 
         // Constructors
 
@@ -19075,16 +19091,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientAtr.SignalSignatures>(signal: K, callback: ClientAtr.SignalSignatures[K]): number;
+        connect<K extends keyof ClientAtr.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientAtr.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientAtr.SignalSignatures>(
             signal: K,
-            callback: ClientAtr.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientAtr.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientAtr.SignalSignatures>(
             signal: K,
-            ...args: ClientAtr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientAtr.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -19148,21 +19167,15 @@ export namespace Qmi {
     }
 
     namespace ClientDms {
-        // Signal callback interfaces
-
-        interface EventReport {
-            (_source: ClientDms, output: IndicationDmsEventReportOutput): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'event-report': EventReport;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'event-report': (arg0: IndicationDmsEventReportOutput) => void;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19176,6 +19189,14 @@ export namespace Qmi {
      */
     class ClientDms extends Client {
         static $gtype: GObject.GType<ClientDms>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientDms.SignalSignatures;
 
         // Constructors
 
@@ -19185,16 +19206,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientDms.SignalSignatures>(signal: K, callback: ClientDms.SignalSignatures[K]): number;
+        connect<K extends keyof ClientDms.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientDms.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientDms.SignalSignatures>(
             signal: K,
-            callback: ClientDms.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientDms.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientDms.SignalSignatures>(
             signal: K,
-            ...args: ClientDms.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientDms.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22615,12 +22639,12 @@ export namespace Qmi {
     namespace ClientDpm {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22634,6 +22658,14 @@ export namespace Qmi {
      */
     class ClientDpm extends Client {
         static $gtype: GObject.GType<ClientDpm>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientDpm.SignalSignatures;
 
         // Constructors
 
@@ -22643,16 +22675,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientDpm.SignalSignatures>(signal: K, callback: ClientDpm.SignalSignatures[K]): number;
+        connect<K extends keyof ClientDpm.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientDpm.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientDpm.SignalSignatures>(
             signal: K,
-            callback: ClientDpm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientDpm.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientDpm.SignalSignatures>(
             signal: K,
-            ...args: ClientDpm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientDpm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22771,21 +22806,15 @@ export namespace Qmi {
     }
 
     namespace ClientDsd {
-        // Signal callback interfaces
-
-        interface SystemStatus {
-            (_source: ClientDsd, output: IndicationDsdSystemStatusOutput): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'system-status': SystemStatus;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'system-status': (arg0: IndicationDsdSystemStatusOutput) => void;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22799,6 +22828,14 @@ export namespace Qmi {
      */
     class ClientDsd extends Client {
         static $gtype: GObject.GType<ClientDsd>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientDsd.SignalSignatures;
 
         // Constructors
 
@@ -22808,16 +22845,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientDsd.SignalSignatures>(signal: K, callback: ClientDsd.SignalSignatures[K]): number;
+        connect<K extends keyof ClientDsd.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientDsd.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientDsd.SignalSignatures>(
             signal: K,
-            callback: ClientDsd.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientDsd.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientDsd.SignalSignatures>(
             signal: K,
-            ...args: ClientDsd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientDsd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23048,12 +23088,12 @@ export namespace Qmi {
     namespace ClientFox {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23067,6 +23107,14 @@ export namespace Qmi {
      */
     class ClientFox extends Client {
         static $gtype: GObject.GType<ClientFox>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientFox.SignalSignatures;
 
         // Constructors
 
@@ -23076,16 +23124,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientFox.SignalSignatures>(signal: K, callback: ClientFox.SignalSignatures[K]): number;
+        connect<K extends keyof ClientFox.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientFox.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientFox.SignalSignatures>(
             signal: K,
-            callback: ClientFox.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientFox.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientFox.SignalSignatures>(
             signal: K,
-            ...args: ClientFox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientFox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23151,12 +23202,12 @@ export namespace Qmi {
     namespace ClientGas {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23170,6 +23221,14 @@ export namespace Qmi {
      */
     class ClientGas extends Client {
         static $gtype: GObject.GType<ClientGas>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientGas.SignalSignatures;
 
         // Constructors
 
@@ -23179,16 +23238,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientGas.SignalSignatures>(signal: K, callback: ClientGas.SignalSignatures[K]): number;
+        connect<K extends keyof ClientGas.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientGas.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientGas.SignalSignatures>(
             signal: K,
-            callback: ClientGas.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientGas.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientGas.SignalSignatures>(
             signal: K,
-            ...args: ClientGas.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientGas.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23419,12 +23481,12 @@ export namespace Qmi {
     namespace ClientGms {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23438,6 +23500,14 @@ export namespace Qmi {
      */
     class ClientGms extends Client {
         static $gtype: GObject.GType<ClientGms>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientGms.SignalSignatures;
 
         // Constructors
 
@@ -23447,16 +23517,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientGms.SignalSignatures>(signal: K, callback: ClientGms.SignalSignatures[K]): number;
+        connect<K extends keyof ClientGms.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientGms.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientGms.SignalSignatures>(
             signal: K,
-            callback: ClientGms.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientGms.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientGms.SignalSignatures>(
             signal: K,
-            ...args: ClientGms.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientGms.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23575,101 +23648,31 @@ export namespace Qmi {
     }
 
     namespace ClientLoc {
-        // Signal callback interfaces
-
-        interface DeleteAssistanceData {
-            (_source: ClientLoc, output: IndicationLocDeleteAssistanceDataOutput): void;
-        }
-
-        interface EngineState {
-            (_source: ClientLoc, output: IndicationLocEngineStateOutput): void;
-        }
-
-        interface FixRecurrenceType {
-            (_source: ClientLoc, output: IndicationLocFixRecurrenceTypeOutput): void;
-        }
-
-        interface GetEngineLock {
-            (_source: ClientLoc, output: IndicationLocGetEngineLockOutput): void;
-        }
-
-        interface GetNmeaTypes {
-            (_source: ClientLoc, output: IndicationLocGetNmeaTypesOutput): void;
-        }
-
-        interface GetOperationMode {
-            (_source: ClientLoc, output: IndicationLocGetOperationModeOutput): void;
-        }
-
-        interface GetPredictedOrbitsDataSource {
-            (_source: ClientLoc, output: IndicationLocGetPredictedOrbitsDataSourceOutput): void;
-        }
-
-        interface GetServer {
-            (_source: ClientLoc, output: IndicationLocGetServerOutput): void;
-        }
-
-        interface GnssSvInfo {
-            (_source: ClientLoc, output: IndicationLocGnssSvInfoOutput): void;
-        }
-
-        interface InjectPredictedOrbitsData {
-            (_source: ClientLoc, output: IndicationLocInjectPredictedOrbitsDataOutput): void;
-        }
-
-        interface InjectXtraData {
-            (_source: ClientLoc, output: IndicationLocInjectXtraDataOutput): void;
-        }
-
-        interface Nmea {
-            (_source: ClientLoc, output: IndicationLocNmeaOutput): void;
-        }
-
-        interface PositionReport {
-            (_source: ClientLoc, output: IndicationLocPositionReportOutput): void;
-        }
-
-        interface SetEngineLock {
-            (_source: ClientLoc, output: IndicationLocSetEngineLockOutput): void;
-        }
-
-        interface SetNmeaTypes {
-            (_source: ClientLoc, output: IndicationLocSetNmeaTypesOutput): void;
-        }
-
-        interface SetOperationMode {
-            (_source: ClientLoc, output: IndicationLocSetOperationModeOutput): void;
-        }
-
-        interface SetServer {
-            (_source: ClientLoc, output: IndicationLocSetServerOutput): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'delete-assistance-data': DeleteAssistanceData;
-            'engine-state': EngineState;
-            'fix-recurrence-type': FixRecurrenceType;
-            'get-engine-lock': GetEngineLock;
-            'get-nmea-types': GetNmeaTypes;
-            'get-operation-mode': GetOperationMode;
-            'get-predicted-orbits-data-source': GetPredictedOrbitsDataSource;
-            'get-server': GetServer;
-            'gnss-sv-info': GnssSvInfo;
-            'inject-predicted-orbits-data': InjectPredictedOrbitsData;
-            'inject-xtra-data': InjectXtraData;
-            nmea: Nmea;
-            'position-report': PositionReport;
-            'set-engine-lock': SetEngineLock;
-            'set-nmea-types': SetNmeaTypes;
-            'set-operation-mode': SetOperationMode;
-            'set-server': SetServer;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'delete-assistance-data': (arg0: IndicationLocDeleteAssistanceDataOutput) => void;
+            'engine-state': (arg0: IndicationLocEngineStateOutput) => void;
+            'fix-recurrence-type': (arg0: IndicationLocFixRecurrenceTypeOutput) => void;
+            'get-engine-lock': (arg0: IndicationLocGetEngineLockOutput) => void;
+            'get-nmea-types': (arg0: IndicationLocGetNmeaTypesOutput) => void;
+            'get-operation-mode': (arg0: IndicationLocGetOperationModeOutput) => void;
+            'get-predicted-orbits-data-source': (arg0: IndicationLocGetPredictedOrbitsDataSourceOutput) => void;
+            'get-server': (arg0: IndicationLocGetServerOutput) => void;
+            'gnss-sv-info': (arg0: IndicationLocGnssSvInfoOutput) => void;
+            'inject-predicted-orbits-data': (arg0: IndicationLocInjectPredictedOrbitsDataOutput) => void;
+            'inject-xtra-data': (arg0: IndicationLocInjectXtraDataOutput) => void;
+            nmea: (arg0: IndicationLocNmeaOutput) => void;
+            'position-report': (arg0: IndicationLocPositionReportOutput) => void;
+            'set-engine-lock': (arg0: IndicationLocSetEngineLockOutput) => void;
+            'set-nmea-types': (arg0: IndicationLocSetNmeaTypesOutput) => void;
+            'set-operation-mode': (arg0: IndicationLocSetOperationModeOutput) => void;
+            'set-server': (arg0: IndicationLocSetServerOutput) => void;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23683,6 +23686,14 @@ export namespace Qmi {
      */
     class ClientLoc extends Client {
         static $gtype: GObject.GType<ClientLoc>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientLoc.SignalSignatures;
 
         // Constructors
 
@@ -23692,16 +23703,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientLoc.SignalSignatures>(signal: K, callback: ClientLoc.SignalSignatures[K]): number;
+        connect<K extends keyof ClientLoc.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientLoc.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientLoc.SignalSignatures>(
             signal: K,
-            callback: ClientLoc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientLoc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientLoc.SignalSignatures>(
             signal: K,
-            ...args: ClientLoc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientLoc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -24535,51 +24549,21 @@ export namespace Qmi {
     }
 
     namespace ClientNas {
-        // Signal callback interfaces
-
-        interface EventReport {
-            (_source: ClientNas, output: IndicationNasEventReportOutput): void;
-        }
-
-        interface NetworkReject {
-            (_source: ClientNas, output: IndicationNasNetworkRejectOutput): void;
-        }
-
-        interface NetworkTime {
-            (_source: ClientNas, output: IndicationNasNetworkTimeOutput): void;
-        }
-
-        interface OperatorName {
-            (_source: ClientNas, output: IndicationNasOperatorNameOutput): void;
-        }
-
-        interface ServingSystem {
-            (_source: ClientNas, output: IndicationNasServingSystemOutput): void;
-        }
-
-        interface SignalInfo {
-            (_source: ClientNas, output: IndicationNasSignalInfoOutput): void;
-        }
-
-        interface SystemInfo {
-            (_source: ClientNas, output: IndicationNasSystemInfoOutput): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'event-report': EventReport;
-            'network-reject': NetworkReject;
-            'network-time': NetworkTime;
-            'operator-name': OperatorName;
-            'serving-system': ServingSystem;
-            'signal-info': SignalInfo;
-            'system-info': SystemInfo;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'event-report': (arg0: IndicationNasEventReportOutput) => void;
+            'network-reject': (arg0: IndicationNasNetworkRejectOutput) => void;
+            'network-time': (arg0: IndicationNasNetworkTimeOutput) => void;
+            'operator-name': (arg0: IndicationNasOperatorNameOutput) => void;
+            'serving-system': (arg0: IndicationNasServingSystemOutput) => void;
+            'signal-info': (arg0: IndicationNasSignalInfoOutput) => void;
+            'system-info': (arg0: IndicationNasSystemInfoOutput) => void;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24593,6 +24577,14 @@ export namespace Qmi {
      */
     class ClientNas extends Client {
         static $gtype: GObject.GType<ClientNas>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientNas.SignalSignatures;
 
         // Constructors
 
@@ -24602,16 +24594,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientNas.SignalSignatures>(signal: K, callback: ClientNas.SignalSignatures[K]): number;
+        connect<K extends keyof ClientNas.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientNas.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientNas.SignalSignatures>(
             signal: K,
-            callback: ClientNas.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientNas.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientNas.SignalSignatures>(
             signal: K,
-            ...args: ClientNas.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientNas.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -26291,21 +26286,15 @@ export namespace Qmi {
     }
 
     namespace ClientOma {
-        // Signal callback interfaces
-
-        interface EventReport {
-            (_source: ClientOma, output: IndicationOmaEventReportOutput): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'event-report': EventReport;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'event-report': (arg0: IndicationOmaEventReportOutput) => void;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -26319,6 +26308,14 @@ export namespace Qmi {
      */
     class ClientOma extends Client {
         static $gtype: GObject.GType<ClientOma>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientOma.SignalSignatures;
 
         // Constructors
 
@@ -26328,16 +26325,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientOma.SignalSignatures>(signal: K, callback: ClientOma.SignalSignatures[K]): number;
+        connect<K extends keyof ClientOma.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientOma.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientOma.SignalSignatures>(
             signal: K,
-            callback: ClientOma.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientOma.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientOma.SignalSignatures>(
             signal: K,
-            ...args: ClientOma.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientOma.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -26788,12 +26788,12 @@ export namespace Qmi {
     namespace ClientPbm {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -26807,6 +26807,14 @@ export namespace Qmi {
      */
     class ClientPbm extends Client {
         static $gtype: GObject.GType<ClientPbm>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientPbm.SignalSignatures;
 
         // Constructors
 
@@ -26816,16 +26824,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientPbm.SignalSignatures>(signal: K, callback: ClientPbm.SignalSignatures[K]): number;
+        connect<K extends keyof ClientPbm.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientPbm.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientPbm.SignalSignatures>(
             signal: K,
-            callback: ClientPbm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientPbm.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientPbm.SignalSignatures>(
             signal: K,
-            ...args: ClientPbm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientPbm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -26999,56 +27010,22 @@ export namespace Qmi {
     }
 
     namespace ClientPdc {
-        // Signal callback interfaces
-
-        interface ActivateConfig {
-            (_source: ClientPdc, output: IndicationPdcActivateConfigOutput): void;
-        }
-
-        interface DeactivateConfig {
-            (_source: ClientPdc, output: IndicationPdcDeactivateConfigOutput): void;
-        }
-
-        interface GetConfigInfo {
-            (_source: ClientPdc, output: IndicationPdcGetConfigInfoOutput): void;
-        }
-
-        interface GetSelectedConfig {
-            (_source: ClientPdc, output: IndicationPdcGetSelectedConfigOutput): void;
-        }
-
-        interface ListConfigs {
-            (_source: ClientPdc, output: IndicationPdcListConfigsOutput): void;
-        }
-
-        interface LoadConfig {
-            (_source: ClientPdc, output: IndicationPdcLoadConfigOutput): void;
-        }
-
-        interface Refresh {
-            (_source: ClientPdc, output: IndicationPdcRefreshOutput): void;
-        }
-
-        interface SetSelectedConfig {
-            (_source: ClientPdc, output: IndicationPdcSetSelectedConfigOutput): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'activate-config': ActivateConfig;
-            'deactivate-config': DeactivateConfig;
-            'get-config-info': GetConfigInfo;
-            'get-selected-config': GetSelectedConfig;
-            'list-configs': ListConfigs;
-            'load-config': LoadConfig;
-            refresh: Refresh;
-            'set-selected-config': SetSelectedConfig;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'activate-config': (arg0: IndicationPdcActivateConfigOutput) => void;
+            'deactivate-config': (arg0: IndicationPdcDeactivateConfigOutput) => void;
+            'get-config-info': (arg0: IndicationPdcGetConfigInfoOutput) => void;
+            'get-selected-config': (arg0: IndicationPdcGetSelectedConfigOutput) => void;
+            'list-configs': (arg0: IndicationPdcListConfigsOutput) => void;
+            'load-config': (arg0: IndicationPdcLoadConfigOutput) => void;
+            refresh: (arg0: IndicationPdcRefreshOutput) => void;
+            'set-selected-config': (arg0: IndicationPdcSetSelectedConfigOutput) => void;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -27062,6 +27039,14 @@ export namespace Qmi {
      */
     class ClientPdc extends Client {
         static $gtype: GObject.GType<ClientPdc>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientPdc.SignalSignatures;
 
         // Constructors
 
@@ -27071,16 +27056,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientPdc.SignalSignatures>(signal: K, callback: ClientPdc.SignalSignatures[K]): number;
+        connect<K extends keyof ClientPdc.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientPdc.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientPdc.SignalSignatures>(
             signal: K,
-            callback: ClientPdc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientPdc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientPdc.SignalSignatures>(
             signal: K,
-            ...args: ClientPdc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientPdc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -27804,26 +27792,16 @@ export namespace Qmi {
     }
 
     namespace ClientPds {
-        // Signal callback interfaces
-
-        interface EventReport {
-            (_source: ClientPds, output: IndicationPdsEventReportOutput): void;
-        }
-
-        interface GpsReady {
-            (_source: ClientPds): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'event-report': EventReport;
-            'gps-ready': GpsReady;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'event-report': (arg0: IndicationPdsEventReportOutput) => void;
+            'gps-ready': () => void;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -27837,6 +27815,14 @@ export namespace Qmi {
      */
     class ClientPds extends Client {
         static $gtype: GObject.GType<ClientPds>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientPds.SignalSignatures;
 
         // Constructors
 
@@ -27846,16 +27832,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientPds.SignalSignatures>(signal: K, callback: ClientPds.SignalSignatures[K]): number;
+        connect<K extends keyof ClientPds.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientPds.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientPds.SignalSignatures>(
             signal: K,
-            callback: ClientPds.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientPds.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientPds.SignalSignatures>(
             signal: K,
-            ...args: ClientPds.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientPds.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -28414,26 +28403,16 @@ export namespace Qmi {
     }
 
     namespace ClientQos {
-        // Signal callback interfaces
-
-        interface FlowStatus {
-            (_source: ClientQos, output: IndicationQosFlowStatusOutput): void;
-        }
-
-        interface NetworkStatus {
-            (_source: ClientQos, output: IndicationQosNetworkStatusOutput): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'flow-status': FlowStatus;
-            'network-status': NetworkStatus;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'flow-status': (arg0: IndicationQosFlowStatusOutput) => void;
+            'network-status': (arg0: IndicationQosNetworkStatusOutput) => void;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -28447,6 +28426,14 @@ export namespace Qmi {
      */
     class ClientQos extends Client {
         static $gtype: GObject.GType<ClientQos>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientQos.SignalSignatures;
 
         // Constructors
 
@@ -28456,16 +28443,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientQos.SignalSignatures>(signal: K, callback: ClientQos.SignalSignatures[K]): number;
+        connect<K extends keyof ClientQos.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientQos.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientQos.SignalSignatures>(
             signal: K,
-            callback: ClientQos.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientQos.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientQos.SignalSignatures>(
             signal: K,
-            ...args: ClientQos.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientQos.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -28696,12 +28686,12 @@ export namespace Qmi {
     namespace ClientSar {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -28715,6 +28705,14 @@ export namespace Qmi {
      */
     class ClientSar extends Client {
         static $gtype: GObject.GType<ClientSar>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientSar.SignalSignatures;
 
         // Constructors
 
@@ -28724,16 +28722,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientSar.SignalSignatures>(signal: K, callback: ClientSar.SignalSignatures[K]): number;
+        connect<K extends keyof ClientSar.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientSar.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientSar.SignalSignatures>(
             signal: K,
-            callback: ClientSar.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientSar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientSar.SignalSignatures>(
             signal: K,
-            ...args: ClientSar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientSar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -28852,31 +28853,17 @@ export namespace Qmi {
     }
 
     namespace ClientUim {
-        // Signal callback interfaces
-
-        interface CardStatus {
-            (_source: ClientUim, output: IndicationUimCardStatusOutput): void;
-        }
-
-        interface Refresh {
-            (_source: ClientUim, output: IndicationUimRefreshOutput): void;
-        }
-
-        interface SlotStatus {
-            (_source: ClientUim, output: IndicationUimSlotStatusOutput): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'card-status': CardStatus;
-            refresh: Refresh;
-            'slot-status': SlotStatus;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'card-status': (arg0: IndicationUimCardStatusOutput) => void;
+            refresh: (arg0: IndicationUimRefreshOutput) => void;
+            'slot-status': (arg0: IndicationUimSlotStatusOutput) => void;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -28890,6 +28877,14 @@ export namespace Qmi {
      */
     class ClientUim extends Client {
         static $gtype: GObject.GType<ClientUim>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientUim.SignalSignatures;
 
         // Constructors
 
@@ -28899,16 +28894,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientUim.SignalSignatures>(signal: K, callback: ClientUim.SignalSignatures[K]): number;
+        connect<K extends keyof ClientUim.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientUim.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientUim.SignalSignatures>(
             signal: K,
-            callback: ClientUim.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientUim.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientUim.SignalSignatures>(
             signal: K,
-            ...args: ClientUim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientUim.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -30127,41 +30125,19 @@ export namespace Qmi {
     }
 
     namespace ClientVoice {
-        // Signal callback interfaces
-
-        interface AllCallStatus {
-            (_source: ClientVoice, output: IndicationVoiceAllCallStatusOutput): void;
-        }
-
-        interface OriginateUssdNoWait {
-            (_source: ClientVoice, output: IndicationVoiceOriginateUssdNoWaitOutput): void;
-        }
-
-        interface ReleaseUssd {
-            (_source: ClientVoice): void;
-        }
-
-        interface SupplementaryService {
-            (_source: ClientVoice, output: IndicationVoiceSupplementaryServiceOutput): void;
-        }
-
-        interface Ussd {
-            (_source: ClientVoice, output: IndicationVoiceUssdOutput): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'all-call-status': AllCallStatus;
-            'originate-ussd-no-wait': OriginateUssdNoWait;
-            'release-ussd': ReleaseUssd;
-            'supplementary-service': SupplementaryService;
-            ussd: Ussd;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'all-call-status': (arg0: IndicationVoiceAllCallStatusOutput) => void;
+            'originate-ussd-no-wait': (arg0: IndicationVoiceOriginateUssdNoWaitOutput) => void;
+            'release-ussd': () => void;
+            'supplementary-service': (arg0: IndicationVoiceSupplementaryServiceOutput) => void;
+            ussd: (arg0: IndicationVoiceUssdOutput) => void;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -30175,6 +30151,14 @@ export namespace Qmi {
      */
     class ClientVoice extends Client {
         static $gtype: GObject.GType<ClientVoice>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientVoice.SignalSignatures;
 
         // Constructors
 
@@ -30186,17 +30170,17 @@ export namespace Qmi {
 
         connect<K extends keyof ClientVoice.SignalSignatures>(
             signal: K,
-            callback: ClientVoice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientVoice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientVoice.SignalSignatures>(
             signal: K,
-            callback: ClientVoice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientVoice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientVoice.SignalSignatures>(
             signal: K,
-            ...args: ClientVoice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientVoice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -31142,12 +31126,12 @@ export namespace Qmi {
     namespace ClientWda {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -31161,6 +31145,14 @@ export namespace Qmi {
      */
     class ClientWda extends Client {
         static $gtype: GObject.GType<ClientWda>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientWda.SignalSignatures;
 
         // Constructors
 
@@ -31170,16 +31162,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientWda.SignalSignatures>(signal: K, callback: ClientWda.SignalSignatures[K]): number;
+        connect<K extends keyof ClientWda.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientWda.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientWda.SignalSignatures>(
             signal: K,
-            callback: ClientWda.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientWda.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientWda.SignalSignatures>(
             signal: K,
-            ...args: ClientWda.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientWda.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -31353,41 +31348,19 @@ export namespace Qmi {
     }
 
     namespace ClientWds {
-        // Signal callback interfaces
-
-        interface EventReport {
-            (_source: ClientWds, output: IndicationWdsEventReportOutput): void;
-        }
-
-        interface ExtendedIpConfig {
-            (_source: ClientWds, output: IndicationWdsExtendedIpConfigOutput): void;
-        }
-
-        interface PacketServiceStatus {
-            (_source: ClientWds, output: IndicationWdsPacketServiceStatusOutput): void;
-        }
-
-        interface ProfileChanged {
-            (_source: ClientWds, output: IndicationWdsProfileChangedOutput): void;
-        }
-
-        interface SetLteAttachPdnList {
-            (_source: ClientWds, output: IndicationWdsSetLteAttachPdnListOutput): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'event-report': EventReport;
-            'extended-ip-config': ExtendedIpConfig;
-            'packet-service-status': PacketServiceStatus;
-            'profile-changed': ProfileChanged;
-            'set-lte-attach-pdn-list': SetLteAttachPdnList;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'event-report': (arg0: IndicationWdsEventReportOutput) => void;
+            'extended-ip-config': (arg0: IndicationWdsExtendedIpConfigOutput) => void;
+            'packet-service-status': (arg0: IndicationWdsPacketServiceStatusOutput) => void;
+            'profile-changed': (arg0: IndicationWdsProfileChangedOutput) => void;
+            'set-lte-attach-pdn-list': (arg0: IndicationWdsSetLteAttachPdnListOutput) => void;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -31401,6 +31374,14 @@ export namespace Qmi {
      */
     class ClientWds extends Client {
         static $gtype: GObject.GType<ClientWds>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientWds.SignalSignatures;
 
         // Constructors
 
@@ -31410,16 +31391,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientWds.SignalSignatures>(signal: K, callback: ClientWds.SignalSignatures[K]): number;
+        connect<K extends keyof ClientWds.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientWds.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientWds.SignalSignatures>(
             signal: K,
-            callback: ClientWds.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientWds.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientWds.SignalSignatures>(
             signal: K,
-            ...args: ClientWds.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientWds.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -33374,26 +33358,16 @@ export namespace Qmi {
     }
 
     namespace ClientWms {
-        // Signal callback interfaces
-
-        interface EventReport {
-            (_source: ClientWms, output: IndicationWmsEventReportOutput): void;
-        }
-
-        interface SmscAddress {
-            (_source: ClientWms, output: IndicationWmsSmscAddressOutput): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
-            'event-report': EventReport;
-            'smsc-address': SmscAddress;
-            'notify::client-cid': GObject.Object.Notify;
-            'notify::client-device': GObject.Object.Notify;
-            'notify::client-service': GObject.Object.Notify;
-            'notify::client-valid': GObject.Object.Notify;
-            'notify::client-version-major': GObject.Object.Notify;
-            'notify::client-version-minor': GObject.Object.Notify;
+            'event-report': (arg0: IndicationWmsEventReportOutput) => void;
+            'smsc-address': (arg0: IndicationWmsSmscAddressOutput) => void;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -33407,6 +33381,14 @@ export namespace Qmi {
      */
     class ClientWms extends Client {
         static $gtype: GObject.GType<ClientWms>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientWms.SignalSignatures;
 
         // Constructors
 
@@ -33416,16 +33398,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof ClientWms.SignalSignatures>(signal: K, callback: ClientWms.SignalSignatures[K]): number;
+        connect<K extends keyof ClientWms.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientWms.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientWms.SignalSignatures>(
             signal: K,
-            callback: ClientWms.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientWms.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientWms.SignalSignatures>(
             signal: K,
-            ...args: ClientWms.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientWms.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -34204,26 +34189,16 @@ export namespace Qmi {
     }
 
     namespace Device {
-        // Signal callback interfaces
-
-        interface DeviceRemoved {
-            (_source: Device): void;
-        }
-
-        interface Indication {
-            (_source: Device, output: Uint8Array | string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'device-removed': DeviceRemoved;
-            indication: Indication;
-            'notify::device-consecutive-timeouts': GObject.Object.Notify;
-            'notify::device-file': GObject.Object.Notify;
-            'notify::device-no-file-check': GObject.Object.Notify;
-            'notify::device-node': GObject.Object.Notify;
-            'notify::device-proxy-path': GObject.Object.Notify;
-            'notify::device-wwan-iface': GObject.Object.Notify;
+            'device-removed': () => void;
+            indication: (arg0: Uint8Array) => void;
+            'notify::device-consecutive-timeouts': (pspec: GObject.ParamSpec) => void;
+            'notify::device-file': (pspec: GObject.ParamSpec) => void;
+            'notify::device-no-file-check': (pspec: GObject.ParamSpec) => void;
+            'notify::device-node': (pspec: GObject.ParamSpec) => void;
+            'notify::device-proxy-path': (pspec: GObject.ParamSpec) => void;
+            'notify::device-wwan-iface': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -34265,6 +34240,14 @@ export namespace Qmi {
         set deviceProxyPath(val: string);
         get device_wwan_iface(): string;
         get deviceWwanIface(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -34281,13 +34264,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
-            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -35936,8 +35925,8 @@ export namespace Qmi {
     namespace Proxy {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::qmi-proxy-n-clients': GObject.Object.Notify;
-            'notify::qmi-proxy-nclients': GObject.Object.Notify;
+            'notify::qmi-proxy-n-clients': (pspec: GObject.ParamSpec) => void;
+            'notify::qmi-proxy-nclients': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -35959,6 +35948,14 @@ export namespace Qmi {
 
         get qmi_proxy_n_clients(): number;
         get qmiProxyNClients(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Proxy.SignalSignatures;
 
         // Constructors
 
@@ -35970,13 +35967,19 @@ export namespace Qmi {
 
         // Signals
 
-        connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect_after<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Proxy.SignalSignatures>(
             signal: K,
-            ...args: Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Proxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

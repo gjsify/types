@@ -50,26 +50,12 @@ export namespace Caribou {
         (keybuttoncode: number, pressed: boolean): void;
     }
     namespace DisplayAdapter {
-        // Signal callback interfaces
-
-        interface ModifiersChanged {
-            (_source: DisplayAdapter, modifiers: number): void;
-        }
-
-        interface GroupChanged {
-            (_source: DisplayAdapter, gid: number, group: string, variant: string): void;
-        }
-
-        interface ConfigChanged {
-            (_source: DisplayAdapter): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'modifiers-changed': ModifiersChanged;
-            'group-changed': GroupChanged;
-            'config-changed': ConfigChanged;
-            'notify::display': GObject.Object.Notify;
+            'modifiers-changed': (arg0: number) => void;
+            'group-changed': (arg0: number, arg1: string, arg2: string) => void;
+            'config-changed': () => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -85,6 +71,14 @@ export namespace Caribou {
         // Properties
 
         get display(): Gdk.Display;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DisplayAdapter.SignalSignatures;
 
         // Constructors
 
@@ -96,17 +90,17 @@ export namespace Caribou {
 
         connect<K extends keyof DisplayAdapter.SignalSignatures>(
             signal: K,
-            callback: DisplayAdapter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DisplayAdapter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DisplayAdapter.SignalSignatures>(
             signal: K,
-            callback: DisplayAdapter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DisplayAdapter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DisplayAdapter.SignalSignatures>(
             signal: K,
-            ...args: DisplayAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DisplayAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -146,7 +140,7 @@ export namespace Caribou {
     namespace NullAdapter {
         // Signal signatures
         interface SignalSignatures extends DisplayAdapter.SignalSignatures {
-            'notify::display': GObject.Object.Notify;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -156,6 +150,14 @@ export namespace Caribou {
 
     class NullAdapter extends DisplayAdapter {
         static $gtype: GObject.GType<NullAdapter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NullAdapter.SignalSignatures;
 
         // Constructors
 
@@ -169,17 +171,17 @@ export namespace Caribou {
 
         connect<K extends keyof NullAdapter.SignalSignatures>(
             signal: K,
-            callback: NullAdapter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NullAdapter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NullAdapter.SignalSignatures>(
             signal: K,
-            callback: NullAdapter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NullAdapter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NullAdapter.SignalSignatures>(
             signal: K,
-            ...args: NullAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NullAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -187,7 +189,7 @@ export namespace Caribou {
     namespace XAdapter {
         // Signal signatures
         interface SignalSignatures extends DisplayAdapter.SignalSignatures {
-            'notify::display': GObject.Object.Notify;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -197,6 +199,14 @@ export namespace Caribou {
 
     class XAdapter extends DisplayAdapter {
         static $gtype: GObject.GType<XAdapter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XAdapter.SignalSignatures;
 
         // Constructors
 
@@ -208,38 +218,31 @@ export namespace Caribou {
 
         // Signals
 
-        connect<K extends keyof XAdapter.SignalSignatures>(signal: K, callback: XAdapter.SignalSignatures[K]): number;
+        connect<K extends keyof XAdapter.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XAdapter.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XAdapter.SignalSignatures>(
             signal: K,
-            callback: XAdapter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XAdapter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XAdapter.SignalSignatures>(
             signal: K,
-            ...args: XAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace KeyboardModel {
-        // Signal callback interfaces
-
-        interface GroupAdded {
-            (_source: KeyboardModel, name: string): void;
-        }
-
-        interface GroupRemoved {
-            (_source: KeyboardModel, name: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'group-added': GroupAdded;
-            'group-removed': GroupRemoved;
-            'notify::active-group': GObject.Object.Notify;
-            'notify::keyboard-type': GObject.Object.Notify;
-            'notify::keyboard-file': GObject.Object.Notify;
+            'group-added': (arg0: string) => void;
+            'group-removed': (arg0: string) => void;
+            'notify::active-group': (pspec: GObject.ParamSpec) => void;
+            'notify::keyboard-type': (pspec: GObject.ParamSpec) => void;
+            'notify::keyboard-file': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -267,6 +270,14 @@ export namespace Caribou {
         get keyboardType(): string;
         get keyboard_file(): string;
         get keyboardFile(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: KeyboardModel.SignalSignatures;
 
         // Constructors
 
@@ -280,17 +291,17 @@ export namespace Caribou {
 
         connect<K extends keyof KeyboardModel.SignalSignatures>(
             signal: K,
-            callback: KeyboardModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, KeyboardModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyboardModel.SignalSignatures>(
             signal: K,
-            callback: KeyboardModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, KeyboardModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyboardModel.SignalSignatures>(
             signal: K,
-            ...args: KeyboardModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<KeyboardModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -759,6 +770,14 @@ export namespace Caribou {
 
     abstract class KeyboardService extends GObject.Object {
         static $gtype: GObject.GType<KeyboardService>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: KeyboardService.SignalSignatures;
 
         // Constructors
 
@@ -770,17 +789,17 @@ export namespace Caribou {
 
         connect<K extends keyof KeyboardService.SignalSignatures>(
             signal: K,
-            callback: KeyboardService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, KeyboardService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyboardService.SignalSignatures>(
             signal: K,
-            callback: KeyboardService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, KeyboardService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyboardService.SignalSignatures>(
             signal: K,
-            ...args: KeyboardService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<KeyboardService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -805,7 +824,7 @@ export namespace Caribou {
     namespace GroupModel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::active-level': GObject.Object.Notify;
+            'notify::active-level': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -825,6 +844,14 @@ export namespace Caribou {
         set active_level(val: string);
         get activeLevel(): string;
         set activeLevel(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GroupModel.SignalSignatures;
 
         // Fields
 
@@ -843,17 +870,17 @@ export namespace Caribou {
 
         connect<K extends keyof GroupModel.SignalSignatures>(
             signal: K,
-            callback: GroupModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GroupModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GroupModel.SignalSignatures>(
             signal: K,
-            callback: GroupModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GroupModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GroupModel.SignalSignatures>(
             signal: K,
-            ...args: GroupModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GroupModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1314,16 +1341,10 @@ export namespace Caribou {
     }
 
     namespace LevelModel {
-        // Signal callback interfaces
-
-        interface LevelToggled {
-            (_source: LevelModel, new_level: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends ScannableGroup.SignalSignatures {
-            'level-toggled': LevelToggled;
-            'notify::mode': GObject.Object.Notify;
+            'level-toggled': (arg0: string) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1340,6 +1361,14 @@ export namespace Caribou {
 
         get mode(): string;
         set mode(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LevelModel.SignalSignatures;
 
         // Constructors
 
@@ -1353,17 +1382,17 @@ export namespace Caribou {
 
         connect<K extends keyof LevelModel.SignalSignatures>(
             signal: K,
-            callback: LevelModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LevelModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LevelModel.SignalSignatures>(
             signal: K,
-            callback: LevelModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LevelModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LevelModel.SignalSignatures>(
             signal: K,
-            ...args: LevelModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LevelModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1821,8 +1850,8 @@ export namespace Caribou {
     namespace RowModel {
         // Signal signatures
         interface SignalSignatures extends ScannableGroup.SignalSignatures {
-            'notify::scan-stepping': GObject.Object.Notify;
-            'notify::scan-selected': GObject.Object.Notify;
+            'notify::scan-stepping': (pspec: GObject.ParamSpec) => void;
+            'notify::scan-selected': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1835,6 +1864,14 @@ export namespace Caribou {
 
     class RowModel extends ScannableGroup implements IScannableItem, IKeyboardObject {
         static $gtype: GObject.GType<RowModel>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RowModel.SignalSignatures;
 
         // Constructors
 
@@ -1846,16 +1883,19 @@ export namespace Caribou {
 
         // Signals
 
-        connect<K extends keyof RowModel.SignalSignatures>(signal: K, callback: RowModel.SignalSignatures[K]): number;
+        connect<K extends keyof RowModel.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, RowModel.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RowModel.SignalSignatures>(
             signal: K,
-            callback: RowModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RowModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RowModel.SignalSignatures>(
             signal: K,
-            ...args: RowModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RowModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2328,32 +2368,22 @@ export namespace Caribou {
     }
 
     namespace KeyModel {
-        // Signal callback interfaces
-
-        interface KeyHoldEnd {
-            (_source: KeyModel): void;
-        }
-
-        interface KeyHold {
-            (_source: KeyModel): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'key-hold-end': KeyHoldEnd;
-            'key-hold': KeyHold;
-            'notify::align': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::toggle': GObject.Object.Notify;
-            'notify::repeatable': GObject.Object.Notify;
-            'notify::is-modifier': GObject.Object.Notify;
-            'notify::show-subkeys': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::keyval': GObject.Object.Notify;
-            'notify::text': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::scan-stepping': GObject.Object.Notify;
-            'notify::scan-selected': GObject.Object.Notify;
+            'key-hold-end': () => void;
+            'key-hold': () => void;
+            'notify::align': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::toggle': (pspec: GObject.ParamSpec) => void;
+            'notify::repeatable': (pspec: GObject.ParamSpec) => void;
+            'notify::is-modifier': (pspec: GObject.ParamSpec) => void;
+            'notify::show-subkeys': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::keyval': (pspec: GObject.ParamSpec) => void;
+            'notify::text': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::scan-stepping': (pspec: GObject.ParamSpec) => void;
+            'notify::scan-selected': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2406,6 +2436,14 @@ export namespace Caribou {
         set text(val: string);
         get label(): string;
         set label(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: KeyModel.SignalSignatures;
 
         // Fields
 
@@ -2421,16 +2459,19 @@ export namespace Caribou {
 
         // Signals
 
-        connect<K extends keyof KeyModel.SignalSignatures>(signal: K, callback: KeyModel.SignalSignatures[K]): number;
+        connect<K extends keyof KeyModel.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, KeyModel.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyModel.SignalSignatures>(
             signal: K,
-            callback: KeyModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, KeyModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyModel.SignalSignatures>(
             signal: K,
-            ...args: KeyModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<KeyModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2924,8 +2965,8 @@ export namespace Caribou {
     namespace ColumnModel {
         // Signal signatures
         interface SignalSignatures extends ScannableGroup.SignalSignatures {
-            'notify::scan-stepping': GObject.Object.Notify;
-            'notify::scan-selected': GObject.Object.Notify;
+            'notify::scan-stepping': (pspec: GObject.ParamSpec) => void;
+            'notify::scan-selected': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2938,6 +2979,14 @@ export namespace Caribou {
 
     class ColumnModel extends ScannableGroup implements IScannableItem, IKeyboardObject {
         static $gtype: GObject.GType<ColumnModel>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ColumnModel.SignalSignatures;
 
         // Constructors
 
@@ -2951,17 +3000,17 @@ export namespace Caribou {
 
         connect<K extends keyof ColumnModel.SignalSignatures>(
             signal: K,
-            callback: ColumnModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColumnModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColumnModel.SignalSignatures>(
             signal: K,
-            callback: ColumnModel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColumnModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColumnModel.SignalSignatures>(
             signal: K,
-            ...args: ColumnModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ColumnModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3437,16 +3486,16 @@ export namespace Caribou {
     namespace Scanner {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::bind-settings': GObject.Object.Notify;
-            'notify::scan-grouping': GObject.Object.Notify;
-            'notify::scan-enabled': GObject.Object.Notify;
-            'notify::step-time': GObject.Object.Notify;
-            'notify::switch-device': GObject.Object.Notify;
-            'notify::keyboard-key': GObject.Object.Notify;
-            'notify::mouse-button': GObject.Object.Notify;
-            'notify::scan-cycles': GObject.Object.Notify;
-            'notify::autorestart': GObject.Object.Notify;
-            'notify::inverse-scanning': GObject.Object.Notify;
+            'notify::bind-settings': (pspec: GObject.ParamSpec) => void;
+            'notify::scan-grouping': (pspec: GObject.ParamSpec) => void;
+            'notify::scan-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::step-time': (pspec: GObject.ParamSpec) => void;
+            'notify::switch-device': (pspec: GObject.ParamSpec) => void;
+            'notify::keyboard-key': (pspec: GObject.ParamSpec) => void;
+            'notify::mouse-button': (pspec: GObject.ParamSpec) => void;
+            'notify::scan-cycles': (pspec: GObject.ParamSpec) => void;
+            'notify::autorestart': (pspec: GObject.ParamSpec) => void;
+            'notify::inverse-scanning': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3515,6 +3564,14 @@ export namespace Caribou {
         set inverse_scanning(val: boolean);
         get inverseScanning(): boolean;
         set inverseScanning(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Scanner.SignalSignatures;
 
         // Constructors
 
@@ -3526,16 +3583,19 @@ export namespace Caribou {
 
         // Signals
 
-        connect<K extends keyof Scanner.SignalSignatures>(signal: K, callback: Scanner.SignalSignatures[K]): number;
+        connect<K extends keyof Scanner.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Scanner.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Scanner.SignalSignatures>(
             signal: K,
-            callback: Scanner.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Scanner.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Scanner.SignalSignatures>(
             signal: K,
-            ...args: Scanner.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Scanner.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3567,7 +3627,7 @@ export namespace Caribou {
     namespace ScannableGroup {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::scan-grouping': GObject.Object.Notify;
+            'notify::scan-grouping': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3577,6 +3637,14 @@ export namespace Caribou {
 
     abstract class ScannableGroup extends GObject.Object implements IScannableGroup {
         static $gtype: GObject.GType<ScannableGroup>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ScannableGroup.SignalSignatures;
 
         // Constructors
 
@@ -3588,17 +3656,17 @@ export namespace Caribou {
 
         connect<K extends keyof ScannableGroup.SignalSignatures>(
             signal: K,
-            callback: ScannableGroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ScannableGroup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScannableGroup.SignalSignatures>(
             signal: K,
-            callback: ScannableGroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ScannableGroup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScannableGroup.SignalSignatures>(
             signal: K,
-            ...args: ScannableGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ScannableGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

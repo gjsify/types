@@ -1601,6 +1601,14 @@ export namespace Poppler {
 
     class Annot extends GObject.Object {
         static $gtype: GObject.GType<Annot>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Annot.SignalSignatures;
 
         // Constructors
 
@@ -1610,13 +1618,19 @@ export namespace Poppler {
 
         // Signals
 
-        connect<K extends keyof Annot.SignalSignatures>(signal: K, callback: Annot.SignalSignatures[K]): number;
+        connect<K extends keyof Annot.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Annot.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Annot.SignalSignatures>(signal: K, callback: Annot.SignalSignatures[K]): number;
+        connect_after<K extends keyof Annot.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Annot.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Annot.SignalSignatures>(
             signal: K,
-            ...args: Annot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Annot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1701,6 +1715,14 @@ export namespace Poppler {
 
     class AnnotCircle extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotCircle>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AnnotCircle.SignalSignatures;
 
         // Constructors
 
@@ -1714,17 +1736,17 @@ export namespace Poppler {
 
         connect<K extends keyof AnnotCircle.SignalSignatures>(
             signal: K,
-            callback: AnnotCircle.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotCircle.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnnotCircle.SignalSignatures>(
             signal: K,
-            callback: AnnotCircle.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotCircle.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnnotCircle.SignalSignatures>(
             signal: K,
-            ...args: AnnotCircle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AnnotCircle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1753,6 +1775,14 @@ export namespace Poppler {
 
     class AnnotFileAttachment extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotFileAttachment>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AnnotFileAttachment.SignalSignatures;
 
         // Constructors
 
@@ -1764,17 +1794,19 @@ export namespace Poppler {
 
         connect<K extends keyof AnnotFileAttachment.SignalSignatures>(
             signal: K,
-            callback: AnnotFileAttachment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotFileAttachment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnnotFileAttachment.SignalSignatures>(
             signal: K,
-            callback: AnnotFileAttachment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotFileAttachment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnnotFileAttachment.SignalSignatures>(
             signal: K,
-            ...args: AnnotFileAttachment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AnnotFileAttachment.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1804,6 +1836,14 @@ export namespace Poppler {
 
     class AnnotFreeText extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotFreeText>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AnnotFreeText.SignalSignatures;
 
         // Constructors
 
@@ -1815,17 +1855,17 @@ export namespace Poppler {
 
         connect<K extends keyof AnnotFreeText.SignalSignatures>(
             signal: K,
-            callback: AnnotFreeText.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotFreeText.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnnotFreeText.SignalSignatures>(
             signal: K,
-            callback: AnnotFreeText.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotFreeText.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnnotFreeText.SignalSignatures>(
             signal: K,
-            ...args: AnnotFreeText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AnnotFreeText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1855,6 +1895,14 @@ export namespace Poppler {
 
     class AnnotLine extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotLine>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AnnotLine.SignalSignatures;
 
         // Constructors
 
@@ -1866,16 +1914,19 @@ export namespace Poppler {
 
         // Signals
 
-        connect<K extends keyof AnnotLine.SignalSignatures>(signal: K, callback: AnnotLine.SignalSignatures[K]): number;
+        connect<K extends keyof AnnotLine.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AnnotLine.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnnotLine.SignalSignatures>(
             signal: K,
-            callback: AnnotLine.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotLine.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnnotLine.SignalSignatures>(
             signal: K,
-            ...args: AnnotLine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AnnotLine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1900,6 +1951,14 @@ export namespace Poppler {
 
     class AnnotMarkup extends Annot {
         static $gtype: GObject.GType<AnnotMarkup>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AnnotMarkup.SignalSignatures;
 
         // Constructors
 
@@ -1911,17 +1970,17 @@ export namespace Poppler {
 
         connect<K extends keyof AnnotMarkup.SignalSignatures>(
             signal: K,
-            callback: AnnotMarkup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotMarkup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnnotMarkup.SignalSignatures>(
             signal: K,
-            callback: AnnotMarkup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotMarkup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnnotMarkup.SignalSignatures>(
             signal: K,
-            ...args: AnnotMarkup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AnnotMarkup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2016,6 +2075,14 @@ export namespace Poppler {
 
     class AnnotMovie extends Annot {
         static $gtype: GObject.GType<AnnotMovie>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AnnotMovie.SignalSignatures;
 
         // Constructors
 
@@ -2027,17 +2094,17 @@ export namespace Poppler {
 
         connect<K extends keyof AnnotMovie.SignalSignatures>(
             signal: K,
-            callback: AnnotMovie.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotMovie.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnnotMovie.SignalSignatures>(
             signal: K,
-            callback: AnnotMovie.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotMovie.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnnotMovie.SignalSignatures>(
             signal: K,
-            ...args: AnnotMovie.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AnnotMovie.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2066,6 +2133,14 @@ export namespace Poppler {
 
     class AnnotScreen extends Annot {
         static $gtype: GObject.GType<AnnotScreen>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AnnotScreen.SignalSignatures;
 
         // Constructors
 
@@ -2077,17 +2152,17 @@ export namespace Poppler {
 
         connect<K extends keyof AnnotScreen.SignalSignatures>(
             signal: K,
-            callback: AnnotScreen.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotScreen.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnnotScreen.SignalSignatures>(
             signal: K,
-            callback: AnnotScreen.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotScreen.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnnotScreen.SignalSignatures>(
             signal: K,
-            ...args: AnnotScreen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AnnotScreen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2111,6 +2186,14 @@ export namespace Poppler {
 
     class AnnotSquare extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotSquare>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AnnotSquare.SignalSignatures;
 
         // Constructors
 
@@ -2124,17 +2207,17 @@ export namespace Poppler {
 
         connect<K extends keyof AnnotSquare.SignalSignatures>(
             signal: K,
-            callback: AnnotSquare.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotSquare.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnnotSquare.SignalSignatures>(
             signal: K,
-            callback: AnnotSquare.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotSquare.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnnotSquare.SignalSignatures>(
             signal: K,
-            ...args: AnnotSquare.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AnnotSquare.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2163,6 +2246,14 @@ export namespace Poppler {
 
     class AnnotStamp extends Annot {
         static $gtype: GObject.GType<AnnotStamp>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AnnotStamp.SignalSignatures;
 
         // Constructors
 
@@ -2176,17 +2267,17 @@ export namespace Poppler {
 
         connect<K extends keyof AnnotStamp.SignalSignatures>(
             signal: K,
-            callback: AnnotStamp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotStamp.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnnotStamp.SignalSignatures>(
             signal: K,
-            callback: AnnotStamp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotStamp.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnnotStamp.SignalSignatures>(
             signal: K,
-            ...args: AnnotStamp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AnnotStamp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2217,6 +2308,14 @@ export namespace Poppler {
 
     class AnnotText extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotText>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AnnotText.SignalSignatures;
 
         // Constructors
 
@@ -2228,16 +2327,19 @@ export namespace Poppler {
 
         // Signals
 
-        connect<K extends keyof AnnotText.SignalSignatures>(signal: K, callback: AnnotText.SignalSignatures[K]): number;
+        connect<K extends keyof AnnotText.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AnnotText.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnnotText.SignalSignatures>(
             signal: K,
-            callback: AnnotText.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotText.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnnotText.SignalSignatures>(
             signal: K,
-            ...args: AnnotText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AnnotText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2311,6 +2413,14 @@ export namespace Poppler {
 
     class AnnotTextMarkup extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotTextMarkup>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AnnotTextMarkup.SignalSignatures;
 
         // Constructors
 
@@ -2330,17 +2440,17 @@ export namespace Poppler {
 
         connect<K extends keyof AnnotTextMarkup.SignalSignatures>(
             signal: K,
-            callback: AnnotTextMarkup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotTextMarkup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnnotTextMarkup.SignalSignatures>(
             signal: K,
-            callback: AnnotTextMarkup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotTextMarkup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnnotTextMarkup.SignalSignatures>(
             signal: K,
-            ...args: AnnotTextMarkup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AnnotTextMarkup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2371,6 +2481,14 @@ export namespace Poppler {
 
     class Attachment extends GObject.Object {
         static $gtype: GObject.GType<Attachment>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Attachment.SignalSignatures;
 
         // Fields
 
@@ -2391,17 +2509,17 @@ export namespace Poppler {
 
         connect<K extends keyof Attachment.SignalSignatures>(
             signal: K,
-            callback: Attachment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Attachment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Attachment.SignalSignatures>(
             signal: K,
-            callback: Attachment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Attachment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Attachment.SignalSignatures>(
             signal: K,
-            ...args: Attachment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Attachment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2446,33 +2564,33 @@ export namespace Poppler {
     namespace Document {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::author': GObject.Object.Notify;
-            'notify::creation-date': GObject.Object.Notify;
-            'notify::creation-datetime': GObject.Object.Notify;
-            'notify::creator': GObject.Object.Notify;
-            'notify::format': GObject.Object.Notify;
-            'notify::format-major': GObject.Object.Notify;
-            'notify::format-minor': GObject.Object.Notify;
-            'notify::keywords': GObject.Object.Notify;
-            'notify::linearized': GObject.Object.Notify;
-            'notify::metadata': GObject.Object.Notify;
-            'notify::mod-date': GObject.Object.Notify;
-            'notify::mod-datetime': GObject.Object.Notify;
-            'notify::page-layout': GObject.Object.Notify;
-            'notify::page-mode': GObject.Object.Notify;
-            'notify::permissions': GObject.Object.Notify;
-            'notify::print-duplex': GObject.Object.Notify;
-            'notify::print-n-copies': GObject.Object.Notify;
-            'notify::print-ncopies': GObject.Object.Notify;
-            'notify::print-scaling': GObject.Object.Notify;
-            'notify::producer': GObject.Object.Notify;
-            'notify::subject': GObject.Object.Notify;
-            'notify::subtype': GObject.Object.Notify;
-            'notify::subtype-conformance': GObject.Object.Notify;
-            'notify::subtype-part': GObject.Object.Notify;
-            'notify::subtype-string': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::viewer-preferences': GObject.Object.Notify;
+            'notify::author': (pspec: GObject.ParamSpec) => void;
+            'notify::creation-date': (pspec: GObject.ParamSpec) => void;
+            'notify::creation-datetime': (pspec: GObject.ParamSpec) => void;
+            'notify::creator': (pspec: GObject.ParamSpec) => void;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::format-major': (pspec: GObject.ParamSpec) => void;
+            'notify::format-minor': (pspec: GObject.ParamSpec) => void;
+            'notify::keywords': (pspec: GObject.ParamSpec) => void;
+            'notify::linearized': (pspec: GObject.ParamSpec) => void;
+            'notify::metadata': (pspec: GObject.ParamSpec) => void;
+            'notify::mod-date': (pspec: GObject.ParamSpec) => void;
+            'notify::mod-datetime': (pspec: GObject.ParamSpec) => void;
+            'notify::page-layout': (pspec: GObject.ParamSpec) => void;
+            'notify::page-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::permissions': (pspec: GObject.ParamSpec) => void;
+            'notify::print-duplex': (pspec: GObject.ParamSpec) => void;
+            'notify::print-n-copies': (pspec: GObject.ParamSpec) => void;
+            'notify::print-ncopies': (pspec: GObject.ParamSpec) => void;
+            'notify::print-scaling': (pspec: GObject.ParamSpec) => void;
+            'notify::producer': (pspec: GObject.ParamSpec) => void;
+            'notify::subject': (pspec: GObject.ParamSpec) => void;
+            'notify::subtype': (pspec: GObject.ParamSpec) => void;
+            'notify::subtype-conformance': (pspec: GObject.ParamSpec) => void;
+            'notify::subtype-part': (pspec: GObject.ParamSpec) => void;
+            'notify::subtype-string': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::viewer-preferences': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2687,6 +2805,14 @@ export namespace Poppler {
         set title(val: string);
         get viewer_preferences(): ViewerPreferences;
         get viewerPreferences(): ViewerPreferences;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Document.SignalSignatures;
 
         // Constructors
 
@@ -2713,16 +2839,19 @@ export namespace Poppler {
 
         // Signals
 
-        connect<K extends keyof Document.SignalSignatures>(signal: K, callback: Document.SignalSignatures[K]): number;
+        connect<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Document.SignalSignatures>(
             signal: K,
-            callback: Document.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Document.SignalSignatures>(
             signal: K,
-            ...args: Document.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Document.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3119,6 +3248,14 @@ export namespace Poppler {
 
     class FontInfo extends GObject.Object {
         static $gtype: GObject.GType<FontInfo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FontInfo.SignalSignatures;
 
         // Constructors
 
@@ -3130,16 +3267,19 @@ export namespace Poppler {
 
         // Signals
 
-        connect<K extends keyof FontInfo.SignalSignatures>(signal: K, callback: FontInfo.SignalSignatures[K]): number;
+        connect<K extends keyof FontInfo.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, FontInfo.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FontInfo.SignalSignatures>(
             signal: K,
-            callback: FontInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FontInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FontInfo.SignalSignatures>(
             signal: K,
-            ...args: FontInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FontInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3185,6 +3325,14 @@ export namespace Poppler {
 
     class FormField extends GObject.Object {
         static $gtype: GObject.GType<FormField>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FormField.SignalSignatures;
 
         // Constructors
 
@@ -3194,16 +3342,19 @@ export namespace Poppler {
 
         // Signals
 
-        connect<K extends keyof FormField.SignalSignatures>(signal: K, callback: FormField.SignalSignatures[K]): number;
+        connect<K extends keyof FormField.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, FormField.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FormField.SignalSignatures>(
             signal: K,
-            callback: FormField.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FormField.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FormField.SignalSignatures>(
             signal: K,
-            ...args: FormField.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FormField.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3445,6 +3596,14 @@ export namespace Poppler {
 
     class Layer extends GObject.Object {
         static $gtype: GObject.GType<Layer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Layer.SignalSignatures;
 
         // Constructors
 
@@ -3454,13 +3613,19 @@ export namespace Poppler {
 
         // Signals
 
-        connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        connect<K extends keyof Layer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Layer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Layer.SignalSignatures>(
             signal: K,
-            ...args: Layer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Layer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3510,6 +3675,14 @@ export namespace Poppler {
 
     class Media extends GObject.Object {
         static $gtype: GObject.GType<Media>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Media.SignalSignatures;
 
         // Constructors
 
@@ -3519,13 +3692,19 @@ export namespace Poppler {
 
         // Signals
 
-        connect<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        connect<K extends keyof Media.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        connect_after<K extends keyof Media.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Media.SignalSignatures>(
             signal: K,
-            ...args: Media.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Media.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3608,6 +3787,14 @@ export namespace Poppler {
 
     class Movie extends GObject.Object {
         static $gtype: GObject.GType<Movie>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Movie.SignalSignatures;
 
         // Constructors
 
@@ -3617,13 +3804,19 @@ export namespace Poppler {
 
         // Signals
 
-        connect<K extends keyof Movie.SignalSignatures>(signal: K, callback: Movie.SignalSignatures[K]): number;
+        connect<K extends keyof Movie.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Movie.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Movie.SignalSignatures>(signal: K, callback: Movie.SignalSignatures[K]): number;
+        connect_after<K extends keyof Movie.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Movie.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Movie.SignalSignatures>(
             signal: K,
-            ...args: Movie.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Movie.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3703,6 +3896,14 @@ export namespace Poppler {
 
     class PSFile extends GObject.Object {
         static $gtype: GObject.GType<PSFile>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PSFile.SignalSignatures;
 
         // Constructors
 
@@ -3716,13 +3917,19 @@ export namespace Poppler {
 
         // Signals
 
-        connect<K extends keyof PSFile.SignalSignatures>(signal: K, callback: PSFile.SignalSignatures[K]): number;
+        connect<K extends keyof PSFile.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, PSFile.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof PSFile.SignalSignatures>(signal: K, callback: PSFile.SignalSignatures[K]): number;
+        connect_after<K extends keyof PSFile.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, PSFile.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PSFile.SignalSignatures>(
             signal: K,
-            ...args: PSFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PSFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3750,7 +3957,7 @@ export namespace Poppler {
     namespace Page {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::label': GObject.Object.Notify;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3769,6 +3976,14 @@ export namespace Poppler {
          * The label of the page or %NULL. See also poppler_page_get_label()
          */
         get label(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Page.SignalSignatures;
 
         // Constructors
 
@@ -3778,13 +3993,19 @@ export namespace Poppler {
 
         // Signals
 
-        connect<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
+        connect<K extends keyof Page.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
+        connect_after<K extends keyof Page.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Page.SignalSignatures>(
             signal: K,
-            ...args: Page.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Page.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4131,6 +4352,14 @@ export namespace Poppler {
 
     class StructureElement extends GObject.Object {
         static $gtype: GObject.GType<StructureElement>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StructureElement.SignalSignatures;
 
         // Constructors
 
@@ -4142,17 +4371,17 @@ export namespace Poppler {
 
         connect<K extends keyof StructureElement.SignalSignatures>(
             signal: K,
-            callback: StructureElement.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StructureElement.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StructureElement.SignalSignatures>(
             signal: K,
-            callback: StructureElement.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StructureElement.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StructureElement.SignalSignatures>(
             signal: K,
-            ...args: StructureElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StructureElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

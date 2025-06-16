@@ -33,6 +33,14 @@ export namespace Grss {
 
     class FeedAtomFormatter extends FeedFormatter {
         static $gtype: GObject.GType<FeedAtomFormatter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FeedAtomFormatter.SignalSignatures;
 
         // Constructors
 
@@ -46,17 +54,17 @@ export namespace Grss {
 
         connect<K extends keyof FeedAtomFormatter.SignalSignatures>(
             signal: K,
-            callback: FeedAtomFormatter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedAtomFormatter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedAtomFormatter.SignalSignatures>(
             signal: K,
-            callback: FeedAtomFormatter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedAtomFormatter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedAtomFormatter.SignalSignatures>(
             signal: K,
-            ...args: FeedAtomFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FeedAtomFormatter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -72,6 +80,14 @@ export namespace Grss {
 
     class FeedChannel extends GObject.Object {
         static $gtype: GObject.GType<FeedChannel>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FeedChannel.SignalSignatures;
 
         // Constructors
 
@@ -93,17 +109,17 @@ export namespace Grss {
 
         connect<K extends keyof FeedChannel.SignalSignatures>(
             signal: K,
-            callback: FeedChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedChannel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedChannel.SignalSignatures>(
             signal: K,
-            callback: FeedChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedChannel.SignalSignatures>(
             signal: K,
-            ...args: FeedChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FeedChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -411,6 +427,14 @@ export namespace Grss {
 
     class FeedEnclosure extends GObject.Object {
         static $gtype: GObject.GType<FeedEnclosure>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FeedEnclosure.SignalSignatures;
 
         // Constructors
 
@@ -424,17 +448,17 @@ export namespace Grss {
 
         connect<K extends keyof FeedEnclosure.SignalSignatures>(
             signal: K,
-            callback: FeedEnclosure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedEnclosure.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedEnclosure.SignalSignatures>(
             signal: K,
-            callback: FeedEnclosure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedEnclosure.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedEnclosure.SignalSignatures>(
             signal: K,
-            ...args: FeedEnclosure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FeedEnclosure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -506,6 +530,14 @@ export namespace Grss {
 
     abstract class FeedFormatter extends GObject.Object {
         static $gtype: GObject.GType<FeedFormatter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FeedFormatter.SignalSignatures;
 
         // Constructors
 
@@ -517,17 +549,17 @@ export namespace Grss {
 
         connect<K extends keyof FeedFormatter.SignalSignatures>(
             signal: K,
-            callback: FeedFormatter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedFormatter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedFormatter.SignalSignatures>(
             signal: K,
-            callback: FeedFormatter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedFormatter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedFormatter.SignalSignatures>(
             signal: K,
-            ...args: FeedFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FeedFormatter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -593,6 +625,14 @@ export namespace Grss {
 
     class FeedItem extends GObject.Object {
         static $gtype: GObject.GType<FeedItem>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FeedItem.SignalSignatures;
 
         // Constructors
 
@@ -604,16 +644,19 @@ export namespace Grss {
 
         // Signals
 
-        connect<K extends keyof FeedItem.SignalSignatures>(signal: K, callback: FeedItem.SignalSignatures[K]): number;
+        connect<K extends keyof FeedItem.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, FeedItem.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedItem.SignalSignatures>(
             signal: K,
-            callback: FeedItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedItem.SignalSignatures>(
             signal: K,
-            ...args: FeedItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FeedItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -796,6 +839,14 @@ export namespace Grss {
 
     class FeedParser extends GObject.Object {
         static $gtype: GObject.GType<FeedParser>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FeedParser.SignalSignatures;
 
         // Constructors
 
@@ -809,17 +860,17 @@ export namespace Grss {
 
         connect<K extends keyof FeedParser.SignalSignatures>(
             signal: K,
-            callback: FeedParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedParser.SignalSignatures>(
             signal: K,
-            callback: FeedParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedParser.SignalSignatures>(
             signal: K,
-            ...args: FeedParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FeedParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -855,6 +906,14 @@ export namespace Grss {
 
     class FeedRssFormatter extends FeedFormatter {
         static $gtype: GObject.GType<FeedRssFormatter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FeedRssFormatter.SignalSignatures;
 
         // Constructors
 
@@ -868,17 +927,17 @@ export namespace Grss {
 
         connect<K extends keyof FeedRssFormatter.SignalSignatures>(
             signal: K,
-            callback: FeedRssFormatter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedRssFormatter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedRssFormatter.SignalSignatures>(
             signal: K,
-            callback: FeedRssFormatter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedRssFormatter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedRssFormatter.SignalSignatures>(
             signal: K,
-            ...args: FeedRssFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FeedRssFormatter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -894,6 +953,14 @@ export namespace Grss {
 
     class FeedsGroup extends GObject.Object {
         static $gtype: GObject.GType<FeedsGroup>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FeedsGroup.SignalSignatures;
 
         // Constructors
 
@@ -907,17 +974,17 @@ export namespace Grss {
 
         connect<K extends keyof FeedsGroup.SignalSignatures>(
             signal: K,
-            callback: FeedsGroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedsGroup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedsGroup.SignalSignatures>(
             signal: K,
-            callback: FeedsGroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedsGroup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedsGroup.SignalSignatures>(
             signal: K,
-            ...args: FeedsGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FeedsGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -946,25 +1013,11 @@ export namespace Grss {
     }
 
     namespace FeedsPool {
-        // Signal callback interfaces
-
-        interface FeedFail {
-            (_source: FeedsPool, feed: GObject.Object): void;
-        }
-
-        interface FeedFetching {
-            (_source: FeedsPool, feed: GObject.Object): void;
-        }
-
-        interface FeedReady {
-            (_source: FeedsPool, feed: GObject.Object, items: FeedItem[]): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'feed-fail': FeedFail;
-            'feed-fetching': FeedFetching;
-            'feed-ready': FeedReady;
+            'feed-fail': (arg0: GObject.Object) => void;
+            'feed-fetching': (arg0: GObject.Object) => void;
+            'feed-ready': (arg0: GObject.Object, arg1: FeedItem[]) => void;
         }
 
         // Constructor properties interface
@@ -974,6 +1027,14 @@ export namespace Grss {
 
     class FeedsPool extends GObject.Object {
         static $gtype: GObject.GType<FeedsPool>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FeedsPool.SignalSignatures;
 
         // Constructors
 
@@ -985,16 +1046,19 @@ export namespace Grss {
 
         // Signals
 
-        connect<K extends keyof FeedsPool.SignalSignatures>(signal: K, callback: FeedsPool.SignalSignatures[K]): number;
+        connect<K extends keyof FeedsPool.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, FeedsPool.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedsPool.SignalSignatures>(
             signal: K,
-            callback: FeedsPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedsPool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedsPool.SignalSignatures>(
             signal: K,
-            ...args: FeedsPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FeedsPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1043,20 +1107,10 @@ export namespace Grss {
     }
 
     namespace FeedsPublisher {
-        // Signal callback interfaces
-
-        interface DeleteSubscription {
-            (_source: FeedsPublisher, object: FeedChannel, p0: string): void;
-        }
-
-        interface NewSubscription {
-            (_source: FeedsPublisher, object: FeedChannel, p0: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'delete-subscription': DeleteSubscription;
-            'new-subscription': NewSubscription;
+            'delete-subscription': (arg0: FeedChannel, arg1: string) => void;
+            'new-subscription': (arg0: FeedChannel, arg1: string) => void;
         }
 
         // Constructor properties interface
@@ -1066,6 +1120,14 @@ export namespace Grss {
 
     class FeedsPublisher extends GObject.Object {
         static $gtype: GObject.GType<FeedsPublisher>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FeedsPublisher.SignalSignatures;
 
         // Constructors
 
@@ -1079,17 +1141,17 @@ export namespace Grss {
 
         connect<K extends keyof FeedsPublisher.SignalSignatures>(
             signal: K,
-            callback: FeedsPublisher.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedsPublisher.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedsPublisher.SignalSignatures>(
             signal: K,
-            callback: FeedsPublisher.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedsPublisher.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedsPublisher.SignalSignatures>(
             signal: K,
-            ...args: FeedsPublisher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FeedsPublisher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1163,6 +1225,14 @@ export namespace Grss {
 
     abstract class FeedsStore extends GObject.Object {
         static $gtype: GObject.GType<FeedsStore>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FeedsStore.SignalSignatures;
 
         // Constructors
 
@@ -1174,17 +1244,17 @@ export namespace Grss {
 
         connect<K extends keyof FeedsStore.SignalSignatures>(
             signal: K,
-            callback: FeedsStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedsStore.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedsStore.SignalSignatures>(
             signal: K,
-            callback: FeedsStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedsStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedsStore.SignalSignatures>(
             signal: K,
-            ...args: FeedsStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FeedsStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1252,15 +1322,9 @@ export namespace Grss {
     }
 
     namespace FeedsSubscriber {
-        // Signal callback interfaces
-
-        interface NotificationReceived {
-            (_source: FeedsSubscriber, feed: GObject.Object, item: GObject.Object): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notification-received': NotificationReceived;
+            'notification-received': (arg0: GObject.Object, arg1: GObject.Object) => void;
         }
 
         // Constructor properties interface
@@ -1270,6 +1334,14 @@ export namespace Grss {
 
     class FeedsSubscriber extends GObject.Object {
         static $gtype: GObject.GType<FeedsSubscriber>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FeedsSubscriber.SignalSignatures;
 
         // Constructors
 
@@ -1283,17 +1355,17 @@ export namespace Grss {
 
         connect<K extends keyof FeedsSubscriber.SignalSignatures>(
             signal: K,
-            callback: FeedsSubscriber.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedsSubscriber.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedsSubscriber.SignalSignatures>(
             signal: K,
-            callback: FeedsSubscriber.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedsSubscriber.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedsSubscriber.SignalSignatures>(
             signal: K,
-            ...args: FeedsSubscriber.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FeedsSubscriber.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -71,12 +71,12 @@ export namespace Caja {
     namespace Column {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::attribute': GObject.Object.Notify;
-            'notify::attribute-q': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::xalign': GObject.Object.Notify;
+            'notify::attribute': (pspec: GObject.ParamSpec) => void;
+            'notify::attribute-q': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::xalign': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -108,6 +108,14 @@ export namespace Caja {
         get name(): string;
         get xalign(): number;
         set xalign(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Column.SignalSignatures;
 
         // Constructors
 
@@ -119,13 +127,19 @@ export namespace Caja {
 
         // Signals
 
-        connect<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
+        connect<K extends keyof Column.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Column.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
+        connect_after<K extends keyof Column.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Column.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Column.SignalSignatures>(
             signal: K,
-            ...args: Column.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Column.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -141,6 +155,14 @@ export namespace Caja {
 
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Menu.SignalSignatures;
 
         // Constructors
 
@@ -152,13 +174,19 @@ export namespace Caja {
 
         // Signals
 
-        connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        connect<K extends keyof Menu.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        connect_after<K extends keyof Menu.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Menu.SignalSignatures>(
             signal: K,
-            ...args: Menu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Menu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -169,22 +197,16 @@ export namespace Caja {
     }
 
     namespace MenuItem {
-        // Signal callback interfaces
-
-        interface Activate {
-            (_source: MenuItem): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            activate: Activate;
-            'notify::icon': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::menu': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::tip': GObject.Object.Notify;
+            activate: () => void;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::menu': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::tip': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -218,6 +240,14 @@ export namespace Caja {
         set sensitive(val: boolean);
         get tip(): string;
         set tip(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MenuItem.SignalSignatures;
 
         // Constructors
 
@@ -229,16 +259,19 @@ export namespace Caja {
 
         // Signals
 
-        connect<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: MenuItem.SignalSignatures[K]): number;
+        connect<K extends keyof MenuItem.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
-            callback: MenuItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
-            ...args: MenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -269,9 +302,9 @@ export namespace Caja {
     namespace PropertyPage {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::label': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::page': GObject.Object.Notify;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::page': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -293,6 +326,14 @@ export namespace Caja {
         get name(): string;
         get page(): Gtk.Widget;
         set page(val: Gtk.Widget);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PropertyPage.SignalSignatures;
 
         // Constructors
 
@@ -306,17 +347,17 @@ export namespace Caja {
 
         connect<K extends keyof PropertyPage.SignalSignatures>(
             signal: K,
-            callback: PropertyPage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PropertyPage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PropertyPage.SignalSignatures>(
             signal: K,
-            callback: PropertyPage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PropertyPage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PropertyPage.SignalSignatures>(
             signal: K,
-            ...args: PropertyPage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PropertyPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

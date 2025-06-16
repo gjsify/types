@@ -1233,10 +1233,10 @@ export namespace GES {
     namespace Asset {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::extractable-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::proxy': GObject.Object.Notify;
-            'notify::proxy-target': GObject.Object.Notify;
+            'notify::extractable-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-target': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1417,6 +1417,14 @@ export namespace GES {
          * asset it is now the proxy of/no longer the proxy of.
          */
         get proxyTarget(): Asset;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Asset.SignalSignatures;
 
         // Constructors
 
@@ -1426,13 +1434,19 @@ export namespace GES {
 
         // Signals
 
-        connect<K extends keyof Asset.SignalSignatures>(signal: K, callback: Asset.SignalSignatures[K]): number;
+        connect<K extends keyof Asset.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Asset.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Asset.SignalSignatures>(signal: K, callback: Asset.SignalSignatures[K]): number;
+        connect_after<K extends keyof Asset.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Asset.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Asset.SignalSignatures>(
             signal: K,
-            ...args: Asset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Asset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2759,20 +2773,20 @@ export namespace GES {
     namespace AudioSource {
         // Signal signatures
         interface SignalSignatures extends Source.SignalSignatures {
-            'notify::active': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-clamp-control-sources': (pspec: GObject.ParamSpec) => void;
+            'notify::has-internal-source': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2794,6 +2808,14 @@ export namespace GES {
      */
     abstract class AudioSource extends Source implements Extractable, MetaContainer {
         static $gtype: GObject.GType<AudioSource>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioSource.SignalSignatures;
 
         // Constructors
 
@@ -2805,17 +2827,17 @@ export namespace GES {
 
         connect<K extends keyof AudioSource.SignalSignatures>(
             signal: K,
-            callback: AudioSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioSource.SignalSignatures>(
             signal: K,
-            callback: AudioSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioSource.SignalSignatures>(
             signal: K,
-            ...args: AudioSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3264,20 +3286,20 @@ export namespace GES {
     namespace AudioTestSource {
         // Signal signatures
         interface SignalSignatures extends AudioSource.SignalSignatures {
-            'notify::active': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-clamp-control-sources': (pspec: GObject.ParamSpec) => void;
+            'notify::has-internal-source': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3295,6 +3317,14 @@ export namespace GES {
      */
     class AudioTestSource extends AudioSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<AudioTestSource>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioTestSource.SignalSignatures;
 
         // Constructors
 
@@ -3306,17 +3336,17 @@ export namespace GES {
 
         connect<K extends keyof AudioTestSource.SignalSignatures>(
             signal: K,
-            callback: AudioTestSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioTestSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioTestSource.SignalSignatures>(
             signal: K,
-            callback: AudioTestSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioTestSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioTestSource.SignalSignatures>(
             signal: K,
-            ...args: AudioTestSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioTestSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3788,16 +3818,16 @@ export namespace GES {
     namespace AudioTrack {
         // Signal signatures
         interface SignalSignatures extends Track.SignalSignatures {
-            'notify::caps': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::mixing': GObject.Object.Notify;
-            'notify::restriction-caps': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::async-handling': GObject.Object.Notify;
-            'notify::message-forward': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::caps': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::mixing': (pspec: GObject.ParamSpec) => void;
+            'notify::restriction-caps': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::async-handling': (pspec: GObject.ParamSpec) => void;
+            'notify::message-forward': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3830,6 +3860,14 @@ export namespace GES {
      */
     class AudioTrack extends Track implements MetaContainer, Gst.ChildProxy {
         static $gtype: GObject.GType<AudioTrack>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioTrack.SignalSignatures;
 
         // Constructors
 
@@ -3843,17 +3881,17 @@ export namespace GES {
 
         connect<K extends keyof AudioTrack.SignalSignatures>(
             signal: K,
-            callback: AudioTrack.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioTrack.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioTrack.SignalSignatures>(
             signal: K,
-            callback: AudioTrack.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioTrack.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioTrack.SignalSignatures>(
             signal: K,
-            ...args: AudioTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioTrack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4677,20 +4715,20 @@ export namespace GES {
     namespace AudioTransition {
         // Signal signatures
         interface SignalSignatures extends Transition.SignalSignatures {
-            'notify::active': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-clamp-control-sources': (pspec: GObject.ParamSpec) => void;
+            'notify::has-internal-source': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4703,6 +4741,14 @@ export namespace GES {
 
     class AudioTransition extends Transition implements Extractable, MetaContainer {
         static $gtype: GObject.GType<AudioTransition>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioTransition.SignalSignatures;
 
         // Constructors
 
@@ -4716,17 +4762,17 @@ export namespace GES {
 
         connect<K extends keyof AudioTransition.SignalSignatures>(
             signal: K,
-            callback: AudioTransition.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioTransition.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioTransition.SignalSignatures>(
             signal: K,
-            callback: AudioTransition.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioTransition.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioTransition.SignalSignatures>(
             signal: K,
-            ...args: AudioTransition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioTransition.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5175,21 +5221,21 @@ export namespace GES {
     namespace AudioUriSource {
         // Signal signatures
         interface SignalSignatures extends AudioSource.SignalSignatures {
-            'notify::uri': GObject.Object.Notify;
-            'notify::active': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-clamp-control-sources': (pspec: GObject.ParamSpec) => void;
+            'notify::has-internal-source': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5216,6 +5262,14 @@ export namespace GES {
          * The location of the file/resource to use.
          */
         get uri(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AudioUriSource.SignalSignatures;
 
         // Constructors
 
@@ -5227,17 +5281,17 @@ export namespace GES {
 
         connect<K extends keyof AudioUriSource.SignalSignatures>(
             signal: K,
-            callback: AudioUriSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioUriSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioUriSource.SignalSignatures>(
             signal: K,
-            callback: AudioUriSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AudioUriSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioUriSource.SignalSignatures>(
             signal: K,
-            ...args: AudioUriSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AudioUriSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5686,20 +5740,20 @@ export namespace GES {
     namespace BaseEffect {
         // Signal signatures
         interface SignalSignatures extends Operation.SignalSignatures {
-            'notify::active': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-clamp-control-sources': (pspec: GObject.ParamSpec) => void;
+            'notify::has-internal-source': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5763,6 +5817,14 @@ export namespace GES {
      */
     abstract class BaseEffect extends Operation implements Extractable, MetaContainer {
         static $gtype: GObject.GType<BaseEffect>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BaseEffect.SignalSignatures;
 
         // Constructors
 
@@ -5774,17 +5836,17 @@ export namespace GES {
 
         connect<K extends keyof BaseEffect.SignalSignatures>(
             signal: K,
-            callback: BaseEffect.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BaseEffect.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseEffect.SignalSignatures>(
             signal: K,
-            callback: BaseEffect.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BaseEffect.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseEffect.SignalSignatures>(
             signal: K,
-            ...args: BaseEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BaseEffect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6287,19 +6349,19 @@ export namespace GES {
     namespace BaseEffectClip {
         // Signal signatures
         interface SignalSignatures extends OperationClip.SignalSignatures {
-            'notify::duration-limit': GObject.Object.Notify;
-            'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::duration-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::layer': (pspec: GObject.ParamSpec) => void;
+            'notify::supported-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6326,6 +6388,14 @@ export namespace GES {
      */
     abstract class BaseEffectClip extends OperationClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<BaseEffectClip>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BaseEffectClip.SignalSignatures;
 
         // Constructors
 
@@ -6337,17 +6407,17 @@ export namespace GES {
 
         connect<K extends keyof BaseEffectClip.SignalSignatures>(
             signal: K,
-            callback: BaseEffectClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BaseEffectClip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseEffectClip.SignalSignatures>(
             signal: K,
-            callback: BaseEffectClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BaseEffectClip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseEffectClip.SignalSignatures>(
             signal: K,
-            ...args: BaseEffectClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BaseEffectClip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6796,19 +6866,19 @@ export namespace GES {
     namespace BaseTransitionClip {
         // Signal signatures
         interface SignalSignatures extends OperationClip.SignalSignatures {
-            'notify::duration-limit': GObject.Object.Notify;
-            'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::duration-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::layer': (pspec: GObject.ParamSpec) => void;
+            'notify::supported-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6821,6 +6891,14 @@ export namespace GES {
 
     abstract class BaseTransitionClip extends OperationClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<BaseTransitionClip>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BaseTransitionClip.SignalSignatures;
 
         // Constructors
 
@@ -6832,17 +6910,17 @@ export namespace GES {
 
         connect<K extends keyof BaseTransitionClip.SignalSignatures>(
             signal: K,
-            callback: BaseTransitionClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BaseTransitionClip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseTransitionClip.SignalSignatures>(
             signal: K,
-            callback: BaseTransitionClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BaseTransitionClip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseTransitionClip.SignalSignatures>(
             signal: K,
-            ...args: BaseTransitionClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BaseTransitionClip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7299,6 +7377,14 @@ export namespace GES {
 
     abstract class BaseXmlFormatter extends Formatter implements Extractable {
         static $gtype: GObject.GType<BaseXmlFormatter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BaseXmlFormatter.SignalSignatures;
 
         // Constructors
 
@@ -7310,17 +7396,17 @@ export namespace GES {
 
         connect<K extends keyof BaseXmlFormatter.SignalSignatures>(
             signal: K,
-            callback: BaseXmlFormatter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BaseXmlFormatter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseXmlFormatter.SignalSignatures>(
             signal: K,
-            callback: BaseXmlFormatter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BaseXmlFormatter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseXmlFormatter.SignalSignatures>(
             signal: K,
-            ...args: BaseXmlFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BaseXmlFormatter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7388,19 +7474,19 @@ export namespace GES {
     namespace Clip {
         // Signal signatures
         interface SignalSignatures extends Container.SignalSignatures {
-            'notify::duration-limit': GObject.Object.Notify;
-            'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::duration-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::layer': (pspec: GObject.ParamSpec) => void;
+            'notify::supported-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7659,6 +7745,14 @@ export namespace GES {
          */
         get supportedFormats(): TrackType;
         set supportedFormats(val: TrackType);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Clip.SignalSignatures;
 
         // Constructors
 
@@ -7668,13 +7762,19 @@ export namespace GES {
 
         // Signals
 
-        connect<K extends keyof Clip.SignalSignatures>(signal: K, callback: Clip.SignalSignatures[K]): number;
+        connect<K extends keyof Clip.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Clip.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Clip.SignalSignatures>(signal: K, callback: Clip.SignalSignatures[K]): number;
+        connect_after<K extends keyof Clip.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Clip.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Clip.SignalSignatures>(
             signal: K,
-            ...args: Clip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Clip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8470,11 +8570,11 @@ export namespace GES {
     namespace ClipAsset {
         // Signal signatures
         interface SignalSignatures extends Asset.SignalSignatures {
-            'notify::supported-formats': GObject.Object.Notify;
-            'notify::extractable-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::proxy': GObject.Object.Notify;
-            'notify::proxy-target': GObject.Object.Notify;
+            'notify::supported-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::extractable-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-target': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8509,6 +8609,14 @@ export namespace GES {
          */
         get supportedFormats(): TrackType;
         set supportedFormats(val: TrackType);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClipAsset.SignalSignatures;
 
         // Constructors
 
@@ -8518,16 +8626,19 @@ export namespace GES {
 
         // Signals
 
-        connect<K extends keyof ClipAsset.SignalSignatures>(signal: K, callback: ClipAsset.SignalSignatures[K]): number;
+        connect<K extends keyof ClipAsset.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClipAsset.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClipAsset.SignalSignatures>(
             signal: K,
-            callback: ClipAsset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClipAsset.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClipAsset.SignalSignatures>(
             signal: K,
-            ...args: ClipAsset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClipAsset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9673,6 +9784,14 @@ export namespace GES {
 
     class CommandLineFormatter extends Formatter implements Extractable {
         static $gtype: GObject.GType<CommandLineFormatter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CommandLineFormatter.SignalSignatures;
 
         // Constructors
 
@@ -9684,17 +9803,19 @@ export namespace GES {
 
         connect<K extends keyof CommandLineFormatter.SignalSignatures>(
             signal: K,
-            callback: CommandLineFormatter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CommandLineFormatter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CommandLineFormatter.SignalSignatures>(
             signal: K,
-            callback: CommandLineFormatter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CommandLineFormatter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CommandLineFormatter.SignalSignatures>(
             signal: K,
-            ...args: CommandLineFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CommandLineFormatter.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9771,30 +9892,20 @@ export namespace GES {
     }
 
     namespace Container {
-        // Signal callback interfaces
-
-        interface ChildAdded {
-            (_source: Container, element: TimelineElement): void;
-        }
-
-        interface ChildRemoved {
-            (_source: Container, element: TimelineElement): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends TimelineElement.SignalSignatures {
-            'child-added': ChildAdded;
-            'child-removed': ChildRemoved;
-            'notify::height': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'child-added': (arg0: TimelineElement) => void;
+            'child-removed': (arg0: TimelineElement) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9829,6 +9940,14 @@ export namespace GES {
          * children (maximum - minimum + 1).
          */
         get height(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Container.SignalSignatures;
 
         // Fields
 
@@ -9844,16 +9963,19 @@ export namespace GES {
 
         // Signals
 
-        connect<K extends keyof Container.SignalSignatures>(signal: K, callback: Container.SignalSignatures[K]): number;
+        connect<K extends keyof Container.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Container.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Container.SignalSignatures>(
             signal: K,
-            callback: Container.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Container.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Container.SignalSignatures>(
             signal: K,
-            ...args: Container.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Container.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10865,27 +10987,13 @@ export namespace GES {
     }
 
     namespace DiscovererManager {
-        // Signal callback interfaces
-
-        interface Discovered {
-            (_source: DiscovererManager, info: GstPbutils.DiscovererInfo, error?: GLib.Error | null): void;
-        }
-
-        interface LoadSerializedInfo {
-            (_source: DiscovererManager, uri: string): GstPbutils.DiscovererInfo | null;
-        }
-
-        interface SourceSetup {
-            (_source: DiscovererManager, source: Gst.Element): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            discovered: Discovered;
-            'load-serialized-info': LoadSerializedInfo;
-            'source-setup': SourceSetup;
-            'notify::timeout': GObject.Object.Notify;
-            'notify::use-cache': GObject.Object.Notify;
+            discovered: (arg0: GstPbutils.DiscovererInfo, arg1: GLib.Error | null) => void;
+            'load-serialized-info': (arg0: string) => GstPbutils.DiscovererInfo | null;
+            'source-setup': (arg0: Gst.Element) => void;
+            'notify::timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::use-cache': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10911,6 +11019,14 @@ export namespace GES {
         set use_cache(val: boolean);
         get useCache(): boolean;
         set useCache(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DiscovererManager.SignalSignatures;
 
         // Constructors
 
@@ -10922,17 +11038,17 @@ export namespace GES {
 
         connect<K extends keyof DiscovererManager.SignalSignatures>(
             signal: K,
-            callback: DiscovererManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DiscovererManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DiscovererManager.SignalSignatures>(
             signal: K,
-            callback: DiscovererManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DiscovererManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DiscovererManager.SignalSignatures>(
             signal: K,
-            ...args: DiscovererManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DiscovererManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10959,21 +11075,21 @@ export namespace GES {
     namespace Effect {
         // Signal signatures
         interface SignalSignatures extends BaseEffect.SignalSignatures {
-            'notify::bin-description': GObject.Object.Notify;
-            'notify::active': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::bin-description': (pspec: GObject.ParamSpec) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-clamp-control-sources': (pspec: GObject.ParamSpec) => void;
+            'notify::has-internal-source': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11029,6 +11145,14 @@ export namespace GES {
          * Example: "videobalance saturation=1.5 hue=+0.5"
          */
         get binDescription(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Effect.SignalSignatures;
 
         // Constructors
 
@@ -11040,13 +11164,19 @@ export namespace GES {
 
         // Signals
 
-        connect<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
+        connect<K extends keyof Effect.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Effect.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
+        connect_after<K extends keyof Effect.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Effect.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Effect.SignalSignatures>(
             signal: K,
-            ...args: Effect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Effect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11499,11 +11629,11 @@ export namespace GES {
     namespace EffectAsset {
         // Signal signatures
         interface SignalSignatures extends TrackElementAsset.SignalSignatures {
-            'notify::track-type': GObject.Object.Notify;
-            'notify::extractable-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::proxy': GObject.Object.Notify;
-            'notify::proxy-target': GObject.Object.Notify;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::extractable-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-target': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11521,6 +11651,14 @@ export namespace GES {
      */
     class EffectAsset extends TrackElementAsset implements MetaContainer, Gio.AsyncInitable<EffectAsset>, Gio.Initable {
         static $gtype: GObject.GType<EffectAsset>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: EffectAsset.SignalSignatures;
 
         // Constructors
 
@@ -11532,17 +11670,17 @@ export namespace GES {
 
         connect<K extends keyof EffectAsset.SignalSignatures>(
             signal: K,
-            callback: EffectAsset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EffectAsset.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EffectAsset.SignalSignatures>(
             signal: K,
-            callback: EffectAsset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EffectAsset.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EffectAsset.SignalSignatures>(
             signal: K,
-            ...args: EffectAsset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<EffectAsset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12190,21 +12328,21 @@ export namespace GES {
     namespace EffectClip {
         // Signal signatures
         interface SignalSignatures extends BaseEffectClip.SignalSignatures {
-            'notify::audio-bin-description': GObject.Object.Notify;
-            'notify::video-bin-description': GObject.Object.Notify;
-            'notify::duration-limit': GObject.Object.Notify;
-            'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::audio-bin-description': (pspec: GObject.ParamSpec) => void;
+            'notify::video-bin-description': (pspec: GObject.ParamSpec) => void;
+            'notify::duration-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::layer': (pspec: GObject.ParamSpec) => void;
+            'notify::supported-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12263,6 +12401,14 @@ export namespace GES {
          * Example: "videobalance saturation=1.5 hue=+0.5"
          */
         get videoBinDescription(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: EffectClip.SignalSignatures;
 
         // Constructors
 
@@ -12276,17 +12422,17 @@ export namespace GES {
 
         connect<K extends keyof EffectClip.SignalSignatures>(
             signal: K,
-            callback: EffectClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EffectClip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EffectClip.SignalSignatures>(
             signal: K,
-            callback: EffectClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EffectClip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EffectClip.SignalSignatures>(
             signal: K,
-            ...args: EffectClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<EffectClip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12746,6 +12892,14 @@ export namespace GES {
      */
     abstract class Formatter extends GObject.InitiallyUnowned implements Extractable {
         static $gtype: GObject.GType<Formatter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Formatter.SignalSignatures;
 
         // Constructors
 
@@ -12755,16 +12909,19 @@ export namespace GES {
 
         // Signals
 
-        connect<K extends keyof Formatter.SignalSignatures>(signal: K, callback: Formatter.SignalSignatures[K]): number;
+        connect<K extends keyof Formatter.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Formatter.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Formatter.SignalSignatures>(
             signal: K,
-            callback: Formatter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Formatter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Formatter.SignalSignatures>(
             signal: K,
-            ...args: Formatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Formatter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12899,16 +13056,16 @@ export namespace GES {
     namespace Group {
         // Signal signatures
         interface SignalSignatures extends Container.SignalSignatures {
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13015,6 +13172,14 @@ export namespace GES {
          */
         get start(): number;
         set start(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Group.SignalSignatures;
 
         // Constructors
 
@@ -13026,13 +13191,19 @@ export namespace GES {
 
         // Signals
 
-        connect<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
+        connect<K extends keyof Group.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Group.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
+        connect_after<K extends keyof Group.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Group.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Group.SignalSignatures>(
             signal: K,
-            ...args: Group.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Group.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13481,21 +13652,21 @@ export namespace GES {
     namespace ImageSource {
         // Signal signatures
         interface SignalSignatures extends VideoSource.SignalSignatures {
-            'notify::uri': GObject.Object.Notify;
-            'notify::active': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-clamp-control-sources': (pspec: GObject.ParamSpec) => void;
+            'notify::has-internal-source': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13522,6 +13693,14 @@ export namespace GES {
          * The location of the file/resource to use.
          */
         get uri(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ImageSource.SignalSignatures;
 
         // Constructors
 
@@ -13533,17 +13712,17 @@ export namespace GES {
 
         connect<K extends keyof ImageSource.SignalSignatures>(
             signal: K,
-            callback: ImageSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ImageSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ImageSource.SignalSignatures>(
             signal: K,
-            callback: ImageSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ImageSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ImageSource.SignalSignatures>(
             signal: K,
-            ...args: ImageSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ImageSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13990,27 +14169,13 @@ export namespace GES {
     }
 
     namespace Layer {
-        // Signal callback interfaces
-
-        interface ActiveChanged {
-            (_source: Layer, active: boolean, tracks: Track[]): void;
-        }
-
-        interface ClipAdded {
-            (_source: Layer, clip: Clip): void;
-        }
-
-        interface ClipRemoved {
-            (_source: Layer, clip: Clip): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-            'active-changed': ActiveChanged;
-            'clip-added': ClipAdded;
-            'clip-removed': ClipRemoved;
-            'notify::auto-transition': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
+            'active-changed': (arg0: boolean, arg1: Track[]) => void;
+            'clip-added': (arg0: Clip) => void;
+            'clip-removed': (arg0: Clip) => void;
+            'notify::auto-transition': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14083,6 +14248,14 @@ export namespace GES {
          */
         get priority(): number;
         set priority(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Layer.SignalSignatures;
 
         // Fields
 
@@ -14100,13 +14273,19 @@ export namespace GES {
 
         // Signals
 
-        connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        connect<K extends keyof Layer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Layer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Layer.SignalSignatures>(
             signal: K,
-            ...args: Layer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Layer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -15128,7 +15307,7 @@ export namespace GES {
     namespace Marker {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::position': GObject.Object.Notify;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15150,6 +15329,14 @@ export namespace GES {
          * Current position (in nanoseconds) of the #GESMarker
          */
         get position(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Marker.SignalSignatures;
 
         // Constructors
 
@@ -15159,13 +15346,19 @@ export namespace GES {
 
         // Signals
 
-        connect<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
+        connect<K extends keyof Marker.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Marker.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
+        connect_after<K extends keyof Marker.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Marker.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Marker.SignalSignatures>(
             signal: K,
-            ...args: Marker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Marker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -15983,26 +16176,12 @@ export namespace GES {
     }
 
     namespace MarkerList {
-        // Signal callback interfaces
-
-        interface MarkerAdded {
-            (_source: MarkerList, position: number, marker: Marker): void;
-        }
-
-        interface MarkerMoved {
-            (_source: MarkerList, previous_position: number, new_position: number, marker: Marker): void;
-        }
-
-        interface MarkerRemoved {
-            (_source: MarkerList, marker: Marker): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'marker-added': MarkerAdded;
-            'marker-moved': MarkerMoved;
-            'marker-removed': MarkerRemoved;
-            'notify::flags': GObject.Object.Notify;
+            'marker-added': (arg0: number, arg1: Marker) => void;
+            'marker-moved': (arg0: number, arg1: number, arg2: Marker) => void;
+            'marker-removed': (arg0: Marker) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -16025,6 +16204,14 @@ export namespace GES {
          */
         get flags(): MarkerFlags;
         set flags(val: MarkerFlags);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MarkerList.SignalSignatures;
 
         // Constructors
 
@@ -16038,17 +16225,17 @@ export namespace GES {
 
         connect<K extends keyof MarkerList.SignalSignatures>(
             signal: K,
-            callback: MarkerList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MarkerList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MarkerList.SignalSignatures>(
             signal: K,
-            callback: MarkerList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MarkerList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MarkerList.SignalSignatures>(
             signal: K,
-            ...args: MarkerList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MarkerList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -16076,21 +16263,21 @@ export namespace GES {
     namespace MultiFileSource {
         // Signal signatures
         interface SignalSignatures extends VideoSource.SignalSignatures {
-            'notify::uri': GObject.Object.Notify;
-            'notify::active': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-clamp-control-sources': (pspec: GObject.ParamSpec) => void;
+            'notify::has-internal-source': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -16129,6 +16316,14 @@ export namespace GES {
          * multifile://20:50`/`home/you/sequence/\%04d.png
          */
         get uri(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MultiFileSource.SignalSignatures;
 
         // Constructors
 
@@ -16142,17 +16337,17 @@ export namespace GES {
 
         connect<K extends keyof MultiFileSource.SignalSignatures>(
             signal: K,
-            callback: MultiFileSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MultiFileSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MultiFileSource.SignalSignatures>(
             signal: K,
-            callback: MultiFileSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MultiFileSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MultiFileSource.SignalSignatures>(
             signal: K,
-            ...args: MultiFileSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MultiFileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -16601,20 +16796,20 @@ export namespace GES {
     namespace Operation {
         // Signal signatures
         interface SignalSignatures extends TrackElement.SignalSignatures {
-            'notify::active': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-clamp-control-sources': (pspec: GObject.ParamSpec) => void;
+            'notify::has-internal-source': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -16630,6 +16825,14 @@ export namespace GES {
      */
     abstract class Operation extends TrackElement implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Operation>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Operation.SignalSignatures;
 
         // Constructors
 
@@ -16639,16 +16842,19 @@ export namespace GES {
 
         // Signals
 
-        connect<K extends keyof Operation.SignalSignatures>(signal: K, callback: Operation.SignalSignatures[K]): number;
+        connect<K extends keyof Operation.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Operation.SignalSignatures>(
             signal: K,
-            callback: Operation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Operation.SignalSignatures>(
             signal: K,
-            ...args: Operation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Operation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -17097,19 +17303,19 @@ export namespace GES {
     namespace OperationClip {
         // Signal signatures
         interface SignalSignatures extends Clip.SignalSignatures {
-            'notify::duration-limit': GObject.Object.Notify;
-            'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::duration-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::layer': (pspec: GObject.ParamSpec) => void;
+            'notify::supported-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -17125,6 +17331,14 @@ export namespace GES {
      */
     abstract class OperationClip extends Clip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<OperationClip>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OperationClip.SignalSignatures;
 
         // Constructors
 
@@ -17136,17 +17350,17 @@ export namespace GES {
 
         connect<K extends keyof OperationClip.SignalSignatures>(
             signal: K,
-            callback: OperationClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OperationClip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OperationClip.SignalSignatures>(
             signal: K,
-            callback: OperationClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OperationClip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OperationClip.SignalSignatures>(
             signal: K,
-            ...args: OperationClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OperationClip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -17595,19 +17809,19 @@ export namespace GES {
     namespace OverlayClip {
         // Signal signatures
         interface SignalSignatures extends OperationClip.SignalSignatures {
-            'notify::duration-limit': GObject.Object.Notify;
-            'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::duration-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::layer': (pspec: GObject.ParamSpec) => void;
+            'notify::supported-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -17628,6 +17842,14 @@ export namespace GES {
      */
     abstract class OverlayClip extends OperationClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<OverlayClip>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OverlayClip.SignalSignatures;
 
         // Constructors
 
@@ -17639,17 +17861,17 @@ export namespace GES {
 
         connect<K extends keyof OverlayClip.SignalSignatures>(
             signal: K,
-            callback: OverlayClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OverlayClip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OverlayClip.SignalSignatures>(
             signal: K,
-            callback: OverlayClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OverlayClip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OverlayClip.SignalSignatures>(
             signal: K,
-            ...args: OverlayClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OverlayClip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -18098,19 +18320,19 @@ export namespace GES {
     namespace Pipeline {
         // Signal signatures
         interface SignalSignatures extends Gst.Pipeline.SignalSignatures {
-            'notify::audio-filter': GObject.Object.Notify;
-            'notify::audio-sink': GObject.Object.Notify;
-            'notify::mode': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
-            'notify::video-filter': GObject.Object.Notify;
-            'notify::video-sink': GObject.Object.Notify;
-            'notify::auto-flush-bus': GObject.Object.Notify;
-            'notify::delay': GObject.Object.Notify;
-            'notify::latency': GObject.Object.Notify;
-            'notify::async-handling': GObject.Object.Notify;
-            'notify::message-forward': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::audio-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::audio-sink': (pspec: GObject.ParamSpec) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
+            'notify::video-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::video-sink': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-flush-bus': (pspec: GObject.ParamSpec) => void;
+            'notify::delay': (pspec: GObject.ParamSpec) => void;
+            'notify::latency': (pspec: GObject.ParamSpec) => void;
+            'notify::async-handling': (pspec: GObject.ParamSpec) => void;
+            'notify::message-forward': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -18219,6 +18441,14 @@ export namespace GES {
          */
         get videoSink(): Gst.Element;
         set videoSink(val: Gst.Element);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Pipeline.SignalSignatures;
 
         // Constructors
 
@@ -18230,16 +18460,19 @@ export namespace GES {
 
         // Signals
 
-        connect<K extends keyof Pipeline.SignalSignatures>(signal: K, callback: Pipeline.SignalSignatures[K]): number;
+        connect<K extends keyof Pipeline.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Pipeline.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Pipeline.SignalSignatures>(
             signal: K,
-            callback: Pipeline.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Pipeline.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Pipeline.SignalSignatures>(
             signal: K,
-            ...args: Pipeline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Pipeline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -18887,6 +19120,14 @@ export namespace GES {
      */
     class PitiviFormatter extends Formatter implements Extractable {
         static $gtype: GObject.GType<PitiviFormatter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PitiviFormatter.SignalSignatures;
 
         // Constructors
 
@@ -18900,17 +19141,17 @@ export namespace GES {
 
         connect<K extends keyof PitiviFormatter.SignalSignatures>(
             signal: K,
-            callback: PitiviFormatter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PitiviFormatter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PitiviFormatter.SignalSignatures>(
             signal: K,
-            callback: PitiviFormatter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PitiviFormatter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PitiviFormatter.SignalSignatures>(
             signal: K,
-            ...args: PitiviFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PitiviFormatter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -18976,55 +19217,21 @@ export namespace GES {
     }
 
     namespace Project {
-        // Signal callback interfaces
-
-        interface AssetAdded {
-            (_source: Project, asset: Asset): void;
-        }
-
-        interface AssetLoading {
-            (_source: Project, asset: Asset): void;
-        }
-
-        interface AssetRemoved {
-            (_source: Project, asset: Asset): void;
-        }
-
-        interface ErrorLoading {
-            (_source: Project, timeline: Timeline, error: GLib.Error): void;
-        }
-
-        interface ErrorLoadingAsset {
-            (_source: Project, error: GLib.Error, id: string, extractable_type: GObject.GType): void;
-        }
-
-        interface Loaded {
-            (_source: Project, timeline: Timeline): void;
-        }
-
-        interface Loading {
-            (_source: Project, timeline: Timeline): void;
-        }
-
-        interface MissingUri {
-            (_source: Project, error: GLib.Error, wrong_asset: Asset): string | null;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Asset.SignalSignatures {
-            'asset-added': AssetAdded;
-            'asset-loading': AssetLoading;
-            'asset-removed': AssetRemoved;
-            'error-loading': ErrorLoading;
-            'error-loading-asset': ErrorLoadingAsset;
-            loaded: Loaded;
-            loading: Loading;
-            'missing-uri': MissingUri;
-            'notify::uri': GObject.Object.Notify;
-            'notify::extractable-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::proxy': GObject.Object.Notify;
-            'notify::proxy-target': GObject.Object.Notify;
+            'asset-added': (arg0: Asset) => void;
+            'asset-loading': (arg0: Asset) => void;
+            'asset-removed': (arg0: Asset) => void;
+            'error-loading': (arg0: Timeline, arg1: GLib.Error) => void;
+            'error-loading-asset': (arg0: GLib.Error, arg1: string, arg2: GObject.GType) => void;
+            loaded: (arg0: Timeline) => void;
+            loading: (arg0: Timeline) => void;
+            'missing-uri': (arg0: GLib.Error, arg1: Asset) => string | null;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::extractable-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-target': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19085,6 +19292,14 @@ export namespace GES {
         // Properties
 
         get uri(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Project.SignalSignatures;
 
         // Constructors
 
@@ -19096,16 +19311,19 @@ export namespace GES {
 
         // Signals
 
-        connect<K extends keyof Project.SignalSignatures>(signal: K, callback: Project.SignalSignatures[K]): number;
+        connect<K extends keyof Project.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Project.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Project.SignalSignatures>(
             signal: K,
-            callback: Project.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Project.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Project.SignalSignatures>(
             signal: K,
-            ...args: Project.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Project.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -20308,20 +20526,20 @@ export namespace GES {
     namespace Source {
         // Signal signatures
         interface SignalSignatures extends TrackElement.SignalSignatures {
-            'notify::active': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-clamp-control-sources': (pspec: GObject.ParamSpec) => void;
+            'notify::has-internal-source': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -20337,6 +20555,14 @@ export namespace GES {
      */
     class Source extends TrackElement implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Source>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Source.SignalSignatures;
 
         // Constructors
 
@@ -20346,13 +20572,19 @@ export namespace GES {
 
         // Signals
 
-        connect<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
+        connect<K extends keyof Source.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Source.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
+        connect_after<K extends keyof Source.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Source.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Source.SignalSignatures>(
             signal: K,
-            ...args: Source.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Source.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -20815,19 +21047,19 @@ export namespace GES {
     namespace SourceClip {
         // Signal signatures
         interface SignalSignatures extends Clip.SignalSignatures {
-            'notify::duration-limit': GObject.Object.Notify;
-            'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::duration-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::layer': (pspec: GObject.ParamSpec) => void;
+            'notify::supported-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -20850,6 +21082,14 @@ export namespace GES {
      */
     class SourceClip extends Clip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<SourceClip>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SourceClip.SignalSignatures;
 
         // Constructors
 
@@ -20863,17 +21103,17 @@ export namespace GES {
 
         connect<K extends keyof SourceClip.SignalSignatures>(
             signal: K,
-            callback: SourceClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SourceClip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceClip.SignalSignatures>(
             signal: K,
-            callback: SourceClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SourceClip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceClip.SignalSignatures>(
             signal: K,
-            ...args: SourceClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SourceClip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21322,11 +21562,11 @@ export namespace GES {
     namespace SourceClipAsset {
         // Signal signatures
         interface SignalSignatures extends ClipAsset.SignalSignatures {
-            'notify::supported-formats': GObject.Object.Notify;
-            'notify::extractable-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::proxy': GObject.Object.Notify;
-            'notify::proxy-target': GObject.Object.Notify;
+            'notify::supported-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::extractable-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-target': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21343,6 +21583,14 @@ export namespace GES {
      */
     class SourceClipAsset extends ClipAsset implements MetaContainer, Gio.AsyncInitable<SourceClipAsset>, Gio.Initable {
         static $gtype: GObject.GType<SourceClipAsset>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SourceClipAsset.SignalSignatures;
 
         // Constructors
 
@@ -21354,17 +21602,17 @@ export namespace GES {
 
         connect<K extends keyof SourceClipAsset.SignalSignatures>(
             signal: K,
-            callback: SourceClipAsset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SourceClipAsset.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceClipAsset.SignalSignatures>(
             signal: K,
-            callback: SourceClipAsset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SourceClipAsset.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceClipAsset.SignalSignatures>(
             signal: K,
-            ...args: SourceClipAsset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SourceClipAsset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22012,23 +22260,23 @@ export namespace GES {
     namespace TestClip {
         // Signal signatures
         interface SignalSignatures extends SourceClip.SignalSignatures {
-            'notify::freq': GObject.Object.Notify;
-            'notify::mute': GObject.Object.Notify;
-            'notify::volume': GObject.Object.Notify;
-            'notify::vpattern': GObject.Object.Notify;
-            'notify::duration-limit': GObject.Object.Notify;
-            'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::freq': (pspec: GObject.ParamSpec) => void;
+            'notify::mute': (pspec: GObject.ParamSpec) => void;
+            'notify::volume': (pspec: GObject.ParamSpec) => void;
+            'notify::vpattern': (pspec: GObject.ParamSpec) => void;
+            'notify::duration-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::layer': (pspec: GObject.ParamSpec) => void;
+            'notify::supported-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22083,6 +22331,14 @@ export namespace GES {
          */
         get vpattern(): VideoTestPattern;
         set vpattern(val: VideoTestPattern);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TestClip.SignalSignatures;
 
         // Constructors
 
@@ -22096,16 +22352,19 @@ export namespace GES {
 
         // Signals
 
-        connect<K extends keyof TestClip.SignalSignatures>(signal: K, callback: TestClip.SignalSignatures[K]): number;
+        connect<K extends keyof TestClip.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TestClip.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TestClip.SignalSignatures>(
             signal: K,
-            callback: TestClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TestClip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TestClip.SignalSignatures>(
             signal: K,
-            ...args: TestClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TestClip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22597,20 +22856,20 @@ export namespace GES {
     namespace TextOverlay {
         // Signal signatures
         interface SignalSignatures extends Operation.SignalSignatures {
-            'notify::active': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-clamp-control-sources': (pspec: GObject.ParamSpec) => void;
+            'notify::has-internal-source': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22623,6 +22882,14 @@ export namespace GES {
 
     class TextOverlay extends Operation implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TextOverlay>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TextOverlay.SignalSignatures;
 
         // Constructors
 
@@ -22636,17 +22903,17 @@ export namespace GES {
 
         connect<K extends keyof TextOverlay.SignalSignatures>(
             signal: K,
-            callback: TextOverlay.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextOverlay.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextOverlay.SignalSignatures>(
             signal: K,
-            callback: TextOverlay.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextOverlay.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextOverlay.SignalSignatures>(
             signal: K,
-            ...args: TextOverlay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TextOverlay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23169,26 +23436,26 @@ export namespace GES {
     namespace TextOverlayClip {
         // Signal signatures
         interface SignalSignatures extends OverlayClip.SignalSignatures {
-            'notify::color': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::halignment': GObject.Object.Notify;
-            'notify::text': GObject.Object.Notify;
-            'notify::valignment': GObject.Object.Notify;
-            'notify::xpos': GObject.Object.Notify;
-            'notify::ypos': GObject.Object.Notify;
-            'notify::duration-limit': GObject.Object.Notify;
-            'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::halignment': (pspec: GObject.ParamSpec) => void;
+            'notify::text': (pspec: GObject.ParamSpec) => void;
+            'notify::valignment': (pspec: GObject.ParamSpec) => void;
+            'notify::xpos': (pspec: GObject.ParamSpec) => void;
+            'notify::ypos': (pspec: GObject.ParamSpec) => void;
+            'notify::duration-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::layer': (pspec: GObject.ParamSpec) => void;
+            'notify::supported-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23256,6 +23523,14 @@ export namespace GES {
          */
         get ypos(): number;
         set ypos(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TextOverlayClip.SignalSignatures;
 
         // Constructors
 
@@ -23269,17 +23544,17 @@ export namespace GES {
 
         connect<K extends keyof TextOverlayClip.SignalSignatures>(
             signal: K,
-            callback: TextOverlayClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextOverlayClip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextOverlayClip.SignalSignatures>(
             signal: K,
-            callback: TextOverlayClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextOverlayClip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextOverlayClip.SignalSignatures>(
             signal: K,
-            ...args: TextOverlayClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TextOverlayClip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23799,72 +24074,26 @@ export namespace GES {
     }
 
     namespace Timeline {
-        // Signal callback interfaces
-
-        interface Commited {
-            (_source: Timeline): void;
-        }
-
-        interface GroupAdded {
-            (_source: Timeline, group: Group): void;
-        }
-
-        interface GroupRemoved {
-            (_source: Timeline, group: Group, children: Container[]): void;
-        }
-
-        interface LayerAdded {
-            (_source: Timeline, layer: Layer): void;
-        }
-
-        interface LayerRemoved {
-            (_source: Timeline, layer: Layer): void;
-        }
-
-        interface SelectElementTrack {
-            (_source: Timeline, clip: Clip, track_element: TrackElement): Track | null;
-        }
-
-        interface SelectTracksForObject {
-            (_source: Timeline, clip: Clip, track_element: TrackElement): Track[];
-        }
-
-        interface SnappingEnded {
-            (_source: Timeline, obj1: TrackElement, obj2: TrackElement, position: number): void;
-        }
-
-        interface SnappingStarted {
-            (_source: Timeline, obj1: TrackElement, obj2: TrackElement, position: number): void;
-        }
-
-        interface TrackAdded {
-            (_source: Timeline, track: Track): void;
-        }
-
-        interface TrackRemoved {
-            (_source: Timeline, track: Track): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gst.Bin.SignalSignatures {
-            commited: Commited;
-            'group-added': GroupAdded;
-            'group-removed': GroupRemoved;
-            'layer-added': LayerAdded;
-            'layer-removed': LayerRemoved;
-            'select-element-track': SelectElementTrack;
-            'select-tracks-for-object': SelectTracksForObject;
-            'snapping-ended': SnappingEnded;
-            'snapping-started': SnappingStarted;
-            'track-added': TrackAdded;
-            'track-removed': TrackRemoved;
-            'notify::auto-transition': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::snapping-distance': GObject.Object.Notify;
-            'notify::async-handling': GObject.Object.Notify;
-            'notify::message-forward': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            commited: () => void;
+            'group-added': (arg0: Group) => void;
+            'group-removed': (arg0: Group, arg1: Container[]) => void;
+            'layer-added': (arg0: Layer) => void;
+            'layer-removed': (arg0: Layer) => void;
+            'select-element-track': (arg0: Clip, arg1: TrackElement) => Track | null;
+            'select-tracks-for-object': (arg0: Clip, arg1: TrackElement) => Track[];
+            'snapping-ended': (arg0: TrackElement, arg1: TrackElement, arg2: number) => void;
+            'snapping-started': (arg0: TrackElement, arg1: TrackElement, arg2: number) => void;
+            'track-added': (arg0: Track) => void;
+            'track-removed': (arg0: Track) => void;
+            'notify::auto-transition': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::snapping-distance': (pspec: GObject.ParamSpec) => void;
+            'notify::async-handling': (pspec: GObject.ParamSpec) => void;
+            'notify::message-forward': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24032,6 +24261,14 @@ export namespace GES {
          */
         get snappingDistance(): number;
         set snappingDistance(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Timeline.SignalSignatures;
 
         // Fields
 
@@ -24052,16 +24289,19 @@ export namespace GES {
 
         // Signals
 
-        connect<K extends keyof Timeline.SignalSignatures>(signal: K, callback: Timeline.SignalSignatures[K]): number;
+        connect<K extends keyof Timeline.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Timeline.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Timeline.SignalSignatures>(
             signal: K,
-            callback: Timeline.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Timeline.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Timeline.SignalSignatures>(
             signal: K,
-            ...args: Timeline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Timeline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -25282,43 +25522,29 @@ export namespace GES {
     }
 
     namespace TimelineElement {
-        // Signal callback interfaces
-
-        interface ChildPropertyAdded {
-            (_source: TimelineElement, prop_object: GObject.Object, prop: GObject.ParamSpec): void;
-        }
-
-        interface ChildPropertyRemoved {
-            (_source: TimelineElement, prop_object: GObject.Object, prop: GObject.ParamSpec): void;
-        }
-
-        interface DeepNotify {
-            (_source: TimelineElement, prop_object: GObject.Object, prop: GObject.ParamSpec): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-            'child-property-added': ChildPropertyAdded;
-            'child-property-removed': ChildPropertyRemoved;
-            'deep-notify': DeepNotify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
-            'deep-notify::duration': DeepNotify;
-            'deep-notify::in-point': DeepNotify;
-            'deep-notify::max-duration': DeepNotify;
-            'deep-notify::name': DeepNotify;
-            'deep-notify::parent': DeepNotify;
-            'deep-notify::priority': DeepNotify;
-            'deep-notify::serialize': DeepNotify;
-            'deep-notify::start': DeepNotify;
-            'deep-notify::timeline': DeepNotify;
+            'child-property-added': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            'child-property-removed': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            'deep-notify': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
+            'deep-notify::duration': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            'deep-notify::in-point': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            'deep-notify::max-duration': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            'deep-notify::name': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            'deep-notify::parent': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            'deep-notify::priority': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            'deep-notify::serialize': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            'deep-notify::start': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            'deep-notify::timeline': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25544,6 +25770,14 @@ export namespace GES {
          */
         get timeline(): Timeline;
         set timeline(val: Timeline);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TimelineElement.SignalSignatures;
 
         // Fields
 
@@ -25561,17 +25795,17 @@ export namespace GES {
 
         connect<K extends keyof TimelineElement.SignalSignatures>(
             signal: K,
-            callback: TimelineElement.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TimelineElement.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TimelineElement.SignalSignatures>(
             signal: K,
-            callback: TimelineElement.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TimelineElement.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TimelineElement.SignalSignatures>(
             signal: K,
-            ...args: TimelineElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TimelineElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -27045,27 +27279,27 @@ export namespace GES {
     namespace TitleClip {
         // Signal signatures
         interface SignalSignatures extends SourceClip.SignalSignatures {
-            'notify::background': GObject.Object.Notify;
-            'notify::color': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::halignment': GObject.Object.Notify;
-            'notify::text': GObject.Object.Notify;
-            'notify::valignment': GObject.Object.Notify;
-            'notify::xpos': GObject.Object.Notify;
-            'notify::ypos': GObject.Object.Notify;
-            'notify::duration-limit': GObject.Object.Notify;
-            'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::background': (pspec: GObject.ParamSpec) => void;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::halignment': (pspec: GObject.ParamSpec) => void;
+            'notify::text': (pspec: GObject.ParamSpec) => void;
+            'notify::valignment': (pspec: GObject.ParamSpec) => void;
+            'notify::xpos': (pspec: GObject.ParamSpec) => void;
+            'notify::ypos': (pspec: GObject.ParamSpec) => void;
+            'notify::duration-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::layer': (pspec: GObject.ParamSpec) => void;
+            'notify::supported-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -27140,6 +27374,14 @@ export namespace GES {
          */
         get ypos(): number;
         set ypos(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TitleClip.SignalSignatures;
 
         // Constructors
 
@@ -27151,16 +27393,19 @@ export namespace GES {
 
         // Signals
 
-        connect<K extends keyof TitleClip.SignalSignatures>(signal: K, callback: TitleClip.SignalSignatures[K]): number;
+        connect<K extends keyof TitleClip.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TitleClip.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TitleClip.SignalSignatures>(
             signal: K,
-            callback: TitleClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TitleClip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TitleClip.SignalSignatures>(
             signal: K,
-            ...args: TitleClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TitleClip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -27692,20 +27937,20 @@ export namespace GES {
     namespace TitleSource {
         // Signal signatures
         interface SignalSignatures extends VideoSource.SignalSignatures {
-            'notify::active': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-clamp-control-sources': (pspec: GObject.ParamSpec) => void;
+            'notify::has-internal-source': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -27722,6 +27967,14 @@ export namespace GES {
      */
     class TitleSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TitleSource>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TitleSource.SignalSignatures;
 
         // Constructors
 
@@ -27733,17 +27986,17 @@ export namespace GES {
 
         connect<K extends keyof TitleSource.SignalSignatures>(
             signal: K,
-            callback: TitleSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TitleSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TitleSource.SignalSignatures>(
             signal: K,
-            callback: TitleSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TitleSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TitleSource.SignalSignatures>(
             signal: K,
-            ...args: TitleSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TitleSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -28274,35 +28527,21 @@ export namespace GES {
     }
 
     namespace Track {
-        // Signal callback interfaces
-
-        interface Commited {
-            (_source: Track): void;
-        }
-
-        interface TrackElementAdded {
-            (_source: Track, effect: TrackElement): void;
-        }
-
-        interface TrackElementRemoved {
-            (_source: Track, effect: TrackElement): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gst.Bin.SignalSignatures {
-            commited: Commited;
-            'track-element-added': TrackElementAdded;
-            'track-element-removed': TrackElementRemoved;
-            'notify::caps': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::mixing': GObject.Object.Notify;
-            'notify::restriction-caps': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::async-handling': GObject.Object.Notify;
-            'notify::message-forward': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            commited: () => void;
+            'track-element-added': (arg0: TrackElement) => void;
+            'track-element-removed': (arg0: TrackElement) => void;
+            'notify::caps': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::mixing': (pspec: GObject.ParamSpec) => void;
+            'notify::restriction-caps': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::async-handling': (pspec: GObject.ParamSpec) => void;
+            'notify::message-forward': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -28432,6 +28671,14 @@ export namespace GES {
          * this.
          */
         get trackType(): TrackType;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Track.SignalSignatures;
 
         // Fields
 
@@ -28450,13 +28697,19 @@ export namespace GES {
 
         // Signals
 
-        connect<K extends keyof Track.SignalSignatures>(signal: K, callback: Track.SignalSignatures[K]): number;
+        connect<K extends keyof Track.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Track.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Track.SignalSignatures>(signal: K, callback: Track.SignalSignatures[K]): number;
+        connect_after<K extends keyof Track.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Track.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Track.SignalSignatures>(
             signal: K,
-            ...args: Track.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Track.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -29471,34 +29724,24 @@ export namespace GES {
     }
 
     namespace TrackElement {
-        // Signal callback interfaces
-
-        interface ControlBindingAdded {
-            (_source: TrackElement, control_binding: Gst.ControlBinding): void;
-        }
-
-        interface ControlBindingRemoved {
-            (_source: TrackElement, control_binding: Gst.ControlBinding): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends TimelineElement.SignalSignatures {
-            'control-binding-added': ControlBindingAdded;
-            'control-binding-removed': ControlBindingRemoved;
-            'notify::active': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'control-binding-added': (arg0: Gst.ControlBinding) => void;
+            'control-binding-removed': (arg0: Gst.ControlBinding) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-clamp-control-sources': (pspec: GObject.ParamSpec) => void;
+            'notify::has-internal-source': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -29682,6 +29925,14 @@ export namespace GES {
          */
         get trackType(): TrackType;
         set trackType(val: TrackType);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TrackElement.SignalSignatures;
 
         // Constructors
 
@@ -29693,17 +29944,17 @@ export namespace GES {
 
         connect<K extends keyof TrackElement.SignalSignatures>(
             signal: K,
-            callback: TrackElement.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TrackElement.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TrackElement.SignalSignatures>(
             signal: K,
-            callback: TrackElement.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TrackElement.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TrackElement.SignalSignatures>(
             signal: K,
-            ...args: TrackElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TrackElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -30790,11 +31041,11 @@ export namespace GES {
     namespace TrackElementAsset {
         // Signal signatures
         interface SignalSignatures extends Asset.SignalSignatures {
-            'notify::track-type': GObject.Object.Notify;
-            'notify::extractable-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::proxy': GObject.Object.Notify;
-            'notify::proxy-target': GObject.Object.Notify;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::extractable-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-target': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -30818,6 +31069,14 @@ export namespace GES {
         set track_type(val: TrackType);
         get trackType(): TrackType;
         set trackType(val: TrackType);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TrackElementAsset.SignalSignatures;
 
         // Constructors
 
@@ -30829,17 +31088,17 @@ export namespace GES {
 
         connect<K extends keyof TrackElementAsset.SignalSignatures>(
             signal: K,
-            callback: TrackElementAsset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TrackElementAsset.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TrackElementAsset.SignalSignatures>(
             signal: K,
-            callback: TrackElementAsset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TrackElementAsset.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TrackElementAsset.SignalSignatures>(
             signal: K,
-            ...args: TrackElementAsset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TrackElementAsset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -31969,20 +32228,20 @@ export namespace GES {
     namespace Transition {
         // Signal signatures
         interface SignalSignatures extends Operation.SignalSignatures {
-            'notify::active': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-clamp-control-sources': (pspec: GObject.ParamSpec) => void;
+            'notify::has-internal-source': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -31998,6 +32257,14 @@ export namespace GES {
      */
     abstract class Transition extends Operation implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Transition>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Transition.SignalSignatures;
 
         // Constructors
 
@@ -32009,17 +32276,17 @@ export namespace GES {
 
         connect<K extends keyof Transition.SignalSignatures>(
             signal: K,
-            callback: Transition.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Transition.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Transition.SignalSignatures>(
             signal: K,
-            callback: Transition.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Transition.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Transition.SignalSignatures>(
             signal: K,
-            ...args: Transition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Transition.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -32468,20 +32735,20 @@ export namespace GES {
     namespace TransitionClip {
         // Signal signatures
         interface SignalSignatures extends BaseTransitionClip.SignalSignatures {
-            'notify::vtype': GObject.Object.Notify;
-            'notify::duration-limit': GObject.Object.Notify;
-            'notify::layer': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::vtype': (pspec: GObject.ParamSpec) => void;
+            'notify::duration-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::layer': (pspec: GObject.ParamSpec) => void;
+            'notify::supported-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -32518,6 +32785,14 @@ export namespace GES {
          */
         get vtype(): VideoStandardTransitionType;
         set vtype(val: VideoStandardTransitionType);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TransitionClip.SignalSignatures;
 
         // Constructors
 
@@ -32533,17 +32808,17 @@ export namespace GES {
 
         connect<K extends keyof TransitionClip.SignalSignatures>(
             signal: K,
-            callback: TransitionClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TransitionClip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TransitionClip.SignalSignatures>(
             signal: K,
-            callback: TransitionClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TransitionClip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TransitionClip.SignalSignatures>(
             signal: K,
-            ...args: TransitionClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TransitionClip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -32992,22 +33267,22 @@ export namespace GES {
     namespace UriClip {
         // Signal signatures
         interface SignalSignatures extends SourceClip.SignalSignatures {
-            'notify::is-image': GObject.Object.Notify;
-            'notify::mute': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
-            'notify::duration-limit': GObject.Object.Notify;
-            'notify::layer': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::is-image': (pspec: GObject.ParamSpec) => void;
+            'notify::mute': (pspec: GObject.ParamSpec) => void;
+            'notify::supported-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::duration-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::layer': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -33059,6 +33334,14 @@ export namespace GES {
          * The location of the file/resource to use.
          */
         get uri(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UriClip.SignalSignatures;
 
         // Constructors
 
@@ -33070,16 +33353,19 @@ export namespace GES {
 
         // Signals
 
-        connect<K extends keyof UriClip.SignalSignatures>(signal: K, callback: UriClip.SignalSignatures[K]): number;
+        connect<K extends keyof UriClip.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, UriClip.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UriClip.SignalSignatures>(
             signal: K,
-            callback: UriClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UriClip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UriClip.SignalSignatures>(
             signal: K,
-            ...args: UriClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UriClip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -33551,13 +33837,13 @@ export namespace GES {
     namespace UriClipAsset {
         // Signal signatures
         interface SignalSignatures extends SourceClipAsset.SignalSignatures {
-            'notify::duration': GObject.Object.Notify;
-            'notify::is-nested-timeline': GObject.Object.Notify;
-            'notify::supported-formats': GObject.Object.Notify;
-            'notify::extractable-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::proxy': GObject.Object.Notify;
-            'notify::proxy-target': GObject.Object.Notify;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::is-nested-timeline': (pspec: GObject.ParamSpec) => void;
+            'notify::supported-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::extractable-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-target': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -33591,6 +33877,14 @@ export namespace GES {
          * The duration (in nanoseconds) of the media file
          */
         get isNestedTimeline(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UriClipAsset.SignalSignatures;
 
         // Constructors
 
@@ -33602,17 +33896,17 @@ export namespace GES {
 
         connect<K extends keyof UriClipAsset.SignalSignatures>(
             signal: K,
-            callback: UriClipAsset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UriClipAsset.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UriClipAsset.SignalSignatures>(
             signal: K,
-            callback: UriClipAsset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UriClipAsset.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UriClipAsset.SignalSignatures>(
             signal: K,
-            ...args: UriClipAsset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UriClipAsset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -34346,11 +34640,11 @@ export namespace GES {
     namespace UriSourceAsset {
         // Signal signatures
         interface SignalSignatures extends TrackElementAsset.SignalSignatures {
-            'notify::track-type': GObject.Object.Notify;
-            'notify::extractable-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::proxy': GObject.Object.Notify;
-            'notify::proxy-target': GObject.Object.Notify;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::extractable-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-target': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -34373,6 +34667,14 @@ export namespace GES {
         implements MetaContainer, Gio.AsyncInitable<UriSourceAsset>, Gio.Initable
     {
         static $gtype: GObject.GType<UriSourceAsset>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UriSourceAsset.SignalSignatures;
 
         // Constructors
 
@@ -34384,17 +34686,17 @@ export namespace GES {
 
         connect<K extends keyof UriSourceAsset.SignalSignatures>(
             signal: K,
-            callback: UriSourceAsset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UriSourceAsset.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UriSourceAsset.SignalSignatures>(
             signal: K,
-            callback: UriSourceAsset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UriSourceAsset.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UriSourceAsset.SignalSignatures>(
             signal: K,
-            ...args: UriSourceAsset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UriSourceAsset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -35061,20 +35363,20 @@ export namespace GES {
     namespace VideoSource {
         // Signal signatures
         interface SignalSignatures extends Source.SignalSignatures {
-            'notify::active': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-clamp-control-sources': (pspec: GObject.ParamSpec) => void;
+            'notify::has-internal-source': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -35090,6 +35392,14 @@ export namespace GES {
      */
     abstract class VideoSource extends Source implements Extractable, MetaContainer {
         static $gtype: GObject.GType<VideoSource>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VideoSource.SignalSignatures;
 
         // Constructors
 
@@ -35101,17 +35411,17 @@ export namespace GES {
 
         connect<K extends keyof VideoSource.SignalSignatures>(
             signal: K,
-            callback: VideoSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoSource.SignalSignatures>(
             signal: K,
-            callback: VideoSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoSource.SignalSignatures>(
             signal: K,
-            ...args: VideoSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VideoSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -35574,20 +35884,20 @@ export namespace GES {
     namespace VideoTestSource {
         // Signal signatures
         interface SignalSignatures extends VideoSource.SignalSignatures {
-            'notify::active': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-clamp-control-sources': (pspec: GObject.ParamSpec) => void;
+            'notify::has-internal-source': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -35605,6 +35915,14 @@ export namespace GES {
      */
     class VideoTestSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<VideoTestSource>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VideoTestSource.SignalSignatures;
 
         // Constructors
 
@@ -35616,17 +35934,17 @@ export namespace GES {
 
         connect<K extends keyof VideoTestSource.SignalSignatures>(
             signal: K,
-            callback: VideoTestSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoTestSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoTestSource.SignalSignatures>(
             signal: K,
-            callback: VideoTestSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoTestSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoTestSource.SignalSignatures>(
             signal: K,
-            ...args: VideoTestSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VideoTestSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -36088,16 +36406,16 @@ export namespace GES {
     namespace VideoTrack {
         // Signal signatures
         interface SignalSignatures extends Track.SignalSignatures {
-            'notify::caps': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::mixing': GObject.Object.Notify;
-            'notify::restriction-caps': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::async-handling': GObject.Object.Notify;
-            'notify::message-forward': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::caps': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::mixing': (pspec: GObject.ParamSpec) => void;
+            'notify::restriction-caps': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::async-handling': (pspec: GObject.ParamSpec) => void;
+            'notify::message-forward': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -36129,6 +36447,14 @@ export namespace GES {
      */
     class VideoTrack extends Track implements MetaContainer, Gst.ChildProxy {
         static $gtype: GObject.GType<VideoTrack>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VideoTrack.SignalSignatures;
 
         // Constructors
 
@@ -36142,17 +36468,17 @@ export namespace GES {
 
         connect<K extends keyof VideoTrack.SignalSignatures>(
             signal: K,
-            callback: VideoTrack.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoTrack.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoTrack.SignalSignatures>(
             signal: K,
-            callback: VideoTrack.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoTrack.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoTrack.SignalSignatures>(
             signal: K,
-            ...args: VideoTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VideoTrack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -36976,23 +37302,23 @@ export namespace GES {
     namespace VideoTransition {
         // Signal signatures
         interface SignalSignatures extends Transition.SignalSignatures {
-            'notify::border': GObject.Object.Notify;
-            'notify::invert': GObject.Object.Notify;
-            'notify::transition-type': GObject.Object.Notify;
-            'notify::active': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::border': (pspec: GObject.ParamSpec) => void;
+            'notify::invert': (pspec: GObject.ParamSpec) => void;
+            'notify::transition-type': (pspec: GObject.ParamSpec) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-clamp-control-sources': (pspec: GObject.ParamSpec) => void;
+            'notify::has-internal-source': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -37027,6 +37353,14 @@ export namespace GES {
         set transition_type(val: VideoStandardTransitionType);
         get transitionType(): VideoStandardTransitionType;
         set transitionType(val: VideoStandardTransitionType);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VideoTransition.SignalSignatures;
 
         // Constructors
 
@@ -37040,17 +37374,17 @@ export namespace GES {
 
         connect<K extends keyof VideoTransition.SignalSignatures>(
             signal: K,
-            callback: VideoTransition.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoTransition.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoTransition.SignalSignatures>(
             signal: K,
-            callback: VideoTransition.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoTransition.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoTransition.SignalSignatures>(
             signal: K,
-            ...args: VideoTransition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VideoTransition.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -37541,21 +37875,21 @@ export namespace GES {
     namespace VideoUriSource {
         // Signal signatures
         interface SignalSignatures extends VideoSource.SignalSignatures {
-            'notify::uri': GObject.Object.Notify;
-            'notify::active': GObject.Object.Notify;
-            'notify::auto-clamp-control-sources': GObject.Object.Notify;
-            'notify::has-internal-source': GObject.Object.Notify;
-            'notify::track': GObject.Object.Notify;
-            'notify::track-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::in-point': GObject.Object.Notify;
-            'notify::max-duration': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::serialize': GObject.Object.Notify;
-            'notify::start': GObject.Object.Notify;
-            'notify::timeline': GObject.Object.Notify;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-clamp-control-sources': (pspec: GObject.ParamSpec) => void;
+            'notify::has-internal-source': (pspec: GObject.ParamSpec) => void;
+            'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::track-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::in-point': (pspec: GObject.ParamSpec) => void;
+            'notify::max-duration': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::serialize': (pspec: GObject.ParamSpec) => void;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::timeline': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -37582,6 +37916,14 @@ export namespace GES {
          * The location of the file/resource to use.
          */
         get uri(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VideoUriSource.SignalSignatures;
 
         // Constructors
 
@@ -37593,17 +37935,17 @@ export namespace GES {
 
         connect<K extends keyof VideoUriSource.SignalSignatures>(
             signal: K,
-            callback: VideoUriSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoUriSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoUriSource.SignalSignatures>(
             signal: K,
-            callback: VideoUriSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoUriSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoUriSource.SignalSignatures>(
             signal: K,
-            ...args: VideoUriSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VideoUriSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -38060,6 +38402,14 @@ export namespace GES {
 
     class XmlFormatter extends BaseXmlFormatter implements Extractable {
         static $gtype: GObject.GType<XmlFormatter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XmlFormatter.SignalSignatures;
 
         // Constructors
 
@@ -38071,17 +38421,17 @@ export namespace GES {
 
         connect<K extends keyof XmlFormatter.SignalSignatures>(
             signal: K,
-            callback: XmlFormatter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XmlFormatter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XmlFormatter.SignalSignatures>(
             signal: K,
-            callback: XmlFormatter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XmlFormatter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XmlFormatter.SignalSignatures>(
             signal: K,
-            ...args: XmlFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XmlFormatter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

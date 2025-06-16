@@ -61,23 +61,13 @@ export namespace Peas {
         (parameters: GObject.Parameter[]): GObject.Object;
     }
     namespace Engine {
-        // Signal callback interfaces
-
-        interface LoadPlugin {
-            (_source: Engine, info: PluginInfo): void;
-        }
-
-        interface UnloadPlugin {
-            (_source: Engine, info: PluginInfo): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'load-plugin': LoadPlugin;
-            'unload-plugin': UnloadPlugin;
-            'notify::loaded-plugins': GObject.Object.Notify;
-            'notify::nonglobal-loaders': GObject.Object.Notify;
-            'notify::plugin-list': GObject.Object.Notify;
+            'load-plugin': (arg0: PluginInfo) => void;
+            'unload-plugin': (arg0: PluginInfo) => void;
+            'notify::loaded-plugins': (pspec: GObject.ParamSpec) => void;
+            'notify::nonglobal-loaders': (pspec: GObject.ParamSpec) => void;
+            'notify::plugin-list': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -171,6 +161,14 @@ export namespace Peas {
          * Note: the list belongs to the engine and should not be modified or freed.
          */
         get pluginList(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Engine.SignalSignatures;
 
         // Constructors
 
@@ -184,13 +182,19 @@ export namespace Peas {
 
         // Signals
 
-        connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
+        connect<K extends keyof Engine.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Engine.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
+        connect_after<K extends keyof Engine.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Engine.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Engine.SignalSignatures>(
             signal: K,
-            ...args: Engine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Engine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -369,8 +373,8 @@ export namespace Peas {
     namespace ExtensionBase {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::data-dir': GObject.Object.Notify;
-            'notify::plugin-info': GObject.Object.Notify;
+            'notify::data-dir': (pspec: GObject.ParamSpec) => void;
+            'notify::plugin-info': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -415,6 +419,14 @@ export namespace Peas {
          * The [struct`PluginInfo]` related to the current plugin.
          */
         get pluginInfo(): PluginInfo;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExtensionBase.SignalSignatures;
 
         // Constructors
 
@@ -426,17 +438,17 @@ export namespace Peas {
 
         connect<K extends keyof ExtensionBase.SignalSignatures>(
             signal: K,
-            callback: ExtensionBase.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExtensionBase.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExtensionBase.SignalSignatures>(
             signal: K,
-            callback: ExtensionBase.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExtensionBase.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExtensionBase.SignalSignatures>(
             signal: K,
-            ...args: ExtensionBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExtensionBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -456,23 +468,13 @@ export namespace Peas {
     }
 
     namespace ExtensionSet {
-        // Signal callback interfaces
-
-        interface ExtensionAdded {
-            (_source: ExtensionSet, info: PluginInfo, exten: GObject.Object): void;
-        }
-
-        interface ExtensionRemoved {
-            (_source: ExtensionSet, info: PluginInfo, exten: GObject.Object): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'extension-added': ExtensionAdded;
-            'extension-removed': ExtensionRemoved;
-            'notify::construct-properties': GObject.Object.Notify;
-            'notify::engine': GObject.Object.Notify;
-            'notify::extension-type': GObject.Object.Notify;
+            'extension-added': (arg0: PluginInfo, arg1: GObject.Object) => void;
+            'extension-removed': (arg0: PluginInfo, arg1: GObject.Object) => void;
+            'notify::construct-properties': (pspec: GObject.ParamSpec) => void;
+            'notify::engine': (pspec: GObject.ParamSpec) => void;
+            'notify::extension-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -502,6 +504,14 @@ export namespace Peas {
         get engine(): Engine;
         get extension_type(): GObject.GType;
         get extensionType(): GObject.GType;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExtensionSet.SignalSignatures;
 
         // Constructors
 
@@ -520,17 +530,17 @@ export namespace Peas {
 
         connect<K extends keyof ExtensionSet.SignalSignatures>(
             signal: K,
-            callback: ExtensionSet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExtensionSet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExtensionSet.SignalSignatures>(
             signal: K,
-            callback: ExtensionSet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExtensionSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExtensionSet.SignalSignatures>(
             signal: K,
-            ...args: ExtensionSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExtensionSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1095,11 +1105,11 @@ export namespace Peas {
     namespace ObjectModule {
         // Signal signatures
         interface SignalSignatures extends GObject.TypeModule.SignalSignatures {
-            'notify::local-linkage': GObject.Object.Notify;
-            'notify::module-name': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::resident': GObject.Object.Notify;
-            'notify::symbol': GObject.Object.Notify;
+            'notify::local-linkage': (pspec: GObject.ParamSpec) => void;
+            'notify::module-name': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::resident': (pspec: GObject.ParamSpec) => void;
+            'notify::symbol': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1141,6 +1151,14 @@ export namespace Peas {
         get path(): string;
         get resident(): boolean;
         get symbol(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ObjectModule.SignalSignatures;
 
         // Constructors
 
@@ -1152,17 +1170,17 @@ export namespace Peas {
 
         connect<K extends keyof ObjectModule.SignalSignatures>(
             signal: K,
-            callback: ObjectModule.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ObjectModule.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ObjectModule.SignalSignatures>(
             signal: K,
-            callback: ObjectModule.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ObjectModule.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ObjectModule.SignalSignatures>(
             signal: K,
-            ...args: ObjectModule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ObjectModule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

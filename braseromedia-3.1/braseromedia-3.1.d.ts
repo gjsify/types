@@ -175,23 +175,13 @@ export namespace BraseroMedia {
         ALL,
     }
     namespace Drive {
-        // Signal callback interfaces
-
-        interface MediumAdded {
-            (_source: Drive, medium: Medium): void;
-        }
-
-        interface MediumRemoved {
-            (_source: Drive, medium: Medium): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'medium-added': MediumAdded;
-            'medium-removed': MediumRemoved;
-            'notify::device': GObject.Object.Notify;
-            'notify::gdrive': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
+            'medium-added': (arg0: Medium) => void;
+            'medium-removed': (arg0: Medium) => void;
+            'notify::device': (pspec: GObject.ParamSpec) => void;
+            'notify::gdrive': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -215,6 +205,14 @@ export namespace BraseroMedia {
         get gdrive(): Gio.Drive;
         set gdrive(val: Gio.Drive);
         get udi(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Drive.SignalSignatures;
 
         // Constructors
 
@@ -224,13 +222,19 @@ export namespace BraseroMedia {
 
         // Signals
 
-        connect<K extends keyof Drive.SignalSignatures>(signal: K, callback: Drive.SignalSignatures[K]): number;
+        connect<K extends keyof Drive.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Drive.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Drive.SignalSignatures>(signal: K, callback: Drive.SignalSignatures[K]): number;
+        connect_after<K extends keyof Drive.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Drive.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Drive.SignalSignatures>(
             signal: K,
-            ...args: Drive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Drive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -368,76 +372,70 @@ export namespace BraseroMedia {
     }
 
     namespace DriveSelection {
-        // Signal callback interfaces
-
-        interface DriveChanged {
-            (_source: DriveSelection, drive: Drive): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {
-            'drive-changed': DriveChanged;
-            'notify::drive': GObject.Object.Notify;
-            'notify::drive-type': GObject.Object.Notify;
-            'notify::active': GObject.Object.Notify;
-            'notify::active-id': GObject.Object.Notify;
-            'notify::add-tearoffs': GObject.Object.Notify;
-            'notify::button-sensitivity': GObject.Object.Notify;
-            'notify::cell-area': GObject.Object.Notify;
-            'notify::column-span-column': GObject.Object.Notify;
-            'notify::entry-text-column': GObject.Object.Notify;
-            'notify::has-entry': GObject.Object.Notify;
-            'notify::has-frame': GObject.Object.Notify;
-            'notify::id-column': GObject.Object.Notify;
-            'notify::model': GObject.Object.Notify;
-            'notify::popup-fixed-width': GObject.Object.Notify;
-            'notify::popup-shown': GObject.Object.Notify;
-            'notify::row-span-column': GObject.Object.Notify;
-            'notify::tearoff-title': GObject.Object.Notify;
-            'notify::wrap-width': GObject.Object.Notify;
-            'notify::border-width': GObject.Object.Notify;
-            'notify::child': GObject.Object.Notify;
-            'notify::resize-mode': GObject.Object.Notify;
-            'notify::app-paintable': GObject.Object.Notify;
-            'notify::can-default': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::composite-child': GObject.Object.Notify;
-            'notify::double-buffered': GObject.Object.Notify;
-            'notify::events': GObject.Object.Notify;
-            'notify::expand': GObject.Object.Notify;
-            'notify::focus-on-click': GObject.Object.Notify;
-            'notify::halign': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
-            'notify::hexpand': GObject.Object.Notify;
-            'notify::hexpand-set': GObject.Object.Notify;
-            'notify::is-focus': GObject.Object.Notify;
-            'notify::margin': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-end': GObject.Object.Notify;
-            'notify::margin-left': GObject.Object.Notify;
-            'notify::margin-right': GObject.Object.Notify;
-            'notify::margin-start': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::no-show-all': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
-            'notify::valign': GObject.Object.Notify;
-            'notify::vexpand': GObject.Object.Notify;
-            'notify::vexpand-set': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
-            'notify::window': GObject.Object.Notify;
-            'notify::editing-canceled': GObject.Object.Notify;
+            'drive-changed': (arg0: Drive) => void;
+            'notify::drive': (pspec: GObject.ParamSpec) => void;
+            'notify::drive-type': (pspec: GObject.ParamSpec) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::active-id': (pspec: GObject.ParamSpec) => void;
+            'notify::add-tearoffs': (pspec: GObject.ParamSpec) => void;
+            'notify::button-sensitivity': (pspec: GObject.ParamSpec) => void;
+            'notify::cell-area': (pspec: GObject.ParamSpec) => void;
+            'notify::column-span-column': (pspec: GObject.ParamSpec) => void;
+            'notify::entry-text-column': (pspec: GObject.ParamSpec) => void;
+            'notify::has-entry': (pspec: GObject.ParamSpec) => void;
+            'notify::has-frame': (pspec: GObject.ParamSpec) => void;
+            'notify::id-column': (pspec: GObject.ParamSpec) => void;
+            'notify::model': (pspec: GObject.ParamSpec) => void;
+            'notify::popup-fixed-width': (pspec: GObject.ParamSpec) => void;
+            'notify::popup-shown': (pspec: GObject.ParamSpec) => void;
+            'notify::row-span-column': (pspec: GObject.ParamSpec) => void;
+            'notify::tearoff-title': (pspec: GObject.ParamSpec) => void;
+            'notify::wrap-width': (pspec: GObject.ParamSpec) => void;
+            'notify::border-width': (pspec: GObject.ParamSpec) => void;
+            'notify::child': (pspec: GObject.ParamSpec) => void;
+            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
+            'notify::can-default': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
+            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
+            'notify::events': (pspec: GObject.ParamSpec) => void;
+            'notify::expand': (pspec: GObject.ParamSpec) => void;
+            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
+            'notify::halign': (pspec: GObject.ParamSpec) => void;
+            'notify::has-default': (pspec: GObject.ParamSpec) => void;
+            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::height-request': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::margin': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
+            'notify::valign': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
+            'notify::editing-canceled': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -468,6 +466,14 @@ export namespace BraseroMedia {
         set drive_type(val: number);
         get driveType(): number;
         set driveType(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DriveSelection.SignalSignatures;
 
         // Constructors
 
@@ -481,17 +487,17 @@ export namespace BraseroMedia {
 
         connect<K extends keyof DriveSelection.SignalSignatures>(
             signal: K,
-            callback: DriveSelection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DriveSelection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DriveSelection.SignalSignatures>(
             signal: K,
-            callback: DriveSelection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DriveSelection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DriveSelection.SignalSignatures>(
             signal: K,
-            ...args: DriveSelection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DriveSelection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4996,16 +5002,10 @@ export namespace BraseroMedia {
     }
 
     namespace Medium {
-        // Signal callback interfaces
-
-        interface Probed {
-            (_source: Medium): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            probed: Probed;
-            'notify::drive': GObject.Object.Notify;
+            probed: () => void;
+            'notify::drive': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5024,6 +5024,14 @@ export namespace BraseroMedia {
         // Properties
 
         get drive(): Drive;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Medium.SignalSignatures;
 
         // Constructors
 
@@ -5033,13 +5041,19 @@ export namespace BraseroMedia {
 
         // Signals
 
-        connect<K extends keyof Medium.SignalSignatures>(signal: K, callback: Medium.SignalSignatures[K]): number;
+        connect<K extends keyof Medium.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Medium.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Medium.SignalSignatures>(signal: K, callback: Medium.SignalSignatures[K]): number;
+        connect_after<K extends keyof Medium.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Medium.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Medium.SignalSignatures>(
             signal: K,
-            ...args: Medium.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Medium.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5195,30 +5209,12 @@ export namespace BraseroMedia {
     }
 
     namespace MediumMonitor {
-        // Signal callback interfaces
-
-        interface DriveAdded {
-            (_source: MediumMonitor, medium: Drive): void;
-        }
-
-        interface DriveRemoved {
-            (_source: MediumMonitor, medium: Drive): void;
-        }
-
-        interface MediumAdded {
-            (_source: MediumMonitor, medium: Medium): void;
-        }
-
-        interface MediumRemoved {
-            (_source: MediumMonitor, medium: Medium): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'drive-added': DriveAdded;
-            'drive-removed': DriveRemoved;
-            'medium-added': MediumAdded;
-            'medium-removed': MediumRemoved;
+            'drive-added': (arg0: Drive) => void;
+            'drive-removed': (arg0: Drive) => void;
+            'medium-added': (arg0: Medium) => void;
+            'medium-removed': (arg0: Medium) => void;
         }
 
         // Constructor properties interface
@@ -5228,6 +5224,14 @@ export namespace BraseroMedia {
 
     class MediumMonitor extends GObject.Object {
         static $gtype: GObject.GType<MediumMonitor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MediumMonitor.SignalSignatures;
 
         // Constructors
 
@@ -5239,17 +5243,17 @@ export namespace BraseroMedia {
 
         connect<K extends keyof MediumMonitor.SignalSignatures>(
             signal: K,
-            callback: MediumMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediumMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediumMonitor.SignalSignatures>(
             signal: K,
-            callback: MediumMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediumMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediumMonitor.SignalSignatures>(
             signal: K,
-            ...args: MediumMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MediumMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5282,76 +5286,70 @@ export namespace BraseroMedia {
     }
 
     namespace MediumSelection {
-        // Signal callback interfaces
-
-        interface MediumChanged {
-            (_source: MediumSelection, medium: Medium): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {
-            'medium-changed': MediumChanged;
-            'notify::media-type': GObject.Object.Notify;
-            'notify::medium': GObject.Object.Notify;
-            'notify::active': GObject.Object.Notify;
-            'notify::active-id': GObject.Object.Notify;
-            'notify::add-tearoffs': GObject.Object.Notify;
-            'notify::button-sensitivity': GObject.Object.Notify;
-            'notify::cell-area': GObject.Object.Notify;
-            'notify::column-span-column': GObject.Object.Notify;
-            'notify::entry-text-column': GObject.Object.Notify;
-            'notify::has-entry': GObject.Object.Notify;
-            'notify::has-frame': GObject.Object.Notify;
-            'notify::id-column': GObject.Object.Notify;
-            'notify::model': GObject.Object.Notify;
-            'notify::popup-fixed-width': GObject.Object.Notify;
-            'notify::popup-shown': GObject.Object.Notify;
-            'notify::row-span-column': GObject.Object.Notify;
-            'notify::tearoff-title': GObject.Object.Notify;
-            'notify::wrap-width': GObject.Object.Notify;
-            'notify::border-width': GObject.Object.Notify;
-            'notify::child': GObject.Object.Notify;
-            'notify::resize-mode': GObject.Object.Notify;
-            'notify::app-paintable': GObject.Object.Notify;
-            'notify::can-default': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::composite-child': GObject.Object.Notify;
-            'notify::double-buffered': GObject.Object.Notify;
-            'notify::events': GObject.Object.Notify;
-            'notify::expand': GObject.Object.Notify;
-            'notify::focus-on-click': GObject.Object.Notify;
-            'notify::halign': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
-            'notify::hexpand': GObject.Object.Notify;
-            'notify::hexpand-set': GObject.Object.Notify;
-            'notify::is-focus': GObject.Object.Notify;
-            'notify::margin': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-end': GObject.Object.Notify;
-            'notify::margin-left': GObject.Object.Notify;
-            'notify::margin-right': GObject.Object.Notify;
-            'notify::margin-start': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::no-show-all': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
-            'notify::valign': GObject.Object.Notify;
-            'notify::vexpand': GObject.Object.Notify;
-            'notify::vexpand-set': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
-            'notify::window': GObject.Object.Notify;
-            'notify::editing-canceled': GObject.Object.Notify;
+            'medium-changed': (arg0: Medium) => void;
+            'notify::media-type': (pspec: GObject.ParamSpec) => void;
+            'notify::medium': (pspec: GObject.ParamSpec) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::active-id': (pspec: GObject.ParamSpec) => void;
+            'notify::add-tearoffs': (pspec: GObject.ParamSpec) => void;
+            'notify::button-sensitivity': (pspec: GObject.ParamSpec) => void;
+            'notify::cell-area': (pspec: GObject.ParamSpec) => void;
+            'notify::column-span-column': (pspec: GObject.ParamSpec) => void;
+            'notify::entry-text-column': (pspec: GObject.ParamSpec) => void;
+            'notify::has-entry': (pspec: GObject.ParamSpec) => void;
+            'notify::has-frame': (pspec: GObject.ParamSpec) => void;
+            'notify::id-column': (pspec: GObject.ParamSpec) => void;
+            'notify::model': (pspec: GObject.ParamSpec) => void;
+            'notify::popup-fixed-width': (pspec: GObject.ParamSpec) => void;
+            'notify::popup-shown': (pspec: GObject.ParamSpec) => void;
+            'notify::row-span-column': (pspec: GObject.ParamSpec) => void;
+            'notify::tearoff-title': (pspec: GObject.ParamSpec) => void;
+            'notify::wrap-width': (pspec: GObject.ParamSpec) => void;
+            'notify::border-width': (pspec: GObject.ParamSpec) => void;
+            'notify::child': (pspec: GObject.ParamSpec) => void;
+            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
+            'notify::can-default': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
+            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
+            'notify::events': (pspec: GObject.ParamSpec) => void;
+            'notify::expand': (pspec: GObject.ParamSpec) => void;
+            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
+            'notify::halign': (pspec: GObject.ParamSpec) => void;
+            'notify::has-default': (pspec: GObject.ParamSpec) => void;
+            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::height-request': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::margin': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
+            'notify::valign': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
+            'notify::editing-canceled': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5382,6 +5380,14 @@ export namespace BraseroMedia {
         set mediaType(val: number);
         get medium(): Medium;
         set medium(val: Medium);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MediumSelection.SignalSignatures;
 
         // Constructors
 
@@ -5395,17 +5401,17 @@ export namespace BraseroMedia {
 
         connect<K extends keyof MediumSelection.SignalSignatures>(
             signal: K,
-            callback: MediumSelection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediumSelection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediumSelection.SignalSignatures>(
             signal: K,
-            callback: MediumSelection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediumSelection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediumSelection.SignalSignatures>(
             signal: K,
-            ...args: MediumSelection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MediumSelection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9913,7 +9919,7 @@ export namespace BraseroMedia {
     namespace Volume {
         // Signal signatures
         interface SignalSignatures extends Medium.SignalSignatures {
-            'notify::drive': GObject.Object.Notify;
+            'notify::drive': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9923,6 +9929,14 @@ export namespace BraseroMedia {
 
     class Volume extends Medium {
         static $gtype: GObject.GType<Volume>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Volume.SignalSignatures;
 
         // Constructors
 
@@ -9932,13 +9946,19 @@ export namespace BraseroMedia {
 
         // Signals
 
-        connect<K extends keyof Volume.SignalSignatures>(signal: K, callback: Volume.SignalSignatures[K]): number;
+        connect<K extends keyof Volume.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Volume.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Volume.SignalSignatures>(signal: K, callback: Volume.SignalSignatures[K]): number;
+        connect_after<K extends keyof Volume.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Volume.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Volume.SignalSignatures>(
             signal: K,
-            ...args: Volume.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Volume.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

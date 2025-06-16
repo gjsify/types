@@ -316,11 +316,11 @@ export namespace Gpseq {
     namespace ArraySpliterator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::estimated-size': GObject.Object.Notify;
-            'notify::is-size-known': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::estimated-size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-size-known': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -346,6 +346,14 @@ export namespace Gpseq {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ArraySpliterator.SignalSignatures;
 
         // Constructors
 
@@ -365,17 +373,17 @@ export namespace Gpseq {
 
         connect<K extends keyof ArraySpliterator.SignalSignatures>(
             signal: K,
-            callback: ArraySpliterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ArraySpliterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ArraySpliterator.SignalSignatures>(
             signal: K,
-            callback: ArraySpliterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ArraySpliterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ArraySpliterator.SignalSignatures>(
             signal: K,
-            ...args: ArraySpliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ArraySpliterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -843,20 +851,20 @@ export namespace Gpseq {
     namespace ForkJoinTask {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::root': GObject.Object.Notify;
-            'notify::is-root': GObject.Object.Notify;
-            'notify::threshold': GObject.Object.Notify;
-            'notify::max-depth': GObject.Object.Notify;
-            'notify::depth': GObject.Object.Notify;
-            'notify::executor': GObject.Object.Notify;
-            'notify::promise': GObject.Object.Notify;
-            'notify::shared-result': GObject.Object.Notify;
-            'notify::is-cancelled': GObject.Object.Notify;
-            'notify::future': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::root': (pspec: GObject.ParamSpec) => void;
+            'notify::is-root': (pspec: GObject.ParamSpec) => void;
+            'notify::threshold': (pspec: GObject.ParamSpec) => void;
+            'notify::max-depth': (pspec: GObject.ParamSpec) => void;
+            'notify::depth': (pspec: GObject.ParamSpec) => void;
+            'notify::executor': (pspec: GObject.ParamSpec) => void;
+            'notify::promise': (pspec: GObject.ParamSpec) => void;
+            'notify::shared-result': (pspec: GObject.ParamSpec) => void;
+            'notify::is-cancelled': (pspec: GObject.ParamSpec) => void;
+            'notify::future': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -911,6 +919,14 @@ export namespace Gpseq {
         get sharedResult(): ForkJoinTaskSharedResult;
         get is_cancelled(): boolean;
         get isCancelled(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ForkJoinTask.SignalSignatures;
 
         // Constructors
 
@@ -922,17 +938,17 @@ export namespace Gpseq {
 
         connect<K extends keyof ForkJoinTask.SignalSignatures>(
             signal: K,
-            callback: ForkJoinTask.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ForkJoinTask.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ForkJoinTask.SignalSignatures>(
             signal: K,
-            callback: ForkJoinTask.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ForkJoinTask.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ForkJoinTask.SignalSignatures>(
             signal: K,
-            ...args: ForkJoinTask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ForkJoinTask.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1428,17 +1444,19 @@ export namespace Gpseq {
 
         connect<K extends keyof ForkJoinTaskSharedResult.SignalSignatures>(
             signal: K,
-            callback: ForkJoinTaskSharedResult.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ForkJoinTaskSharedResult.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ForkJoinTaskSharedResult.SignalSignatures>(
             signal: K,
-            callback: ForkJoinTaskSharedResult.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ForkJoinTaskSharedResult.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ForkJoinTaskSharedResult.SignalSignatures>(
             signal: K,
-            ...args: ForkJoinTaskSharedResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ForkJoinTaskSharedResult.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1455,10 +1473,10 @@ export namespace Gpseq {
     namespace FuncTask {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::future': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::future': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1484,6 +1502,14 @@ export namespace Gpseq {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FuncTask.SignalSignatures;
 
         // Constructors
 
@@ -1495,16 +1521,19 @@ export namespace Gpseq {
 
         // Signals
 
-        connect<K extends keyof FuncTask.SignalSignatures>(signal: K, callback: FuncTask.SignalSignatures[K]): number;
+        connect<K extends keyof FuncTask.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, FuncTask.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FuncTask.SignalSignatures>(
             signal: K,
-            callback: FuncTask.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FuncTask.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FuncTask.SignalSignatures>(
             signal: K,
-            ...args: FuncTask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FuncTask.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1961,10 +1990,10 @@ export namespace Gpseq {
     namespace Future {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::ready': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::ready': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1995,6 +2024,14 @@ export namespace Gpseq {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
         get ready(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Future.SignalSignatures;
 
         // Constructors
 
@@ -2004,13 +2041,19 @@ export namespace Gpseq {
 
         // Signals
 
-        connect<K extends keyof Future.SignalSignatures>(signal: K, callback: Future.SignalSignatures[K]): number;
+        connect<K extends keyof Future.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Future.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Future.SignalSignatures>(signal: K, callback: Future.SignalSignatures[K]): number;
+        connect_after<K extends keyof Future.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Future.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Future.SignalSignatures>(
             signal: K,
-            ...args: Future.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Future.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2519,11 +2562,11 @@ export namespace Gpseq {
     namespace GenericArraySpliterator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::estimated-size': GObject.Object.Notify;
-            'notify::is-size-known': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::estimated-size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-size-known': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2549,6 +2592,14 @@ export namespace Gpseq {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GenericArraySpliterator.SignalSignatures;
 
         // Constructors
 
@@ -2568,17 +2619,19 @@ export namespace Gpseq {
 
         connect<K extends keyof GenericArraySpliterator.SignalSignatures>(
             signal: K,
-            callback: GenericArraySpliterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GenericArraySpliterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GenericArraySpliterator.SignalSignatures>(
             signal: K,
-            callback: GenericArraySpliterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GenericArraySpliterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GenericArraySpliterator.SignalSignatures>(
             signal: K,
-            ...args: GenericArraySpliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GenericArraySpliterator.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3046,11 +3099,11 @@ export namespace Gpseq {
     namespace IteratorSpliterator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::estimated-size': GObject.Object.Notify;
-            'notify::is-size-known': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::estimated-size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-size-known': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3076,6 +3129,14 @@ export namespace Gpseq {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IteratorSpliterator.SignalSignatures;
 
         // Constructors
 
@@ -3101,17 +3162,19 @@ export namespace Gpseq {
 
         connect<K extends keyof IteratorSpliterator.SignalSignatures>(
             signal: K,
-            callback: IteratorSpliterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IteratorSpliterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IteratorSpliterator.SignalSignatures>(
             signal: K,
-            callback: IteratorSpliterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IteratorSpliterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IteratorSpliterator.SignalSignatures>(
             signal: K,
-            ...args: IteratorSpliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IteratorSpliterator.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3579,11 +3642,11 @@ export namespace Gpseq {
     namespace ListSpliterator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::estimated-size': GObject.Object.Notify;
-            'notify::is-size-known': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::estimated-size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-size-known': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3609,6 +3672,14 @@ export namespace Gpseq {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ListSpliterator.SignalSignatures;
 
         // Constructors
 
@@ -3628,17 +3699,17 @@ export namespace Gpseq {
 
         connect<K extends keyof ListSpliterator.SignalSignatures>(
             signal: K,
-            callback: ListSpliterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ListSpliterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ListSpliterator.SignalSignatures>(
             signal: K,
-            callback: ListSpliterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ListSpliterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ListSpliterator.SignalSignatures>(
             signal: K,
-            ...args: ListSpliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ListSpliterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4106,12 +4177,12 @@ export namespace Gpseq {
     namespace Optional {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::is-present': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::value-type': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::is-present': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4147,6 +4218,14 @@ export namespace Gpseq {
         get value(): any;
         get is_present(): boolean;
         get isPresent(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Optional.SignalSignatures;
 
         // Constructors
 
@@ -4162,16 +4241,19 @@ export namespace Gpseq {
 
         // Signals
 
-        connect<K extends keyof Optional.SignalSignatures>(signal: K, callback: Optional.SignalSignatures[K]): number;
+        connect<K extends keyof Optional.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Optional.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Optional.SignalSignatures>(
             signal: K,
-            callback: Optional.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Optional.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Optional.SignalSignatures>(
             signal: K,
-            ...args: Optional.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Optional.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4210,16 +4292,19 @@ export namespace Gpseq {
 
         // Signals
 
-        connect<K extends keyof Promise.SignalSignatures>(signal: K, callback: Promise.SignalSignatures[K]): number;
+        connect<K extends keyof Promise.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Promise.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Promise.SignalSignatures>(
             signal: K,
-            callback: Promise.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Promise.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Promise.SignalSignatures>(
             signal: K,
-            ...args: Promise.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Promise.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4233,13 +4318,13 @@ export namespace Gpseq {
     namespace Seq {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::element-type': GObject.Object.Notify;
-            'notify::task-env': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
-            'notify::is-parallel': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            'notify::task-env': (pspec: GObject.ParamSpec) => void;
+            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
+            'notify::is-parallel': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4281,6 +4366,14 @@ export namespace Gpseq {
         get isClosed(): boolean;
         get is_parallel(): boolean;
         get isParallel(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Seq.SignalSignatures;
 
         // Constructors
 
@@ -4297,13 +4390,19 @@ export namespace Gpseq {
 
         // Signals
 
-        connect<K extends keyof Seq.SignalSignatures>(signal: K, callback: Seq.SignalSignatures[K]): number;
+        connect<K extends keyof Seq.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Seq.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Seq.SignalSignatures>(signal: K, callback: Seq.SignalSignatures[K]): number;
+        connect_after<K extends keyof Seq.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Seq.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Seq.SignalSignatures>(
             signal: K,
-            ...args: Seq.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Seq.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4435,28 +4534,28 @@ export namespace Gpseq {
     namespace SpliteratorTask {
         // Signal signatures
         interface SignalSignatures extends ForkJoinTask.SignalSignatures {
-            'notify::r-type': GObject.Object.Notify;
-            'notify::r-dup-func': GObject.Object.Notify;
-            'notify::r-destroy-func': GObject.Object.Notify;
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::spliterator': GObject.Object.Notify;
-            'notify::left-child': GObject.Object.Notify;
-            'notify::right-child': GObject.Object.Notify;
-            'notify::is-leaf': GObject.Object.Notify;
-            'notify::is-leftmost': GObject.Object.Notify;
-            'notify::empty-result': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::root': GObject.Object.Notify;
-            'notify::is-root': GObject.Object.Notify;
-            'notify::threshold': GObject.Object.Notify;
-            'notify::max-depth': GObject.Object.Notify;
-            'notify::depth': GObject.Object.Notify;
-            'notify::executor': GObject.Object.Notify;
-            'notify::promise': GObject.Object.Notify;
-            'notify::shared-result': GObject.Object.Notify;
-            'notify::is-cancelled': GObject.Object.Notify;
+            'notify::r-type': (pspec: GObject.ParamSpec) => void;
+            'notify::r-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::r-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::spliterator': (pspec: GObject.ParamSpec) => void;
+            'notify::left-child': (pspec: GObject.ParamSpec) => void;
+            'notify::right-child': (pspec: GObject.ParamSpec) => void;
+            'notify::is-leaf': (pspec: GObject.ParamSpec) => void;
+            'notify::is-leftmost': (pspec: GObject.ParamSpec) => void;
+            'notify::empty-result': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::root': (pspec: GObject.ParamSpec) => void;
+            'notify::is-root': (pspec: GObject.ParamSpec) => void;
+            'notify::threshold': (pspec: GObject.ParamSpec) => void;
+            'notify::max-depth': (pspec: GObject.ParamSpec) => void;
+            'notify::depth': (pspec: GObject.ParamSpec) => void;
+            'notify::executor': (pspec: GObject.ParamSpec) => void;
+            'notify::promise': (pspec: GObject.ParamSpec) => void;
+            'notify::shared-result': (pspec: GObject.ParamSpec) => void;
+            'notify::is-cancelled': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4516,6 +4615,14 @@ export namespace Gpseq {
         get isLeftmost(): boolean;
         get empty_result(): any;
         get emptyResult(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SpliteratorTask.SignalSignatures;
 
         // Constructors
 
@@ -4527,17 +4634,17 @@ export namespace Gpseq {
 
         connect<K extends keyof SpliteratorTask.SignalSignatures>(
             signal: K,
-            callback: SpliteratorTask.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SpliteratorTask.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SpliteratorTask.SignalSignatures>(
             signal: K,
-            callback: SpliteratorTask.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SpliteratorTask.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SpliteratorTask.SignalSignatures>(
             signal: K,
-            ...args: SpliteratorTask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SpliteratorTask.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4565,10 +4672,10 @@ export namespace Gpseq {
     namespace SubArray {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4599,6 +4706,14 @@ export namespace Gpseq {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
         get size(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SubArray.SignalSignatures;
 
         // Constructors
 
@@ -4618,16 +4733,19 @@ export namespace Gpseq {
 
         // Signals
 
-        connect<K extends keyof SubArray.SignalSignatures>(signal: K, callback: SubArray.SignalSignatures[K]): number;
+        connect<K extends keyof SubArray.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, SubArray.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubArray.SignalSignatures>(
             signal: K,
-            callback: SubArray.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SubArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubArray.SignalSignatures>(
             signal: K,
-            ...args: SubArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SubArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5114,11 +5232,11 @@ export namespace Gpseq {
     namespace SubArraySpliterator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::estimated-size': GObject.Object.Notify;
-            'notify::is-size-known': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::estimated-size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-size-known': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5144,6 +5262,14 @@ export namespace Gpseq {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SubArraySpliterator.SignalSignatures;
 
         // Constructors
 
@@ -5163,17 +5289,19 @@ export namespace Gpseq {
 
         connect<K extends keyof SubArraySpliterator.SignalSignatures>(
             signal: K,
-            callback: SubArraySpliterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SubArraySpliterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubArraySpliterator.SignalSignatures>(
             signal: K,
-            callback: SubArraySpliterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SubArraySpliterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubArraySpliterator.SignalSignatures>(
             signal: K,
-            ...args: SubArraySpliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SubArraySpliterator.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5641,11 +5769,11 @@ export namespace Gpseq {
     namespace SupplierSpliterator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::estimated-size': GObject.Object.Notify;
-            'notify::is-size-known': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::estimated-size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-size-known': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5671,6 +5799,14 @@ export namespace Gpseq {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SupplierSpliterator.SignalSignatures;
 
         // Constructors
 
@@ -5688,17 +5824,19 @@ export namespace Gpseq {
 
         connect<K extends keyof SupplierSpliterator.SignalSignatures>(
             signal: K,
-            callback: SupplierSpliterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SupplierSpliterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SupplierSpliterator.SignalSignatures>(
             signal: K,
-            callback: SupplierSpliterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SupplierSpliterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SupplierSpliterator.SignalSignatures>(
             signal: K,
-            ...args: SupplierSpliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SupplierSpliterator.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6166,7 +6304,7 @@ export namespace Gpseq {
     namespace TaskEnv {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::executor': GObject.Object.Notify;
+            'notify::executor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6182,6 +6320,14 @@ export namespace Gpseq {
         // Properties
 
         get executor(): Executor;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TaskEnv.SignalSignatures;
 
         // Constructors
 
@@ -6191,16 +6337,19 @@ export namespace Gpseq {
 
         // Signals
 
-        connect<K extends keyof TaskEnv.SignalSignatures>(signal: K, callback: TaskEnv.SignalSignatures[K]): number;
+        connect<K extends keyof TaskEnv.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TaskEnv.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TaskEnv.SignalSignatures>(
             signal: K,
-            callback: TaskEnv.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TaskEnv.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TaskEnv.SignalSignatures>(
             signal: K,
-            ...args: TaskEnv.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TaskEnv.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6237,6 +6386,14 @@ export namespace Gpseq {
 
     class WaitGroup extends GObject.Object {
         static $gtype: GObject.GType<WaitGroup>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WaitGroup.SignalSignatures;
 
         // Constructors
 
@@ -6248,16 +6405,19 @@ export namespace Gpseq {
 
         // Signals
 
-        connect<K extends keyof WaitGroup.SignalSignatures>(signal: K, callback: WaitGroup.SignalSignatures[K]): number;
+        connect<K extends keyof WaitGroup.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WaitGroup.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaitGroup.SignalSignatures>(
             signal: K,
-            callback: WaitGroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WaitGroup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaitGroup.SignalSignatures>(
             signal: K,
-            ...args: WaitGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WaitGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6274,13 +6434,13 @@ export namespace Gpseq {
     namespace WorkerPool {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::max-threads': GObject.Object.Notify;
-            'notify::num-threads': GObject.Object.Notify;
-            'notify::factory': GObject.Object.Notify;
-            'notify::is-terminating': GObject.Object.Notify;
-            'notify::is-terminated': GObject.Object.Notify;
-            'notify::is-terminating-started': GObject.Object.Notify;
-            'notify::parallels': GObject.Object.Notify;
+            'notify::max-threads': (pspec: GObject.ParamSpec) => void;
+            'notify::num-threads': (pspec: GObject.ParamSpec) => void;
+            'notify::factory': (pspec: GObject.ParamSpec) => void;
+            'notify::is-terminating': (pspec: GObject.ParamSpec) => void;
+            'notify::is-terminated': (pspec: GObject.ParamSpec) => void;
+            'notify::is-terminating-started': (pspec: GObject.ParamSpec) => void;
+            'notify::parallels': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6318,6 +6478,14 @@ export namespace Gpseq {
         get isTerminated(): boolean;
         get is_terminating_started(): boolean;
         get isTerminatingStarted(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WorkerPool.SignalSignatures;
 
         // Constructors
 
@@ -6333,17 +6501,17 @@ export namespace Gpseq {
 
         connect<K extends keyof WorkerPool.SignalSignatures>(
             signal: K,
-            callback: WorkerPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkerPool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkerPool.SignalSignatures>(
             signal: K,
-            callback: WorkerPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkerPool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkerPool.SignalSignatures>(
             signal: K,
-            ...args: WorkerPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WorkerPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6817,12 +6985,12 @@ export namespace Gpseq {
     namespace WorkerThread {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::thread': GObject.Object.Notify;
-            'notify::pool': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::is-started': GObject.Object.Notify;
-            'notify::is-terminated': GObject.Object.Notify;
-            'notify::is-alive': GObject.Object.Notify;
+            'notify::thread': (pspec: GObject.ParamSpec) => void;
+            'notify::pool': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::is-started': (pspec: GObject.ParamSpec) => void;
+            'notify::is-terminated': (pspec: GObject.ParamSpec) => void;
+            'notify::is-alive': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6854,6 +7022,14 @@ export namespace Gpseq {
         get isTerminated(): boolean;
         get is_alive(): boolean;
         get isAlive(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WorkerThread.SignalSignatures;
 
         // Constructors
 
@@ -6867,17 +7043,17 @@ export namespace Gpseq {
 
         connect<K extends keyof WorkerThread.SignalSignatures>(
             signal: K,
-            callback: WorkerThread.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkerThread.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkerThread.SignalSignatures>(
             signal: K,
-            callback: WorkerThread.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WorkerThread.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkerThread.SignalSignatures>(
             signal: K,
-            ...args: WorkerThread.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WorkerThread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6902,11 +7078,11 @@ export namespace Gpseq {
     namespace Wrapper {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::g-type': GObject.Object.Notify;
-            'notify::g-dup-func': GObject.Object.Notify;
-            'notify::g-destroy-func': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
+            'notify::g-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::value-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6938,6 +7114,14 @@ export namespace Gpseq {
         get value(): any;
         get value_type(): GObject.GType;
         get valueType(): GObject.GType;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Wrapper.SignalSignatures;
 
         // Constructors
 
@@ -6949,16 +7133,19 @@ export namespace Gpseq {
 
         // Signals
 
-        connect<K extends keyof Wrapper.SignalSignatures>(signal: K, callback: Wrapper.SignalSignatures[K]): number;
+        connect<K extends keyof Wrapper.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Wrapper.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Wrapper.SignalSignatures>(
             signal: K,
-            callback: Wrapper.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Wrapper.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Wrapper.SignalSignatures>(
             signal: K,
-            ...args: Wrapper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Wrapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

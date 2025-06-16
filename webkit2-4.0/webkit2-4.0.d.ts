@@ -1896,20 +1896,10 @@ export namespace WebKit2 {
         ALL,
     }
     namespace AuthenticationRequest {
-        // Signal callback interfaces
-
-        interface Authenticated {
-            (_source: AuthenticationRequest, credential: Credential): void;
-        }
-
-        interface Cancelled {
-            (_source: AuthenticationRequest): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            authenticated: Authenticated;
-            cancelled: Cancelled;
+            authenticated: (arg0: Credential) => void;
+            cancelled: () => void;
         }
 
         // Constructor properties interface
@@ -1935,6 +1925,14 @@ export namespace WebKit2 {
      */
     class AuthenticationRequest extends GObject.Object {
         static $gtype: GObject.GType<AuthenticationRequest>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AuthenticationRequest.SignalSignatures;
 
         // Constructors
 
@@ -1946,17 +1944,19 @@ export namespace WebKit2 {
 
         connect<K extends keyof AuthenticationRequest.SignalSignatures>(
             signal: K,
-            callback: AuthenticationRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthenticationRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthenticationRequest.SignalSignatures>(
             signal: K,
-            callback: AuthenticationRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthenticationRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthenticationRequest.SignalSignatures>(
             signal: K,
-            ...args: AuthenticationRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AuthenticationRequest.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2069,22 +2069,12 @@ export namespace WebKit2 {
     }
 
     namespace AutomationSession {
-        // Signal callback interfaces
-
-        interface CreateWebView {
-            (_source: AutomationSession): WebView;
-        }
-
-        interface WillClose {
-            (_source: AutomationSession): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'create-web-view': CreateWebView;
-            'will-close': WillClose;
-            'notify::id': GObject.Object.Notify;
-            'create-web-view::id': CreateWebView;
+            'create-web-view': () => WebView;
+            'will-close': () => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'create-web-view::id': () => WebView;
         }
 
         // Constructor properties interface
@@ -2113,6 +2103,14 @@ export namespace WebKit2 {
          * The session unique identifier.
          */
         get id(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AutomationSession.SignalSignatures;
 
         // Constructors
 
@@ -2124,17 +2122,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof AutomationSession.SignalSignatures>(
             signal: K,
-            callback: AutomationSession.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AutomationSession.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AutomationSession.SignalSignatures>(
             signal: K,
-            callback: AutomationSession.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AutomationSession.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AutomationSession.SignalSignatures>(
             signal: K,
-            ...args: AutomationSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AutomationSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2167,15 +2165,9 @@ export namespace WebKit2 {
     }
 
     namespace BackForwardList {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: BackForwardList, item_added?: BackForwardListItem | null, items_removed?: any | null): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
+            changed: (arg0: BackForwardListItem | null, arg1: any | null) => void;
         }
 
         // Constructor properties interface
@@ -2202,6 +2194,14 @@ export namespace WebKit2 {
      */
     class BackForwardList extends GObject.Object {
         static $gtype: GObject.GType<BackForwardList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BackForwardList.SignalSignatures;
 
         // Constructors
 
@@ -2213,17 +2213,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof BackForwardList.SignalSignatures>(
             signal: K,
-            callback: BackForwardList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BackForwardList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BackForwardList.SignalSignatures>(
             signal: K,
-            callback: BackForwardList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BackForwardList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BackForwardList.SignalSignatures>(
             signal: K,
-            ...args: BackForwardList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BackForwardList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2296,6 +2296,14 @@ export namespace WebKit2 {
      */
     class BackForwardListItem extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<BackForwardListItem>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BackForwardListItem.SignalSignatures;
 
         // Constructors
 
@@ -2307,17 +2315,19 @@ export namespace WebKit2 {
 
         connect<K extends keyof BackForwardListItem.SignalSignatures>(
             signal: K,
-            callback: BackForwardListItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BackForwardListItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BackForwardListItem.SignalSignatures>(
             signal: K,
-            callback: BackForwardListItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BackForwardListItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BackForwardListItem.SignalSignatures>(
             signal: K,
-            ...args: BackForwardListItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BackForwardListItem.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2367,6 +2377,14 @@ export namespace WebKit2 {
      */
     class ClipboardPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<ClipboardPermissionRequest>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClipboardPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -2378,17 +2396,19 @@ export namespace WebKit2 {
 
         connect<K extends keyof ClipboardPermissionRequest.SignalSignatures>(
             signal: K,
-            callback: ClipboardPermissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClipboardPermissionRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClipboardPermissionRequest.SignalSignatures>(
             signal: K,
-            callback: ClipboardPermissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClipboardPermissionRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClipboardPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: ClipboardPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClipboardPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2851,16 +2871,10 @@ export namespace WebKit2 {
     }
 
     namespace ColorChooserRequest {
-        // Signal callback interfaces
-
-        interface Finished {
-            (_source: ColorChooserRequest): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            finished: Finished;
-            'notify::rgba': GObject.Object.Notify;
+            finished: () => void;
+            'notify::rgba': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2897,6 +2911,14 @@ export namespace WebKit2 {
          */
         get rgba(): Gdk.RGBA;
         set rgba(val: Gdk.RGBA);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ColorChooserRequest.SignalSignatures;
 
         // Constructors
 
@@ -2908,17 +2930,19 @@ export namespace WebKit2 {
 
         connect<K extends keyof ColorChooserRequest.SignalSignatures>(
             signal: K,
-            callback: ColorChooserRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColorChooserRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColorChooserRequest.SignalSignatures>(
             signal: K,
-            callback: ColorChooserRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColorChooserRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColorChooserRequest.SignalSignatures>(
             signal: K,
-            ...args: ColorChooserRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ColorChooserRequest.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2984,6 +3008,14 @@ export namespace WebKit2 {
      */
     class ContextMenu extends GObject.Object {
         static $gtype: GObject.GType<ContextMenu>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ContextMenu.SignalSignatures;
 
         // Constructors
 
@@ -2999,17 +3031,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof ContextMenu.SignalSignatures>(
             signal: K,
-            callback: ContextMenu.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContextMenu.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContextMenu.SignalSignatures>(
             signal: K,
-            callback: ContextMenu.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContextMenu.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContextMenu.SignalSignatures>(
             signal: K,
-            ...args: ContextMenu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ContextMenu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3142,6 +3174,14 @@ export namespace WebKit2 {
      */
     class ContextMenuItem extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ContextMenuItem>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ContextMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -3165,17 +3205,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof ContextMenuItem.SignalSignatures>(
             signal: K,
-            callback: ContextMenuItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContextMenuItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContextMenuItem.SignalSignatures>(
             signal: K,
-            callback: ContextMenuItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContextMenuItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContextMenuItem.SignalSignatures>(
             signal: K,
-            ...args: ContextMenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ContextMenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3222,15 +3262,9 @@ export namespace WebKit2 {
     }
 
     namespace CookieManager {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: CookieManager): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
+            changed: () => void;
         }
 
         // Constructor properties interface
@@ -3249,6 +3283,14 @@ export namespace WebKit2 {
      */
     class CookieManager extends GObject.Object {
         static $gtype: GObject.GType<CookieManager>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CookieManager.SignalSignatures;
 
         // Constructors
 
@@ -3260,17 +3302,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof CookieManager.SignalSignatures>(
             signal: K,
-            callback: CookieManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CookieManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CookieManager.SignalSignatures>(
             signal: K,
-            callback: CookieManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CookieManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CookieManager.SignalSignatures>(
             signal: K,
-            ...args: CookieManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CookieManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3644,6 +3686,14 @@ export namespace WebKit2 {
      */
     class DeviceInfoPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<DeviceInfoPermissionRequest>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceInfoPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -3655,17 +3705,19 @@ export namespace WebKit2 {
 
         connect<K extends keyof DeviceInfoPermissionRequest.SignalSignatures>(
             signal: K,
-            callback: DeviceInfoPermissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceInfoPermissionRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceInfoPermissionRequest.SignalSignatures>(
             signal: K,
-            callback: DeviceInfoPermissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceInfoPermissionRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceInfoPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: DeviceInfoPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceInfoPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4128,39 +4180,17 @@ export namespace WebKit2 {
     }
 
     namespace Download {
-        // Signal callback interfaces
-
-        interface CreatedDestination {
-            (_source: Download, destination: string): void;
-        }
-
-        interface DecideDestination {
-            (_source: Download, suggested_filename: string): boolean | void;
-        }
-
-        interface Failed {
-            (_source: Download, error: GLib.Error): void;
-        }
-
-        interface Finished {
-            (_source: Download): void;
-        }
-
-        interface ReceivedData {
-            (_source: Download, data_length: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'created-destination': CreatedDestination;
-            'decide-destination': DecideDestination;
-            failed: Failed;
-            finished: Finished;
-            'received-data': ReceivedData;
-            'notify::allow-overwrite': GObject.Object.Notify;
-            'notify::destination': GObject.Object.Notify;
-            'notify::estimated-progress': GObject.Object.Notify;
-            'notify::response': GObject.Object.Notify;
+            'created-destination': (arg0: string) => void;
+            'decide-destination': (arg0: string) => boolean | void;
+            failed: (arg0: GLib.Error) => void;
+            finished: () => void;
+            'received-data': (arg0: number) => void;
+            'notify::allow-overwrite': (pspec: GObject.ParamSpec) => void;
+            'notify::destination': (pspec: GObject.ParamSpec) => void;
+            'notify::estimated-progress': (pspec: GObject.ParamSpec) => void;
+            'notify::response': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4229,6 +4259,14 @@ export namespace WebKit2 {
          * The #WebKitURIResponse associated with this download.
          */
         get response(): URIResponse;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Download.SignalSignatures;
 
         // Constructors
 
@@ -4238,16 +4276,19 @@ export namespace WebKit2 {
 
         // Signals
 
-        connect<K extends keyof Download.SignalSignatures>(signal: K, callback: Download.SignalSignatures[K]): number;
+        connect<K extends keyof Download.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Download.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Download.SignalSignatures>(
             signal: K,
-            callback: Download.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Download.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Download.SignalSignatures>(
             signal: K,
-            ...args: Download.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Download.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4359,16 +4400,10 @@ export namespace WebKit2 {
     }
 
     namespace EditorState {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: EditorState): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            'notify::typing-attributes': GObject.Object.Notify;
+            changed: () => void;
+            'notify::typing-attributes': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4401,6 +4436,14 @@ export namespace WebKit2 {
          * See webkit_editor_state_get_typing_attributes() for more information.
          */
         get typingAttributes(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: EditorState.SignalSignatures;
 
         // Constructors
 
@@ -4412,17 +4455,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof EditorState.SignalSignatures>(
             signal: K,
-            callback: EditorState.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EditorState.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EditorState.SignalSignatures>(
             signal: K,
-            callback: EditorState.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EditorState.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EditorState.SignalSignatures>(
             signal: K,
-            ...args: EditorState.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<EditorState.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4466,15 +4509,9 @@ export namespace WebKit2 {
     }
 
     namespace FaviconDatabase {
-        // Signal callback interfaces
-
-        interface FaviconChanged {
-            (_source: FaviconDatabase, page_uri: string, favicon_uri: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'favicon-changed': FaviconChanged;
+            'favicon-changed': (arg0: string, arg1: string) => void;
         }
 
         // Constructor properties interface
@@ -4497,6 +4534,14 @@ export namespace WebKit2 {
      */
     class FaviconDatabase extends GObject.Object {
         static $gtype: GObject.GType<FaviconDatabase>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FaviconDatabase.SignalSignatures;
 
         // Constructors
 
@@ -4508,17 +4553,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof FaviconDatabase.SignalSignatures>(
             signal: K,
-            callback: FaviconDatabase.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FaviconDatabase.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FaviconDatabase.SignalSignatures>(
             signal: K,
-            callback: FaviconDatabase.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FaviconDatabase.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FaviconDatabase.SignalSignatures>(
             signal: K,
-            ...args: FaviconDatabase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FaviconDatabase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4597,10 +4642,10 @@ export namespace WebKit2 {
     namespace FileChooserRequest {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::filter': GObject.Object.Notify;
-            'notify::mime-types': GObject.Object.Notify;
-            'notify::select-multiple': GObject.Object.Notify;
-            'notify::selected-files': GObject.Object.Notify;
+            'notify::filter': (pspec: GObject.ParamSpec) => void;
+            'notify::mime-types': (pspec: GObject.ParamSpec) => void;
+            'notify::select-multiple': (pspec: GObject.ParamSpec) => void;
+            'notify::selected-files': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4685,6 +4730,14 @@ export namespace WebKit2 {
          * webkit_file_chooser_request_get_selected_files() for more details.
          */
         get selectedFiles(): string[];
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FileChooserRequest.SignalSignatures;
 
         // Constructors
 
@@ -4696,17 +4749,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof FileChooserRequest.SignalSignatures>(
             signal: K,
-            callback: FileChooserRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileChooserRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileChooserRequest.SignalSignatures>(
             signal: K,
-            callback: FileChooserRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileChooserRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileChooserRequest.SignalSignatures>(
             signal: K,
-            ...args: FileChooserRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FileChooserRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4781,29 +4834,15 @@ export namespace WebKit2 {
     }
 
     namespace FindController {
-        // Signal callback interfaces
-
-        interface CountedMatches {
-            (_source: FindController, match_count: number): void;
-        }
-
-        interface FailedToFindText {
-            (_source: FindController): void;
-        }
-
-        interface FoundText {
-            (_source: FindController, match_count: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'counted-matches': CountedMatches;
-            'failed-to-find-text': FailedToFindText;
-            'found-text': FoundText;
-            'notify::max-match-count': GObject.Object.Notify;
-            'notify::options': GObject.Object.Notify;
-            'notify::text': GObject.Object.Notify;
-            'notify::web-view': GObject.Object.Notify;
+            'counted-matches': (arg0: number) => void;
+            'failed-to-find-text': () => void;
+            'found-text': (arg0: number) => void;
+            'notify::max-match-count': (pspec: GObject.ParamSpec) => void;
+            'notify::options': (pspec: GObject.ParamSpec) => void;
+            'notify::text': (pspec: GObject.ParamSpec) => void;
+            'notify::web-view': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4860,6 +4899,14 @@ export namespace WebKit2 {
          * The #WebKitWebView this controller is associated to.
          */
         get webView(): WebView;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FindController.SignalSignatures;
 
         // Constructors
 
@@ -4871,17 +4918,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof FindController.SignalSignatures>(
             signal: K,
-            callback: FindController.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FindController.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FindController.SignalSignatures>(
             signal: K,
-            callback: FindController.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FindController.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FindController.SignalSignatures>(
             signal: K,
-            ...args: FindController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FindController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5011,6 +5058,14 @@ export namespace WebKit2 {
      */
     class FormSubmissionRequest extends GObject.Object {
         static $gtype: GObject.GType<FormSubmissionRequest>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FormSubmissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -5022,17 +5077,19 @@ export namespace WebKit2 {
 
         connect<K extends keyof FormSubmissionRequest.SignalSignatures>(
             signal: K,
-            callback: FormSubmissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FormSubmissionRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FormSubmissionRequest.SignalSignatures>(
             signal: K,
-            callback: FormSubmissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FormSubmissionRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FormSubmissionRequest.SignalSignatures>(
             signal: K,
-            ...args: FormSubmissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FormSubmissionRequest.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5067,21 +5124,11 @@ export namespace WebKit2 {
     }
 
     namespace GeolocationManager {
-        // Signal callback interfaces
-
-        interface Start {
-            (_source: GeolocationManager): boolean | void;
-        }
-
-        interface Stop {
-            (_source: GeolocationManager): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            start: Start;
-            stop: Stop;
-            'notify::enable-high-accuracy': GObject.Object.Notify;
+            start: () => boolean | void;
+            stop: () => void;
+            'notify::enable-high-accuracy': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5119,6 +5166,14 @@ export namespace WebKit2 {
          * You can connect to notify::enable-high-accuracy signal to monitor it.
          */
         get enableHighAccuracy(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GeolocationManager.SignalSignatures;
 
         // Constructors
 
@@ -5130,17 +5185,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof GeolocationManager.SignalSignatures>(
             signal: K,
-            callback: GeolocationManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GeolocationManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GeolocationManager.SignalSignatures>(
             signal: K,
-            callback: GeolocationManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GeolocationManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GeolocationManager.SignalSignatures>(
             signal: K,
-            ...args: GeolocationManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GeolocationManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5200,6 +5255,14 @@ export namespace WebKit2 {
      */
     class GeolocationPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<GeolocationPermissionRequest>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GeolocationPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -5211,17 +5274,19 @@ export namespace WebKit2 {
 
         connect<K extends keyof GeolocationPermissionRequest.SignalSignatures>(
             signal: K,
-            callback: GeolocationPermissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GeolocationPermissionRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GeolocationPermissionRequest.SignalSignatures>(
             signal: K,
-            callback: GeolocationPermissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GeolocationPermissionRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GeolocationPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: GeolocationPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GeolocationPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5686,12 +5751,12 @@ export namespace WebKit2 {
     namespace HitTestResult {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::image-uri': GObject.Object.Notify;
-            'notify::link-label': GObject.Object.Notify;
-            'notify::link-title': GObject.Object.Notify;
-            'notify::link-uri': GObject.Object.Notify;
-            'notify::media-uri': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::image-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::link-label': (pspec: GObject.ParamSpec) => void;
+            'notify::link-title': (pspec: GObject.ParamSpec) => void;
+            'notify::link-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::media-uri': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5793,6 +5858,14 @@ export namespace WebKit2 {
          * is present in #WebKitHitTestResult:context
          */
         get mediaUri(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HitTestResult.SignalSignatures;
 
         // Constructors
 
@@ -5804,17 +5877,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof HitTestResult.SignalSignatures>(
             signal: K,
-            callback: HitTestResult.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HitTestResult.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HitTestResult.SignalSignatures>(
             signal: K,
-            callback: HitTestResult.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HitTestResult.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HitTestResult.SignalSignatures>(
             signal: K,
-            ...args: HitTestResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HitTestResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5889,37 +5962,15 @@ export namespace WebKit2 {
     }
 
     namespace InputMethodContext {
-        // Signal callback interfaces
-
-        interface Committed {
-            (_source: InputMethodContext, text: string): void;
-        }
-
-        interface DeleteSurrounding {
-            (_source: InputMethodContext, offset: number, n_chars: number): void;
-        }
-
-        interface PreeditChanged {
-            (_source: InputMethodContext): void;
-        }
-
-        interface PreeditFinished {
-            (_source: InputMethodContext): void;
-        }
-
-        interface PreeditStarted {
-            (_source: InputMethodContext): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            committed: Committed;
-            'delete-surrounding': DeleteSurrounding;
-            'preedit-changed': PreeditChanged;
-            'preedit-finished': PreeditFinished;
-            'preedit-started': PreeditStarted;
-            'notify::input-hints': GObject.Object.Notify;
-            'notify::input-purpose': GObject.Object.Notify;
+            committed: (arg0: string) => void;
+            'delete-surrounding': (arg0: number, arg1: number) => void;
+            'preedit-changed': () => void;
+            'preedit-finished': () => void;
+            'preedit-started': () => void;
+            'notify::input-hints': (pspec: GObject.ParamSpec) => void;
+            'notify::input-purpose': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5969,6 +6020,14 @@ export namespace WebKit2 {
          */
         get inputPurpose(): InputPurpose;
         set inputPurpose(val: InputPurpose);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InputMethodContext.SignalSignatures;
 
         // Constructors
 
@@ -5980,17 +6039,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof InputMethodContext.SignalSignatures>(
             signal: K,
-            callback: InputMethodContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputMethodContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputMethodContext.SignalSignatures>(
             signal: K,
-            callback: InputMethodContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputMethodContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputMethodContext.SignalSignatures>(
             signal: K,
-            ...args: InputMethodContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InputMethodContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6148,6 +6207,14 @@ export namespace WebKit2 {
      */
     class InstallMissingMediaPluginsPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<InstallMissingMediaPluginsPermissionRequest>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InstallMissingMediaPluginsPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -6159,18 +6226,21 @@ export namespace WebKit2 {
 
         connect<K extends keyof InstallMissingMediaPluginsPermissionRequest.SignalSignatures>(
             signal: K,
-            callback: InstallMissingMediaPluginsPermissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InstallMissingMediaPluginsPermissionRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InstallMissingMediaPluginsPermissionRequest.SignalSignatures>(
             signal: K,
-            callback: InstallMissingMediaPluginsPermissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InstallMissingMediaPluginsPermissionRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InstallMissingMediaPluginsPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: InstallMissingMediaPluginsPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<InstallMissingMediaPluginsPermissionRequest.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -6665,6 +6735,14 @@ export namespace WebKit2 {
      */
     class MediaKeySystemPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<MediaKeySystemPermissionRequest>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MediaKeySystemPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -6676,17 +6754,22 @@ export namespace WebKit2 {
 
         connect<K extends keyof MediaKeySystemPermissionRequest.SignalSignatures>(
             signal: K,
-            callback: MediaKeySystemPermissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaKeySystemPermissionRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaKeySystemPermissionRequest.SignalSignatures>(
             signal: K,
-            callback: MediaKeySystemPermissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaKeySystemPermissionRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaKeySystemPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: MediaKeySystemPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MediaKeySystemPermissionRequest.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7151,12 +7234,12 @@ export namespace WebKit2 {
     namespace NavigationPolicyDecision {
         // Signal signatures
         interface SignalSignatures extends PolicyDecision.SignalSignatures {
-            'notify::frame-name': GObject.Object.Notify;
-            'notify::modifiers': GObject.Object.Notify;
-            'notify::mouse-button': GObject.Object.Notify;
-            'notify::navigation-action': GObject.Object.Notify;
-            'notify::navigation-type': GObject.Object.Notify;
-            'notify::request': GObject.Object.Notify;
+            'notify::frame-name': (pspec: GObject.ParamSpec) => void;
+            'notify::modifiers': (pspec: GObject.ParamSpec) => void;
+            'notify::mouse-button': (pspec: GObject.ParamSpec) => void;
+            'notify::navigation-action': (pspec: GObject.ParamSpec) => void;
+            'notify::navigation-type': (pspec: GObject.ParamSpec) => void;
+            'notify::request': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7250,6 +7333,14 @@ export namespace WebKit2 {
          * navigation.
          */
         get request(): URIRequest;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NavigationPolicyDecision.SignalSignatures;
 
         // Constructors
 
@@ -7261,17 +7352,19 @@ export namespace WebKit2 {
 
         connect<K extends keyof NavigationPolicyDecision.SignalSignatures>(
             signal: K,
-            callback: NavigationPolicyDecision.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NavigationPolicyDecision.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NavigationPolicyDecision.SignalSignatures>(
             signal: K,
-            callback: NavigationPolicyDecision.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NavigationPolicyDecision.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NavigationPolicyDecision.SignalSignatures>(
             signal: K,
-            ...args: NavigationPolicyDecision.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NavigationPolicyDecision.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7310,24 +7403,14 @@ export namespace WebKit2 {
     }
 
     namespace Notification {
-        // Signal callback interfaces
-
-        interface Clicked {
-            (_source: Notification): void;
-        }
-
-        interface Closed {
-            (_source: Notification): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            clicked: Clicked;
-            closed: Closed;
-            'notify::body': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::tag': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
+            clicked: () => void;
+            closed: () => void;
+            'notify::body': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::tag': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7364,6 +7447,14 @@ export namespace WebKit2 {
          * The title for the notification.
          */
         get title(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Notification.SignalSignatures;
 
         // Constructors
 
@@ -7375,17 +7466,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof Notification.SignalSignatures>(
             signal: K,
-            callback: Notification.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Notification.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Notification.SignalSignatures>(
             signal: K,
-            callback: Notification.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Notification.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Notification.SignalSignatures>(
             signal: K,
-            ...args: Notification.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Notification.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7445,6 +7536,14 @@ export namespace WebKit2 {
      */
     class NotificationPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<NotificationPermissionRequest>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NotificationPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -7456,17 +7555,19 @@ export namespace WebKit2 {
 
         connect<K extends keyof NotificationPermissionRequest.SignalSignatures>(
             signal: K,
-            callback: NotificationPermissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NotificationPermissionRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NotificationPermissionRequest.SignalSignatures>(
             signal: K,
-            callback: NotificationPermissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NotificationPermissionRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NotificationPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: NotificationPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NotificationPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7929,15 +8030,9 @@ export namespace WebKit2 {
     }
 
     namespace OptionMenu {
-        // Signal callback interfaces
-
-        interface Close {
-            (_source: OptionMenu): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            close: Close;
+            close: () => void;
         }
 
         // Constructor properties interface
@@ -7954,6 +8049,14 @@ export namespace WebKit2 {
      */
     class OptionMenu extends GObject.Object {
         static $gtype: GObject.GType<OptionMenu>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OptionMenu.SignalSignatures;
 
         // Constructors
 
@@ -7965,17 +8068,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof OptionMenu.SignalSignatures>(
             signal: K,
-            callback: OptionMenu.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OptionMenu.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OptionMenu.SignalSignatures>(
             signal: K,
-            callback: OptionMenu.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OptionMenu.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OptionMenu.SignalSignatures>(
             signal: K,
-            ...args: OptionMenu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OptionMenu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8052,6 +8155,14 @@ export namespace WebKit2 {
      */
     class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Plugin.SignalSignatures;
 
         // Constructors
 
@@ -8061,13 +8172,19 @@ export namespace WebKit2 {
 
         // Signals
 
-        connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect_after<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Plugin.SignalSignatures>(
             signal: K,
-            ...args: Plugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8119,6 +8236,14 @@ export namespace WebKit2 {
      */
     class PointerLockPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<PointerLockPermissionRequest>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PointerLockPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -8130,17 +8255,19 @@ export namespace WebKit2 {
 
         connect<K extends keyof PointerLockPermissionRequest.SignalSignatures>(
             signal: K,
-            callback: PointerLockPermissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PointerLockPermissionRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PointerLockPermissionRequest.SignalSignatures>(
             signal: K,
-            callback: PointerLockPermissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PointerLockPermissionRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PointerLockPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: PointerLockPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PointerLockPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8626,6 +8753,14 @@ export namespace WebKit2 {
      */
     abstract class PolicyDecision extends GObject.Object {
         static $gtype: GObject.GType<PolicyDecision>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PolicyDecision.SignalSignatures;
 
         // Constructors
 
@@ -8637,17 +8772,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof PolicyDecision.SignalSignatures>(
             signal: K,
-            callback: PolicyDecision.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PolicyDecision.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PolicyDecision.SignalSignatures>(
             signal: K,
-            callback: PolicyDecision.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PolicyDecision.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PolicyDecision.SignalSignatures>(
             signal: K,
-            ...args: PolicyDecision.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PolicyDecision.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8684,22 +8819,12 @@ export namespace WebKit2 {
     }
 
     namespace PrintCustomWidget {
-        // Signal callback interfaces
-
-        interface Apply {
-            (_source: PrintCustomWidget): void;
-        }
-
-        interface Update {
-            (_source: PrintCustomWidget, page_setup: Gtk.PageSetup, print_settings: Gtk.PrintSettings): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            apply: Apply;
-            update: Update;
-            'notify::title': GObject.Object.Notify;
-            'notify::widget': GObject.Object.Notify;
+            apply: () => void;
+            update: (arg0: Gtk.PageSetup, arg1: Gtk.PrintSettings) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::widget': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8739,6 +8864,14 @@ export namespace WebKit2 {
          * The custom #GtkWidget that will be embedded in the dialog.
          */
         get widget(): Gtk.Widget;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PrintCustomWidget.SignalSignatures;
 
         // Constructors
 
@@ -8752,17 +8885,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof PrintCustomWidget.SignalSignatures>(
             signal: K,
-            callback: PrintCustomWidget.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PrintCustomWidget.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PrintCustomWidget.SignalSignatures>(
             signal: K,
-            callback: PrintCustomWidget.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PrintCustomWidget.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PrintCustomWidget.SignalSignatures>(
             signal: K,
-            ...args: PrintCustomWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PrintCustomWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8795,28 +8928,14 @@ export namespace WebKit2 {
     }
 
     namespace PrintOperation {
-        // Signal callback interfaces
-
-        interface CreateCustomWidget {
-            (_source: PrintOperation): PrintCustomWidget;
-        }
-
-        interface Failed {
-            (_source: PrintOperation, error: GLib.Error): void;
-        }
-
-        interface Finished {
-            (_source: PrintOperation): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'create-custom-widget': CreateCustomWidget;
-            failed: Failed;
-            finished: Finished;
-            'notify::page-setup': GObject.Object.Notify;
-            'notify::print-settings': GObject.Object.Notify;
-            'notify::web-view': GObject.Object.Notify;
+            'create-custom-widget': () => PrintCustomWidget;
+            failed: (arg0: GLib.Error) => void;
+            finished: () => void;
+            'notify::page-setup': (pspec: GObject.ParamSpec) => void;
+            'notify::print-settings': (pspec: GObject.ParamSpec) => void;
+            'notify::web-view': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8872,6 +8991,14 @@ export namespace WebKit2 {
          * The #WebKitWebView that will be printed.
          */
         get webView(): WebView;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PrintOperation.SignalSignatures;
 
         // Constructors
 
@@ -8885,17 +9012,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof PrintOperation.SignalSignatures>(
             signal: K,
-            callback: PrintOperation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PrintOperation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PrintOperation.SignalSignatures>(
             signal: K,
-            callback: PrintOperation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PrintOperation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PrintOperation.SignalSignatures>(
             signal: K,
-            ...args: PrintOperation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PrintOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8977,8 +9104,8 @@ export namespace WebKit2 {
     namespace ResponsePolicyDecision {
         // Signal signatures
         interface SignalSignatures extends PolicyDecision.SignalSignatures {
-            'notify::request': GObject.Object.Notify;
-            'notify::response': GObject.Object.Notify;
+            'notify::request': (pspec: GObject.ParamSpec) => void;
+            'notify::response': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9013,6 +9140,14 @@ export namespace WebKit2 {
          * policy decision.
          */
         get response(): URIResponse;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ResponsePolicyDecision.SignalSignatures;
 
         // Constructors
 
@@ -9024,17 +9159,19 @@ export namespace WebKit2 {
 
         connect<K extends keyof ResponsePolicyDecision.SignalSignatures>(
             signal: K,
-            callback: ResponsePolicyDecision.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ResponsePolicyDecision.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResponsePolicyDecision.SignalSignatures>(
             signal: K,
-            callback: ResponsePolicyDecision.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ResponsePolicyDecision.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResponsePolicyDecision.SignalSignatures>(
             signal: K,
-            ...args: ResponsePolicyDecision.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ResponsePolicyDecision.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9091,6 +9228,14 @@ export namespace WebKit2 {
      */
     class SecurityManager extends GObject.Object {
         static $gtype: GObject.GType<SecurityManager>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SecurityManager.SignalSignatures;
 
         // Constructors
 
@@ -9102,17 +9247,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof SecurityManager.SignalSignatures>(
             signal: K,
-            callback: SecurityManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SecurityManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SecurityManager.SignalSignatures>(
             signal: K,
-            callback: SecurityManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SecurityManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SecurityManager.SignalSignatures>(
             signal: K,
-            ...args: SecurityManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SecurityManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9220,71 +9365,71 @@ export namespace WebKit2 {
     namespace Settings {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::allow-file-access-from-file-urls': GObject.Object.Notify;
-            'notify::allow-modal-dialogs': GObject.Object.Notify;
-            'notify::allow-top-navigation-to-data-urls': GObject.Object.Notify;
-            'notify::allow-universal-access-from-file-urls': GObject.Object.Notify;
-            'notify::auto-load-images': GObject.Object.Notify;
-            'notify::cursive-font-family': GObject.Object.Notify;
-            'notify::default-charset': GObject.Object.Notify;
-            'notify::default-font-family': GObject.Object.Notify;
-            'notify::default-font-size': GObject.Object.Notify;
-            'notify::default-monospace-font-size': GObject.Object.Notify;
-            'notify::disable-web-security': GObject.Object.Notify;
-            'notify::draw-compositing-indicators': GObject.Object.Notify;
-            'notify::enable-2d-canvas-acceleration': GObject.Object.Notify;
-            'notify::enable2d-canvas-acceleration': GObject.Object.Notify;
-            'notify::enable-accelerated-2d-canvas': GObject.Object.Notify;
-            'notify::enable-accelerated2d-canvas': GObject.Object.Notify;
-            'notify::enable-back-forward-navigation-gestures': GObject.Object.Notify;
-            'notify::enable-caret-browsing': GObject.Object.Notify;
-            'notify::enable-developer-extras': GObject.Object.Notify;
-            'notify::enable-dns-prefetching': GObject.Object.Notify;
-            'notify::enable-encrypted-media': GObject.Object.Notify;
-            'notify::enable-frame-flattening': GObject.Object.Notify;
-            'notify::enable-fullscreen': GObject.Object.Notify;
-            'notify::enable-html5-database': GObject.Object.Notify;
-            'notify::enable-html5-local-storage': GObject.Object.Notify;
-            'notify::enable-hyperlink-auditing': GObject.Object.Notify;
-            'notify::enable-java': GObject.Object.Notify;
-            'notify::enable-javascript': GObject.Object.Notify;
-            'notify::enable-javascript-markup': GObject.Object.Notify;
-            'notify::enable-media': GObject.Object.Notify;
-            'notify::enable-media-capabilities': GObject.Object.Notify;
-            'notify::enable-media-stream': GObject.Object.Notify;
-            'notify::enable-mediasource': GObject.Object.Notify;
-            'notify::enable-mock-capture-devices': GObject.Object.Notify;
-            'notify::enable-offline-web-application-cache': GObject.Object.Notify;
-            'notify::enable-page-cache': GObject.Object.Notify;
-            'notify::enable-plugins': GObject.Object.Notify;
-            'notify::enable-private-browsing': GObject.Object.Notify;
-            'notify::enable-resizable-text-areas': GObject.Object.Notify;
-            'notify::enable-site-specific-quirks': GObject.Object.Notify;
-            'notify::enable-smooth-scrolling': GObject.Object.Notify;
-            'notify::enable-spatial-navigation': GObject.Object.Notify;
-            'notify::enable-tabs-to-links': GObject.Object.Notify;
-            'notify::enable-webaudio': GObject.Object.Notify;
-            'notify::enable-webgl': GObject.Object.Notify;
-            'notify::enable-webrtc': GObject.Object.Notify;
-            'notify::enable-write-console-messages-to-stdout': GObject.Object.Notify;
-            'notify::enable-xss-auditor': GObject.Object.Notify;
-            'notify::fantasy-font-family': GObject.Object.Notify;
-            'notify::hardware-acceleration-policy': GObject.Object.Notify;
-            'notify::javascript-can-access-clipboard': GObject.Object.Notify;
-            'notify::javascript-can-open-windows-automatically': GObject.Object.Notify;
-            'notify::load-icons-ignoring-image-load-setting': GObject.Object.Notify;
-            'notify::media-content-types-requiring-hardware-support': GObject.Object.Notify;
-            'notify::media-playback-allows-inline': GObject.Object.Notify;
-            'notify::media-playback-requires-user-gesture': GObject.Object.Notify;
-            'notify::minimum-font-size': GObject.Object.Notify;
-            'notify::monospace-font-family': GObject.Object.Notify;
-            'notify::pictograph-font-family': GObject.Object.Notify;
-            'notify::print-backgrounds': GObject.Object.Notify;
-            'notify::sans-serif-font-family': GObject.Object.Notify;
-            'notify::serif-font-family': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
-            'notify::webrtc-udp-ports-range': GObject.Object.Notify;
-            'notify::zoom-text-only': GObject.Object.Notify;
+            'notify::allow-file-access-from-file-urls': (pspec: GObject.ParamSpec) => void;
+            'notify::allow-modal-dialogs': (pspec: GObject.ParamSpec) => void;
+            'notify::allow-top-navigation-to-data-urls': (pspec: GObject.ParamSpec) => void;
+            'notify::allow-universal-access-from-file-urls': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-load-images': (pspec: GObject.ParamSpec) => void;
+            'notify::cursive-font-family': (pspec: GObject.ParamSpec) => void;
+            'notify::default-charset': (pspec: GObject.ParamSpec) => void;
+            'notify::default-font-family': (pspec: GObject.ParamSpec) => void;
+            'notify::default-font-size': (pspec: GObject.ParamSpec) => void;
+            'notify::default-monospace-font-size': (pspec: GObject.ParamSpec) => void;
+            'notify::disable-web-security': (pspec: GObject.ParamSpec) => void;
+            'notify::draw-compositing-indicators': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-2d-canvas-acceleration': (pspec: GObject.ParamSpec) => void;
+            'notify::enable2d-canvas-acceleration': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-accelerated-2d-canvas': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-accelerated2d-canvas': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-back-forward-navigation-gestures': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-caret-browsing': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-developer-extras': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-dns-prefetching': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-encrypted-media': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-frame-flattening': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-fullscreen': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-html5-database': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-html5-local-storage': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-hyperlink-auditing': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-java': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-javascript': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-javascript-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-media': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-media-capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-media-stream': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-mediasource': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-mock-capture-devices': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-offline-web-application-cache': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-page-cache': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-plugins': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-private-browsing': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-resizable-text-areas': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-site-specific-quirks': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-smooth-scrolling': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-spatial-navigation': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-tabs-to-links': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-webaudio': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-webgl': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-webrtc': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-write-console-messages-to-stdout': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-xss-auditor': (pspec: GObject.ParamSpec) => void;
+            'notify::fantasy-font-family': (pspec: GObject.ParamSpec) => void;
+            'notify::hardware-acceleration-policy': (pspec: GObject.ParamSpec) => void;
+            'notify::javascript-can-access-clipboard': (pspec: GObject.ParamSpec) => void;
+            'notify::javascript-can-open-windows-automatically': (pspec: GObject.ParamSpec) => void;
+            'notify::load-icons-ignoring-image-load-setting': (pspec: GObject.ParamSpec) => void;
+            'notify::media-content-types-requiring-hardware-support': (pspec: GObject.ParamSpec) => void;
+            'notify::media-playback-allows-inline': (pspec: GObject.ParamSpec) => void;
+            'notify::media-playback-requires-user-gesture': (pspec: GObject.ParamSpec) => void;
+            'notify::minimum-font-size': (pspec: GObject.ParamSpec) => void;
+            'notify::monospace-font-family': (pspec: GObject.ParamSpec) => void;
+            'notify::pictograph-font-family': (pspec: GObject.ParamSpec) => void;
+            'notify::print-backgrounds': (pspec: GObject.ParamSpec) => void;
+            'notify::sans-serif-font-family': (pspec: GObject.ParamSpec) => void;
+            'notify::serif-font-family': (pspec: GObject.ParamSpec) => void;
+            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
+            'notify::webrtc-udp-ports-range': (pspec: GObject.ParamSpec) => void;
+            'notify::zoom-text-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10342,6 +10487,14 @@ export namespace WebKit2 {
          */
         get zoomTextOnly(): boolean;
         set zoomTextOnly(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Settings.SignalSignatures;
 
         // Constructors
 
@@ -10353,16 +10506,19 @@ export namespace WebKit2 {
 
         // Signals
 
-        connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            callback: Settings.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11105,7 +11261,7 @@ export namespace WebKit2 {
     namespace URIRequest {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::uri': GObject.Object.Notify;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11132,6 +11288,14 @@ export namespace WebKit2 {
          */
         get uri(): string;
         set uri(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: URIRequest.SignalSignatures;
 
         // Constructors
 
@@ -11145,17 +11309,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof URIRequest.SignalSignatures>(
             signal: K,
-            callback: URIRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, URIRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof URIRequest.SignalSignatures>(
             signal: K,
-            callback: URIRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, URIRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof URIRequest.SignalSignatures>(
             signal: K,
-            ...args: URIRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<URIRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11186,12 +11350,12 @@ export namespace WebKit2 {
     namespace URIResponse {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::content-length': GObject.Object.Notify;
-            'notify::http-headers': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
-            'notify::status-code': GObject.Object.Notify;
-            'notify::suggested-filename': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
+            'notify::content-length': (pspec: GObject.ParamSpec) => void;
+            'notify::http-headers': (pspec: GObject.ParamSpec) => void;
+            'notify::mime-type': (pspec: GObject.ParamSpec) => void;
+            'notify::status-code': (pspec: GObject.ParamSpec) => void;
+            'notify::suggested-filename': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11267,6 +11431,14 @@ export namespace WebKit2 {
          * The URI for which the response was made.
          */
         get uri(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: URIResponse.SignalSignatures;
 
         // Constructors
 
@@ -11278,17 +11450,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof URIResponse.SignalSignatures>(
             signal: K,
-            callback: URIResponse.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, URIResponse.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof URIResponse.SignalSignatures>(
             signal: K,
-            callback: URIResponse.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, URIResponse.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof URIResponse.SignalSignatures>(
             signal: K,
-            ...args: URIResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<URIResponse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11360,6 +11532,14 @@ export namespace WebKit2 {
      */
     class URISchemeRequest extends GObject.Object {
         static $gtype: GObject.GType<URISchemeRequest>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: URISchemeRequest.SignalSignatures;
 
         // Constructors
 
@@ -11371,17 +11551,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof URISchemeRequest.SignalSignatures>(
             signal: K,
-            callback: URISchemeRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, URISchemeRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof URISchemeRequest.SignalSignatures>(
             signal: K,
-            callback: URISchemeRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, URISchemeRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof URISchemeRequest.SignalSignatures>(
             signal: K,
-            ...args: URISchemeRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<URISchemeRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11444,8 +11624,8 @@ export namespace WebKit2 {
     namespace URISchemeResponse {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::stream': GObject.Object.Notify;
-            'notify::stream-length': GObject.Object.Notify;
+            'notify::stream': (pspec: GObject.ParamSpec) => void;
+            'notify::stream-length': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11488,6 +11668,14 @@ export namespace WebKit2 {
          * The input stream length in bytes, `-1` for unknown length.
          */
         set streamLength(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: URISchemeResponse.SignalSignatures;
 
         // Constructors
 
@@ -11501,17 +11689,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof URISchemeResponse.SignalSignatures>(
             signal: K,
-            callback: URISchemeResponse.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, URISchemeResponse.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof URISchemeResponse.SignalSignatures>(
             signal: K,
-            callback: URISchemeResponse.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, URISchemeResponse.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof URISchemeResponse.SignalSignatures>(
             signal: K,
-            ...args: URISchemeResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<URISchemeResponse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11543,7 +11731,7 @@ export namespace WebKit2 {
     namespace UserContentFilterStore {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::path': GObject.Object.Notify;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11579,6 +11767,14 @@ export namespace WebKit2 {
          * directory where user content filters are stored on disk.
          */
         get path(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UserContentFilterStore.SignalSignatures;
 
         // Constructors
 
@@ -11592,17 +11788,19 @@ export namespace WebKit2 {
 
         connect<K extends keyof UserContentFilterStore.SignalSignatures>(
             signal: K,
-            callback: UserContentFilterStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserContentFilterStore.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserContentFilterStore.SignalSignatures>(
             signal: K,
-            callback: UserContentFilterStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserContentFilterStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserContentFilterStore.SignalSignatures>(
             signal: K,
-            ...args: UserContentFilterStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UserContentFilterStore.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11899,20 +12097,13 @@ export namespace WebKit2 {
     }
 
     namespace UserContentManager {
-        // Signal callback interfaces
-
-        interface ScriptMessageReceived {
-            (_source: UserContentManager, value: JavascriptResult): void;
-        }
-
-        interface ScriptMessageWithReplyReceived {
-            (_source: UserContentManager, value: JavaScriptCore.Value, reply: ScriptMessageReply): boolean | void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'script-message-received': ScriptMessageReceived;
-            'script-message-with-reply-received': ScriptMessageWithReplyReceived;
+            'script-message-received': (arg0: JavascriptResult) => void;
+            'script-message-with-reply-received': (
+                arg0: JavaScriptCore.Value,
+                arg1: ScriptMessageReply,
+            ) => boolean | void;
         }
 
         // Constructor properties interface
@@ -11937,6 +12128,14 @@ export namespace WebKit2 {
      */
     class UserContentManager extends GObject.Object {
         static $gtype: GObject.GType<UserContentManager>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UserContentManager.SignalSignatures;
 
         // Constructors
 
@@ -11950,17 +12149,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof UserContentManager.SignalSignatures>(
             signal: K,
-            callback: UserContentManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserContentManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserContentManager.SignalSignatures>(
             signal: K,
-            callback: UserContentManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserContentManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserContentManager.SignalSignatures>(
             signal: K,
-            ...args: UserContentManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UserContentManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12126,8 +12325,8 @@ export namespace WebKit2 {
     namespace UserMediaPermissionRequest {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::is-for-audio-device': GObject.Object.Notify;
-            'notify::is-for-video-device': GObject.Object.Notify;
+            'notify::is-for-audio-device': (pspec: GObject.ParamSpec) => void;
+            'notify::is-for-video-device': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12171,6 +12370,14 @@ export namespace WebKit2 {
          * Whether the media device to which the permission was requested has a video capture capability or not.
          */
         get isForVideoDevice(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UserMediaPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -12182,17 +12389,19 @@ export namespace WebKit2 {
 
         connect<K extends keyof UserMediaPermissionRequest.SignalSignatures>(
             signal: K,
-            callback: UserMediaPermissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserMediaPermissionRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserMediaPermissionRequest.SignalSignatures>(
             signal: K,
-            callback: UserMediaPermissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserMediaPermissionRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserMediaPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: UserMediaPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UserMediaPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12657,9 +12866,9 @@ export namespace WebKit2 {
     namespace UserMessage {
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-            'notify::fd-list': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parameters': GObject.Object.Notify;
+            'notify::fd-list': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parameters': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12705,6 +12914,14 @@ export namespace WebKit2 {
          * allowed.
          */
         get parameters(): GLib.Variant;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UserMessage.SignalSignatures;
 
         // Constructors
 
@@ -12724,17 +12941,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof UserMessage.SignalSignatures>(
             signal: K,
-            callback: UserMessage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserMessage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserMessage.SignalSignatures>(
             signal: K,
-            callback: UserMessage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserMessage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserMessage.SignalSignatures>(
             signal: K,
-            ...args: UserMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UserMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12767,41 +12984,19 @@ export namespace WebKit2 {
     }
 
     namespace WebContext {
-        // Signal callback interfaces
-
-        interface AutomationStarted {
-            (_source: WebContext, session: AutomationSession): void;
-        }
-
-        interface DownloadStarted {
-            (_source: WebContext, download: Download): void;
-        }
-
-        interface InitializeNotificationPermissions {
-            (_source: WebContext): void;
-        }
-
-        interface InitializeWebExtensions {
-            (_source: WebContext): void;
-        }
-
-        interface UserMessageReceived {
-            (_source: WebContext, message: UserMessage): boolean | void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'automation-started': AutomationStarted;
-            'download-started': DownloadStarted;
-            'initialize-notification-permissions': InitializeNotificationPermissions;
-            'initialize-web-extensions': InitializeWebExtensions;
-            'user-message-received': UserMessageReceived;
-            'notify::local-storage-directory': GObject.Object.Notify;
-            'notify::memory-pressure-settings': GObject.Object.Notify;
-            'notify::process-swap-on-cross-site-navigation-enabled': GObject.Object.Notify;
-            'notify::time-zone-override': GObject.Object.Notify;
-            'notify::use-system-appearance-for-scrollbars': GObject.Object.Notify;
-            'notify::website-data-manager': GObject.Object.Notify;
+            'automation-started': (arg0: AutomationSession) => void;
+            'download-started': (arg0: Download) => void;
+            'initialize-notification-permissions': () => void;
+            'initialize-web-extensions': () => void;
+            'user-message-received': (arg0: UserMessage) => boolean | void;
+            'notify::local-storage-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::memory-pressure-settings': (pspec: GObject.ParamSpec) => void;
+            'notify::process-swap-on-cross-site-navigation-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::time-zone-override': (pspec: GObject.ParamSpec) => void;
+            'notify::use-system-appearance-for-scrollbars': (pspec: GObject.ParamSpec) => void;
+            'notify::website-data-manager': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12938,6 +13133,14 @@ export namespace WebKit2 {
          * The #WebKitWebsiteDataManager associated with this context.
          */
         get websiteDataManager(): WebsiteDataManager;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WebContext.SignalSignatures;
 
         // Constructors
 
@@ -12955,17 +13158,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof WebContext.SignalSignatures>(
             signal: K,
-            callback: WebContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebContext.SignalSignatures>(
             signal: K,
-            callback: WebContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebContext.SignalSignatures>(
             signal: K,
-            ...args: WebContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WebContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13442,38 +13645,16 @@ export namespace WebKit2 {
     }
 
     namespace WebInspector {
-        // Signal callback interfaces
-
-        interface Attach {
-            (_source: WebInspector): boolean | void;
-        }
-
-        interface BringToFront {
-            (_source: WebInspector): boolean | void;
-        }
-
-        interface Closed {
-            (_source: WebInspector): void;
-        }
-
-        interface Detach {
-            (_source: WebInspector): boolean | void;
-        }
-
-        interface OpenWindow {
-            (_source: WebInspector): boolean | void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            attach: Attach;
-            'bring-to-front': BringToFront;
-            closed: Closed;
-            detach: Detach;
-            'open-window': OpenWindow;
-            'notify::attached-height': GObject.Object.Notify;
-            'notify::can-attach': GObject.Object.Notify;
-            'notify::inspected-uri': GObject.Object.Notify;
+            attach: () => boolean | void;
+            'bring-to-front': () => boolean | void;
+            closed: () => void;
+            detach: () => boolean | void;
+            'open-window': () => boolean | void;
+            'notify::attached-height': (pspec: GObject.ParamSpec) => void;
+            'notify::can-attach': (pspec: GObject.ParamSpec) => void;
+            'notify::inspected-uri': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13544,6 +13725,14 @@ export namespace WebKit2 {
          * The URI that is currently being inspected.
          */
         get inspectedUri(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WebInspector.SignalSignatures;
 
         // Constructors
 
@@ -13555,17 +13744,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof WebInspector.SignalSignatures>(
             signal: K,
-            callback: WebInspector.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebInspector.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebInspector.SignalSignatures>(
             signal: K,
-            callback: WebInspector.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebInspector.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebInspector.SignalSignatures>(
             signal: K,
-            ...args: WebInspector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WebInspector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13635,37 +13824,15 @@ export namespace WebKit2 {
     }
 
     namespace WebResource {
-        // Signal callback interfaces
-
-        interface Failed {
-            (_source: WebResource, error: GLib.Error): void;
-        }
-
-        interface FailedWithTlsErrors {
-            (_source: WebResource, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags): void;
-        }
-
-        interface Finished {
-            (_source: WebResource): void;
-        }
-
-        interface ReceivedData {
-            (_source: WebResource, data_length: number): void;
-        }
-
-        interface SentRequest {
-            (_source: WebResource, request: URIRequest, redirected_response: URIResponse): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            failed: Failed;
-            'failed-with-tls-errors': FailedWithTlsErrors;
-            finished: Finished;
-            'received-data': ReceivedData;
-            'sent-request': SentRequest;
-            'notify::response': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
+            failed: (arg0: GLib.Error) => void;
+            'failed-with-tls-errors': (arg0: Gio.TlsCertificate, arg1: Gio.TlsCertificateFlags) => void;
+            finished: () => void;
+            'received-data': (arg0: number) => void;
+            'sent-request': (arg0: URIRequest, arg1: URIResponse) => void;
+            'notify::response': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13703,6 +13870,14 @@ export namespace WebKit2 {
          * See webkit_web_resource_get_uri() for more details.
          */
         get uri(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WebResource.SignalSignatures;
 
         // Constructors
 
@@ -13714,17 +13889,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof WebResource.SignalSignatures>(
             signal: K,
-            callback: WebResource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebResource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebResource.SignalSignatures>(
             signal: K,
-            callback: WebResource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebResource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebResource.SignalSignatures>(
             signal: K,
-            ...args: WebResource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WebResource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13810,226 +13985,106 @@ export namespace WebKit2 {
     }
 
     namespace WebView {
-        // Signal callback interfaces
-
-        interface Authenticate {
-            (_source: WebView, request: AuthenticationRequest): boolean | void;
-        }
-
-        interface Close {
-            (_source: WebView): void;
-        }
-
-        interface ContextMenu {
-            (
-                _source: WebView,
-                context_menu: ContextMenu,
-                event: Gdk.Event,
-                hit_test_result: HitTestResult,
-            ): boolean | void;
-        }
-
-        interface ContextMenuDismissed {
-            (_source: WebView): void;
-        }
-
-        interface Create {
-            (_source: WebView, navigation_action: NavigationAction): Gtk.Widget;
-        }
-
-        interface DecidePolicy {
-            (_source: WebView, decision: PolicyDecision, decision_type: PolicyDecisionType): boolean | void;
-        }
-
-        interface EnterFullscreen {
-            (_source: WebView): boolean | void;
-        }
-
-        interface InsecureContentDetected {
-            (_source: WebView, event: InsecureContentEvent): void;
-        }
-
-        interface LeaveFullscreen {
-            (_source: WebView): boolean | void;
-        }
-
-        interface LoadChanged {
-            (_source: WebView, load_event: LoadEvent): void;
-        }
-
-        interface LoadFailed {
-            (_source: WebView, load_event: LoadEvent, failing_uri: string, error: GLib.Error): boolean | void;
-        }
-
-        interface LoadFailedWithTlsErrors {
-            (
-                _source: WebView,
-                failing_uri: string,
-                certificate: Gio.TlsCertificate,
-                errors: Gio.TlsCertificateFlags,
-            ): boolean | void;
-        }
-
-        interface MouseTargetChanged {
-            (_source: WebView, hit_test_result: HitTestResult, modifiers: number): void;
-        }
-
-        interface PermissionRequest {
-            (_source: WebView, request: PermissionRequest): boolean | void;
-        }
-
-        interface Print {
-            (_source: WebView, print_operation: PrintOperation): boolean | void;
-        }
-
-        interface QueryPermissionState {
-            (_source: WebView, query: PermissionStateQuery): boolean | void;
-        }
-
-        interface ReadyToShow {
-            (_source: WebView): void;
-        }
-
-        interface ResourceLoadStarted {
-            (_source: WebView, resource: WebResource, request: URIRequest): void;
-        }
-
-        interface RunAsModal {
-            (_source: WebView): void;
-        }
-
-        interface RunColorChooser {
-            (_source: WebView, request: ColorChooserRequest): boolean | void;
-        }
-
-        interface RunFileChooser {
-            (_source: WebView, request: FileChooserRequest): boolean | void;
-        }
-
-        interface ScriptDialog {
-            (_source: WebView, dialog: ScriptDialog): boolean | void;
-        }
-
-        interface ShowNotification {
-            (_source: WebView, notification: Notification): boolean | void;
-        }
-
-        interface ShowOptionMenu {
-            (_source: WebView, menu: OptionMenu, event: Gdk.Event, rectangle: Gdk.Rectangle): boolean | void;
-        }
-
-        interface SubmitForm {
-            (_source: WebView, request: FormSubmissionRequest): void;
-        }
-
-        interface UserMessageReceived {
-            (_source: WebView, message: UserMessage): boolean | void;
-        }
-
-        interface WebProcessCrashed {
-            (_source: WebView): boolean | void;
-        }
-
-        interface WebProcessTerminated {
-            (_source: WebView, reason: WebProcessTerminationReason): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends WebViewBase.SignalSignatures {
-            authenticate: Authenticate;
-            close: Close;
-            'context-menu': ContextMenu;
-            'context-menu-dismissed': ContextMenuDismissed;
-            create: Create;
-            'decide-policy': DecidePolicy;
-            'enter-fullscreen': EnterFullscreen;
-            'insecure-content-detected': InsecureContentDetected;
-            'leave-fullscreen': LeaveFullscreen;
-            'load-changed': LoadChanged;
-            'load-failed': LoadFailed;
-            'load-failed-with-tls-errors': LoadFailedWithTlsErrors;
-            'mouse-target-changed': MouseTargetChanged;
-            'permission-request': PermissionRequest;
-            print: Print;
-            'query-permission-state': QueryPermissionState;
-            'ready-to-show': ReadyToShow;
-            'resource-load-started': ResourceLoadStarted;
-            'run-as-modal': RunAsModal;
-            'run-color-chooser': RunColorChooser;
-            'run-file-chooser': RunFileChooser;
-            'script-dialog': ScriptDialog;
-            'show-notification': ShowNotification;
-            'show-option-menu': ShowOptionMenu;
-            'submit-form': SubmitForm;
-            'user-message-received': UserMessageReceived;
-            'web-process-crashed': WebProcessCrashed;
-            'web-process-terminated': WebProcessTerminated;
-            'notify::automation-presentation-type': GObject.Object.Notify;
-            'notify::camera-capture-state': GObject.Object.Notify;
-            'notify::default-content-security-policy': GObject.Object.Notify;
-            'notify::display-capture-state': GObject.Object.Notify;
-            'notify::editable': GObject.Object.Notify;
-            'notify::estimated-load-progress': GObject.Object.Notify;
-            'notify::favicon': GObject.Object.Notify;
-            'notify::is-controlled-by-automation': GObject.Object.Notify;
-            'notify::is-ephemeral': GObject.Object.Notify;
-            'notify::is-loading': GObject.Object.Notify;
-            'notify::is-muted': GObject.Object.Notify;
-            'notify::is-playing-audio': GObject.Object.Notify;
-            'notify::is-web-process-responsive': GObject.Object.Notify;
-            'notify::microphone-capture-state': GObject.Object.Notify;
-            'notify::page-id': GObject.Object.Notify;
-            'notify::related-view': GObject.Object.Notify;
-            'notify::settings': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
-            'notify::user-content-manager': GObject.Object.Notify;
-            'notify::web-context': GObject.Object.Notify;
-            'notify::web-extension-mode': GObject.Object.Notify;
-            'notify::website-policies': GObject.Object.Notify;
-            'notify::zoom-level': GObject.Object.Notify;
-            'notify::border-width': GObject.Object.Notify;
-            'notify::child': GObject.Object.Notify;
-            'notify::resize-mode': GObject.Object.Notify;
-            'notify::app-paintable': GObject.Object.Notify;
-            'notify::can-default': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::composite-child': GObject.Object.Notify;
-            'notify::double-buffered': GObject.Object.Notify;
-            'notify::events': GObject.Object.Notify;
-            'notify::expand': GObject.Object.Notify;
-            'notify::focus-on-click': GObject.Object.Notify;
-            'notify::halign': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
-            'notify::hexpand': GObject.Object.Notify;
-            'notify::hexpand-set': GObject.Object.Notify;
-            'notify::is-focus': GObject.Object.Notify;
-            'notify::margin': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-end': GObject.Object.Notify;
-            'notify::margin-left': GObject.Object.Notify;
-            'notify::margin-right': GObject.Object.Notify;
-            'notify::margin-start': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::no-show-all': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
-            'notify::valign': GObject.Object.Notify;
-            'notify::vexpand': GObject.Object.Notify;
-            'notify::vexpand-set': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
-            'notify::window': GObject.Object.Notify;
+            authenticate: (arg0: AuthenticationRequest) => boolean | void;
+            close: () => void;
+            'context-menu': (arg0: ContextMenu, arg1: Gdk.Event, arg2: HitTestResult) => boolean | void;
+            'context-menu-dismissed': () => void;
+            create: (arg0: NavigationAction) => Gtk.Widget;
+            'decide-policy': (arg0: PolicyDecision, arg1: PolicyDecisionType) => boolean | void;
+            'enter-fullscreen': () => boolean | void;
+            'insecure-content-detected': (arg0: InsecureContentEvent) => void;
+            'leave-fullscreen': () => boolean | void;
+            'load-changed': (arg0: LoadEvent) => void;
+            'load-failed': (arg0: LoadEvent, arg1: string, arg2: GLib.Error) => boolean | void;
+            'load-failed-with-tls-errors': (
+                arg0: string,
+                arg1: Gio.TlsCertificate,
+                arg2: Gio.TlsCertificateFlags,
+            ) => boolean | void;
+            'mouse-target-changed': (arg0: HitTestResult, arg1: number) => void;
+            'permission-request': (arg0: PermissionRequest) => boolean | void;
+            print: (arg0: PrintOperation) => boolean | void;
+            'query-permission-state': (arg0: PermissionStateQuery) => boolean | void;
+            'ready-to-show': () => void;
+            'resource-load-started': (arg0: WebResource, arg1: URIRequest) => void;
+            'run-as-modal': () => void;
+            'run-color-chooser': (arg0: ColorChooserRequest) => boolean | void;
+            'run-file-chooser': (arg0: FileChooserRequest) => boolean | void;
+            'script-dialog': (arg0: ScriptDialog) => boolean | void;
+            'show-notification': (arg0: Notification) => boolean | void;
+            'show-option-menu': (arg0: OptionMenu, arg1: Gdk.Event, arg2: Gdk.Rectangle) => boolean | void;
+            'submit-form': (arg0: FormSubmissionRequest) => void;
+            'user-message-received': (arg0: UserMessage) => boolean | void;
+            'web-process-crashed': () => boolean | void;
+            'web-process-terminated': (arg0: WebProcessTerminationReason) => void;
+            'notify::automation-presentation-type': (pspec: GObject.ParamSpec) => void;
+            'notify::camera-capture-state': (pspec: GObject.ParamSpec) => void;
+            'notify::default-content-security-policy': (pspec: GObject.ParamSpec) => void;
+            'notify::display-capture-state': (pspec: GObject.ParamSpec) => void;
+            'notify::editable': (pspec: GObject.ParamSpec) => void;
+            'notify::estimated-load-progress': (pspec: GObject.ParamSpec) => void;
+            'notify::favicon': (pspec: GObject.ParamSpec) => void;
+            'notify::is-controlled-by-automation': (pspec: GObject.ParamSpec) => void;
+            'notify::is-ephemeral': (pspec: GObject.ParamSpec) => void;
+            'notify::is-loading': (pspec: GObject.ParamSpec) => void;
+            'notify::is-muted': (pspec: GObject.ParamSpec) => void;
+            'notify::is-playing-audio': (pspec: GObject.ParamSpec) => void;
+            'notify::is-web-process-responsive': (pspec: GObject.ParamSpec) => void;
+            'notify::microphone-capture-state': (pspec: GObject.ParamSpec) => void;
+            'notify::page-id': (pspec: GObject.ParamSpec) => void;
+            'notify::related-view': (pspec: GObject.ParamSpec) => void;
+            'notify::settings': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::user-content-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::web-context': (pspec: GObject.ParamSpec) => void;
+            'notify::web-extension-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::website-policies': (pspec: GObject.ParamSpec) => void;
+            'notify::zoom-level': (pspec: GObject.ParamSpec) => void;
+            'notify::border-width': (pspec: GObject.ParamSpec) => void;
+            'notify::child': (pspec: GObject.ParamSpec) => void;
+            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
+            'notify::can-default': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
+            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
+            'notify::events': (pspec: GObject.ParamSpec) => void;
+            'notify::expand': (pspec: GObject.ParamSpec) => void;
+            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
+            'notify::halign': (pspec: GObject.ParamSpec) => void;
+            'notify::has-default': (pspec: GObject.ParamSpec) => void;
+            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::height-request': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::margin': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
+            'notify::valign': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14460,6 +14515,14 @@ export namespace WebKit2 {
          */
         get zoomLevel(): number;
         set zoomLevel(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WebView.SignalSignatures;
 
         // Constructors
 
@@ -14479,16 +14542,19 @@ export namespace WebKit2 {
 
         // Signals
 
-        connect<K extends keyof WebView.SignalSignatures>(signal: K, callback: WebView.SignalSignatures[K]): number;
+        connect<K extends keyof WebView.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WebView.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebView.SignalSignatures>(
             signal: K,
-            callback: WebView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebView.SignalSignatures>(
             signal: K,
-            ...args: WebView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WebView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -16565,48 +16631,48 @@ export namespace WebKit2 {
     namespace WebViewBase {
         // Signal signatures
         interface SignalSignatures extends Gtk.Container.SignalSignatures {
-            'notify::border-width': GObject.Object.Notify;
-            'notify::child': GObject.Object.Notify;
-            'notify::resize-mode': GObject.Object.Notify;
-            'notify::app-paintable': GObject.Object.Notify;
-            'notify::can-default': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::composite-child': GObject.Object.Notify;
-            'notify::double-buffered': GObject.Object.Notify;
-            'notify::events': GObject.Object.Notify;
-            'notify::expand': GObject.Object.Notify;
-            'notify::focus-on-click': GObject.Object.Notify;
-            'notify::halign': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
-            'notify::hexpand': GObject.Object.Notify;
-            'notify::hexpand-set': GObject.Object.Notify;
-            'notify::is-focus': GObject.Object.Notify;
-            'notify::margin': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-end': GObject.Object.Notify;
-            'notify::margin-left': GObject.Object.Notify;
-            'notify::margin-right': GObject.Object.Notify;
-            'notify::margin-start': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::no-show-all': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
-            'notify::valign': GObject.Object.Notify;
-            'notify::vexpand': GObject.Object.Notify;
-            'notify::vexpand-set': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
-            'notify::window': GObject.Object.Notify;
+            'notify::border-width': (pspec: GObject.ParamSpec) => void;
+            'notify::child': (pspec: GObject.ParamSpec) => void;
+            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
+            'notify::can-default': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
+            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
+            'notify::events': (pspec: GObject.ParamSpec) => void;
+            'notify::expand': (pspec: GObject.ParamSpec) => void;
+            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
+            'notify::halign': (pspec: GObject.ParamSpec) => void;
+            'notify::has-default': (pspec: GObject.ParamSpec) => void;
+            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::height-request': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::margin': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
+            'notify::valign': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -16619,6 +16685,14 @@ export namespace WebKit2 {
 
     class WebViewBase extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WebViewBase>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WebViewBase.SignalSignatures;
 
         // Constructors
 
@@ -16630,17 +16704,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof WebViewBase.SignalSignatures>(
             signal: K,
-            callback: WebViewBase.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebViewBase.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebViewBase.SignalSignatures>(
             signal: K,
-            callback: WebViewBase.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebViewBase.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebViewBase.SignalSignatures>(
             signal: K,
-            ...args: WebViewBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WebViewBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -17106,6 +17180,14 @@ export namespace WebKit2 {
      */
     class WebsiteDataAccessPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<WebsiteDataAccessPermissionRequest>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WebsiteDataAccessPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -17117,18 +17199,21 @@ export namespace WebKit2 {
 
         connect<K extends keyof WebsiteDataAccessPermissionRequest.SignalSignatures>(
             signal: K,
-            callback: WebsiteDataAccessPermissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebsiteDataAccessPermissionRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebsiteDataAccessPermissionRequest.SignalSignatures>(
             signal: K,
-            callback: WebsiteDataAccessPermissionRequest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebsiteDataAccessPermissionRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebsiteDataAccessPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: WebsiteDataAccessPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<WebsiteDataAccessPermissionRequest.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -17607,20 +17692,20 @@ export namespace WebKit2 {
     namespace WebsiteDataManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::base-cache-directory': GObject.Object.Notify;
-            'notify::base-data-directory': GObject.Object.Notify;
-            'notify::disk-cache-directory': GObject.Object.Notify;
-            'notify::dom-cache-directory': GObject.Object.Notify;
-            'notify::hsts-cache-directory': GObject.Object.Notify;
-            'notify::indexeddb-directory': GObject.Object.Notify;
-            'notify::is-ephemeral': GObject.Object.Notify;
-            'notify::itp-directory': GObject.Object.Notify;
-            'notify::local-storage-directory': GObject.Object.Notify;
-            'notify::offline-application-cache-directory': GObject.Object.Notify;
-            'notify::origin-storage-ratio': GObject.Object.Notify;
-            'notify::service-worker-registrations-directory': GObject.Object.Notify;
-            'notify::total-storage-ratio': GObject.Object.Notify;
-            'notify::websql-directory': GObject.Object.Notify;
+            'notify::base-cache-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::base-data-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::disk-cache-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::dom-cache-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::hsts-cache-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::indexeddb-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::is-ephemeral': (pspec: GObject.ParamSpec) => void;
+            'notify::itp-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::local-storage-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::offline-application-cache-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::origin-storage-ratio': (pspec: GObject.ParamSpec) => void;
+            'notify::service-worker-registrations-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::total-storage-ratio': (pspec: GObject.ParamSpec) => void;
+            'notify::websql-directory': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -17808,6 +17893,14 @@ export namespace WebKit2 {
          * The directory where WebSQL databases will be stored.
          */
         get websqlDirectory(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WebsiteDataManager.SignalSignatures;
 
         // Constructors
 
@@ -17821,17 +17914,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof WebsiteDataManager.SignalSignatures>(
             signal: K,
-            callback: WebsiteDataManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebsiteDataManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebsiteDataManager.SignalSignatures>(
             signal: K,
-            callback: WebsiteDataManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebsiteDataManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebsiteDataManager.SignalSignatures>(
             signal: K,
-            ...args: WebsiteDataManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WebsiteDataManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -18198,7 +18291,7 @@ export namespace WebKit2 {
     namespace WebsitePolicies {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::autoplay': GObject.Object.Notify;
+            'notify::autoplay': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -18223,6 +18316,14 @@ export namespace WebKit2 {
          * The #WebKitAutoplayPolicy of #WebKitWebsitePolicies.
          */
         get autoplay(): AutoplayPolicy;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WebsitePolicies.SignalSignatures;
 
         // Constructors
 
@@ -18236,17 +18337,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof WebsitePolicies.SignalSignatures>(
             signal: K,
-            callback: WebsitePolicies.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebsitePolicies.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebsitePolicies.SignalSignatures>(
             signal: K,
-            callback: WebsitePolicies.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebsitePolicies.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebsitePolicies.SignalSignatures>(
             signal: K,
-            ...args: WebsitePolicies.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WebsitePolicies.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -18262,14 +18363,14 @@ export namespace WebKit2 {
     namespace WindowProperties {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::fullscreen': GObject.Object.Notify;
-            'notify::geometry': GObject.Object.Notify;
-            'notify::locationbar-visible': GObject.Object.Notify;
-            'notify::menubar-visible': GObject.Object.Notify;
-            'notify::resizable': GObject.Object.Notify;
-            'notify::scrollbars-visible': GObject.Object.Notify;
-            'notify::statusbar-visible': GObject.Object.Notify;
-            'notify::toolbar-visible': GObject.Object.Notify;
+            'notify::fullscreen': (pspec: GObject.ParamSpec) => void;
+            'notify::geometry': (pspec: GObject.ParamSpec) => void;
+            'notify::locationbar-visible': (pspec: GObject.ParamSpec) => void;
+            'notify::menubar-visible': (pspec: GObject.ParamSpec) => void;
+            'notify::resizable': (pspec: GObject.ParamSpec) => void;
+            'notify::scrollbars-visible': (pspec: GObject.ParamSpec) => void;
+            'notify::statusbar-visible': (pspec: GObject.ParamSpec) => void;
+            'notify::toolbar-visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -18404,6 +18505,14 @@ export namespace WebKit2 {
          * Whether the toolbar should be visible for the window.
          */
         get toolbarVisible(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WindowProperties.SignalSignatures;
 
         // Constructors
 
@@ -18415,17 +18524,17 @@ export namespace WebKit2 {
 
         connect<K extends keyof WindowProperties.SignalSignatures>(
             signal: K,
-            callback: WindowProperties.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WindowProperties.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WindowProperties.SignalSignatures>(
             signal: K,
-            callback: WindowProperties.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WindowProperties.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WindowProperties.SignalSignatures>(
             signal: K,
-            ...args: WindowProperties.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WindowProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

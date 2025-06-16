@@ -113,7 +113,7 @@ export namespace Gxps {
     namespace CoreProperties {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::source': GObject.Object.Notify;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -133,6 +133,14 @@ export namespace Gxps {
         // Properties
 
         set source(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CoreProperties.SignalSignatures;
 
         // Constructors
 
@@ -144,17 +152,17 @@ export namespace Gxps {
 
         connect<K extends keyof CoreProperties.SignalSignatures>(
             signal: K,
-            callback: CoreProperties.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CoreProperties.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CoreProperties.SignalSignatures>(
             signal: K,
-            callback: CoreProperties.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CoreProperties.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CoreProperties.SignalSignatures>(
             signal: K,
-            ...args: CoreProperties.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CoreProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -772,7 +780,7 @@ export namespace Gxps {
     namespace Document {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::source': GObject.Object.Notify;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -792,6 +800,14 @@ export namespace Gxps {
         // Properties
 
         set source(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Document.SignalSignatures;
 
         // Constructors
 
@@ -801,16 +817,19 @@ export namespace Gxps {
 
         // Signals
 
-        connect<K extends keyof Document.SignalSignatures>(signal: K, callback: Document.SignalSignatures[K]): number;
+        connect<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Document.SignalSignatures>(
             signal: K,
-            callback: Document.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Document.SignalSignatures>(
             signal: K,
-            ...args: Document.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Document.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1385,7 +1404,7 @@ export namespace Gxps {
     namespace DocumentStructure {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::source': GObject.Object.Notify;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1405,6 +1424,14 @@ export namespace Gxps {
         // Properties
 
         set source(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentStructure.SignalSignatures;
 
         // Constructors
 
@@ -1416,17 +1443,17 @@ export namespace Gxps {
 
         connect<K extends keyof DocumentStructure.SignalSignatures>(
             signal: K,
-            callback: DocumentStructure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentStructure.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentStructure.SignalSignatures>(
             signal: K,
-            callback: DocumentStructure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentStructure.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentStructure.SignalSignatures>(
             signal: K,
-            ...args: DocumentStructure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentStructure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1476,7 +1503,7 @@ export namespace Gxps {
     namespace File {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::file': GObject.Object.Notify;
+            'notify::file': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1496,6 +1523,14 @@ export namespace Gxps {
         // Properties
 
         set file(val: Gio.File);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: File.SignalSignatures;
 
         // Constructors
 
@@ -1507,13 +1542,19 @@ export namespace Gxps {
 
         // Signals
 
-        connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        connect<K extends keyof File.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, File.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        connect_after<K extends keyof File.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, File.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof File.SignalSignatures>(
             signal: K,
-            ...args: File.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<File.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2085,7 +2126,7 @@ export namespace Gxps {
     namespace Page {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::source': GObject.Object.Notify;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2105,6 +2146,14 @@ export namespace Gxps {
         // Properties
 
         set source(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Page.SignalSignatures;
 
         // Constructors
 
@@ -2114,13 +2163,19 @@ export namespace Gxps {
 
         // Signals
 
-        connect<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
+        connect<K extends keyof Page.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
+        connect_after<K extends keyof Page.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Page.SignalSignatures>(
             signal: K,
-            ...args: Page.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Page.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

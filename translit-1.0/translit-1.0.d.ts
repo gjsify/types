@@ -35,7 +35,7 @@ export namespace Translit {
     namespace Transliterator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -54,6 +54,14 @@ export namespace Translit {
          * The transliteration which #TranslitTransliterator supports
          */
         get name(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Transliterator.SignalSignatures;
 
         // Constructors
 
@@ -65,17 +73,17 @@ export namespace Translit {
 
         connect<K extends keyof Transliterator.SignalSignatures>(
             signal: K,
-            callback: Transliterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Transliterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Transliterator.SignalSignatures>(
             signal: K,
-            callback: Transliterator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Transliterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Transliterator.SignalSignatures>(
             signal: K,
-            ...args: Transliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Transliterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

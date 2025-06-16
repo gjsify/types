@@ -333,49 +333,23 @@ export namespace GPaste {
         IGNORE_AUTOREPEAT,
     }
     namespace Client {
-        // Signal callback interfaces
-
-        interface DeleteHistory {
-            (_source: Client, history: string): void;
-        }
-
-        interface EmptyHistory {
-            (_source: Client, history: string): void;
-        }
-
-        interface ShowHistory {
-            (_source: Client): void;
-        }
-
-        interface SwitchHistory {
-            (_source: Client, history: string): void;
-        }
-
-        interface Tracking {
-            (_source: Client, object: boolean): void;
-        }
-
-        interface Update {
-            (_source: Client, action: UpdateAction, target: UpdateTarget, index: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'delete-history': DeleteHistory;
-            'empty-history': EmptyHistory;
-            'show-history': ShowHistory;
-            'switch-history': SwitchHistory;
-            tracking: Tracking;
-            update: Update;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
+            'delete-history': (arg0: string) => void;
+            'empty-history': (arg0: string) => void;
+            'show-history': () => void;
+            'switch-history': (arg0: string) => void;
+            tracking: (arg0: boolean) => void;
+            update: (arg0: UpdateAction, arg1: UpdateTarget, arg2: number) => void;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -389,6 +363,14 @@ export namespace GPaste {
 
     class Client extends Gio.DBusProxy implements Gio.AsyncInitable<Client>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Client>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -405,13 +387,19 @@ export namespace GPaste {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2107,6 +2095,14 @@ export namespace GPaste {
 
     class ClientItem extends GObject.Object {
         static $gtype: GObject.GType<ClientItem>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientItem.SignalSignatures;
 
         // Constructors
 
@@ -2120,17 +2116,17 @@ export namespace GPaste {
 
         connect<K extends keyof ClientItem.SignalSignatures>(
             signal: K,
-            callback: ClientItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientItem.SignalSignatures>(
             signal: K,
-            callback: ClientItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientItem.SignalSignatures>(
             signal: K,
-            ...args: ClientItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2147,24 +2143,18 @@ export namespace GPaste {
     }
 
     namespace GnomeShellClient {
-        // Signal callback interfaces
-
-        interface AcceleratorActivated {
-            (_source: GnomeShellClient, id: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'accelerator-activated': AcceleratorActivated;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
+            'accelerator-activated': (arg0: number) => void;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2181,6 +2171,14 @@ export namespace GPaste {
         implements Gio.AsyncInitable<GnomeShellClient>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<GnomeShellClient>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GnomeShellClient.SignalSignatures;
 
         // Constructors
 
@@ -2199,17 +2197,17 @@ export namespace GPaste {
 
         connect<K extends keyof GnomeShellClient.SignalSignatures>(
             signal: K,
-            callback: GnomeShellClient.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GnomeShellClient.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GnomeShellClient.SignalSignatures>(
             signal: K,
-            callback: GnomeShellClient.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GnomeShellClient.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GnomeShellClient.SignalSignatures>(
             signal: K,
-            ...args: GnomeShellClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GnomeShellClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3082,24 +3080,18 @@ export namespace GPaste {
     }
 
     namespace ScreensaverClient {
-        // Signal callback interfaces
-
-        interface ActiveChanged {
-            (_source: ScreensaverClient, active: boolean): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'active-changed': ActiveChanged;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
+            'active-changed': (arg0: boolean) => void;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3116,6 +3108,14 @@ export namespace GPaste {
         implements Gio.AsyncInitable<ScreensaverClient>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<ScreensaverClient>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ScreensaverClient.SignalSignatures;
 
         // Constructors
 
@@ -3134,17 +3134,17 @@ export namespace GPaste {
 
         connect<K extends keyof ScreensaverClient.SignalSignatures>(
             signal: K,
-            callback: ScreensaverClient.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ScreensaverClient.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScreensaverClient.SignalSignatures>(
             signal: K,
-            callback: ScreensaverClient.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ScreensaverClient.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScreensaverClient.SignalSignatures>(
             signal: K,
-            ...args: ScreensaverClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ScreensaverClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3921,25 +3921,11 @@ export namespace GPaste {
     }
 
     namespace Settings {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: Settings, key: string): void;
-        }
-
-        interface Rebind {
-            (_source: Settings, key: string): void;
-        }
-
-        interface Track {
-            (_source: Settings, tracking_state: boolean): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            rebind: Rebind;
-            track: Track;
+            changed: (arg0: string) => void;
+            rebind: (arg0: string) => void;
+            track: (arg0: boolean) => void;
         }
 
         // Constructor properties interface
@@ -3949,6 +3935,14 @@ export namespace GPaste {
 
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Settings.SignalSignatures;
 
         // Constructors
 
@@ -3960,16 +3954,19 @@ export namespace GPaste {
 
         // Signals
 
-        connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            callback: Settings.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

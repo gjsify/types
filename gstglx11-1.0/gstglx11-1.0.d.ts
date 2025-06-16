@@ -26,8 +26,8 @@ export namespace GstGLX11 {
     namespace GLDisplayX11 {
         // Signal signatures
         interface SignalSignatures extends GstGL.GLDisplay.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -41,6 +41,14 @@ export namespace GstGLX11 {
      */
     class GLDisplayX11 extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayX11>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLDisplayX11.SignalSignatures;
 
         // Constructors
 
@@ -57,17 +65,17 @@ export namespace GstGLX11 {
 
         connect<K extends keyof GLDisplayX11.SignalSignatures>(
             signal: K,
-            callback: GLDisplayX11.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLDisplayX11.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLDisplayX11.SignalSignatures>(
             signal: K,
-            callback: GLDisplayX11.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLDisplayX11.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLDisplayX11.SignalSignatures>(
             signal: K,
-            ...args: GLDisplayX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLDisplayX11.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

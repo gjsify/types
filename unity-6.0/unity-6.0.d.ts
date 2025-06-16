@@ -255,15 +255,9 @@ export namespace Unity {
     function io_open_from_data_dirs_finish(_res_: Gio.AsyncResult): Gio.FileInputStream;
     function io_get_system_data_dirs(): string[];
     namespace AppInfoManager {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: AppInfoManager, id: string, new_appinfo: Gio.AppInfo): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
+            changed: (arg0: string, arg1: Gio.AppInfo) => void;
         }
 
         // Constructor properties interface
@@ -278,6 +272,14 @@ export namespace Unity {
      */
     class AppInfoManager extends GObject.Object {
         static $gtype: GObject.GType<AppInfoManager>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AppInfoManager.SignalSignatures;
 
         // Constructors
 
@@ -289,17 +291,17 @@ export namespace Unity {
 
         connect<K extends keyof AppInfoManager.SignalSignatures>(
             signal: K,
-            callback: AppInfoManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AppInfoManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AppInfoManager.SignalSignatures>(
             signal: K,
-            callback: AppInfoManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AppInfoManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AppInfoManager.SignalSignatures>(
             signal: K,
-            ...args: AppInfoManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AppInfoManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -372,10 +374,10 @@ export namespace Unity {
     namespace AnnotatedIcon {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::icon': GObject.Object.Notify;
-            'notify::ribbon': GObject.Object.Notify;
-            'notify::category': GObject.Object.Notify;
-            'notify::size-hint': GObject.Object.Notify;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::ribbon': (pspec: GObject.ParamSpec) => void;
+            'notify::category': (pspec: GObject.ParamSpec) => void;
+            'notify::size-hint': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -404,6 +406,14 @@ export namespace Unity {
         set size_hint(val: IconSizeHint);
         get sizeHint(): IconSizeHint;
         set sizeHint(val: IconSizeHint);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AnnotatedIcon.SignalSignatures;
 
         // Constructors
 
@@ -417,17 +427,17 @@ export namespace Unity {
 
         connect<K extends keyof AnnotatedIcon.SignalSignatures>(
             signal: K,
-            callback: AnnotatedIcon.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotatedIcon.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnnotatedIcon.SignalSignatures>(
             signal: K,
-            callback: AnnotatedIcon.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotatedIcon.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnnotatedIcon.SignalSignatures>(
             signal: K,
-            ...args: AnnotatedIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AnnotatedIcon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -439,8 +449,8 @@ export namespace Unity {
     namespace Inspector {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::unity-running': GObject.Object.Notify;
-            'notify::unity-bus-name': GObject.Object.Notify;
+            'notify::unity-running': (pspec: GObject.ParamSpec) => void;
+            'notify::unity-bus-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -478,6 +488,14 @@ export namespace Unity {
          * <para>Property holding the unique DBus name of the Unity process if Unity is running, or null otherwise.</para>
          */
         get unityBusName(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Inspector.SignalSignatures;
 
         // Constructors
 
@@ -487,16 +505,19 @@ export namespace Unity {
 
         // Signals
 
-        connect<K extends keyof Inspector.SignalSignatures>(signal: K, callback: Inspector.SignalSignatures[K]): number;
+        connect<K extends keyof Inspector.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Inspector.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Inspector.SignalSignatures>(
             signal: K,
-            callback: Inspector.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Inspector.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Inspector.SignalSignatures>(
             signal: K,
-            ...args: Inspector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Inspector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -511,13 +532,13 @@ export namespace Unity {
     namespace LauncherEntry {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::app-uri': GObject.Object.Notify;
-            'notify::count': GObject.Object.Notify;
-            'notify::count-visible': GObject.Object.Notify;
-            'notify::progress': GObject.Object.Notify;
-            'notify::progress-visible': GObject.Object.Notify;
-            'notify::urgent': GObject.Object.Notify;
-            'notify::quicklist': GObject.Object.Notify;
+            'notify::app-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::count': (pspec: GObject.ParamSpec) => void;
+            'notify::count-visible': (pspec: GObject.ParamSpec) => void;
+            'notify::progress': (pspec: GObject.ParamSpec) => void;
+            'notify::progress-visible': (pspec: GObject.ParamSpec) => void;
+            'notify::urgent': (pspec: GObject.ParamSpec) => void;
+            'notify::quicklist': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -567,6 +588,14 @@ export namespace Unity {
         set urgent(val: boolean);
         get quicklist(): Dbusmenu.Menuitem;
         set quicklist(val: Dbusmenu.Menuitem);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LauncherEntry.SignalSignatures;
 
         // Constructors
 
@@ -578,17 +607,17 @@ export namespace Unity {
 
         connect<K extends keyof LauncherEntry.SignalSignatures>(
             signal: K,
-            callback: LauncherEntry.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LauncherEntry.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LauncherEntry.SignalSignatures>(
             signal: K,
-            callback: LauncherEntry.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LauncherEntry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LauncherEntry.SignalSignatures>(
             signal: K,
-            ...args: LauncherEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LauncherEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1068,15 +1097,9 @@ export namespace Unity {
     }
 
     namespace LauncherFavorites {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: LauncherFavorites): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
+            changed: () => void;
         }
 
         // Constructor properties interface
@@ -1086,6 +1109,14 @@ export namespace Unity {
 
     class LauncherFavorites extends GObject.Object {
         static $gtype: GObject.GType<LauncherFavorites>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LauncherFavorites.SignalSignatures;
 
         // Constructors
 
@@ -1097,17 +1128,17 @@ export namespace Unity {
 
         connect<K extends keyof LauncherFavorites.SignalSignatures>(
             signal: K,
-            callback: LauncherFavorites.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LauncherFavorites.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LauncherFavorites.SignalSignatures>(
             signal: K,
-            callback: LauncherFavorites.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LauncherFavorites.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LauncherFavorites.SignalSignatures>(
             signal: K,
-            ...args: LauncherFavorites.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LauncherFavorites.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1130,8 +1161,8 @@ export namespace Unity {
     namespace ActivationResponse {
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-            'notify::handled': GObject.Object.Notify;
-            'notify::goto-uri': GObject.Object.Notify;
+            'notify::handled': (pspec: GObject.ParamSpec) => void;
+            'notify::goto-uri': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1153,6 +1184,14 @@ export namespace Unity {
         set goto_uri(val: string);
         get gotoUri(): string;
         set gotoUri(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ActivationResponse.SignalSignatures;
 
         // Constructors
 
@@ -1168,17 +1207,17 @@ export namespace Unity {
 
         connect<K extends keyof ActivationResponse.SignalSignatures>(
             signal: K,
-            callback: ActivationResponse.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ActivationResponse.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ActivationResponse.SignalSignatures>(
             signal: K,
-            callback: ActivationResponse.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ActivationResponse.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ActivationResponse.SignalSignatures>(
             signal: K,
-            ...args: ActivationResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ActivationResponse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1186,9 +1225,9 @@ export namespace Unity {
     namespace Category {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
-            'notify::default-renderer': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::default-renderer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1212,6 +1251,14 @@ export namespace Unity {
         get iconHint(): Gio.Icon;
         get default_renderer(): CategoryRenderer;
         get defaultRenderer(): CategoryRenderer;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Category.SignalSignatures;
 
         // Constructors
 
@@ -1223,37 +1270,34 @@ export namespace Unity {
 
         // Signals
 
-        connect<K extends keyof Category.SignalSignatures>(signal: K, callback: Category.SignalSignatures[K]): number;
+        connect<K extends keyof Category.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Category.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Category.SignalSignatures>(
             signal: K,
-            callback: Category.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Category.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Category.SignalSignatures>(
             signal: K,
-            ...args: Category.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Category.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace Filter {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: Filter): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            'notify::id': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
-            'notify::renderer': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::collapsed': GObject.Object.Notify;
-            'notify::filtering': GObject.Object.Notify;
+            changed: () => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::renderer': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::collapsed': (pspec: GObject.ParamSpec) => void;
+            'notify::filtering': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1289,6 +1333,14 @@ export namespace Unity {
         get collapsed(): boolean;
         get filtering(): boolean;
         set filtering(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Filter.SignalSignatures;
 
         // Constructors
 
@@ -1298,13 +1350,19 @@ export namespace Unity {
 
         // Signals
 
-        connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        connect<K extends keyof Filter.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        connect_after<K extends keyof Filter.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Filter.SignalSignatures>(
             signal: K,
-            ...args: Filter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Filter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1312,10 +1370,10 @@ export namespace Unity {
     namespace FilterOption {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
-            'notify::active': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1342,6 +1400,14 @@ export namespace Unity {
         get iconHint(): Gio.Icon;
         get active(): boolean;
         set active(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FilterOption.SignalSignatures;
 
         // Constructors
 
@@ -1355,17 +1421,17 @@ export namespace Unity {
 
         connect<K extends keyof FilterOption.SignalSignatures>(
             signal: K,
-            callback: FilterOption.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterOption.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterOption.SignalSignatures>(
             signal: K,
-            callback: FilterOption.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FilterOption.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterOption.SignalSignatures>(
             signal: K,
-            ...args: FilterOption.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FilterOption.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1373,14 +1439,14 @@ export namespace Unity {
     namespace OptionsFilter {
         // Signal signatures
         interface SignalSignatures extends Filter.SignalSignatures {
-            'notify::sort-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
-            'notify::renderer': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::collapsed': GObject.Object.Notify;
-            'notify::filtering': GObject.Object.Notify;
+            'notify::sort-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::renderer': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::collapsed': (pspec: GObject.ParamSpec) => void;
+            'notify::filtering': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1400,6 +1466,14 @@ export namespace Unity {
         set sort_type(val: OptionsFilterSortType);
         get sortType(): OptionsFilterSortType;
         set sortType(val: OptionsFilterSortType);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OptionsFilter.SignalSignatures;
 
         // Fields
 
@@ -1417,17 +1491,17 @@ export namespace Unity {
 
         connect<K extends keyof OptionsFilter.SignalSignatures>(
             signal: K,
-            callback: OptionsFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OptionsFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OptionsFilter.SignalSignatures>(
             signal: K,
-            callback: OptionsFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OptionsFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OptionsFilter.SignalSignatures>(
             signal: K,
-            ...args: OptionsFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OptionsFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1446,14 +1520,14 @@ export namespace Unity {
     namespace RadioOptionFilter {
         // Signal signatures
         interface SignalSignatures extends OptionsFilter.SignalSignatures {
-            'notify::sort-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
-            'notify::renderer': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::collapsed': GObject.Object.Notify;
-            'notify::filtering': GObject.Object.Notify;
+            'notify::sort-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::renderer': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::collapsed': (pspec: GObject.ParamSpec) => void;
+            'notify::filtering': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1463,6 +1537,14 @@ export namespace Unity {
 
     class RadioOptionFilter extends OptionsFilter {
         static $gtype: GObject.GType<RadioOptionFilter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RadioOptionFilter.SignalSignatures;
 
         // Constructors
 
@@ -1479,17 +1561,17 @@ export namespace Unity {
 
         connect<K extends keyof RadioOptionFilter.SignalSignatures>(
             signal: K,
-            callback: RadioOptionFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RadioOptionFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RadioOptionFilter.SignalSignatures>(
             signal: K,
-            callback: RadioOptionFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RadioOptionFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RadioOptionFilter.SignalSignatures>(
             signal: K,
-            ...args: RadioOptionFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RadioOptionFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1501,14 +1583,14 @@ export namespace Unity {
     namespace CheckOptionFilter {
         // Signal signatures
         interface SignalSignatures extends OptionsFilter.SignalSignatures {
-            'notify::sort-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
-            'notify::renderer': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::collapsed': GObject.Object.Notify;
-            'notify::filtering': GObject.Object.Notify;
+            'notify::sort-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::renderer': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::collapsed': (pspec: GObject.ParamSpec) => void;
+            'notify::filtering': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1518,6 +1600,14 @@ export namespace Unity {
 
     class CheckOptionFilter extends OptionsFilter {
         static $gtype: GObject.GType<CheckOptionFilter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CheckOptionFilter.SignalSignatures;
 
         // Constructors
 
@@ -1534,17 +1624,17 @@ export namespace Unity {
 
         connect<K extends keyof CheckOptionFilter.SignalSignatures>(
             signal: K,
-            callback: CheckOptionFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CheckOptionFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CheckOptionFilter.SignalSignatures>(
             signal: K,
-            callback: CheckOptionFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CheckOptionFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CheckOptionFilter.SignalSignatures>(
             signal: K,
-            ...args: CheckOptionFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CheckOptionFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1552,14 +1642,14 @@ export namespace Unity {
     namespace CheckOptionFilterCompact {
         // Signal signatures
         interface SignalSignatures extends OptionsFilter.SignalSignatures {
-            'notify::sort-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
-            'notify::renderer': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::collapsed': GObject.Object.Notify;
-            'notify::filtering': GObject.Object.Notify;
+            'notify::sort-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::renderer': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::collapsed': (pspec: GObject.ParamSpec) => void;
+            'notify::filtering': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1569,6 +1659,14 @@ export namespace Unity {
 
     class CheckOptionFilterCompact extends OptionsFilter {
         static $gtype: GObject.GType<CheckOptionFilterCompact>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CheckOptionFilterCompact.SignalSignatures;
 
         // Constructors
 
@@ -1590,17 +1688,19 @@ export namespace Unity {
 
         connect<K extends keyof CheckOptionFilterCompact.SignalSignatures>(
             signal: K,
-            callback: CheckOptionFilterCompact.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CheckOptionFilterCompact.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CheckOptionFilterCompact.SignalSignatures>(
             signal: K,
-            callback: CheckOptionFilterCompact.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CheckOptionFilterCompact.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CheckOptionFilterCompact.SignalSignatures>(
             signal: K,
-            ...args: CheckOptionFilterCompact.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CheckOptionFilterCompact.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1608,14 +1708,14 @@ export namespace Unity {
     namespace RatingsFilter {
         // Signal signatures
         interface SignalSignatures extends Filter.SignalSignatures {
-            'notify::rating': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
-            'notify::renderer': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::collapsed': GObject.Object.Notify;
-            'notify::filtering': GObject.Object.Notify;
+            'notify::rating': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::renderer': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::collapsed': (pspec: GObject.ParamSpec) => void;
+            'notify::filtering': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1632,6 +1732,14 @@ export namespace Unity {
 
         get rating(): number;
         set rating(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RatingsFilter.SignalSignatures;
 
         // Constructors
 
@@ -1645,17 +1753,17 @@ export namespace Unity {
 
         connect<K extends keyof RatingsFilter.SignalSignatures>(
             signal: K,
-            callback: RatingsFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RatingsFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RatingsFilter.SignalSignatures>(
             signal: K,
-            callback: RatingsFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RatingsFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RatingsFilter.SignalSignatures>(
             signal: K,
-            ...args: RatingsFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RatingsFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1663,14 +1771,14 @@ export namespace Unity {
     namespace MultiRangeFilter {
         // Signal signatures
         interface SignalSignatures extends OptionsFilter.SignalSignatures {
-            'notify::sort-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
-            'notify::renderer': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::collapsed': GObject.Object.Notify;
-            'notify::filtering': GObject.Object.Notify;
+            'notify::sort-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::renderer': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::collapsed': (pspec: GObject.ParamSpec) => void;
+            'notify::filtering': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1680,6 +1788,14 @@ export namespace Unity {
 
     class MultiRangeFilter extends OptionsFilter {
         static $gtype: GObject.GType<MultiRangeFilter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MultiRangeFilter.SignalSignatures;
 
         // Constructors
 
@@ -1696,17 +1812,17 @@ export namespace Unity {
 
         connect<K extends keyof MultiRangeFilter.SignalSignatures>(
             signal: K,
-            callback: MultiRangeFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MultiRangeFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MultiRangeFilter.SignalSignatures>(
             signal: K,
-            callback: MultiRangeFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MultiRangeFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MultiRangeFilter.SignalSignatures>(
             signal: K,
-            ...args: MultiRangeFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MultiRangeFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1719,7 +1835,7 @@ export namespace Unity {
     namespace PreferencesManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::remote-content-search': GObject.Object.Notify;
+            'notify::remote-content-search': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1742,6 +1858,14 @@ export namespace Unity {
         set remote_content_search(val: PreferencesManagerRemoteContent);
         get remoteContentSearch(): PreferencesManagerRemoteContent;
         set remoteContentSearch(val: PreferencesManagerRemoteContent);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PreferencesManager.SignalSignatures;
 
         // Constructors
 
@@ -1753,17 +1877,17 @@ export namespace Unity {
 
         connect<K extends keyof PreferencesManager.SignalSignatures>(
             signal: K,
-            callback: PreferencesManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PreferencesManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PreferencesManager.SignalSignatures>(
             signal: K,
-            callback: PreferencesManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PreferencesManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PreferencesManager.SignalSignatures>(
             signal: K,
-            ...args: PreferencesManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PreferencesManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1776,18 +1900,12 @@ export namespace Unity {
     }
 
     namespace LensSearch {
-        // Signal callback interfaces
-
-        interface Finished {
-            (_source: LensSearch): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-            finished: Finished;
-            'notify::search-string': GObject.Object.Notify;
-            'notify::hints': GObject.Object.Notify;
-            'notify::results-model': GObject.Object.Notify;
+            finished: () => void;
+            'notify::search-string': (pspec: GObject.ParamSpec) => void;
+            'notify::hints': (pspec: GObject.ParamSpec) => void;
+            'notify::results-model': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1811,6 +1929,14 @@ export namespace Unity {
         get hints(): GLib.HashTable<string, GLib.Variant>;
         get results_model(): Dee.SerializableModel;
         get resultsModel(): Dee.SerializableModel;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LensSearch.SignalSignatures;
 
         // Constructors
 
@@ -1828,17 +1954,17 @@ export namespace Unity {
 
         connect<K extends keyof LensSearch.SignalSignatures>(
             signal: K,
-            callback: LensSearch.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LensSearch.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LensSearch.SignalSignatures>(
             signal: K,
-            callback: LensSearch.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LensSearch.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LensSearch.SignalSignatures>(
             signal: K,
-            ...args: LensSearch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LensSearch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1852,20 +1978,20 @@ export namespace Unity {
     namespace Lens {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::active': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::searching': GObject.Object.Notify;
-            'notify::exported': GObject.Object.Notify;
-            'notify::search-in-global': GObject.Object.Notify;
-            'notify::home-lens-default-name': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
-            'notify::search-hint': GObject.Object.Notify;
-            'notify::filters': GObject.Object.Notify;
-            'notify::categories': GObject.Object.Notify;
-            'notify::merge-strategy': GObject.Object.Notify;
-            'notify::global-merge-strategy': GObject.Object.Notify;
-            'notify::sources-display-name': GObject.Object.Notify;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::searching': (pspec: GObject.ParamSpec) => void;
+            'notify::exported': (pspec: GObject.ParamSpec) => void;
+            'notify::search-in-global': (pspec: GObject.ParamSpec) => void;
+            'notify::home-lens-default-name': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
+            'notify::search-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::filters': (pspec: GObject.ParamSpec) => void;
+            'notify::categories': (pspec: GObject.ParamSpec) => void;
+            'notify::merge-strategy': (pspec: GObject.ParamSpec) => void;
+            'notify::global-merge-strategy': (pspec: GObject.ParamSpec) => void;
+            'notify::sources-display-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1939,6 +2065,14 @@ export namespace Unity {
         set sources_display_name(val: string);
         get sourcesDisplayName(): string;
         set sourcesDisplayName(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Lens.SignalSignatures;
 
         // Constructors
 
@@ -1950,13 +2084,19 @@ export namespace Unity {
 
         // Signals
 
-        connect<K extends keyof Lens.SignalSignatures>(signal: K, callback: Lens.SignalSignatures[K]): number;
+        connect<K extends keyof Lens.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Lens.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Lens.SignalSignatures>(signal: K, callback: Lens.SignalSignatures[K]): number;
+        connect_after<K extends keyof Lens.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Lens.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Lens.SignalSignatures>(
             signal: K,
-            ...args: Lens.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Lens.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1967,20 +2107,14 @@ export namespace Unity {
     }
 
     namespace Preview {
-        // Signal callback interfaces
-
-        interface Closed {
-            (_source: Preview): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            closed: Closed;
-            'notify::title': GObject.Object.Notify;
-            'notify::subtitle': GObject.Object.Notify;
-            'notify::description-markup': GObject.Object.Notify;
-            'notify::image-source-uri': GObject.Object.Notify;
-            'notify::image': GObject.Object.Notify;
+            closed: () => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle': (pspec: GObject.ParamSpec) => void;
+            'notify::description-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::image-source-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::image': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2015,6 +2149,14 @@ export namespace Unity {
         set imageSourceUri(val: string);
         get image(): Gio.Icon;
         set image(val: Gio.Icon);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Preview.SignalSignatures;
 
         // Constructors
 
@@ -2024,16 +2166,19 @@ export namespace Unity {
 
         // Signals
 
-        connect<K extends keyof Preview.SignalSignatures>(signal: K, callback: Preview.SignalSignatures[K]): number;
+        connect<K extends keyof Preview.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Preview.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Preview.SignalSignatures>(
             signal: K,
-            callback: Preview.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Preview.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Preview.SignalSignatures>(
             signal: K,
-            ...args: Preview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Preview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2512,21 +2657,15 @@ export namespace Unity {
     }
 
     namespace PreviewAction {
-        // Signal callback interfaces
-
-        interface Activated {
-            (_source: PreviewAction, uri: string): ActivationResponse;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            activated: Activated;
-            'notify::id': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::extra-text': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
-            'notify::layout-hint': GObject.Object.Notify;
-            'notify::hints': GObject.Object.Notify;
+            activated: (arg0: string) => ActivationResponse;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::extra-text': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::hints': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2562,6 +2701,14 @@ export namespace Unity {
         get layout_hint(): LayoutHint;
         get layoutHint(): LayoutHint;
         get hints(): GLib.HashTable<string, GLib.Variant>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PreviewAction.SignalSignatures;
 
         // Constructors
 
@@ -2582,17 +2729,17 @@ export namespace Unity {
 
         connect<K extends keyof PreviewAction.SignalSignatures>(
             signal: K,
-            callback: PreviewAction.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PreviewAction.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PreviewAction.SignalSignatures>(
             signal: K,
-            callback: PreviewAction.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PreviewAction.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PreviewAction.SignalSignatures>(
             signal: K,
-            ...args: PreviewAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PreviewAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3068,10 +3215,10 @@ export namespace Unity {
     namespace InfoHint {
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::icon-hint': GObject.Object.Notify;
-            'notify::data': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3097,6 +3244,14 @@ export namespace Unity {
         get icon_hint(): Gio.Icon;
         get iconHint(): Gio.Icon;
         get data(): GLib.Variant;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InfoHint.SignalSignatures;
 
         // Constructors
 
@@ -3110,16 +3265,19 @@ export namespace Unity {
 
         // Signals
 
-        connect<K extends keyof InfoHint.SignalSignatures>(signal: K, callback: InfoHint.SignalSignatures[K]): number;
+        connect<K extends keyof InfoHint.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, InfoHint.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InfoHint.SignalSignatures>(
             signal: K,
-            callback: InfoHint.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InfoHint.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InfoHint.SignalSignatures>(
             signal: K,
-            ...args: InfoHint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InfoHint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3127,11 +3285,11 @@ export namespace Unity {
     namespace GenericPreview {
         // Signal signatures
         interface SignalSignatures extends Preview.SignalSignatures {
-            'notify::title': GObject.Object.Notify;
-            'notify::subtitle': GObject.Object.Notify;
-            'notify::description-markup': GObject.Object.Notify;
-            'notify::image-source-uri': GObject.Object.Notify;
-            'notify::image': GObject.Object.Notify;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle': (pspec: GObject.ParamSpec) => void;
+            'notify::description-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::image-source-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::image': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3141,6 +3299,14 @@ export namespace Unity {
 
     class GenericPreview extends Preview {
         static $gtype: GObject.GType<GenericPreview>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GenericPreview.SignalSignatures;
 
         // Constructors
 
@@ -3154,17 +3320,17 @@ export namespace Unity {
 
         connect<K extends keyof GenericPreview.SignalSignatures>(
             signal: K,
-            callback: GenericPreview.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GenericPreview.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GenericPreview.SignalSignatures>(
             signal: K,
-            callback: GenericPreview.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GenericPreview.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GenericPreview.SignalSignatures>(
             signal: K,
-            ...args: GenericPreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GenericPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3172,15 +3338,15 @@ export namespace Unity {
     namespace ApplicationPreview {
         // Signal signatures
         interface SignalSignatures extends Preview.SignalSignatures {
-            'notify::app-icon': GObject.Object.Notify;
-            'notify::license': GObject.Object.Notify;
-            'notify::copyright': GObject.Object.Notify;
-            'notify::last-update': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::subtitle': GObject.Object.Notify;
-            'notify::description-markup': GObject.Object.Notify;
-            'notify::image-source-uri': GObject.Object.Notify;
-            'notify::image': GObject.Object.Notify;
+            'notify::app-icon': (pspec: GObject.ParamSpec) => void;
+            'notify::license': (pspec: GObject.ParamSpec) => void;
+            'notify::copyright': (pspec: GObject.ParamSpec) => void;
+            'notify::last-update': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle': (pspec: GObject.ParamSpec) => void;
+            'notify::description-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::image-source-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::image': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3212,6 +3378,14 @@ export namespace Unity {
         set last_update(val: string);
         get lastUpdate(): string;
         set lastUpdate(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ApplicationPreview.SignalSignatures;
 
         // Constructors
 
@@ -3231,17 +3405,17 @@ export namespace Unity {
 
         connect<K extends keyof ApplicationPreview.SignalSignatures>(
             signal: K,
-            callback: ApplicationPreview.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ApplicationPreview.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ApplicationPreview.SignalSignatures>(
             signal: K,
-            callback: ApplicationPreview.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ApplicationPreview.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ApplicationPreview.SignalSignatures>(
             signal: K,
-            ...args: ApplicationPreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ApplicationPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3251,28 +3425,18 @@ export namespace Unity {
     }
 
     namespace MusicPreview {
-        // Signal callback interfaces
-
-        interface Play {
-            (_source: MusicPreview, uri: string): void;
-        }
-
-        interface Pause {
-            (_source: MusicPreview, uri: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Preview.SignalSignatures {
-            play: Play;
-            pause: Pause;
-            'notify::current-track-uri': GObject.Object.Notify;
-            'notify::current-progress': GObject.Object.Notify;
-            'notify::current-track-state': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::subtitle': GObject.Object.Notify;
-            'notify::description-markup': GObject.Object.Notify;
-            'notify::image-source-uri': GObject.Object.Notify;
-            'notify::image': GObject.Object.Notify;
+            play: (arg0: string) => void;
+            pause: (arg0: string) => void;
+            'notify::current-track-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::current-progress': (pspec: GObject.ParamSpec) => void;
+            'notify::current-track-state': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle': (pspec: GObject.ParamSpec) => void;
+            'notify::description-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::image-source-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::image': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3304,6 +3468,14 @@ export namespace Unity {
         set current_track_state(val: MusicPreviewTrackState);
         get currentTrackState(): MusicPreviewTrackState;
         set currentTrackState(val: MusicPreviewTrackState);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MusicPreview.SignalSignatures;
 
         // Constructors
 
@@ -3317,17 +3489,17 @@ export namespace Unity {
 
         connect<K extends keyof MusicPreview.SignalSignatures>(
             signal: K,
-            callback: MusicPreview.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MusicPreview.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MusicPreview.SignalSignatures>(
             signal: K,
-            callback: MusicPreview.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MusicPreview.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MusicPreview.SignalSignatures>(
             signal: K,
-            ...args: MusicPreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MusicPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3339,12 +3511,12 @@ export namespace Unity {
     namespace MoviePreview {
         // Signal signatures
         interface SignalSignatures extends Preview.SignalSignatures {
-            'notify::year': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::subtitle': GObject.Object.Notify;
-            'notify::description-markup': GObject.Object.Notify;
-            'notify::image-source-uri': GObject.Object.Notify;
-            'notify::image': GObject.Object.Notify;
+            'notify::year': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle': (pspec: GObject.ParamSpec) => void;
+            'notify::description-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::image-source-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::image': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3361,6 +3533,14 @@ export namespace Unity {
 
         get year(): string;
         set year(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MoviePreview.SignalSignatures;
 
         // Constructors
 
@@ -3374,17 +3554,17 @@ export namespace Unity {
 
         connect<K extends keyof MoviePreview.SignalSignatures>(
             signal: K,
-            callback: MoviePreview.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MoviePreview.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MoviePreview.SignalSignatures>(
             signal: K,
-            callback: MoviePreview.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MoviePreview.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MoviePreview.SignalSignatures>(
             signal: K,
-            ...args: MoviePreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MoviePreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3396,14 +3576,14 @@ export namespace Unity {
     namespace SocialPreview {
         // Signal signatures
         interface SignalSignatures extends Preview.SignalSignatures {
-            'notify::avatar': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::sender': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::subtitle': GObject.Object.Notify;
-            'notify::description-markup': GObject.Object.Notify;
-            'notify::image-source-uri': GObject.Object.Notify;
-            'notify::image': GObject.Object.Notify;
+            'notify::avatar': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::sender': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle': (pspec: GObject.ParamSpec) => void;
+            'notify::description-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::image-source-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::image': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3426,6 +3606,14 @@ export namespace Unity {
         set content(val: string);
         get sender(): string;
         set sender(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SocialPreview.SignalSignatures;
 
         // Constructors
 
@@ -3439,17 +3627,17 @@ export namespace Unity {
 
         connect<K extends keyof SocialPreview.SignalSignatures>(
             signal: K,
-            callback: SocialPreview.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SocialPreview.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SocialPreview.SignalSignatures>(
             signal: K,
-            callback: SocialPreview.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SocialPreview.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SocialPreview.SignalSignatures>(
             signal: K,
-            ...args: SocialPreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SocialPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3461,10 +3649,10 @@ export namespace Unity {
     namespace SocialPreviewComment {
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::text': GObject.Object.Notify;
-            'notify::time': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::text': (pspec: GObject.ParamSpec) => void;
+            'notify::time': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3486,6 +3674,14 @@ export namespace Unity {
         get name(): string;
         get text(): string;
         get time(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SocialPreviewComment.SignalSignatures;
 
         // Constructors
 
@@ -3499,37 +3695,33 @@ export namespace Unity {
 
         connect<K extends keyof SocialPreviewComment.SignalSignatures>(
             signal: K,
-            callback: SocialPreviewComment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SocialPreviewComment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SocialPreviewComment.SignalSignatures>(
             signal: K,
-            callback: SocialPreviewComment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SocialPreviewComment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SocialPreviewComment.SignalSignatures>(
             signal: K,
-            ...args: SocialPreviewComment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SocialPreviewComment.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace AsyncPreview {
-        // Signal callback interfaces
-
-        interface PreviewReady {
-            (_source: AsyncPreview, preview: Preview): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Preview.SignalSignatures {
-            preview_ready: PreviewReady;
-            'notify::cancellable': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::subtitle': GObject.Object.Notify;
-            'notify::description-markup': GObject.Object.Notify;
-            'notify::image-source-uri': GObject.Object.Notify;
-            'notify::image': GObject.Object.Notify;
+            preview_ready: (arg0: Preview) => void;
+            'notify::cancellable': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle': (pspec: GObject.ParamSpec) => void;
+            'notify::description-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::image-source-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::image': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3546,6 +3738,14 @@ export namespace Unity {
 
         get cancellable(): Gio.Cancellable;
         set cancellable(val: Gio.Cancellable);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AsyncPreview.SignalSignatures;
 
         // Constructors
 
@@ -3561,17 +3761,17 @@ export namespace Unity {
 
         connect<K extends keyof AsyncPreview.SignalSignatures>(
             signal: K,
-            callback: AsyncPreview.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AsyncPreview.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AsyncPreview.SignalSignatures>(
             signal: K,
-            callback: AsyncPreview.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AsyncPreview.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AsyncPreview.SignalSignatures>(
             signal: K,
-            ...args: AsyncPreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AsyncPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3581,49 +3781,23 @@ export namespace Unity {
     }
 
     namespace Scope {
-        // Signal callback interfaces
-
-        interface ActivateUri {
-            (_source: Scope, uri: string): ActivationResponse;
-        }
-
-        interface PreviewUri {
-            (_source: Scope, uri: string): Preview;
-        }
-
-        interface FiltersChanged {
-            (_source: Scope): void;
-        }
-
-        interface ActiveSourcesChanged {
-            (_source: Scope, active_ids: string[]): void;
-        }
-
-        interface SearchChanged {
-            (_source: Scope, search: LensSearch, search_type: SearchType, cancellable: Gio.Cancellable): void;
-        }
-
-        interface GenerateSearchKey {
-            (_source: Scope, search: LensSearch): string;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            activate_uri: ActivateUri;
-            preview_uri: PreviewUri;
-            filters_changed: FiltersChanged;
-            active_sources_changed: ActiveSourcesChanged;
-            search_changed: SearchChanged;
-            generate_search_key: GenerateSearchKey;
-            'notify::active': GObject.Object.Notify;
-            'notify::exported': GObject.Object.Notify;
-            'notify::search-in-global': GObject.Object.Notify;
-            'notify::provides-personal-content': GObject.Object.Notify;
-            'notify::dbus-path': GObject.Object.Notify;
-            'notify::sources': GObject.Object.Notify;
-            'notify::filters': GObject.Object.Notify;
-            'notify::results-model': GObject.Object.Notify;
-            'notify::global-results-model': GObject.Object.Notify;
+            activate_uri: (arg0: string) => ActivationResponse;
+            preview_uri: (arg0: string) => Preview;
+            filters_changed: () => void;
+            active_sources_changed: (arg0: string[]) => void;
+            search_changed: (arg0: LensSearch, arg1: SearchType, arg2: Gio.Cancellable) => void;
+            generate_search_key: (arg0: LensSearch) => string;
+            'notify::active': (pspec: GObject.ParamSpec) => void;
+            'notify::exported': (pspec: GObject.ParamSpec) => void;
+            'notify::search-in-global': (pspec: GObject.ParamSpec) => void;
+            'notify::provides-personal-content': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
+            'notify::sources': (pspec: GObject.ParamSpec) => void;
+            'notify::filters': (pspec: GObject.ParamSpec) => void;
+            'notify::results-model': (pspec: GObject.ParamSpec) => void;
+            'notify::global-results-model': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3672,6 +3846,14 @@ export namespace Unity {
         get resultsModel(): Dee.SerializableModel;
         get global_results_model(): Dee.SerializableModel;
         get globalResultsModel(): Dee.SerializableModel;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Scope.SignalSignatures;
 
         // Constructors
 
@@ -3683,13 +3865,19 @@ export namespace Unity {
 
         // Signals
 
-        connect<K extends keyof Scope.SignalSignatures>(signal: K, callback: Scope.SignalSignatures[K]): number;
+        connect<K extends keyof Scope.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Scope.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Scope.SignalSignatures>(signal: K, callback: Scope.SignalSignatures[K]): number;
+        connect_after<K extends keyof Scope.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Scope.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Scope.SignalSignatures>(
             signal: K,
-            ...args: Scope.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Scope.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3717,14 +3905,14 @@ export namespace Unity {
     namespace TrackMetadata {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::uri': GObject.Object.Notify;
-            'notify::track-no': GObject.Object.Notify;
-            'notify::artist': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::album': GObject.Object.Notify;
-            'notify::length': GObject.Object.Notify;
-            'notify::art-location': GObject.Object.Notify;
-            'notify::art-icon': GObject.Object.Notify;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::track-no': (pspec: GObject.ParamSpec) => void;
+            'notify::artist': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::album': (pspec: GObject.ParamSpec) => void;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
+            'notify::art-location': (pspec: GObject.ParamSpec) => void;
+            'notify::art-icon': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3771,6 +3959,14 @@ export namespace Unity {
         set art_icon(val: Gio.Icon);
         get artIcon(): Gio.Icon;
         set artIcon(val: Gio.Icon);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TrackMetadata.SignalSignatures;
 
         // Constructors
 
@@ -3793,17 +3989,17 @@ export namespace Unity {
 
         connect<K extends keyof TrackMetadata.SignalSignatures>(
             signal: K,
-            callback: TrackMetadata.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TrackMetadata.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TrackMetadata.SignalSignatures>(
             signal: K,
-            callback: TrackMetadata.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TrackMetadata.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TrackMetadata.SignalSignatures>(
             signal: K,
-            ...args: TrackMetadata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TrackMetadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3811,12 +4007,12 @@ export namespace Unity {
     namespace Playlist {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::icon': GObject.Object.Notify;
-            'notify::creation-date': GObject.Object.Notify;
-            'notify::modification-date': GObject.Object.Notify;
-            'notify::last-play-date': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::creation-date': (pspec: GObject.ParamSpec) => void;
+            'notify::modification-date': (pspec: GObject.ParamSpec) => void;
+            'notify::last-play-date': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3856,6 +4052,14 @@ export namespace Unity {
         set last_play_date(val: GLib.DateTime);
         get lastPlayDate(): GLib.DateTime;
         set lastPlayDate(val: GLib.DateTime);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Playlist.SignalSignatures;
 
         // Constructors
 
@@ -3867,63 +4071,44 @@ export namespace Unity {
 
         // Signals
 
-        connect<K extends keyof Playlist.SignalSignatures>(signal: K, callback: Playlist.SignalSignatures[K]): number;
+        connect<K extends keyof Playlist.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Playlist.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Playlist.SignalSignatures>(
             signal: K,
-            callback: Playlist.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Playlist.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Playlist.SignalSignatures>(
             signal: K,
-            ...args: Playlist.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Playlist.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace MusicPlayer {
-        // Signal callback interfaces
-
-        interface Raise {
-            (_source: MusicPlayer): void;
-        }
-
-        interface PlayPause {
-            (_source: MusicPlayer): void;
-        }
-
-        interface Previous {
-            (_source: MusicPlayer): void;
-        }
-
-        interface Next {
-            (_source: MusicPlayer): void;
-        }
-
-        interface ActivatePlaylist {
-            (_source: MusicPlayer, playlist_id: never): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            raise: Raise;
-            play_pause: PlayPause;
-            previous: Previous;
-            next: Next;
-            activate_playlist: ActivatePlaylist;
-            'notify::app-info': GObject.Object.Notify;
-            'notify::desktop-file-name': GObject.Object.Notify;
-            'notify::is-blacklisted': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::can-go-next': GObject.Object.Notify;
-            'notify::can-go-previous': GObject.Object.Notify;
-            'notify::can-play': GObject.Object.Notify;
-            'notify::can-pause': GObject.Object.Notify;
-            'notify::current-track': GObject.Object.Notify;
-            'notify::playback-state': GObject.Object.Notify;
-            'notify::current-playlist': GObject.Object.Notify;
-            'notify::track-menu': GObject.Object.Notify;
-            'notify::player-menu': GObject.Object.Notify;
+            raise: () => void;
+            play_pause: () => void;
+            previous: () => void;
+            next: () => void;
+            activate_playlist: (arg0: never) => void;
+            'notify::app-info': (pspec: GObject.ParamSpec) => void;
+            'notify::desktop-file-name': (pspec: GObject.ParamSpec) => void;
+            'notify::is-blacklisted': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::can-go-next': (pspec: GObject.ParamSpec) => void;
+            'notify::can-go-previous': (pspec: GObject.ParamSpec) => void;
+            'notify::can-play': (pspec: GObject.ParamSpec) => void;
+            'notify::can-pause': (pspec: GObject.ParamSpec) => void;
+            'notify::current-track': (pspec: GObject.ParamSpec) => void;
+            'notify::playback-state': (pspec: GObject.ParamSpec) => void;
+            'notify::current-playlist': (pspec: GObject.ParamSpec) => void;
+            'notify::track-menu': (pspec: GObject.ParamSpec) => void;
+            'notify::player-menu': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4008,6 +4193,14 @@ export namespace Unity {
         set player_menu(val: Dbusmenu.Menuitem);
         get playerMenu(): Dbusmenu.Menuitem;
         set playerMenu(val: Dbusmenu.Menuitem);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MusicPlayer.SignalSignatures;
 
         // Constructors
 
@@ -4021,17 +4214,17 @@ export namespace Unity {
 
         connect<K extends keyof MusicPlayer.SignalSignatures>(
             signal: K,
-            callback: MusicPlayer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MusicPlayer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MusicPlayer.SignalSignatures>(
             signal: K,
-            callback: MusicPlayer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MusicPlayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MusicPlayer.SignalSignatures>(
             signal: K,
-            ...args: MusicPlayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MusicPlayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

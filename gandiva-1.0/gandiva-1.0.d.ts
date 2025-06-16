@@ -68,8 +68,8 @@ export namespace Gandiva {
     namespace AndNode {
         // Signal signatures
         interface SignalSignatures extends BooleanNode.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -79,6 +79,14 @@ export namespace Gandiva {
 
     class AndNode extends BooleanNode {
         static $gtype: GObject.GType<AndNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AndNode.SignalSignatures;
 
         // Constructors
 
@@ -90,16 +98,19 @@ export namespace Gandiva {
 
         // Signals
 
-        connect<K extends keyof AndNode.SignalSignatures>(signal: K, callback: AndNode.SignalSignatures[K]): number;
+        connect<K extends keyof AndNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AndNode.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AndNode.SignalSignatures>(
             signal: K,
-            callback: AndNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AndNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AndNode.SignalSignatures>(
             signal: K,
-            ...args: AndNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AndNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -107,8 +118,8 @@ export namespace Gandiva {
     namespace BinaryLiteralNode {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -118,6 +129,14 @@ export namespace Gandiva {
 
     class BinaryLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<BinaryLiteralNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BinaryLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -133,17 +152,17 @@ export namespace Gandiva {
 
         connect<K extends keyof BinaryLiteralNode.SignalSignatures>(
             signal: K,
-            callback: BinaryLiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BinaryLiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BinaryLiteralNode.SignalSignatures>(
             signal: K,
-            callback: BinaryLiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BinaryLiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BinaryLiteralNode.SignalSignatures>(
             signal: K,
-            ...args: BinaryLiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BinaryLiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -155,8 +174,8 @@ export namespace Gandiva {
     namespace BooleanLiteralNode {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -166,6 +185,14 @@ export namespace Gandiva {
 
     class BooleanLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<BooleanLiteralNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BooleanLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -179,17 +206,17 @@ export namespace Gandiva {
 
         connect<K extends keyof BooleanLiteralNode.SignalSignatures>(
             signal: K,
-            callback: BooleanLiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BooleanLiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BooleanLiteralNode.SignalSignatures>(
             signal: K,
-            callback: BooleanLiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BooleanLiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BooleanLiteralNode.SignalSignatures>(
             signal: K,
-            ...args: BooleanLiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BooleanLiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -201,8 +228,8 @@ export namespace Gandiva {
     namespace BooleanNode {
         // Signal signatures
         interface SignalSignatures extends Node.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -212,6 +239,14 @@ export namespace Gandiva {
 
     class BooleanNode extends Node {
         static $gtype: GObject.GType<BooleanNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BooleanNode.SignalSignatures;
 
         // Constructors
 
@@ -223,17 +258,17 @@ export namespace Gandiva {
 
         connect<K extends keyof BooleanNode.SignalSignatures>(
             signal: K,
-            callback: BooleanNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BooleanNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BooleanNode.SignalSignatures>(
             signal: K,
-            callback: BooleanNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BooleanNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BooleanNode.SignalSignatures>(
             signal: K,
-            ...args: BooleanNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BooleanNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -245,8 +280,8 @@ export namespace Gandiva {
     namespace DoubleLiteralNode {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -256,6 +291,14 @@ export namespace Gandiva {
 
     class DoubleLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<DoubleLiteralNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DoubleLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -269,17 +312,17 @@ export namespace Gandiva {
 
         connect<K extends keyof DoubleLiteralNode.SignalSignatures>(
             signal: K,
-            callback: DoubleLiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DoubleLiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DoubleLiteralNode.SignalSignatures>(
             signal: K,
-            callback: DoubleLiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DoubleLiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DoubleLiteralNode.SignalSignatures>(
             signal: K,
-            ...args: DoubleLiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DoubleLiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -291,9 +334,9 @@ export namespace Gandiva {
     namespace Expression {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::expression': GObject.Object.Notify;
-            'notify::result-field': GObject.Object.Notify;
-            'notify::root-node': GObject.Object.Notify;
+            'notify::expression': (pspec: GObject.ParamSpec) => void;
+            'notify::result-field': (pspec: GObject.ParamSpec) => void;
+            'notify::root-node': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -317,6 +360,14 @@ export namespace Gandiva {
         get resultField(): Arrow.Field;
         get root_node(): Node;
         get rootNode(): Node;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Expression.SignalSignatures;
 
         // Constructors
 
@@ -330,17 +381,17 @@ export namespace Gandiva {
 
         connect<K extends keyof Expression.SignalSignatures>(
             signal: K,
-            callback: Expression.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Expression.SignalSignatures>(
             signal: K,
-            callback: Expression.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Expression.SignalSignatures>(
             signal: K,
-            ...args: Expression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Expression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -352,9 +403,9 @@ export namespace Gandiva {
     namespace FieldNode {
         // Signal signatures
         interface SignalSignatures extends Node.SignalSignatures {
-            'notify::field': GObject.Object.Notify;
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::field': (pspec: GObject.ParamSpec) => void;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -370,6 +421,14 @@ export namespace Gandiva {
         // Properties
 
         get field(): Arrow.Field;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FieldNode.SignalSignatures;
 
         // Constructors
 
@@ -381,16 +440,19 @@ export namespace Gandiva {
 
         // Signals
 
-        connect<K extends keyof FieldNode.SignalSignatures>(signal: K, callback: FieldNode.SignalSignatures[K]): number;
+        connect<K extends keyof FieldNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, FieldNode.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FieldNode.SignalSignatures>(
             signal: K,
-            callback: FieldNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FieldNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FieldNode.SignalSignatures>(
             signal: K,
-            ...args: FieldNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FieldNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -398,8 +460,8 @@ export namespace Gandiva {
     namespace FloatLiteralNode {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -409,6 +471,14 @@ export namespace Gandiva {
 
     class FloatLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<FloatLiteralNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FloatLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -422,17 +492,17 @@ export namespace Gandiva {
 
         connect<K extends keyof FloatLiteralNode.SignalSignatures>(
             signal: K,
-            callback: FloatLiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FloatLiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FloatLiteralNode.SignalSignatures>(
             signal: K,
-            callback: FloatLiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FloatLiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FloatLiteralNode.SignalSignatures>(
             signal: K,
-            ...args: FloatLiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FloatLiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -444,9 +514,9 @@ export namespace Gandiva {
     namespace FunctionNode {
         // Signal signatures
         interface SignalSignatures extends Node.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -462,6 +532,14 @@ export namespace Gandiva {
         // Properties
 
         get name(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FunctionNode.SignalSignatures;
 
         // Constructors
 
@@ -475,17 +553,17 @@ export namespace Gandiva {
 
         connect<K extends keyof FunctionNode.SignalSignatures>(
             signal: K,
-            callback: FunctionNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FunctionNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionNode.SignalSignatures>(
             signal: K,
-            callback: FunctionNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FunctionNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionNode.SignalSignatures>(
             signal: K,
-            ...args: FunctionNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FunctionNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -505,6 +583,14 @@ export namespace Gandiva {
 
     class FunctionRegistry extends GObject.Object {
         static $gtype: GObject.GType<FunctionRegistry>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FunctionRegistry.SignalSignatures;
 
         // Constructors
 
@@ -518,17 +604,17 @@ export namespace Gandiva {
 
         connect<K extends keyof FunctionRegistry.SignalSignatures>(
             signal: K,
-            callback: FunctionRegistry.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FunctionRegistry.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionRegistry.SignalSignatures>(
             signal: K,
-            callback: FunctionRegistry.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FunctionRegistry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionRegistry.SignalSignatures>(
             signal: K,
-            ...args: FunctionRegistry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FunctionRegistry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -541,7 +627,7 @@ export namespace Gandiva {
     namespace FunctionSignature {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::function-signature': GObject.Object.Notify;
+            'notify::function-signature': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -559,6 +645,14 @@ export namespace Gandiva {
 
         set function_signature(val: any);
         set functionSignature(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FunctionSignature.SignalSignatures;
 
         // Constructors
 
@@ -576,17 +670,17 @@ export namespace Gandiva {
 
         connect<K extends keyof FunctionSignature.SignalSignatures>(
             signal: K,
-            callback: FunctionSignature.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FunctionSignature.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionSignature.SignalSignatures>(
             signal: K,
-            callback: FunctionSignature.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FunctionSignature.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionSignature.SignalSignatures>(
             signal: K,
-            ...args: FunctionSignature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FunctionSignature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -602,11 +696,11 @@ export namespace Gandiva {
     namespace IfNode {
         // Signal signatures
         interface SignalSignatures extends Node.SignalSignatures {
-            'notify::condition-node': GObject.Object.Notify;
-            'notify::else-node': GObject.Object.Notify;
-            'notify::then-node': GObject.Object.Notify;
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::condition-node': (pspec: GObject.ParamSpec) => void;
+            'notify::else-node': (pspec: GObject.ParamSpec) => void;
+            'notify::then-node': (pspec: GObject.ParamSpec) => void;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -632,6 +726,14 @@ export namespace Gandiva {
         get elseNode(): Node;
         get then_node(): Node;
         get thenNode(): Node;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IfNode.SignalSignatures;
 
         // Constructors
 
@@ -643,13 +745,19 @@ export namespace Gandiva {
 
         // Signals
 
-        connect<K extends keyof IfNode.SignalSignatures>(signal: K, callback: IfNode.SignalSignatures[K]): number;
+        connect<K extends keyof IfNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, IfNode.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof IfNode.SignalSignatures>(signal: K, callback: IfNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof IfNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, IfNode.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IfNode.SignalSignatures>(
             signal: K,
-            ...args: IfNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IfNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -657,8 +765,8 @@ export namespace Gandiva {
     namespace Int16LiteralNode {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -668,6 +776,14 @@ export namespace Gandiva {
 
     class Int16LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int16LiteralNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Int16LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -681,17 +797,17 @@ export namespace Gandiva {
 
         connect<K extends keyof Int16LiteralNode.SignalSignatures>(
             signal: K,
-            callback: Int16LiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Int16LiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int16LiteralNode.SignalSignatures>(
             signal: K,
-            callback: Int16LiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Int16LiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int16LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Int16LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Int16LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -703,8 +819,8 @@ export namespace Gandiva {
     namespace Int32LiteralNode {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -714,6 +830,14 @@ export namespace Gandiva {
 
     class Int32LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int32LiteralNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Int32LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -727,17 +851,17 @@ export namespace Gandiva {
 
         connect<K extends keyof Int32LiteralNode.SignalSignatures>(
             signal: K,
-            callback: Int32LiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Int32LiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int32LiteralNode.SignalSignatures>(
             signal: K,
-            callback: Int32LiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Int32LiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int32LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Int32LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Int32LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -749,8 +873,8 @@ export namespace Gandiva {
     namespace Int64LiteralNode {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -760,6 +884,14 @@ export namespace Gandiva {
 
     class Int64LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int64LiteralNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Int64LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -773,17 +905,17 @@ export namespace Gandiva {
 
         connect<K extends keyof Int64LiteralNode.SignalSignatures>(
             signal: K,
-            callback: Int64LiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Int64LiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int64LiteralNode.SignalSignatures>(
             signal: K,
-            callback: Int64LiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Int64LiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int64LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Int64LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Int64LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -795,8 +927,8 @@ export namespace Gandiva {
     namespace Int8LiteralNode {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -806,6 +938,14 @@ export namespace Gandiva {
 
     class Int8LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int8LiteralNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Int8LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -819,17 +959,17 @@ export namespace Gandiva {
 
         connect<K extends keyof Int8LiteralNode.SignalSignatures>(
             signal: K,
-            callback: Int8LiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Int8LiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int8LiteralNode.SignalSignatures>(
             signal: K,
-            callback: Int8LiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Int8LiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int8LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Int8LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Int8LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -841,8 +981,8 @@ export namespace Gandiva {
     namespace LiteralNode {
         // Signal signatures
         interface SignalSignatures extends Node.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -852,6 +992,14 @@ export namespace Gandiva {
 
     class LiteralNode extends Node {
         static $gtype: GObject.GType<LiteralNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -863,17 +1011,17 @@ export namespace Gandiva {
 
         connect<K extends keyof LiteralNode.SignalSignatures>(
             signal: K,
-            callback: LiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LiteralNode.SignalSignatures>(
             signal: K,
-            callback: LiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -881,7 +1029,7 @@ export namespace Gandiva {
     namespace NativeFunction {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::native-function': GObject.Object.Notify;
+            'notify::native-function': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -899,6 +1047,14 @@ export namespace Gandiva {
 
         set native_function(val: any);
         set nativeFunction(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NativeFunction.SignalSignatures;
 
         // Constructors
 
@@ -910,17 +1066,17 @@ export namespace Gandiva {
 
         connect<K extends keyof NativeFunction.SignalSignatures>(
             signal: K,
-            callback: NativeFunction.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NativeFunction.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NativeFunction.SignalSignatures>(
             signal: K,
-            callback: NativeFunction.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NativeFunction.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NativeFunction.SignalSignatures>(
             signal: K,
-            ...args: NativeFunction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NativeFunction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -938,8 +1094,8 @@ export namespace Gandiva {
     namespace Node {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -959,6 +1115,14 @@ export namespace Gandiva {
         set node(val: any);
         get return_type(): Arrow.DataType;
         get returnType(): Arrow.DataType;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Node.SignalSignatures;
 
         // Constructors
 
@@ -968,13 +1132,19 @@ export namespace Gandiva {
 
         // Signals
 
-        connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect_after<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Node.SignalSignatures>(
             signal: K,
-            ...args: Node.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Node.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -986,8 +1156,8 @@ export namespace Gandiva {
     namespace NullLiteralNode {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -997,6 +1167,14 @@ export namespace Gandiva {
 
     class NullLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<NullLiteralNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NullLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -1010,17 +1188,17 @@ export namespace Gandiva {
 
         connect<K extends keyof NullLiteralNode.SignalSignatures>(
             signal: K,
-            callback: NullLiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NullLiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NullLiteralNode.SignalSignatures>(
             signal: K,
-            callback: NullLiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NullLiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NullLiteralNode.SignalSignatures>(
             signal: K,
-            ...args: NullLiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NullLiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1028,8 +1206,8 @@ export namespace Gandiva {
     namespace OrNode {
         // Signal signatures
         interface SignalSignatures extends BooleanNode.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1039,6 +1217,14 @@ export namespace Gandiva {
 
     class OrNode extends BooleanNode {
         static $gtype: GObject.GType<OrNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OrNode.SignalSignatures;
 
         // Constructors
 
@@ -1050,13 +1236,19 @@ export namespace Gandiva {
 
         // Signals
 
-        connect<K extends keyof OrNode.SignalSignatures>(signal: K, callback: OrNode.SignalSignatures[K]): number;
+        connect<K extends keyof OrNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, OrNode.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof OrNode.SignalSignatures>(signal: K, callback: OrNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof OrNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, OrNode.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OrNode.SignalSignatures>(
             signal: K,
-            ...args: OrNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OrNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1064,7 +1256,7 @@ export namespace Gandiva {
     namespace Projector {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::projector': GObject.Object.Notify;
+            'notify::projector': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1080,6 +1272,14 @@ export namespace Gandiva {
         // Properties
 
         set projector(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Projector.SignalSignatures;
 
         // Constructors
 
@@ -1091,16 +1291,19 @@ export namespace Gandiva {
 
         // Signals
 
-        connect<K extends keyof Projector.SignalSignatures>(signal: K, callback: Projector.SignalSignatures[K]): number;
+        connect<K extends keyof Projector.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Projector.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Projector.SignalSignatures>(
             signal: K,
-            callback: Projector.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Projector.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Projector.SignalSignatures>(
             signal: K,
-            ...args: Projector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Projector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1112,8 +1315,8 @@ export namespace Gandiva {
     namespace StringLiteralNode {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1123,6 +1326,14 @@ export namespace Gandiva {
 
     class StringLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<StringLiteralNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StringLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -1136,17 +1347,17 @@ export namespace Gandiva {
 
         connect<K extends keyof StringLiteralNode.SignalSignatures>(
             signal: K,
-            callback: StringLiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StringLiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StringLiteralNode.SignalSignatures>(
             signal: K,
-            callback: StringLiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StringLiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StringLiteralNode.SignalSignatures>(
             signal: K,
-            ...args: StringLiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StringLiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1158,8 +1369,8 @@ export namespace Gandiva {
     namespace UInt16LiteralNode {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1169,6 +1380,14 @@ export namespace Gandiva {
 
     class UInt16LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt16LiteralNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UInt16LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -1182,17 +1401,17 @@ export namespace Gandiva {
 
         connect<K extends keyof UInt16LiteralNode.SignalSignatures>(
             signal: K,
-            callback: UInt16LiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UInt16LiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt16LiteralNode.SignalSignatures>(
             signal: K,
-            callback: UInt16LiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UInt16LiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt16LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: UInt16LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UInt16LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1204,8 +1423,8 @@ export namespace Gandiva {
     namespace UInt32LiteralNode {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1215,6 +1434,14 @@ export namespace Gandiva {
 
     class UInt32LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt32LiteralNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UInt32LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -1228,17 +1455,17 @@ export namespace Gandiva {
 
         connect<K extends keyof UInt32LiteralNode.SignalSignatures>(
             signal: K,
-            callback: UInt32LiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UInt32LiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt32LiteralNode.SignalSignatures>(
             signal: K,
-            callback: UInt32LiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UInt32LiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt32LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: UInt32LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UInt32LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1250,8 +1477,8 @@ export namespace Gandiva {
     namespace UInt64LiteralNode {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1261,6 +1488,14 @@ export namespace Gandiva {
 
     class UInt64LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt64LiteralNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UInt64LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -1274,17 +1509,17 @@ export namespace Gandiva {
 
         connect<K extends keyof UInt64LiteralNode.SignalSignatures>(
             signal: K,
-            callback: UInt64LiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UInt64LiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt64LiteralNode.SignalSignatures>(
             signal: K,
-            callback: UInt64LiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UInt64LiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt64LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: UInt64LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UInt64LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1296,8 +1531,8 @@ export namespace Gandiva {
     namespace UInt8LiteralNode {
         // Signal signatures
         interface SignalSignatures extends LiteralNode.SignalSignatures {
-            'notify::node': GObject.Object.Notify;
-            'notify::return-type': GObject.Object.Notify;
+            'notify::node': (pspec: GObject.ParamSpec) => void;
+            'notify::return-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1307,6 +1542,14 @@ export namespace Gandiva {
 
     class UInt8LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt8LiteralNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UInt8LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -1320,17 +1563,17 @@ export namespace Gandiva {
 
         connect<K extends keyof UInt8LiteralNode.SignalSignatures>(
             signal: K,
-            callback: UInt8LiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UInt8LiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt8LiteralNode.SignalSignatures>(
             signal: K,
-            callback: UInt8LiteralNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UInt8LiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt8LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: UInt8LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UInt8LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

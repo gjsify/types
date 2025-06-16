@@ -52,31 +52,17 @@ export namespace Jsonrpc {
         (self: Server, client: Client, method: string, id: GLib.Variant, params: GLib.Variant): void;
     }
     namespace Client {
-        // Signal callback interfaces
-
-        interface Failed {
-            (_source: Client): void;
-        }
-
-        interface HandleCall {
-            (_source: Client, method: string, id: GLib.Variant, params?: GLib.Variant | null): boolean | void;
-        }
-
-        interface Notification {
-            (_source: Client, method: string, params?: GLib.Variant | null): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            failed: Failed;
-            'handle-call': HandleCall;
-            notification: Notification;
-            'notify::io-stream': GObject.Object.Notify;
-            'notify::use-gvariant': GObject.Object.Notify;
-            'handle-call::io-stream': HandleCall;
-            'handle-call::use-gvariant': HandleCall;
-            'notification::io-stream': Notification;
-            'notification::use-gvariant': Notification;
+            failed: () => void;
+            'handle-call': (arg0: string, arg1: GLib.Variant, arg2: GLib.Variant | null) => boolean | void;
+            notification: (arg0: string, arg1: GLib.Variant | null) => void;
+            'notify::io-stream': (pspec: GObject.ParamSpec) => void;
+            'notify::use-gvariant': (pspec: GObject.ParamSpec) => void;
+            'handle-call::io-stream': (arg0: string, arg1: GLib.Variant, arg2: GLib.Variant | null) => boolean;
+            'handle-call::use-gvariant': (arg0: string, arg1: GLib.Variant, arg2: GLib.Variant | null) => boolean;
+            'notification::io-stream': (arg0: string, arg1: GLib.Variant | null) => void;
+            'notification::use-gvariant': (arg0: string, arg1: GLib.Variant | null) => void;
         }
 
         // Constructor properties interface
@@ -156,6 +142,14 @@ export namespace Jsonrpc {
          */
         get useGvariant(): boolean;
         set useGvariant(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -167,13 +161,19 @@ export namespace Jsonrpc {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -534,11 +534,11 @@ export namespace Jsonrpc {
     namespace InputStream {
         // Signal signatures
         interface SignalSignatures extends Gio.DataInputStream.SignalSignatures {
-            'notify::byte-order': GObject.Object.Notify;
-            'notify::newline-type': GObject.Object.Notify;
-            'notify::buffer-size': GObject.Object.Notify;
-            'notify::base-stream': GObject.Object.Notify;
-            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::byte-order': (pspec: GObject.ParamSpec) => void;
+            'notify::newline-type': (pspec: GObject.ParamSpec) => void;
+            'notify::buffer-size': (pspec: GObject.ParamSpec) => void;
+            'notify::base-stream': (pspec: GObject.ParamSpec) => void;
+            'notify::close-base-stream': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -548,6 +548,14 @@ export namespace Jsonrpc {
 
     class InputStream extends Gio.DataInputStream implements Gio.Seekable {
         static $gtype: GObject.GType<InputStream>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InputStream.SignalSignatures;
 
         // Constructors
 
@@ -561,17 +569,17 @@ export namespace Jsonrpc {
 
         connect<K extends keyof InputStream.SignalSignatures>(
             signal: K,
-            callback: InputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputStream.SignalSignatures>(
             signal: K,
-            callback: InputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputStream.SignalSignatures>(
             signal: K,
-            ...args: InputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1031,10 +1039,10 @@ export namespace Jsonrpc {
     namespace OutputStream {
         // Signal signatures
         interface SignalSignatures extends Gio.DataOutputStream.SignalSignatures {
-            'notify::use-gvariant': GObject.Object.Notify;
-            'notify::byte-order': GObject.Object.Notify;
-            'notify::base-stream': GObject.Object.Notify;
-            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::use-gvariant': (pspec: GObject.ParamSpec) => void;
+            'notify::byte-order': (pspec: GObject.ParamSpec) => void;
+            'notify::base-stream': (pspec: GObject.ParamSpec) => void;
+            'notify::close-base-stream': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1054,6 +1062,14 @@ export namespace Jsonrpc {
         set use_gvariant(val: boolean);
         get useGvariant(): boolean;
         set useGvariant(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OutputStream.SignalSignatures;
 
         // Constructors
 
@@ -1067,17 +1083,17 @@ export namespace Jsonrpc {
 
         connect<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
-            callback: OutputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
-            callback: OutputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
-            ...args: OutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OutputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1675,30 +1691,12 @@ export namespace Jsonrpc {
     }
 
     namespace Server {
-        // Signal callback interfaces
-
-        interface ClientAccepted {
-            (_source: Server, client: Client): void;
-        }
-
-        interface ClientClosed {
-            (_source: Server, client: Client): void;
-        }
-
-        interface HandleCall {
-            (_source: Server, client: Client, method: string, id: GLib.Variant, params: GLib.Variant): boolean | void;
-        }
-
-        interface Notification {
-            (_source: Server, client: Client, method: string, id: GLib.Variant): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'client-accepted': ClientAccepted;
-            'client-closed': ClientClosed;
-            'handle-call': HandleCall;
-            notification: Notification;
+            'client-accepted': (arg0: Client) => void;
+            'client-closed': (arg0: Client) => void;
+            'handle-call': (arg0: Client, arg1: string, arg2: GLib.Variant, arg3: GLib.Variant) => boolean | void;
+            notification: (arg0: Client, arg1: string, arg2: GLib.Variant) => void;
         }
 
         // Constructor properties interface
@@ -1715,6 +1713,14 @@ export namespace Jsonrpc {
      */
     class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Server.SignalSignatures;
 
         // Constructors
 
@@ -1726,13 +1732,19 @@ export namespace Jsonrpc {
 
         // Signals
 
-        connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect_after<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Server.SignalSignatures>(
             signal: K,
-            ...args: Server.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Server.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -121,29 +121,19 @@ export namespace Epc {
         PASSWORD_TEXT_NEEDED,
     }
     namespace Consumer {
-        // Signal callback interfaces
-
-        interface Authenticate {
-            (_source: Consumer, object: string): boolean | void;
-        }
-
-        interface PublisherResolved {
-            (_source: Consumer, object: Protocol, p0: string, p1: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            authenticate: Authenticate;
-            'publisher-resolved': PublisherResolved;
-            'notify::application': GObject.Object.Notify;
-            'notify::domain': GObject.Object.Notify;
-            'notify::hostname': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::port': GObject.Object.Notify;
-            'notify::protocol': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
+            authenticate: (arg0: string) => boolean | void;
+            'publisher-resolved': (arg0: Protocol, arg1: string, arg2: number) => void;
+            'notify::application': (pspec: GObject.ParamSpec) => void;
+            'notify::domain': (pspec: GObject.ParamSpec) => void;
+            'notify::hostname': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::port': (pspec: GObject.ParamSpec) => void;
+            'notify::protocol': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -181,6 +171,14 @@ export namespace Epc {
         set protocol(val: Protocol);
         get username(): string;
         set username(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Consumer.SignalSignatures;
 
         // Constructors
 
@@ -196,16 +194,19 @@ export namespace Epc {
 
         // Signals
 
-        connect<K extends keyof Consumer.SignalSignatures>(signal: K, callback: Consumer.SignalSignatures[K]): number;
+        connect<K extends keyof Consumer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Consumer.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Consumer.SignalSignatures>(
             signal: K,
-            callback: Consumer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Consumer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Consumer.SignalSignatures>(
             signal: K,
-            ...args: Consumer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Consumer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -229,9 +230,9 @@ export namespace Epc {
     namespace Dispatcher {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::collision-handling': GObject.Object.Notify;
-            'notify::cookie': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::collision-handling': (pspec: GObject.ParamSpec) => void;
+            'notify::cookie': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -260,6 +261,14 @@ export namespace Epc {
         set cookie(val: string);
         get name(): string;
         set name(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Dispatcher.SignalSignatures;
 
         // Constructors
 
@@ -273,17 +282,17 @@ export namespace Epc {
 
         connect<K extends keyof Dispatcher.SignalSignatures>(
             signal: K,
-            callback: Dispatcher.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Dispatcher.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Dispatcher.SignalSignatures>(
             signal: K,
-            callback: Dispatcher.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Dispatcher.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Dispatcher.SignalSignatures>(
             signal: K,
-            ...args: Dispatcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Dispatcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -303,16 +312,16 @@ export namespace Epc {
     namespace Publisher {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::application': GObject.Object.Notify;
-            'notify::auth-flags': GObject.Object.Notify;
-            'notify::certificate-file': GObject.Object.Notify;
-            'notify::collision-handling': GObject.Object.Notify;
-            'notify::contents-path': GObject.Object.Notify;
-            'notify::private-key-file': GObject.Object.Notify;
-            'notify::protocol': GObject.Object.Notify;
-            'notify::service-cookie': GObject.Object.Notify;
-            'notify::service-domain': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
+            'notify::application': (pspec: GObject.ParamSpec) => void;
+            'notify::auth-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::certificate-file': (pspec: GObject.ParamSpec) => void;
+            'notify::collision-handling': (pspec: GObject.ParamSpec) => void;
+            'notify::contents-path': (pspec: GObject.ParamSpec) => void;
+            'notify::private-key-file': (pspec: GObject.ParamSpec) => void;
+            'notify::protocol': (pspec: GObject.ParamSpec) => void;
+            'notify::service-cookie': (pspec: GObject.ParamSpec) => void;
+            'notify::service-domain': (pspec: GObject.ParamSpec) => void;
+            'notify::service-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -383,6 +392,14 @@ export namespace Epc {
         set service_name(val: string);
         get serviceName(): string;
         set serviceName(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Publisher.SignalSignatures;
 
         // Constructors
 
@@ -394,16 +411,19 @@ export namespace Epc {
 
         // Signals
 
-        connect<K extends keyof Publisher.SignalSignatures>(signal: K, callback: Publisher.SignalSignatures[K]): number;
+        connect<K extends keyof Publisher.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Publisher.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Publisher.SignalSignatures>(
             signal: K,
-            callback: Publisher.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Publisher.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Publisher.SignalSignatures>(
             signal: K,
-            ...args: Publisher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Publisher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -444,29 +464,15 @@ export namespace Epc {
     }
 
     namespace ServiceMonitor {
-        // Signal callback interfaces
-
-        interface ScanningDone {
-            (_source: ServiceMonitor, object: string): void;
-        }
-
-        interface ServiceFound {
-            (_source: ServiceMonitor, object: string, p0: ServiceInfo): void;
-        }
-
-        interface ServiceRemoved {
-            (_source: ServiceMonitor, object: string, p0: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'scanning-done': ScanningDone;
-            'service-found': ServiceFound;
-            'service-removed': ServiceRemoved;
-            'notify::application': GObject.Object.Notify;
-            'notify::domain': GObject.Object.Notify;
-            'notify::service-types': GObject.Object.Notify;
-            'notify::skip-our-own': GObject.Object.Notify;
+            'scanning-done': (arg0: string) => void;
+            'service-found': (arg0: string, arg1: ServiceInfo) => void;
+            'service-removed': (arg0: string, arg1: string) => void;
+            'notify::application': (pspec: GObject.ParamSpec) => void;
+            'notify::domain': (pspec: GObject.ParamSpec) => void;
+            'notify::service-types': (pspec: GObject.ParamSpec) => void;
+            'notify::skip-our-own': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -497,6 +503,14 @@ export namespace Epc {
         set skip_our_own(val: boolean);
         get skipOurOwn(): boolean;
         set skipOurOwn(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ServiceMonitor.SignalSignatures;
 
         // Constructors
 
@@ -510,17 +524,17 @@ export namespace Epc {
 
         connect<K extends keyof ServiceMonitor.SignalSignatures>(
             signal: K,
-            callback: ServiceMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServiceMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServiceMonitor.SignalSignatures>(
             signal: K,
-            callback: ServiceMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServiceMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServiceMonitor.SignalSignatures>(
             signal: K,
-            ...args: ServiceMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ServiceMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

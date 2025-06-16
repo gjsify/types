@@ -99,13 +99,13 @@ export namespace GstController {
     namespace ARGBControlBinding {
         // Signal signatures
         interface SignalSignatures extends Gst.ControlBinding.SignalSignatures {
-            'notify::control-source-a': GObject.Object.Notify;
-            'notify::control-source-b': GObject.Object.Notify;
-            'notify::control-source-g': GObject.Object.Notify;
-            'notify::control-source-r': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::object': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::control-source-a': (pspec: GObject.ParamSpec) => void;
+            'notify::control-source-b': (pspec: GObject.ParamSpec) => void;
+            'notify::control-source-g': (pspec: GObject.ParamSpec) => void;
+            'notify::control-source-r': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::object': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -148,6 +148,14 @@ export namespace GstController {
         set control_source_r(val: Gst.ControlSource);
         get controlSourceR(): Gst.ControlSource;
         set controlSourceR(val: Gst.ControlSource);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ARGBControlBinding.SignalSignatures;
 
         // Constructors
 
@@ -168,17 +176,17 @@ export namespace GstController {
 
         connect<K extends keyof ARGBControlBinding.SignalSignatures>(
             signal: K,
-            callback: ARGBControlBinding.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ARGBControlBinding.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ARGBControlBinding.SignalSignatures>(
             signal: K,
-            callback: ARGBControlBinding.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ARGBControlBinding.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ARGBControlBinding.SignalSignatures>(
             signal: K,
-            ...args: ARGBControlBinding.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ARGBControlBinding.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -186,11 +194,11 @@ export namespace GstController {
     namespace DirectControlBinding {
         // Signal signatures
         interface SignalSignatures extends Gst.ControlBinding.SignalSignatures {
-            'notify::absolute': GObject.Object.Notify;
-            'notify::control-source': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::object': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::absolute': (pspec: GObject.ParamSpec) => void;
+            'notify::control-source': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::object': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -220,6 +228,14 @@ export namespace GstController {
         set control_source(val: Gst.ControlSource);
         get controlSource(): Gst.ControlSource;
         set controlSource(val: Gst.ControlSource);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DirectControlBinding.SignalSignatures;
 
         // Constructors
 
@@ -235,17 +251,19 @@ export namespace GstController {
 
         connect<K extends keyof DirectControlBinding.SignalSignatures>(
             signal: K,
-            callback: DirectControlBinding.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DirectControlBinding.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DirectControlBinding.SignalSignatures>(
             signal: K,
-            callback: DirectControlBinding.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DirectControlBinding.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DirectControlBinding.SignalSignatures>(
             signal: K,
-            ...args: DirectControlBinding.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DirectControlBinding.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -253,9 +271,9 @@ export namespace GstController {
     namespace InterpolationControlSource {
         // Signal signatures
         interface SignalSignatures extends TimedValueControlSource.SignalSignatures {
-            'notify::mode': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -282,6 +300,14 @@ export namespace GstController {
 
         get mode(): InterpolationMode;
         set mode(val: InterpolationMode);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InterpolationControlSource.SignalSignatures;
 
         // Constructors
 
@@ -295,17 +321,19 @@ export namespace GstController {
 
         connect<K extends keyof InterpolationControlSource.SignalSignatures>(
             signal: K,
-            callback: InterpolationControlSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InterpolationControlSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InterpolationControlSource.SignalSignatures>(
             signal: K,
-            callback: InterpolationControlSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InterpolationControlSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InterpolationControlSource.SignalSignatures>(
             signal: K,
-            ...args: InterpolationControlSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InterpolationControlSource.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -313,13 +341,13 @@ export namespace GstController {
     namespace LFOControlSource {
         // Signal signatures
         interface SignalSignatures extends Gst.ControlSource.SignalSignatures {
-            'notify::amplitude': GObject.Object.Notify;
-            'notify::frequency': GObject.Object.Notify;
-            'notify::offset': GObject.Object.Notify;
-            'notify::timeshift': GObject.Object.Notify;
-            'notify::waveform': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::amplitude': (pspec: GObject.ParamSpec) => void;
+            'notify::frequency': (pspec: GObject.ParamSpec) => void;
+            'notify::offset': (pspec: GObject.ParamSpec) => void;
+            'notify::timeshift': (pspec: GObject.ParamSpec) => void;
+            'notify::waveform': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -379,6 +407,14 @@ export namespace GstController {
          */
         get waveform(): LFOWaveform;
         set waveform(val: LFOWaveform);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LFOControlSource.SignalSignatures;
 
         // Constructors
 
@@ -392,17 +428,17 @@ export namespace GstController {
 
         connect<K extends keyof LFOControlSource.SignalSignatures>(
             signal: K,
-            callback: LFOControlSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LFOControlSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LFOControlSource.SignalSignatures>(
             signal: K,
-            callback: LFOControlSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LFOControlSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LFOControlSource.SignalSignatures>(
             signal: K,
-            ...args: LFOControlSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LFOControlSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -410,9 +446,9 @@ export namespace GstController {
     namespace ProxyControlBinding {
         // Signal signatures
         interface SignalSignatures extends Gst.ControlBinding.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::object': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::object': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -425,6 +461,14 @@ export namespace GstController {
      */
     class ProxyControlBinding extends Gst.ControlBinding {
         static $gtype: GObject.GType<ProxyControlBinding>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ProxyControlBinding.SignalSignatures;
 
         // Constructors
 
@@ -443,43 +487,31 @@ export namespace GstController {
 
         connect<K extends keyof ProxyControlBinding.SignalSignatures>(
             signal: K,
-            callback: ProxyControlBinding.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProxyControlBinding.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProxyControlBinding.SignalSignatures>(
             signal: K,
-            callback: ProxyControlBinding.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProxyControlBinding.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProxyControlBinding.SignalSignatures>(
             signal: K,
-            ...args: ProxyControlBinding.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ProxyControlBinding.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace TimedValueControlSource {
-        // Signal callback interfaces
-
-        interface ValueAdded {
-            (_source: TimedValueControlSource, timed_value: ControlPoint): void;
-        }
-
-        interface ValueChanged {
-            (_source: TimedValueControlSource, timed_value: ControlPoint): void;
-        }
-
-        interface ValueRemoved {
-            (_source: TimedValueControlSource, timed_value: ControlPoint): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gst.ControlSource.SignalSignatures {
-            'value-added': ValueAdded;
-            'value-changed': ValueChanged;
-            'value-removed': ValueRemoved;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'value-added': (arg0: ControlPoint) => void;
+            'value-changed': (arg0: ControlPoint) => void;
+            'value-removed': (arg0: ControlPoint) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -497,6 +529,14 @@ export namespace GstController {
      */
     abstract class TimedValueControlSource extends Gst.ControlSource {
         static $gtype: GObject.GType<TimedValueControlSource>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TimedValueControlSource.SignalSignatures;
 
         // Fields
 
@@ -513,17 +553,19 @@ export namespace GstController {
 
         connect<K extends keyof TimedValueControlSource.SignalSignatures>(
             signal: K,
-            callback: TimedValueControlSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TimedValueControlSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TimedValueControlSource.SignalSignatures>(
             signal: K,
-            callback: TimedValueControlSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TimedValueControlSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TimedValueControlSource.SignalSignatures>(
             signal: K,
-            ...args: TimedValueControlSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TimedValueControlSource.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -581,9 +623,9 @@ export namespace GstController {
     namespace TriggerControlSource {
         // Signal signatures
         interface SignalSignatures extends TimedValueControlSource.SignalSignatures {
-            'notify::tolerance': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::tolerance': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -610,6 +652,14 @@ export namespace GstController {
 
         get tolerance(): number;
         set tolerance(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TriggerControlSource.SignalSignatures;
 
         // Constructors
 
@@ -623,17 +673,19 @@ export namespace GstController {
 
         connect<K extends keyof TriggerControlSource.SignalSignatures>(
             signal: K,
-            callback: TriggerControlSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TriggerControlSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TriggerControlSource.SignalSignatures>(
             signal: K,
-            callback: TriggerControlSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TriggerControlSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TriggerControlSource.SignalSignatures>(
             signal: K,
-            ...args: TriggerControlSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TriggerControlSource.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

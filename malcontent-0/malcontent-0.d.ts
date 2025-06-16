@@ -219,16 +219,10 @@ export namespace Malcontent {
         INTERACTIVE,
     }
     namespace Manager {
-        // Signal callback interfaces
-
-        interface AppFilterChanged {
-            (_source: Manager, user_id: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'app-filter-changed': AppFilterChanged;
-            'notify::connection': GObject.Object.Notify;
+            'app-filter-changed': (arg0: number) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -253,6 +247,14 @@ export namespace Malcontent {
          * re-used.
          */
         get connection(): Gio.DBusConnection;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Manager.SignalSignatures;
 
         // Constructors
 
@@ -264,16 +266,19 @@ export namespace Malcontent {
 
         // Signals
 
-        connect<K extends keyof Manager.SignalSignatures>(signal: K, callback: Manager.SignalSignatures[K]): number;
+        connect<K extends keyof Manager.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Manager.SignalSignatures>(
             signal: K,
-            callback: Manager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Manager.SignalSignatures>(
             signal: K,
-            ...args: Manager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Manager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

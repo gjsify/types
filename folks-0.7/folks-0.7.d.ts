@@ -210,13 +210,13 @@ export namespace Folks {
     namespace AbstractFieldDetails {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::t-type': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::parameters': GObject.Object.Notify;
+            'notify::t-type': (pspec: GObject.ParamSpec) => void;
+            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::value-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::parameters': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -255,6 +255,14 @@ export namespace Folks {
         set id(val: string);
         get parameters(): Gee.MultiMap;
         set parameters(val: Gee.MultiMap);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AbstractFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -266,17 +274,19 @@ export namespace Folks {
 
         connect<K extends keyof AbstractFieldDetails.SignalSignatures>(
             signal: K,
-            callback: AbstractFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AbstractFieldDetails.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractFieldDetails.SignalSignatures>(
             signal: K,
-            callback: AbstractFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AbstractFieldDetails.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: AbstractFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AbstractFieldDetails.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -329,6 +339,14 @@ export namespace Folks {
 
     class AvatarCache extends GObject.Object {
         static $gtype: GObject.GType<AvatarCache>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AvatarCache.SignalSignatures;
 
         // Constructors
 
@@ -340,17 +358,17 @@ export namespace Folks {
 
         connect<K extends keyof AvatarCache.SignalSignatures>(
             signal: K,
-            callback: AvatarCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AvatarCache.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AvatarCache.SignalSignatures>(
             signal: K,
-            callback: AvatarCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AvatarCache.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AvatarCache.SignalSignatures>(
             signal: K,
-            ...args: AvatarCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AvatarCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -383,17 +401,11 @@ export namespace Folks {
     }
 
     namespace BackendStore {
-        // Signal callback interfaces
-
-        interface BackendAvailable {
-            (_source: BackendStore, backend: Backend): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'backend-available': BackendAvailable;
-            'notify::enabled-backends': GObject.Object.Notify;
-            'notify::is-prepared': GObject.Object.Notify;
+            'backend-available': (arg0: Backend) => void;
+            'notify::enabled-backends': (pspec: GObject.ParamSpec) => void;
+            'notify::is-prepared': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -419,6 +431,14 @@ export namespace Folks {
         set is_prepared(val: boolean);
         get isPrepared(): boolean;
         set isPrepared(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BackendStore.SignalSignatures;
 
         // Fields
 
@@ -434,17 +454,17 @@ export namespace Folks {
 
         connect<K extends keyof BackendStore.SignalSignatures>(
             signal: K,
-            callback: BackendStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BackendStore.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BackendStore.SignalSignatures>(
             signal: K,
-            callback: BackendStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BackendStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BackendStore.SignalSignatures>(
             signal: K,
-            ...args: BackendStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BackendStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -478,24 +498,14 @@ export namespace Folks {
     }
 
     namespace Backend {
-        // Signal callback interfaces
-
-        interface PersonaStoreAdded {
-            (_source: Backend, store: PersonaStore): void;
-        }
-
-        interface PersonaStoreRemoved {
-            (_source: Backend, store: PersonaStore): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'persona-store-added': PersonaStoreAdded;
-            'persona-store-removed': PersonaStoreRemoved;
-            'notify::is-prepared': GObject.Object.Notify;
-            'notify::is-quiescent': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::persona-stores': GObject.Object.Notify;
+            'persona-store-added': (arg0: PersonaStore) => void;
+            'persona-store-removed': (arg0: PersonaStore) => void;
+            'notify::is-prepared': (pspec: GObject.ParamSpec) => void;
+            'notify::is-quiescent': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::persona-stores': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -523,6 +533,14 @@ export namespace Folks {
         get name(): string;
         get persona_stores(): Gee.Map;
         get personaStores(): Gee.Map;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Backend.SignalSignatures;
 
         // Constructors
 
@@ -532,16 +550,19 @@ export namespace Folks {
 
         // Signals
 
-        connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: Backend.SignalSignatures[K]): number;
+        connect<K extends keyof Backend.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            callback: Backend.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            ...args: Backend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Backend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -579,17 +600,11 @@ export namespace Folks {
     }
 
     namespace Debug {
-        // Signal callback interfaces
-
-        interface PrintStatus {
-            (_source: Debug): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'print-status': PrintStatus;
-            'notify::colour-enabled': GObject.Object.Notify;
-            'notify::debug-output-enabled': GObject.Object.Notify;
+            'print-status': () => void;
+            'notify::colour-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::debug-output-enabled': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -615,6 +630,14 @@ export namespace Folks {
         set debug_output_enabled(val: boolean);
         get debugOutputEnabled(): boolean;
         set debugOutputEnabled(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Debug.SignalSignatures;
 
         // Constructors
 
@@ -624,13 +647,19 @@ export namespace Folks {
 
         // Signals
 
-        connect<K extends keyof Debug.SignalSignatures>(signal: K, callback: Debug.SignalSignatures[K]): number;
+        connect<K extends keyof Debug.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Debug.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Debug.SignalSignatures>(signal: K, callback: Debug.SignalSignatures[K]): number;
+        connect_after<K extends keyof Debug.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Debug.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Debug.SignalSignatures>(
             signal: K,
-            ...args: Debug.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Debug.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -653,13 +682,13 @@ export namespace Folks {
     namespace EmailFieldDetails {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
-            'notify::t-type': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::parameters': GObject.Object.Notify;
+            'notify::t-type': (pspec: GObject.ParamSpec) => void;
+            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::value-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::parameters': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -669,6 +698,14 @@ export namespace Folks {
 
     class EmailFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<EmailFieldDetails>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: EmailFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -682,17 +719,17 @@ export namespace Folks {
 
         connect<K extends keyof EmailFieldDetails.SignalSignatures>(
             signal: K,
-            callback: EmailFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EmailFieldDetails.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EmailFieldDetails.SignalSignatures>(
             signal: K,
-            callback: EmailFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EmailFieldDetails.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EmailFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: EmailFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<EmailFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -700,13 +737,13 @@ export namespace Folks {
     namespace ExtendedFieldDetails {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
-            'notify::t-type': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::parameters': GObject.Object.Notify;
+            'notify::t-type': (pspec: GObject.ParamSpec) => void;
+            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::value-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::parameters': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -716,6 +753,14 @@ export namespace Folks {
 
     class ExtendedFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<ExtendedFieldDetails>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExtendedFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -729,17 +774,19 @@ export namespace Folks {
 
         connect<K extends keyof ExtendedFieldDetails.SignalSignatures>(
             signal: K,
-            callback: ExtendedFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExtendedFieldDetails.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExtendedFieldDetails.SignalSignatures>(
             signal: K,
-            callback: ExtendedFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExtendedFieldDetails.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExtendedFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: ExtendedFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExtendedFieldDetails.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -747,13 +794,13 @@ export namespace Folks {
     namespace ImFieldDetails {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
-            'notify::t-type': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::parameters': GObject.Object.Notify;
+            'notify::t-type': (pspec: GObject.ParamSpec) => void;
+            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::value-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::parameters': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -763,6 +810,14 @@ export namespace Folks {
 
     class ImFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<ImFieldDetails>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ImFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -776,49 +831,38 @@ export namespace Folks {
 
         connect<K extends keyof ImFieldDetails.SignalSignatures>(
             signal: K,
-            callback: ImFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ImFieldDetails.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ImFieldDetails.SignalSignatures>(
             signal: K,
-            callback: ImFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ImFieldDetails.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ImFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: ImFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ImFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace IndividualAggregator {
-        // Signal callback interfaces
-
-        interface IndividualsChanged {
-            (
-                _source: IndividualAggregator,
-                added: Gee.Set,
-                removed: Gee.Set,
-                message: string | null,
-                actor: Persona | null,
-                reason: GroupDetailsChangeReason,
-            ): void;
-        }
-
-        interface IndividualsChangedDetailed {
-            (_source: IndividualAggregator, changes: Gee.MultiMap): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'individuals-changed': IndividualsChanged;
-            'individuals-changed-detailed': IndividualsChangedDetailed;
-            'notify::is-prepared': GObject.Object.Notify;
-            'notify::is-quiescent': GObject.Object.Notify;
-            'notify::primary-store': GObject.Object.Notify;
-            'notify::backend-store': GObject.Object.Notify;
-            'notify::individuals': GObject.Object.Notify;
-            'notify::user': GObject.Object.Notify;
+            'individuals-changed': (
+                arg0: Gee.Set,
+                arg1: Gee.Set,
+                arg2: string | null,
+                arg3: Persona | null,
+                arg4: GroupDetailsChangeReason,
+            ) => void;
+            'individuals-changed-detailed': (arg0: Gee.MultiMap) => void;
+            'notify::is-prepared': (pspec: GObject.ParamSpec) => void;
+            'notify::is-quiescent': (pspec: GObject.ParamSpec) => void;
+            'notify::primary-store': (pspec: GObject.ParamSpec) => void;
+            'notify::backend-store': (pspec: GObject.ParamSpec) => void;
+            'notify::individuals': (pspec: GObject.ParamSpec) => void;
+            'notify::user': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -854,6 +898,14 @@ export namespace Folks {
         set individuals(val: Gee.Map);
         get user(): Individual;
         set user(val: Individual);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IndividualAggregator.SignalSignatures;
 
         // Constructors
 
@@ -869,17 +921,19 @@ export namespace Folks {
 
         connect<K extends keyof IndividualAggregator.SignalSignatures>(
             signal: K,
-            callback: IndividualAggregator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IndividualAggregator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IndividualAggregator.SignalSignatures>(
             signal: K,
-            callback: IndividualAggregator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IndividualAggregator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IndividualAggregator.SignalSignatures>(
             signal: K,
-            ...args: IndividualAggregator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IndividualAggregator.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -968,53 +1022,43 @@ export namespace Folks {
     }
 
     namespace Individual {
-        // Signal callback interfaces
-
-        interface Removed {
-            (_source: Individual, replacement_individual?: Individual | null): void;
-        }
-
-        interface PersonasChanged {
-            (_source: Individual, added: Gee.Set, removed: Gee.Set): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            removed: Removed;
-            'personas-changed': PersonasChanged;
-            'notify::trust-level': GObject.Object.Notify;
-            'notify::is-user': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::personas': GObject.Object.Notify;
-            'notify::alias': GObject.Object.Notify;
-            'notify::avatar': GObject.Object.Notify;
-            'notify::birthday': GObject.Object.Notify;
-            'notify::calendar-event-id': GObject.Object.Notify;
-            'notify::email-addresses': GObject.Object.Notify;
-            'notify::is-favourite': GObject.Object.Notify;
-            'notify::gender': GObject.Object.Notify;
-            'notify::groups': GObject.Object.Notify;
-            'notify::im-addresses': GObject.Object.Notify;
-            'notify::im-interaction-count': GObject.Object.Notify;
-            'notify::last-im-interaction-datetime': GObject.Object.Notify;
-            'notify::call-interaction-count': GObject.Object.Notify;
-            'notify::last-call-interaction-datetime': GObject.Object.Notify;
-            'notify::local-ids': GObject.Object.Notify;
-            'notify::location': GObject.Object.Notify;
-            'notify::structured-name': GObject.Object.Notify;
-            'notify::full-name': GObject.Object.Notify;
-            'notify::nickname': GObject.Object.Notify;
-            'notify::notes': GObject.Object.Notify;
-            'notify::presence-type': GObject.Object.Notify;
-            'notify::presence-message': GObject.Object.Notify;
-            'notify::client-types': GObject.Object.Notify;
-            'notify::presence-status': GObject.Object.Notify;
-            'notify::phone-numbers': GObject.Object.Notify;
-            'notify::postal-addresses': GObject.Object.Notify;
-            'notify::roles': GObject.Object.Notify;
-            'notify::urls': GObject.Object.Notify;
-            'notify::web-service-addresses': GObject.Object.Notify;
+            removed: (arg0: Individual | null) => void;
+            'personas-changed': (arg0: Gee.Set, arg1: Gee.Set) => void;
+            'notify::trust-level': (pspec: GObject.ParamSpec) => void;
+            'notify::is-user': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::personas': (pspec: GObject.ParamSpec) => void;
+            'notify::alias': (pspec: GObject.ParamSpec) => void;
+            'notify::avatar': (pspec: GObject.ParamSpec) => void;
+            'notify::birthday': (pspec: GObject.ParamSpec) => void;
+            'notify::calendar-event-id': (pspec: GObject.ParamSpec) => void;
+            'notify::email-addresses': (pspec: GObject.ParamSpec) => void;
+            'notify::is-favourite': (pspec: GObject.ParamSpec) => void;
+            'notify::gender': (pspec: GObject.ParamSpec) => void;
+            'notify::groups': (pspec: GObject.ParamSpec) => void;
+            'notify::im-addresses': (pspec: GObject.ParamSpec) => void;
+            'notify::im-interaction-count': (pspec: GObject.ParamSpec) => void;
+            'notify::last-im-interaction-datetime': (pspec: GObject.ParamSpec) => void;
+            'notify::call-interaction-count': (pspec: GObject.ParamSpec) => void;
+            'notify::last-call-interaction-datetime': (pspec: GObject.ParamSpec) => void;
+            'notify::local-ids': (pspec: GObject.ParamSpec) => void;
+            'notify::location': (pspec: GObject.ParamSpec) => void;
+            'notify::structured-name': (pspec: GObject.ParamSpec) => void;
+            'notify::full-name': (pspec: GObject.ParamSpec) => void;
+            'notify::nickname': (pspec: GObject.ParamSpec) => void;
+            'notify::notes': (pspec: GObject.ParamSpec) => void;
+            'notify::presence-type': (pspec: GObject.ParamSpec) => void;
+            'notify::presence-message': (pspec: GObject.ParamSpec) => void;
+            'notify::client-types': (pspec: GObject.ParamSpec) => void;
+            'notify::presence-status': (pspec: GObject.ParamSpec) => void;
+            'notify::phone-numbers': (pspec: GObject.ParamSpec) => void;
+            'notify::postal-addresses': (pspec: GObject.ParamSpec) => void;
+            'notify::roles': (pspec: GObject.ParamSpec) => void;
+            'notify::urls': (pspec: GObject.ParamSpec) => void;
+            'notify::web-service-addresses': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1094,6 +1138,14 @@ export namespace Folks {
         get displayName(): string;
         get personas(): Gee.Set;
         set personas(val: Gee.Set);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Individual.SignalSignatures;
 
         // Constructors
 
@@ -1107,17 +1159,17 @@ export namespace Folks {
 
         connect<K extends keyof Individual.SignalSignatures>(
             signal: K,
-            callback: Individual.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Individual.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Individual.SignalSignatures>(
             signal: K,
-            callback: Individual.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Individual.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Individual.SignalSignatures>(
             signal: K,
-            ...args: Individual.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Individual.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1980,6 +2032,14 @@ export namespace Folks {
 
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Location.SignalSignatures;
 
         // Fields
 
@@ -1996,16 +2056,19 @@ export namespace Folks {
 
         // Signals
 
-        connect<K extends keyof Location.SignalSignatures>(signal: K, callback: Location.SignalSignatures[K]): number;
+        connect<K extends keyof Location.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Location.SignalSignatures>(
             signal: K,
-            callback: Location.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Location.SignalSignatures>(
             signal: K,
-            ...args: Location.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Location.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2018,11 +2081,11 @@ export namespace Folks {
     namespace StructuredName {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::family-name': GObject.Object.Notify;
-            'notify::given-name': GObject.Object.Notify;
-            'notify::additional-names': GObject.Object.Notify;
-            'notify::prefixes': GObject.Object.Notify;
-            'notify::suffixes': GObject.Object.Notify;
+            'notify::family-name': (pspec: GObject.ParamSpec) => void;
+            'notify::given-name': (pspec: GObject.ParamSpec) => void;
+            'notify::additional-names': (pspec: GObject.ParamSpec) => void;
+            'notify::prefixes': (pspec: GObject.ParamSpec) => void;
+            'notify::suffixes': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2060,6 +2123,14 @@ export namespace Folks {
         set prefixes(val: string);
         get suffixes(): string;
         set suffixes(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StructuredName.SignalSignatures;
 
         // Constructors
 
@@ -2081,17 +2152,17 @@ export namespace Folks {
 
         connect<K extends keyof StructuredName.SignalSignatures>(
             signal: K,
-            callback: StructuredName.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StructuredName.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StructuredName.SignalSignatures>(
             signal: K,
-            callback: StructuredName.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StructuredName.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StructuredName.SignalSignatures>(
             signal: K,
-            ...args: StructuredName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StructuredName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2116,14 +2187,14 @@ export namespace Folks {
     namespace NoteFieldDetails {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
-            'notify::uid': GObject.Object.Notify;
-            'notify::t-type': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::parameters': GObject.Object.Notify;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::t-type': (pspec: GObject.ParamSpec) => void;
+            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::value-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::parameters': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2140,6 +2211,14 @@ export namespace Folks {
 
         get uid(): string;
         set uid(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NoteFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -2153,17 +2232,17 @@ export namespace Folks {
 
         connect<K extends keyof NoteFieldDetails.SignalSignatures>(
             signal: K,
-            callback: NoteFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NoteFieldDetails.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NoteFieldDetails.SignalSignatures>(
             signal: K,
-            callback: NoteFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NoteFieldDetails.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NoteFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: NoteFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NoteFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2176,11 +2255,11 @@ export namespace Folks {
     namespace ObjectCache {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::t-type': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::type-id': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
+            'notify::t-type': (pspec: GObject.ParamSpec) => void;
+            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::type-id': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2212,6 +2291,14 @@ export namespace Folks {
         get type_id(): string;
         get typeId(): string;
         get id(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ObjectCache.SignalSignatures;
 
         // Constructors
 
@@ -2223,17 +2310,17 @@ export namespace Folks {
 
         connect<K extends keyof ObjectCache.SignalSignatures>(
             signal: K,
-            callback: ObjectCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ObjectCache.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ObjectCache.SignalSignatures>(
             signal: K,
-            callback: ObjectCache.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ObjectCache.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ObjectCache.SignalSignatures>(
             signal: K,
-            ...args: ObjectCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ObjectCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2278,42 +2365,31 @@ export namespace Folks {
     }
 
     namespace PersonaStore {
-        // Signal callback interfaces
-
-        interface PersonasChanged {
-            (
-                _source: PersonaStore,
-                added: Gee.Set,
-                removed: Gee.Set,
-                message: string | null,
-                actor: Persona | null,
-                reason: GroupDetailsChangeReason,
-            ): void;
-        }
-
-        interface Removed {
-            (_source: PersonaStore): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'personas-changed': PersonasChanged;
-            removed: Removed;
-            'notify::type-id': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::personas': GObject.Object.Notify;
-            'notify::can-add-personas': GObject.Object.Notify;
-            'notify::can-alias-personas': GObject.Object.Notify;
-            'notify::can-group-personas': GObject.Object.Notify;
-            'notify::can-remove-personas': GObject.Object.Notify;
-            'notify::is-prepared': GObject.Object.Notify;
-            'notify::is-quiescent': GObject.Object.Notify;
-            'notify::is-writeable': GObject.Object.Notify;
-            'notify::trust-level': GObject.Object.Notify;
-            'notify::always-writeable-properties': GObject.Object.Notify;
-            'notify::is-primary-store': GObject.Object.Notify;
-            'notify::is-user-set-default': GObject.Object.Notify;
+            'personas-changed': (
+                arg0: Gee.Set,
+                arg1: Gee.Set,
+                arg2: string | null,
+                arg3: Persona | null,
+                arg4: GroupDetailsChangeReason,
+            ) => void;
+            removed: () => void;
+            'notify::type-id': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::personas': (pspec: GObject.ParamSpec) => void;
+            'notify::can-add-personas': (pspec: GObject.ParamSpec) => void;
+            'notify::can-alias-personas': (pspec: GObject.ParamSpec) => void;
+            'notify::can-group-personas': (pspec: GObject.ParamSpec) => void;
+            'notify::can-remove-personas': (pspec: GObject.ParamSpec) => void;
+            'notify::is-prepared': (pspec: GObject.ParamSpec) => void;
+            'notify::is-quiescent': (pspec: GObject.ParamSpec) => void;
+            'notify::is-writeable': (pspec: GObject.ParamSpec) => void;
+            'notify::trust-level': (pspec: GObject.ParamSpec) => void;
+            'notify::always-writeable-properties': (pspec: GObject.ParamSpec) => void;
+            'notify::is-primary-store': (pspec: GObject.ParamSpec) => void;
+            'notify::is-user-set-default': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2391,6 +2467,14 @@ export namespace Folks {
         set is_user_set_default(val: boolean);
         get isUserSetDefault(): boolean;
         set isUserSetDefault(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PersonaStore.SignalSignatures;
 
         // Constructors
 
@@ -2402,17 +2486,17 @@ export namespace Folks {
 
         connect<K extends keyof PersonaStore.SignalSignatures>(
             signal: K,
-            callback: PersonaStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PersonaStore.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PersonaStore.SignalSignatures>(
             signal: K,
-            callback: PersonaStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PersonaStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PersonaStore.SignalSignatures>(
             signal: K,
-            ...args: PersonaStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PersonaStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2498,14 +2582,14 @@ export namespace Folks {
     namespace Persona {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::iid': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
-            'notify::display-id': GObject.Object.Notify;
-            'notify::is-user': GObject.Object.Notify;
-            'notify::store': GObject.Object.Notify;
-            'notify::individual': GObject.Object.Notify;
-            'notify::linkable-properties': GObject.Object.Notify;
-            'notify::writeable-properties': GObject.Object.Notify;
+            'notify::iid': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::display-id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-user': (pspec: GObject.ParamSpec) => void;
+            'notify::store': (pspec: GObject.ParamSpec) => void;
+            'notify::individual': (pspec: GObject.ParamSpec) => void;
+            'notify::linkable-properties': (pspec: GObject.ParamSpec) => void;
+            'notify::writeable-properties': (pspec: GObject.ParamSpec) => void;
         }
 
         interface LinkablePropertyCallback {
@@ -2548,6 +2632,14 @@ export namespace Folks {
         get linkableProperties(): string[];
         get writeable_properties(): string[];
         get writeableProperties(): string[];
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Persona.SignalSignatures;
 
         // Constructors
 
@@ -2557,16 +2649,19 @@ export namespace Folks {
 
         // Signals
 
-        connect<K extends keyof Persona.SignalSignatures>(signal: K, callback: Persona.SignalSignatures[K]): number;
+        connect<K extends keyof Persona.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Persona.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Persona.SignalSignatures>(
             signal: K,
-            callback: Persona.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Persona.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Persona.SignalSignatures>(
             signal: K,
-            ...args: Persona.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Persona.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2597,13 +2692,13 @@ export namespace Folks {
     namespace PhoneFieldDetails {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
-            'notify::t-type': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::parameters': GObject.Object.Notify;
+            'notify::t-type': (pspec: GObject.ParamSpec) => void;
+            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::value-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::parameters': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2613,6 +2708,14 @@ export namespace Folks {
 
     class PhoneFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<PhoneFieldDetails>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PhoneFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -2626,17 +2729,17 @@ export namespace Folks {
 
         connect<K extends keyof PhoneFieldDetails.SignalSignatures>(
             signal: K,
-            callback: PhoneFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PhoneFieldDetails.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PhoneFieldDetails.SignalSignatures>(
             signal: K,
-            callback: PhoneFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PhoneFieldDetails.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PhoneFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: PhoneFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PhoneFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2648,15 +2751,15 @@ export namespace Folks {
     namespace PostalAddress {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::po-box': GObject.Object.Notify;
-            'notify::extension': GObject.Object.Notify;
-            'notify::street': GObject.Object.Notify;
-            'notify::locality': GObject.Object.Notify;
-            'notify::region': GObject.Object.Notify;
-            'notify::postal-code': GObject.Object.Notify;
-            'notify::country': GObject.Object.Notify;
-            'notify::address-format': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
+            'notify::po-box': (pspec: GObject.ParamSpec) => void;
+            'notify::extension': (pspec: GObject.ParamSpec) => void;
+            'notify::street': (pspec: GObject.ParamSpec) => void;
+            'notify::locality': (pspec: GObject.ParamSpec) => void;
+            'notify::region': (pspec: GObject.ParamSpec) => void;
+            'notify::postal-code': (pspec: GObject.ParamSpec) => void;
+            'notify::country': (pspec: GObject.ParamSpec) => void;
+            'notify::address-format': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2706,6 +2809,14 @@ export namespace Folks {
         set addressFormat(val: string);
         get uid(): string;
         set uid(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PostalAddress.SignalSignatures;
 
         // Constructors
 
@@ -2729,17 +2840,17 @@ export namespace Folks {
 
         connect<K extends keyof PostalAddress.SignalSignatures>(
             signal: K,
-            callback: PostalAddress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PostalAddress.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PostalAddress.SignalSignatures>(
             signal: K,
-            callback: PostalAddress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PostalAddress.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PostalAddress.SignalSignatures>(
             signal: K,
-            ...args: PostalAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PostalAddress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2771,13 +2882,13 @@ export namespace Folks {
     namespace PostalAddressFieldDetails {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
-            'notify::t-type': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::parameters': GObject.Object.Notify;
+            'notify::t-type': (pspec: GObject.ParamSpec) => void;
+            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::value-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::parameters': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2787,6 +2898,14 @@ export namespace Folks {
 
     class PostalAddressFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<PostalAddressFieldDetails>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PostalAddressFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -2800,17 +2919,19 @@ export namespace Folks {
 
         connect<K extends keyof PostalAddressFieldDetails.SignalSignatures>(
             signal: K,
-            callback: PostalAddressFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PostalAddressFieldDetails.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PostalAddressFieldDetails.SignalSignatures>(
             signal: K,
-            callback: PostalAddressFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PostalAddressFieldDetails.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PostalAddressFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: PostalAddressFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PostalAddressFieldDetails.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2826,6 +2947,14 @@ export namespace Folks {
 
     class PotentialMatch extends GObject.Object {
         static $gtype: GObject.GType<PotentialMatch>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PotentialMatch.SignalSignatures;
 
         // Fields
 
@@ -2843,17 +2972,17 @@ export namespace Folks {
 
         connect<K extends keyof PotentialMatch.SignalSignatures>(
             signal: K,
-            callback: PotentialMatch.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PotentialMatch.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PotentialMatch.SignalSignatures>(
             signal: K,
-            callback: PotentialMatch.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PotentialMatch.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PotentialMatch.SignalSignatures>(
             signal: K,
-            ...args: PotentialMatch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PotentialMatch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2865,7 +2994,7 @@ export namespace Folks {
     namespace Query {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::match-fields': GObject.Object.Notify;
+            'notify::match-fields': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2883,6 +3012,14 @@ export namespace Folks {
 
         get match_fields(): string[];
         get matchFields(): string[];
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Query.SignalSignatures;
 
         // Constructors
 
@@ -2892,13 +3029,19 @@ export namespace Folks {
 
         // Signals
 
-        connect<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        connect<K extends keyof Query.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Query.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        connect_after<K extends keyof Query.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Query.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Query.SignalSignatures>(
             signal: K,
-            ...args: Query.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Query.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2916,10 +3059,10 @@ export namespace Folks {
     namespace Role {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::organisation-name': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::role': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
+            'notify::organisation-name': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::role': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2948,6 +3091,14 @@ export namespace Folks {
         set role(val: string);
         get uid(): string;
         set uid(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Role.SignalSignatures;
 
         // Constructors
 
@@ -2959,13 +3110,19 @@ export namespace Folks {
 
         // Signals
 
-        connect<K extends keyof Role.SignalSignatures>(signal: K, callback: Role.SignalSignatures[K]): number;
+        connect<K extends keyof Role.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Role.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Role.SignalSignatures>(signal: K, callback: Role.SignalSignatures[K]): number;
+        connect_after<K extends keyof Role.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Role.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Role.SignalSignatures>(
             signal: K,
-            ...args: Role.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Role.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2991,13 +3148,13 @@ export namespace Folks {
     namespace RoleFieldDetails {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
-            'notify::t-type': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::parameters': GObject.Object.Notify;
+            'notify::t-type': (pspec: GObject.ParamSpec) => void;
+            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::value-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::parameters': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3007,6 +3164,14 @@ export namespace Folks {
 
     class RoleFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<RoleFieldDetails>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RoleFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -3020,36 +3185,30 @@ export namespace Folks {
 
         connect<K extends keyof RoleFieldDetails.SignalSignatures>(
             signal: K,
-            callback: RoleFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RoleFieldDetails.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RoleFieldDetails.SignalSignatures>(
             signal: K,
-            callback: RoleFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RoleFieldDetails.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RoleFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: RoleFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RoleFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace SearchView {
-        // Signal callback interfaces
-
-        interface IndividualsChangedDetailed {
-            (_source: SearchView, added: Gee.SortedSet, removed: Gee.SortedSet): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'individuals-changed-detailed': IndividualsChangedDetailed;
-            'notify::aggregator': GObject.Object.Notify;
-            'notify::query': GObject.Object.Notify;
-            'notify::individuals': GObject.Object.Notify;
-            'notify::is-prepared': GObject.Object.Notify;
-            'notify::is-quiescent': GObject.Object.Notify;
+            'individuals-changed-detailed': (arg0: Gee.SortedSet, arg1: Gee.SortedSet) => void;
+            'notify::aggregator': (pspec: GObject.ParamSpec) => void;
+            'notify::query': (pspec: GObject.ParamSpec) => void;
+            'notify::individuals': (pspec: GObject.ParamSpec) => void;
+            'notify::is-prepared': (pspec: GObject.ParamSpec) => void;
+            'notify::is-quiescent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3078,6 +3237,14 @@ export namespace Folks {
         get isPrepared(): boolean;
         get is_quiescent(): boolean;
         get isQuiescent(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SearchView.SignalSignatures;
 
         // Constructors
 
@@ -3091,17 +3258,17 @@ export namespace Folks {
 
         connect<K extends keyof SearchView.SignalSignatures>(
             signal: K,
-            callback: SearchView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SearchView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SearchView.SignalSignatures>(
             signal: K,
-            callback: SearchView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SearchView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SearchView.SignalSignatures>(
             signal: K,
-            ...args: SearchView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SearchView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3130,9 +3297,9 @@ export namespace Folks {
     namespace SimpleQuery {
         // Signal signatures
         interface SignalSignatures extends Query.SignalSignatures {
-            'notify::query-string': GObject.Object.Notify;
-            'notify::query-locale': GObject.Object.Notify;
-            'notify::match-fields': GObject.Object.Notify;
+            'notify::query-string': (pspec: GObject.ParamSpec) => void;
+            'notify::query-locale': (pspec: GObject.ParamSpec) => void;
+            'notify::match-fields': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3158,6 +3325,14 @@ export namespace Folks {
         set query_locale(val: string);
         get queryLocale(): string;
         set queryLocale(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SimpleQuery.SignalSignatures;
 
         // Constructors
 
@@ -3171,17 +3346,17 @@ export namespace Folks {
 
         connect<K extends keyof SimpleQuery.SignalSignatures>(
             signal: K,
-            callback: SimpleQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SimpleQuery.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleQuery.SignalSignatures>(
             signal: K,
-            callback: SimpleQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SimpleQuery.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleQuery.SignalSignatures>(
             signal: K,
-            ...args: SimpleQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SimpleQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3196,13 +3371,13 @@ export namespace Folks {
     namespace UrlFieldDetails {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
-            'notify::t-type': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::parameters': GObject.Object.Notify;
+            'notify::t-type': (pspec: GObject.ParamSpec) => void;
+            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::value-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::parameters': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3212,6 +3387,14 @@ export namespace Folks {
 
     class UrlFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<UrlFieldDetails>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UrlFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -3225,17 +3408,17 @@ export namespace Folks {
 
         connect<K extends keyof UrlFieldDetails.SignalSignatures>(
             signal: K,
-            callback: UrlFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UrlFieldDetails.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UrlFieldDetails.SignalSignatures>(
             signal: K,
-            callback: UrlFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UrlFieldDetails.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UrlFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: UrlFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UrlFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3251,6 +3434,14 @@ export namespace Folks {
 
     class Utils extends GObject.Object {
         static $gtype: GObject.GType<Utils>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Utils.SignalSignatures;
 
         // Constructors
 
@@ -3262,13 +3453,19 @@ export namespace Folks {
 
         // Signals
 
-        connect<K extends keyof Utils.SignalSignatures>(signal: K, callback: Utils.SignalSignatures[K]): number;
+        connect<K extends keyof Utils.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Utils.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Utils.SignalSignatures>(signal: K, callback: Utils.SignalSignatures[K]): number;
+        connect_after<K extends keyof Utils.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Utils.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Utils.SignalSignatures>(
             signal: K,
-            ...args: Utils.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Utils.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3283,13 +3480,13 @@ export namespace Folks {
     namespace WebServiceFieldDetails {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
-            'notify::t-type': GObject.Object.Notify;
-            'notify::t-dup-func': GObject.Object.Notify;
-            'notify::t-destroy-func': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::value-type': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::parameters': GObject.Object.Notify;
+            'notify::t-type': (pspec: GObject.ParamSpec) => void;
+            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
+            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::value-type': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::parameters': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3299,6 +3496,14 @@ export namespace Folks {
 
     class WebServiceFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<WebServiceFieldDetails>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WebServiceFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -3312,17 +3517,19 @@ export namespace Folks {
 
         connect<K extends keyof WebServiceFieldDetails.SignalSignatures>(
             signal: K,
-            callback: WebServiceFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebServiceFieldDetails.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebServiceFieldDetails.SignalSignatures>(
             signal: K,
-            callback: WebServiceFieldDetails.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebServiceFieldDetails.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebServiceFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: WebServiceFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WebServiceFieldDetails.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

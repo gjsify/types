@@ -409,12 +409,12 @@ export namespace AtrilDocument {
     namespace Annotation {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::color': GObject.Object.Notify;
-            'notify::contents': GObject.Object.Notify;
-            'notify::modified': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::page': GObject.Object.Notify;
-            'notify::rgba': GObject.Object.Notify;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::contents': (pspec: GObject.ParamSpec) => void;
+            'notify::modified': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::page': (pspec: GObject.ParamSpec) => void;
+            'notify::rgba': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -451,6 +451,14 @@ export namespace AtrilDocument {
          */
         get rgba(): Gdk.RGBA;
         set rgba(val: Gdk.RGBA);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Annotation.SignalSignatures;
 
         // Constructors
 
@@ -462,17 +470,17 @@ export namespace AtrilDocument {
 
         connect<K extends keyof Annotation.SignalSignatures>(
             signal: K,
-            callback: Annotation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Annotation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Annotation.SignalSignatures>(
             signal: K,
-            callback: Annotation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Annotation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Annotation.SignalSignatures>(
             signal: K,
-            ...args: Annotation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Annotation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -577,18 +585,18 @@ export namespace AtrilDocument {
     namespace AnnotationAttachment {
         // Signal signatures
         interface SignalSignatures extends Annotation.SignalSignatures {
-            'notify::attachment': GObject.Object.Notify;
-            'notify::color': GObject.Object.Notify;
-            'notify::contents': GObject.Object.Notify;
-            'notify::modified': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::page': GObject.Object.Notify;
-            'notify::rgba': GObject.Object.Notify;
-            'notify::has-popup': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::popup-is-open': GObject.Object.Notify;
-            'notify::rectangle': GObject.Object.Notify;
+            'notify::attachment': (pspec: GObject.ParamSpec) => void;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::contents': (pspec: GObject.ParamSpec) => void;
+            'notify::modified': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::page': (pspec: GObject.ParamSpec) => void;
+            'notify::rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::has-popup': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::popup-is-open': (pspec: GObject.ParamSpec) => void;
+            'notify::rectangle': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -605,6 +613,14 @@ export namespace AtrilDocument {
 
         get attachment(): Attachment;
         set attachment(val: Attachment);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AnnotationAttachment.SignalSignatures;
 
         // Constructors
 
@@ -618,17 +634,19 @@ export namespace AtrilDocument {
 
         connect<K extends keyof AnnotationAttachment.SignalSignatures>(
             signal: K,
-            callback: AnnotationAttachment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotationAttachment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnnotationAttachment.SignalSignatures>(
             signal: K,
-            callback: AnnotationAttachment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotationAttachment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnnotationAttachment.SignalSignatures>(
             signal: K,
-            ...args: AnnotationAttachment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AnnotationAttachment.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -779,19 +797,19 @@ export namespace AtrilDocument {
     namespace AnnotationText {
         // Signal signatures
         interface SignalSignatures extends Annotation.SignalSignatures {
-            'notify::icon': GObject.Object.Notify;
-            'notify::is-open': GObject.Object.Notify;
-            'notify::color': GObject.Object.Notify;
-            'notify::contents': GObject.Object.Notify;
-            'notify::modified': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::page': GObject.Object.Notify;
-            'notify::rgba': GObject.Object.Notify;
-            'notify::has-popup': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::popup-is-open': GObject.Object.Notify;
-            'notify::rectangle': GObject.Object.Notify;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::is-open': (pspec: GObject.ParamSpec) => void;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::contents': (pspec: GObject.ParamSpec) => void;
+            'notify::modified': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::page': (pspec: GObject.ParamSpec) => void;
+            'notify::rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::has-popup': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::popup-is-open': (pspec: GObject.ParamSpec) => void;
+            'notify::rectangle': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -814,6 +832,14 @@ export namespace AtrilDocument {
         set is_open(val: boolean);
         get isOpen(): boolean;
         set isOpen(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AnnotationText.SignalSignatures;
 
         // Constructors
 
@@ -827,17 +853,17 @@ export namespace AtrilDocument {
 
         connect<K extends keyof AnnotationText.SignalSignatures>(
             signal: K,
-            callback: AnnotationText.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotationText.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnnotationText.SignalSignatures>(
             signal: K,
-            callback: AnnotationText.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnnotationText.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnnotationText.SignalSignatures>(
             signal: K,
-            ...args: AnnotationText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AnnotationText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -990,12 +1016,12 @@ export namespace AtrilDocument {
     namespace Attachment {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::ctime': GObject.Object.Notify;
-            'notify::data': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::mtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::ctime': (pspec: GObject.ParamSpec) => void;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::mtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1021,6 +1047,14 @@ export namespace AtrilDocument {
         set mtime(val: number);
         set name(val: string);
         set size(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Attachment.SignalSignatures;
 
         // Fields
 
@@ -1045,17 +1079,17 @@ export namespace AtrilDocument {
 
         connect<K extends keyof Attachment.SignalSignatures>(
             signal: K,
-            callback: Attachment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Attachment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Attachment.SignalSignatures>(
             signal: K,
-            callback: Attachment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Attachment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Attachment.SignalSignatures>(
             signal: K,
-            ...args: Attachment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Attachment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1085,6 +1119,14 @@ export namespace AtrilDocument {
 
     abstract class Document extends GObject.Object {
         static $gtype: GObject.GType<Document>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Document.SignalSignatures;
 
         // Fields
 
@@ -1100,16 +1142,19 @@ export namespace AtrilDocument {
 
         // Signals
 
-        connect<K extends keyof Document.SignalSignatures>(signal: K, callback: Document.SignalSignatures[K]): number;
+        connect<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Document.SignalSignatures>(
             signal: K,
-            callback: Document.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Document.SignalSignatures>(
             signal: K,
-            ...args: Document.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Document.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1263,6 +1308,14 @@ export namespace AtrilDocument {
 
     abstract class FormField extends GObject.Object {
         static $gtype: GObject.GType<FormField>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FormField.SignalSignatures;
 
         // Fields
 
@@ -1281,16 +1334,19 @@ export namespace AtrilDocument {
 
         // Signals
 
-        connect<K extends keyof FormField.SignalSignatures>(signal: K, callback: FormField.SignalSignatures[K]): number;
+        connect<K extends keyof FormField.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, FormField.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FormField.SignalSignatures>(
             signal: K,
-            callback: FormField.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FormField.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FormField.SignalSignatures>(
             signal: K,
-            ...args: FormField.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FormField.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1306,6 +1362,14 @@ export namespace AtrilDocument {
 
     class FormFieldButton extends FormField {
         static $gtype: GObject.GType<FormFieldButton>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FormFieldButton.SignalSignatures;
 
         // Fields
 
@@ -1325,17 +1389,17 @@ export namespace AtrilDocument {
 
         connect<K extends keyof FormFieldButton.SignalSignatures>(
             signal: K,
-            callback: FormFieldButton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FormFieldButton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FormFieldButton.SignalSignatures>(
             signal: K,
-            callback: FormFieldButton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FormFieldButton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FormFieldButton.SignalSignatures>(
             signal: K,
-            ...args: FormFieldButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FormFieldButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1351,6 +1415,14 @@ export namespace AtrilDocument {
 
     class FormFieldChoice extends FormField {
         static $gtype: GObject.GType<FormFieldChoice>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FormFieldChoice.SignalSignatures;
 
         // Fields
 
@@ -1375,17 +1447,17 @@ export namespace AtrilDocument {
 
         connect<K extends keyof FormFieldChoice.SignalSignatures>(
             signal: K,
-            callback: FormFieldChoice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FormFieldChoice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FormFieldChoice.SignalSignatures>(
             signal: K,
-            callback: FormFieldChoice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FormFieldChoice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FormFieldChoice.SignalSignatures>(
             signal: K,
-            ...args: FormFieldChoice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FormFieldChoice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1401,6 +1473,14 @@ export namespace AtrilDocument {
 
     class FormFieldSignature extends FormField {
         static $gtype: GObject.GType<FormFieldSignature>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FormFieldSignature.SignalSignatures;
 
         // Fields
 
@@ -1418,17 +1498,17 @@ export namespace AtrilDocument {
 
         connect<K extends keyof FormFieldSignature.SignalSignatures>(
             signal: K,
-            callback: FormFieldSignature.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FormFieldSignature.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FormFieldSignature.SignalSignatures>(
             signal: K,
-            callback: FormFieldSignature.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FormFieldSignature.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FormFieldSignature.SignalSignatures>(
             signal: K,
-            ...args: FormFieldSignature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FormFieldSignature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1444,6 +1524,14 @@ export namespace AtrilDocument {
 
     class FormFieldText extends FormField {
         static $gtype: GObject.GType<FormFieldText>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FormFieldText.SignalSignatures;
 
         // Fields
 
@@ -1469,17 +1557,17 @@ export namespace AtrilDocument {
 
         connect<K extends keyof FormFieldText.SignalSignatures>(
             signal: K,
-            callback: FormFieldText.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FormFieldText.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FormFieldText.SignalSignatures>(
             signal: K,
-            callback: FormFieldText.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FormFieldText.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FormFieldText.SignalSignatures>(
             signal: K,
-            ...args: FormFieldText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FormFieldText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1495,6 +1583,14 @@ export namespace AtrilDocument {
 
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Image.SignalSignatures;
 
         // Fields
 
@@ -1512,13 +1608,19 @@ export namespace AtrilDocument {
 
         // Signals
 
-        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect_after<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Image.SignalSignatures>(
             signal: K,
-            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1541,6 +1643,14 @@ export namespace AtrilDocument {
 
     class Layer extends GObject.Object {
         static $gtype: GObject.GType<Layer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Layer.SignalSignatures;
 
         // Fields
 
@@ -1556,13 +1666,19 @@ export namespace AtrilDocument {
 
         // Signals
 
-        connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        connect<K extends keyof Layer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Layer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Layer.SignalSignatures>(
             signal: K,
-            ...args: Layer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Layer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1575,8 +1691,8 @@ export namespace AtrilDocument {
     namespace Link {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::action': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
+            'notify::action': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1594,6 +1710,14 @@ export namespace AtrilDocument {
 
         get action(): any;
         get title(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Link.SignalSignatures;
 
         // Constructors
 
@@ -1605,13 +1729,19 @@ export namespace AtrilDocument {
 
         // Signals
 
-        connect<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
+        connect<K extends keyof Link.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Link.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
+        connect_after<K extends keyof Link.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Link.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Link.SignalSignatures>(
             signal: K,
-            ...args: Link.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Link.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1623,15 +1753,15 @@ export namespace AtrilDocument {
     namespace LinkAction {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::dest': GObject.Object.Notify;
-            'notify::filename': GObject.Object.Notify;
-            'notify::hide-list': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::params': GObject.Object.Notify;
-            'notify::show-list': GObject.Object.Notify;
-            'notify::toggle-list': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
+            'notify::dest': (pspec: GObject.ParamSpec) => void;
+            'notify::filename': (pspec: GObject.ParamSpec) => void;
+            'notify::hide-list': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::params': (pspec: GObject.ParamSpec) => void;
+            'notify::show-list': (pspec: GObject.ParamSpec) => void;
+            'notify::toggle-list': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1669,6 +1799,14 @@ export namespace AtrilDocument {
         get toggleList(): any;
         get type(): LinkActionType;
         get uri(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LinkAction.SignalSignatures;
 
         // Constructors
 
@@ -1690,17 +1828,17 @@ export namespace AtrilDocument {
 
         connect<K extends keyof LinkAction.SignalSignatures>(
             signal: K,
-            callback: LinkAction.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LinkAction.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LinkAction.SignalSignatures>(
             signal: K,
-            callback: LinkAction.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LinkAction.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LinkAction.SignalSignatures>(
             signal: K,
-            ...args: LinkAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LinkAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1716,16 +1854,16 @@ export namespace AtrilDocument {
     namespace LinkDest {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::bottom': GObject.Object.Notify;
-            'notify::change': GObject.Object.Notify;
-            'notify::left': GObject.Object.Notify;
-            'notify::named': GObject.Object.Notify;
-            'notify::page': GObject.Object.Notify;
-            'notify::page-label': GObject.Object.Notify;
-            'notify::right': GObject.Object.Notify;
-            'notify::top': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::zoom': GObject.Object.Notify;
+            'notify::bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::change': (pspec: GObject.ParamSpec) => void;
+            'notify::left': (pspec: GObject.ParamSpec) => void;
+            'notify::named': (pspec: GObject.ParamSpec) => void;
+            'notify::page': (pspec: GObject.ParamSpec) => void;
+            'notify::page-label': (pspec: GObject.ParamSpec) => void;
+            'notify::right': (pspec: GObject.ParamSpec) => void;
+            'notify::top': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::zoom': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1761,6 +1899,14 @@ export namespace AtrilDocument {
         get top(): number;
         get type(): LinkDestType;
         get zoom(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LinkDest.SignalSignatures;
 
         // Constructors
 
@@ -1796,16 +1942,19 @@ export namespace AtrilDocument {
 
         // Signals
 
-        connect<K extends keyof LinkDest.SignalSignatures>(signal: K, callback: LinkDest.SignalSignatures[K]): number;
+        connect<K extends keyof LinkDest.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, LinkDest.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LinkDest.SignalSignatures>(
             signal: K,
-            callback: LinkDest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LinkDest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LinkDest.SignalSignatures>(
             signal: K,
-            ...args: LinkDest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LinkDest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1833,6 +1982,14 @@ export namespace AtrilDocument {
 
     class Page extends GObject.Object {
         static $gtype: GObject.GType<Page>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Page.SignalSignatures;
 
         // Fields
 
@@ -1851,13 +2008,19 @@ export namespace AtrilDocument {
 
         // Signals
 
-        connect<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
+        connect<K extends keyof Page.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
+        connect_after<K extends keyof Page.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Page.SignalSignatures>(
             signal: K,
-            ...args: Page.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Page.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1873,6 +2036,14 @@ export namespace AtrilDocument {
 
     class RenderContext extends GObject.Object {
         static $gtype: GObject.GType<RenderContext>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RenderContext.SignalSignatures;
 
         // Fields
 
@@ -1892,17 +2063,17 @@ export namespace AtrilDocument {
 
         connect<K extends keyof RenderContext.SignalSignatures>(
             signal: K,
-            callback: RenderContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RenderContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RenderContext.SignalSignatures>(
             signal: K,
-            callback: RenderContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RenderContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RenderContext.SignalSignatures>(
             signal: K,
-            ...args: RenderContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RenderContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1916,13 +2087,13 @@ export namespace AtrilDocument {
     namespace TransitionEffect {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::alignment': GObject.Object.Notify;
-            'notify::angle': GObject.Object.Notify;
-            'notify::direction': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::rectangular': GObject.Object.Notify;
-            'notify::scale': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
+            'notify::alignment': (pspec: GObject.ParamSpec) => void;
+            'notify::angle': (pspec: GObject.ParamSpec) => void;
+            'notify::direction': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::rectangular': (pspec: GObject.ParamSpec) => void;
+            'notify::scale': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1957,6 +2128,14 @@ export namespace AtrilDocument {
         set scale(val: number);
         get type(): TransitionEffectType;
         set type(val: TransitionEffectType);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TransitionEffect.SignalSignatures;
 
         // Constructors
 
@@ -1968,17 +2147,17 @@ export namespace AtrilDocument {
 
         connect<K extends keyof TransitionEffect.SignalSignatures>(
             signal: K,
-            callback: TransitionEffect.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TransitionEffect.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TransitionEffect.SignalSignatures>(
             signal: K,
-            callback: TransitionEffect.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TransitionEffect.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TransitionEffect.SignalSignatures>(
             signal: K,
-            ...args: TransitionEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TransitionEffect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

@@ -32,6 +32,14 @@ export namespace ArrowFlight {
 
     class CallOptions extends GObject.Object {
         static $gtype: GObject.GType<CallOptions>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CallOptions.SignalSignatures;
 
         // Constructors
 
@@ -45,17 +53,17 @@ export namespace ArrowFlight {
 
         connect<K extends keyof CallOptions.SignalSignatures>(
             signal: K,
-            callback: CallOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CallOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CallOptions.SignalSignatures>(
             signal: K,
-            callback: CallOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CallOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CallOptions.SignalSignatures>(
             signal: K,
-            ...args: CallOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CallOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -63,7 +71,7 @@ export namespace ArrowFlight {
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::client': GObject.Object.Notify;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -79,6 +87,14 @@ export namespace ArrowFlight {
         // Properties
 
         set client(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -90,13 +106,19 @@ export namespace ArrowFlight {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -117,6 +139,14 @@ export namespace ArrowFlight {
 
     class ClientOptions extends GObject.Object {
         static $gtype: GObject.GType<ClientOptions>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientOptions.SignalSignatures;
 
         // Constructors
 
@@ -130,17 +160,17 @@ export namespace ArrowFlight {
 
         connect<K extends keyof ClientOptions.SignalSignatures>(
             signal: K,
-            callback: ClientOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientOptions.SignalSignatures>(
             signal: K,
-            callback: ClientOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientOptions.SignalSignatures>(
             signal: K,
-            ...args: ClientOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -148,7 +178,7 @@ export namespace ArrowFlight {
     namespace CommandDescriptor {
         // Signal signatures
         interface SignalSignatures extends Descriptor.SignalSignatures {
-            'notify::descriptor': GObject.Object.Notify;
+            'notify::descriptor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -158,6 +188,14 @@ export namespace ArrowFlight {
 
     class CommandDescriptor extends Descriptor {
         static $gtype: GObject.GType<CommandDescriptor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CommandDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -171,17 +209,17 @@ export namespace ArrowFlight {
 
         connect<K extends keyof CommandDescriptor.SignalSignatures>(
             signal: K,
-            callback: CommandDescriptor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CommandDescriptor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CommandDescriptor.SignalSignatures>(
             signal: K,
-            callback: CommandDescriptor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CommandDescriptor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CommandDescriptor.SignalSignatures>(
             signal: K,
-            ...args: CommandDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CommandDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -193,7 +231,7 @@ export namespace ArrowFlight {
     namespace Criteria {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::expression': GObject.Object.Notify;
+            'notify::expression': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -213,6 +251,14 @@ export namespace ArrowFlight {
          */
         get expression(): GLib.Bytes;
         set expression(val: GLib.Bytes);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Criteria.SignalSignatures;
 
         // Constructors
 
@@ -224,16 +270,19 @@ export namespace ArrowFlight {
 
         // Signals
 
-        connect<K extends keyof Criteria.SignalSignatures>(signal: K, callback: Criteria.SignalSignatures[K]): number;
+        connect<K extends keyof Criteria.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Criteria.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Criteria.SignalSignatures>(
             signal: K,
-            callback: Criteria.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Criteria.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Criteria.SignalSignatures>(
             signal: K,
-            ...args: Criteria.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Criteria.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -241,7 +290,7 @@ export namespace ArrowFlight {
     namespace DataStream {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::stream': GObject.Object.Notify;
+            'notify::stream': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -257,6 +306,14 @@ export namespace ArrowFlight {
         // Properties
 
         set stream(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DataStream.SignalSignatures;
 
         // Constructors
 
@@ -268,17 +325,17 @@ export namespace ArrowFlight {
 
         connect<K extends keyof DataStream.SignalSignatures>(
             signal: K,
-            callback: DataStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataStream.SignalSignatures>(
             signal: K,
-            callback: DataStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataStream.SignalSignatures>(
             signal: K,
-            ...args: DataStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DataStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -286,7 +343,7 @@ export namespace ArrowFlight {
     namespace Descriptor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::descriptor': GObject.Object.Notify;
+            'notify::descriptor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -302,6 +359,14 @@ export namespace ArrowFlight {
         // Properties
 
         set descriptor(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Descriptor.SignalSignatures;
 
         // Constructors
 
@@ -313,17 +378,17 @@ export namespace ArrowFlight {
 
         connect<K extends keyof Descriptor.SignalSignatures>(
             signal: K,
-            callback: Descriptor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Descriptor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Descriptor.SignalSignatures>(
             signal: K,
-            callback: Descriptor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Descriptor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Descriptor.SignalSignatures>(
             signal: K,
-            ...args: Descriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Descriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -336,7 +401,7 @@ export namespace ArrowFlight {
     namespace Endpoint {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::ticket': GObject.Object.Notify;
+            'notify::ticket': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -355,6 +420,14 @@ export namespace ArrowFlight {
          * Opaque ticket identify; use with DoGet RPC.
          */
         get ticket(): Ticket;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Endpoint.SignalSignatures;
 
         // Constructors
 
@@ -366,16 +439,19 @@ export namespace ArrowFlight {
 
         // Signals
 
-        connect<K extends keyof Endpoint.SignalSignatures>(signal: K, callback: Endpoint.SignalSignatures[K]): number;
+        connect<K extends keyof Endpoint.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Endpoint.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
-            callback: Endpoint.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Endpoint.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
-            ...args: Endpoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Endpoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -388,7 +464,7 @@ export namespace ArrowFlight {
     namespace Info {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::info': GObject.Object.Notify;
+            'notify::info': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -404,6 +480,14 @@ export namespace ArrowFlight {
         // Properties
 
         set info(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Info.SignalSignatures;
 
         // Constructors
 
@@ -421,13 +505,19 @@ export namespace ArrowFlight {
 
         // Signals
 
-        connect<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
+        connect<K extends keyof Info.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
+        connect_after<K extends keyof Info.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Info.SignalSignatures>(
             signal: K,
-            ...args: Info.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Info.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -452,6 +542,14 @@ export namespace ArrowFlight {
 
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Location.SignalSignatures;
 
         // Constructors
 
@@ -463,16 +561,19 @@ export namespace ArrowFlight {
 
         // Signals
 
-        connect<K extends keyof Location.SignalSignatures>(signal: K, callback: Location.SignalSignatures[K]): number;
+        connect<K extends keyof Location.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Location.SignalSignatures>(
             signal: K,
-            callback: Location.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Location.SignalSignatures>(
             signal: K,
-            ...args: Location.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Location.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -486,7 +587,7 @@ export namespace ArrowFlight {
     namespace PathDescriptor {
         // Signal signatures
         interface SignalSignatures extends Descriptor.SignalSignatures {
-            'notify::descriptor': GObject.Object.Notify;
+            'notify::descriptor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -496,6 +597,14 @@ export namespace ArrowFlight {
 
     class PathDescriptor extends Descriptor {
         static $gtype: GObject.GType<PathDescriptor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PathDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -509,17 +618,17 @@ export namespace ArrowFlight {
 
         connect<K extends keyof PathDescriptor.SignalSignatures>(
             signal: K,
-            callback: PathDescriptor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PathDescriptor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PathDescriptor.SignalSignatures>(
             signal: K,
-            callback: PathDescriptor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PathDescriptor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PathDescriptor.SignalSignatures>(
             signal: K,
-            ...args: PathDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PathDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -531,7 +640,7 @@ export namespace ArrowFlight {
     namespace RecordBatchReader {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::reader': GObject.Object.Notify;
+            'notify::reader': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -547,6 +656,14 @@ export namespace ArrowFlight {
         // Properties
 
         set reader(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RecordBatchReader.SignalSignatures;
 
         // Constructors
 
@@ -558,17 +675,17 @@ export namespace ArrowFlight {
 
         connect<K extends keyof RecordBatchReader.SignalSignatures>(
             signal: K,
-            callback: RecordBatchReader.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RecordBatchReader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecordBatchReader.SignalSignatures>(
             signal: K,
-            callback: RecordBatchReader.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RecordBatchReader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecordBatchReader.SignalSignatures>(
             signal: K,
-            ...args: RecordBatchReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RecordBatchReader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -581,8 +698,8 @@ export namespace ArrowFlight {
     namespace RecordBatchStream {
         // Signal signatures
         interface SignalSignatures extends DataStream.SignalSignatures {
-            'notify::reader': GObject.Object.Notify;
-            'notify::stream': GObject.Object.Notify;
+            'notify::reader': (pspec: GObject.ParamSpec) => void;
+            'notify::stream': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -601,6 +718,14 @@ export namespace ArrowFlight {
          * The reader that produces record batches.
          */
         get reader(): Arrow.RecordBatchReader;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RecordBatchStream.SignalSignatures;
 
         // Constructors
 
@@ -614,17 +739,17 @@ export namespace ArrowFlight {
 
         connect<K extends keyof RecordBatchStream.SignalSignatures>(
             signal: K,
-            callback: RecordBatchStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RecordBatchStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecordBatchStream.SignalSignatures>(
             signal: K,
-            callback: RecordBatchStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RecordBatchStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecordBatchStream.SignalSignatures>(
             signal: K,
-            ...args: RecordBatchStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RecordBatchStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -640,6 +765,14 @@ export namespace ArrowFlight {
 
     abstract class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Server.SignalSignatures;
 
         // Constructors
 
@@ -649,13 +782,19 @@ export namespace ArrowFlight {
 
         // Signals
 
-        connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect_after<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Server.SignalSignatures>(
             signal: K,
-            ...args: Server.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Server.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -682,7 +821,7 @@ export namespace ArrowFlight {
     namespace ServerCallContext {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::call-context': GObject.Object.Notify;
+            'notify::call-context': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -700,6 +839,14 @@ export namespace ArrowFlight {
 
         set call_context(val: any);
         set callContext(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ServerCallContext.SignalSignatures;
 
         // Constructors
 
@@ -711,17 +858,17 @@ export namespace ArrowFlight {
 
         connect<K extends keyof ServerCallContext.SignalSignatures>(
             signal: K,
-            callback: ServerCallContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServerCallContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServerCallContext.SignalSignatures>(
             signal: K,
-            callback: ServerCallContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServerCallContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServerCallContext.SignalSignatures>(
             signal: K,
-            ...args: ServerCallContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ServerCallContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -729,7 +876,7 @@ export namespace ArrowFlight {
     namespace ServerOptions {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::location': GObject.Object.Notify;
+            'notify::location': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -745,6 +892,14 @@ export namespace ArrowFlight {
         // Properties
 
         get location(): Location;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ServerOptions.SignalSignatures;
 
         // Constructors
 
@@ -758,17 +913,17 @@ export namespace ArrowFlight {
 
         connect<K extends keyof ServerOptions.SignalSignatures>(
             signal: K,
-            callback: ServerOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServerOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServerOptions.SignalSignatures>(
             signal: K,
-            callback: ServerOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServerOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServerOptions.SignalSignatures>(
             signal: K,
-            ...args: ServerOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ServerOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -776,7 +931,7 @@ export namespace ArrowFlight {
     namespace StreamChunk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::chunk': GObject.Object.Notify;
+            'notify::chunk': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -792,6 +947,14 @@ export namespace ArrowFlight {
         // Properties
 
         set chunk(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamChunk.SignalSignatures;
 
         // Constructors
 
@@ -803,17 +966,17 @@ export namespace ArrowFlight {
 
         connect<K extends keyof StreamChunk.SignalSignatures>(
             signal: K,
-            callback: StreamChunk.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamChunk.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamChunk.SignalSignatures>(
             signal: K,
-            callback: StreamChunk.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamChunk.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamChunk.SignalSignatures>(
             signal: K,
-            ...args: StreamChunk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamChunk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -828,7 +991,7 @@ export namespace ArrowFlight {
     namespace StreamReader {
         // Signal signatures
         interface SignalSignatures extends RecordBatchReader.SignalSignatures {
-            'notify::reader': GObject.Object.Notify;
+            'notify::reader': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -838,6 +1001,14 @@ export namespace ArrowFlight {
 
     class StreamReader extends RecordBatchReader {
         static $gtype: GObject.GType<StreamReader>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StreamReader.SignalSignatures;
 
         // Constructors
 
@@ -849,17 +1020,17 @@ export namespace ArrowFlight {
 
         connect<K extends keyof StreamReader.SignalSignatures>(
             signal: K,
-            callback: StreamReader.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamReader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamReader.SignalSignatures>(
             signal: K,
-            callback: StreamReader.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StreamReader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamReader.SignalSignatures>(
             signal: K,
-            ...args: StreamReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StreamReader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -867,7 +1038,7 @@ export namespace ArrowFlight {
     namespace Ticket {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::data': GObject.Object.Notify;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -888,6 +1059,14 @@ export namespace ArrowFlight {
          */
         get data(): GLib.Bytes;
         set data(val: GLib.Bytes);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Ticket.SignalSignatures;
 
         // Constructors
 
@@ -899,13 +1078,19 @@ export namespace ArrowFlight {
 
         // Signals
 
-        connect<K extends keyof Ticket.SignalSignatures>(signal: K, callback: Ticket.SignalSignatures[K]): number;
+        connect<K extends keyof Ticket.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Ticket.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Ticket.SignalSignatures>(signal: K, callback: Ticket.SignalSignatures[K]): number;
+        connect_after<K extends keyof Ticket.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Ticket.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Ticket.SignalSignatures>(
             signal: K,
-            ...args: Ticket.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Ticket.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

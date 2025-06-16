@@ -39,8 +39,8 @@ export namespace Spelling {
     namespace Checker {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::language': GObject.Object.Notify;
-            'notify::provider': GObject.Object.Notify;
+            'notify::language': (pspec: GObject.ParamSpec) => void;
+            'notify::provider': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -75,6 +75,14 @@ export namespace Spelling {
          * the default provider.
          */
         get provider(): Provider;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Checker.SignalSignatures;
 
         // Constructors
 
@@ -86,16 +94,19 @@ export namespace Spelling {
 
         // Signals
 
-        connect<K extends keyof Checker.SignalSignatures>(signal: K, callback: Checker.SignalSignatures[K]): number;
+        connect<K extends keyof Checker.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Checker.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Checker.SignalSignatures>(
             signal: K,
-            callback: Checker.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Checker.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Checker.SignalSignatures>(
             signal: K,
-            ...args: Checker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Checker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -159,7 +170,7 @@ export namespace Spelling {
     namespace Dictionary {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::code': GObject.Object.Notify;
+            'notify::code': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -181,6 +192,14 @@ export namespace Spelling {
          * The language code, for example `en_US`.
          */
         get code(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Dictionary.SignalSignatures;
 
         // Constructors
 
@@ -192,17 +211,17 @@ export namespace Spelling {
 
         connect<K extends keyof Dictionary.SignalSignatures>(
             signal: K,
-            callback: Dictionary.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Dictionary.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Dictionary.SignalSignatures>(
             signal: K,
-            callback: Dictionary.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Dictionary.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Dictionary.SignalSignatures>(
             signal: K,
-            ...args: Dictionary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Dictionary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -247,9 +266,9 @@ export namespace Spelling {
     namespace Language {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::code': GObject.Object.Notify;
-            'notify::group': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::code': (pspec: GObject.ParamSpec) => void;
+            'notify::group': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -281,6 +300,14 @@ export namespace Spelling {
          * The name of the language.
          */
         get name(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Language.SignalSignatures;
 
         // Constructors
 
@@ -290,16 +317,19 @@ export namespace Spelling {
 
         // Signals
 
-        connect<K extends keyof Language.SignalSignatures>(signal: K, callback: Language.SignalSignatures[K]): number;
+        connect<K extends keyof Language.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Language.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Language.SignalSignatures>(
             signal: K,
-            callback: Language.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Language.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Language.SignalSignatures>(
             signal: K,
-            ...args: Language.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Language.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -325,7 +355,7 @@ export namespace Spelling {
     namespace Provider {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -352,6 +382,14 @@ export namespace Spelling {
          * The display name.
          */
         get displayName(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Provider.SignalSignatures;
 
         // Constructors
 
@@ -361,16 +399,19 @@ export namespace Spelling {
 
         // Signals
 
-        connect<K extends keyof Provider.SignalSignatures>(signal: K, callback: Provider.SignalSignatures[K]): number;
+        connect<K extends keyof Provider.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Provider.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Provider.SignalSignatures>(
             signal: K,
-            callback: Provider.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Provider.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Provider.SignalSignatures>(
             signal: K,
-            ...args: Provider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Provider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -417,10 +458,10 @@ export namespace Spelling {
     namespace TextBufferAdapter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::buffer': GObject.Object.Notify;
-            'notify::checker': GObject.Object.Notify;
-            'notify::enabled': GObject.Object.Notify;
-            'notify::language': GObject.Object.Notify;
+            'notify::buffer': (pspec: GObject.ParamSpec) => void;
+            'notify::checker': (pspec: GObject.ParamSpec) => void;
+            'notify::enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::language': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -461,6 +502,14 @@ export namespace Spelling {
          */
         get language(): string;
         set language(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TextBufferAdapter.SignalSignatures;
 
         // Constructors
 
@@ -474,17 +523,17 @@ export namespace Spelling {
 
         connect<K extends keyof TextBufferAdapter.SignalSignatures>(
             signal: K,
-            callback: TextBufferAdapter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextBufferAdapter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextBufferAdapter.SignalSignatures>(
             signal: K,
-            callback: TextBufferAdapter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextBufferAdapter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextBufferAdapter.SignalSignatures>(
             signal: K,
-            ...args: TextBufferAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TextBufferAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

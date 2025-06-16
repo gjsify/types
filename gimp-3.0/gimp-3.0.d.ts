@@ -7275,9 +7275,9 @@ export namespace Gimp {
     namespace BatchProcedure {
         // Signal signatures
         interface SignalSignatures extends Procedure.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::plug-in': GObject.Object.Notify;
-            'notify::procedure-type': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::plug-in': (pspec: GObject.ParamSpec) => void;
+            'notify::procedure-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7299,6 +7299,14 @@ export namespace Gimp {
      */
     class BatchProcedure extends Procedure {
         static $gtype: GObject.GType<BatchProcedure>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BatchProcedure.SignalSignatures;
 
         // Constructors
 
@@ -7322,17 +7330,17 @@ export namespace Gimp {
 
         connect<K extends keyof BatchProcedure.SignalSignatures>(
             signal: K,
-            callback: BatchProcedure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BatchProcedure.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BatchProcedure.SignalSignatures>(
             signal: K,
-            callback: BatchProcedure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BatchProcedure.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BatchProcedure.SignalSignatures>(
             signal: K,
-            ...args: BatchProcedure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BatchProcedure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7370,7 +7378,7 @@ export namespace Gimp {
     namespace Brush {
         // Signal signatures
         interface SignalSignatures extends Resource.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7383,6 +7391,14 @@ export namespace Gimp {
      */
     class Brush extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Brush>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Brush.SignalSignatures;
 
         // Constructors
 
@@ -7394,13 +7410,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Brush.SignalSignatures>(signal: K, callback: Brush.SignalSignatures[K]): number;
+        connect<K extends keyof Brush.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Brush.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Brush.SignalSignatures>(signal: K, callback: Brush.SignalSignatures[K]): number;
+        connect_after<K extends keyof Brush.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Brush.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Brush.SignalSignatures>(
             signal: K,
-            ...args: Brush.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Brush.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8054,7 +8076,7 @@ export namespace Gimp {
     namespace Channel {
         // Signal signatures
         interface SignalSignatures extends Drawable.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8067,6 +8089,14 @@ export namespace Gimp {
      */
     class Channel extends Drawable {
         static $gtype: GObject.GType<Channel>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Channel.SignalSignatures;
 
         // Constructors
 
@@ -8087,16 +8117,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: Channel.SignalSignatures[K]): number;
+        connect<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            callback: Channel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            ...args: Channel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Channel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8185,15 +8218,9 @@ export namespace Gimp {
     }
 
     namespace Choice {
-        // Signal callback interfaces
-
-        interface SensitivityChanged {
-            (_source: Choice, object: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'sensitivity-changed': SensitivityChanged;
+            'sensitivity-changed': (arg0: string) => void;
         }
 
         // Constructor properties interface
@@ -8203,6 +8230,14 @@ export namespace Gimp {
 
     class Choice extends GObject.Object {
         static $gtype: GObject.GType<Choice>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Choice.SignalSignatures;
 
         // Constructors
 
@@ -8214,13 +8249,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Choice.SignalSignatures>(signal: K, callback: Choice.SignalSignatures[K]): number;
+        connect<K extends keyof Choice.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Choice.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Choice.SignalSignatures>(signal: K, callback: Choice.SignalSignatures[K]): number;
+        connect_after<K extends keyof Choice.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Choice.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Choice.SignalSignatures>(
             signal: K,
-            ...args: Choice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Choice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8278,23 +8319,23 @@ export namespace Gimp {
     namespace ColorConfig {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::cmyk-profile': GObject.Object.Notify;
-            'notify::display-optimize': GObject.Object.Notify;
-            'notify::display-profile': GObject.Object.Notify;
-            'notify::display-profile-from-gdk': GObject.Object.Notify;
-            'notify::display-rendering-intent': GObject.Object.Notify;
-            'notify::display-use-black-point-compensation': GObject.Object.Notify;
-            'notify::gray-profile': GObject.Object.Notify;
-            'notify::mode': GObject.Object.Notify;
-            'notify::out-of-gamut-color': GObject.Object.Notify;
-            'notify::rgb-profile': GObject.Object.Notify;
-            'notify::show-hsv': GObject.Object.Notify;
-            'notify::show-rgb-u8': GObject.Object.Notify;
-            'notify::simulation-gamut-check': GObject.Object.Notify;
-            'notify::simulation-optimize': GObject.Object.Notify;
-            'notify::simulation-profile': GObject.Object.Notify;
-            'notify::simulation-rendering-intent': GObject.Object.Notify;
-            'notify::simulation-use-black-point-compensation': GObject.Object.Notify;
+            'notify::cmyk-profile': (pspec: GObject.ParamSpec) => void;
+            'notify::display-optimize': (pspec: GObject.ParamSpec) => void;
+            'notify::display-profile': (pspec: GObject.ParamSpec) => void;
+            'notify::display-profile-from-gdk': (pspec: GObject.ParamSpec) => void;
+            'notify::display-rendering-intent': (pspec: GObject.ParamSpec) => void;
+            'notify::display-use-black-point-compensation': (pspec: GObject.ParamSpec) => void;
+            'notify::gray-profile': (pspec: GObject.ParamSpec) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::out-of-gamut-color': (pspec: GObject.ParamSpec) => void;
+            'notify::rgb-profile': (pspec: GObject.ParamSpec) => void;
+            'notify::show-hsv': (pspec: GObject.ParamSpec) => void;
+            'notify::show-rgb-u8': (pspec: GObject.ParamSpec) => void;
+            'notify::simulation-gamut-check': (pspec: GObject.ParamSpec) => void;
+            'notify::simulation-optimize': (pspec: GObject.ParamSpec) => void;
+            'notify::simulation-profile': (pspec: GObject.ParamSpec) => void;
+            'notify::simulation-rendering-intent': (pspec: GObject.ParamSpec) => void;
+            'notify::simulation-use-black-point-compensation': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8410,6 +8451,14 @@ export namespace Gimp {
         set simulation_use_black_point_compensation(val: boolean);
         get simulationUseBlackPointCompensation(): boolean;
         set simulationUseBlackPointCompensation(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ColorConfig.SignalSignatures;
 
         // Constructors
 
@@ -8421,17 +8470,17 @@ export namespace Gimp {
 
         connect<K extends keyof ColorConfig.SignalSignatures>(
             signal: K,
-            callback: ColorConfig.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColorConfig.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColorConfig.SignalSignatures>(
             signal: K,
-            callback: ColorConfig.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColorConfig.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColorConfig.SignalSignatures>(
             signal: K,
-            ...args: ColorConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ColorConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8909,6 +8958,14 @@ export namespace Gimp {
      */
     class ColorProfile extends GObject.Object {
         static $gtype: GObject.GType<ColorProfile>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ColorProfile.SignalSignatures;
 
         // Constructors
 
@@ -8938,17 +8995,17 @@ export namespace Gimp {
 
         connect<K extends keyof ColorProfile.SignalSignatures>(
             signal: K,
-            callback: ColorProfile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColorProfile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColorProfile.SignalSignatures>(
             signal: K,
-            callback: ColorProfile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColorProfile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColorProfile.SignalSignatures>(
             signal: K,
-            ...args: ColorProfile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ColorProfile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9054,15 +9111,9 @@ export namespace Gimp {
     }
 
     namespace ColorTransform {
-        // Signal callback interfaces
-
-        interface Progress {
-            (_source: ColorTransform, object: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            progress: Progress;
+            progress: (arg0: number) => void;
         }
 
         // Constructor properties interface
@@ -9075,6 +9126,14 @@ export namespace Gimp {
      */
     class ColorTransform extends GObject.Object {
         static $gtype: GObject.GType<ColorTransform>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ColorTransform.SignalSignatures;
 
         // Constructors
 
@@ -9106,17 +9165,17 @@ export namespace Gimp {
 
         connect<K extends keyof ColorTransform.SignalSignatures>(
             signal: K,
-            callback: ColorTransform.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColorTransform.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColorTransform.SignalSignatures>(
             signal: K,
-            callback: ColorTransform.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColorTransform.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColorTransform.SignalSignatures>(
             signal: K,
-            ...args: ColorTransform.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ColorTransform.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9191,17 +9250,17 @@ export namespace Gimp {
 
         connect<K extends keyof ConfigPath.SignalSignatures>(
             signal: K,
-            callback: ConfigPath.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigPath.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigPath.SignalSignatures>(
             signal: K,
-            callback: ConfigPath.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConfigPath.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigPath.SignalSignatures>(
             signal: K,
-            ...args: ConfigPath.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConfigPath.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9253,7 +9312,7 @@ export namespace Gimp {
     namespace Display {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9272,6 +9331,14 @@ export namespace Gimp {
         // Properties
 
         get id(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Display.SignalSignatures;
 
         // Constructors
 
@@ -9283,16 +9350,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Display.SignalSignatures>(signal: K, callback: Display.SignalSignatures[K]): number;
+        connect<K extends keyof Display.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Display.SignalSignatures>(
             signal: K,
-            callback: Display.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
-            ...args: Display.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9382,7 +9452,7 @@ export namespace Gimp {
     namespace Drawable {
         // Signal signatures
         interface SignalSignatures extends Item.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9395,6 +9465,14 @@ export namespace Gimp {
      */
     abstract class Drawable extends Item {
         static $gtype: GObject.GType<Drawable>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Drawable.SignalSignatures;
 
         // Constructors
 
@@ -9404,16 +9482,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Drawable.SignalSignatures>(signal: K, callback: Drawable.SignalSignatures[K]): number;
+        connect<K extends keyof Drawable.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Drawable.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Drawable.SignalSignatures>(
             signal: K,
-            callback: Drawable.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Drawable.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Drawable.SignalSignatures>(
             signal: K,
-            ...args: Drawable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Drawable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10132,7 +10213,7 @@ export namespace Gimp {
     namespace ExportOptions {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::capabilities': GObject.Object.Notify;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10163,6 +10244,14 @@ export namespace Gimp {
          */
         get capabilities(): number;
         set capabilities(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExportOptions.SignalSignatures;
 
         // Constructors
 
@@ -10174,17 +10263,17 @@ export namespace Gimp {
 
         connect<K extends keyof ExportOptions.SignalSignatures>(
             signal: K,
-            callback: ExportOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExportOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExportOptions.SignalSignatures>(
             signal: K,
-            callback: ExportOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExportOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExportOptions.SignalSignatures>(
             signal: K,
-            ...args: ExportOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExportOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10217,16 +10306,16 @@ export namespace Gimp {
     namespace ExportProcedure {
         // Signal signatures
         interface SignalSignatures extends FileProcedure.SignalSignatures {
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::supports-comment': GObject.Object.Notify;
-            'notify::supports-exif': GObject.Object.Notify;
-            'notify::supports-iptc': GObject.Object.Notify;
-            'notify::supports-profile': GObject.Object.Notify;
-            'notify::supports-thumbnail': GObject.Object.Notify;
-            'notify::supports-xmp': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::plug-in': GObject.Object.Notify;
-            'notify::procedure-type': GObject.Object.Notify;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::supports-comment': (pspec: GObject.ParamSpec) => void;
+            'notify::supports-exif': (pspec: GObject.ParamSpec) => void;
+            'notify::supports-iptc': (pspec: GObject.ParamSpec) => void;
+            'notify::supports-profile': (pspec: GObject.ParamSpec) => void;
+            'notify::supports-thumbnail': (pspec: GObject.ParamSpec) => void;
+            'notify::supports-xmp': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::plug-in': (pspec: GObject.ParamSpec) => void;
+            'notify::procedure-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10326,6 +10415,14 @@ export namespace Gimp {
          */
         get supportsXmp(): boolean;
         set supportsXmp(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ExportProcedure.SignalSignatures;
 
         // Constructors
 
@@ -10349,17 +10446,17 @@ export namespace Gimp {
 
         connect<K extends keyof ExportProcedure.SignalSignatures>(
             signal: K,
-            callback: ExportProcedure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExportProcedure.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExportProcedure.SignalSignatures>(
             signal: K,
-            callback: ExportProcedure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ExportProcedure.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExportProcedure.SignalSignatures>(
             signal: K,
-            ...args: ExportProcedure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ExportProcedure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10533,9 +10630,9 @@ export namespace Gimp {
     namespace FileProcedure {
         // Signal signatures
         interface SignalSignatures extends Procedure.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::plug-in': GObject.Object.Notify;
-            'notify::procedure-type': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::plug-in': (pspec: GObject.ParamSpec) => void;
+            'notify::procedure-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10551,6 +10648,14 @@ export namespace Gimp {
      */
     abstract class FileProcedure extends Procedure {
         static $gtype: GObject.GType<FileProcedure>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FileProcedure.SignalSignatures;
 
         // Constructors
 
@@ -10562,17 +10667,17 @@ export namespace Gimp {
 
         connect<K extends keyof FileProcedure.SignalSignatures>(
             signal: K,
-            callback: FileProcedure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileProcedure.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileProcedure.SignalSignatures>(
             signal: K,
-            callback: FileProcedure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileProcedure.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileProcedure.SignalSignatures>(
             signal: K,
-            ...args: FileProcedure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FileProcedure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10697,7 +10802,7 @@ export namespace Gimp {
     namespace Font {
         // Signal signatures
         interface SignalSignatures extends Resource.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10710,6 +10815,14 @@ export namespace Gimp {
      */
     class Font extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Font>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Font.SignalSignatures;
 
         // Constructors
 
@@ -10719,13 +10832,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
+        connect<K extends keyof Font.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Font.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
+        connect_after<K extends keyof Font.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Font.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Font.SignalSignatures>(
             signal: K,
-            ...args: Font.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Font.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11200,7 +11319,7 @@ export namespace Gimp {
     namespace Gradient {
         // Signal signatures
         interface SignalSignatures extends Resource.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11213,6 +11332,14 @@ export namespace Gimp {
      */
     class Gradient extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Gradient>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Gradient.SignalSignatures;
 
         // Constructors
 
@@ -11224,16 +11351,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Gradient.SignalSignatures>(signal: K, callback: Gradient.SignalSignatures[K]): number;
+        connect<K extends keyof Gradient.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Gradient.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Gradient.SignalSignatures>(
             signal: K,
-            callback: Gradient.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Gradient.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Gradient.SignalSignatures>(
             signal: K,
-            ...args: Gradient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Gradient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12012,7 +12142,7 @@ export namespace Gimp {
     namespace GroupLayer {
         // Signal signatures
         interface SignalSignatures extends Layer.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12025,6 +12155,14 @@ export namespace Gimp {
      */
     class GroupLayer extends Layer {
         static $gtype: GObject.GType<GroupLayer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GroupLayer.SignalSignatures;
 
         // Constructors
 
@@ -12038,17 +12176,17 @@ export namespace Gimp {
 
         connect<K extends keyof GroupLayer.SignalSignatures>(
             signal: K,
-            callback: GroupLayer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GroupLayer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GroupLayer.SignalSignatures>(
             signal: K,
-            callback: GroupLayer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GroupLayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GroupLayer.SignalSignatures>(
             signal: K,
-            ...args: GroupLayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GroupLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12078,7 +12216,7 @@ export namespace Gimp {
     namespace Image {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12098,6 +12236,14 @@ export namespace Gimp {
         // Properties
 
         get id(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Image.SignalSignatures;
 
         // Constructors
 
@@ -12111,13 +12257,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect_after<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Image.SignalSignatures>(
             signal: K,
-            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13894,9 +14046,9 @@ export namespace Gimp {
     namespace ImageProcedure {
         // Signal signatures
         interface SignalSignatures extends Procedure.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::plug-in': GObject.Object.Notify;
-            'notify::procedure-type': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::plug-in': (pspec: GObject.ParamSpec) => void;
+            'notify::procedure-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13922,6 +14074,14 @@ export namespace Gimp {
      */
     class ImageProcedure extends Procedure {
         static $gtype: GObject.GType<ImageProcedure>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ImageProcedure.SignalSignatures;
 
         // Constructors
 
@@ -13944,17 +14104,17 @@ export namespace Gimp {
 
         connect<K extends keyof ImageProcedure.SignalSignatures>(
             signal: K,
-            callback: ImageProcedure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ImageProcedure.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ImageProcedure.SignalSignatures>(
             signal: K,
-            callback: ImageProcedure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ImageProcedure.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ImageProcedure.SignalSignatures>(
             signal: K,
-            ...args: ImageProcedure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ImageProcedure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -13962,7 +14122,7 @@ export namespace Gimp {
     namespace Item {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13981,6 +14141,14 @@ export namespace Gimp {
         // Properties
 
         get id(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Item.SignalSignatures;
 
         // Constructors
 
@@ -13990,13 +14158,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect<K extends keyof Item.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect_after<K extends keyof Item.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Item.SignalSignatures>(
             signal: K,
-            ...args: Item.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Item.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14722,7 +14896,7 @@ export namespace Gimp {
     namespace Layer {
         // Signal signatures
         interface SignalSignatures extends Drawable.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14735,6 +14909,14 @@ export namespace Gimp {
      */
     class Layer extends Drawable {
         static $gtype: GObject.GType<Layer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Layer.SignalSignatures;
 
         // Constructors
 
@@ -14776,13 +14958,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        connect<K extends keyof Layer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Layer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Layer.SignalSignatures>(
             signal: K,
-            ...args: Layer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Layer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -15120,7 +15308,7 @@ export namespace Gimp {
     namespace LayerMask {
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15130,6 +15318,14 @@ export namespace Gimp {
 
     class LayerMask extends Channel {
         static $gtype: GObject.GType<LayerMask>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LayerMask.SignalSignatures;
 
         // Constructors
 
@@ -15139,16 +15335,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof LayerMask.SignalSignatures>(signal: K, callback: LayerMask.SignalSignatures[K]): number;
+        connect<K extends keyof LayerMask.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, LayerMask.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LayerMask.SignalSignatures>(
             signal: K,
-            callback: LayerMask.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LayerMask.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LayerMask.SignalSignatures>(
             signal: K,
-            ...args: LayerMask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LayerMask.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -15166,9 +15365,9 @@ export namespace Gimp {
     namespace LoadProcedure {
         // Signal signatures
         interface SignalSignatures extends FileProcedure.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::plug-in': GObject.Object.Notify;
-            'notify::procedure-type': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::plug-in': (pspec: GObject.ParamSpec) => void;
+            'notify::procedure-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15198,6 +15397,14 @@ export namespace Gimp {
      */
     class LoadProcedure extends FileProcedure {
         static $gtype: GObject.GType<LoadProcedure>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LoadProcedure.SignalSignatures;
 
         // Constructors
 
@@ -15220,17 +15427,17 @@ export namespace Gimp {
 
         connect<K extends keyof LoadProcedure.SignalSignatures>(
             signal: K,
-            callback: LoadProcedure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LoadProcedure.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LoadProcedure.SignalSignatures>(
             signal: K,
-            callback: LoadProcedure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LoadProcedure.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LoadProcedure.SignalSignatures>(
             signal: K,
-            ...args: LoadProcedure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LoadProcedure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -15287,16 +15494,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Memsize.SignalSignatures>(signal: K, callback: Memsize.SignalSignatures[K]): number;
+        connect<K extends keyof Memsize.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Memsize.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Memsize.SignalSignatures>(
             signal: K,
-            callback: Memsize.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Memsize.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Memsize.SignalSignatures>(
             signal: K,
-            ...args: Memsize.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Memsize.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -15332,6 +15542,14 @@ export namespace Gimp {
      */
     class Metadata extends GObject.Object {
         static $gtype: GObject.GType<Metadata>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Metadata.SignalSignatures;
 
         // Constructors
 
@@ -15343,16 +15561,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Metadata.SignalSignatures>(signal: K, callback: Metadata.SignalSignatures[K]): number;
+        connect<K extends keyof Metadata.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Metadata.SignalSignatures>(
             signal: K,
-            callback: Metadata.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Metadata.SignalSignatures>(
             signal: K,
-            ...args: Metadata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Metadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -15464,8 +15685,8 @@ export namespace Gimp {
     namespace Module {
         // Signal signatures
         interface SignalSignatures extends GObject.TypeModule.SignalSignatures {
-            'notify::auto-load': GObject.Object.Notify;
-            'notify::on-disk': GObject.Object.Notify;
+            'notify::auto-load': (pspec: GObject.ParamSpec) => void;
+            'notify::on-disk': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15496,6 +15717,14 @@ export namespace Gimp {
         set autoLoad(val: boolean);
         get on_disk(): boolean;
         get onDisk(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Module.SignalSignatures;
 
         // Constructors
 
@@ -15507,13 +15736,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
+        connect<K extends keyof Module.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Module.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
+        connect_after<K extends keyof Module.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Module.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Module.SignalSignatures>(
             signal: K,
-            ...args: Module.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Module.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -16054,6 +16289,14 @@ export namespace Gimp {
      */
     class ModuleDB<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<ModuleDB>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ModuleDB.SignalSignatures;
 
         // Constructors
 
@@ -16065,16 +16308,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof ModuleDB.SignalSignatures>(signal: K, callback: ModuleDB.SignalSignatures[K]): number;
+        connect<K extends keyof ModuleDB.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ModuleDB.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ModuleDB.SignalSignatures>(
             signal: K,
-            callback: ModuleDB.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ModuleDB.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ModuleDB.SignalSignatures>(
             signal: K,
-            ...args: ModuleDB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ModuleDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -16670,6 +16916,14 @@ export namespace Gimp {
      */
     class PDB extends GObject.Object {
         static $gtype: GObject.GType<PDB>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PDB.SignalSignatures;
 
         // Constructors
 
@@ -16679,13 +16933,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof PDB.SignalSignatures>(signal: K, callback: PDB.SignalSignatures[K]): number;
+        connect<K extends keyof PDB.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, PDB.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof PDB.SignalSignatures>(signal: K, callback: PDB.SignalSignatures[K]): number;
+        connect_after<K extends keyof PDB.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, PDB.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PDB.SignalSignatures>(
             signal: K,
-            ...args: PDB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -16787,7 +17047,7 @@ export namespace Gimp {
     namespace Palette {
         // Signal signatures
         interface SignalSignatures extends Resource.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -16800,6 +17060,14 @@ export namespace Gimp {
      */
     class Palette extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Palette>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Palette.SignalSignatures;
 
         // Constructors
 
@@ -16811,16 +17079,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Palette.SignalSignatures>(signal: K, callback: Palette.SignalSignatures[K]): number;
+        connect<K extends keyof Palette.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Palette.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Palette.SignalSignatures>(
             signal: K,
-            callback: Palette.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Palette.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Palette.SignalSignatures>(
             signal: K,
-            ...args: Palette.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Palette.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -17393,17 +17664,17 @@ export namespace Gimp {
 
         connect<K extends keyof ParamBrush.SignalSignatures>(
             signal: K,
-            callback: ParamBrush.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamBrush.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamBrush.SignalSignatures>(
             signal: K,
-            callback: ParamBrush.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamBrush.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamBrush.SignalSignatures>(
             signal: K,
-            ...args: ParamBrush.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParamBrush.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -17424,17 +17695,17 @@ export namespace Gimp {
 
         connect<K extends keyof ParamChannel.SignalSignatures>(
             signal: K,
-            callback: ParamChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamChannel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamChannel.SignalSignatures>(
             signal: K,
-            callback: ParamChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamChannel.SignalSignatures>(
             signal: K,
-            ...args: ParamChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParamChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -17455,17 +17726,17 @@ export namespace Gimp {
 
         connect<K extends keyof ParamColor.SignalSignatures>(
             signal: K,
-            callback: ParamColor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamColor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamColor.SignalSignatures>(
             signal: K,
-            callback: ParamColor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamColor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamColor.SignalSignatures>(
             signal: K,
-            ...args: ParamColor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParamColor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -17486,17 +17757,17 @@ export namespace Gimp {
 
         connect<K extends keyof ParamDrawable.SignalSignatures>(
             signal: K,
-            callback: ParamDrawable.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamDrawable.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamDrawable.SignalSignatures>(
             signal: K,
-            callback: ParamDrawable.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamDrawable.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamDrawable.SignalSignatures>(
             signal: K,
-            ...args: ParamDrawable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParamDrawable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -17517,17 +17788,17 @@ export namespace Gimp {
 
         connect<K extends keyof ParamFloatArray.SignalSignatures>(
             signal: K,
-            callback: ParamFloatArray.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamFloatArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamFloatArray.SignalSignatures>(
             signal: K,
-            callback: ParamFloatArray.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamFloatArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamFloatArray.SignalSignatures>(
             signal: K,
-            ...args: ParamFloatArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParamFloatArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -17546,16 +17817,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof ParamFont.SignalSignatures>(signal: K, callback: ParamFont.SignalSignatures[K]): number;
+        connect<K extends keyof ParamFont.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ParamFont.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamFont.SignalSignatures>(
             signal: K,
-            callback: ParamFont.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamFont.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamFont.SignalSignatures>(
             signal: K,
-            ...args: ParamFont.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParamFont.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -17576,17 +17850,17 @@ export namespace Gimp {
 
         connect<K extends keyof ParamGradient.SignalSignatures>(
             signal: K,
-            callback: ParamGradient.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamGradient.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamGradient.SignalSignatures>(
             signal: K,
-            callback: ParamGradient.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamGradient.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamGradient.SignalSignatures>(
             signal: K,
-            ...args: ParamGradient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParamGradient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -17607,17 +17881,17 @@ export namespace Gimp {
 
         connect<K extends keyof ParamGroupLayer.SignalSignatures>(
             signal: K,
-            callback: ParamGroupLayer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamGroupLayer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamGroupLayer.SignalSignatures>(
             signal: K,
-            callback: ParamGroupLayer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamGroupLayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamGroupLayer.SignalSignatures>(
             signal: K,
-            ...args: ParamGroupLayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParamGroupLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -17638,17 +17912,17 @@ export namespace Gimp {
 
         connect<K extends keyof ParamInt32Array.SignalSignatures>(
             signal: K,
-            callback: ParamInt32Array.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamInt32Array.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamInt32Array.SignalSignatures>(
             signal: K,
-            callback: ParamInt32Array.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamInt32Array.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamInt32Array.SignalSignatures>(
             signal: K,
-            ...args: ParamInt32Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParamInt32Array.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -17669,17 +17943,17 @@ export namespace Gimp {
 
         connect<K extends keyof ParamLayer.SignalSignatures>(
             signal: K,
-            callback: ParamLayer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamLayer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamLayer.SignalSignatures>(
             signal: K,
-            callback: ParamLayer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamLayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamLayer.SignalSignatures>(
             signal: K,
-            ...args: ParamLayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParamLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -17700,17 +17974,17 @@ export namespace Gimp {
 
         connect<K extends keyof ParamLayerMask.SignalSignatures>(
             signal: K,
-            callback: ParamLayerMask.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamLayerMask.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamLayerMask.SignalSignatures>(
             signal: K,
-            callback: ParamLayerMask.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamLayerMask.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamLayerMask.SignalSignatures>(
             signal: K,
-            ...args: ParamLayerMask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParamLayerMask.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -17731,17 +18005,17 @@ export namespace Gimp {
 
         connect<K extends keyof ParamPalette.SignalSignatures>(
             signal: K,
-            callback: ParamPalette.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamPalette.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamPalette.SignalSignatures>(
             signal: K,
-            callback: ParamPalette.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamPalette.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamPalette.SignalSignatures>(
             signal: K,
-            ...args: ParamPalette.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParamPalette.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -17760,16 +18034,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof ParamPath.SignalSignatures>(signal: K, callback: ParamPath.SignalSignatures[K]): number;
+        connect<K extends keyof ParamPath.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ParamPath.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamPath.SignalSignatures>(
             signal: K,
-            callback: ParamPath.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamPath.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamPath.SignalSignatures>(
             signal: K,
-            ...args: ParamPath.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParamPath.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -17790,17 +18067,17 @@ export namespace Gimp {
 
         connect<K extends keyof ParamPattern.SignalSignatures>(
             signal: K,
-            callback: ParamPattern.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamPattern.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamPattern.SignalSignatures>(
             signal: K,
-            callback: ParamPattern.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamPattern.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamPattern.SignalSignatures>(
             signal: K,
-            ...args: ParamPattern.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParamPattern.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -17821,17 +18098,17 @@ export namespace Gimp {
 
         connect<K extends keyof ParamResource.SignalSignatures>(
             signal: K,
-            callback: ParamResource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamResource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamResource.SignalSignatures>(
             signal: K,
-            callback: ParamResource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamResource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamResource.SignalSignatures>(
             signal: K,
-            ...args: ParamResource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParamResource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -17852,17 +18129,17 @@ export namespace Gimp {
 
         connect<K extends keyof ParamSelection.SignalSignatures>(
             signal: K,
-            callback: ParamSelection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamSelection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamSelection.SignalSignatures>(
             signal: K,
-            callback: ParamSelection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamSelection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamSelection.SignalSignatures>(
             signal: K,
-            ...args: ParamSelection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParamSelection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -17883,17 +18160,17 @@ export namespace Gimp {
 
         connect<K extends keyof ParamTextLayer.SignalSignatures>(
             signal: K,
-            callback: ParamTextLayer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamTextLayer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamTextLayer.SignalSignatures>(
             signal: K,
-            callback: ParamTextLayer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamTextLayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamTextLayer.SignalSignatures>(
             signal: K,
-            ...args: ParamTextLayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParamTextLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -17912,16 +18189,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof ParamUnit.SignalSignatures>(signal: K, callback: ParamUnit.SignalSignatures[K]): number;
+        connect<K extends keyof ParamUnit.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ParamUnit.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamUnit.SignalSignatures>(
             signal: K,
-            callback: ParamUnit.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ParamUnit.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamUnit.SignalSignatures>(
             signal: K,
-            ...args: ParamUnit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ParamUnit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -17929,7 +18209,7 @@ export namespace Gimp {
     namespace Path {
         // Signal signatures
         interface SignalSignatures extends Item.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -17942,6 +18222,14 @@ export namespace Gimp {
      */
     class Path extends Item {
         static $gtype: GObject.GType<Path>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Path.SignalSignatures;
 
         // Constructors
 
@@ -17955,13 +18243,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
+        connect<K extends keyof Path.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Path.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
+        connect_after<K extends keyof Path.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Path.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Path.SignalSignatures>(
             signal: K,
-            ...args: Path.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Path.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -18221,7 +18515,7 @@ export namespace Gimp {
     namespace Pattern {
         // Signal signatures
         interface SignalSignatures extends Resource.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -18234,6 +18528,14 @@ export namespace Gimp {
      */
     class Pattern extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Pattern>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Pattern.SignalSignatures;
 
         // Constructors
 
@@ -18243,16 +18545,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Pattern.SignalSignatures>(signal: K, callback: Pattern.SignalSignatures[K]): number;
+        connect<K extends keyof Pattern.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Pattern.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Pattern.SignalSignatures>(
             signal: K,
-            callback: Pattern.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Pattern.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Pattern.SignalSignatures>(
             signal: K,
-            ...args: Pattern.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Pattern.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -18742,9 +19047,9 @@ export namespace Gimp {
     namespace PlugIn {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::program-name': GObject.Object.Notify;
-            'notify::read-channel': GObject.Object.Notify;
-            'notify::write-channel': GObject.Object.Notify;
+            'notify::program-name': (pspec: GObject.ParamSpec) => void;
+            'notify::read-channel': (pspec: GObject.ParamSpec) => void;
+            'notify::write-channel': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -18841,6 +19146,14 @@ export namespace Gimp {
          * The [struct`GLib`.IOChannel] to write to GIMP
          */
         get writeChannel(): GLib.IOChannel;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PlugIn.SignalSignatures;
 
         // Constructors
 
@@ -18850,13 +19163,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof PlugIn.SignalSignatures>(signal: K, callback: PlugIn.SignalSignatures[K]): number;
+        connect<K extends keyof PlugIn.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, PlugIn.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof PlugIn.SignalSignatures>(signal: K, callback: PlugIn.SignalSignatures[K]): number;
+        connect_after<K extends keyof PlugIn.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, PlugIn.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlugIn.SignalSignatures>(
             signal: K,
-            ...args: PlugIn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PlugIn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -19110,9 +19429,9 @@ export namespace Gimp {
     namespace Procedure {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::plug-in': GObject.Object.Notify;
-            'notify::procedure-type': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::plug-in': (pspec: GObject.ParamSpec) => void;
+            'notify::procedure-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19145,6 +19464,14 @@ export namespace Gimp {
         get plugIn(): PlugIn;
         get procedure_type(): PDBProcType;
         get procedureType(): PDBProcType;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Procedure.SignalSignatures;
 
         // Constructors
 
@@ -19162,16 +19489,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Procedure.SignalSignatures>(signal: K, callback: Procedure.SignalSignatures[K]): number;
+        connect<K extends keyof Procedure.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Procedure.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Procedure.SignalSignatures>(
             signal: K,
-            callback: Procedure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Procedure.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Procedure.SignalSignatures>(
             signal: K,
-            ...args: Procedure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Procedure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -20960,7 +21290,7 @@ export namespace Gimp {
     namespace ProcedureConfig {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::procedure': GObject.Object.Notify;
+            'notify::procedure': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -20989,6 +21319,14 @@ export namespace Gimp {
         // Properties
 
         get procedure(): Procedure;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ProcedureConfig.SignalSignatures;
 
         // Constructors
 
@@ -21000,17 +21338,17 @@ export namespace Gimp {
 
         connect<K extends keyof ProcedureConfig.SignalSignatures>(
             signal: K,
-            callback: ProcedureConfig.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProcedureConfig.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProcedureConfig.SignalSignatures>(
             signal: K,
-            callback: ProcedureConfig.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProcedureConfig.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProcedureConfig.SignalSignatures>(
             signal: K,
-            ...args: ProcedureConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ProcedureConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21054,7 +21392,7 @@ export namespace Gimp {
     namespace Resource {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21073,6 +21411,14 @@ export namespace Gimp {
         // Properties
 
         get id(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Resource.SignalSignatures;
 
         // Constructors
 
@@ -21082,16 +21428,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Resource.SignalSignatures>(signal: K, callback: Resource.SignalSignatures[K]): number;
+        connect<K extends keyof Resource.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Resource.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Resource.SignalSignatures>(
             signal: K,
-            callback: Resource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Resource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Resource.SignalSignatures>(
             signal: K,
-            ...args: Resource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Resource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21721,7 +22070,7 @@ export namespace Gimp {
     namespace Selection {
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21734,6 +22083,14 @@ export namespace Gimp {
      */
     class Selection extends Channel {
         static $gtype: GObject.GType<Selection>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Selection.SignalSignatures;
 
         // Constructors
 
@@ -21743,16 +22100,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Selection.SignalSignatures>(signal: K, callback: Selection.SignalSignatures[K]): number;
+        connect<K extends keyof Selection.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Selection.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Selection.SignalSignatures>(
             signal: K,
-            callback: Selection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Selection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Selection.SignalSignatures>(
             signal: K,
-            ...args: Selection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Selection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21921,7 +22281,7 @@ export namespace Gimp {
     namespace TextLayer {
         // Signal signatures
         interface SignalSignatures extends Layer.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21934,6 +22294,14 @@ export namespace Gimp {
      */
     class TextLayer extends Layer {
         static $gtype: GObject.GType<TextLayer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TextLayer.SignalSignatures;
 
         // Constructors
 
@@ -21948,16 +22316,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof TextLayer.SignalSignatures>(signal: K, callback: TextLayer.SignalSignatures[K]): number;
+        connect<K extends keyof TextLayer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TextLayer.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextLayer.SignalSignatures>(
             signal: K,
-            callback: TextLayer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextLayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextLayer.SignalSignatures>(
             signal: K,
-            ...args: TextLayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TextLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22230,9 +22601,9 @@ export namespace Gimp {
     namespace ThumbnailProcedure {
         // Signal signatures
         interface SignalSignatures extends Procedure.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::plug-in': GObject.Object.Notify;
-            'notify::procedure-type': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::plug-in': (pspec: GObject.ParamSpec) => void;
+            'notify::procedure-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22242,6 +22613,14 @@ export namespace Gimp {
 
     class ThumbnailProcedure extends Procedure {
         static $gtype: GObject.GType<ThumbnailProcedure>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ThumbnailProcedure.SignalSignatures;
 
         // Constructors
 
@@ -22264,17 +22643,17 @@ export namespace Gimp {
 
         connect<K extends keyof ThumbnailProcedure.SignalSignatures>(
             signal: K,
-            callback: ThumbnailProcedure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ThumbnailProcedure.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ThumbnailProcedure.SignalSignatures>(
             signal: K,
-            callback: ThumbnailProcedure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ThumbnailProcedure.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ThumbnailProcedure.SignalSignatures>(
             signal: K,
-            ...args: ThumbnailProcedure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ThumbnailProcedure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -22282,12 +22661,12 @@ export namespace Gimp {
     namespace Unit {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::abbreviation': GObject.Object.Notify;
-            'notify::digits': GObject.Object.Notify;
-            'notify::factor': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::symbol': GObject.Object.Notify;
+            'notify::abbreviation': (pspec: GObject.ParamSpec) => void;
+            'notify::digits': (pspec: GObject.ParamSpec) => void;
+            'notify::factor': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::symbol': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22317,6 +22696,14 @@ export namespace Gimp {
         get id(): number;
         get name(): string;
         get symbol(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Unit.SignalSignatures;
 
         // Constructors
 
@@ -22328,13 +22715,19 @@ export namespace Gimp {
 
         // Signals
 
-        connect<K extends keyof Unit.SignalSignatures>(signal: K, callback: Unit.SignalSignatures[K]): number;
+        connect<K extends keyof Unit.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Unit.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Unit.SignalSignatures>(signal: K, callback: Unit.SignalSignatures[K]): number;
+        connect_after<K extends keyof Unit.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Unit.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Unit.SignalSignatures>(
             signal: K,
-            ...args: Unit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Unit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22507,9 +22900,9 @@ export namespace Gimp {
     namespace VectorLoadProcedure {
         // Signal signatures
         interface SignalSignatures extends LoadProcedure.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::plug-in': GObject.Object.Notify;
-            'notify::procedure-type': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::plug-in': (pspec: GObject.ParamSpec) => void;
+            'notify::procedure-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22535,6 +22928,14 @@ export namespace Gimp {
      */
     class VectorLoadProcedure extends LoadProcedure {
         static $gtype: GObject.GType<VectorLoadProcedure>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VectorLoadProcedure.SignalSignatures;
 
         // Constructors
 
@@ -22558,17 +22959,19 @@ export namespace Gimp {
 
         connect<K extends keyof VectorLoadProcedure.SignalSignatures>(
             signal: K,
-            callback: VectorLoadProcedure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VectorLoadProcedure.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VectorLoadProcedure.SignalSignatures>(
             signal: K,
-            callback: VectorLoadProcedure.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VectorLoadProcedure.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VectorLoadProcedure.SignalSignatures>(
             signal: K,
-            ...args: VectorLoadProcedure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VectorLoadProcedure.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

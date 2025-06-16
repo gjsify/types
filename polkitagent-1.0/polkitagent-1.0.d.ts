@@ -73,6 +73,14 @@ export namespace PolkitAgent {
      */
     abstract class Listener extends GObject.Object {
         static $gtype: GObject.GType<Listener>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Listener.SignalSignatures;
 
         // Constructors
 
@@ -82,16 +90,19 @@ export namespace PolkitAgent {
 
         // Signals
 
-        connect<K extends keyof Listener.SignalSignatures>(signal: K, callback: Listener.SignalSignatures[K]): number;
+        connect<K extends keyof Listener.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Listener.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Listener.SignalSignatures>(
             signal: K,
-            callback: Listener.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Listener.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Listener.SignalSignatures>(
             signal: K,
-            ...args: Listener.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Listener.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -316,32 +327,14 @@ export namespace PolkitAgent {
     }
 
     namespace Session {
-        // Signal callback interfaces
-
-        interface Completed {
-            (_source: Session, gained_authorization: boolean): void;
-        }
-
-        interface Request {
-            (_source: Session, request: string, echo_on: boolean): void;
-        }
-
-        interface ShowError {
-            (_source: Session, text: string): void;
-        }
-
-        interface ShowInfo {
-            (_source: Session, text: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            completed: Completed;
-            request: Request;
-            'show-error': ShowError;
-            'show-info': ShowInfo;
-            'notify::cookie': GObject.Object.Notify;
-            'notify::identity': GObject.Object.Notify;
+            completed: (arg0: boolean) => void;
+            request: (arg0: string, arg1: boolean) => void;
+            'show-error': (arg0: string) => void;
+            'show-info': (arg0: string) => void;
+            'notify::cookie': (pspec: GObject.ParamSpec) => void;
+            'notify::identity': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -389,6 +382,14 @@ export namespace PolkitAgent {
          * The identity to authenticate.
          */
         get identity(): Polkit.Identity;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -400,16 +401,19 @@ export namespace PolkitAgent {
 
         // Signals
 
-        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
-            callback: Session.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -453,6 +457,14 @@ export namespace PolkitAgent {
      */
     class TextListener extends Listener implements Gio.Initable {
         static $gtype: GObject.GType<TextListener>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TextListener.SignalSignatures;
 
         // Constructors
 
@@ -466,17 +478,17 @@ export namespace PolkitAgent {
 
         connect<K extends keyof TextListener.SignalSignatures>(
             signal: K,
-            callback: TextListener.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextListener.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextListener.SignalSignatures>(
             signal: K,
-            callback: TextListener.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextListener.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextListener.SignalSignatures>(
             signal: K,
-            ...args: TextListener.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TextListener.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

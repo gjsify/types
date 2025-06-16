@@ -4738,7 +4738,7 @@ export namespace Gdk {
     namespace AppLaunchContext {
         // Signal signatures
         interface SignalSignatures extends Gio.AppLaunchContext.SignalSignatures {
-            'notify::display': GObject.Object.Notify;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4778,6 +4778,14 @@ export namespace Gdk {
          * The display that the `GdkAppLaunchContext` is on.
          */
         get display(): Display;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AppLaunchContext.SignalSignatures;
 
         // Constructors
 
@@ -4789,17 +4797,17 @@ export namespace Gdk {
 
         connect<K extends keyof AppLaunchContext.SignalSignatures>(
             signal: K,
-            callback: AppLaunchContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AppLaunchContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AppLaunchContext.SignalSignatures>(
             signal: K,
-            callback: AppLaunchContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AppLaunchContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AppLaunchContext.SignalSignatures>(
             signal: K,
-            ...args: AppLaunchContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AppLaunchContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4887,17 +4895,17 @@ export namespace Gdk {
 
         connect<K extends keyof ButtonEvent.SignalSignatures>(
             signal: K,
-            callback: ButtonEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ButtonEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ButtonEvent.SignalSignatures>(
             signal: K,
-            callback: ButtonEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ButtonEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ButtonEvent.SignalSignatures>(
             signal: K,
-            ...args: ButtonEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ButtonEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4913,8 +4921,8 @@ export namespace Gdk {
     namespace CairoContext {
         // Signal signatures
         interface SignalSignatures extends DrawContext.SignalSignatures {
-            'notify::display': GObject.Object.Notify;
-            'notify::surface': GObject.Object.Notify;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::surface': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4931,6 +4939,14 @@ export namespace Gdk {
      */
     abstract class CairoContext extends DrawContext {
         static $gtype: GObject.GType<CairoContext>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CairoContext.SignalSignatures;
 
         // Constructors
 
@@ -4942,17 +4958,17 @@ export namespace Gdk {
 
         connect<K extends keyof CairoContext.SignalSignatures>(
             signal: K,
-            callback: CairoContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CairoContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CairoContext.SignalSignatures>(
             signal: K,
-            callback: CairoContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CairoContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CairoContext.SignalSignatures>(
             signal: K,
-            ...args: CairoContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CairoContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4975,10 +4991,10 @@ export namespace Gdk {
     namespace CicpParams {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::color-primaries': GObject.Object.Notify;
-            'notify::matrix-coefficients': GObject.Object.Notify;
-            'notify::range': GObject.Object.Notify;
-            'notify::transfer-function': GObject.Object.Notify;
+            'notify::color-primaries': (pspec: GObject.ParamSpec) => void;
+            'notify::matrix-coefficients': (pspec: GObject.ParamSpec) => void;
+            'notify::range': (pspec: GObject.ParamSpec) => void;
+            'notify::transfer-function': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5107,6 +5123,14 @@ export namespace Gdk {
          */
         get transferFunction(): number;
         set transferFunction(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CicpParams.SignalSignatures;
 
         // Constructors
 
@@ -5120,17 +5144,17 @@ export namespace Gdk {
 
         connect<K extends keyof CicpParams.SignalSignatures>(
             signal: K,
-            callback: CicpParams.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CicpParams.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CicpParams.SignalSignatures>(
             signal: K,
-            callback: CicpParams.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CicpParams.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CicpParams.SignalSignatures>(
             signal: K,
-            ...args: CicpParams.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CicpParams.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5190,19 +5214,13 @@ export namespace Gdk {
     }
 
     namespace Clipboard {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: Clipboard): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            'notify::content': GObject.Object.Notify;
-            'notify::display': GObject.Object.Notify;
-            'notify::formats': GObject.Object.Notify;
-            'notify::local': GObject.Object.Notify;
+            changed: () => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::formats': (pspec: GObject.ParamSpec) => void;
+            'notify::local': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5255,6 +5273,14 @@ export namespace Gdk {
          * %TRUE if the contents of the clipboard are owned by this process.
          */
         get local(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Clipboard.SignalSignatures;
 
         // Constructors
 
@@ -5264,16 +5290,19 @@ export namespace Gdk {
 
         // Signals
 
-        connect<K extends keyof Clipboard.SignalSignatures>(signal: K, callback: Clipboard.SignalSignatures[K]): number;
+        connect<K extends keyof Clipboard.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Clipboard.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Clipboard.SignalSignatures>(
             signal: K,
-            callback: Clipboard.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Clipboard.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Clipboard.SignalSignatures>(
             signal: K,
-            ...args: Clipboard.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Clipboard.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5623,6 +5652,14 @@ export namespace Gdk {
      */
     class ContentDeserializer extends GObject.Object implements Gio.AsyncResult {
         static $gtype: GObject.GType<ContentDeserializer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ContentDeserializer.SignalSignatures;
 
         // Constructors
 
@@ -5634,17 +5671,19 @@ export namespace Gdk {
 
         connect<K extends keyof ContentDeserializer.SignalSignatures>(
             signal: K,
-            callback: ContentDeserializer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContentDeserializer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContentDeserializer.SignalSignatures>(
             signal: K,
-            callback: ContentDeserializer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContentDeserializer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContentDeserializer.SignalSignatures>(
             signal: K,
-            ...args: ContentDeserializer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ContentDeserializer.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6198,17 +6237,11 @@ export namespace Gdk {
     }
 
     namespace ContentProvider {
-        // Signal callback interfaces
-
-        interface ContentChanged {
-            (_source: ContentProvider): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'content-changed': ContentChanged;
-            'notify::formats': GObject.Object.Notify;
-            'notify::storable-formats': GObject.Object.Notify;
+            'content-changed': () => void;
+            'notify::formats': (pspec: GObject.ParamSpec) => void;
+            'notify::storable-formats': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6248,6 +6281,14 @@ export namespace Gdk {
          * The subset of formats that clipboard managers should store this provider's data in.
          */
         get storableFormats(): ContentFormats;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ContentProvider.SignalSignatures;
 
         // Constructors
 
@@ -6265,17 +6306,17 @@ export namespace Gdk {
 
         connect<K extends keyof ContentProvider.SignalSignatures>(
             signal: K,
-            callback: ContentProvider.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContentProvider.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContentProvider.SignalSignatures>(
             signal: K,
-            callback: ContentProvider.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContentProvider.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContentProvider.SignalSignatures>(
             signal: K,
-            ...args: ContentProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ContentProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6470,6 +6511,14 @@ export namespace Gdk {
      */
     class ContentSerializer extends GObject.Object implements Gio.AsyncResult {
         static $gtype: GObject.GType<ContentSerializer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ContentSerializer.SignalSignatures;
 
         // Constructors
 
@@ -6481,17 +6530,17 @@ export namespace Gdk {
 
         connect<K extends keyof ContentSerializer.SignalSignatures>(
             signal: K,
-            callback: ContentSerializer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContentSerializer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContentSerializer.SignalSignatures>(
             signal: K,
-            callback: ContentSerializer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContentSerializer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContentSerializer.SignalSignatures>(
             signal: K,
-            ...args: ContentSerializer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ContentSerializer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7063,17 +7112,17 @@ export namespace Gdk {
 
         connect<K extends keyof CrossingEvent.SignalSignatures>(
             signal: K,
-            callback: CrossingEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CrossingEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CrossingEvent.SignalSignatures>(
             signal: K,
-            callback: CrossingEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CrossingEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CrossingEvent.SignalSignatures>(
             signal: K,
-            ...args: CrossingEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CrossingEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7099,11 +7148,11 @@ export namespace Gdk {
     namespace Cursor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::fallback': GObject.Object.Notify;
-            'notify::hotspot-x': GObject.Object.Notify;
-            'notify::hotspot-y': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::texture': GObject.Object.Notify;
+            'notify::fallback': (pspec: GObject.ParamSpec) => void;
+            'notify::hotspot-x': (pspec: GObject.ParamSpec) => void;
+            'notify::hotspot-y': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::texture': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7192,6 +7241,14 @@ export namespace Gdk {
          * The texture will be %NULL if the cursor was created from a name.
          */
         get texture(): Texture;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Cursor.SignalSignatures;
 
         // Constructors
 
@@ -7212,13 +7269,19 @@ export namespace Gdk {
 
         // Signals
 
-        connect<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
+        connect<K extends keyof Cursor.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Cursor.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
+        connect_after<K extends keyof Cursor.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Cursor.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Cursor.SignalSignatures>(
             signal: K,
-            ...args: Cursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Cursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7290,16 +7353,19 @@ export namespace Gdk {
 
         // Signals
 
-        connect<K extends keyof DNDEvent.SignalSignatures>(signal: K, callback: DNDEvent.SignalSignatures[K]): number;
+        connect<K extends keyof DNDEvent.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DNDEvent.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DNDEvent.SignalSignatures>(
             signal: K,
-            callback: DNDEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DNDEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DNDEvent.SignalSignatures>(
             signal: K,
-            ...args: DNDEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DNDEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7331,54 +7397,44 @@ export namespace Gdk {
 
         connect<K extends keyof DeleteEvent.SignalSignatures>(
             signal: K,
-            callback: DeleteEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeleteEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeleteEvent.SignalSignatures>(
             signal: K,
-            callback: DeleteEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeleteEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeleteEvent.SignalSignatures>(
             signal: K,
-            ...args: DeleteEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeleteEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace Device {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: Device): void;
-        }
-
-        interface ToolChanged {
-            (_source: Device, tool: DeviceTool): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            'tool-changed': ToolChanged;
-            'notify::active-layout-index': GObject.Object.Notify;
-            'notify::caps-lock-state': GObject.Object.Notify;
-            'notify::direction': GObject.Object.Notify;
-            'notify::display': GObject.Object.Notify;
-            'notify::has-bidi-layouts': GObject.Object.Notify;
-            'notify::has-cursor': GObject.Object.Notify;
-            'notify::layout-names': GObject.Object.Notify;
-            'notify::modifier-state': GObject.Object.Notify;
-            'notify::n-axes': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::num-lock-state': GObject.Object.Notify;
-            'notify::num-touches': GObject.Object.Notify;
-            'notify::product-id': GObject.Object.Notify;
-            'notify::scroll-lock-state': GObject.Object.Notify;
-            'notify::seat': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
-            'notify::tool': GObject.Object.Notify;
-            'notify::vendor-id': GObject.Object.Notify;
+            changed: () => void;
+            'tool-changed': (arg0: DeviceTool) => void;
+            'notify::active-layout-index': (pspec: GObject.ParamSpec) => void;
+            'notify::caps-lock-state': (pspec: GObject.ParamSpec) => void;
+            'notify::direction': (pspec: GObject.ParamSpec) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::has-bidi-layouts': (pspec: GObject.ParamSpec) => void;
+            'notify::has-cursor': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-names': (pspec: GObject.ParamSpec) => void;
+            'notify::modifier-state': (pspec: GObject.ParamSpec) => void;
+            'notify::n-axes': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::num-lock-state': (pspec: GObject.ParamSpec) => void;
+            'notify::num-touches': (pspec: GObject.ParamSpec) => void;
+            'notify::product-id': (pspec: GObject.ParamSpec) => void;
+            'notify::scroll-lock-state': (pspec: GObject.ParamSpec) => void;
+            'notify::seat': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::tool': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor-id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7597,6 +7653,14 @@ export namespace Gdk {
          * See [method`Gdk`.Device.get_vendor_id].
          */
         get vendorId(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -7606,13 +7670,19 @@ export namespace Gdk {
 
         // Signals
 
-        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
-            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7774,10 +7844,10 @@ export namespace Gdk {
     namespace DeviceTool {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::axes': GObject.Object.Notify;
-            'notify::hardware-id': GObject.Object.Notify;
-            'notify::serial': GObject.Object.Notify;
-            'notify::tool-type': GObject.Object.Notify;
+            'notify::axes': (pspec: GObject.ParamSpec) => void;
+            'notify::hardware-id': (pspec: GObject.ParamSpec) => void;
+            'notify::serial': (pspec: GObject.ParamSpec) => void;
+            'notify::tool-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7824,6 +7894,14 @@ export namespace Gdk {
          * The type of the tool.
          */
         get toolType(): DeviceToolType;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceTool.SignalSignatures;
 
         // Constructors
 
@@ -7835,17 +7913,17 @@ export namespace Gdk {
 
         connect<K extends keyof DeviceTool.SignalSignatures>(
             signal: K,
-            callback: DeviceTool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceTool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceTool.SignalSignatures>(
             signal: K,
-            callback: DeviceTool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceTool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceTool.SignalSignatures>(
             signal: K,
-            ...args: DeviceTool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceTool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7887,40 +7965,18 @@ export namespace Gdk {
     }
 
     namespace Display {
-        // Signal callback interfaces
-
-        interface Closed {
-            (_source: Display, is_error: boolean): void;
-        }
-
-        interface Opened {
-            (_source: Display): void;
-        }
-
-        interface SeatAdded {
-            (_source: Display, seat: Seat): void;
-        }
-
-        interface SeatRemoved {
-            (_source: Display, seat: Seat): void;
-        }
-
-        interface SettingChanged {
-            (_source: Display, setting: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            closed: Closed;
-            opened: Opened;
-            'seat-added': SeatAdded;
-            'seat-removed': SeatRemoved;
-            'setting-changed': SettingChanged;
-            'notify::composited': GObject.Object.Notify;
-            'notify::dmabuf-formats': GObject.Object.Notify;
-            'notify::input-shapes': GObject.Object.Notify;
-            'notify::rgba': GObject.Object.Notify;
-            'notify::shadow-width': GObject.Object.Notify;
+            closed: (arg0: boolean) => void;
+            opened: () => void;
+            'seat-added': (arg0: Seat) => void;
+            'seat-removed': (arg0: Seat) => void;
+            'setting-changed': (arg0: string) => void;
+            'notify::composited': (pspec: GObject.ParamSpec) => void;
+            'notify::dmabuf-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::input-shapes': (pspec: GObject.ParamSpec) => void;
+            'notify::rgba': (pspec: GObject.ParamSpec) => void;
+            'notify::shadow-width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7990,6 +8046,14 @@ export namespace Gdk {
          * %TRUE if the display supports extensible frames.
          */
         get shadowWidth(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Display.SignalSignatures;
 
         // Constructors
 
@@ -7999,16 +8063,19 @@ export namespace Gdk {
 
         // Signals
 
-        connect<K extends keyof Display.SignalSignatures>(signal: K, callback: Display.SignalSignatures[K]): number;
+        connect<K extends keyof Display.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Display.SignalSignatures>(
             signal: K,
-            callback: Display.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
-            ...args: Display.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8322,16 +8389,10 @@ export namespace Gdk {
     }
 
     namespace DisplayManager {
-        // Signal callback interfaces
-
-        interface DisplayOpened {
-            (_source: DisplayManager, display: Display): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'display-opened': DisplayOpened;
-            'notify::default-display': GObject.Object.Notify;
+            'display-opened': (arg0: Display) => void;
+            'notify::default-display': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8402,6 +8463,14 @@ export namespace Gdk {
          */
         get defaultDisplay(): Display;
         set defaultDisplay(val: Display);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DisplayManager.SignalSignatures;
 
         // Constructors
 
@@ -8413,17 +8482,17 @@ export namespace Gdk {
 
         connect<K extends keyof DisplayManager.SignalSignatures>(
             signal: K,
-            callback: DisplayManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DisplayManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DisplayManager.SignalSignatures>(
             signal: K,
-            callback: DisplayManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DisplayManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DisplayManager.SignalSignatures>(
             signal: K,
-            ...args: DisplayManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DisplayManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8470,9 +8539,9 @@ export namespace Gdk {
     namespace DmabufTexture {
         // Signal signatures
         interface SignalSignatures extends Texture.SignalSignatures {
-            'notify::color-state': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::color-state': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8494,6 +8563,14 @@ export namespace Gdk {
      */
     class DmabufTexture extends Texture implements Paintable, Gio.Icon, Gio.LoadableIcon {
         static $gtype: GObject.GType<DmabufTexture>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DmabufTexture.SignalSignatures;
 
         // Constructors
 
@@ -8505,17 +8582,17 @@ export namespace Gdk {
 
         connect<K extends keyof DmabufTexture.SignalSignatures>(
             signal: K,
-            callback: DmabufTexture.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DmabufTexture.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DmabufTexture.SignalSignatures>(
             signal: K,
-            callback: DmabufTexture.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DmabufTexture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DmabufTexture.SignalSignatures>(
             signal: K,
-            ...args: DmabufTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DmabufTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9300,16 +9377,16 @@ export namespace Gdk {
     namespace DmabufTextureBuilder {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::color-state': GObject.Object.Notify;
-            'notify::display': GObject.Object.Notify;
-            'notify::fourcc': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::modifier': GObject.Object.Notify;
-            'notify::n-planes': GObject.Object.Notify;
-            'notify::premultiplied': GObject.Object.Notify;
-            'notify::update-region': GObject.Object.Notify;
-            'notify::update-texture': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::color-state': (pspec: GObject.ParamSpec) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::fourcc': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::modifier': (pspec: GObject.ParamSpec) => void;
+            'notify::n-planes': (pspec: GObject.ParamSpec) => void;
+            'notify::premultiplied': (pspec: GObject.ParamSpec) => void;
+            'notify::update-region': (pspec: GObject.ParamSpec) => void;
+            'notify::update-texture': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9473,6 +9550,14 @@ export namespace Gdk {
          */
         get width(): number;
         set width(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DmabufTextureBuilder.SignalSignatures;
 
         // Constructors
 
@@ -9486,17 +9571,19 @@ export namespace Gdk {
 
         connect<K extends keyof DmabufTextureBuilder.SignalSignatures>(
             signal: K,
-            callback: DmabufTextureBuilder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DmabufTextureBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DmabufTextureBuilder.SignalSignatures>(
             signal: K,
-            callback: DmabufTextureBuilder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DmabufTextureBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DmabufTextureBuilder.SignalSignatures>(
             signal: K,
-            ...args: DmabufTextureBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DmabufTextureBuilder.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9702,32 +9789,18 @@ export namespace Gdk {
     }
 
     namespace Drag {
-        // Signal callback interfaces
-
-        interface Cancel {
-            (_source: Drag, reason: DragCancelReason): void;
-        }
-
-        interface DndFinished {
-            (_source: Drag): void;
-        }
-
-        interface DropPerformed {
-            (_source: Drag): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            cancel: Cancel;
-            'dnd-finished': DndFinished;
-            'drop-performed': DropPerformed;
-            'notify::actions': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::device': GObject.Object.Notify;
-            'notify::display': GObject.Object.Notify;
-            'notify::formats': GObject.Object.Notify;
-            'notify::selected-action': GObject.Object.Notify;
-            'notify::surface': GObject.Object.Notify;
+            cancel: (arg0: DragCancelReason) => void;
+            'dnd-finished': () => void;
+            'drop-performed': () => void;
+            'notify::actions': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::device': (pspec: GObject.ParamSpec) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::formats': (pspec: GObject.ParamSpec) => void;
+            'notify::selected-action': (pspec: GObject.ParamSpec) => void;
+            'notify::surface': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9796,6 +9869,14 @@ export namespace Gdk {
          * The surface where the drag originates.
          */
         get surface(): Surface;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Drag.SignalSignatures;
 
         // Constructors
 
@@ -9805,13 +9886,19 @@ export namespace Gdk {
 
         // Signals
 
-        connect<K extends keyof Drag.SignalSignatures>(signal: K, callback: Drag.SignalSignatures[K]): number;
+        connect<K extends keyof Drag.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Drag.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Drag.SignalSignatures>(signal: K, callback: Drag.SignalSignatures[K]): number;
+        connect_after<K extends keyof Drag.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Drag.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Drag.SignalSignatures>(
             signal: K,
-            ...args: Drag.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Drag.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9925,8 +10012,8 @@ export namespace Gdk {
     namespace DrawContext {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::display': GObject.Object.Notify;
-            'notify::surface': GObject.Object.Notify;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::surface': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9961,6 +10048,14 @@ export namespace Gdk {
          * The `GdkSurface` the context is bound to.
          */
         get surface(): Surface;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DrawContext.SignalSignatures;
 
         // Constructors
 
@@ -9972,17 +10067,17 @@ export namespace Gdk {
 
         connect<K extends keyof DrawContext.SignalSignatures>(
             signal: K,
-            callback: DrawContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DrawContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DrawContext.SignalSignatures>(
             signal: K,
-            callback: DrawContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DrawContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DrawContext.SignalSignatures>(
             signal: K,
-            ...args: DrawContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DrawContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10063,12 +10158,12 @@ export namespace Gdk {
     namespace Drop {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::actions': GObject.Object.Notify;
-            'notify::device': GObject.Object.Notify;
-            'notify::display': GObject.Object.Notify;
-            'notify::drag': GObject.Object.Notify;
-            'notify::formats': GObject.Object.Notify;
-            'notify::surface': GObject.Object.Notify;
+            'notify::actions': (pspec: GObject.ParamSpec) => void;
+            'notify::device': (pspec: GObject.ParamSpec) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::drag': (pspec: GObject.ParamSpec) => void;
+            'notify::formats': (pspec: GObject.ParamSpec) => void;
+            'notify::surface': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10128,6 +10223,14 @@ export namespace Gdk {
          * The `GdkSurface` the drop happens on
          */
         get surface(): Surface;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Drop.SignalSignatures;
 
         // Constructors
 
@@ -10137,13 +10240,19 @@ export namespace Gdk {
 
         // Signals
 
-        connect<K extends keyof Drop.SignalSignatures>(signal: K, callback: Drop.SignalSignatures[K]): number;
+        connect<K extends keyof Drop.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Drop.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Drop.SignalSignatures>(signal: K, callback: Drop.SignalSignatures[K]): number;
+        connect_after<K extends keyof Drop.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Drop.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Drop.SignalSignatures>(
             signal: K,
-            ...args: Drop.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Drop.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10360,13 +10469,19 @@ export namespace Gdk {
 
         // Signals
 
-        connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect_after<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Event.SignalSignatures>(
             signal: K,
-            ...args: Event.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Event.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10555,17 +10670,17 @@ export namespace Gdk {
 
         connect<K extends keyof FocusEvent.SignalSignatures>(
             signal: K,
-            callback: FocusEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FocusEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FocusEvent.SignalSignatures>(
             signal: K,
-            callback: FocusEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FocusEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FocusEvent.SignalSignatures>(
             signal: K,
-            ...args: FocusEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FocusEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10580,45 +10695,15 @@ export namespace Gdk {
     }
 
     namespace FrameClock {
-        // Signal callback interfaces
-
-        interface AfterPaint {
-            (_source: FrameClock): void;
-        }
-
-        interface BeforePaint {
-            (_source: FrameClock): void;
-        }
-
-        interface FlushEvents {
-            (_source: FrameClock): void;
-        }
-
-        interface Layout {
-            (_source: FrameClock): void;
-        }
-
-        interface Paint {
-            (_source: FrameClock): void;
-        }
-
-        interface ResumeEvents {
-            (_source: FrameClock): void;
-        }
-
-        interface Update {
-            (_source: FrameClock): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'after-paint': AfterPaint;
-            'before-paint': BeforePaint;
-            'flush-events': FlushEvents;
-            layout: Layout;
-            paint: Paint;
-            'resume-events': ResumeEvents;
-            update: Update;
+            'after-paint': () => void;
+            'before-paint': () => void;
+            'flush-events': () => void;
+            layout: () => void;
+            paint: () => void;
+            'resume-events': () => void;
+            update: () => void;
         }
 
         // Constructor properties interface
@@ -10662,6 +10747,14 @@ export namespace Gdk {
      */
     abstract class FrameClock extends GObject.Object {
         static $gtype: GObject.GType<FrameClock>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FrameClock.SignalSignatures;
 
         // Constructors
 
@@ -10673,17 +10766,17 @@ export namespace Gdk {
 
         connect<K extends keyof FrameClock.SignalSignatures>(
             signal: K,
-            callback: FrameClock.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FrameClock.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FrameClock.SignalSignatures>(
             signal: K,
-            callback: FrameClock.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FrameClock.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FrameClock.SignalSignatures>(
             signal: K,
-            ...args: FrameClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FrameClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10787,11 +10880,11 @@ export namespace Gdk {
     namespace GLContext {
         // Signal signatures
         interface SignalSignatures extends DrawContext.SignalSignatures {
-            'notify::allowed-apis': GObject.Object.Notify;
-            'notify::api': GObject.Object.Notify;
-            'notify::shared-context': GObject.Object.Notify;
-            'notify::display': GObject.Object.Notify;
-            'notify::surface': GObject.Object.Notify;
+            'notify::allowed-apis': (pspec: GObject.ParamSpec) => void;
+            'notify::api': (pspec: GObject.ParamSpec) => void;
+            'notify::shared-context': (pspec: GObject.ParamSpec) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::surface': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10888,6 +10981,14 @@ export namespace Gdk {
          * anymore, this function has been deprecated and now always returns %NULL.
          */
         get sharedContext(): GLContext;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLContext.SignalSignatures;
 
         // Constructors
 
@@ -10897,16 +10998,19 @@ export namespace Gdk {
 
         // Signals
 
-        connect<K extends keyof GLContext.SignalSignatures>(signal: K, callback: GLContext.SignalSignatures[K]): number;
+        connect<K extends keyof GLContext.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GLContext.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLContext.SignalSignatures>(
             signal: K,
-            callback: GLContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLContext.SignalSignatures>(
             signal: K,
-            ...args: GLContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11109,9 +11213,9 @@ export namespace Gdk {
     namespace GLTexture {
         // Signal signatures
         interface SignalSignatures extends Texture.SignalSignatures {
-            'notify::color-state': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::color-state': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11128,6 +11232,14 @@ export namespace Gdk {
      */
     class GLTexture extends Texture implements Paintable, Gio.Icon, Gio.LoadableIcon {
         static $gtype: GObject.GType<GLTexture>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLTexture.SignalSignatures;
 
         // Constructors
 
@@ -11139,16 +11251,19 @@ export namespace Gdk {
 
         // Signals
 
-        connect<K extends keyof GLTexture.SignalSignatures>(signal: K, callback: GLTexture.SignalSignatures[K]): number;
+        connect<K extends keyof GLTexture.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GLTexture.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLTexture.SignalSignatures>(
             signal: K,
-            callback: GLTexture.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLTexture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLTexture.SignalSignatures>(
             signal: K,
-            ...args: GLTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11944,16 +12059,16 @@ export namespace Gdk {
     namespace GLTextureBuilder {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::color-state': GObject.Object.Notify;
-            'notify::context': GObject.Object.Notify;
-            'notify::format': GObject.Object.Notify;
-            'notify::has-mipmap': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::sync': GObject.Object.Notify;
-            'notify::update-region': GObject.Object.Notify;
-            'notify::update-texture': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::color-state': (pspec: GObject.ParamSpec) => void;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::has-mipmap': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::sync': (pspec: GObject.ParamSpec) => void;
+            'notify::update-region': (pspec: GObject.ParamSpec) => void;
+            'notify::update-texture': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12065,6 +12180,14 @@ export namespace Gdk {
          */
         get width(): number;
         set width(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLTextureBuilder.SignalSignatures;
 
         // Constructors
 
@@ -12078,17 +12201,17 @@ export namespace Gdk {
 
         connect<K extends keyof GLTextureBuilder.SignalSignatures>(
             signal: K,
-            callback: GLTextureBuilder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLTextureBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLTextureBuilder.SignalSignatures>(
             signal: K,
-            callback: GLTextureBuilder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLTextureBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLTextureBuilder.SignalSignatures>(
             signal: K,
-            ...args: GLTextureBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLTextureBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12289,17 +12412,17 @@ export namespace Gdk {
 
         connect<K extends keyof GrabBrokenEvent.SignalSignatures>(
             signal: K,
-            callback: GrabBrokenEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GrabBrokenEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GrabBrokenEvent.SignalSignatures>(
             signal: K,
-            callback: GrabBrokenEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GrabBrokenEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GrabBrokenEvent.SignalSignatures>(
             signal: K,
-            ...args: GrabBrokenEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GrabBrokenEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12334,16 +12457,19 @@ export namespace Gdk {
 
         // Signals
 
-        connect<K extends keyof KeyEvent.SignalSignatures>(signal: K, callback: KeyEvent.SignalSignatures[K]): number;
+        connect<K extends keyof KeyEvent.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, KeyEvent.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyEvent.SignalSignatures>(
             signal: K,
-            callback: KeyEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, KeyEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyEvent.SignalSignatures>(
             signal: K,
-            ...args: KeyEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<KeyEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12406,9 +12532,9 @@ export namespace Gdk {
     namespace MemoryTexture {
         // Signal signatures
         interface SignalSignatures extends Texture.SignalSignatures {
-            'notify::color-state': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::color-state': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12425,6 +12551,14 @@ export namespace Gdk {
      */
     class MemoryTexture extends Texture implements Paintable, Gio.Icon, Gio.LoadableIcon {
         static $gtype: GObject.GType<MemoryTexture>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MemoryTexture.SignalSignatures;
 
         // Constructors
 
@@ -12444,17 +12578,17 @@ export namespace Gdk {
 
         connect<K extends keyof MemoryTexture.SignalSignatures>(
             signal: K,
-            callback: MemoryTexture.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MemoryTexture.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MemoryTexture.SignalSignatures>(
             signal: K,
-            callback: MemoryTexture.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MemoryTexture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MemoryTexture.SignalSignatures>(
             signal: K,
-            ...args: MemoryTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MemoryTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13239,14 +13373,14 @@ export namespace Gdk {
     namespace MemoryTextureBuilder {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::bytes': GObject.Object.Notify;
-            'notify::color-state': GObject.Object.Notify;
-            'notify::format': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::stride': GObject.Object.Notify;
-            'notify::update-region': GObject.Object.Notify;
-            'notify::update-texture': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::bytes': (pspec: GObject.ParamSpec) => void;
+            'notify::color-state': (pspec: GObject.ParamSpec) => void;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::stride': (pspec: GObject.ParamSpec) => void;
+            'notify::update-region': (pspec: GObject.ParamSpec) => void;
+            'notify::update-texture': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13342,6 +13476,14 @@ export namespace Gdk {
          */
         get width(): number;
         set width(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MemoryTextureBuilder.SignalSignatures;
 
         // Constructors
 
@@ -13355,17 +13497,19 @@ export namespace Gdk {
 
         connect<K extends keyof MemoryTextureBuilder.SignalSignatures>(
             signal: K,
-            callback: MemoryTextureBuilder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MemoryTextureBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MemoryTextureBuilder.SignalSignatures>(
             signal: K,
-            callback: MemoryTextureBuilder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MemoryTextureBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MemoryTextureBuilder.SignalSignatures>(
             signal: K,
-            ...args: MemoryTextureBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MemoryTextureBuilder.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13495,28 +13639,22 @@ export namespace Gdk {
     }
 
     namespace Monitor {
-        // Signal callback interfaces
-
-        interface Invalidate {
-            (_source: Monitor): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            invalidate: Invalidate;
-            'notify::connector': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::display': GObject.Object.Notify;
-            'notify::geometry': GObject.Object.Notify;
-            'notify::height-mm': GObject.Object.Notify;
-            'notify::manufacturer': GObject.Object.Notify;
-            'notify::model': GObject.Object.Notify;
-            'notify::refresh-rate': GObject.Object.Notify;
-            'notify::scale': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::subpixel-layout': GObject.Object.Notify;
-            'notify::valid': GObject.Object.Notify;
-            'notify::width-mm': GObject.Object.Notify;
+            invalidate: () => void;
+            'notify::connector': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::geometry': (pspec: GObject.ParamSpec) => void;
+            'notify::height-mm': (pspec: GObject.ParamSpec) => void;
+            'notify::manufacturer': (pspec: GObject.ParamSpec) => void;
+            'notify::model': (pspec: GObject.ParamSpec) => void;
+            'notify::refresh-rate': (pspec: GObject.ParamSpec) => void;
+            'notify::scale': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::subpixel-layout': (pspec: GObject.ParamSpec) => void;
+            'notify::valid': (pspec: GObject.ParamSpec) => void;
+            'notify::width-mm': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13634,6 +13772,14 @@ export namespace Gdk {
          * The width of the monitor, in millimeters.
          */
         get widthMm(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Monitor.SignalSignatures;
 
         // Constructors
 
@@ -13643,16 +13789,19 @@ export namespace Gdk {
 
         // Signals
 
-        connect<K extends keyof Monitor.SignalSignatures>(signal: K, callback: Monitor.SignalSignatures[K]): number;
+        connect<K extends keyof Monitor.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Monitor.SignalSignatures>(
             signal: K,
-            callback: Monitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Monitor.SignalSignatures>(
             signal: K,
-            ...args: Monitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Monitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13780,17 +13929,17 @@ export namespace Gdk {
 
         connect<K extends keyof MotionEvent.SignalSignatures>(
             signal: K,
-            callback: MotionEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MotionEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MotionEvent.SignalSignatures>(
             signal: K,
-            callback: MotionEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MotionEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MotionEvent.SignalSignatures>(
             signal: K,
-            ...args: MotionEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MotionEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -13812,16 +13961,19 @@ export namespace Gdk {
 
         // Signals
 
-        connect<K extends keyof PadEvent.SignalSignatures>(signal: K, callback: PadEvent.SignalSignatures[K]): number;
+        connect<K extends keyof PadEvent.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, PadEvent.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PadEvent.SignalSignatures>(
             signal: K,
-            callback: PadEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PadEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PadEvent.SignalSignatures>(
             signal: K,
-            ...args: PadEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PadEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13862,17 +14014,17 @@ export namespace Gdk {
 
         connect<K extends keyof ProximityEvent.SignalSignatures>(
             signal: K,
-            callback: ProximityEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProximityEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProximityEvent.SignalSignatures>(
             signal: K,
-            callback: ProximityEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProximityEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProximityEvent.SignalSignatures>(
             signal: K,
-            ...args: ProximityEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ProximityEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -13896,17 +14048,17 @@ export namespace Gdk {
 
         connect<K extends keyof ScrollEvent.SignalSignatures>(
             signal: K,
-            callback: ScrollEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ScrollEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScrollEvent.SignalSignatures>(
             signal: K,
-            callback: ScrollEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ScrollEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScrollEvent.SignalSignatures>(
             signal: K,
-            ...args: ScrollEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ScrollEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13951,31 +14103,13 @@ export namespace Gdk {
     }
 
     namespace Seat {
-        // Signal callback interfaces
-
-        interface DeviceAdded {
-            (_source: Seat, device: Device): void;
-        }
-
-        interface DeviceRemoved {
-            (_source: Seat, device: Device): void;
-        }
-
-        interface ToolAdded {
-            (_source: Seat, tool: DeviceTool): void;
-        }
-
-        interface ToolRemoved {
-            (_source: Seat, tool: DeviceTool): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'device-added': DeviceAdded;
-            'device-removed': DeviceRemoved;
-            'tool-added': ToolAdded;
-            'tool-removed': ToolRemoved;
-            'notify::display': GObject.Object.Notify;
+            'device-added': (arg0: Device) => void;
+            'device-removed': (arg0: Device) => void;
+            'tool-added': (arg0: DeviceTool) => void;
+            'tool-removed': (arg0: DeviceTool) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13997,6 +14131,14 @@ export namespace Gdk {
          * `GdkDisplay` of this seat.
          */
         get display(): Display;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Seat.SignalSignatures;
 
         // Constructors
 
@@ -14006,13 +14148,19 @@ export namespace Gdk {
 
         // Signals
 
-        connect<K extends keyof Seat.SignalSignatures>(signal: K, callback: Seat.SignalSignatures[K]): number;
+        connect<K extends keyof Seat.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Seat.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Seat.SignalSignatures>(signal: K, callback: Seat.SignalSignatures[K]): number;
+        connect_after<K extends keyof Seat.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Seat.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Seat.SignalSignatures>(
             signal: K,
-            ...args: Seat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Seat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14067,6 +14215,14 @@ export namespace Gdk {
      */
     abstract class Snapshot extends GObject.Object {
         static $gtype: GObject.GType<Snapshot>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Snapshot.SignalSignatures;
 
         // Constructors
 
@@ -14076,58 +14232,39 @@ export namespace Gdk {
 
         // Signals
 
-        connect<K extends keyof Snapshot.SignalSignatures>(signal: K, callback: Snapshot.SignalSignatures[K]): number;
+        connect<K extends keyof Snapshot.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Snapshot.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Snapshot.SignalSignatures>(
             signal: K,
-            callback: Snapshot.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Snapshot.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Snapshot.SignalSignatures>(
             signal: K,
-            ...args: Snapshot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Snapshot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace Surface {
-        // Signal callback interfaces
-
-        interface EnterMonitor {
-            (_source: Surface, monitor: Monitor): void;
-        }
-
-        interface Event {
-            (_source: Surface, event: Event): boolean | void;
-        }
-
-        interface Layout {
-            (_source: Surface, width: number, height: number): void;
-        }
-
-        interface LeaveMonitor {
-            (_source: Surface, monitor: Monitor): void;
-        }
-
-        interface Render {
-            (_source: Surface, region: cairo.Region): boolean | void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'enter-monitor': EnterMonitor;
-            event: Event;
-            layout: Layout;
-            'leave-monitor': LeaveMonitor;
-            render: Render;
-            'notify::cursor': GObject.Object.Notify;
-            'notify::display': GObject.Object.Notify;
-            'notify::frame-clock': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::mapped': GObject.Object.Notify;
-            'notify::scale': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'enter-monitor': (arg0: Monitor) => void;
+            event: (arg0: Event) => boolean | void;
+            layout: (arg0: number, arg1: number) => void;
+            'leave-monitor': (arg0: Monitor) => void;
+            render: (arg0: cairo.Region) => boolean | void;
+            'notify::cursor': (pspec: GObject.ParamSpec) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::frame-clock': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::mapped': (pspec: GObject.ParamSpec) => void;
+            'notify::scale': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14209,6 +14346,14 @@ export namespace Gdk {
          * The width of the surface in pixels.
          */
         get width(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Surface.SignalSignatures;
 
         // Constructors
 
@@ -14222,16 +14367,19 @@ export namespace Gdk {
 
         // Signals
 
-        connect<K extends keyof Surface.SignalSignatures>(signal: K, callback: Surface.SignalSignatures[K]): number;
+        connect<K extends keyof Surface.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Surface.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Surface.SignalSignatures>(
             signal: K,
-            callback: Surface.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Surface.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Surface.SignalSignatures>(
             signal: K,
-            ...args: Surface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Surface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14502,9 +14650,9 @@ export namespace Gdk {
     namespace Texture {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::color-state': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::color-state': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14570,6 +14718,14 @@ export namespace Gdk {
          * The width of the texture, in pixels.
          */
         get width(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Texture.SignalSignatures;
 
         // Constructors
 
@@ -14589,16 +14745,19 @@ export namespace Gdk {
 
         // Signals
 
-        connect<K extends keyof Texture.SignalSignatures>(signal: K, callback: Texture.SignalSignatures[K]): number;
+        connect<K extends keyof Texture.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Texture.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Texture.SignalSignatures>(
             signal: K,
-            callback: Texture.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Texture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Texture.SignalSignatures>(
             signal: K,
-            ...args: Texture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Texture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -15511,17 +15670,17 @@ export namespace Gdk {
 
         connect<K extends keyof TouchEvent.SignalSignatures>(
             signal: K,
-            callback: TouchEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TouchEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TouchEvent.SignalSignatures>(
             signal: K,
-            callback: TouchEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TouchEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TouchEvent.SignalSignatures>(
             signal: K,
-            ...args: TouchEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TouchEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -15558,17 +15717,17 @@ export namespace Gdk {
 
         connect<K extends keyof TouchpadEvent.SignalSignatures>(
             signal: K,
-            callback: TouchpadEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TouchpadEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TouchpadEvent.SignalSignatures>(
             signal: K,
-            callback: TouchpadEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TouchpadEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TouchpadEvent.SignalSignatures>(
             signal: K,
-            ...args: TouchpadEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TouchpadEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -15601,17 +15760,11 @@ export namespace Gdk {
     }
 
     namespace VulkanContext {
-        // Signal callback interfaces
-
-        interface ImagesUpdated {
-            (_source: VulkanContext): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends DrawContext.SignalSignatures {
-            'images-updated': ImagesUpdated;
-            'notify::display': GObject.Object.Notify;
-            'notify::surface': GObject.Object.Notify;
+            'images-updated': () => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::surface': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15631,6 +15784,14 @@ export namespace Gdk {
      */
     abstract class VulkanContext extends DrawContext implements Gio.Initable {
         static $gtype: GObject.GType<VulkanContext>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanContext.SignalSignatures;
 
         // Constructors
 
@@ -15642,17 +15803,17 @@ export namespace Gdk {
 
         connect<K extends keyof VulkanContext.SignalSignatures>(
             signal: K,
-            callback: VulkanContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanContext.SignalSignatures>(
             signal: K,
-            callback: VulkanContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanContext.SignalSignatures>(
             signal: K,
-            ...args: VulkanContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -271,29 +271,15 @@ export namespace TotemPlParser {
     function parser_error_quark(): GLib.Quark;
     function parser_metadata_get_type(): GObject.GType;
     namespace Parser {
-        // Signal callback interfaces
-
-        interface EntryParsed {
-            (_source: Parser, uri: string, metadata: { [key: string]: any } | GLib.HashTable<string, string>): void;
-        }
-
-        interface PlaylistEnded {
-            (_source: Parser, uri: string): void;
-        }
-
-        interface PlaylistStarted {
-            (_source: Parser, uri: string, metadata: { [key: string]: any } | GLib.HashTable<string, string>): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'entry-parsed': EntryParsed;
-            'playlist-ended': PlaylistEnded;
-            'playlist-started': PlaylistStarted;
-            'notify::debug': GObject.Object.Notify;
-            'notify::disable-unsafe': GObject.Object.Notify;
-            'notify::force': GObject.Object.Notify;
-            'notify::recurse': GObject.Object.Notify;
+            'entry-parsed': (arg0: string, arg1: GLib.HashTable<string, string>) => void;
+            'playlist-ended': (arg0: string) => void;
+            'playlist-started': (arg0: string, arg1: GLib.HashTable<string, string>) => void;
+            'notify::debug': (pspec: GObject.ParamSpec) => void;
+            'notify::disable-unsafe': (pspec: GObject.ParamSpec) => void;
+            'notify::force': (pspec: GObject.ParamSpec) => void;
+            'notify::recurse': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -346,6 +332,14 @@ export namespace TotemPlParser {
          */
         get recurse(): boolean;
         set recurse(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Parser.SignalSignatures;
 
         // Constructors
 
@@ -357,13 +351,19 @@ export namespace TotemPlParser {
 
         // Signals
 
-        connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect_after<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Parser.SignalSignatures>(
             signal: K,
-            ...args: Parser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Parser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -648,6 +648,14 @@ export namespace TotemPlParser {
      */
     class Playlist extends GObject.Object {
         static $gtype: GObject.GType<Playlist>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Playlist.SignalSignatures;
 
         // Constructors
 
@@ -659,16 +667,19 @@ export namespace TotemPlParser {
 
         // Signals
 
-        connect<K extends keyof Playlist.SignalSignatures>(signal: K, callback: Playlist.SignalSignatures[K]): number;
+        connect<K extends keyof Playlist.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Playlist.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Playlist.SignalSignatures>(
             signal: K,
-            callback: Playlist.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Playlist.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Playlist.SignalSignatures>(
             signal: K,
-            ...args: Playlist.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Playlist.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -267,27 +267,13 @@ export namespace Zeitgeist {
     function register_uri_scheme(uri_scheme: string, manifestation_type: string): void;
     function manifestation_for_uri(uri: string): string | null;
     namespace DataSourceRegistry {
-        // Signal callback interfaces
-
-        interface SourceDisconnected {
-            (_source: DataSourceRegistry, data_source: DataSource): void;
-        }
-
-        interface SourceEnabled {
-            (_source: DataSourceRegistry, unique_id: string, enabled: boolean): void;
-        }
-
-        interface SourceRegistered {
-            (_source: DataSourceRegistry, data_source: DataSource): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends QueuedProxyWrapper.SignalSignatures {
-            'source-disconnected': SourceDisconnected;
-            'source-enabled': SourceEnabled;
-            'source-registered': SourceRegistered;
-            'notify::proxy-created': GObject.Object.Notify;
-            'notify::is-connected': GObject.Object.Notify;
+            'source-disconnected': (arg0: DataSource) => void;
+            'source-enabled': (arg0: string, arg1: boolean) => void;
+            'source-registered': (arg0: DataSource) => void;
+            'notify::proxy-created': (pspec: GObject.ParamSpec) => void;
+            'notify::is-connected': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -297,6 +283,14 @@ export namespace Zeitgeist {
 
     class DataSourceRegistry extends QueuedProxyWrapper {
         static $gtype: GObject.GType<DataSourceRegistry>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DataSourceRegistry.SignalSignatures;
 
         // Constructors
 
@@ -310,17 +304,17 @@ export namespace Zeitgeist {
 
         connect<K extends keyof DataSourceRegistry.SignalSignatures>(
             signal: K,
-            callback: DataSourceRegistry.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataSourceRegistry.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataSourceRegistry.SignalSignatures>(
             signal: K,
-            callback: DataSourceRegistry.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataSourceRegistry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataSourceRegistry.SignalSignatures>(
             signal: K,
-            ...args: DataSourceRegistry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DataSourceRegistry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -380,8 +374,8 @@ export namespace Zeitgeist {
     namespace Index {
         // Signal signatures
         interface SignalSignatures extends QueuedProxyWrapper.SignalSignatures {
-            'notify::proxy-created': GObject.Object.Notify;
-            'notify::is-connected': GObject.Object.Notify;
+            'notify::proxy-created': (pspec: GObject.ParamSpec) => void;
+            'notify::is-connected': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -391,6 +385,14 @@ export namespace Zeitgeist {
 
     class Index extends QueuedProxyWrapper {
         static $gtype: GObject.GType<Index>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Index.SignalSignatures;
 
         // Constructors
 
@@ -402,13 +404,19 @@ export namespace Zeitgeist {
 
         // Signals
 
-        connect<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
+        connect<K extends keyof Index.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Index.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
+        connect_after<K extends keyof Index.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Index.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Index.SignalSignatures>(
             signal: K,
-            ...args: Index.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Index.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -482,8 +490,8 @@ export namespace Zeitgeist {
     namespace Log {
         // Signal signatures
         interface SignalSignatures extends QueuedProxyWrapper.SignalSignatures {
-            'notify::proxy-created': GObject.Object.Notify;
-            'notify::is-connected': GObject.Object.Notify;
+            'notify::proxy-created': (pspec: GObject.ParamSpec) => void;
+            'notify::is-connected': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -493,6 +501,14 @@ export namespace Zeitgeist {
 
     class Log extends QueuedProxyWrapper {
         static $gtype: GObject.GType<Log>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Log.SignalSignatures;
 
         // Constructors
 
@@ -504,13 +520,19 @@ export namespace Zeitgeist {
 
         // Signals
 
-        connect<K extends keyof Log.SignalSignatures>(signal: K, callback: Log.SignalSignatures[K]): number;
+        connect<K extends keyof Log.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Log.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Log.SignalSignatures>(signal: K, callback: Log.SignalSignatures[K]): number;
+        connect_after<K extends keyof Log.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Log.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Log.SignalSignatures>(
             signal: K,
-            ...args: Log.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Log.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -669,22 +691,12 @@ export namespace Zeitgeist {
     }
 
     namespace Monitor {
-        // Signal callback interfaces
-
-        interface EventsInserted {
-            (_source: Monitor, time_range: TimeRange, events: ResultSet): void;
-        }
-
-        interface EventsDeleted {
-            (_source: Monitor, time_range: TimeRange, event_ids: number[]): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'events-inserted': EventsInserted;
-            'events-deleted': EventsDeleted;
-            'notify::time-range': GObject.Object.Notify;
-            'notify::event-templates': GObject.Object.Notify;
+            'events-inserted': (arg0: TimeRange, arg1: ResultSet) => void;
+            'events-deleted': (arg0: TimeRange, arg1: number[]) => void;
+            'notify::time-range': (pspec: GObject.ParamSpec) => void;
+            'notify::event-templates': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -710,6 +722,14 @@ export namespace Zeitgeist {
         set event_templates(val: Event[]);
         get eventTemplates(): Event[];
         set eventTemplates(val: Event[]);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Monitor.SignalSignatures;
 
         // Constructors
 
@@ -721,16 +741,19 @@ export namespace Zeitgeist {
 
         // Signals
 
-        connect<K extends keyof Monitor.SignalSignatures>(signal: K, callback: Monitor.SignalSignatures[K]): number;
+        connect<K extends keyof Monitor.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Monitor.SignalSignatures>(
             signal: K,
-            callback: Monitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Monitor.SignalSignatures>(
             signal: K,
-            ...args: Monitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Monitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1224,8 +1247,8 @@ export namespace Zeitgeist {
     namespace QueuedProxyWrapper {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::proxy-created': GObject.Object.Notify;
-            'notify::is-connected': GObject.Object.Notify;
+            'notify::proxy-created': (pspec: GObject.ParamSpec) => void;
+            'notify::is-connected': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1251,6 +1274,14 @@ export namespace Zeitgeist {
         set is_connected(val: boolean);
         get isConnected(): boolean;
         set isConnected(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: QueuedProxyWrapper.SignalSignatures;
 
         // Constructors
 
@@ -1262,17 +1293,17 @@ export namespace Zeitgeist {
 
         connect<K extends keyof QueuedProxyWrapper.SignalSignatures>(
             signal: K,
-            callback: QueuedProxyWrapper.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, QueuedProxyWrapper.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof QueuedProxyWrapper.SignalSignatures>(
             signal: K,
-            callback: QueuedProxyWrapper.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, QueuedProxyWrapper.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof QueuedProxyWrapper.SignalSignatures>(
             signal: K,
-            ...args: QueuedProxyWrapper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<QueuedProxyWrapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1319,17 +1350,19 @@ export namespace Zeitgeist {
 
         connect<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(
             signal: K,
-            callback: QueuedProxyWrapperQueuedMethod.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, QueuedProxyWrapperQueuedMethod.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(
             signal: K,
-            callback: QueuedProxyWrapperQueuedMethod.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, QueuedProxyWrapperQueuedMethod.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(
             signal: K,
-            ...args: QueuedProxyWrapperQueuedMethod.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<QueuedProxyWrapperQueuedMethod.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1341,13 +1374,13 @@ export namespace Zeitgeist {
     namespace DataSource {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::unique-id': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::event-templates': GObject.Object.Notify;
-            'notify::enabled': GObject.Object.Notify;
-            'notify::running': GObject.Object.Notify;
-            'notify::timestamp': GObject.Object.Notify;
+            'notify::unique-id': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::event-templates': (pspec: GObject.ParamSpec) => void;
+            'notify::enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::running': (pspec: GObject.ParamSpec) => void;
+            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1388,6 +1421,14 @@ export namespace Zeitgeist {
         set running(val: boolean);
         get timestamp(): number;
         set timestamp(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DataSource.SignalSignatures;
 
         // Constructors
 
@@ -1405,17 +1446,17 @@ export namespace Zeitgeist {
 
         connect<K extends keyof DataSource.SignalSignatures>(
             signal: K,
-            callback: DataSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataSource.SignalSignatures>(
             signal: K,
-            callback: DataSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DataSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataSource.SignalSignatures>(
             signal: K,
-            ...args: DataSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DataSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1441,14 +1482,14 @@ export namespace Zeitgeist {
     namespace Event {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
-            'notify::timestamp': GObject.Object.Notify;
-            'notify::origin': GObject.Object.Notify;
-            'notify::actor': GObject.Object.Notify;
-            'notify::interpretation': GObject.Object.Notify;
-            'notify::manifestation': GObject.Object.Notify;
-            'notify::subjects': GObject.Object.Notify;
-            'notify::payload': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
+            'notify::origin': (pspec: GObject.ParamSpec) => void;
+            'notify::actor': (pspec: GObject.ParamSpec) => void;
+            'notify::interpretation': (pspec: GObject.ParamSpec) => void;
+            'notify::manifestation': (pspec: GObject.ParamSpec) => void;
+            'notify::subjects': (pspec: GObject.ParamSpec) => void;
+            'notify::payload': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1486,6 +1527,14 @@ export namespace Zeitgeist {
         set subjects(val: Subject[]);
         get payload(): GLib.ByteArray;
         set payload(val: GLib.ByteArray);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Event.SignalSignatures;
 
         // Constructors
 
@@ -1499,13 +1548,19 @@ export namespace Zeitgeist {
 
         // Signals
 
-        connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect_after<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Event.SignalSignatures>(
             signal: K,
-            ...args: Event.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Event.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1540,15 +1595,15 @@ export namespace Zeitgeist {
     namespace Subject {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::uri': GObject.Object.Notify;
-            'notify::origin': GObject.Object.Notify;
-            'notify::text': GObject.Object.Notify;
-            'notify::storage': GObject.Object.Notify;
-            'notify::current-uri': GObject.Object.Notify;
-            'notify::current-origin': GObject.Object.Notify;
-            'notify::mimetype': GObject.Object.Notify;
-            'notify::interpretation': GObject.Object.Notify;
-            'notify::manifestation': GObject.Object.Notify;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::origin': (pspec: GObject.ParamSpec) => void;
+            'notify::text': (pspec: GObject.ParamSpec) => void;
+            'notify::storage': (pspec: GObject.ParamSpec) => void;
+            'notify::current-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::current-origin': (pspec: GObject.ParamSpec) => void;
+            'notify::mimetype': (pspec: GObject.ParamSpec) => void;
+            'notify::interpretation': (pspec: GObject.ParamSpec) => void;
+            'notify::manifestation': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1595,6 +1650,14 @@ export namespace Zeitgeist {
         set interpretation(val: string);
         get manifestation(): string;
         set manifestation(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Subject.SignalSignatures;
 
         // Constructors
 
@@ -1630,16 +1693,19 @@ export namespace Zeitgeist {
 
         // Signals
 
-        connect<K extends keyof Subject.SignalSignatures>(signal: K, callback: Subject.SignalSignatures[K]): number;
+        connect<K extends keyof Subject.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Subject.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Subject.SignalSignatures>(
             signal: K,
-            callback: Subject.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Subject.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Subject.SignalSignatures>(
             signal: K,
-            ...args: Subject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Subject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1670,8 +1736,8 @@ export namespace Zeitgeist {
     namespace TimeRange {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::start': GObject.Object.Notify;
-            'notify::end': GObject.Object.Notify;
+            'notify::start': (pspec: GObject.ParamSpec) => void;
+            'notify::end': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1691,6 +1757,14 @@ export namespace Zeitgeist {
         set start(val: number);
         get end(): number;
         set end(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TimeRange.SignalSignatures;
 
         // Constructors
 
@@ -1710,16 +1784,19 @@ export namespace Zeitgeist {
 
         // Signals
 
-        connect<K extends keyof TimeRange.SignalSignatures>(signal: K, callback: TimeRange.SignalSignatures[K]): number;
+        connect<K extends keyof TimeRange.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TimeRange.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TimeRange.SignalSignatures>(
             signal: K,
-            callback: TimeRange.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TimeRange.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TimeRange.SignalSignatures>(
             signal: K,
-            ...args: TimeRange.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TimeRange.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1742,6 +1819,14 @@ export namespace Zeitgeist {
 
     class SimpleResultSet extends GObject.Object implements ResultSet {
         static $gtype: GObject.GType<SimpleResultSet>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SimpleResultSet.SignalSignatures;
 
         // Constructors
 
@@ -1757,17 +1842,17 @@ export namespace Zeitgeist {
 
         connect<K extends keyof SimpleResultSet.SignalSignatures>(
             signal: K,
-            callback: SimpleResultSet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SimpleResultSet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleResultSet.SignalSignatures>(
             signal: K,
-            callback: SimpleResultSet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SimpleResultSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleResultSet.SignalSignatures>(
             signal: K,
-            ...args: SimpleResultSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SimpleResultSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

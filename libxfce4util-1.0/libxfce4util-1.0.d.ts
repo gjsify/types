@@ -532,6 +532,14 @@ export namespace Libxfce4util {
 
     class Kiosk extends GObject.Object {
         static $gtype: GObject.GType<Kiosk>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Kiosk.SignalSignatures;
 
         // Constructors
 
@@ -543,13 +551,19 @@ export namespace Libxfce4util {
 
         // Signals
 
-        connect<K extends keyof Kiosk.SignalSignatures>(signal: K, callback: Kiosk.SignalSignatures[K]): number;
+        connect<K extends keyof Kiosk.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Kiosk.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Kiosk.SignalSignatures>(signal: K, callback: Kiosk.SignalSignatures[K]): number;
+        connect_after<K extends keyof Kiosk.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Kiosk.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Kiosk.SignalSignatures>(
             signal: K,
-            ...args: Kiosk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Kiosk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

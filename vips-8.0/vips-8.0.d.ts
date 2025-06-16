@@ -3760,8 +3760,8 @@ export namespace Vips {
     namespace Foreign {
         // Signal signatures
         interface SignalSignatures extends Operation.SignalSignatures {
-            'notify::description': GObject.Object.Notify;
-            'notify::nickname': GObject.Object.Notify;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::nickname': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3771,6 +3771,14 @@ export namespace Vips {
 
     abstract class Foreign extends Operation {
         static $gtype: GObject.GType<Foreign>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Foreign.SignalSignatures;
 
         // Fields
 
@@ -3784,16 +3792,19 @@ export namespace Vips {
 
         // Signals
 
-        connect<K extends keyof Foreign.SignalSignatures>(signal: K, callback: Foreign.SignalSignatures[K]): number;
+        connect<K extends keyof Foreign.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Foreign.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Foreign.SignalSignatures>(
             signal: K,
-            callback: Foreign.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Foreign.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Foreign.SignalSignatures>(
             signal: K,
-            ...args: Foreign.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Foreign.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3903,17 +3914,17 @@ export namespace Vips {
     namespace ForeignLoad {
         // Signal signatures
         interface SignalSignatures extends Foreign.SignalSignatures {
-            'notify::access': GObject.Object.Notify;
-            'notify::disc': GObject.Object.Notify;
-            'notify::fail': GObject.Object.Notify;
-            'notify::fail-on': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::memory': GObject.Object.Notify;
-            'notify::out': GObject.Object.Notify;
-            'notify::revalidate': GObject.Object.Notify;
-            'notify::sequential': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::nickname': GObject.Object.Notify;
+            'notify::access': (pspec: GObject.ParamSpec) => void;
+            'notify::disc': (pspec: GObject.ParamSpec) => void;
+            'notify::fail': (pspec: GObject.ParamSpec) => void;
+            'notify::fail-on': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::memory': (pspec: GObject.ParamSpec) => void;
+            'notify::out': (pspec: GObject.ParamSpec) => void;
+            'notify::revalidate': (pspec: GObject.ParamSpec) => void;
+            'notify::sequential': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::nickname': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3957,6 +3968,14 @@ export namespace Vips {
         set revalidate(val: boolean);
         get sequential(): boolean;
         set sequential(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ForeignLoad.SignalSignatures;
 
         // Fields
 
@@ -3975,17 +3994,17 @@ export namespace Vips {
 
         connect<K extends keyof ForeignLoad.SignalSignatures>(
             signal: K,
-            callback: ForeignLoad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ForeignLoad.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ForeignLoad.SignalSignatures>(
             signal: K,
-            callback: ForeignLoad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ForeignLoad.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ForeignLoad.SignalSignatures>(
             signal: K,
-            ...args: ForeignLoad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ForeignLoad.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4001,14 +4020,14 @@ export namespace Vips {
     namespace ForeignSave {
         // Signal signatures
         interface SignalSignatures extends Foreign.SignalSignatures {
-            'notify::background': GObject.Object.Notify;
-            'notify::in': GObject.Object.Notify;
-            'notify::keep': GObject.Object.Notify;
-            'notify::page-height': GObject.Object.Notify;
-            'notify::profile': GObject.Object.Notify;
-            'notify::strip': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::nickname': GObject.Object.Notify;
+            'notify::background': (pspec: GObject.ParamSpec) => void;
+            'notify::in': (pspec: GObject.ParamSpec) => void;
+            'notify::keep': (pspec: GObject.ParamSpec) => void;
+            'notify::page-height': (pspec: GObject.ParamSpec) => void;
+            'notify::profile': (pspec: GObject.ParamSpec) => void;
+            'notify::strip': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::nickname': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4043,6 +4062,14 @@ export namespace Vips {
         set profile(val: string);
         get strip(): boolean;
         set strip(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ForeignSave.SignalSignatures;
 
         // Fields
 
@@ -4059,74 +4086,48 @@ export namespace Vips {
 
         connect<K extends keyof ForeignSave.SignalSignatures>(
             signal: K,
-            callback: ForeignSave.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ForeignSave.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ForeignSave.SignalSignatures>(
             signal: K,
-            callback: ForeignSave.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ForeignSave.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ForeignSave.SignalSignatures>(
             signal: K,
-            ...args: ForeignSave.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ForeignSave.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace Image {
-        // Signal callback interfaces
-
-        interface Eval {
-            (_source: Image, progress: Progress): void;
-        }
-
-        interface Invalidate {
-            (_source: Image): void;
-        }
-
-        interface Minimise {
-            (_source: Image): void;
-        }
-
-        interface Posteval {
-            (_source: Image, progress: Progress): void;
-        }
-
-        interface Preeval {
-            (_source: Image, progress: Progress): void;
-        }
-
-        interface Written {
-            (_source: Image, result: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            eval: Eval;
-            invalidate: Invalidate;
-            minimise: Minimise;
-            posteval: Posteval;
-            preeval: Preeval;
-            written: Written;
-            'notify::bands': GObject.Object.Notify;
-            'notify::coding': GObject.Object.Notify;
-            'notify::demand': GObject.Object.Notify;
-            'notify::filename': GObject.Object.Notify;
-            'notify::foreign-buffer': GObject.Object.Notify;
-            'notify::format': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::interpretation': GObject.Object.Notify;
-            'notify::kill': GObject.Object.Notify;
-            'notify::mode': GObject.Object.Notify;
-            'notify::sizeof-header': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::xoffset': GObject.Object.Notify;
-            'notify::xres': GObject.Object.Notify;
-            'notify::yoffset': GObject.Object.Notify;
-            'notify::yres': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::nickname': GObject.Object.Notify;
+            eval: (arg0: Progress) => void;
+            invalidate: () => void;
+            minimise: () => void;
+            posteval: (arg0: Progress) => void;
+            preeval: (arg0: Progress) => void;
+            written: (arg0: number) => void;
+            'notify::bands': (pspec: GObject.ParamSpec) => void;
+            'notify::coding': (pspec: GObject.ParamSpec) => void;
+            'notify::demand': (pspec: GObject.ParamSpec) => void;
+            'notify::filename': (pspec: GObject.ParamSpec) => void;
+            'notify::foreign-buffer': (pspec: GObject.ParamSpec) => void;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::interpretation': (pspec: GObject.ParamSpec) => void;
+            'notify::kill': (pspec: GObject.ParamSpec) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::sizeof-header': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::xoffset': (pspec: GObject.ParamSpec) => void;
+            'notify::xres': (pspec: GObject.ParamSpec) => void;
+            'notify::yoffset': (pspec: GObject.ParamSpec) => void;
+            'notify::yres': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::nickname': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4199,6 +4200,14 @@ export namespace Vips {
         set yoffset(val: number);
         get yres(): number;
         set yres(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Image.SignalSignatures;
 
         // Constructors
 
@@ -4242,13 +4251,19 @@ export namespace Vips {
 
         // Signals
 
-        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect_after<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Image.SignalSignatures>(
             signal: K,
-            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5013,8 +5028,8 @@ export namespace Vips {
     namespace Interpolate {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::description': GObject.Object.Notify;
-            'notify::nickname': GObject.Object.Notify;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::nickname': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5024,6 +5039,14 @@ export namespace Vips {
 
     abstract class Interpolate extends Object {
         static $gtype: GObject.GType<Interpolate>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Interpolate.SignalSignatures;
 
         // Fields
 
@@ -5041,17 +5064,17 @@ export namespace Vips {
 
         connect<K extends keyof Interpolate.SignalSignatures>(
             signal: K,
-            callback: Interpolate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Interpolate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Interpolate.SignalSignatures>(
             signal: K,
-            callback: Interpolate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Interpolate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Interpolate.SignalSignatures>(
             signal: K,
-            ...args: Interpolate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Interpolate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5102,32 +5125,14 @@ export namespace Vips {
     }
 
     namespace Object {
-        // Signal callback interfaces
-
-        interface Close {
-            (_source: Object): void;
-        }
-
-        interface Postbuild {
-            (_source: Object): number;
-        }
-
-        interface Postclose {
-            (_source: Object): void;
-        }
-
-        interface Preclose {
-            (_source: Object): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            close: Close;
-            postbuild: Postbuild;
-            postclose: Postclose;
-            preclose: Preclose;
-            'notify::description': GObject.Object.Notify;
-            'notify::nickname': GObject.Object.Notify;
+            close: () => void;
+            postbuild: () => number;
+            postclose: () => void;
+            preclose: () => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::nickname': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5147,6 +5152,14 @@ export namespace Vips {
         set description(val: string);
         get nickname(): string;
         set nickname(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Object.SignalSignatures;
 
         // Fields
 
@@ -5167,13 +5180,19 @@ export namespace Vips {
 
         // Signals
 
-        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
-            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5288,17 +5307,11 @@ export namespace Vips {
     }
 
     namespace Operation {
-        // Signal callback interfaces
-
-        interface Invalidate {
-            (_source: Operation): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            invalidate: Invalidate;
-            'notify::description': GObject.Object.Notify;
-            'notify::nickname': GObject.Object.Notify;
+            invalidate: () => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::nickname': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5308,6 +5321,14 @@ export namespace Vips {
 
     abstract class Operation extends Object {
         static $gtype: GObject.GType<Operation>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Operation.SignalSignatures;
 
         // Fields
 
@@ -5325,16 +5346,19 @@ export namespace Vips {
 
         // Signals
 
-        connect<K extends keyof Operation.SignalSignatures>(signal: K, callback: Operation.SignalSignatures[K]): number;
+        connect<K extends keyof Operation.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Operation.SignalSignatures>(
             signal: K,
-            callback: Operation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Operation.SignalSignatures>(
             signal: K,
-            ...args: Operation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Operation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5386,8 +5410,8 @@ export namespace Vips {
     namespace Region {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::description': GObject.Object.Notify;
-            'notify::nickname': GObject.Object.Notify;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::nickname': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5403,6 +5427,14 @@ export namespace Vips {
      */
     class Region extends Object {
         static $gtype: GObject.GType<Region>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Region.SignalSignatures;
 
         // Fields
 
@@ -5420,13 +5452,19 @@ export namespace Vips {
 
         // Signals
 
-        connect<K extends keyof Region.SignalSignatures>(signal: K, callback: Region.SignalSignatures[K]): number;
+        connect<K extends keyof Region.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Region.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Region.SignalSignatures>(signal: K, callback: Region.SignalSignatures[K]): number;
+        connect_after<K extends keyof Region.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Region.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Region.SignalSignatures>(
             signal: K,
-            ...args: Region.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Region.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

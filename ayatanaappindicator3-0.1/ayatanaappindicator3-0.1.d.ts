@@ -124,59 +124,29 @@ export namespace AyatanaAppIndicator3 {
      */
     const INDICATOR_SIGNAL_SCROLL_EVENT: string;
     namespace Indicator {
-        // Signal callback interfaces
-
-        interface ConnectionChanged {
-            (_source: Indicator, arg1: boolean): void;
-        }
-
-        interface NewAttentionIcon {
-            (_source: Indicator): void;
-        }
-
-        interface NewIcon {
-            (_source: Indicator): void;
-        }
-
-        interface NewIconThemePath {
-            (_source: Indicator, arg1: string): void;
-        }
-
-        interface NewLabel {
-            (_source: Indicator, arg1: string, arg2: string): void;
-        }
-
-        interface NewStatus {
-            (_source: Indicator, arg1: string): void;
-        }
-
-        interface ScrollEvent {
-            (_source: Indicator, arg1: number, arg2: Gdk.ScrollDirection): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'connection-changed': ConnectionChanged;
-            'new-attention-icon': NewAttentionIcon;
-            'new-icon': NewIcon;
-            'new-icon-theme-path': NewIconThemePath;
-            'new-label': NewLabel;
-            'new-status': NewStatus;
-            'scroll-event': ScrollEvent;
-            'notify::attention-icon-desc': GObject.Object.Notify;
-            'notify::attention-icon-name': GObject.Object.Notify;
-            'notify::category': GObject.Object.Notify;
-            'notify::connected': GObject.Object.Notify;
-            'notify::icon-desc': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
-            'notify::icon-theme-path': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::label-guide': GObject.Object.Notify;
-            'notify::menu': GObject.Object.Notify;
-            'notify::ordering-index': GObject.Object.Notify;
-            'notify::status': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
+            'connection-changed': (arg0: boolean) => void;
+            'new-attention-icon': () => void;
+            'new-icon': () => void;
+            'new-icon-theme-path': (arg0: string) => void;
+            'new-label': (arg0: string, arg1: string) => void;
+            'new-status': (arg0: string) => void;
+            'scroll-event': (arg0: number, arg1: Gdk.ScrollDirection) => void;
+            'notify::attention-icon-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::attention-icon-name': (pspec: GObject.ParamSpec) => void;
+            'notify::category': (pspec: GObject.ParamSpec) => void;
+            'notify::connected': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-theme-path': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::label-guide': (pspec: GObject.ParamSpec) => void;
+            'notify::menu': (pspec: GObject.ParamSpec) => void;
+            'notify::ordering-index': (pspec: GObject.ParamSpec) => void;
+            'notify::status': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -368,6 +338,14 @@ export namespace AyatanaAppIndicator3 {
          */
         get title(): string;
         set title(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Indicator.SignalSignatures;
 
         // Constructors
 
@@ -386,16 +364,19 @@ export namespace AyatanaAppIndicator3 {
 
         // Signals
 
-        connect<K extends keyof Indicator.SignalSignatures>(signal: K, callback: Indicator.SignalSignatures[K]): number;
+        connect<K extends keyof Indicator.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Indicator.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Indicator.SignalSignatures>(
             signal: K,
-            callback: Indicator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Indicator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Indicator.SignalSignatures>(
             signal: K,
-            ...args: Indicator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Indicator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

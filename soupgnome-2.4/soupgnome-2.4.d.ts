@@ -26,9 +26,9 @@ export namespace SoupGNOME {
     namespace CookieJarSqlite {
         // Signal signatures
         interface SignalSignatures extends Soup.CookieJarDB.SignalSignatures {
-            'notify::filename': GObject.Object.Notify;
-            'notify::accept-policy': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::filename': (pspec: GObject.ParamSpec) => void;
+            'notify::accept-policy': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -38,6 +38,14 @@ export namespace SoupGNOME {
 
     class CookieJarSqlite extends Soup.CookieJarDB implements Soup.SessionFeature {
         static $gtype: GObject.GType<CookieJarSqlite>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CookieJarSqlite.SignalSignatures;
 
         // Constructors
 
@@ -54,17 +62,17 @@ export namespace SoupGNOME {
 
         connect<K extends keyof CookieJarSqlite.SignalSignatures>(
             signal: K,
-            callback: CookieJarSqlite.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CookieJarSqlite.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CookieJarSqlite.SignalSignatures>(
             signal: K,
-            callback: CookieJarSqlite.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CookieJarSqlite.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CookieJarSqlite.SignalSignatures>(
             signal: K,
-            ...args: CookieJarSqlite.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CookieJarSqlite.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -521,6 +529,14 @@ export namespace SoupGNOME {
 
     class PasswordManagerGNOME extends GObject.Object implements Soup.SessionFeature {
         static $gtype: GObject.GType<PasswordManagerGNOME>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PasswordManagerGNOME.SignalSignatures;
 
         // Constructors
 
@@ -532,17 +548,19 @@ export namespace SoupGNOME {
 
         connect<K extends keyof PasswordManagerGNOME.SignalSignatures>(
             signal: K,
-            callback: PasswordManagerGNOME.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PasswordManagerGNOME.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PasswordManagerGNOME.SignalSignatures>(
             signal: K,
-            callback: PasswordManagerGNOME.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PasswordManagerGNOME.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PasswordManagerGNOME.SignalSignatures>(
             signal: K,
-            ...args: PasswordManagerGNOME.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PasswordManagerGNOME.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1065,7 +1083,7 @@ export namespace SoupGNOME {
     namespace ProxyResolverGNOME {
         // Signal signatures
         interface SignalSignatures extends Soup.ProxyResolverDefault.SignalSignatures {
-            'notify::gproxy-resolver': GObject.Object.Notify;
+            'notify::gproxy-resolver': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1078,6 +1096,14 @@ export namespace SoupGNOME {
 
     class ProxyResolverGNOME extends Soup.ProxyResolverDefault implements Soup.ProxyURIResolver, Soup.SessionFeature {
         static $gtype: GObject.GType<ProxyResolverGNOME>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ProxyResolverGNOME.SignalSignatures;
 
         // Constructors
 
@@ -1089,17 +1115,17 @@ export namespace SoupGNOME {
 
         connect<K extends keyof ProxyResolverGNOME.SignalSignatures>(
             signal: K,
-            callback: ProxyResolverGNOME.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProxyResolverGNOME.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProxyResolverGNOME.SignalSignatures>(
             signal: K,
-            callback: ProxyResolverGNOME.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProxyResolverGNOME.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProxyResolverGNOME.SignalSignatures>(
             signal: K,
-            ...args: ProxyResolverGNOME.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ProxyResolverGNOME.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

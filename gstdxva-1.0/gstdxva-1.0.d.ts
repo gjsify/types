@@ -41,14 +41,14 @@ export namespace GstDxva {
     namespace DxvaAV1Decoder {
         // Signal signatures
         interface SignalSignatures extends GstCodecs.AV1Decoder.SignalSignatures {
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
+            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
+            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
+            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -58,6 +58,14 @@ export namespace GstDxva {
 
     abstract class DxvaAV1Decoder extends GstCodecs.AV1Decoder {
         static $gtype: GObject.GType<DxvaAV1Decoder>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DxvaAV1Decoder.SignalSignatures;
 
         // Constructors
 
@@ -69,17 +77,17 @@ export namespace GstDxva {
 
         connect<K extends keyof DxvaAV1Decoder.SignalSignatures>(
             signal: K,
-            callback: DxvaAV1Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DxvaAV1Decoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DxvaAV1Decoder.SignalSignatures>(
             signal: K,
-            callback: DxvaAV1Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DxvaAV1Decoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DxvaAV1Decoder.SignalSignatures>(
             signal: K,
-            ...args: DxvaAV1Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DxvaAV1Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -118,15 +126,15 @@ export namespace GstDxva {
     namespace DxvaH264Decoder {
         // Signal signatures
         interface SignalSignatures extends GstCodecs.H264Decoder.SignalSignatures {
-            'notify::compliance': GObject.Object.Notify;
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::compliance': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
+            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
+            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
+            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -136,6 +144,14 @@ export namespace GstDxva {
 
     abstract class DxvaH264Decoder extends GstCodecs.H264Decoder {
         static $gtype: GObject.GType<DxvaH264Decoder>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DxvaH264Decoder.SignalSignatures;
 
         // Constructors
 
@@ -147,17 +163,17 @@ export namespace GstDxva {
 
         connect<K extends keyof DxvaH264Decoder.SignalSignatures>(
             signal: K,
-            callback: DxvaH264Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DxvaH264Decoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DxvaH264Decoder.SignalSignatures>(
             signal: K,
-            callback: DxvaH264Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DxvaH264Decoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DxvaH264Decoder.SignalSignatures>(
             signal: K,
-            ...args: DxvaH264Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DxvaH264Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -194,14 +210,14 @@ export namespace GstDxva {
     namespace DxvaH265Decoder {
         // Signal signatures
         interface SignalSignatures extends GstCodecs.H265Decoder.SignalSignatures {
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
+            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
+            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
+            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -211,6 +227,14 @@ export namespace GstDxva {
 
     abstract class DxvaH265Decoder extends GstCodecs.H265Decoder {
         static $gtype: GObject.GType<DxvaH265Decoder>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DxvaH265Decoder.SignalSignatures;
 
         // Constructors
 
@@ -222,17 +246,17 @@ export namespace GstDxva {
 
         connect<K extends keyof DxvaH265Decoder.SignalSignatures>(
             signal: K,
-            callback: DxvaH265Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DxvaH265Decoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DxvaH265Decoder.SignalSignatures>(
             signal: K,
-            callback: DxvaH265Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DxvaH265Decoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DxvaH265Decoder.SignalSignatures>(
             signal: K,
-            ...args: DxvaH265Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DxvaH265Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -268,14 +292,14 @@ export namespace GstDxva {
     namespace DxvaMpeg2Decoder {
         // Signal signatures
         interface SignalSignatures extends GstCodecs.Mpeg2Decoder.SignalSignatures {
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
+            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
+            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
+            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -285,6 +309,14 @@ export namespace GstDxva {
 
     abstract class DxvaMpeg2Decoder extends GstCodecs.Mpeg2Decoder {
         static $gtype: GObject.GType<DxvaMpeg2Decoder>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DxvaMpeg2Decoder.SignalSignatures;
 
         // Constructors
 
@@ -296,17 +328,17 @@ export namespace GstDxva {
 
         connect<K extends keyof DxvaMpeg2Decoder.SignalSignatures>(
             signal: K,
-            callback: DxvaMpeg2Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DxvaMpeg2Decoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DxvaMpeg2Decoder.SignalSignatures>(
             signal: K,
-            callback: DxvaMpeg2Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DxvaMpeg2Decoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DxvaMpeg2Decoder.SignalSignatures>(
             signal: K,
-            ...args: DxvaMpeg2Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DxvaMpeg2Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -347,14 +379,14 @@ export namespace GstDxva {
     namespace DxvaVp8Decoder {
         // Signal signatures
         interface SignalSignatures extends GstCodecs.Vp8Decoder.SignalSignatures {
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
+            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
+            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
+            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -364,6 +396,14 @@ export namespace GstDxva {
 
     abstract class DxvaVp8Decoder extends GstCodecs.Vp8Decoder {
         static $gtype: GObject.GType<DxvaVp8Decoder>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DxvaVp8Decoder.SignalSignatures;
 
         // Constructors
 
@@ -375,17 +415,17 @@ export namespace GstDxva {
 
         connect<K extends keyof DxvaVp8Decoder.SignalSignatures>(
             signal: K,
-            callback: DxvaVp8Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DxvaVp8Decoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DxvaVp8Decoder.SignalSignatures>(
             signal: K,
-            callback: DxvaVp8Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DxvaVp8Decoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DxvaVp8Decoder.SignalSignatures>(
             signal: K,
-            ...args: DxvaVp8Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DxvaVp8Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -421,14 +461,14 @@ export namespace GstDxva {
     namespace DxvaVp9Decoder {
         // Signal signatures
         interface SignalSignatures extends GstCodecs.Vp9Decoder.SignalSignatures {
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
+            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
+            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
+            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -438,6 +478,14 @@ export namespace GstDxva {
 
     abstract class DxvaVp9Decoder extends GstCodecs.Vp9Decoder {
         static $gtype: GObject.GType<DxvaVp9Decoder>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DxvaVp9Decoder.SignalSignatures;
 
         // Constructors
 
@@ -449,17 +497,17 @@ export namespace GstDxva {
 
         connect<K extends keyof DxvaVp9Decoder.SignalSignatures>(
             signal: K,
-            callback: DxvaVp9Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DxvaVp9Decoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DxvaVp9Decoder.SignalSignatures>(
             signal: K,
-            callback: DxvaVp9Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DxvaVp9Decoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DxvaVp9Decoder.SignalSignatures>(
             signal: K,
-            ...args: DxvaVp9Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DxvaVp9Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

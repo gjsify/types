@@ -134,40 +134,14 @@ export namespace Manette {
     function get_minor_version(): number;
     function get_resource(): Gio.Resource;
     namespace Device {
-        // Signal callback interfaces
-
-        interface AbsoluteAxisEvent {
-            (_source: Device, event: Event): void;
-        }
-
-        interface ButtonPressEvent {
-            (_source: Device, event: Event): void;
-        }
-
-        interface ButtonReleaseEvent {
-            (_source: Device, event: Event): void;
-        }
-
-        interface Disconnected {
-            (_source: Device): void;
-        }
-
-        interface Event {
-            (_source: Device, event: Event): void;
-        }
-
-        interface HatAxisEvent {
-            (_source: Device, event: Event): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'absolute-axis-event': AbsoluteAxisEvent;
-            'button-press-event': ButtonPressEvent;
-            'button-release-event': ButtonReleaseEvent;
-            disconnected: Disconnected;
-            event: Event;
-            'hat-axis-event': HatAxisEvent;
+            'absolute-axis-event': (arg0: Event) => void;
+            'button-press-event': (arg0: Event) => void;
+            'button-release-event': (arg0: Event) => void;
+            disconnected: () => void;
+            event: (arg0: Event) => void;
+            'hat-axis-event': (arg0: Event) => void;
         }
 
         // Constructor properties interface
@@ -182,6 +156,14 @@ export namespace Manette {
      */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -191,13 +173,19 @@ export namespace Manette {
 
         // Signals
 
-        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
-            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -276,20 +264,10 @@ export namespace Manette {
     }
 
     namespace Monitor {
-        // Signal callback interfaces
-
-        interface DeviceConnected {
-            (_source: Monitor, device: Device): void;
-        }
-
-        interface DeviceDisconnected {
-            (_source: Monitor, device: Device): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'device-connected': DeviceConnected;
-            'device-disconnected': DeviceDisconnected;
+            'device-connected': (arg0: Device) => void;
+            'device-disconnected': (arg0: Device) => void;
         }
 
         // Constructor properties interface
@@ -304,6 +282,14 @@ export namespace Manette {
      */
     class Monitor extends GObject.Object {
         static $gtype: GObject.GType<Monitor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Monitor.SignalSignatures;
 
         // Constructors
 
@@ -315,16 +301,19 @@ export namespace Manette {
 
         // Signals
 
-        connect<K extends keyof Monitor.SignalSignatures>(signal: K, callback: Monitor.SignalSignatures[K]): number;
+        connect<K extends keyof Monitor.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Monitor.SignalSignatures>(
             signal: K,
-            callback: Monitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Monitor.SignalSignatures>(
             signal: K,
-            ...args: Monitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Monitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

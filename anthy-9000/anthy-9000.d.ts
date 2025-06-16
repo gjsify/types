@@ -65,6 +65,14 @@ export namespace Anthy {
      */
     class GContext extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<GContext>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GContext.SignalSignatures;
 
         // Constructors
 
@@ -76,16 +84,19 @@ export namespace Anthy {
 
         // Signals
 
-        connect<K extends keyof GContext.SignalSignatures>(signal: K, callback: GContext.SignalSignatures[K]): number;
+        connect<K extends keyof GContext.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GContext.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GContext.SignalSignatures>(
             signal: K,
-            callback: GContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GContext.SignalSignatures>(
             signal: K,
-            ...args: GContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -735,8 +735,8 @@ export namespace Vte {
     namespace Pty {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::fd': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
+            'notify::fd': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -760,6 +760,14 @@ export namespace Vte {
          * Flags.
          */
         get flags(): PtyFlags;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Pty.SignalSignatures;
 
         // Constructors
 
@@ -773,13 +781,19 @@ export namespace Vte {
 
         // Signals
 
-        connect<K extends keyof Pty.SignalSignatures>(signal: K, callback: Pty.SignalSignatures[K]): number;
+        connect<K extends keyof Pty.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Pty.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Pty.SignalSignatures>(signal: K, callback: Pty.SignalSignatures[K]): number;
+        connect_after<K extends keyof Pty.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Pty.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Pty.SignalSignatures>(
             signal: K,
-            ...args: Pty.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Pty.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1476,352 +1490,214 @@ export namespace Vte {
     }
 
     namespace Terminal {
-        // Signal callback interfaces
-
-        interface Bell {
-            (_source: Terminal): void;
-        }
-
-        interface CharSizeChanged {
-            (_source: Terminal, width: number, height: number): void;
-        }
-
-        interface ChildExited {
-            (_source: Terminal, status: number): void;
-        }
-
-        interface Commit {
-            (_source: Terminal, text: string, size: number): void;
-        }
-
-        interface ContentsChanged {
-            (_source: Terminal): void;
-        }
-
-        interface CopyClipboard {
-            (_source: Terminal): void;
-        }
-
-        interface CurrentDirectoryUriChanged {
-            (_source: Terminal): void;
-        }
-
-        interface CurrentFileUriChanged {
-            (_source: Terminal): void;
-        }
-
-        interface CursorMoved {
-            (_source: Terminal): void;
-        }
-
-        interface DecreaseFontSize {
-            (_source: Terminal): void;
-        }
-
-        interface DeiconifyWindow {
-            (_source: Terminal): void;
-        }
-
-        interface EncodingChanged {
-            (_source: Terminal): void;
-        }
-
-        interface Eof {
-            (_source: Terminal): void;
-        }
-
-        interface HyperlinkHoverUriChanged {
-            (_source: Terminal, uri: string, bbox: Gdk.Rectangle): void;
-        }
-
-        interface IconTitleChanged {
-            (_source: Terminal): void;
-        }
-
-        interface IconifyWindow {
-            (_source: Terminal): void;
-        }
-
-        interface IncreaseFontSize {
-            (_source: Terminal): void;
-        }
-
-        interface LowerWindow {
-            (_source: Terminal): void;
-        }
-
-        interface MaximizeWindow {
-            (_source: Terminal): void;
-        }
-
-        interface MoveWindow {
-            (_source: Terminal, x: number, y: number): void;
-        }
-
-        interface PasteClipboard {
-            (_source: Terminal): void;
-        }
-
-        interface RaiseWindow {
-            (_source: Terminal): void;
-        }
-
-        interface RefreshWindow {
-            (_source: Terminal): void;
-        }
-
-        interface ResizeWindow {
-            (_source: Terminal, width: number, height: number): void;
-        }
-
-        interface RestoreWindow {
-            (_source: Terminal): void;
-        }
-
-        interface SelectionChanged {
-            (_source: Terminal): void;
-        }
-
-        interface SetupContextMenu {
-            (_source: Terminal, context?: EventContext | null): void;
-        }
-
-        interface TermpropChanged {
-            (_source: Terminal, name: string): void;
-        }
-
-        interface TermpropsChanged {
-            (_source: Terminal, props: number[]): boolean | void;
-        }
-
-        interface TextDeleted {
-            (_source: Terminal): void;
-        }
-
-        interface TextInserted {
-            (_source: Terminal): void;
-        }
-
-        interface TextModified {
-            (_source: Terminal): void;
-        }
-
-        interface TextScrolled {
-            (_source: Terminal, delta: number): void;
-        }
-
-        interface WindowTitleChanged {
-            (_source: Terminal): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
-            bell: Bell;
-            'char-size-changed': CharSizeChanged;
-            'child-exited': ChildExited;
-            commit: Commit;
-            'contents-changed': ContentsChanged;
-            'copy-clipboard': CopyClipboard;
-            'current-directory-uri-changed': CurrentDirectoryUriChanged;
-            'current-file-uri-changed': CurrentFileUriChanged;
-            'cursor-moved': CursorMoved;
-            'decrease-font-size': DecreaseFontSize;
-            'deiconify-window': DeiconifyWindow;
-            'encoding-changed': EncodingChanged;
-            eof: Eof;
-            'hyperlink-hover-uri-changed': HyperlinkHoverUriChanged;
-            'icon-title-changed': IconTitleChanged;
-            'iconify-window': IconifyWindow;
-            'increase-font-size': IncreaseFontSize;
-            'lower-window': LowerWindow;
-            'maximize-window': MaximizeWindow;
-            'move-window': MoveWindow;
-            'paste-clipboard': PasteClipboard;
-            'raise-window': RaiseWindow;
-            'refresh-window': RefreshWindow;
-            'resize-window': ResizeWindow;
-            'restore-window': RestoreWindow;
-            'selection-changed': SelectionChanged;
-            'setup-context-menu': SetupContextMenu;
-            'termprop-changed': TermpropChanged;
-            'termprops-changed': TermpropsChanged;
-            'text-deleted': TextDeleted;
-            'text-inserted': TextInserted;
-            'text-modified': TextModified;
-            'text-scrolled': TextScrolled;
-            'window-title-changed': WindowTitleChanged;
-            'notify::allow-bold': GObject.Object.Notify;
-            'notify::allow-hyperlink': GObject.Object.Notify;
-            'notify::audible-bell': GObject.Object.Notify;
-            'notify::backspace-binding': GObject.Object.Notify;
-            'notify::bold-is-bright': GObject.Object.Notify;
-            'notify::cell-height-scale': GObject.Object.Notify;
-            'notify::cell-width-scale': GObject.Object.Notify;
-            'notify::cjk-ambiguous-width': GObject.Object.Notify;
-            'notify::context-menu': GObject.Object.Notify;
-            'notify::context-menu-model': GObject.Object.Notify;
-            'notify::current-directory-uri': GObject.Object.Notify;
-            'notify::current-file-uri': GObject.Object.Notify;
-            'notify::cursor-blink-mode': GObject.Object.Notify;
-            'notify::cursor-shape': GObject.Object.Notify;
-            'notify::delete-binding': GObject.Object.Notify;
-            'notify::enable-a11y': GObject.Object.Notify;
-            'notify::enable-bidi': GObject.Object.Notify;
-            'notify::enable-fallback-scrolling': GObject.Object.Notify;
-            'notify::enable-legacy-osc777': GObject.Object.Notify;
-            'notify::enable-shaping': GObject.Object.Notify;
-            'notify::enable-sixel': GObject.Object.Notify;
-            'notify::encoding': GObject.Object.Notify;
-            'notify::font-desc': GObject.Object.Notify;
-            'notify::font-options': GObject.Object.Notify;
-            'notify::font-scale': GObject.Object.Notify;
-            'notify::hyperlink-hover-uri': GObject.Object.Notify;
-            'notify::icon-title': GObject.Object.Notify;
-            'notify::input-enabled': GObject.Object.Notify;
-            'notify::pointer-autohide': GObject.Object.Notify;
-            'notify::pty': GObject.Object.Notify;
-            'notify::rewrap-on-resize': GObject.Object.Notify;
-            'notify::scroll-on-insert': GObject.Object.Notify;
-            'notify::scroll-on-keystroke': GObject.Object.Notify;
-            'notify::scroll-on-output': GObject.Object.Notify;
-            'notify::scroll-unit-is-pixels': GObject.Object.Notify;
-            'notify::scrollback-lines': GObject.Object.Notify;
-            'notify::text-blink-mode': GObject.Object.Notify;
-            'notify::window-title': GObject.Object.Notify;
-            'notify::word-char-exceptions': GObject.Object.Notify;
-            'notify::xalign': GObject.Object.Notify;
-            'notify::xfill': GObject.Object.Notify;
-            'notify::yalign': GObject.Object.Notify;
-            'notify::yfill': GObject.Object.Notify;
-            'notify::app-paintable': GObject.Object.Notify;
-            'notify::can-default': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::composite-child': GObject.Object.Notify;
-            'notify::double-buffered': GObject.Object.Notify;
-            'notify::events': GObject.Object.Notify;
-            'notify::expand': GObject.Object.Notify;
-            'notify::focus-on-click': GObject.Object.Notify;
-            'notify::halign': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
-            'notify::hexpand': GObject.Object.Notify;
-            'notify::hexpand-set': GObject.Object.Notify;
-            'notify::is-focus': GObject.Object.Notify;
-            'notify::margin': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-end': GObject.Object.Notify;
-            'notify::margin-left': GObject.Object.Notify;
-            'notify::margin-right': GObject.Object.Notify;
-            'notify::margin-start': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::no-show-all': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
-            'notify::valign': GObject.Object.Notify;
-            'notify::vexpand': GObject.Object.Notify;
-            'notify::vexpand-set': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
-            'notify::window': GObject.Object.Notify;
-            'notify::hadjustment': GObject.Object.Notify;
-            'notify::hscroll-policy': GObject.Object.Notify;
-            'notify::vadjustment': GObject.Object.Notify;
-            'notify::vscroll-policy': GObject.Object.Notify;
-            'termprop-changed::allow-bold': TermpropChanged;
-            'termprop-changed::allow-hyperlink': TermpropChanged;
-            'termprop-changed::audible-bell': TermpropChanged;
-            'termprop-changed::backspace-binding': TermpropChanged;
-            'termprop-changed::bold-is-bright': TermpropChanged;
-            'termprop-changed::cell-height-scale': TermpropChanged;
-            'termprop-changed::cell-width-scale': TermpropChanged;
-            'termprop-changed::cjk-ambiguous-width': TermpropChanged;
-            'termprop-changed::context-menu': TermpropChanged;
-            'termprop-changed::context-menu-model': TermpropChanged;
-            'termprop-changed::current-directory-uri': TermpropChanged;
-            'termprop-changed::current-file-uri': TermpropChanged;
-            'termprop-changed::cursor-blink-mode': TermpropChanged;
-            'termprop-changed::cursor-shape': TermpropChanged;
-            'termprop-changed::delete-binding': TermpropChanged;
-            'termprop-changed::enable-a11y': TermpropChanged;
-            'termprop-changed::enable-bidi': TermpropChanged;
-            'termprop-changed::enable-fallback-scrolling': TermpropChanged;
-            'termprop-changed::enable-legacy-osc777': TermpropChanged;
-            'termprop-changed::enable-shaping': TermpropChanged;
-            'termprop-changed::enable-sixel': TermpropChanged;
-            'termprop-changed::encoding': TermpropChanged;
-            'termprop-changed::font-desc': TermpropChanged;
-            'termprop-changed::font-options': TermpropChanged;
-            'termprop-changed::font-scale': TermpropChanged;
-            'termprop-changed::hyperlink-hover-uri': TermpropChanged;
-            'termprop-changed::icon-title': TermpropChanged;
-            'termprop-changed::input-enabled': TermpropChanged;
-            'termprop-changed::pointer-autohide': TermpropChanged;
-            'termprop-changed::pty': TermpropChanged;
-            'termprop-changed::rewrap-on-resize': TermpropChanged;
-            'termprop-changed::scroll-on-insert': TermpropChanged;
-            'termprop-changed::scroll-on-keystroke': TermpropChanged;
-            'termprop-changed::scroll-on-output': TermpropChanged;
-            'termprop-changed::scroll-unit-is-pixels': TermpropChanged;
-            'termprop-changed::scrollback-lines': TermpropChanged;
-            'termprop-changed::text-blink-mode': TermpropChanged;
-            'termprop-changed::window-title': TermpropChanged;
-            'termprop-changed::word-char-exceptions': TermpropChanged;
-            'termprop-changed::xalign': TermpropChanged;
-            'termprop-changed::xfill': TermpropChanged;
-            'termprop-changed::yalign': TermpropChanged;
-            'termprop-changed::yfill': TermpropChanged;
-            'termprop-changed::app-paintable': TermpropChanged;
-            'termprop-changed::can-default': TermpropChanged;
-            'termprop-changed::can-focus': TermpropChanged;
-            'termprop-changed::composite-child': TermpropChanged;
-            'termprop-changed::double-buffered': TermpropChanged;
-            'termprop-changed::events': TermpropChanged;
-            'termprop-changed::expand': TermpropChanged;
-            'termprop-changed::focus-on-click': TermpropChanged;
-            'termprop-changed::halign': TermpropChanged;
-            'termprop-changed::has-default': TermpropChanged;
-            'termprop-changed::has-focus': TermpropChanged;
-            'termprop-changed::has-tooltip': TermpropChanged;
-            'termprop-changed::height-request': TermpropChanged;
-            'termprop-changed::hexpand': TermpropChanged;
-            'termprop-changed::hexpand-set': TermpropChanged;
-            'termprop-changed::is-focus': TermpropChanged;
-            'termprop-changed::margin': TermpropChanged;
-            'termprop-changed::margin-bottom': TermpropChanged;
-            'termprop-changed::margin-end': TermpropChanged;
-            'termprop-changed::margin-left': TermpropChanged;
-            'termprop-changed::margin-right': TermpropChanged;
-            'termprop-changed::margin-start': TermpropChanged;
-            'termprop-changed::margin-top': TermpropChanged;
-            'termprop-changed::name': TermpropChanged;
-            'termprop-changed::no-show-all': TermpropChanged;
-            'termprop-changed::opacity': TermpropChanged;
-            'termprop-changed::parent': TermpropChanged;
-            'termprop-changed::receives-default': TermpropChanged;
-            'termprop-changed::scale-factor': TermpropChanged;
-            'termprop-changed::sensitive': TermpropChanged;
-            'termprop-changed::style': TermpropChanged;
-            'termprop-changed::tooltip-markup': TermpropChanged;
-            'termprop-changed::tooltip-text': TermpropChanged;
-            'termprop-changed::valign': TermpropChanged;
-            'termprop-changed::vexpand': TermpropChanged;
-            'termprop-changed::vexpand-set': TermpropChanged;
-            'termprop-changed::visible': TermpropChanged;
-            'termprop-changed::width-request': TermpropChanged;
-            'termprop-changed::window': TermpropChanged;
-            'termprop-changed::hadjustment': TermpropChanged;
-            'termprop-changed::hscroll-policy': TermpropChanged;
-            'termprop-changed::vadjustment': TermpropChanged;
-            'termprop-changed::vscroll-policy': TermpropChanged;
+            bell: () => void;
+            'char-size-changed': (arg0: number, arg1: number) => void;
+            'child-exited': (arg0: number) => void;
+            commit: (arg0: string, arg1: number) => void;
+            'contents-changed': () => void;
+            'copy-clipboard': () => void;
+            'current-directory-uri-changed': () => void;
+            'current-file-uri-changed': () => void;
+            'cursor-moved': () => void;
+            'decrease-font-size': () => void;
+            'deiconify-window': () => void;
+            'encoding-changed': () => void;
+            eof: () => void;
+            'hyperlink-hover-uri-changed': (arg0: string, arg1: Gdk.Rectangle) => void;
+            'icon-title-changed': () => void;
+            'iconify-window': () => void;
+            'increase-font-size': () => void;
+            'lower-window': () => void;
+            'maximize-window': () => void;
+            'move-window': (arg0: number, arg1: number) => void;
+            'paste-clipboard': () => void;
+            'raise-window': () => void;
+            'refresh-window': () => void;
+            'resize-window': (arg0: number, arg1: number) => void;
+            'restore-window': () => void;
+            'selection-changed': () => void;
+            'setup-context-menu': (arg0: EventContext | null) => void;
+            'termprop-changed': (arg0: string) => void;
+            'termprops-changed': (arg0: number[]) => boolean | void;
+            'text-deleted': () => void;
+            'text-inserted': () => void;
+            'text-modified': () => void;
+            'text-scrolled': (arg0: number) => void;
+            'window-title-changed': () => void;
+            'notify::allow-bold': (pspec: GObject.ParamSpec) => void;
+            'notify::allow-hyperlink': (pspec: GObject.ParamSpec) => void;
+            'notify::audible-bell': (pspec: GObject.ParamSpec) => void;
+            'notify::backspace-binding': (pspec: GObject.ParamSpec) => void;
+            'notify::bold-is-bright': (pspec: GObject.ParamSpec) => void;
+            'notify::cell-height-scale': (pspec: GObject.ParamSpec) => void;
+            'notify::cell-width-scale': (pspec: GObject.ParamSpec) => void;
+            'notify::cjk-ambiguous-width': (pspec: GObject.ParamSpec) => void;
+            'notify::context-menu': (pspec: GObject.ParamSpec) => void;
+            'notify::context-menu-model': (pspec: GObject.ParamSpec) => void;
+            'notify::current-directory-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::current-file-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::cursor-blink-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::cursor-shape': (pspec: GObject.ParamSpec) => void;
+            'notify::delete-binding': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-a11y': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-bidi': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-fallback-scrolling': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-legacy-osc777': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-shaping': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-sixel': (pspec: GObject.ParamSpec) => void;
+            'notify::encoding': (pspec: GObject.ParamSpec) => void;
+            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::font-options': (pspec: GObject.ParamSpec) => void;
+            'notify::font-scale': (pspec: GObject.ParamSpec) => void;
+            'notify::hyperlink-hover-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-title': (pspec: GObject.ParamSpec) => void;
+            'notify::input-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::pointer-autohide': (pspec: GObject.ParamSpec) => void;
+            'notify::pty': (pspec: GObject.ParamSpec) => void;
+            'notify::rewrap-on-resize': (pspec: GObject.ParamSpec) => void;
+            'notify::scroll-on-insert': (pspec: GObject.ParamSpec) => void;
+            'notify::scroll-on-keystroke': (pspec: GObject.ParamSpec) => void;
+            'notify::scroll-on-output': (pspec: GObject.ParamSpec) => void;
+            'notify::scroll-unit-is-pixels': (pspec: GObject.ParamSpec) => void;
+            'notify::scrollback-lines': (pspec: GObject.ParamSpec) => void;
+            'notify::text-blink-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::window-title': (pspec: GObject.ParamSpec) => void;
+            'notify::word-char-exceptions': (pspec: GObject.ParamSpec) => void;
+            'notify::xalign': (pspec: GObject.ParamSpec) => void;
+            'notify::xfill': (pspec: GObject.ParamSpec) => void;
+            'notify::yalign': (pspec: GObject.ParamSpec) => void;
+            'notify::yfill': (pspec: GObject.ParamSpec) => void;
+            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
+            'notify::can-default': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
+            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
+            'notify::events': (pspec: GObject.ParamSpec) => void;
+            'notify::expand': (pspec: GObject.ParamSpec) => void;
+            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
+            'notify::halign': (pspec: GObject.ParamSpec) => void;
+            'notify::has-default': (pspec: GObject.ParamSpec) => void;
+            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::height-request': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::margin': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
+            'notify::valign': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
+            'notify::hadjustment': (pspec: GObject.ParamSpec) => void;
+            'notify::hscroll-policy': (pspec: GObject.ParamSpec) => void;
+            'notify::vadjustment': (pspec: GObject.ParamSpec) => void;
+            'notify::vscroll-policy': (pspec: GObject.ParamSpec) => void;
+            'termprop-changed::allow-bold': (arg0: string) => void;
+            'termprop-changed::allow-hyperlink': (arg0: string) => void;
+            'termprop-changed::audible-bell': (arg0: string) => void;
+            'termprop-changed::backspace-binding': (arg0: string) => void;
+            'termprop-changed::bold-is-bright': (arg0: string) => void;
+            'termprop-changed::cell-height-scale': (arg0: string) => void;
+            'termprop-changed::cell-width-scale': (arg0: string) => void;
+            'termprop-changed::cjk-ambiguous-width': (arg0: string) => void;
+            'termprop-changed::context-menu': (arg0: string) => void;
+            'termprop-changed::context-menu-model': (arg0: string) => void;
+            'termprop-changed::current-directory-uri': (arg0: string) => void;
+            'termprop-changed::current-file-uri': (arg0: string) => void;
+            'termprop-changed::cursor-blink-mode': (arg0: string) => void;
+            'termprop-changed::cursor-shape': (arg0: string) => void;
+            'termprop-changed::delete-binding': (arg0: string) => void;
+            'termprop-changed::enable-a11y': (arg0: string) => void;
+            'termprop-changed::enable-bidi': (arg0: string) => void;
+            'termprop-changed::enable-fallback-scrolling': (arg0: string) => void;
+            'termprop-changed::enable-legacy-osc777': (arg0: string) => void;
+            'termprop-changed::enable-shaping': (arg0: string) => void;
+            'termprop-changed::enable-sixel': (arg0: string) => void;
+            'termprop-changed::encoding': (arg0: string) => void;
+            'termprop-changed::font-desc': (arg0: string) => void;
+            'termprop-changed::font-options': (arg0: string) => void;
+            'termprop-changed::font-scale': (arg0: string) => void;
+            'termprop-changed::hyperlink-hover-uri': (arg0: string) => void;
+            'termprop-changed::icon-title': (arg0: string) => void;
+            'termprop-changed::input-enabled': (arg0: string) => void;
+            'termprop-changed::pointer-autohide': (arg0: string) => void;
+            'termprop-changed::pty': (arg0: string) => void;
+            'termprop-changed::rewrap-on-resize': (arg0: string) => void;
+            'termprop-changed::scroll-on-insert': (arg0: string) => void;
+            'termprop-changed::scroll-on-keystroke': (arg0: string) => void;
+            'termprop-changed::scroll-on-output': (arg0: string) => void;
+            'termprop-changed::scroll-unit-is-pixels': (arg0: string) => void;
+            'termprop-changed::scrollback-lines': (arg0: string) => void;
+            'termprop-changed::text-blink-mode': (arg0: string) => void;
+            'termprop-changed::window-title': (arg0: string) => void;
+            'termprop-changed::word-char-exceptions': (arg0: string) => void;
+            'termprop-changed::xalign': (arg0: string) => void;
+            'termprop-changed::xfill': (arg0: string) => void;
+            'termprop-changed::yalign': (arg0: string) => void;
+            'termprop-changed::yfill': (arg0: string) => void;
+            'termprop-changed::app-paintable': (arg0: string) => void;
+            'termprop-changed::can-default': (arg0: string) => void;
+            'termprop-changed::can-focus': (arg0: string) => void;
+            'termprop-changed::composite-child': (arg0: string) => void;
+            'termprop-changed::double-buffered': (arg0: string) => void;
+            'termprop-changed::events': (arg0: string) => void;
+            'termprop-changed::expand': (arg0: string) => void;
+            'termprop-changed::focus-on-click': (arg0: string) => void;
+            'termprop-changed::halign': (arg0: string) => void;
+            'termprop-changed::has-default': (arg0: string) => void;
+            'termprop-changed::has-focus': (arg0: string) => void;
+            'termprop-changed::has-tooltip': (arg0: string) => void;
+            'termprop-changed::height-request': (arg0: string) => void;
+            'termprop-changed::hexpand': (arg0: string) => void;
+            'termprop-changed::hexpand-set': (arg0: string) => void;
+            'termprop-changed::is-focus': (arg0: string) => void;
+            'termprop-changed::margin': (arg0: string) => void;
+            'termprop-changed::margin-bottom': (arg0: string) => void;
+            'termprop-changed::margin-end': (arg0: string) => void;
+            'termprop-changed::margin-left': (arg0: string) => void;
+            'termprop-changed::margin-right': (arg0: string) => void;
+            'termprop-changed::margin-start': (arg0: string) => void;
+            'termprop-changed::margin-top': (arg0: string) => void;
+            'termprop-changed::name': (arg0: string) => void;
+            'termprop-changed::no-show-all': (arg0: string) => void;
+            'termprop-changed::opacity': (arg0: string) => void;
+            'termprop-changed::parent': (arg0: string) => void;
+            'termprop-changed::receives-default': (arg0: string) => void;
+            'termprop-changed::scale-factor': (arg0: string) => void;
+            'termprop-changed::sensitive': (arg0: string) => void;
+            'termprop-changed::style': (arg0: string) => void;
+            'termprop-changed::tooltip-markup': (arg0: string) => void;
+            'termprop-changed::tooltip-text': (arg0: string) => void;
+            'termprop-changed::valign': (arg0: string) => void;
+            'termprop-changed::vexpand': (arg0: string) => void;
+            'termprop-changed::vexpand-set': (arg0: string) => void;
+            'termprop-changed::visible': (arg0: string) => void;
+            'termprop-changed::width-request': (arg0: string) => void;
+            'termprop-changed::window': (arg0: string) => void;
+            'termprop-changed::hadjustment': (arg0: string) => void;
+            'termprop-changed::hscroll-policy': (arg0: string) => void;
+            'termprop-changed::vadjustment': (arg0: string) => void;
+            'termprop-changed::vscroll-policy': (arg0: string) => void;
         }
 
         // Constructor properties interface
@@ -2395,6 +2271,14 @@ export namespace Vte {
          */
         get yfill(): boolean;
         set yfill(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Terminal.SignalSignatures;
 
         // Fields
 
@@ -2410,16 +2294,19 @@ export namespace Vte {
 
         // Signals
 
-        connect<K extends keyof Terminal.SignalSignatures>(signal: K, callback: Terminal.SignalSignatures[K]): number;
+        connect<K extends keyof Terminal.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Terminal.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Terminal.SignalSignatures>(
             signal: K,
-            callback: Terminal.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Terminal.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Terminal.SignalSignatures>(
             signal: K,
-            ...args: Terminal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Terminal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

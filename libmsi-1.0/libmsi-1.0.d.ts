@@ -166,9 +166,9 @@ export namespace Libmsi {
     namespace Database {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::flags': GObject.Object.Notify;
-            'notify::outpath': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::outpath': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -188,6 +188,14 @@ export namespace Libmsi {
         get flags(): DbFlags;
         get outpath(): string;
         get path(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Database.SignalSignatures;
 
         // Constructors
 
@@ -199,16 +207,19 @@ export namespace Libmsi {
 
         // Signals
 
-        connect<K extends keyof Database.SignalSignatures>(signal: K, callback: Database.SignalSignatures[K]): number;
+        connect<K extends keyof Database.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Database.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Database.SignalSignatures>(
             signal: K,
-            callback: Database.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Database.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Database.SignalSignatures>(
             signal: K,
-            ...args: Database.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Database.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -252,8 +263,8 @@ export namespace Libmsi {
     namespace Query {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::database': GObject.Object.Notify;
-            'notify::query': GObject.Object.Notify;
+            'notify::database': (pspec: GObject.ParamSpec) => void;
+            'notify::query': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -271,6 +282,14 @@ export namespace Libmsi {
 
         get database(): Database;
         get query(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Query.SignalSignatures;
 
         // Constructors
 
@@ -282,13 +301,19 @@ export namespace Libmsi {
 
         // Signals
 
-        connect<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        connect<K extends keyof Query.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Query.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        connect_after<K extends keyof Query.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Query.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Query.SignalSignatures>(
             signal: K,
-            ...args: Query.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Query.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -326,7 +351,7 @@ export namespace Libmsi {
     namespace Record {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::count': GObject.Object.Notify;
+            'notify::count': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -342,6 +367,14 @@ export namespace Libmsi {
         // Properties
 
         get count(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Record.SignalSignatures;
 
         // Constructors
 
@@ -353,13 +386,19 @@ export namespace Libmsi {
 
         // Signals
 
-        connect<K extends keyof Record.SignalSignatures>(signal: K, callback: Record.SignalSignatures[K]): number;
+        connect<K extends keyof Record.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Record.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Record.SignalSignatures>(signal: K, callback: Record.SignalSignatures[K]): number;
+        connect_after<K extends keyof Record.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Record.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Record.SignalSignatures>(
             signal: K,
-            ...args: Record.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Record.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -427,8 +466,8 @@ export namespace Libmsi {
     namespace SummaryInfo {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::database': GObject.Object.Notify;
-            'notify::update-count': GObject.Object.Notify;
+            'notify::database': (pspec: GObject.ParamSpec) => void;
+            'notify::update-count': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -448,6 +487,14 @@ export namespace Libmsi {
         get database(): Database;
         get update_count(): number;
         get updateCount(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SummaryInfo.SignalSignatures;
 
         // Constructors
 
@@ -461,17 +508,17 @@ export namespace Libmsi {
 
         connect<K extends keyof SummaryInfo.SignalSignatures>(
             signal: K,
-            callback: SummaryInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SummaryInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SummaryInfo.SignalSignatures>(
             signal: K,
-            callback: SummaryInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SummaryInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SummaryInfo.SignalSignatures>(
             signal: K,
-            ...args: SummaryInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SummaryInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

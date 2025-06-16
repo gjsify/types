@@ -138,6 +138,14 @@ export namespace PangoOT {
 
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Info.SignalSignatures;
 
         // Constructors
 
@@ -147,13 +155,19 @@ export namespace PangoOT {
 
         // Signals
 
-        connect<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
+        connect<K extends keyof Info.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
+        connect_after<K extends keyof Info.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Info.SignalSignatures>(
             signal: K,
-            ...args: Info.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Info.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -272,6 +286,14 @@ export namespace PangoOT {
      */
     class Ruleset extends GObject.Object {
         static $gtype: GObject.GType<Ruleset>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Ruleset.SignalSignatures;
 
         // Constructors
 
@@ -287,16 +309,19 @@ export namespace PangoOT {
 
         // Signals
 
-        connect<K extends keyof Ruleset.SignalSignatures>(signal: K, callback: Ruleset.SignalSignatures[K]): number;
+        connect<K extends keyof Ruleset.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Ruleset.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Ruleset.SignalSignatures>(
             signal: K,
-            callback: Ruleset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Ruleset.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Ruleset.SignalSignatures>(
             signal: K,
-            ...args: Ruleset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Ruleset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -3685,26 +3685,12 @@ export namespace NetworkManager {
         FREQ_5GHZ,
     }
     namespace Connection {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: Connection): void;
-        }
-
-        interface SecretsCleared {
-            (_source: Connection): void;
-        }
-
-        interface SecretsUpdated {
-            (_source: Connection, setting_name: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            'secrets-cleared': SecretsCleared;
-            'secrets-updated': SecretsUpdated;
-            'notify::path': GObject.Object.Notify;
+            changed: () => void;
+            'secrets-cleared': () => void;
+            'secrets-updated': (arg0: string) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3729,6 +3715,14 @@ export namespace NetworkManager {
          */
         get path(): string;
         set path(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Connection.SignalSignatures;
 
         // Constructors
 
@@ -3744,17 +3738,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            callback: Connection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            callback: Connection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4127,7 +4121,7 @@ export namespace NetworkManager {
     namespace Setting {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4153,6 +4147,14 @@ export namespace NetworkManager {
          */
         get name(): string;
         set name(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Setting.SignalSignatures;
 
         // Constructors
 
@@ -4167,16 +4169,19 @@ export namespace NetworkManager {
 
         // Signals
 
-        connect<K extends keyof Setting.SignalSignatures>(signal: K, callback: Setting.SignalSignatures[K]): number;
+        connect<K extends keyof Setting.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Setting.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Setting.SignalSignatures>(
             signal: K,
-            callback: Setting.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Setting.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Setting.SignalSignatures>(
             signal: K,
-            ...args: Setting.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Setting.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4321,29 +4326,29 @@ export namespace NetworkManager {
     namespace Setting8021x {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::anonymous-identity': GObject.Object.Notify;
-            'notify::ca-path': GObject.Object.Notify;
-            'notify::identity': GObject.Object.Notify;
-            'notify::pac-file': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::password-flags': GObject.Object.Notify;
-            'notify::password-raw-flags': GObject.Object.Notify;
-            'notify::phase1-fast-provisioning': GObject.Object.Notify;
-            'notify::phase1-peaplabel': GObject.Object.Notify;
-            'notify::phase1-peapver': GObject.Object.Notify;
-            'notify::phase2-auth': GObject.Object.Notify;
-            'notify::phase2-autheap': GObject.Object.Notify;
-            'notify::phase2-ca-path': GObject.Object.Notify;
-            'notify::phase2-private-key-password': GObject.Object.Notify;
-            'notify::phase2-private-key-password-flags': GObject.Object.Notify;
-            'notify::phase2-subject-match': GObject.Object.Notify;
-            'notify::pin': GObject.Object.Notify;
-            'notify::pin-flags': GObject.Object.Notify;
-            'notify::private-key-password': GObject.Object.Notify;
-            'notify::private-key-password-flags': GObject.Object.Notify;
-            'notify::subject-match': GObject.Object.Notify;
-            'notify::system-ca-certs': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::anonymous-identity': (pspec: GObject.ParamSpec) => void;
+            'notify::ca-path': (pspec: GObject.ParamSpec) => void;
+            'notify::identity': (pspec: GObject.ParamSpec) => void;
+            'notify::pac-file': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::password-raw-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::phase1-fast-provisioning': (pspec: GObject.ParamSpec) => void;
+            'notify::phase1-peaplabel': (pspec: GObject.ParamSpec) => void;
+            'notify::phase1-peapver': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-auth': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-autheap': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-ca-path': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-private-key-password': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-private-key-password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-subject-match': (pspec: GObject.ParamSpec) => void;
+            'notify::pin': (pspec: GObject.ParamSpec) => void;
+            'notify::pin-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::private-key-password': (pspec: GObject.ParamSpec) => void;
+            'notify::private-key-password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::subject-match': (pspec: GObject.ParamSpec) => void;
+            'notify::system-ca-certs': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4708,6 +4713,14 @@ export namespace NetworkManager {
          */
         get systemCaCerts(): boolean;
         set systemCaCerts(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Setting8021x.SignalSignatures;
 
         // Constructors
 
@@ -4721,17 +4734,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof Setting8021x.SignalSignatures>(
             signal: K,
-            callback: Setting8021x.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Setting8021x.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Setting8021x.SignalSignatures>(
             signal: K,
-            callback: Setting8021x.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Setting8021x.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Setting8021x.SignalSignatures>(
             signal: K,
-            ...args: Setting8021x.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Setting8021x.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5205,14 +5218,14 @@ export namespace NetworkManager {
     namespace SettingAdsl {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::encapsulation': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::password-flags': GObject.Object.Notify;
-            'notify::protocol': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
-            'notify::vci': GObject.Object.Notify;
-            'notify::vpi': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::encapsulation': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::protocol': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
+            'notify::vci': (pspec: GObject.ParamSpec) => void;
+            'notify::vpi': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5274,6 +5287,14 @@ export namespace NetworkManager {
          */
         get vpi(): number;
         set vpi(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingAdsl.SignalSignatures;
 
         // Constructors
 
@@ -5287,17 +5308,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingAdsl.SignalSignatures>(
             signal: K,
-            callback: SettingAdsl.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingAdsl.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingAdsl.SignalSignatures>(
             signal: K,
-            callback: SettingAdsl.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingAdsl.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingAdsl.SignalSignatures>(
             signal: K,
-            ...args: SettingAdsl.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingAdsl.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5315,8 +5336,8 @@ export namespace NetworkManager {
     namespace SettingBluetooth {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::type': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5337,6 +5358,14 @@ export namespace NetworkManager {
          */
         get type(): string;
         set type(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingBluetooth.SignalSignatures;
 
         // Constructors
 
@@ -5350,17 +5379,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingBluetooth.SignalSignatures>(
             signal: K,
-            callback: SettingBluetooth.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingBluetooth.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingBluetooth.SignalSignatures>(
             signal: K,
-            callback: SettingBluetooth.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingBluetooth.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingBluetooth.SignalSignatures>(
             signal: K,
-            ...args: SettingBluetooth.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingBluetooth.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5383,8 +5412,8 @@ export namespace NetworkManager {
     namespace SettingBond {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::interface-name': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5410,6 +5439,14 @@ export namespace NetworkManager {
          */
         get interfaceName(): string;
         set interfaceName(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingBond.SignalSignatures;
 
         // Constructors
 
@@ -5423,17 +5460,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingBond.SignalSignatures>(
             signal: K,
-            callback: SettingBond.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingBond.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingBond.SignalSignatures>(
             signal: K,
-            callback: SettingBond.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingBond.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingBond.SignalSignatures>(
             signal: K,
-            ...args: SettingBond.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingBond.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5505,14 +5542,14 @@ export namespace NetworkManager {
     namespace SettingBridge {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::ageing-time': GObject.Object.Notify;
-            'notify::forward-delay': GObject.Object.Notify;
-            'notify::hello-time': GObject.Object.Notify;
-            'notify::interface-name': GObject.Object.Notify;
-            'notify::max-age': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::stp': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::ageing-time': (pspec: GObject.ParamSpec) => void;
+            'notify::forward-delay': (pspec: GObject.ParamSpec) => void;
+            'notify::hello-time': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::max-age': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::stp': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5600,6 +5637,14 @@ export namespace NetworkManager {
          */
         get stp(): boolean;
         set stp(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingBridge.SignalSignatures;
 
         // Constructors
 
@@ -5613,17 +5658,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingBridge.SignalSignatures>(
             signal: K,
-            callback: SettingBridge.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingBridge.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingBridge.SignalSignatures>(
             signal: K,
-            callback: SettingBridge.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingBridge.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingBridge.SignalSignatures>(
             signal: K,
-            ...args: SettingBridge.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingBridge.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5642,10 +5687,10 @@ export namespace NetworkManager {
     namespace SettingBridgePort {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::hairpin-mode': GObject.Object.Notify;
-            'notify::path-cost': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::hairpin-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::path-cost': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5693,6 +5738,14 @@ export namespace NetworkManager {
          */
         get priority(): number;
         set priority(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingBridgePort.SignalSignatures;
 
         // Constructors
 
@@ -5706,17 +5759,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingBridgePort.SignalSignatures>(
             signal: K,
-            callback: SettingBridgePort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingBridgePort.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingBridgePort.SignalSignatures>(
             signal: K,
-            callback: SettingBridgePort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingBridgePort.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingBridgePort.SignalSignatures>(
             signal: K,
-            ...args: SettingBridgePort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingBridgePort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5730,11 +5783,11 @@ export namespace NetworkManager {
     namespace SettingCdma {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::number': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::password-flags': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::number': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5784,6 +5837,14 @@ export namespace NetworkManager {
          */
         get username(): string;
         set username(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingCdma.SignalSignatures;
 
         // Constructors
 
@@ -5797,17 +5858,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingCdma.SignalSignatures>(
             signal: K,
-            callback: SettingCdma.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingCdma.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingCdma.SignalSignatures>(
             signal: K,
-            callback: SettingCdma.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingCdma.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingCdma.SignalSignatures>(
             signal: K,
-            ...args: SettingCdma.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingCdma.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5822,18 +5883,18 @@ export namespace NetworkManager {
     namespace SettingConnection {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::gateway-ping-timeout': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::interface-name': GObject.Object.Notify;
-            'notify::master': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::slave-type': GObject.Object.Notify;
-            'notify::timestamp': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::uuid': GObject.Object.Notify;
-            'notify::zone': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::gateway-ping-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::master': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            'notify::slave-type': (pspec: GObject.ParamSpec) => void;
+            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::uuid': (pspec: GObject.ParamSpec) => void;
+            'notify::zone': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5999,6 +6060,14 @@ export namespace NetworkManager {
          */
         get zone(): string;
         set zone(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingConnection.SignalSignatures;
 
         // Constructors
 
@@ -6012,17 +6081,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingConnection.SignalSignatures>(
             signal: K,
-            callback: SettingConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingConnection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingConnection.SignalSignatures>(
             signal: K,
-            callback: SettingConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingConnection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingConnection.SignalSignatures>(
             signal: K,
-            ...args: SettingConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6151,16 +6220,16 @@ export namespace NetworkManager {
     namespace SettingDcb {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::app-fcoe-flags': GObject.Object.Notify;
-            'notify::app-fcoe-mode': GObject.Object.Notify;
-            'notify::app-fcoe-priority': GObject.Object.Notify;
-            'notify::app-fip-flags': GObject.Object.Notify;
-            'notify::app-fip-priority': GObject.Object.Notify;
-            'notify::app-iscsi-flags': GObject.Object.Notify;
-            'notify::app-iscsi-priority': GObject.Object.Notify;
-            'notify::priority-flow-control-flags': GObject.Object.Notify;
-            'notify::priority-group-flags': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::app-fcoe-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::app-fcoe-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::app-fcoe-priority': (pspec: GObject.ParamSpec) => void;
+            'notify::app-fip-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::app-fip-priority': (pspec: GObject.ParamSpec) => void;
+            'notify::app-iscsi-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::app-iscsi-priority': (pspec: GObject.ParamSpec) => void;
+            'notify::priority-flow-control-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::priority-group-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6316,6 +6385,14 @@ export namespace NetworkManager {
          */
         get priorityGroupFlags(): number;
         set priorityGroupFlags(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingDcb.SignalSignatures;
 
         // Constructors
 
@@ -6329,17 +6406,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingDcb.SignalSignatures>(
             signal: K,
-            callback: SettingDcb.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingDcb.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingDcb.SignalSignatures>(
             signal: K,
-            callback: SettingDcb.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingDcb.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingDcb.SignalSignatures>(
             signal: K,
-            ...args: SettingDcb.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingDcb.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6401,7 +6478,7 @@ export namespace NetworkManager {
     namespace SettingGeneric {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6411,6 +6488,14 @@ export namespace NetworkManager {
 
     class SettingGeneric extends Setting {
         static $gtype: GObject.GType<SettingGeneric>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingGeneric.SignalSignatures;
 
         // Constructors
 
@@ -6424,17 +6509,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingGeneric.SignalSignatures>(
             signal: K,
-            callback: SettingGeneric.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingGeneric.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingGeneric.SignalSignatures>(
             signal: K,
-            callback: SettingGeneric.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingGeneric.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingGeneric.SignalSignatures>(
             signal: K,
-            ...args: SettingGeneric.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingGeneric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -6442,18 +6527,18 @@ export namespace NetworkManager {
     namespace SettingGsm {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::allowed-bands': GObject.Object.Notify;
-            'notify::apn': GObject.Object.Notify;
-            'notify::home-only': GObject.Object.Notify;
-            'notify::network-id': GObject.Object.Notify;
-            'notify::network-type': GObject.Object.Notify;
-            'notify::number': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::password-flags': GObject.Object.Notify;
-            'notify::pin': GObject.Object.Notify;
-            'notify::pin-flags': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::allowed-bands': (pspec: GObject.ParamSpec) => void;
+            'notify::apn': (pspec: GObject.ParamSpec) => void;
+            'notify::home-only': (pspec: GObject.ParamSpec) => void;
+            'notify::network-id': (pspec: GObject.ParamSpec) => void;
+            'notify::network-type': (pspec: GObject.ParamSpec) => void;
+            'notify::number': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::pin': (pspec: GObject.ParamSpec) => void;
+            'notify::pin-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6614,6 +6699,14 @@ export namespace NetworkManager {
          */
         get username(): string;
         set username(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingGsm.SignalSignatures;
 
         // Constructors
 
@@ -6627,17 +6720,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingGsm.SignalSignatures>(
             signal: K,
-            callback: SettingGsm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingGsm.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingGsm.SignalSignatures>(
             signal: K,
-            callback: SettingGsm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingGsm.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingGsm.SignalSignatures>(
             signal: K,
-            ...args: SettingGsm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingGsm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6659,17 +6752,17 @@ export namespace NetworkManager {
     namespace SettingIP4Config {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::dhcp-client-id': GObject.Object.Notify;
-            'notify::dhcp-hostname': GObject.Object.Notify;
-            'notify::dhcp-send-hostname': GObject.Object.Notify;
-            'notify::dhcp-timeout': GObject.Object.Notify;
-            'notify::ignore-auto-dns': GObject.Object.Notify;
-            'notify::ignore-auto-routes': GObject.Object.Notify;
-            'notify::may-fail': GObject.Object.Notify;
-            'notify::method': GObject.Object.Notify;
-            'notify::never-default': GObject.Object.Notify;
-            'notify::route-metric': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::dhcp-client-id': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-hostname': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-send-hostname': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::ignore-auto-dns': (pspec: GObject.ParamSpec) => void;
+            'notify::ignore-auto-routes': (pspec: GObject.ParamSpec) => void;
+            'notify::may-fail': (pspec: GObject.ParamSpec) => void;
+            'notify::method': (pspec: GObject.ParamSpec) => void;
+            'notify::never-default': (pspec: GObject.ParamSpec) => void;
+            'notify::route-metric': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6860,6 +6953,14 @@ export namespace NetworkManager {
          */
         get routeMetric(): number;
         set routeMetric(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingIP4Config.SignalSignatures;
 
         // Constructors
 
@@ -6873,17 +6974,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingIP4Config.SignalSignatures>(
             signal: K,
-            callback: SettingIP4Config.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingIP4Config.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingIP4Config.SignalSignatures>(
             signal: K,
-            callback: SettingIP4Config.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingIP4Config.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingIP4Config.SignalSignatures>(
             signal: K,
-            ...args: SettingIP4Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingIP4Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7043,15 +7144,15 @@ export namespace NetworkManager {
     namespace SettingIP6Config {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::dhcp-hostname': GObject.Object.Notify;
-            'notify::ignore-auto-dns': GObject.Object.Notify;
-            'notify::ignore-auto-routes': GObject.Object.Notify;
-            'notify::ip6-privacy': GObject.Object.Notify;
-            'notify::may-fail': GObject.Object.Notify;
-            'notify::method': GObject.Object.Notify;
-            'notify::never-default': GObject.Object.Notify;
-            'notify::route-metric': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::dhcp-hostname': (pspec: GObject.ParamSpec) => void;
+            'notify::ignore-auto-dns': (pspec: GObject.ParamSpec) => void;
+            'notify::ignore-auto-routes': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-privacy': (pspec: GObject.ParamSpec) => void;
+            'notify::may-fail': (pspec: GObject.ParamSpec) => void;
+            'notify::method': (pspec: GObject.ParamSpec) => void;
+            'notify::never-default': (pspec: GObject.ParamSpec) => void;
+            'notify::route-metric': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7218,6 +7319,14 @@ export namespace NetworkManager {
          */
         get routeMetric(): number;
         set routeMetric(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingIP6Config.SignalSignatures;
 
         // Constructors
 
@@ -7231,17 +7340,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingIP6Config.SignalSignatures>(
             signal: K,
-            callback: SettingIP6Config.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingIP6Config.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingIP6Config.SignalSignatures>(
             signal: K,
-            callback: SettingIP6Config.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingIP6Config.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingIP6Config.SignalSignatures>(
             signal: K,
-            ...args: SettingIP6Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingIP6Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7389,11 +7498,11 @@ export namespace NetworkManager {
     namespace SettingInfiniband {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::mtu': GObject.Object.Notify;
-            'notify::p-key': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::transport-mode': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::p-key': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::transport-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7455,6 +7564,14 @@ export namespace NetworkManager {
          */
         get transportMode(): string;
         set transportMode(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingInfiniband.SignalSignatures;
 
         // Constructors
 
@@ -7468,17 +7585,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingInfiniband.SignalSignatures>(
             signal: K,
-            callback: SettingInfiniband.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingInfiniband.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingInfiniband.SignalSignatures>(
             signal: K,
-            callback: SettingInfiniband.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingInfiniband.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingInfiniband.SignalSignatures>(
             signal: K,
-            ...args: SettingInfiniband.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingInfiniband.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7509,8 +7626,8 @@ export namespace NetworkManager {
     namespace SettingOlpcMesh {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::channel': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::channel': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7530,6 +7647,14 @@ export namespace NetworkManager {
          */
         get channel(): number;
         set channel(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingOlpcMesh.SignalSignatures;
 
         // Constructors
 
@@ -7543,17 +7668,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingOlpcMesh.SignalSignatures>(
             signal: K,
-            callback: SettingOlpcMesh.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingOlpcMesh.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingOlpcMesh.SignalSignatures>(
             signal: K,
-            callback: SettingOlpcMesh.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingOlpcMesh.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingOlpcMesh.SignalSignatures>(
             signal: K,
-            ...args: SettingOlpcMesh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingOlpcMesh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7567,26 +7692,26 @@ export namespace NetworkManager {
     namespace SettingPPP {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::baud': GObject.Object.Notify;
-            'notify::crtscts': GObject.Object.Notify;
-            'notify::lcp-echo-failure': GObject.Object.Notify;
-            'notify::lcp-echo-interval': GObject.Object.Notify;
-            'notify::mppe-stateful': GObject.Object.Notify;
-            'notify::mru': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::no-vj-comp': GObject.Object.Notify;
-            'notify::noauth': GObject.Object.Notify;
-            'notify::nobsdcomp': GObject.Object.Notify;
-            'notify::nodeflate': GObject.Object.Notify;
-            'notify::refuse-chap': GObject.Object.Notify;
-            'notify::refuse-eap': GObject.Object.Notify;
-            'notify::refuse-mschap': GObject.Object.Notify;
-            'notify::refuse-mschapv2': GObject.Object.Notify;
-            'notify::refuse-pap': GObject.Object.Notify;
-            'notify::require-mppe': GObject.Object.Notify;
-            'notify::require-mppe-128': GObject.Object.Notify;
-            'notify::require-mppe128': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::baud': (pspec: GObject.ParamSpec) => void;
+            'notify::crtscts': (pspec: GObject.ParamSpec) => void;
+            'notify::lcp-echo-failure': (pspec: GObject.ParamSpec) => void;
+            'notify::lcp-echo-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::mppe-stateful': (pspec: GObject.ParamSpec) => void;
+            'notify::mru': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::no-vj-comp': (pspec: GObject.ParamSpec) => void;
+            'notify::noauth': (pspec: GObject.ParamSpec) => void;
+            'notify::nobsdcomp': (pspec: GObject.ParamSpec) => void;
+            'notify::nodeflate': (pspec: GObject.ParamSpec) => void;
+            'notify::refuse-chap': (pspec: GObject.ParamSpec) => void;
+            'notify::refuse-eap': (pspec: GObject.ParamSpec) => void;
+            'notify::refuse-mschap': (pspec: GObject.ParamSpec) => void;
+            'notify::refuse-mschapv2': (pspec: GObject.ParamSpec) => void;
+            'notify::refuse-pap': (pspec: GObject.ParamSpec) => void;
+            'notify::require-mppe': (pspec: GObject.ParamSpec) => void;
+            'notify::require-mppe-128': (pspec: GObject.ParamSpec) => void;
+            'notify::require-mppe128': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7807,6 +7932,14 @@ export namespace NetworkManager {
          */
         get requireMppe128(): boolean;
         set requireMppe128(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingPPP.SignalSignatures;
 
         // Constructors
 
@@ -7820,17 +7953,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingPPP.SignalSignatures>(
             signal: K,
-            callback: SettingPPP.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingPPP.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingPPP.SignalSignatures>(
             signal: K,
-            callback: SettingPPP.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingPPP.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingPPP.SignalSignatures>(
             signal: K,
-            ...args: SettingPPP.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingPPP.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7859,11 +7992,11 @@ export namespace NetworkManager {
     namespace SettingPPPOE {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::password': GObject.Object.Notify;
-            'notify::password-flags': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7910,6 +8043,14 @@ export namespace NetworkManager {
          */
         get username(): string;
         set username(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingPPPOE.SignalSignatures;
 
         // Constructors
 
@@ -7923,17 +8064,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingPPPOE.SignalSignatures>(
             signal: K,
-            callback: SettingPPPOE.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingPPPOE.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingPPPOE.SignalSignatures>(
             signal: K,
-            callback: SettingPPPOE.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingPPPOE.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingPPPOE.SignalSignatures>(
             signal: K,
-            ...args: SettingPPPOE.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingPPPOE.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7948,12 +8089,12 @@ export namespace NetworkManager {
     namespace SettingSerial {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::baud': GObject.Object.Notify;
-            'notify::bits': GObject.Object.Notify;
-            'notify::parity': GObject.Object.Notify;
-            'notify::send-delay': GObject.Object.Notify;
-            'notify::stopbits': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::baud': (pspec: GObject.ParamSpec) => void;
+            'notify::bits': (pspec: GObject.ParamSpec) => void;
+            'notify::parity': (pspec: GObject.ParamSpec) => void;
+            'notify::send-delay': (pspec: GObject.ParamSpec) => void;
+            'notify::stopbits': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8007,6 +8148,14 @@ export namespace NetworkManager {
          */
         get stopbits(): number;
         set stopbits(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingSerial.SignalSignatures;
 
         // Constructors
 
@@ -8020,17 +8169,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingSerial.SignalSignatures>(
             signal: K,
-            callback: SettingSerial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingSerial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingSerial.SignalSignatures>(
             signal: K,
-            callback: SettingSerial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingSerial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingSerial.SignalSignatures>(
             signal: K,
-            ...args: SettingSerial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingSerial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8046,9 +8195,9 @@ export namespace NetworkManager {
     namespace SettingTeam {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::config': GObject.Object.Notify;
-            'notify::interface-name': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::config': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8083,6 +8232,14 @@ export namespace NetworkManager {
          */
         get interfaceName(): string;
         set interfaceName(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingTeam.SignalSignatures;
 
         // Constructors
 
@@ -8096,17 +8253,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingTeam.SignalSignatures>(
             signal: K,
-            callback: SettingTeam.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingTeam.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingTeam.SignalSignatures>(
             signal: K,
-            callback: SettingTeam.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingTeam.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingTeam.SignalSignatures>(
             signal: K,
-            ...args: SettingTeam.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingTeam.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8119,8 +8276,8 @@ export namespace NetworkManager {
     namespace SettingTeamPort {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::config': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::config': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8143,6 +8300,14 @@ export namespace NetworkManager {
          */
         get config(): string;
         set config(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingTeamPort.SignalSignatures;
 
         // Constructors
 
@@ -8156,17 +8321,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingTeamPort.SignalSignatures>(
             signal: K,
-            callback: SettingTeamPort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingTeamPort.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingTeamPort.SignalSignatures>(
             signal: K,
-            callback: SettingTeamPort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingTeamPort.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingTeamPort.SignalSignatures>(
             signal: K,
-            ...args: SettingTeamPort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingTeamPort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8178,10 +8343,10 @@ export namespace NetworkManager {
     namespace SettingVPN {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::persistent': GObject.Object.Notify;
-            'notify::service-type': GObject.Object.Notify;
-            'notify::user-name': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::persistent': (pspec: GObject.ParamSpec) => void;
+            'notify::service-type': (pspec: GObject.ParamSpec) => void;
+            'notify::user-name': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8241,6 +8406,14 @@ export namespace NetworkManager {
          */
         get userName(): string;
         set userName(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingVPN.SignalSignatures;
 
         // Constructors
 
@@ -8254,17 +8427,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingVPN.SignalSignatures>(
             signal: K,
-            callback: SettingVPN.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingVPN.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingVPN.SignalSignatures>(
             signal: K,
-            callback: SettingVPN.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingVPN.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingVPN.SignalSignatures>(
             signal: K,
-            ...args: SettingVPN.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingVPN.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8350,11 +8523,11 @@ export namespace NetworkManager {
     namespace SettingVlan {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::flags': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::interface-name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8415,6 +8588,14 @@ export namespace NetworkManager {
          */
         get parent(): string;
         set parent(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingVlan.SignalSignatures;
 
         // Constructors
 
@@ -8428,17 +8609,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingVlan.SignalSignatures>(
             signal: K,
-            callback: SettingVlan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingVlan.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingVlan.SignalSignatures>(
             signal: K,
-            callback: SettingVlan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingVlan.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingVlan.SignalSignatures>(
             signal: K,
-            ...args: SettingVlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingVlan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8528,8 +8709,8 @@ export namespace NetworkManager {
     namespace SettingWimax {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::network-name': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::network-name': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8557,6 +8738,14 @@ export namespace NetworkManager {
          */
         get networkName(): string;
         set networkName(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingWimax.SignalSignatures;
 
         // Constructors
 
@@ -8570,17 +8759,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingWimax.SignalSignatures>(
             signal: K,
-            callback: SettingWimax.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWimax.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingWimax.SignalSignatures>(
             signal: K,
-            callback: SettingWimax.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWimax.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingWimax.SignalSignatures>(
             signal: K,
-            ...args: SettingWimax.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingWimax.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8603,13 +8792,13 @@ export namespace NetworkManager {
     namespace SettingWired {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::auto-negotiate': GObject.Object.Notify;
-            'notify::duplex': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::port': GObject.Object.Notify;
-            'notify::s390-nettype': GObject.Object.Notify;
-            'notify::speed': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::auto-negotiate': (pspec: GObject.ParamSpec) => void;
+            'notify::duplex': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::port': (pspec: GObject.ParamSpec) => void;
+            'notify::s390-nettype': (pspec: GObject.ParamSpec) => void;
+            'notify::speed': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8683,6 +8872,14 @@ export namespace NetworkManager {
          */
         get speed(): number;
         set speed(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingWired.SignalSignatures;
 
         // Constructors
 
@@ -8696,17 +8893,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingWired.SignalSignatures>(
             signal: K,
-            callback: SettingWired.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWired.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingWired.SignalSignatures>(
             signal: K,
-            callback: SettingWired.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWired.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingWired.SignalSignatures>(
             signal: K,
-            ...args: SettingWired.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingWired.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8807,16 +9004,16 @@ export namespace NetworkManager {
     namespace SettingWireless {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::band': GObject.Object.Notify;
-            'notify::channel': GObject.Object.Notify;
-            'notify::hidden': GObject.Object.Notify;
-            'notify::mode': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::powersave': GObject.Object.Notify;
-            'notify::rate': GObject.Object.Notify;
-            'notify::security': GObject.Object.Notify;
-            'notify::tx-power': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::band': (pspec: GObject.ParamSpec) => void;
+            'notify::channel': (pspec: GObject.ParamSpec) => void;
+            'notify::hidden': (pspec: GObject.ParamSpec) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::powersave': (pspec: GObject.ParamSpec) => void;
+            'notify::rate': (pspec: GObject.ParamSpec) => void;
+            'notify::security': (pspec: GObject.ParamSpec) => void;
+            'notify::tx-power': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8917,6 +9114,14 @@ export namespace NetworkManager {
          */
         get txPower(): number;
         set txPower(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingWireless.SignalSignatures;
 
         // Constructors
 
@@ -8930,17 +9135,17 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingWireless.SignalSignatures>(
             signal: K,
-            callback: SettingWireless.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWireless.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingWireless.SignalSignatures>(
             signal: K,
-            callback: SettingWireless.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWireless.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingWireless.SignalSignatures>(
             signal: K,
-            ...args: SettingWireless.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingWireless.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9020,21 +9225,21 @@ export namespace NetworkManager {
     namespace SettingWirelessSecurity {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::auth-alg': GObject.Object.Notify;
-            'notify::key-mgmt': GObject.Object.Notify;
-            'notify::leap-password': GObject.Object.Notify;
-            'notify::leap-password-flags': GObject.Object.Notify;
-            'notify::leap-username': GObject.Object.Notify;
-            'notify::psk': GObject.Object.Notify;
-            'notify::psk-flags': GObject.Object.Notify;
-            'notify::wep-key-flags': GObject.Object.Notify;
-            'notify::wep-key-type': GObject.Object.Notify;
-            'notify::wep-key0': GObject.Object.Notify;
-            'notify::wep-key1': GObject.Object.Notify;
-            'notify::wep-key2': GObject.Object.Notify;
-            'notify::wep-key3': GObject.Object.Notify;
-            'notify::wep-tx-keyidx': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::auth-alg': (pspec: GObject.ParamSpec) => void;
+            'notify::key-mgmt': (pspec: GObject.ParamSpec) => void;
+            'notify::leap-password': (pspec: GObject.ParamSpec) => void;
+            'notify::leap-password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::leap-username': (pspec: GObject.ParamSpec) => void;
+            'notify::psk': (pspec: GObject.ParamSpec) => void;
+            'notify::psk-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::wep-key-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::wep-key-type': (pspec: GObject.ParamSpec) => void;
+            'notify::wep-key0': (pspec: GObject.ParamSpec) => void;
+            'notify::wep-key1': (pspec: GObject.ParamSpec) => void;
+            'notify::wep-key2': (pspec: GObject.ParamSpec) => void;
+            'notify::wep-key3': (pspec: GObject.ParamSpec) => void;
+            'notify::wep-tx-keyidx': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9265,6 +9470,14 @@ export namespace NetworkManager {
          */
         get wepTxKeyidx(): number;
         set wepTxKeyidx(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingWirelessSecurity.SignalSignatures;
 
         // Constructors
 
@@ -9278,17 +9491,19 @@ export namespace NetworkManager {
 
         connect<K extends keyof SettingWirelessSecurity.SignalSignatures>(
             signal: K,
-            callback: SettingWirelessSecurity.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWirelessSecurity.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingWirelessSecurity.SignalSignatures>(
             signal: K,
-            callback: SettingWirelessSecurity.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWirelessSecurity.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingWirelessSecurity.SignalSignatures>(
             signal: K,
-            ...args: SettingWirelessSecurity.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingWirelessSecurity.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

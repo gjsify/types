@@ -259,6 +259,14 @@ export namespace GnomeDesktop {
 
     class DesktopThumbnailFactory extends GObject.Object {
         static $gtype: GObject.GType<DesktopThumbnailFactory>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DesktopThumbnailFactory.SignalSignatures;
 
         // Constructors
 
@@ -272,17 +280,19 @@ export namespace GnomeDesktop {
 
         connect<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
             signal: K,
-            callback: DesktopThumbnailFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DesktopThumbnailFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
             signal: K,
-            callback: DesktopThumbnailFactory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DesktopThumbnailFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
             signal: K,
-            ...args: DesktopThumbnailFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DesktopThumbnailFactory.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -509,6 +519,14 @@ export namespace GnomeDesktop {
 
     class IdleMonitor extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<IdleMonitor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IdleMonitor.SignalSignatures;
 
         // Constructors
 
@@ -522,17 +540,17 @@ export namespace GnomeDesktop {
 
         connect<K extends keyof IdleMonitor.SignalSignatures>(
             signal: K,
-            callback: IdleMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IdleMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IdleMonitor.SignalSignatures>(
             signal: K,
-            callback: IdleMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IdleMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IdleMonitor.SignalSignatures>(
             signal: K,
-            ...args: IdleMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IdleMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1087,6 +1105,14 @@ export namespace GnomeDesktop {
 
     class PnpIds extends GObject.Object {
         static $gtype: GObject.GType<PnpIds>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PnpIds.SignalSignatures;
 
         // Constructors
 
@@ -1098,13 +1124,19 @@ export namespace GnomeDesktop {
 
         // Signals
 
-        connect<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: PnpIds.SignalSignatures[K]): number;
+        connect<K extends keyof PnpIds.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, PnpIds.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: PnpIds.SignalSignatures[K]): number;
+        connect_after<K extends keyof PnpIds.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, PnpIds.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PnpIds.SignalSignatures>(
             signal: K,
-            ...args: PnpIds.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PnpIds.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1121,10 +1153,10 @@ export namespace GnomeDesktop {
     namespace WallClock {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::clock': GObject.Object.Notify;
-            'notify::force-seconds': GObject.Object.Notify;
-            'notify::time-only': GObject.Object.Notify;
-            'notify::timezone': GObject.Object.Notify;
+            'notify::clock': (pspec: GObject.ParamSpec) => void;
+            'notify::force-seconds': (pspec: GObject.ParamSpec) => void;
+            'notify::time-only': (pspec: GObject.ParamSpec) => void;
+            'notify::timezone': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1178,6 +1210,14 @@ export namespace GnomeDesktop {
          * The timezone used for this clock
          */
         get timezone(): GLib.TimeZone;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WallClock.SignalSignatures;
 
         // Fields
 
@@ -1193,16 +1233,19 @@ export namespace GnomeDesktop {
 
         // Signals
 
-        connect<K extends keyof WallClock.SignalSignatures>(signal: K, callback: WallClock.SignalSignatures[K]): number;
+        connect<K extends keyof WallClock.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WallClock.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WallClock.SignalSignatures>(
             signal: K,
-            callback: WallClock.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WallClock.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WallClock.SignalSignatures>(
             signal: K,
-            ...args: WallClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WallClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1229,15 +1272,9 @@ export namespace GnomeDesktop {
     }
 
     namespace XkbInfo {
-        // Signal callback interfaces
-
-        interface LayoutsChanged {
-            (_source: XkbInfo): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'layouts-changed': LayoutsChanged;
+            'layouts-changed': () => void;
         }
 
         // Constructor properties interface
@@ -1247,6 +1284,14 @@ export namespace GnomeDesktop {
 
     class XkbInfo extends GObject.Object {
         static $gtype: GObject.GType<XkbInfo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XkbInfo.SignalSignatures;
 
         // Fields
 
@@ -1262,16 +1307,19 @@ export namespace GnomeDesktop {
 
         // Signals
 
-        connect<K extends keyof XkbInfo.SignalSignatures>(signal: K, callback: XkbInfo.SignalSignatures[K]): number;
+        connect<K extends keyof XkbInfo.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XkbInfo.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XkbInfo.SignalSignatures>(
             signal: K,
-            callback: XkbInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XkbInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XkbInfo.SignalSignatures>(
             signal: K,
-            ...args: XkbInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XkbInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

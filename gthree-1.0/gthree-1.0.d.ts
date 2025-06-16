@@ -323,14 +323,14 @@ export namespace Gthree {
     namespace AmbientLight {
         // Signal signatures
         interface SignalSignatures extends Light.SignalSignatures {
-            'notify::color': GObject.Object.Notify;
-            'notify::intensity': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::intensity': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -340,6 +340,14 @@ export namespace Gthree {
 
     class AmbientLight extends Light {
         static $gtype: GObject.GType<AmbientLight>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AmbientLight.SignalSignatures;
 
         // Constructors
 
@@ -356,17 +364,17 @@ export namespace Gthree {
 
         connect<K extends keyof AmbientLight.SignalSignatures>(
             signal: K,
-            callback: AmbientLight.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AmbientLight.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AmbientLight.SignalSignatures>(
             signal: K,
-            callback: AmbientLight.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AmbientLight.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AmbientLight.SignalSignatures>(
             signal: K,
-            ...args: AmbientLight.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AmbientLight.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -382,6 +390,14 @@ export namespace Gthree {
 
     class AnimationAction extends GObject.Object {
         static $gtype: GObject.GType<AnimationAction>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AnimationAction.SignalSignatures;
 
         // Constructors
 
@@ -395,17 +411,17 @@ export namespace Gthree {
 
         connect<K extends keyof AnimationAction.SignalSignatures>(
             signal: K,
-            callback: AnimationAction.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnimationAction.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnimationAction.SignalSignatures>(
             signal: K,
-            callback: AnimationAction.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnimationAction.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnimationAction.SignalSignatures>(
             signal: K,
-            ...args: AnimationAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AnimationAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -453,6 +469,14 @@ export namespace Gthree {
 
     class AnimationClip extends GObject.Object {
         static $gtype: GObject.GType<AnimationClip>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AnimationClip.SignalSignatures;
 
         // Constructors
 
@@ -466,17 +490,17 @@ export namespace Gthree {
 
         connect<K extends keyof AnimationClip.SignalSignatures>(
             signal: K,
-            callback: AnimationClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnimationClip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnimationClip.SignalSignatures>(
             signal: K,
-            callback: AnimationClip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnimationClip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnimationClip.SignalSignatures>(
             signal: K,
-            ...args: AnimationClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AnimationClip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -492,20 +516,10 @@ export namespace Gthree {
     }
 
     namespace AnimationMixer {
-        // Signal callback interfaces
-
-        interface Finished {
-            (_source: AnimationMixer, object: AnimationAction, p0: number): void;
-        }
-
-        interface Loop {
-            (_source: AnimationMixer, object: AnimationAction, p0: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            finished: Finished;
-            loop: Loop;
+            finished: (arg0: AnimationAction, arg1: number) => void;
+            loop: (arg0: AnimationAction, arg1: number) => void;
         }
 
         // Constructor properties interface
@@ -515,6 +529,14 @@ export namespace Gthree {
 
     class AnimationMixer extends GObject.Object {
         static $gtype: GObject.GType<AnimationMixer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AnimationMixer.SignalSignatures;
 
         // Constructors
 
@@ -528,17 +550,17 @@ export namespace Gthree {
 
         connect<K extends keyof AnimationMixer.SignalSignatures>(
             signal: K,
-            callback: AnimationMixer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnimationMixer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnimationMixer.SignalSignatures>(
             signal: K,
-            callback: AnimationMixer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AnimationMixer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnimationMixer.SignalSignatures>(
             signal: K,
-            ...args: AnimationMixer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AnimationMixer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -566,6 +588,14 @@ export namespace Gthree {
 
     class Attribute extends Resource {
         static $gtype: GObject.GType<Attribute>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Attribute.SignalSignatures;
 
         // Constructors
 
@@ -600,16 +630,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Attribute.SignalSignatures>(signal: K, callback: Attribute.SignalSignatures[K]): number;
+        connect<K extends keyof Attribute.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Attribute.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Attribute.SignalSignatures>(
             signal: K,
-            callback: Attribute.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Attribute.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Attribute.SignalSignatures>(
             signal: K,
-            ...args: Attribute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Attribute.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -689,6 +722,14 @@ export namespace Gthree {
 
     class BloomPass extends Pass {
         static $gtype: GObject.GType<BloomPass>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BloomPass.SignalSignatures;
 
         // Constructors
 
@@ -700,16 +741,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof BloomPass.SignalSignatures>(signal: K, callback: BloomPass.SignalSignatures[K]): number;
+        connect<K extends keyof BloomPass.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, BloomPass.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BloomPass.SignalSignatures>(
             signal: K,
-            callback: BloomPass.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BloomPass.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BloomPass.SignalSignatures>(
             signal: K,
-            ...args: BloomPass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BloomPass.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -717,12 +761,12 @@ export namespace Gthree {
     namespace Bone {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -732,6 +776,14 @@ export namespace Gthree {
 
     class Bone extends Object {
         static $gtype: GObject.GType<Bone>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Bone.SignalSignatures;
 
         // Constructors
 
@@ -743,13 +795,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Bone.SignalSignatures>(signal: K, callback: Bone.SignalSignatures[K]): number;
+        connect<K extends keyof Bone.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Bone.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Bone.SignalSignatures>(signal: K, callback: Bone.SignalSignatures[K]): number;
+        connect_after<K extends keyof Bone.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Bone.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Bone.SignalSignatures>(
             signal: K,
-            ...args: Bone.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Bone.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -757,14 +815,14 @@ export namespace Gthree {
     namespace Camera {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::far': GObject.Object.Notify;
-            'notify::near': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::far': (pspec: GObject.ParamSpec) => void;
+            'notify::near': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -784,6 +842,14 @@ export namespace Gthree {
         set far(val: number);
         get near(): number;
         set near(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Camera.SignalSignatures;
 
         // Constructors
 
@@ -793,13 +859,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
+        connect<K extends keyof Camera.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
+        connect_after<K extends keyof Camera.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Camera.SignalSignatures>(
             signal: K,
-            ...args: Camera.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Camera.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -842,6 +914,14 @@ export namespace Gthree {
 
     class ClearPass extends Pass {
         static $gtype: GObject.GType<ClearPass>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClearPass.SignalSignatures;
 
         // Constructors
 
@@ -853,16 +933,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof ClearPass.SignalSignatures>(signal: K, callback: ClearPass.SignalSignatures[K]): number;
+        connect<K extends keyof ClearPass.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClearPass.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClearPass.SignalSignatures>(
             signal: K,
-            callback: ClearPass.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClearPass.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClearPass.SignalSignatures>(
             signal: K,
-            ...args: ClearPass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClearPass.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -882,6 +965,14 @@ export namespace Gthree {
 
     class ColorKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<ColorKeyframeTrack>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ColorKeyframeTrack.SignalSignatures;
 
         // Constructors
 
@@ -895,17 +986,17 @@ export namespace Gthree {
 
         connect<K extends keyof ColorKeyframeTrack.SignalSignatures>(
             signal: K,
-            callback: ColorKeyframeTrack.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColorKeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColorKeyframeTrack.SignalSignatures>(
             signal: K,
-            callback: ColorKeyframeTrack.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColorKeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColorKeyframeTrack.SignalSignatures>(
             signal: K,
-            ...args: ColorKeyframeTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ColorKeyframeTrack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -913,8 +1004,8 @@ export namespace Gthree {
     namespace CubeTexture {
         // Signal signatures
         interface SignalSignatures extends Texture.SignalSignatures {
-            'notify::pixbuf': GObject.Object.Notify;
-            'notify::surface': GObject.Object.Notify;
+            'notify::pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::surface': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -924,6 +1015,14 @@ export namespace Gthree {
 
     class CubeTexture extends Texture {
         static $gtype: GObject.GType<CubeTexture>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CubeTexture.SignalSignatures;
 
         // Constructors
 
@@ -949,17 +1048,17 @@ export namespace Gthree {
 
         connect<K extends keyof CubeTexture.SignalSignatures>(
             signal: K,
-            callback: CubeTexture.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CubeTexture.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CubeTexture.SignalSignatures>(
             signal: K,
-            callback: CubeTexture.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CubeTexture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CubeTexture.SignalSignatures>(
             signal: K,
-            ...args: CubeTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CubeTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -975,6 +1074,14 @@ export namespace Gthree {
 
     class CubicInterpolant extends Interpolant {
         static $gtype: GObject.GType<CubicInterpolant>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CubicInterpolant.SignalSignatures;
 
         // Constructors
 
@@ -988,17 +1095,17 @@ export namespace Gthree {
 
         connect<K extends keyof CubicInterpolant.SignalSignatures>(
             signal: K,
-            callback: CubicInterpolant.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CubicInterpolant.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CubicInterpolant.SignalSignatures>(
             signal: K,
-            callback: CubicInterpolant.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CubicInterpolant.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CubicInterpolant.SignalSignatures>(
             signal: K,
-            ...args: CubicInterpolant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CubicInterpolant.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1006,15 +1113,15 @@ export namespace Gthree {
     namespace DirectionalLight {
         // Signal signatures
         interface SignalSignatures extends Light.SignalSignatures {
-            'notify::target': GObject.Object.Notify;
-            'notify::color': GObject.Object.Notify;
-            'notify::intensity': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::target': (pspec: GObject.ParamSpec) => void;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::intensity': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1031,6 +1138,14 @@ export namespace Gthree {
 
         get target(): Object;
         set target(val: Object);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DirectionalLight.SignalSignatures;
 
         // Constructors
 
@@ -1047,17 +1162,17 @@ export namespace Gthree {
 
         connect<K extends keyof DirectionalLight.SignalSignatures>(
             signal: K,
-            callback: DirectionalLight.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DirectionalLight.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DirectionalLight.SignalSignatures>(
             signal: K,
-            callback: DirectionalLight.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DirectionalLight.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DirectionalLight.SignalSignatures>(
             signal: K,
-            ...args: DirectionalLight.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DirectionalLight.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1077,6 +1192,14 @@ export namespace Gthree {
 
     class DirectionalLightShadow extends LightShadow {
         static $gtype: GObject.GType<DirectionalLightShadow>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DirectionalLightShadow.SignalSignatures;
 
         // Constructors
 
@@ -1088,17 +1211,19 @@ export namespace Gthree {
 
         connect<K extends keyof DirectionalLightShadow.SignalSignatures>(
             signal: K,
-            callback: DirectionalLightShadow.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DirectionalLightShadow.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DirectionalLightShadow.SignalSignatures>(
             signal: K,
-            callback: DirectionalLightShadow.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DirectionalLightShadow.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DirectionalLightShadow.SignalSignatures>(
             signal: K,
-            ...args: DirectionalLightShadow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DirectionalLightShadow.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1114,6 +1239,14 @@ export namespace Gthree {
 
     class DiscreteInterpolant extends Interpolant {
         static $gtype: GObject.GType<DiscreteInterpolant>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DiscreteInterpolant.SignalSignatures;
 
         // Constructors
 
@@ -1127,17 +1260,19 @@ export namespace Gthree {
 
         connect<K extends keyof DiscreteInterpolant.SignalSignatures>(
             signal: K,
-            callback: DiscreteInterpolant.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DiscreteInterpolant.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DiscreteInterpolant.SignalSignatures>(
             signal: K,
-            callback: DiscreteInterpolant.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DiscreteInterpolant.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DiscreteInterpolant.SignalSignatures>(
             signal: K,
-            ...args: DiscreteInterpolant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DiscreteInterpolant.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1153,6 +1288,14 @@ export namespace Gthree {
 
     class EffectComposer extends GObject.Object {
         static $gtype: GObject.GType<EffectComposer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: EffectComposer.SignalSignatures;
 
         // Constructors
 
@@ -1166,17 +1309,17 @@ export namespace Gthree {
 
         connect<K extends keyof EffectComposer.SignalSignatures>(
             signal: K,
-            callback: EffectComposer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EffectComposer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EffectComposer.SignalSignatures>(
             signal: K,
-            callback: EffectComposer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EffectComposer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EffectComposer.SignalSignatures>(
             signal: K,
-            ...args: EffectComposer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<EffectComposer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1199,6 +1342,14 @@ export namespace Gthree {
 
     class Fog extends GObject.Object {
         static $gtype: GObject.GType<Fog>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Fog.SignalSignatures;
 
         // Constructors
 
@@ -1212,13 +1363,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Fog.SignalSignatures>(signal: K, callback: Fog.SignalSignatures[K]): number;
+        connect<K extends keyof Fog.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Fog.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Fog.SignalSignatures>(signal: K, callback: Fog.SignalSignatures[K]): number;
+        connect_after<K extends keyof Fog.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Fog.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Fog.SignalSignatures>(
             signal: K,
-            ...args: Fog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Fog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1247,6 +1404,14 @@ export namespace Gthree {
 
     class FullscreenQuadPass extends Pass {
         static $gtype: GObject.GType<FullscreenQuadPass>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FullscreenQuadPass.SignalSignatures;
 
         // Constructors
 
@@ -1260,17 +1425,17 @@ export namespace Gthree {
 
         connect<K extends keyof FullscreenQuadPass.SignalSignatures>(
             signal: K,
-            callback: FullscreenQuadPass.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FullscreenQuadPass.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FullscreenQuadPass.SignalSignatures>(
             signal: K,
-            callback: FullscreenQuadPass.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FullscreenQuadPass.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FullscreenQuadPass.SignalSignatures>(
             signal: K,
-            ...args: FullscreenQuadPass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FullscreenQuadPass.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1290,6 +1455,14 @@ export namespace Gthree {
 
     class Geometry extends GObject.Object {
         static $gtype: GObject.GType<Geometry>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Geometry.SignalSignatures;
 
         // Fields
 
@@ -1379,16 +1552,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Geometry.SignalSignatures>(signal: K, callback: Geometry.SignalSignatures[K]): number;
+        connect<K extends keyof Geometry.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Geometry.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Geometry.SignalSignatures>(
             signal: K,
-            callback: Geometry.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Geometry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Geometry.SignalSignatures>(
             signal: K,
-            ...args: Geometry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Geometry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1420,12 +1596,12 @@ export namespace Gthree {
     namespace Group {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1435,6 +1611,14 @@ export namespace Gthree {
 
     class Group extends Object {
         static $gtype: GObject.GType<Group>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Group.SignalSignatures;
 
         // Constructors
 
@@ -1446,13 +1630,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
+        connect<K extends keyof Group.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Group.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
+        connect_after<K extends keyof Group.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Group.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Group.SignalSignatures>(
             signal: K,
-            ...args: Group.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Group.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1460,15 +1650,15 @@ export namespace Gthree {
     namespace HemisphereLight {
         // Signal signatures
         interface SignalSignatures extends Light.SignalSignatures {
-            'notify::ground-color': GObject.Object.Notify;
-            'notify::color': GObject.Object.Notify;
-            'notify::intensity': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::ground-color': (pspec: GObject.ParamSpec) => void;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::intensity': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1488,6 +1678,14 @@ export namespace Gthree {
         set ground_color(val: Graphene.Vec3);
         get groundColor(): Graphene.Vec3;
         set groundColor(val: Graphene.Vec3);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HemisphereLight.SignalSignatures;
 
         // Constructors
 
@@ -1504,17 +1702,17 @@ export namespace Gthree {
 
         connect<K extends keyof HemisphereLight.SignalSignatures>(
             signal: K,
-            callback: HemisphereLight.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HemisphereLight.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HemisphereLight.SignalSignatures>(
             signal: K,
-            callback: HemisphereLight.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HemisphereLight.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HemisphereLight.SignalSignatures>(
             signal: K,
-            ...args: HemisphereLight.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HemisphereLight.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1530,6 +1728,14 @@ export namespace Gthree {
 
     class Interpolant extends GObject.Object {
         static $gtype: GObject.GType<Interpolant>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Interpolant.SignalSignatures;
 
         // Constructors
 
@@ -1541,17 +1747,17 @@ export namespace Gthree {
 
         connect<K extends keyof Interpolant.SignalSignatures>(
             signal: K,
-            callback: Interpolant.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Interpolant.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Interpolant.SignalSignatures>(
             signal: K,
-            callback: Interpolant.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Interpolant.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Interpolant.SignalSignatures>(
             signal: K,
-            ...args: Interpolant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Interpolant.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1581,6 +1787,14 @@ export namespace Gthree {
 
     class InterpolantSettings extends GObject.Object {
         static $gtype: GObject.GType<InterpolantSettings>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InterpolantSettings.SignalSignatures;
 
         // Constructors
 
@@ -1594,17 +1808,19 @@ export namespace Gthree {
 
         connect<K extends keyof InterpolantSettings.SignalSignatures>(
             signal: K,
-            callback: InterpolantSettings.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InterpolantSettings.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InterpolantSettings.SignalSignatures>(
             signal: K,
-            callback: InterpolantSettings.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InterpolantSettings.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InterpolantSettings.SignalSignatures>(
             signal: K,
-            ...args: InterpolantSettings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InterpolantSettings.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1627,6 +1843,14 @@ export namespace Gthree {
 
     class KeyframeTrack extends GObject.Object {
         static $gtype: GObject.GType<KeyframeTrack>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: KeyframeTrack.SignalSignatures;
 
         // Constructors
 
@@ -1638,17 +1862,17 @@ export namespace Gthree {
 
         connect<K extends keyof KeyframeTrack.SignalSignatures>(
             signal: K,
-            callback: KeyframeTrack.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, KeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyframeTrack.SignalSignatures>(
             signal: K,
-            callback: KeyframeTrack.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, KeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyframeTrack.SignalSignatures>(
             signal: K,
-            ...args: KeyframeTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<KeyframeTrack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1667,14 +1891,14 @@ export namespace Gthree {
     namespace Light {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::color': GObject.Object.Notify;
-            'notify::intensity': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::intensity': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1694,6 +1918,14 @@ export namespace Gthree {
         set color(val: Graphene.Vec3);
         get intensity(): number;
         set intensity(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Light.SignalSignatures;
 
         // Constructors
 
@@ -1705,13 +1937,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Light.SignalSignatures>(signal: K, callback: Light.SignalSignatures[K]): number;
+        connect<K extends keyof Light.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Light.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Light.SignalSignatures>(signal: K, callback: Light.SignalSignatures[K]): number;
+        connect_after<K extends keyof Light.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Light.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Light.SignalSignatures>(
             signal: K,
-            ...args: Light.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Light.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1738,6 +1976,14 @@ export namespace Gthree {
 
     class LightShadow extends GObject.Object {
         static $gtype: GObject.GType<LightShadow>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LightShadow.SignalSignatures;
 
         // Constructors
 
@@ -1749,17 +1995,17 @@ export namespace Gthree {
 
         connect<K extends keyof LightShadow.SignalSignatures>(
             signal: K,
-            callback: LightShadow.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LightShadow.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LightShadow.SignalSignatures>(
             signal: K,
-            callback: LightShadow.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LightShadow.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LightShadow.SignalSignatures>(
             signal: K,
-            ...args: LightShadow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LightShadow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1777,14 +2023,14 @@ export namespace Gthree {
     namespace Line {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::geometry': GObject.Object.Notify;
-            'notify::material': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::geometry': (pspec: GObject.ParamSpec) => void;
+            'notify::material': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1802,6 +2048,14 @@ export namespace Gthree {
 
         get geometry(): Geometry;
         get material(): Material;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Line.SignalSignatures;
 
         // Constructors
 
@@ -1816,13 +2070,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Line.SignalSignatures>(signal: K, callback: Line.SignalSignatures[K]): number;
+        connect<K extends keyof Line.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Line.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Line.SignalSignatures>(signal: K, callback: Line.SignalSignatures[K]): number;
+        connect_after<K extends keyof Line.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Line.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Line.SignalSignatures>(
             signal: K,
-            ...args: Line.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Line.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1830,14 +2090,14 @@ export namespace Gthree {
     namespace LineBasicMaterial {
         // Signal signatures
         interface SignalSignatures extends Material.SignalSignatures {
-            'notify::color': GObject.Object.Notify;
-            'notify::line-width': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
-            'notify::fog': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::alpha-test': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-intersection': (pspec: GObject.ParamSpec) => void;
+            'notify::fog': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::transparent': (pspec: GObject.ParamSpec) => void;
+            'notify::vertex-colors': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1860,6 +2120,14 @@ export namespace Gthree {
         set line_width(val: number);
         get lineWidth(): number;
         set lineWidth(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LineBasicMaterial.SignalSignatures;
 
         // Constructors
 
@@ -1873,17 +2141,17 @@ export namespace Gthree {
 
         connect<K extends keyof LineBasicMaterial.SignalSignatures>(
             signal: K,
-            callback: LineBasicMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LineBasicMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LineBasicMaterial.SignalSignatures>(
             signal: K,
-            callback: LineBasicMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LineBasicMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LineBasicMaterial.SignalSignatures>(
             signal: K,
-            ...args: LineBasicMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LineBasicMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1898,14 +2166,14 @@ export namespace Gthree {
     namespace LineSegments {
         // Signal signatures
         interface SignalSignatures extends Line.SignalSignatures {
-            'notify::geometry': GObject.Object.Notify;
-            'notify::material': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::geometry': (pspec: GObject.ParamSpec) => void;
+            'notify::material': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1915,6 +2183,14 @@ export namespace Gthree {
 
     class LineSegments extends Line {
         static $gtype: GObject.GType<LineSegments>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LineSegments.SignalSignatures;
 
         // Constructors
 
@@ -1931,17 +2207,17 @@ export namespace Gthree {
 
         connect<K extends keyof LineSegments.SignalSignatures>(
             signal: K,
-            callback: LineSegments.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LineSegments.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LineSegments.SignalSignatures>(
             signal: K,
-            callback: LineSegments.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LineSegments.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LineSegments.SignalSignatures>(
             signal: K,
-            ...args: LineSegments.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LineSegments.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1957,6 +2233,14 @@ export namespace Gthree {
 
     class LinearInterpolant extends Interpolant {
         static $gtype: GObject.GType<LinearInterpolant>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LinearInterpolant.SignalSignatures;
 
         // Constructors
 
@@ -1970,17 +2254,17 @@ export namespace Gthree {
 
         connect<K extends keyof LinearInterpolant.SignalSignatures>(
             signal: K,
-            callback: LinearInterpolant.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LinearInterpolant.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LinearInterpolant.SignalSignatures>(
             signal: K,
-            callback: LinearInterpolant.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LinearInterpolant.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LinearInterpolant.SignalSignatures>(
             signal: K,
-            ...args: LinearInterpolant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LinearInterpolant.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1996,6 +2280,14 @@ export namespace Gthree {
 
     class Loader extends GObject.Object {
         static $gtype: GObject.GType<Loader>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Loader.SignalSignatures;
 
         // Constructors
 
@@ -2005,13 +2297,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
+        connect<K extends keyof Loader.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Loader.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
+        connect_after<K extends keyof Loader.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Loader.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Loader.SignalSignatures>(
             signal: K,
-            ...args: Loader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Loader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2029,12 +2327,12 @@ export namespace Gthree {
     namespace Material {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
-            'notify::fog': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::alpha-test': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-intersection': (pspec: GObject.ParamSpec) => void;
+            'notify::fog': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::transparent': (pspec: GObject.ParamSpec) => void;
+            'notify::vertex-colors': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2075,6 +2373,14 @@ export namespace Gthree {
         set vertex_colors(val: boolean);
         get vertexColors(): boolean;
         set vertexColors(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Material.SignalSignatures;
 
         // Constructors
 
@@ -2084,16 +2390,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Material.SignalSignatures>(signal: K, callback: Material.SignalSignatures[K]): number;
+        connect<K extends keyof Material.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Material.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Material.SignalSignatures>(
             signal: K,
-            callback: Material.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Material.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Material.SignalSignatures>(
             signal: K,
-            ...args: Material.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Material.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2149,14 +2458,14 @@ export namespace Gthree {
     namespace Mesh {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::geometry': GObject.Object.Notify;
-            'notify::materials': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::geometry': (pspec: GObject.ParamSpec) => void;
+            'notify::materials': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2175,6 +2484,14 @@ export namespace Gthree {
         get geometry(): Geometry;
         get materials(): any[];
         set materials(val: any[]);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Mesh.SignalSignatures;
 
         // Constructors
 
@@ -2189,13 +2506,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Mesh.SignalSignatures>(signal: K, callback: Mesh.SignalSignatures[K]): number;
+        connect<K extends keyof Mesh.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Mesh.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Mesh.SignalSignatures>(signal: K, callback: Mesh.SignalSignatures[K]): number;
+        connect_after<K extends keyof Mesh.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Mesh.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Mesh.SignalSignatures>(
             signal: K,
-            ...args: Mesh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Mesh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2213,22 +2536,22 @@ export namespace Gthree {
     namespace MeshBasicMaterial {
         // Signal signatures
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
-            'notify::color': GObject.Object.Notify;
-            'notify::env-map': GObject.Object.Notify;
-            'notify::map': GObject.Object.Notify;
-            'notify::reflectivity': GObject.Object.Notify;
-            'notify::refraction-ratio': GObject.Object.Notify;
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
-            'notify::skinning': GObject.Object.Notify;
-            'notify::wireframe': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
-            'notify::fog': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::env-map': (pspec: GObject.ParamSpec) => void;
+            'notify::map': (pspec: GObject.ParamSpec) => void;
+            'notify::reflectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::refraction-ratio': (pspec: GObject.ParamSpec) => void;
+            'notify::morph-normals': (pspec: GObject.ParamSpec) => void;
+            'notify::morph-targets': (pspec: GObject.ParamSpec) => void;
+            'notify::skinning': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::alpha-test': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-intersection': (pspec: GObject.ParamSpec) => void;
+            'notify::fog': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::transparent': (pspec: GObject.ParamSpec) => void;
+            'notify::vertex-colors': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2263,6 +2586,14 @@ export namespace Gthree {
         set refraction_ratio(val: number);
         get refractionRatio(): number;
         set refractionRatio(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MeshBasicMaterial.SignalSignatures;
 
         // Constructors
 
@@ -2276,17 +2607,17 @@ export namespace Gthree {
 
         connect<K extends keyof MeshBasicMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshBasicMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshBasicMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshBasicMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshBasicMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshBasicMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshBasicMaterial.SignalSignatures>(
             signal: K,
-            ...args: MeshBasicMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MeshBasicMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2307,17 +2638,17 @@ export namespace Gthree {
     namespace MeshDepthMaterial {
         // Signal signatures
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
-            'notify::skinning': GObject.Object.Notify;
-            'notify::wireframe': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
-            'notify::fog': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::morph-normals': (pspec: GObject.ParamSpec) => void;
+            'notify::morph-targets': (pspec: GObject.ParamSpec) => void;
+            'notify::skinning': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::alpha-test': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-intersection': (pspec: GObject.ParamSpec) => void;
+            'notify::fog': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::transparent': (pspec: GObject.ParamSpec) => void;
+            'notify::vertex-colors': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2327,6 +2658,14 @@ export namespace Gthree {
 
     class MeshDepthMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshDepthMaterial>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MeshDepthMaterial.SignalSignatures;
 
         // Constructors
 
@@ -2340,17 +2679,17 @@ export namespace Gthree {
 
         connect<K extends keyof MeshDepthMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshDepthMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshDepthMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshDepthMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshDepthMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshDepthMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshDepthMaterial.SignalSignatures>(
             signal: K,
-            ...args: MeshDepthMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MeshDepthMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2363,17 +2702,17 @@ export namespace Gthree {
     namespace MeshDistanceMaterial {
         // Signal signatures
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
-            'notify::skinning': GObject.Object.Notify;
-            'notify::wireframe': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
-            'notify::fog': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::morph-normals': (pspec: GObject.ParamSpec) => void;
+            'notify::morph-targets': (pspec: GObject.ParamSpec) => void;
+            'notify::skinning': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::alpha-test': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-intersection': (pspec: GObject.ParamSpec) => void;
+            'notify::fog': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::transparent': (pspec: GObject.ParamSpec) => void;
+            'notify::vertex-colors': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2383,6 +2722,14 @@ export namespace Gthree {
 
     class MeshDistanceMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshDistanceMaterial>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MeshDistanceMaterial.SignalSignatures;
 
         // Constructors
 
@@ -2396,17 +2743,19 @@ export namespace Gthree {
 
         connect<K extends keyof MeshDistanceMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshDistanceMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshDistanceMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshDistanceMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshDistanceMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshDistanceMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshDistanceMaterial.SignalSignatures>(
             signal: K,
-            ...args: MeshDistanceMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MeshDistanceMaterial.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2423,23 +2772,23 @@ export namespace Gthree {
     namespace MeshLambertMaterial {
         // Signal signatures
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
-            'notify::color': GObject.Object.Notify;
-            'notify::emissive-color': GObject.Object.Notify;
-            'notify::env-map': GObject.Object.Notify;
-            'notify::map': GObject.Object.Notify;
-            'notify::reflectivity': GObject.Object.Notify;
-            'notify::refraction-ratio': GObject.Object.Notify;
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
-            'notify::skinning': GObject.Object.Notify;
-            'notify::wireframe': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
-            'notify::fog': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::emissive-color': (pspec: GObject.ParamSpec) => void;
+            'notify::env-map': (pspec: GObject.ParamSpec) => void;
+            'notify::map': (pspec: GObject.ParamSpec) => void;
+            'notify::reflectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::refraction-ratio': (pspec: GObject.ParamSpec) => void;
+            'notify::morph-normals': (pspec: GObject.ParamSpec) => void;
+            'notify::morph-targets': (pspec: GObject.ParamSpec) => void;
+            'notify::skinning': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::alpha-test': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-intersection': (pspec: GObject.ParamSpec) => void;
+            'notify::fog': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::transparent': (pspec: GObject.ParamSpec) => void;
+            'notify::vertex-colors': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2480,6 +2829,14 @@ export namespace Gthree {
         set refraction_ratio(val: number);
         get refractionRatio(): number;
         set refractionRatio(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MeshLambertMaterial.SignalSignatures;
 
         // Constructors
 
@@ -2493,17 +2850,19 @@ export namespace Gthree {
 
         connect<K extends keyof MeshLambertMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshLambertMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshLambertMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshLambertMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshLambertMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshLambertMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshLambertMaterial.SignalSignatures>(
             signal: K,
-            ...args: MeshLambertMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MeshLambertMaterial.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2526,17 +2885,17 @@ export namespace Gthree {
     namespace MeshMaterial {
         // Signal signatures
         interface SignalSignatures extends Material.SignalSignatures {
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
-            'notify::skinning': GObject.Object.Notify;
-            'notify::wireframe': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
-            'notify::fog': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::morph-normals': (pspec: GObject.ParamSpec) => void;
+            'notify::morph-targets': (pspec: GObject.ParamSpec) => void;
+            'notify::skinning': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::alpha-test': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-intersection': (pspec: GObject.ParamSpec) => void;
+            'notify::fog': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::transparent': (pspec: GObject.ParamSpec) => void;
+            'notify::vertex-colors': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2574,6 +2933,14 @@ export namespace Gthree {
         set wireframe_line_width(val: number);
         get wireframeLineWidth(): number;
         set wireframeLineWidth(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MeshMaterial.SignalSignatures;
 
         // Constructors
 
@@ -2585,17 +2952,17 @@ export namespace Gthree {
 
         connect<K extends keyof MeshMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshMaterial.SignalSignatures>(
             signal: K,
-            ...args: MeshMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MeshMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2616,17 +2983,17 @@ export namespace Gthree {
     namespace MeshNormalMaterial {
         // Signal signatures
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
-            'notify::skinning': GObject.Object.Notify;
-            'notify::wireframe': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
-            'notify::fog': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::morph-normals': (pspec: GObject.ParamSpec) => void;
+            'notify::morph-targets': (pspec: GObject.ParamSpec) => void;
+            'notify::skinning': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::alpha-test': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-intersection': (pspec: GObject.ParamSpec) => void;
+            'notify::fog': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::transparent': (pspec: GObject.ParamSpec) => void;
+            'notify::vertex-colors': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2636,6 +3003,14 @@ export namespace Gthree {
 
     class MeshNormalMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshNormalMaterial>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MeshNormalMaterial.SignalSignatures;
 
         // Constructors
 
@@ -2649,17 +3024,17 @@ export namespace Gthree {
 
         connect<K extends keyof MeshNormalMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshNormalMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshNormalMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshNormalMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshNormalMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshNormalMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshNormalMaterial.SignalSignatures>(
             signal: K,
-            ...args: MeshNormalMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MeshNormalMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2672,29 +3047,29 @@ export namespace Gthree {
     namespace MeshPhongMaterial {
         // Signal signatures
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
-            'notify::color': GObject.Object.Notify;
-            'notify::emissive-color': GObject.Object.Notify;
-            'notify::env-map': GObject.Object.Notify;
-            'notify::flat-shading': GObject.Object.Notify;
-            'notify::map': GObject.Object.Notify;
-            'notify::normal-map': GObject.Object.Notify;
-            'notify::normal-scale': GObject.Object.Notify;
-            'notify::reflectivity': GObject.Object.Notify;
-            'notify::refraction-ratio': GObject.Object.Notify;
-            'notify::shininess': GObject.Object.Notify;
-            'notify::specular-color': GObject.Object.Notify;
-            'notify::specular-map': GObject.Object.Notify;
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
-            'notify::skinning': GObject.Object.Notify;
-            'notify::wireframe': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
-            'notify::fog': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::emissive-color': (pspec: GObject.ParamSpec) => void;
+            'notify::env-map': (pspec: GObject.ParamSpec) => void;
+            'notify::flat-shading': (pspec: GObject.ParamSpec) => void;
+            'notify::map': (pspec: GObject.ParamSpec) => void;
+            'notify::normal-map': (pspec: GObject.ParamSpec) => void;
+            'notify::normal-scale': (pspec: GObject.ParamSpec) => void;
+            'notify::reflectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::refraction-ratio': (pspec: GObject.ParamSpec) => void;
+            'notify::shininess': (pspec: GObject.ParamSpec) => void;
+            'notify::specular-color': (pspec: GObject.ParamSpec) => void;
+            'notify::specular-map': (pspec: GObject.ParamSpec) => void;
+            'notify::morph-normals': (pspec: GObject.ParamSpec) => void;
+            'notify::morph-targets': (pspec: GObject.ParamSpec) => void;
+            'notify::skinning': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::alpha-test': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-intersection': (pspec: GObject.ParamSpec) => void;
+            'notify::fog': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::transparent': (pspec: GObject.ParamSpec) => void;
+            'notify::vertex-colors': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2768,6 +3143,14 @@ export namespace Gthree {
         set specular_map(val: Texture);
         get specularMap(): Texture;
         set specularMap(val: Texture);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MeshPhongMaterial.SignalSignatures;
 
         // Constructors
 
@@ -2781,17 +3164,17 @@ export namespace Gthree {
 
         connect<K extends keyof MeshPhongMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshPhongMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshPhongMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshPhongMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshPhongMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshPhongMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshPhongMaterial.SignalSignatures>(
             signal: K,
-            ...args: MeshPhongMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MeshPhongMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2826,41 +3209,41 @@ export namespace Gthree {
     namespace MeshSpecglosMaterial {
         // Signal signatures
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
-            'notify::alpha-map': GObject.Object.Notify;
-            'notify::ao-map': GObject.Object.Notify;
-            'notify::ao-map-intensity': GObject.Object.Notify;
-            'notify::bump-map': GObject.Object.Notify;
-            'notify::bump-scale': GObject.Object.Notify;
-            'notify::color': GObject.Object.Notify;
-            'notify::displacement-bias': GObject.Object.Notify;
-            'notify::displacement-map': GObject.Object.Notify;
-            'notify::displacement-scale': GObject.Object.Notify;
-            'notify::emissive-color': GObject.Object.Notify;
-            'notify::emissive-intensity': GObject.Object.Notify;
-            'notify::emissive-map': GObject.Object.Notify;
-            'notify::env-map': GObject.Object.Notify;
-            'notify::env-map-intensity': GObject.Object.Notify;
-            'notify::glossiness': GObject.Object.Notify;
-            'notify::glossiness-map': GObject.Object.Notify;
-            'notify::light-map': GObject.Object.Notify;
-            'notify::light-map-intensity': GObject.Object.Notify;
-            'notify::map': GObject.Object.Notify;
-            'notify::normal-map': GObject.Object.Notify;
-            'notify::normal-scale': GObject.Object.Notify;
-            'notify::refraction-ratio': GObject.Object.Notify;
-            'notify::specular-factor': GObject.Object.Notify;
-            'notify::specular-map': GObject.Object.Notify;
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
-            'notify::skinning': GObject.Object.Notify;
-            'notify::wireframe': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
-            'notify::fog': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::alpha-map': (pspec: GObject.ParamSpec) => void;
+            'notify::ao-map': (pspec: GObject.ParamSpec) => void;
+            'notify::ao-map-intensity': (pspec: GObject.ParamSpec) => void;
+            'notify::bump-map': (pspec: GObject.ParamSpec) => void;
+            'notify::bump-scale': (pspec: GObject.ParamSpec) => void;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::displacement-bias': (pspec: GObject.ParamSpec) => void;
+            'notify::displacement-map': (pspec: GObject.ParamSpec) => void;
+            'notify::displacement-scale': (pspec: GObject.ParamSpec) => void;
+            'notify::emissive-color': (pspec: GObject.ParamSpec) => void;
+            'notify::emissive-intensity': (pspec: GObject.ParamSpec) => void;
+            'notify::emissive-map': (pspec: GObject.ParamSpec) => void;
+            'notify::env-map': (pspec: GObject.ParamSpec) => void;
+            'notify::env-map-intensity': (pspec: GObject.ParamSpec) => void;
+            'notify::glossiness': (pspec: GObject.ParamSpec) => void;
+            'notify::glossiness-map': (pspec: GObject.ParamSpec) => void;
+            'notify::light-map': (pspec: GObject.ParamSpec) => void;
+            'notify::light-map-intensity': (pspec: GObject.ParamSpec) => void;
+            'notify::map': (pspec: GObject.ParamSpec) => void;
+            'notify::normal-map': (pspec: GObject.ParamSpec) => void;
+            'notify::normal-scale': (pspec: GObject.ParamSpec) => void;
+            'notify::refraction-ratio': (pspec: GObject.ParamSpec) => void;
+            'notify::specular-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::specular-map': (pspec: GObject.ParamSpec) => void;
+            'notify::morph-normals': (pspec: GObject.ParamSpec) => void;
+            'notify::morph-targets': (pspec: GObject.ParamSpec) => void;
+            'notify::skinning': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::alpha-test': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-intersection': (pspec: GObject.ParamSpec) => void;
+            'notify::fog': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::transparent': (pspec: GObject.ParamSpec) => void;
+            'notify::vertex-colors': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3009,6 +3392,14 @@ export namespace Gthree {
         set specular_map(val: Texture);
         get specularMap(): Texture;
         set specularMap(val: Texture);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MeshSpecglosMaterial.SignalSignatures;
 
         // Constructors
 
@@ -3022,17 +3413,19 @@ export namespace Gthree {
 
         connect<K extends keyof MeshSpecglosMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshSpecglosMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshSpecglosMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshSpecglosMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshSpecglosMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshSpecglosMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshSpecglosMaterial.SignalSignatures>(
             signal: K,
-            ...args: MeshSpecglosMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MeshSpecglosMaterial.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3082,41 +3475,41 @@ export namespace Gthree {
     namespace MeshStandardMaterial {
         // Signal signatures
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
-            'notify::alpha-map': GObject.Object.Notify;
-            'notify::ao-map': GObject.Object.Notify;
-            'notify::ao-map-intensity': GObject.Object.Notify;
-            'notify::bump-map': GObject.Object.Notify;
-            'notify::bump-scale': GObject.Object.Notify;
-            'notify::color': GObject.Object.Notify;
-            'notify::displacement-bias': GObject.Object.Notify;
-            'notify::displacement-map': GObject.Object.Notify;
-            'notify::displacement-scale': GObject.Object.Notify;
-            'notify::emissive-color': GObject.Object.Notify;
-            'notify::emissive-intensity': GObject.Object.Notify;
-            'notify::emissive-map': GObject.Object.Notify;
-            'notify::env-map': GObject.Object.Notify;
-            'notify::env-map-intensity': GObject.Object.Notify;
-            'notify::light-map': GObject.Object.Notify;
-            'notify::light-map-intensity': GObject.Object.Notify;
-            'notify::map': GObject.Object.Notify;
-            'notify::metalness': GObject.Object.Notify;
-            'notify::metalness-map': GObject.Object.Notify;
-            'notify::normal-map': GObject.Object.Notify;
-            'notify::normal-scale': GObject.Object.Notify;
-            'notify::refraction-ratio': GObject.Object.Notify;
-            'notify::roughness': GObject.Object.Notify;
-            'notify::roughness-map': GObject.Object.Notify;
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
-            'notify::skinning': GObject.Object.Notify;
-            'notify::wireframe': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
-            'notify::fog': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::alpha-map': (pspec: GObject.ParamSpec) => void;
+            'notify::ao-map': (pspec: GObject.ParamSpec) => void;
+            'notify::ao-map-intensity': (pspec: GObject.ParamSpec) => void;
+            'notify::bump-map': (pspec: GObject.ParamSpec) => void;
+            'notify::bump-scale': (pspec: GObject.ParamSpec) => void;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::displacement-bias': (pspec: GObject.ParamSpec) => void;
+            'notify::displacement-map': (pspec: GObject.ParamSpec) => void;
+            'notify::displacement-scale': (pspec: GObject.ParamSpec) => void;
+            'notify::emissive-color': (pspec: GObject.ParamSpec) => void;
+            'notify::emissive-intensity': (pspec: GObject.ParamSpec) => void;
+            'notify::emissive-map': (pspec: GObject.ParamSpec) => void;
+            'notify::env-map': (pspec: GObject.ParamSpec) => void;
+            'notify::env-map-intensity': (pspec: GObject.ParamSpec) => void;
+            'notify::light-map': (pspec: GObject.ParamSpec) => void;
+            'notify::light-map-intensity': (pspec: GObject.ParamSpec) => void;
+            'notify::map': (pspec: GObject.ParamSpec) => void;
+            'notify::metalness': (pspec: GObject.ParamSpec) => void;
+            'notify::metalness-map': (pspec: GObject.ParamSpec) => void;
+            'notify::normal-map': (pspec: GObject.ParamSpec) => void;
+            'notify::normal-scale': (pspec: GObject.ParamSpec) => void;
+            'notify::refraction-ratio': (pspec: GObject.ParamSpec) => void;
+            'notify::roughness': (pspec: GObject.ParamSpec) => void;
+            'notify::roughness-map': (pspec: GObject.ParamSpec) => void;
+            'notify::morph-normals': (pspec: GObject.ParamSpec) => void;
+            'notify::morph-targets': (pspec: GObject.ParamSpec) => void;
+            'notify::skinning': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::alpha-test': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-intersection': (pspec: GObject.ParamSpec) => void;
+            'notify::fog': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::transparent': (pspec: GObject.ParamSpec) => void;
+            'notify::vertex-colors': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3262,6 +3655,14 @@ export namespace Gthree {
         set roughness_map(val: Texture);
         get roughnessMap(): Texture;
         set roughnessMap(val: Texture);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MeshStandardMaterial.SignalSignatures;
 
         // Constructors
 
@@ -3275,17 +3676,19 @@ export namespace Gthree {
 
         connect<K extends keyof MeshStandardMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshStandardMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshStandardMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshStandardMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshStandardMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshStandardMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshStandardMaterial.SignalSignatures>(
             signal: K,
-            ...args: MeshStandardMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MeshStandardMaterial.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3335,35 +3738,35 @@ export namespace Gthree {
     namespace MeshToonMaterial {
         // Signal signatures
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
-            'notify::alpha-map': GObject.Object.Notify;
-            'notify::ao-map': GObject.Object.Notify;
-            'notify::ao-map-intensity': GObject.Object.Notify;
-            'notify::bump-map': GObject.Object.Notify;
-            'notify::bump-scale': GObject.Object.Notify;
-            'notify::color': GObject.Object.Notify;
-            'notify::displacement-bias': GObject.Object.Notify;
-            'notify::displacement-map': GObject.Object.Notify;
-            'notify::displacement-scale': GObject.Object.Notify;
-            'notify::emissive-color': GObject.Object.Notify;
-            'notify::emissive-intensity': GObject.Object.Notify;
-            'notify::emissive-map': GObject.Object.Notify;
-            'notify::gradient-map': GObject.Object.Notify;
-            'notify::light-map': GObject.Object.Notify;
-            'notify::light-map-intensity': GObject.Object.Notify;
-            'notify::map': GObject.Object.Notify;
-            'notify::normal-map': GObject.Object.Notify;
-            'notify::normal-scale': GObject.Object.Notify;
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
-            'notify::skinning': GObject.Object.Notify;
-            'notify::wireframe': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
-            'notify::fog': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::alpha-map': (pspec: GObject.ParamSpec) => void;
+            'notify::ao-map': (pspec: GObject.ParamSpec) => void;
+            'notify::ao-map-intensity': (pspec: GObject.ParamSpec) => void;
+            'notify::bump-map': (pspec: GObject.ParamSpec) => void;
+            'notify::bump-scale': (pspec: GObject.ParamSpec) => void;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::displacement-bias': (pspec: GObject.ParamSpec) => void;
+            'notify::displacement-map': (pspec: GObject.ParamSpec) => void;
+            'notify::displacement-scale': (pspec: GObject.ParamSpec) => void;
+            'notify::emissive-color': (pspec: GObject.ParamSpec) => void;
+            'notify::emissive-intensity': (pspec: GObject.ParamSpec) => void;
+            'notify::emissive-map': (pspec: GObject.ParamSpec) => void;
+            'notify::gradient-map': (pspec: GObject.ParamSpec) => void;
+            'notify::light-map': (pspec: GObject.ParamSpec) => void;
+            'notify::light-map-intensity': (pspec: GObject.ParamSpec) => void;
+            'notify::map': (pspec: GObject.ParamSpec) => void;
+            'notify::normal-map': (pspec: GObject.ParamSpec) => void;
+            'notify::normal-scale': (pspec: GObject.ParamSpec) => void;
+            'notify::morph-normals': (pspec: GObject.ParamSpec) => void;
+            'notify::morph-targets': (pspec: GObject.ParamSpec) => void;
+            'notify::skinning': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::alpha-test': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-intersection': (pspec: GObject.ParamSpec) => void;
+            'notify::fog': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::transparent': (pspec: GObject.ParamSpec) => void;
+            'notify::vertex-colors': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3479,6 +3882,14 @@ export namespace Gthree {
         set normal_scale(val: Graphene.Vec2);
         get normalScale(): Graphene.Vec2;
         set normalScale(val: Graphene.Vec2);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MeshToonMaterial.SignalSignatures;
 
         // Constructors
 
@@ -3492,17 +3903,17 @@ export namespace Gthree {
 
         connect<K extends keyof MeshToonMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshToonMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshToonMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshToonMaterial.SignalSignatures>(
             signal: K,
-            callback: MeshToonMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MeshToonMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshToonMaterial.SignalSignatures>(
             signal: K,
-            ...args: MeshToonMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MeshToonMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3550,6 +3961,14 @@ export namespace Gthree {
 
     class NumberKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<NumberKeyframeTrack>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NumberKeyframeTrack.SignalSignatures;
 
         // Constructors
 
@@ -3563,42 +3982,34 @@ export namespace Gthree {
 
         connect<K extends keyof NumberKeyframeTrack.SignalSignatures>(
             signal: K,
-            callback: NumberKeyframeTrack.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NumberKeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NumberKeyframeTrack.SignalSignatures>(
             signal: K,
-            callback: NumberKeyframeTrack.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NumberKeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NumberKeyframeTrack.SignalSignatures>(
             signal: K,
-            ...args: NumberKeyframeTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NumberKeyframeTrack.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace Object {
-        // Signal callback interfaces
-
-        interface Destroy {
-            (_source: Object): void;
-        }
-
-        interface ParentSet {
-            (_source: Object, object: Object): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            destroy: Destroy;
-            'parent-set': ParentSet;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            destroy: () => void;
+            'parent-set': (arg0: Object) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3633,6 +4044,14 @@ export namespace Gthree {
         get previousSibling(): Object;
         get visible(): boolean;
         set visible(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -3644,13 +4063,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
-            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3734,18 +4159,18 @@ export namespace Gthree {
     namespace OrthographicCamera {
         // Signal signatures
         interface SignalSignatures extends Camera.SignalSignatures {
-            'notify::bottom': GObject.Object.Notify;
-            'notify::left': GObject.Object.Notify;
-            'notify::right': GObject.Object.Notify;
-            'notify::top': GObject.Object.Notify;
-            'notify::far': GObject.Object.Notify;
-            'notify::near': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::left': (pspec: GObject.ParamSpec) => void;
+            'notify::right': (pspec: GObject.ParamSpec) => void;
+            'notify::top': (pspec: GObject.ParamSpec) => void;
+            'notify::far': (pspec: GObject.ParamSpec) => void;
+            'notify::near': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3771,6 +4196,14 @@ export namespace Gthree {
         set right(val: number);
         get top(): number;
         set top(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OrthographicCamera.SignalSignatures;
 
         // Constructors
 
@@ -3794,17 +4227,17 @@ export namespace Gthree {
 
         connect<K extends keyof OrthographicCamera.SignalSignatures>(
             signal: K,
-            callback: OrthographicCamera.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OrthographicCamera.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OrthographicCamera.SignalSignatures>(
             signal: K,
-            callback: OrthographicCamera.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OrthographicCamera.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OrthographicCamera.SignalSignatures>(
             signal: K,
-            ...args: OrthographicCamera.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OrthographicCamera.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3831,6 +4264,14 @@ export namespace Gthree {
 
     class Pass extends GObject.Object {
         static $gtype: GObject.GType<Pass>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Pass.SignalSignatures;
 
         // Fields
 
@@ -3849,13 +4290,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Pass.SignalSignatures>(signal: K, callback: Pass.SignalSignatures[K]): number;
+        connect<K extends keyof Pass.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Pass.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Pass.SignalSignatures>(signal: K, callback: Pass.SignalSignatures[K]): number;
+        connect_after<K extends keyof Pass.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Pass.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Pass.SignalSignatures>(
             signal: K,
-            ...args: Pass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Pass.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3889,16 +4336,16 @@ export namespace Gthree {
     namespace PerspectiveCamera {
         // Signal signatures
         interface SignalSignatures extends Camera.SignalSignatures {
-            'notify::aspect': GObject.Object.Notify;
-            'notify::fov': GObject.Object.Notify;
-            'notify::far': GObject.Object.Notify;
-            'notify::near': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::aspect': (pspec: GObject.ParamSpec) => void;
+            'notify::fov': (pspec: GObject.ParamSpec) => void;
+            'notify::far': (pspec: GObject.ParamSpec) => void;
+            'notify::near': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3918,6 +4365,14 @@ export namespace Gthree {
         set aspect(val: number);
         get fov(): number;
         set fov(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PerspectiveCamera.SignalSignatures;
 
         // Constructors
 
@@ -3934,17 +4389,17 @@ export namespace Gthree {
 
         connect<K extends keyof PerspectiveCamera.SignalSignatures>(
             signal: K,
-            callback: PerspectiveCamera.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PerspectiveCamera.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PerspectiveCamera.SignalSignatures>(
             signal: K,
-            callback: PerspectiveCamera.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PerspectiveCamera.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PerspectiveCamera.SignalSignatures>(
             signal: K,
-            ...args: PerspectiveCamera.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PerspectiveCamera.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3959,15 +4414,15 @@ export namespace Gthree {
     namespace PlaneHelper {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::color': GObject.Object.Notify;
-            'notify::plane': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::plane': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3990,6 +4445,14 @@ export namespace Gthree {
         set plane(val: Graphene.Plane);
         get size(): number;
         set size(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PlaneHelper.SignalSignatures;
 
         // Constructors
 
@@ -4006,17 +4469,17 @@ export namespace Gthree {
 
         connect<K extends keyof PlaneHelper.SignalSignatures>(
             signal: K,
-            callback: PlaneHelper.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlaneHelper.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlaneHelper.SignalSignatures>(
             signal: K,
-            callback: PlaneHelper.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlaneHelper.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlaneHelper.SignalSignatures>(
             signal: K,
-            ...args: PlaneHelper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PlaneHelper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4033,16 +4496,16 @@ export namespace Gthree {
     namespace PointLight {
         // Signal signatures
         interface SignalSignatures extends Light.SignalSignatures {
-            'notify::decay': GObject.Object.Notify;
-            'notify::distance': GObject.Object.Notify;
-            'notify::color': GObject.Object.Notify;
-            'notify::intensity': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::decay': (pspec: GObject.ParamSpec) => void;
+            'notify::distance': (pspec: GObject.ParamSpec) => void;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::intensity': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4062,6 +4525,14 @@ export namespace Gthree {
         set decay(val: number);
         get distance(): number;
         set distance(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PointLight.SignalSignatures;
 
         // Constructors
 
@@ -4078,17 +4549,17 @@ export namespace Gthree {
 
         connect<K extends keyof PointLight.SignalSignatures>(
             signal: K,
-            callback: PointLight.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PointLight.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PointLight.SignalSignatures>(
             signal: K,
-            callback: PointLight.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PointLight.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PointLight.SignalSignatures>(
             signal: K,
-            ...args: PointLight.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PointLight.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4103,14 +4574,14 @@ export namespace Gthree {
     namespace Points {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::geometry': GObject.Object.Notify;
-            'notify::material': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::geometry': (pspec: GObject.ParamSpec) => void;
+            'notify::material': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4129,6 +4600,14 @@ export namespace Gthree {
         get geometry(): Geometry;
         get material(): Material;
         set material(val: Material);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Points.SignalSignatures;
 
         // Constructors
 
@@ -4143,13 +4622,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Points.SignalSignatures>(signal: K, callback: Points.SignalSignatures[K]): number;
+        connect<K extends keyof Points.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Points.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Points.SignalSignatures>(signal: K, callback: Points.SignalSignatures[K]): number;
+        connect_after<K extends keyof Points.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Points.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Points.SignalSignatures>(
             signal: K,
-            ...args: Points.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Points.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4161,16 +4646,16 @@ export namespace Gthree {
     namespace PointsMaterial {
         // Signal signatures
         interface SignalSignatures extends Material.SignalSignatures {
-            'notify::color': GObject.Object.Notify;
-            'notify::map': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::size-attenuation': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
-            'notify::fog': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::map': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::size-attenuation': (pspec: GObject.ParamSpec) => void;
+            'notify::alpha-test': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-intersection': (pspec: GObject.ParamSpec) => void;
+            'notify::fog': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::transparent': (pspec: GObject.ParamSpec) => void;
+            'notify::vertex-colors': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4199,6 +4684,14 @@ export namespace Gthree {
         set size_attenuation(val: boolean);
         get sizeAttenuation(): boolean;
         set sizeAttenuation(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PointsMaterial.SignalSignatures;
 
         // Constructors
 
@@ -4212,17 +4705,17 @@ export namespace Gthree {
 
         connect<K extends keyof PointsMaterial.SignalSignatures>(
             signal: K,
-            callback: PointsMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PointsMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PointsMaterial.SignalSignatures>(
             signal: K,
-            callback: PointsMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PointsMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PointsMaterial.SignalSignatures>(
             signal: K,
-            ...args: PointsMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PointsMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4248,6 +4741,14 @@ export namespace Gthree {
 
     class Program extends GObject.Object {
         static $gtype: GObject.GType<Program>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Program.SignalSignatures;
 
         // Constructors
 
@@ -4259,16 +4760,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Program.SignalSignatures>(signal: K, callback: Program.SignalSignatures[K]): number;
+        connect<K extends keyof Program.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Program.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Program.SignalSignatures>(
             signal: K,
-            callback: Program.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Program.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Program.SignalSignatures>(
             signal: K,
-            ...args: Program.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Program.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4292,6 +4796,14 @@ export namespace Gthree {
 
     class QuaternionInterpolant extends Interpolant {
         static $gtype: GObject.GType<QuaternionInterpolant>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: QuaternionInterpolant.SignalSignatures;
 
         // Constructors
 
@@ -4305,17 +4817,19 @@ export namespace Gthree {
 
         connect<K extends keyof QuaternionInterpolant.SignalSignatures>(
             signal: K,
-            callback: QuaternionInterpolant.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, QuaternionInterpolant.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof QuaternionInterpolant.SignalSignatures>(
             signal: K,
-            callback: QuaternionInterpolant.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, QuaternionInterpolant.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof QuaternionInterpolant.SignalSignatures>(
             signal: K,
-            ...args: QuaternionInterpolant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<QuaternionInterpolant.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -4331,6 +4845,14 @@ export namespace Gthree {
 
     class QuaternionKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<QuaternionKeyframeTrack>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: QuaternionKeyframeTrack.SignalSignatures;
 
         // Constructors
 
@@ -4344,17 +4866,19 @@ export namespace Gthree {
 
         connect<K extends keyof QuaternionKeyframeTrack.SignalSignatures>(
             signal: K,
-            callback: QuaternionKeyframeTrack.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, QuaternionKeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof QuaternionKeyframeTrack.SignalSignatures>(
             signal: K,
-            callback: QuaternionKeyframeTrack.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, QuaternionKeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof QuaternionKeyframeTrack.SignalSignatures>(
             signal: K,
-            ...args: QuaternionKeyframeTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<QuaternionKeyframeTrack.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -4370,6 +4894,14 @@ export namespace Gthree {
 
     class Raycaster extends GObject.Object {
         static $gtype: GObject.GType<Raycaster>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Raycaster.SignalSignatures;
 
         // Constructors
 
@@ -4381,16 +4913,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Raycaster.SignalSignatures>(signal: K, callback: Raycaster.SignalSignatures[K]): number;
+        connect<K extends keyof Raycaster.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Raycaster.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Raycaster.SignalSignatures>(
             signal: K,
-            callback: Raycaster.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Raycaster.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Raycaster.SignalSignatures>(
             signal: K,
-            ...args: Raycaster.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Raycaster.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4416,6 +4951,14 @@ export namespace Gthree {
 
     class RenderPass extends Pass {
         static $gtype: GObject.GType<RenderPass>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RenderPass.SignalSignatures;
 
         // Constructors
 
@@ -4429,17 +4972,17 @@ export namespace Gthree {
 
         connect<K extends keyof RenderPass.SignalSignatures>(
             signal: K,
-            callback: RenderPass.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RenderPass.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RenderPass.SignalSignatures>(
             signal: K,
-            callback: RenderPass.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RenderPass.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RenderPass.SignalSignatures>(
             signal: K,
-            ...args: RenderPass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RenderPass.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4459,6 +5002,14 @@ export namespace Gthree {
 
     class RenderTarget extends Resource {
         static $gtype: GObject.GType<RenderTarget>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RenderTarget.SignalSignatures;
 
         // Constructors
 
@@ -4472,17 +5023,17 @@ export namespace Gthree {
 
         connect<K extends keyof RenderTarget.SignalSignatures>(
             signal: K,
-            callback: RenderTarget.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RenderTarget.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RenderTarget.SignalSignatures>(
             signal: K,
-            callback: RenderTarget.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RenderTarget.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RenderTarget.SignalSignatures>(
             signal: K,
-            ...args: RenderTarget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RenderTarget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4512,6 +5063,14 @@ export namespace Gthree {
 
     class Renderer extends GObject.Object {
         static $gtype: GObject.GType<Renderer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Renderer.SignalSignatures;
 
         // Constructors
 
@@ -4523,16 +5082,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Renderer.SignalSignatures>(signal: K, callback: Renderer.SignalSignatures[K]): number;
+        connect<K extends keyof Renderer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Renderer.SignalSignatures>(
             signal: K,
-            callback: Renderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Renderer.SignalSignatures>(
             signal: K,
-            ...args: Renderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Renderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4591,6 +5153,14 @@ export namespace Gthree {
 
     class Resource extends GObject.Object {
         static $gtype: GObject.GType<Resource>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Resource.SignalSignatures;
 
         // Constructors
 
@@ -4600,16 +5170,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Resource.SignalSignatures>(signal: K, callback: Resource.SignalSignatures[K]): number;
+        connect<K extends keyof Resource.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Resource.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Resource.SignalSignatures>(
             signal: K,
-            callback: Resource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Resource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Resource.SignalSignatures>(
             signal: K,
-            ...args: Resource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Resource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4631,12 +5204,12 @@ export namespace Gthree {
     namespace Scene {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4646,6 +5219,14 @@ export namespace Gthree {
 
     class Scene extends Object {
         static $gtype: GObject.GType<Scene>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Scene.SignalSignatures;
 
         // Constructors
 
@@ -4657,13 +5238,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Scene.SignalSignatures>(signal: K, callback: Scene.SignalSignatures[K]): number;
+        connect<K extends keyof Scene.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Scene.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Scene.SignalSignatures>(signal: K, callback: Scene.SignalSignatures[K]): number;
+        connect_after<K extends keyof Scene.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Scene.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Scene.SignalSignatures>(
             signal: K,
-            ...args: Scene.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Scene.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4689,6 +5276,14 @@ export namespace Gthree {
 
     class Shader extends GObject.Object {
         static $gtype: GObject.GType<Shader>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Shader.SignalSignatures;
 
         // Constructors
 
@@ -4698,13 +5293,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Shader.SignalSignatures>(signal: K, callback: Shader.SignalSignatures[K]): number;
+        connect<K extends keyof Shader.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Shader.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Shader.SignalSignatures>(signal: K, callback: Shader.SignalSignatures[K]): number;
+        connect_after<K extends keyof Shader.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Shader.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Shader.SignalSignatures>(
             signal: K,
-            ...args: Shader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Shader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4722,19 +5323,19 @@ export namespace Gthree {
     namespace ShaderMaterial {
         // Signal signatures
         interface SignalSignatures extends MeshMaterial.SignalSignatures {
-            'notify::shader': GObject.Object.Notify;
-            'notify::use-lights': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
-            'notify::morph-normals': GObject.Object.Notify;
-            'notify::morph-targets': GObject.Object.Notify;
-            'notify::skinning': GObject.Object.Notify;
-            'notify::wireframe': GObject.Object.Notify;
-            'notify::wireframe-line-width': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
-            'notify::fog': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::transparent': GObject.Object.Notify;
+            'notify::shader': (pspec: GObject.ParamSpec) => void;
+            'notify::use-lights': (pspec: GObject.ParamSpec) => void;
+            'notify::vertex-colors': (pspec: GObject.ParamSpec) => void;
+            'notify::morph-normals': (pspec: GObject.ParamSpec) => void;
+            'notify::morph-targets': (pspec: GObject.ParamSpec) => void;
+            'notify::skinning': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe': (pspec: GObject.ParamSpec) => void;
+            'notify::wireframe-line-width': (pspec: GObject.ParamSpec) => void;
+            'notify::alpha-test': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-intersection': (pspec: GObject.ParamSpec) => void;
+            'notify::fog': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::transparent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4762,6 +5363,14 @@ export namespace Gthree {
         set vertex_colors(val: boolean);
         get vertexColors(): boolean;
         set vertexColors(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ShaderMaterial.SignalSignatures;
 
         // Constructors
 
@@ -4775,17 +5384,17 @@ export namespace Gthree {
 
         connect<K extends keyof ShaderMaterial.SignalSignatures>(
             signal: K,
-            callback: ShaderMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ShaderMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ShaderMaterial.SignalSignatures>(
             signal: K,
-            callback: ShaderMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ShaderMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ShaderMaterial.SignalSignatures>(
             signal: K,
-            ...args: ShaderMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ShaderMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4810,6 +5419,14 @@ export namespace Gthree {
 
     class ShaderPass extends Pass {
         static $gtype: GObject.GType<ShaderPass>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ShaderPass.SignalSignatures;
 
         // Constructors
 
@@ -4823,17 +5440,17 @@ export namespace Gthree {
 
         connect<K extends keyof ShaderPass.SignalSignatures>(
             signal: K,
-            callback: ShaderPass.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ShaderPass.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ShaderPass.SignalSignatures>(
             signal: K,
-            callback: ShaderPass.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ShaderPass.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ShaderPass.SignalSignatures>(
             signal: K,
-            ...args: ShaderPass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ShaderPass.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -4849,6 +5466,14 @@ export namespace Gthree {
 
     class Skeleton extends GObject.Object {
         static $gtype: GObject.GType<Skeleton>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Skeleton.SignalSignatures;
 
         // Constructors
 
@@ -4860,16 +5485,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Skeleton.SignalSignatures>(signal: K, callback: Skeleton.SignalSignatures[K]): number;
+        connect<K extends keyof Skeleton.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Skeleton.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Skeleton.SignalSignatures>(
             signal: K,
-            callback: Skeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Skeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Skeleton.SignalSignatures>(
             signal: K,
-            ...args: Skeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Skeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4883,15 +5511,15 @@ export namespace Gthree {
     namespace SkeletonHelper {
         // Signal signatures
         interface SignalSignatures extends LineSegments.SignalSignatures {
-            'notify::root': GObject.Object.Notify;
-            'notify::geometry': GObject.Object.Notify;
-            'notify::material': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::root': (pspec: GObject.ParamSpec) => void;
+            'notify::geometry': (pspec: GObject.ParamSpec) => void;
+            'notify::material': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4907,6 +5535,14 @@ export namespace Gthree {
         // Properties
 
         get root(): Object;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SkeletonHelper.SignalSignatures;
 
         // Constructors
 
@@ -4923,17 +5559,17 @@ export namespace Gthree {
 
         connect<K extends keyof SkeletonHelper.SignalSignatures>(
             signal: K,
-            callback: SkeletonHelper.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SkeletonHelper.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SkeletonHelper.SignalSignatures>(
             signal: K,
-            callback: SkeletonHelper.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SkeletonHelper.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SkeletonHelper.SignalSignatures>(
             signal: K,
-            ...args: SkeletonHelper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SkeletonHelper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -4941,14 +5577,14 @@ export namespace Gthree {
     namespace SkinnedMesh {
         // Signal signatures
         interface SignalSignatures extends Mesh.SignalSignatures {
-            'notify::geometry': GObject.Object.Notify;
-            'notify::materials': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::geometry': (pspec: GObject.ParamSpec) => void;
+            'notify::materials': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4958,6 +5594,14 @@ export namespace Gthree {
 
     class SkinnedMesh extends Mesh {
         static $gtype: GObject.GType<SkinnedMesh>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SkinnedMesh.SignalSignatures;
 
         // Constructors
 
@@ -4974,17 +5618,17 @@ export namespace Gthree {
 
         connect<K extends keyof SkinnedMesh.SignalSignatures>(
             signal: K,
-            callback: SkinnedMesh.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SkinnedMesh.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SkinnedMesh.SignalSignatures>(
             signal: K,
-            callback: SkinnedMesh.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SkinnedMesh.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SkinnedMesh.SignalSignatures>(
             signal: K,
-            ...args: SkinnedMesh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SkinnedMesh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5001,19 +5645,19 @@ export namespace Gthree {
     namespace SpotLight {
         // Signal signatures
         interface SignalSignatures extends Light.SignalSignatures {
-            'notify::angle': GObject.Object.Notify;
-            'notify::decay': GObject.Object.Notify;
-            'notify::distance': GObject.Object.Notify;
-            'notify::penumbra': GObject.Object.Notify;
-            'notify::target': GObject.Object.Notify;
-            'notify::color': GObject.Object.Notify;
-            'notify::intensity': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::angle': (pspec: GObject.ParamSpec) => void;
+            'notify::decay': (pspec: GObject.ParamSpec) => void;
+            'notify::distance': (pspec: GObject.ParamSpec) => void;
+            'notify::penumbra': (pspec: GObject.ParamSpec) => void;
+            'notify::target': (pspec: GObject.ParamSpec) => void;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::intensity': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5042,6 +5686,14 @@ export namespace Gthree {
         set penumbra(val: number);
         get target(): Object;
         set target(val: Object);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SpotLight.SignalSignatures;
 
         // Constructors
 
@@ -5062,16 +5714,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof SpotLight.SignalSignatures>(signal: K, callback: SpotLight.SignalSignatures[K]): number;
+        connect<K extends keyof SpotLight.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, SpotLight.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SpotLight.SignalSignatures>(
             signal: K,
-            callback: SpotLight.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SpotLight.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SpotLight.SignalSignatures>(
             signal: K,
-            ...args: SpotLight.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SpotLight.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5099,6 +5754,14 @@ export namespace Gthree {
 
     class SpotLightShadow extends LightShadow {
         static $gtype: GObject.GType<SpotLightShadow>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SpotLightShadow.SignalSignatures;
 
         // Constructors
 
@@ -5110,17 +5773,17 @@ export namespace Gthree {
 
         connect<K extends keyof SpotLightShadow.SignalSignatures>(
             signal: K,
-            callback: SpotLightShadow.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SpotLightShadow.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SpotLightShadow.SignalSignatures>(
             signal: K,
-            callback: SpotLightShadow.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SpotLightShadow.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SpotLightShadow.SignalSignatures>(
             signal: K,
-            ...args: SpotLightShadow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SpotLightShadow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -5128,13 +5791,13 @@ export namespace Gthree {
     namespace Sprite {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::material': GObject.Object.Notify;
-            'notify::first-child': GObject.Object.Notify;
-            'notify::last-child': GObject.Object.Notify;
-            'notify::next-sibling': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::previous-sibling': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
+            'notify::material': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::next-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::previous-sibling': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5151,6 +5814,14 @@ export namespace Gthree {
 
         get material(): Material;
         set material(val: Material);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Sprite.SignalSignatures;
 
         // Constructors
 
@@ -5165,13 +5836,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Sprite.SignalSignatures>(signal: K, callback: Sprite.SignalSignatures[K]): number;
+        connect<K extends keyof Sprite.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Sprite.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Sprite.SignalSignatures>(signal: K, callback: Sprite.SignalSignatures[K]): number;
+        connect_after<K extends keyof Sprite.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Sprite.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Sprite.SignalSignatures>(
             signal: K,
-            ...args: Sprite.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Sprite.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5185,16 +5862,16 @@ export namespace Gthree {
     namespace SpriteMaterial {
         // Signal signatures
         interface SignalSignatures extends Material.SignalSignatures {
-            'notify::color': GObject.Object.Notify;
-            'notify::map': GObject.Object.Notify;
-            'notify::rotation': GObject.Object.Notify;
-            'notify::size-attenuation': GObject.Object.Notify;
-            'notify::alpha-test': GObject.Object.Notify;
-            'notify::clip-intersection': GObject.Object.Notify;
-            'notify::fog': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::transparent': GObject.Object.Notify;
-            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::map': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation': (pspec: GObject.ParamSpec) => void;
+            'notify::size-attenuation': (pspec: GObject.ParamSpec) => void;
+            'notify::alpha-test': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-intersection': (pspec: GObject.ParamSpec) => void;
+            'notify::fog': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::transparent': (pspec: GObject.ParamSpec) => void;
+            'notify::vertex-colors': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5223,6 +5900,14 @@ export namespace Gthree {
         set size_attenuation(val: boolean);
         get sizeAttenuation(): boolean;
         set sizeAttenuation(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SpriteMaterial.SignalSignatures;
 
         // Constructors
 
@@ -5236,17 +5921,17 @@ export namespace Gthree {
 
         connect<K extends keyof SpriteMaterial.SignalSignatures>(
             signal: K,
-            callback: SpriteMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SpriteMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SpriteMaterial.SignalSignatures>(
             signal: K,
-            callback: SpriteMaterial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SpriteMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SpriteMaterial.SignalSignatures>(
             signal: K,
-            ...args: SpriteMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SpriteMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5264,8 +5949,8 @@ export namespace Gthree {
     namespace Texture {
         // Signal signatures
         interface SignalSignatures extends Resource.SignalSignatures {
-            'notify::pixbuf': GObject.Object.Notify;
-            'notify::surface': GObject.Object.Notify;
+            'notify::pixbuf': (pspec: GObject.ParamSpec) => void;
+            'notify::surface': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5283,6 +5968,14 @@ export namespace Gthree {
 
         get pixbuf(): GdkPixbuf.Pixbuf;
         get surface(): cairo.Surface;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Texture.SignalSignatures;
 
         // Constructors
 
@@ -5296,16 +5989,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Texture.SignalSignatures>(signal: K, callback: Texture.SignalSignatures[K]): number;
+        connect<K extends keyof Texture.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Texture.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Texture.SignalSignatures>(
             signal: K,
-            callback: Texture.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Texture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Texture.SignalSignatures>(
             signal: K,
-            ...args: Texture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Texture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5362,6 +6058,14 @@ export namespace Gthree {
 
     class Uniforms extends GObject.Object {
         static $gtype: GObject.GType<Uniforms>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Uniforms.SignalSignatures;
 
         // Constructors
 
@@ -5375,16 +6079,19 @@ export namespace Gthree {
 
         // Signals
 
-        connect<K extends keyof Uniforms.SignalSignatures>(signal: K, callback: Uniforms.SignalSignatures[K]): number;
+        connect<K extends keyof Uniforms.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Uniforms.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Uniforms.SignalSignatures>(
             signal: K,
-            callback: Uniforms.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Uniforms.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Uniforms.SignalSignatures>(
             signal: K,
-            ...args: Uniforms.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Uniforms.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5413,6 +6120,14 @@ export namespace Gthree {
 
     class VectorKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<VectorKeyframeTrack>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VectorKeyframeTrack.SignalSignatures;
 
         // Constructors
 
@@ -5426,17 +6141,19 @@ export namespace Gthree {
 
         connect<K extends keyof VectorKeyframeTrack.SignalSignatures>(
             signal: K,
-            callback: VectorKeyframeTrack.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VectorKeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VectorKeyframeTrack.SignalSignatures>(
             signal: K,
-            callback: VectorKeyframeTrack.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VectorKeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VectorKeyframeTrack.SignalSignatures>(
             signal: K,
-            ...args: VectorKeyframeTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VectorKeyframeTrack.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

@@ -26,19 +26,13 @@ export namespace GUPnPDLNA {
      */
 
     namespace Discoverer {
-        // Signal callback interfaces
-
-        interface Done {
-            (_source: Discoverer, dlna: Information, err: GLib.Error): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GstPbutils.Discoverer.SignalSignatures {
-            done: Done;
-            'notify::extended-mode': GObject.Object.Notify;
-            'notify::relaxed-mode': GObject.Object.Notify;
-            'notify::timeout': GObject.Object.Notify;
-            'notify::use-cache': GObject.Object.Notify;
+            done: (arg0: Information, arg1: GLib.Error) => void;
+            'notify::extended-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::relaxed-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::use-cache': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -63,6 +57,14 @@ export namespace GUPnPDLNA {
         get extendedMode(): boolean;
         get relaxed_mode(): boolean;
         get relaxedMode(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Discoverer.SignalSignatures;
 
         // Constructors
 
@@ -79,17 +81,17 @@ export namespace GUPnPDLNA {
 
         connect<K extends keyof Discoverer.SignalSignatures>(
             signal: K,
-            callback: Discoverer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Discoverer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Discoverer.SignalSignatures>(
             signal: K,
-            callback: Discoverer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Discoverer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Discoverer.SignalSignatures>(
             signal: K,
-            ...args: Discoverer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Discoverer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -133,9 +135,9 @@ export namespace GUPnPDLNA {
     namespace Information {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::info': GObject.Object.Notify;
-            'notify::mime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::info': (pspec: GObject.ParamSpec) => void;
+            'notify::mime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -155,6 +157,14 @@ export namespace GUPnPDLNA {
         get info(): GstPbutils.DiscovererInfo;
         get mime(): string;
         get name(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Information.SignalSignatures;
 
         // Constructors
 
@@ -168,17 +178,17 @@ export namespace GUPnPDLNA {
 
         connect<K extends keyof Information.SignalSignatures>(
             signal: K,
-            callback: Information.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Information.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Information.SignalSignatures>(
             signal: K,
-            callback: Information.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Information.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Information.SignalSignatures>(
             signal: K,
-            ...args: Information.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Information.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -192,10 +202,10 @@ export namespace GUPnPDLNA {
     namespace Profile {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::encoding-profile': GObject.Object.Notify;
-            'notify::extended': GObject.Object.Notify;
-            'notify::mime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::encoding-profile': (pspec: GObject.ParamSpec) => void;
+            'notify::extended': (pspec: GObject.ParamSpec) => void;
+            'notify::mime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -223,6 +233,14 @@ export namespace GUPnPDLNA {
         get extended(): boolean;
         get mime(): string;
         get name(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Profile.SignalSignatures;
 
         // Constructors
 
@@ -232,16 +250,19 @@ export namespace GUPnPDLNA {
 
         // Signals
 
-        connect<K extends keyof Profile.SignalSignatures>(signal: K, callback: Profile.SignalSignatures[K]): number;
+        connect<K extends keyof Profile.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Profile.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Profile.SignalSignatures>(
             signal: K,
-            callback: Profile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Profile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Profile.SignalSignatures>(
             signal: K,
-            ...args: Profile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Profile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

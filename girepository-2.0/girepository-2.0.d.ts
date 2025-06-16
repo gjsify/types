@@ -1727,6 +1727,14 @@ export namespace GIRepository {
      */
     class Repository extends GObject.Object {
         static $gtype: GObject.GType<Repository>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Repository.SignalSignatures;
 
         // Constructors
 
@@ -1738,17 +1746,17 @@ export namespace GIRepository {
 
         connect<K extends keyof Repository.SignalSignatures>(
             signal: K,
-            callback: Repository.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Repository.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Repository.SignalSignatures>(
             signal: K,
-            callback: Repository.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Repository.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Repository.SignalSignatures>(
             signal: K,
-            ...args: Repository.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Repository.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

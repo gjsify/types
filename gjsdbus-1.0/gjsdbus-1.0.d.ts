@@ -21,27 +21,13 @@ export namespace GjsDBus {
      */
 
     namespace Implementation {
-        // Signal callback interfaces
-
-        interface HandleMethodCall {
-            (_source: Implementation, object: string, p0: GLib.Variant, p1: Gio.DBusMethodInvocation): void;
-        }
-
-        interface HandlePropertyGet {
-            (_source: Implementation, object: string): GLib.Variant;
-        }
-
-        interface HandlePropertySet {
-            (_source: Implementation, object: string, p0: GLib.Variant): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
-            'handle-method-call': HandleMethodCall;
-            'handle-property-get': HandlePropertyGet;
-            'handle-property-set': HandlePropertySet;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
+            'handle-method-call': (arg0: string, arg1: GLib.Variant, arg2: Gio.DBusMethodInvocation) => void;
+            'handle-property-get': (arg0: string) => GLib.Variant;
+            'handle-property-set': (arg0: string, arg1: GLib.Variant) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -61,6 +47,14 @@ export namespace GjsDBus {
 
         set g_interface_info(val: Gio.DBusInterfaceInfo);
         set gInterfaceInfo(val: Gio.DBusInterfaceInfo);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Implementation.SignalSignatures;
 
         // Constructors
 
@@ -72,17 +66,17 @@ export namespace GjsDBus {
 
         connect<K extends keyof Implementation.SignalSignatures>(
             signal: K,
-            callback: Implementation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Implementation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Implementation.SignalSignatures>(
             signal: K,
-            callback: Implementation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Implementation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Implementation.SignalSignatures>(
             signal: K,
-            ...args: Implementation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Implementation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

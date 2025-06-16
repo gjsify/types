@@ -155,8 +155,8 @@ export namespace GstVideo {
     namespace Filter {
         // Signal signatures
         interface SignalSignatures extends GstBase.Transform.SignalSignatures {
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -166,6 +166,14 @@ export namespace GstVideo {
 
     abstract class Filter extends GstBase.Transform {
         static $gtype: GObject.GType<Filter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Filter.SignalSignatures;
 
         // Fields
 
@@ -180,13 +188,19 @@ export namespace GstVideo {
 
         // Signals
 
-        connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        connect<K extends keyof Filter.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        connect_after<K extends keyof Filter.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Filter.SignalSignatures>(
             signal: K,
-            ...args: Filter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Filter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -194,18 +208,18 @@ export namespace GstVideo {
     namespace Sink {
         // Signal signatures
         interface SignalSignatures extends GstBase.Sink.SignalSignatures {
-            'notify::show-preroll-frame': GObject.Object.Notify;
-            'notify::async': GObject.Object.Notify;
-            'notify::blocksize': GObject.Object.Notify;
-            'notify::enable-last-buffer': GObject.Object.Notify;
-            'notify::last-buffer': GObject.Object.Notify;
-            'notify::max-lateness': GObject.Object.Notify;
-            'notify::preroll-queue-len': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::render-delay': GObject.Object.Notify;
-            'notify::sync': GObject.Object.Notify;
-            'notify::ts-offset': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::show-preroll-frame': (pspec: GObject.ParamSpec) => void;
+            'notify::async': (pspec: GObject.ParamSpec) => void;
+            'notify::blocksize': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-last-buffer': (pspec: GObject.ParamSpec) => void;
+            'notify::last-buffer': (pspec: GObject.ParamSpec) => void;
+            'notify::max-lateness': (pspec: GObject.ParamSpec) => void;
+            'notify::preroll-queue-len': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::render-delay': (pspec: GObject.ParamSpec) => void;
+            'notify::sync': (pspec: GObject.ParamSpec) => void;
+            'notify::ts-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -228,6 +242,14 @@ export namespace GstVideo {
         set show_preroll_frame(val: boolean);
         get showPrerollFrame(): boolean;
         set showPrerollFrame(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Sink.SignalSignatures;
 
         // Fields
 
@@ -243,13 +265,19 @@ export namespace GstVideo {
 
         // Signals
 
-        connect<K extends keyof Sink.SignalSignatures>(signal: K, callback: Sink.SignalSignatures[K]): number;
+        connect<K extends keyof Sink.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Sink.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Sink.SignalSignatures>(signal: K, callback: Sink.SignalSignatures[K]): number;
+        connect_after<K extends keyof Sink.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Sink.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Sink.SignalSignatures>(
             signal: K,
-            ...args: Sink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Sink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

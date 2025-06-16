@@ -400,6 +400,14 @@ export namespace GUPnPAV {
 
     class CDSLastChangeParser extends GObject.Object {
         static $gtype: GObject.GType<CDSLastChangeParser>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CDSLastChangeParser.SignalSignatures;
 
         // Constructors
 
@@ -413,17 +421,19 @@ export namespace GUPnPAV {
 
         connect<K extends keyof CDSLastChangeParser.SignalSignatures>(
             signal: K,
-            callback: CDSLastChangeParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CDSLastChangeParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CDSLastChangeParser.SignalSignatures>(
             signal: K,
-            callback: CDSLastChangeParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CDSLastChangeParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CDSLastChangeParser.SignalSignatures>(
             signal: K,
-            ...args: CDSLastChangeParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CDSLastChangeParser.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -441,33 +451,33 @@ export namespace GUPnPAV {
     namespace DIDLLiteContainer {
         // Signal signatures
         interface SignalSignatures extends DIDLLiteObject.SignalSignatures {
-            'notify::child-count': GObject.Object.Notify;
-            'notify::container-update-id': GObject.Object.Notify;
-            'notify::searchable': GObject.Object.Notify;
-            'notify::storage-used': GObject.Object.Notify;
-            'notify::total-deleted-child-count': GObject.Object.Notify;
-            'notify::album': GObject.Object.Notify;
-            'notify::album-art': GObject.Object.Notify;
-            'notify::artist': GObject.Object.Notify;
-            'notify::author': GObject.Object.Notify;
-            'notify::creator': GObject.Object.Notify;
-            'notify::date': GObject.Object.Notify;
-            'notify::dc-namespace': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::dlna-managed': GObject.Object.Notify;
-            'notify::dlna-namespace': GObject.Object.Notify;
-            'notify::genre': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::parent-id': GObject.Object.Notify;
-            'notify::pv-namespace': GObject.Object.Notify;
-            'notify::restricted': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::track-number': GObject.Object.Notify;
-            'notify::update-id': GObject.Object.Notify;
-            'notify::upnp-class': GObject.Object.Notify;
-            'notify::upnp-namespace': GObject.Object.Notify;
-            'notify::write-status': GObject.Object.Notify;
-            'notify::xml-node': GObject.Object.Notify;
+            'notify::child-count': (pspec: GObject.ParamSpec) => void;
+            'notify::container-update-id': (pspec: GObject.ParamSpec) => void;
+            'notify::searchable': (pspec: GObject.ParamSpec) => void;
+            'notify::storage-used': (pspec: GObject.ParamSpec) => void;
+            'notify::total-deleted-child-count': (pspec: GObject.ParamSpec) => void;
+            'notify::album': (pspec: GObject.ParamSpec) => void;
+            'notify::album-art': (pspec: GObject.ParamSpec) => void;
+            'notify::artist': (pspec: GObject.ParamSpec) => void;
+            'notify::author': (pspec: GObject.ParamSpec) => void;
+            'notify::creator': (pspec: GObject.ParamSpec) => void;
+            'notify::date': (pspec: GObject.ParamSpec) => void;
+            'notify::dc-namespace': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::dlna-managed': (pspec: GObject.ParamSpec) => void;
+            'notify::dlna-namespace': (pspec: GObject.ParamSpec) => void;
+            'notify::genre': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::parent-id': (pspec: GObject.ParamSpec) => void;
+            'notify::pv-namespace': (pspec: GObject.ParamSpec) => void;
+            'notify::restricted': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::track-number': (pspec: GObject.ParamSpec) => void;
+            'notify::update-id': (pspec: GObject.ParamSpec) => void;
+            'notify::upnp-class': (pspec: GObject.ParamSpec) => void;
+            'notify::upnp-namespace': (pspec: GObject.ParamSpec) => void;
+            'notify::write-status': (pspec: GObject.ParamSpec) => void;
+            'notify::xml-node': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -535,6 +545,14 @@ export namespace GUPnPAV {
          */
         get totalDeletedChildCount(): number;
         set totalDeletedChildCount(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DIDLLiteContainer.SignalSignatures;
 
         // Constructors
 
@@ -546,17 +564,17 @@ export namespace GUPnPAV {
 
         connect<K extends keyof DIDLLiteContainer.SignalSignatures>(
             signal: K,
-            callback: DIDLLiteContainer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DIDLLiteContainer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DIDLLiteContainer.SignalSignatures>(
             signal: K,
-            callback: DIDLLiteContainer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DIDLLiteContainer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DIDLLiteContainer.SignalSignatures>(
             signal: K,
-            ...args: DIDLLiteContainer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DIDLLiteContainer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -674,9 +692,9 @@ export namespace GUPnPAV {
     namespace DIDLLiteContributor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::role': GObject.Object.Notify;
-            'notify::xml-node': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::role': (pspec: GObject.ParamSpec) => void;
+            'notify::xml-node': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -712,6 +730,14 @@ export namespace GUPnPAV {
          * The pointer to object node in XML document.
          */
         get xmlNode(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DIDLLiteContributor.SignalSignatures;
 
         // Constructors
 
@@ -723,17 +749,19 @@ export namespace GUPnPAV {
 
         connect<K extends keyof DIDLLiteContributor.SignalSignatures>(
             signal: K,
-            callback: DIDLLiteContributor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DIDLLiteContributor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DIDLLiteContributor.SignalSignatures>(
             signal: K,
-            callback: DIDLLiteContributor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DIDLLiteContributor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DIDLLiteContributor.SignalSignatures>(
             signal: K,
-            ...args: DIDLLiteContributor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DIDLLiteContributor.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -769,10 +797,10 @@ export namespace GUPnPAV {
     namespace DIDLLiteCreateClass {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::content': GObject.Object.Notify;
-            'notify::friendly-name': GObject.Object.Notify;
-            'notify::include-derived': GObject.Object.Notify;
-            'notify::xml-node': GObject.Object.Notify;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::friendly-name': (pspec: GObject.ParamSpec) => void;
+            'notify::include-derived': (pspec: GObject.ParamSpec) => void;
+            'notify::xml-node': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -826,6 +854,14 @@ export namespace GUPnPAV {
          * The pointer to desc node in XML document.
          */
         get xmlNode(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DIDLLiteCreateClass.SignalSignatures;
 
         // Constructors
 
@@ -837,17 +873,19 @@ export namespace GUPnPAV {
 
         connect<K extends keyof DIDLLiteCreateClass.SignalSignatures>(
             signal: K,
-            callback: DIDLLiteCreateClass.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DIDLLiteCreateClass.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DIDLLiteCreateClass.SignalSignatures>(
             signal: K,
-            callback: DIDLLiteCreateClass.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DIDLLiteCreateClass.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DIDLLiteCreateClass.SignalSignatures>(
             signal: K,
-            ...args: DIDLLiteCreateClass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DIDLLiteCreateClass.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -893,11 +931,11 @@ export namespace GUPnPAV {
     namespace DIDLLiteDescriptor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::content': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::metadata-type': GObject.Object.Notify;
-            'notify::name-space': GObject.Object.Notify;
-            'notify::xml-node': GObject.Object.Notify;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::metadata-type': (pspec: GObject.ParamSpec) => void;
+            'notify::name-space': (pspec: GObject.ParamSpec) => void;
+            'notify::xml-node': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -957,6 +995,14 @@ export namespace GUPnPAV {
          * The pointer to desc node in XML document.
          */
         get xmlNode(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DIDLLiteDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -970,17 +1016,17 @@ export namespace GUPnPAV {
 
         connect<K extends keyof DIDLLiteDescriptor.SignalSignatures>(
             signal: K,
-            callback: DIDLLiteDescriptor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DIDLLiteDescriptor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DIDLLiteDescriptor.SignalSignatures>(
             signal: K,
-            callback: DIDLLiteDescriptor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DIDLLiteDescriptor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DIDLLiteDescriptor.SignalSignatures>(
             signal: K,
-            ...args: DIDLLiteDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DIDLLiteDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1036,30 +1082,30 @@ export namespace GUPnPAV {
     namespace DIDLLiteItem {
         // Signal signatures
         interface SignalSignatures extends DIDLLiteObject.SignalSignatures {
-            'notify::lifetime': GObject.Object.Notify;
-            'notify::ref-id': GObject.Object.Notify;
-            'notify::album': GObject.Object.Notify;
-            'notify::album-art': GObject.Object.Notify;
-            'notify::artist': GObject.Object.Notify;
-            'notify::author': GObject.Object.Notify;
-            'notify::creator': GObject.Object.Notify;
-            'notify::date': GObject.Object.Notify;
-            'notify::dc-namespace': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::dlna-managed': GObject.Object.Notify;
-            'notify::dlna-namespace': GObject.Object.Notify;
-            'notify::genre': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::parent-id': GObject.Object.Notify;
-            'notify::pv-namespace': GObject.Object.Notify;
-            'notify::restricted': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::track-number': GObject.Object.Notify;
-            'notify::update-id': GObject.Object.Notify;
-            'notify::upnp-class': GObject.Object.Notify;
-            'notify::upnp-namespace': GObject.Object.Notify;
-            'notify::write-status': GObject.Object.Notify;
-            'notify::xml-node': GObject.Object.Notify;
+            'notify::lifetime': (pspec: GObject.ParamSpec) => void;
+            'notify::ref-id': (pspec: GObject.ParamSpec) => void;
+            'notify::album': (pspec: GObject.ParamSpec) => void;
+            'notify::album-art': (pspec: GObject.ParamSpec) => void;
+            'notify::artist': (pspec: GObject.ParamSpec) => void;
+            'notify::author': (pspec: GObject.ParamSpec) => void;
+            'notify::creator': (pspec: GObject.ParamSpec) => void;
+            'notify::date': (pspec: GObject.ParamSpec) => void;
+            'notify::dc-namespace': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::dlna-managed': (pspec: GObject.ParamSpec) => void;
+            'notify::dlna-namespace': (pspec: GObject.ParamSpec) => void;
+            'notify::genre': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::parent-id': (pspec: GObject.ParamSpec) => void;
+            'notify::pv-namespace': (pspec: GObject.ParamSpec) => void;
+            'notify::restricted': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::track-number': (pspec: GObject.ParamSpec) => void;
+            'notify::update-id': (pspec: GObject.ParamSpec) => void;
+            'notify::upnp-class': (pspec: GObject.ParamSpec) => void;
+            'notify::upnp-namespace': (pspec: GObject.ParamSpec) => void;
+            'notify::write-status': (pspec: GObject.ParamSpec) => void;
+            'notify::xml-node': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1091,6 +1137,14 @@ export namespace GUPnPAV {
          */
         get refId(): string;
         set refId(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DIDLLiteItem.SignalSignatures;
 
         // Constructors
 
@@ -1102,17 +1156,17 @@ export namespace GUPnPAV {
 
         connect<K extends keyof DIDLLiteItem.SignalSignatures>(
             signal: K,
-            callback: DIDLLiteItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DIDLLiteItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DIDLLiteItem.SignalSignatures>(
             signal: K,
-            callback: DIDLLiteItem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DIDLLiteItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DIDLLiteItem.SignalSignatures>(
             signal: K,
-            ...args: DIDLLiteItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DIDLLiteItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1135,28 +1189,28 @@ export namespace GUPnPAV {
     namespace DIDLLiteObject {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::album': GObject.Object.Notify;
-            'notify::album-art': GObject.Object.Notify;
-            'notify::artist': GObject.Object.Notify;
-            'notify::author': GObject.Object.Notify;
-            'notify::creator': GObject.Object.Notify;
-            'notify::date': GObject.Object.Notify;
-            'notify::dc-namespace': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::dlna-managed': GObject.Object.Notify;
-            'notify::dlna-namespace': GObject.Object.Notify;
-            'notify::genre': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::parent-id': GObject.Object.Notify;
-            'notify::pv-namespace': GObject.Object.Notify;
-            'notify::restricted': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::track-number': GObject.Object.Notify;
-            'notify::update-id': GObject.Object.Notify;
-            'notify::upnp-class': GObject.Object.Notify;
-            'notify::upnp-namespace': GObject.Object.Notify;
-            'notify::write-status': GObject.Object.Notify;
-            'notify::xml-node': GObject.Object.Notify;
+            'notify::album': (pspec: GObject.ParamSpec) => void;
+            'notify::album-art': (pspec: GObject.ParamSpec) => void;
+            'notify::artist': (pspec: GObject.ParamSpec) => void;
+            'notify::author': (pspec: GObject.ParamSpec) => void;
+            'notify::creator': (pspec: GObject.ParamSpec) => void;
+            'notify::date': (pspec: GObject.ParamSpec) => void;
+            'notify::dc-namespace': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::dlna-managed': (pspec: GObject.ParamSpec) => void;
+            'notify::dlna-namespace': (pspec: GObject.ParamSpec) => void;
+            'notify::genre': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::parent-id': (pspec: GObject.ParamSpec) => void;
+            'notify::pv-namespace': (pspec: GObject.ParamSpec) => void;
+            'notify::restricted': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::track-number': (pspec: GObject.ParamSpec) => void;
+            'notify::update-id': (pspec: GObject.ParamSpec) => void;
+            'notify::upnp-class': (pspec: GObject.ParamSpec) => void;
+            'notify::upnp-namespace': (pspec: GObject.ParamSpec) => void;
+            'notify::write-status': (pspec: GObject.ParamSpec) => void;
+            'notify::xml-node': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1372,6 +1426,14 @@ export namespace GUPnPAV {
          * The pointer to object node in XML document.
          */
         get xmlNode(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DIDLLiteObject.SignalSignatures;
 
         // Constructors
 
@@ -1383,17 +1445,17 @@ export namespace GUPnPAV {
 
         connect<K extends keyof DIDLLiteObject.SignalSignatures>(
             signal: K,
-            callback: DIDLLiteObject.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DIDLLiteObject.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DIDLLiteObject.SignalSignatures>(
             signal: K,
-            callback: DIDLLiteObject.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DIDLLiteObject.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DIDLLiteObject.SignalSignatures>(
             signal: K,
-            ...args: DIDLLiteObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DIDLLiteObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1743,25 +1805,11 @@ export namespace GUPnPAV {
     }
 
     namespace DIDLLiteParser {
-        // Signal callback interfaces
-
-        interface ContainerAvailable {
-            (_source: DIDLLiteParser, container: DIDLLiteContainer): void;
-        }
-
-        interface ItemAvailable {
-            (_source: DIDLLiteParser, item: DIDLLiteItem): void;
-        }
-
-        interface ObjectAvailable {
-            (_source: DIDLLiteParser, object: DIDLLiteObject): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'container-available': ContainerAvailable;
-            'item-available': ItemAvailable;
-            'object-available': ObjectAvailable;
+            'container-available': (arg0: DIDLLiteContainer) => void;
+            'item-available': (arg0: DIDLLiteItem) => void;
+            'object-available': (arg0: DIDLLiteObject) => void;
         }
 
         // Constructor properties interface
@@ -1771,6 +1819,14 @@ export namespace GUPnPAV {
 
     class DIDLLiteParser extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteParser>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DIDLLiteParser.SignalSignatures;
 
         // Constructors
 
@@ -1784,17 +1840,17 @@ export namespace GUPnPAV {
 
         connect<K extends keyof DIDLLiteParser.SignalSignatures>(
             signal: K,
-            callback: DIDLLiteParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DIDLLiteParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DIDLLiteParser.SignalSignatures>(
             signal: K,
-            callback: DIDLLiteParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DIDLLiteParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DIDLLiteParser.SignalSignatures>(
             signal: K,
-            ...args: DIDLLiteParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DIDLLiteParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1819,28 +1875,28 @@ export namespace GUPnPAV {
     namespace DIDLLiteResource {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::audio-channels': GObject.Object.Notify;
-            'notify::bitrate': GObject.Object.Notify;
-            'notify::bits-per-sample': GObject.Object.Notify;
-            'notify::cleartext-size': GObject.Object.Notify;
-            'notify::color-depth': GObject.Object.Notify;
-            'notify::dlna-namespace': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::import-uri': GObject.Object.Notify;
-            'notify::protection': GObject.Object.Notify;
-            'notify::protocol-info': GObject.Object.Notify;
-            'notify::pv-namespace': GObject.Object.Notify;
-            'notify::sample-freq': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::size64': GObject.Object.Notify;
-            'notify::subtitle-file-type': GObject.Object.Notify;
-            'notify::subtitle-file-uri': GObject.Object.Notify;
-            'notify::track-total': GObject.Object.Notify;
-            'notify::update-count': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::xml-node': GObject.Object.Notify;
+            'notify::audio-channels': (pspec: GObject.ParamSpec) => void;
+            'notify::bitrate': (pspec: GObject.ParamSpec) => void;
+            'notify::bits-per-sample': (pspec: GObject.ParamSpec) => void;
+            'notify::cleartext-size': (pspec: GObject.ParamSpec) => void;
+            'notify::color-depth': (pspec: GObject.ParamSpec) => void;
+            'notify::dlna-namespace': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::import-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::protection': (pspec: GObject.ParamSpec) => void;
+            'notify::protocol-info': (pspec: GObject.ParamSpec) => void;
+            'notify::pv-namespace': (pspec: GObject.ParamSpec) => void;
+            'notify::sample-freq': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::size64': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle-file-type': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle-file-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::track-total': (pspec: GObject.ParamSpec) => void;
+            'notify::update-count': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::xml-node': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2056,6 +2112,14 @@ export namespace GUPnPAV {
          * The pointer to res node in XML document.
          */
         get xmlNode(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DIDLLiteResource.SignalSignatures;
 
         // Constructors
 
@@ -2067,17 +2131,17 @@ export namespace GUPnPAV {
 
         connect<K extends keyof DIDLLiteResource.SignalSignatures>(
             signal: K,
-            callback: DIDLLiteResource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DIDLLiteResource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DIDLLiteResource.SignalSignatures>(
             signal: K,
-            callback: DIDLLiteResource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DIDLLiteResource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DIDLLiteResource.SignalSignatures>(
             signal: K,
-            ...args: DIDLLiteResource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DIDLLiteResource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2321,8 +2385,8 @@ export namespace GUPnPAV {
     namespace DIDLLiteWriter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::language': GObject.Object.Notify;
-            'notify::xml-node': GObject.Object.Notify;
+            'notify::language': (pspec: GObject.ParamSpec) => void;
+            'notify::xml-node': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2351,6 +2415,14 @@ export namespace GUPnPAV {
          * The pointer to root node in XML document.
          */
         get xmlNode(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DIDLLiteWriter.SignalSignatures;
 
         // Constructors
 
@@ -2364,17 +2436,17 @@ export namespace GUPnPAV {
 
         connect<K extends keyof DIDLLiteWriter.SignalSignatures>(
             signal: K,
-            callback: DIDLLiteWriter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DIDLLiteWriter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DIDLLiteWriter.SignalSignatures>(
             signal: K,
-            callback: DIDLLiteWriter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DIDLLiteWriter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DIDLLiteWriter.SignalSignatures>(
             signal: K,
-            ...args: DIDLLiteWriter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DIDLLiteWriter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2424,9 +2496,9 @@ export namespace GUPnPAV {
     namespace Feature {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::object-ids': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::object-ids': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2460,6 +2532,14 @@ export namespace GUPnPAV {
          * The version of this feature.
          */
         get version(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Feature.SignalSignatures;
 
         // Constructors
 
@@ -2469,16 +2549,19 @@ export namespace GUPnPAV {
 
         // Signals
 
-        connect<K extends keyof Feature.SignalSignatures>(signal: K, callback: Feature.SignalSignatures[K]): number;
+        connect<K extends keyof Feature.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Feature.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Feature.SignalSignatures>(
             signal: K,
-            callback: Feature.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Feature.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Feature.SignalSignatures>(
             signal: K,
-            ...args: Feature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Feature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2512,6 +2595,14 @@ export namespace GUPnPAV {
 
     class FeatureListParser extends GObject.Object {
         static $gtype: GObject.GType<FeatureListParser>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FeatureListParser.SignalSignatures;
 
         // Constructors
 
@@ -2525,17 +2616,17 @@ export namespace GUPnPAV {
 
         connect<K extends keyof FeatureListParser.SignalSignatures>(
             signal: K,
-            callback: FeatureListParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeatureListParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeatureListParser.SignalSignatures>(
             signal: K,
-            callback: FeatureListParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeatureListParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeatureListParser.SignalSignatures>(
             signal: K,
-            ...args: FeatureListParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FeatureListParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2561,6 +2652,14 @@ export namespace GUPnPAV {
 
     class LastChangeParser extends GObject.Object {
         static $gtype: GObject.GType<LastChangeParser>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: LastChangeParser.SignalSignatures;
 
         // Constructors
 
@@ -2574,17 +2673,17 @@ export namespace GUPnPAV {
 
         connect<K extends keyof LastChangeParser.SignalSignatures>(
             signal: K,
-            callback: LastChangeParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LastChangeParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LastChangeParser.SignalSignatures>(
             signal: K,
-            callback: LastChangeParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LastChangeParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LastChangeParser.SignalSignatures>(
             signal: K,
-            ...args: LastChangeParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LastChangeParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2592,10 +2691,10 @@ export namespace GUPnPAV {
     namespace MediaCollection {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::author': GObject.Object.Notify;
-            'notify::data': GObject.Object.Notify;
-            'notify::mutable': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
+            'notify::author': (pspec: GObject.ParamSpec) => void;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
+            'notify::mutable': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2633,6 +2732,14 @@ export namespace GUPnPAV {
          */
         get title(): string;
         set title(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MediaCollection.SignalSignatures;
 
         // Constructors
 
@@ -2648,17 +2755,17 @@ export namespace GUPnPAV {
 
         connect<K extends keyof MediaCollection.SignalSignatures>(
             signal: K,
-            callback: MediaCollection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaCollection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaCollection.SignalSignatures>(
             signal: K,
-            callback: MediaCollection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaCollection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaCollection.SignalSignatures>(
             signal: K,
-            ...args: MediaCollection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MediaCollection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2685,14 +2792,14 @@ export namespace GUPnPAV {
     namespace ProtocolInfo {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::dlna-conversion': GObject.Object.Notify;
-            'notify::dlna-flags': GObject.Object.Notify;
-            'notify::dlna-operation': GObject.Object.Notify;
-            'notify::dlna-profile': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
-            'notify::network': GObject.Object.Notify;
-            'notify::play-speeds': GObject.Object.Notify;
-            'notify::protocol': GObject.Object.Notify;
+            'notify::dlna-conversion': (pspec: GObject.ParamSpec) => void;
+            'notify::dlna-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::dlna-operation': (pspec: GObject.ParamSpec) => void;
+            'notify::dlna-profile': (pspec: GObject.ParamSpec) => void;
+            'notify::mime-type': (pspec: GObject.ParamSpec) => void;
+            'notify::network': (pspec: GObject.ParamSpec) => void;
+            'notify::play-speeds': (pspec: GObject.ParamSpec) => void;
+            'notify::protocol': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2792,6 +2899,14 @@ export namespace GUPnPAV {
          */
         get protocol(): string;
         set protocol(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ProtocolInfo.SignalSignatures;
 
         // Constructors
 
@@ -2807,17 +2922,17 @@ export namespace GUPnPAV {
 
         connect<K extends keyof ProtocolInfo.SignalSignatures>(
             signal: K,
-            callback: ProtocolInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProtocolInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProtocolInfo.SignalSignatures>(
             signal: K,
-            callback: ProtocolInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProtocolInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProtocolInfo.SignalSignatures>(
             signal: K,
-            ...args: ProtocolInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ProtocolInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2917,41 +3032,13 @@ export namespace GUPnPAV {
     }
 
     namespace SearchCriteriaParser {
-        // Signal callback interfaces
-
-        interface BeginParens {
-            (_source: SearchCriteriaParser): void;
-        }
-
-        interface Conjunction {
-            (_source: SearchCriteriaParser): void;
-        }
-
-        interface Disjunction {
-            (_source: SearchCriteriaParser): void;
-        }
-
-        interface EndParens {
-            (_source: SearchCriteriaParser): void;
-        }
-
-        interface Expression {
-            (
-                _source: SearchCriteriaParser,
-                property: string,
-                op: SearchCriteriaOp,
-                value: string,
-                error?: any | null,
-            ): boolean | void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'begin-parens': BeginParens;
-            conjunction: Conjunction;
-            disjunction: Disjunction;
-            'end-parens': EndParens;
-            expression: Expression;
+            'begin-parens': () => void;
+            conjunction: () => void;
+            disjunction: () => void;
+            'end-parens': () => void;
+            expression: (arg0: string, arg1: SearchCriteriaOp, arg2: string, arg3: any | null) => boolean | void;
         }
 
         // Constructor properties interface
@@ -2961,6 +3048,14 @@ export namespace GUPnPAV {
 
     class SearchCriteriaParser extends GObject.Object {
         static $gtype: GObject.GType<SearchCriteriaParser>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SearchCriteriaParser.SignalSignatures;
 
         // Constructors
 
@@ -2974,17 +3069,19 @@ export namespace GUPnPAV {
 
         connect<K extends keyof SearchCriteriaParser.SignalSignatures>(
             signal: K,
-            callback: SearchCriteriaParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SearchCriteriaParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SearchCriteriaParser.SignalSignatures>(
             signal: K,
-            callback: SearchCriteriaParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SearchCriteriaParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SearchCriteriaParser.SignalSignatures>(
             signal: K,
-            ...args: SearchCriteriaParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SearchCriteriaParser.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

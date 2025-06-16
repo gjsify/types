@@ -331,20 +331,10 @@ export namespace FPrint {
         PRESENT,
     }
     namespace Context {
-        // Signal callback interfaces
-
-        interface DeviceAdded {
-            (_source: Context, device: Device): void;
-        }
-
-        interface DeviceRemoved {
-            (_source: Context, device: Device): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'device-added': DeviceAdded;
-            'device-removed': DeviceRemoved;
+            'device-added': (arg0: Device) => void;
+            'device-removed': (arg0: Device) => void;
         }
 
         // Constructor properties interface
@@ -354,6 +344,14 @@ export namespace FPrint {
 
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -365,16 +363,19 @@ export namespace FPrint {
 
         // Signals
 
-        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
-            callback: Context.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -407,29 +408,23 @@ export namespace FPrint {
     }
 
     namespace Device {
-        // Signal callback interfaces
-
-        interface Removed {
-            (_source: Device): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            removed: Removed;
-            'notify::device-id': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::finger-status': GObject.Object.Notify;
-            'notify::fpi-driver-data': GObject.Object.Notify;
-            'notify::fpi-environ': GObject.Object.Notify;
-            'notify::fpi-udev-data-hidraw': GObject.Object.Notify;
-            'notify::fpi-udev-data-spidev': GObject.Object.Notify;
-            'notify::fpi-usb-device': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::nr-enroll-stages': GObject.Object.Notify;
-            'notify::open': GObject.Object.Notify;
-            'notify::removed': GObject.Object.Notify;
-            'notify::scan-type': GObject.Object.Notify;
-            'notify::temperature': GObject.Object.Notify;
+            removed: () => void;
+            'notify::device-id': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::finger-status': (pspec: GObject.ParamSpec) => void;
+            'notify::fpi-driver-data': (pspec: GObject.ParamSpec) => void;
+            'notify::fpi-environ': (pspec: GObject.ParamSpec) => void;
+            'notify::fpi-udev-data-hidraw': (pspec: GObject.ParamSpec) => void;
+            'notify::fpi-udev-data-spidev': (pspec: GObject.ParamSpec) => void;
+            'notify::fpi-usb-device': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::nr-enroll-stages': (pspec: GObject.ParamSpec) => void;
+            'notify::open': (pspec: GObject.ParamSpec) => void;
+            'notify::removed': (pspec: GObject.ParamSpec) => void;
+            'notify::scan-type': (pspec: GObject.ParamSpec) => void;
+            'notify::temperature': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -489,6 +484,14 @@ export namespace FPrint {
         get scan_type(): ScanType;
         get scanType(): ScanType;
         get temperature(): Temperature;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -498,13 +501,19 @@ export namespace FPrint {
 
         // Signals
 
-        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
-            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1775,8 +1784,8 @@ export namespace FPrint {
     namespace Image {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1794,6 +1803,14 @@ export namespace FPrint {
 
         get height(): number;
         get width(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Image.SignalSignatures;
 
         // Constructors
 
@@ -1805,13 +1822,19 @@ export namespace FPrint {
 
         // Signals
 
-        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect_after<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Image.SignalSignatures>(
             signal: K,
-            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1884,29 +1907,23 @@ export namespace FPrint {
     }
 
     namespace ImageDevice {
-        // Signal callback interfaces
-
-        interface FpiImageDeviceStateChanged {
-            (_source: ImageDevice, new_state: unknown): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'fpi-image-device-state-changed': FpiImageDeviceStateChanged;
-            'notify::device-id': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::finger-status': GObject.Object.Notify;
-            'notify::fpi-driver-data': GObject.Object.Notify;
-            'notify::fpi-environ': GObject.Object.Notify;
-            'notify::fpi-udev-data-hidraw': GObject.Object.Notify;
-            'notify::fpi-udev-data-spidev': GObject.Object.Notify;
-            'notify::fpi-usb-device': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::nr-enroll-stages': GObject.Object.Notify;
-            'notify::open': GObject.Object.Notify;
-            'notify::removed': GObject.Object.Notify;
-            'notify::scan-type': GObject.Object.Notify;
-            'notify::temperature': GObject.Object.Notify;
+            'fpi-image-device-state-changed': (arg0: unknown) => void;
+            'notify::device-id': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::finger-status': (pspec: GObject.ParamSpec) => void;
+            'notify::fpi-driver-data': (pspec: GObject.ParamSpec) => void;
+            'notify::fpi-environ': (pspec: GObject.ParamSpec) => void;
+            'notify::fpi-udev-data-hidraw': (pspec: GObject.ParamSpec) => void;
+            'notify::fpi-udev-data-spidev': (pspec: GObject.ParamSpec) => void;
+            'notify::fpi-usb-device': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::nr-enroll-stages': (pspec: GObject.ParamSpec) => void;
+            'notify::open': (pspec: GObject.ParamSpec) => void;
+            'notify::removed': (pspec: GObject.ParamSpec) => void;
+            'notify::scan-type': (pspec: GObject.ParamSpec) => void;
+            'notify::temperature': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1916,6 +1933,14 @@ export namespace FPrint {
 
     abstract class ImageDevice extends Device implements Gio.AsyncInitable<ImageDevice> {
         static $gtype: GObject.GType<ImageDevice>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ImageDevice.SignalSignatures;
 
         // Constructors
 
@@ -1927,17 +1952,17 @@ export namespace FPrint {
 
         connect<K extends keyof ImageDevice.SignalSignatures>(
             signal: K,
-            callback: ImageDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ImageDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ImageDevice.SignalSignatures>(
             signal: K,
-            callback: ImageDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ImageDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ImageDevice.SignalSignatures>(
             signal: K,
-            ...args: ImageDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ImageDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2585,16 +2610,16 @@ export namespace FPrint {
     namespace Print {
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-            'notify::description': GObject.Object.Notify;
-            'notify::device-id': GObject.Object.Notify;
-            'notify::device-stored': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::enroll-date': GObject.Object.Notify;
-            'notify::finger': GObject.Object.Notify;
-            'notify::fpi-data': GObject.Object.Notify;
-            'notify::fpi-prints': GObject.Object.Notify;
-            'notify::image': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::device-id': (pspec: GObject.ParamSpec) => void;
+            'notify::device-stored': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::enroll-date': (pspec: GObject.ParamSpec) => void;
+            'notify::finger': (pspec: GObject.ParamSpec) => void;
+            'notify::fpi-data': (pspec: GObject.ParamSpec) => void;
+            'notify::fpi-prints': (pspec: GObject.ParamSpec) => void;
+            'notify::image': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2647,6 +2672,14 @@ export namespace FPrint {
         get image(): Image;
         get username(): string;
         set username(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Print.SignalSignatures;
 
         // Constructors
 
@@ -2658,13 +2691,19 @@ export namespace FPrint {
 
         // Signals
 
-        connect<K extends keyof Print.SignalSignatures>(signal: K, callback: Print.SignalSignatures[K]): number;
+        connect<K extends keyof Print.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Print.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Print.SignalSignatures>(signal: K, callback: Print.SignalSignatures[K]): number;
+        connect_after<K extends keyof Print.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Print.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Print.SignalSignatures>(
             signal: K,
-            ...args: Print.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Print.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

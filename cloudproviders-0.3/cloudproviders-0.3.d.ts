@@ -61,12 +61,12 @@ export namespace CloudProviders {
     namespace Account {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::action-group': GObject.Object.Notify;
-            'notify::icon': GObject.Object.Notify;
-            'notify::menu-model': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::status-details': GObject.Object.Notify;
+            'notify::action-group': (pspec: GObject.ParamSpec) => void;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::menu-model': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::status-details': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -104,6 +104,14 @@ export namespace CloudProviders {
         get path(): string;
         get status_details(): string;
         get statusDetails(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Account.SignalSignatures;
 
         // Constructors
 
@@ -115,16 +123,19 @@ export namespace CloudProviders {
 
         // Signals
 
-        connect<K extends keyof Account.SignalSignatures>(signal: K, callback: Account.SignalSignatures[K]): number;
+        connect<K extends keyof Account.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Account.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Account.SignalSignatures>(
             signal: K,
-            callback: Account.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Account.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Account.SignalSignatures>(
             signal: K,
-            ...args: Account.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Account.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -171,14 +182,14 @@ export namespace CloudProviders {
     namespace AccountExporter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::action-group': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::icon': GObject.Object.Notify;
-            'notify::menu-model': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::provider': GObject.Object.Notify;
-            'notify::status-details': GObject.Object.Notify;
+            'notify::action-group': (pspec: GObject.ParamSpec) => void;
+            'notify::bus-name': (pspec: GObject.ParamSpec) => void;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::menu-model': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::provider': (pspec: GObject.ParamSpec) => void;
+            'notify::status-details': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -225,6 +236,14 @@ export namespace CloudProviders {
         set status_details(val: string);
         get statusDetails(): string;
         set statusDetails(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AccountExporter.SignalSignatures;
 
         // Constructors
 
@@ -238,17 +257,17 @@ export namespace CloudProviders {
 
         connect<K extends keyof AccountExporter.SignalSignatures>(
             signal: K,
-            callback: AccountExporter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AccountExporter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AccountExporter.SignalSignatures>(
             signal: K,
-            callback: AccountExporter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AccountExporter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AccountExporter.SignalSignatures>(
             signal: K,
-            ...args: AccountExporter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AccountExporter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -276,15 +295,9 @@ export namespace CloudProviders {
     }
 
     namespace Collector {
-        // Signal callback interfaces
-
-        interface ProvidersChanged {
-            (_source: Collector): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'providers-changed': ProvidersChanged;
+            'providers-changed': () => void;
         }
 
         // Constructor properties interface
@@ -300,6 +313,14 @@ export namespace CloudProviders {
      */
     class Collector extends GObject.Object {
         static $gtype: GObject.GType<Collector>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Collector.SignalSignatures;
 
         // Constructors
 
@@ -309,16 +330,19 @@ export namespace CloudProviders {
 
         // Signals
 
-        connect<K extends keyof Collector.SignalSignatures>(signal: K, callback: Collector.SignalSignatures[K]): number;
+        connect<K extends keyof Collector.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Collector.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Collector.SignalSignatures>(
             signal: K,
-            callback: Collector.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Collector.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Collector.SignalSignatures>(
             signal: K,
-            ...args: Collector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Collector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -338,20 +362,20 @@ export namespace CloudProviders {
     namespace DbusAccountProxy {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::icon': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::status': GObject.Object.Notify;
-            'notify::status-details': GObject.Object.Notify;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::status': (pspec: GObject.ParamSpec) => void;
+            'notify::status-details': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -372,6 +396,14 @@ export namespace CloudProviders {
         implements DbusAccount, Gio.AsyncInitable<DbusAccountProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<DbusAccountProxy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DbusAccountProxy.SignalSignatures;
 
         // Constructors
 
@@ -412,17 +444,17 @@ export namespace CloudProviders {
 
         connect<K extends keyof DbusAccountProxy.SignalSignatures>(
             signal: K,
-            callback: DbusAccountProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DbusAccountProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DbusAccountProxy.SignalSignatures>(
             signal: K,
-            callback: DbusAccountProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DbusAccountProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DbusAccountProxy.SignalSignatures>(
             signal: K,
-            ...args: DbusAccountProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DbusAccountProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1286,12 +1318,12 @@ export namespace CloudProviders {
     namespace DbusAccountSkeleton {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::icon': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::status': GObject.Object.Notify;
-            'notify::status-details': GObject.Object.Notify;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::status': (pspec: GObject.ParamSpec) => void;
+            'notify::status-details': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1307,6 +1339,14 @@ export namespace CloudProviders {
      */
     class DbusAccountSkeleton extends Gio.DBusInterfaceSkeleton implements DbusAccount, Gio.DBusInterface {
         static $gtype: GObject.GType<DbusAccountSkeleton>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DbusAccountSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -1320,17 +1360,19 @@ export namespace CloudProviders {
 
         connect<K extends keyof DbusAccountSkeleton.SignalSignatures>(
             signal: K,
-            callback: DbusAccountSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DbusAccountSkeleton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DbusAccountSkeleton.SignalSignatures>(
             signal: K,
-            callback: DbusAccountSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DbusAccountSkeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DbusAccountSkeleton.SignalSignatures>(
             signal: K,
-            ...args: DbusAccountSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DbusAccountSkeleton.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1857,15 +1899,15 @@ export namespace CloudProviders {
     namespace DbusObjectManagerClient {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusObjectManagerClient.SignalSignatures {
-            'notify::bus-type': GObject.Object.Notify;
-            'notify::connection': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::get-proxy-type-destroy-notify': GObject.Object.Notify;
-            'notify::get-proxy-type-func': GObject.Object.Notify;
-            'notify::get-proxy-type-user-data': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::name-owner': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
+            'notify::bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::get-proxy-type-destroy-notify': (pspec: GObject.ParamSpec) => void;
+            'notify::get-proxy-type-func': (pspec: GObject.ParamSpec) => void;
+            'notify::get-proxy-type-user-data': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1885,6 +1927,14 @@ export namespace CloudProviders {
         implements Gio.AsyncInitable<DbusObjectManagerClient>, Gio.DBusObjectManager, Gio.Initable
     {
         static $gtype: GObject.GType<DbusObjectManagerClient>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DbusObjectManagerClient.SignalSignatures;
 
         // Constructors
 
@@ -1925,17 +1975,19 @@ export namespace CloudProviders {
 
         connect<K extends keyof DbusObjectManagerClient.SignalSignatures>(
             signal: K,
-            callback: DbusObjectManagerClient.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DbusObjectManagerClient.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DbusObjectManagerClient.SignalSignatures>(
             signal: K,
-            callback: DbusObjectManagerClient.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DbusObjectManagerClient.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DbusObjectManagerClient.SignalSignatures>(
             signal: K,
-            ...args: DbusObjectManagerClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DbusObjectManagerClient.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2800,10 +2852,10 @@ export namespace CloudProviders {
     namespace DbusObjectProxy {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusObjectProxy.SignalSignatures {
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::account': GObject.Object.Notify;
-            'notify::provider': GObject.Object.Notify;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
+            'notify::account': (pspec: GObject.ParamSpec) => void;
+            'notify::provider': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2819,6 +2871,14 @@ export namespace CloudProviders {
      */
     class DbusObjectProxy extends Gio.DBusObjectProxy implements DbusObject, Gio.DBusObject {
         static $gtype: GObject.GType<DbusObjectProxy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DbusObjectProxy.SignalSignatures;
 
         // Constructors
 
@@ -2832,17 +2892,17 @@ export namespace CloudProviders {
 
         connect<K extends keyof DbusObjectProxy.SignalSignatures>(
             signal: K,
-            callback: DbusObjectProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DbusObjectProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DbusObjectProxy.SignalSignatures>(
             signal: K,
-            callback: DbusObjectProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DbusObjectProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DbusObjectProxy.SignalSignatures>(
             signal: K,
-            ...args: DbusObjectProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DbusObjectProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3358,9 +3418,9 @@ export namespace CloudProviders {
     namespace DbusObjectSkeleton {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusObjectSkeleton.SignalSignatures {
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::account': GObject.Object.Notify;
-            'notify::provider': GObject.Object.Notify;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
+            'notify::account': (pspec: GObject.ParamSpec) => void;
+            'notify::provider': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3376,6 +3436,14 @@ export namespace CloudProviders {
      */
     class DbusObjectSkeleton extends Gio.DBusObjectSkeleton implements DbusObject, Gio.DBusObject {
         static $gtype: GObject.GType<DbusObjectSkeleton>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DbusObjectSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -3389,17 +3457,17 @@ export namespace CloudProviders {
 
         connect<K extends keyof DbusObjectSkeleton.SignalSignatures>(
             signal: K,
-            callback: DbusObjectSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DbusObjectSkeleton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DbusObjectSkeleton.SignalSignatures>(
             signal: K,
-            callback: DbusObjectSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DbusObjectSkeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DbusObjectSkeleton.SignalSignatures>(
             signal: K,
-            ...args: DbusObjectSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DbusObjectSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3928,16 +3996,16 @@ export namespace CloudProviders {
     namespace DbusProviderProxy {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3958,6 +4026,14 @@ export namespace CloudProviders {
         implements DbusProvider, Gio.AsyncInitable<DbusProviderProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<DbusProviderProxy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DbusProviderProxy.SignalSignatures;
 
         // Constructors
 
@@ -3998,17 +4074,17 @@ export namespace CloudProviders {
 
         connect<K extends keyof DbusProviderProxy.SignalSignatures>(
             signal: K,
-            callback: DbusProviderProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DbusProviderProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DbusProviderProxy.SignalSignatures>(
             signal: K,
-            callback: DbusProviderProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DbusProviderProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DbusProviderProxy.SignalSignatures>(
             signal: K,
-            ...args: DbusProviderProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DbusProviderProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4837,8 +4913,8 @@ export namespace CloudProviders {
     namespace DbusProviderSkeleton {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4854,6 +4930,14 @@ export namespace CloudProviders {
      */
     class DbusProviderSkeleton extends Gio.DBusInterfaceSkeleton implements DbusProvider, Gio.DBusInterface {
         static $gtype: GObject.GType<DbusProviderSkeleton>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DbusProviderSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -4867,17 +4951,19 @@ export namespace CloudProviders {
 
         connect<K extends keyof DbusProviderSkeleton.SignalSignatures>(
             signal: K,
-            callback: DbusProviderSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DbusProviderSkeleton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DbusProviderSkeleton.SignalSignatures>(
             signal: K,
-            callback: DbusProviderSkeleton.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DbusProviderSkeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DbusProviderSkeleton.SignalSignatures>(
             signal: K,
-            ...args: DbusProviderSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DbusProviderSkeleton.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5367,21 +5453,11 @@ export namespace CloudProviders {
     }
 
     namespace Provider {
-        // Signal callback interfaces
-
-        interface AccountsChanged {
-            (_source: Provider): void;
-        }
-
-        interface Removed {
-            (_source: Provider): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'accounts-changed': AccountsChanged;
-            removed: Removed;
-            'notify::name': GObject.Object.Notify;
+            'accounts-changed': () => void;
+            removed: () => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5402,6 +5478,14 @@ export namespace CloudProviders {
         // Properties
 
         get name(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Provider.SignalSignatures;
 
         // Constructors
 
@@ -5413,16 +5497,19 @@ export namespace CloudProviders {
 
         // Signals
 
-        connect<K extends keyof Provider.SignalSignatures>(signal: K, callback: Provider.SignalSignatures[K]): number;
+        connect<K extends keyof Provider.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Provider.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Provider.SignalSignatures>(
             signal: K,
-            callback: Provider.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Provider.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Provider.SignalSignatures>(
             signal: K,
-            ...args: Provider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Provider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5435,10 +5522,10 @@ export namespace CloudProviders {
     namespace ProviderExporter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::bus': GObject.Object.Notify;
-            'notify::bus-name': GObject.Object.Notify;
-            'notify::bus-path': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::bus': (pspec: GObject.ParamSpec) => void;
+            'notify::bus-name': (pspec: GObject.ParamSpec) => void;
+            'notify::bus-path': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5470,6 +5557,14 @@ export namespace CloudProviders {
         get busPath(): string;
         get name(): string;
         set name(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ProviderExporter.SignalSignatures;
 
         // Constructors
 
@@ -5483,17 +5578,17 @@ export namespace CloudProviders {
 
         connect<K extends keyof ProviderExporter.SignalSignatures>(
             signal: K,
-            callback: ProviderExporter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProviderExporter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProviderExporter.SignalSignatures>(
             signal: K,
-            callback: ProviderExporter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProviderExporter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProviderExporter.SignalSignatures>(
             signal: K,
-            ...args: ProviderExporter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ProviderExporter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

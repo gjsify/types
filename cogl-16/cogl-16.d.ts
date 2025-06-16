@@ -1961,6 +1961,14 @@ export namespace Cogl {
 
     class Atlas extends GObject.Object {
         static $gtype: GObject.GType<Atlas>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Atlas.SignalSignatures;
 
         // Constructors
 
@@ -1970,13 +1978,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Atlas.SignalSignatures>(signal: K, callback: Atlas.SignalSignatures[K]): number;
+        connect<K extends keyof Atlas.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Atlas.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Atlas.SignalSignatures>(signal: K, callback: Atlas.SignalSignatures[K]): number;
+        connect_after<K extends keyof Atlas.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Atlas.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Atlas.SignalSignatures>(
             signal: K,
-            ...args: Atlas.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Atlas.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1988,11 +2002,11 @@ export namespace Cogl {
     namespace AtlasTexture {
         // Signal signatures
         interface SignalSignatures extends Texture.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::format': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::loader': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::loader': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2023,6 +2037,14 @@ export namespace Cogl {
      */
     class AtlasTexture extends Texture {
         static $gtype: GObject.GType<AtlasTexture>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AtlasTexture.SignalSignatures;
 
         // Constructors
 
@@ -2038,17 +2060,17 @@ export namespace Cogl {
 
         connect<K extends keyof AtlasTexture.SignalSignatures>(
             signal: K,
-            callback: AtlasTexture.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AtlasTexture.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AtlasTexture.SignalSignatures>(
             signal: K,
-            callback: AtlasTexture.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AtlasTexture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AtlasTexture.SignalSignatures>(
             signal: K,
-            ...args: AtlasTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AtlasTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2064,6 +2086,14 @@ export namespace Cogl {
 
     class Attribute extends GObject.Object {
         static $gtype: GObject.GType<Attribute>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Attribute.SignalSignatures;
 
         // Constructors
 
@@ -2082,16 +2112,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Attribute.SignalSignatures>(signal: K, callback: Attribute.SignalSignatures[K]): number;
+        connect<K extends keyof Attribute.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Attribute.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Attribute.SignalSignatures>(
             signal: K,
-            callback: Attribute.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Attribute.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Attribute.SignalSignatures>(
             signal: K,
-            ...args: Attribute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Attribute.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2116,10 +2149,10 @@ export namespace Cogl {
     namespace AttributeBuffer {
         // Signal signatures
         interface SignalSignatures extends Buffer.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::default-target': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::update-hint': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::default-target': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::update-hint': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2132,6 +2165,14 @@ export namespace Cogl {
      */
     class AttributeBuffer extends Buffer {
         static $gtype: GObject.GType<AttributeBuffer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AttributeBuffer.SignalSignatures;
 
         // Constructors
 
@@ -2147,17 +2188,17 @@ export namespace Cogl {
 
         connect<K extends keyof AttributeBuffer.SignalSignatures>(
             signal: K,
-            callback: AttributeBuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AttributeBuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AttributeBuffer.SignalSignatures>(
             signal: K,
-            callback: AttributeBuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AttributeBuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AttributeBuffer.SignalSignatures>(
             signal: K,
-            ...args: AttributeBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AttributeBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2179,6 +2220,14 @@ export namespace Cogl {
      */
     class Bitmap extends GObject.Object {
         static $gtype: GObject.GType<Bitmap>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Bitmap.SignalSignatures;
 
         // Constructors
 
@@ -2208,13 +2257,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Bitmap.SignalSignatures>(signal: K, callback: Bitmap.SignalSignatures[K]): number;
+        connect<K extends keyof Bitmap.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Bitmap.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Bitmap.SignalSignatures>(signal: K, callback: Bitmap.SignalSignatures[K]): number;
+        connect_after<K extends keyof Bitmap.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Bitmap.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Bitmap.SignalSignatures>(
             signal: K,
-            ...args: Bitmap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Bitmap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2230,10 +2285,10 @@ export namespace Cogl {
     namespace Buffer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::default-target': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::update-hint': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::default-target': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::update-hint': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2278,6 +2333,14 @@ export namespace Cogl {
         set size(val: number);
         set update_hint(val: BufferUpdateHint);
         set updateHint(val: BufferUpdateHint);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Buffer.SignalSignatures;
 
         // Constructors
 
@@ -2287,13 +2350,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Buffer.SignalSignatures>(
             signal: K,
-            ...args: Buffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Buffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2427,6 +2496,14 @@ export namespace Cogl {
      */
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -2438,16 +2515,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
-            callback: Context.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2577,6 +2657,14 @@ export namespace Cogl {
      */
     class Display extends GObject.Object {
         static $gtype: GObject.GType<Display>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Display.SignalSignatures;
 
         // Constructors
 
@@ -2588,16 +2676,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Display.SignalSignatures>(signal: K, callback: Display.SignalSignatures[K]): number;
+        connect<K extends keyof Display.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Display.SignalSignatures>(
             signal: K,
-            callback: Display.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
-            ...args: Display.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2648,6 +2739,14 @@ export namespace Cogl {
      */
     class FrameInfo extends GObject.Object {
         static $gtype: GObject.GType<FrameInfo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FrameInfo.SignalSignatures;
 
         // Constructors
 
@@ -2657,16 +2756,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof FrameInfo.SignalSignatures>(signal: K, callback: FrameInfo.SignalSignatures[K]): number;
+        connect<K extends keyof FrameInfo.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, FrameInfo.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FrameInfo.SignalSignatures>(
             signal: K,
-            callback: FrameInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FrameInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FrameInfo.SignalSignatures>(
             signal: K,
-            ...args: FrameInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FrameInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2724,19 +2826,13 @@ export namespace Cogl {
     }
 
     namespace Framebuffer {
-        // Signal callback interfaces
-
-        interface Destroy {
-            (_source: Framebuffer): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            destroy: Destroy;
-            'notify::context': GObject.Object.Notify;
-            'notify::driver-config': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            destroy: () => void;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-config': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2762,6 +2858,14 @@ export namespace Cogl {
         set height(val: number);
         get width(): number;
         set width(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Framebuffer.SignalSignatures;
 
         // Constructors
 
@@ -2773,17 +2877,17 @@ export namespace Cogl {
 
         connect<K extends keyof Framebuffer.SignalSignatures>(
             signal: K,
-            callback: Framebuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Framebuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Framebuffer.SignalSignatures>(
             signal: K,
-            callback: Framebuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Framebuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Framebuffer.SignalSignatures>(
             signal: K,
-            ...args: Framebuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Framebuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3440,10 +3544,10 @@ export namespace Cogl {
     namespace IndexBuffer {
         // Signal signatures
         interface SignalSignatures extends Buffer.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::default-target': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::update-hint': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::default-target': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::update-hint': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3456,6 +3560,14 @@ export namespace Cogl {
      */
     class IndexBuffer extends Buffer {
         static $gtype: GObject.GType<IndexBuffer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IndexBuffer.SignalSignatures;
 
         // Constructors
 
@@ -3469,17 +3581,17 @@ export namespace Cogl {
 
         connect<K extends keyof IndexBuffer.SignalSignatures>(
             signal: K,
-            callback: IndexBuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IndexBuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IndexBuffer.SignalSignatures>(
             signal: K,
-            callback: IndexBuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IndexBuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IndexBuffer.SignalSignatures>(
             signal: K,
-            ...args: IndexBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IndexBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3551,6 +3663,14 @@ export namespace Cogl {
      */
     class Indices extends GObject.Object {
         static $gtype: GObject.GType<Indices>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Indices.SignalSignatures;
 
         // Constructors
 
@@ -3562,16 +3682,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Indices.SignalSignatures>(signal: K, callback: Indices.SignalSignatures[K]): number;
+        connect<K extends keyof Indices.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Indices.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Indices.SignalSignatures>(
             signal: K,
-            callback: Indices.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Indices.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Indices.SignalSignatures>(
             signal: K,
-            ...args: Indices.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Indices.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3627,6 +3750,14 @@ export namespace Cogl {
      */
     class MatrixStack extends GObject.Object {
         static $gtype: GObject.GType<MatrixStack>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MatrixStack.SignalSignatures;
 
         // Constructors
 
@@ -3640,17 +3771,17 @@ export namespace Cogl {
 
         connect<K extends keyof MatrixStack.SignalSignatures>(
             signal: K,
-            callback: MatrixStack.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MatrixStack.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MatrixStack.SignalSignatures>(
             signal: K,
-            callback: MatrixStack.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MatrixStack.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MatrixStack.SignalSignatures>(
             signal: K,
-            ...args: MatrixStack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MatrixStack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3778,10 +3909,10 @@ export namespace Cogl {
     namespace Offscreen {
         // Signal signatures
         interface SignalSignatures extends Framebuffer.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::driver-config': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-config': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3794,6 +3925,14 @@ export namespace Cogl {
      */
     class Offscreen extends Framebuffer {
         static $gtype: GObject.GType<Offscreen>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Offscreen.SignalSignatures;
 
         // Constructors
 
@@ -3805,16 +3944,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Offscreen.SignalSignatures>(signal: K, callback: Offscreen.SignalSignatures[K]): number;
+        connect<K extends keyof Offscreen.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Offscreen.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Offscreen.SignalSignatures>(
             signal: K,
-            callback: Offscreen.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Offscreen.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Offscreen.SignalSignatures>(
             signal: K,
-            ...args: Offscreen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Offscreen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3826,10 +3968,10 @@ export namespace Cogl {
     namespace Onscreen {
         // Signal signatures
         interface SignalSignatures extends Framebuffer.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::driver-config': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-config': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3839,6 +3981,14 @@ export namespace Cogl {
 
     class Onscreen extends Framebuffer {
         static $gtype: GObject.GType<Onscreen>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Onscreen.SignalSignatures;
 
         // Constructors
 
@@ -3848,16 +3998,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Onscreen.SignalSignatures>(signal: K, callback: Onscreen.SignalSignatures[K]): number;
+        connect<K extends keyof Onscreen.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Onscreen.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Onscreen.SignalSignatures>(
             signal: K,
-            callback: Onscreen.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Onscreen.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Onscreen.SignalSignatures>(
             signal: K,
-            ...args: Onscreen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Onscreen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4174,6 +4327,14 @@ export namespace Cogl {
      */
     class Pipeline extends GObject.Object {
         static $gtype: GObject.GType<Pipeline>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Pipeline.SignalSignatures;
 
         // Constructors
 
@@ -4185,16 +4346,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Pipeline.SignalSignatures>(signal: K, callback: Pipeline.SignalSignatures[K]): number;
+        connect<K extends keyof Pipeline.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Pipeline.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Pipeline.SignalSignatures>(
             signal: K,
-            callback: Pipeline.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Pipeline.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Pipeline.SignalSignatures>(
             signal: K,
-            ...args: Pipeline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Pipeline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4759,10 +4923,10 @@ export namespace Cogl {
     namespace PixelBuffer {
         // Signal signatures
         interface SignalSignatures extends Buffer.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::default-target': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::update-hint': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::default-target': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::update-hint': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4772,6 +4936,14 @@ export namespace Cogl {
 
     class PixelBuffer extends Buffer {
         static $gtype: GObject.GType<PixelBuffer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PixelBuffer.SignalSignatures;
 
         // Constructors
 
@@ -4785,17 +4957,17 @@ export namespace Cogl {
 
         connect<K extends keyof PixelBuffer.SignalSignatures>(
             signal: K,
-            callback: PixelBuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PixelBuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PixelBuffer.SignalSignatures>(
             signal: K,
-            callback: PixelBuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PixelBuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PixelBuffer.SignalSignatures>(
             signal: K,
-            ...args: PixelBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PixelBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -4814,6 +4986,14 @@ export namespace Cogl {
      */
     class Primitive extends GObject.Object {
         static $gtype: GObject.GType<Primitive>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Primitive.SignalSignatures;
 
         // Constructors
 
@@ -4835,16 +5015,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Primitive.SignalSignatures>(signal: K, callback: Primitive.SignalSignatures[K]): number;
+        connect<K extends keyof Primitive.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Primitive.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Primitive.SignalSignatures>(
             signal: K,
-            callback: Primitive.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Primitive.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Primitive.SignalSignatures>(
             signal: K,
-            ...args: Primitive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Primitive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4912,6 +5095,14 @@ export namespace Cogl {
 
     class Program extends GObject.Object {
         static $gtype: GObject.GType<Program>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Program.SignalSignatures;
 
         // Constructors
 
@@ -4923,16 +5114,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Program.SignalSignatures>(signal: K, callback: Program.SignalSignatures[K]): number;
+        connect<K extends keyof Program.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Program.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Program.SignalSignatures>(
             signal: K,
-            callback: Program.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Program.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Program.SignalSignatures>(
             signal: K,
-            ...args: Program.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Program.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5035,6 +5229,14 @@ export namespace Cogl {
      */
     class Renderer extends GObject.Object {
         static $gtype: GObject.GType<Renderer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Renderer.SignalSignatures;
 
         // Constructors
 
@@ -5046,16 +5248,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Renderer.SignalSignatures>(signal: K, callback: Renderer.SignalSignatures[K]): number;
+        connect<K extends keyof Renderer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Renderer.SignalSignatures>(
             signal: K,
-            callback: Renderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Renderer.SignalSignatures>(
             signal: K,
-            ...args: Renderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Renderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5115,15 +5320,9 @@ export namespace Cogl {
     }
 
     namespace Scanout {
-        // Signal callback interfaces
-
-        interface ScanoutFailed {
-            (_source: Scanout, object: Onscreen): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'scanout-failed': ScanoutFailed;
+            'scanout-failed': (arg0: Onscreen) => void;
         }
 
         // Constructor properties interface
@@ -5133,6 +5332,14 @@ export namespace Cogl {
 
     class Scanout extends GObject.Object {
         static $gtype: GObject.GType<Scanout>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Scanout.SignalSignatures;
 
         // Constructors
 
@@ -5144,16 +5351,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Scanout.SignalSignatures>(signal: K, callback: Scanout.SignalSignatures[K]): number;
+        connect<K extends keyof Scanout.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Scanout.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Scanout.SignalSignatures>(
             signal: K,
-            callback: Scanout.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Scanout.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Scanout.SignalSignatures>(
             signal: K,
-            ...args: Scanout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Scanout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5257,6 +5467,14 @@ export namespace Cogl {
      */
     class Shader extends GObject.Object {
         static $gtype: GObject.GType<Shader>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Shader.SignalSignatures;
 
         // Constructors
 
@@ -5268,13 +5486,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Shader.SignalSignatures>(signal: K, callback: Shader.SignalSignatures[K]): number;
+        connect<K extends keyof Shader.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Shader.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Shader.SignalSignatures>(signal: K, callback: Shader.SignalSignatures[K]): number;
+        connect_after<K extends keyof Shader.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Shader.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Shader.SignalSignatures>(
             signal: K,
-            ...args: Shader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Shader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5480,6 +5704,14 @@ export namespace Cogl {
      */
     class Snippet extends GObject.Object {
         static $gtype: GObject.GType<Snippet>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Snippet.SignalSignatures;
 
         // Constructors
 
@@ -5491,16 +5723,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Snippet.SignalSignatures>(signal: K, callback: Snippet.SignalSignatures[K]): number;
+        connect<K extends keyof Snippet.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Snippet.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Snippet.SignalSignatures>(
             signal: K,
-            callback: Snippet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Snippet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Snippet.SignalSignatures>(
             signal: K,
-            ...args: Snippet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Snippet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5565,11 +5800,11 @@ export namespace Cogl {
     namespace SubTexture {
         // Signal signatures
         interface SignalSignatures extends Texture.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::format': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::loader': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::loader': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5586,6 +5821,14 @@ export namespace Cogl {
      */
     class SubTexture extends Texture {
         static $gtype: GObject.GType<SubTexture>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SubTexture.SignalSignatures;
 
         // Constructors
 
@@ -5606,17 +5849,17 @@ export namespace Cogl {
 
         connect<K extends keyof SubTexture.SignalSignatures>(
             signal: K,
-            callback: SubTexture.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SubTexture.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubTexture.SignalSignatures>(
             signal: K,
-            callback: SubTexture.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SubTexture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubTexture.SignalSignatures>(
             signal: K,
-            ...args: SubTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SubTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5634,11 +5877,11 @@ export namespace Cogl {
     namespace Texture {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::format': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::loader': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::loader': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5669,6 +5912,14 @@ export namespace Cogl {
         set height(val: number);
         set loader(val: any);
         set width(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Texture.SignalSignatures;
 
         // Constructors
 
@@ -5678,16 +5929,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Texture.SignalSignatures>(signal: K, callback: Texture.SignalSignatures[K]): number;
+        connect<K extends keyof Texture.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Texture.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Texture.SignalSignatures>(
             signal: K,
-            callback: Texture.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Texture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Texture.SignalSignatures>(
             signal: K,
-            ...args: Texture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Texture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5970,11 +6224,11 @@ export namespace Cogl {
     namespace Texture2D {
         // Signal signatures
         interface SignalSignatures extends Texture.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::format': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::loader': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::loader': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5993,6 +6247,14 @@ export namespace Cogl {
      */
     class Texture2D extends Texture {
         static $gtype: GObject.GType<Texture2D>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Texture2D.SignalSignatures;
 
         // Constructors
 
@@ -6017,16 +6279,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Texture2D.SignalSignatures>(signal: K, callback: Texture2D.SignalSignatures[K]): number;
+        connect<K extends keyof Texture2D.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Texture2D.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Texture2D.SignalSignatures>(
             signal: K,
-            callback: Texture2D.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Texture2D.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Texture2D.SignalSignatures>(
             signal: K,
-            ...args: Texture2D.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Texture2D.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6047,11 +6312,11 @@ export namespace Cogl {
     namespace Texture2DSliced {
         // Signal signatures
         interface SignalSignatures extends Texture.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::format': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::loader': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::loader': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6090,6 +6355,14 @@ export namespace Cogl {
      */
     class Texture2DSliced extends Texture {
         static $gtype: GObject.GType<Texture2DSliced>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Texture2DSliced.SignalSignatures;
 
         // Constructors
 
@@ -6105,17 +6378,17 @@ export namespace Cogl {
 
         connect<K extends keyof Texture2DSliced.SignalSignatures>(
             signal: K,
-            callback: Texture2DSliced.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Texture2DSliced.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Texture2DSliced.SignalSignatures>(
             signal: K,
-            callback: Texture2DSliced.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Texture2DSliced.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Texture2DSliced.SignalSignatures>(
             signal: K,
-            ...args: Texture2DSliced.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Texture2DSliced.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

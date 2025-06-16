@@ -37,44 +37,35 @@ export namespace GUPnPIgd {
         SIMPLE_IGD_ERROR_EXTERNAL_ADDRESS,
     }
     namespace SimpleIgd {
-        // Signal callback interfaces
-
-        interface ContextAvailable {
-            (_source: SimpleIgd, context: GObject.Object): boolean | void;
-        }
-
-        interface ErrorMappingPort {
-            (
-                _source: SimpleIgd,
-                error: GLib.Error,
-                proto: string,
-                external_port: number,
-                local_ip: string,
-                local_port: number,
-                description: string,
-            ): void;
-        }
-
-        interface MappedExternalPort {
-            (
-                _source: SimpleIgd,
-                proto: string,
-                external_ip: string,
-                replaces_external_ip: string,
-                external_port: number,
-                local_ip: string,
-                local_port: number,
-                description: string,
-            ): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'context-available': ContextAvailable;
-            'error-mapping-port': ErrorMappingPort;
-            'mapped-external-port': MappedExternalPort;
-            'notify::main-context': GObject.Object.Notify;
-            'error-mapping-port::main-context': ErrorMappingPort;
+            'context-available': (arg0: GObject.Object) => boolean | void;
+            'error-mapping-port': (
+                arg0: GLib.Error,
+                arg1: string,
+                arg2: number,
+                arg3: string,
+                arg4: number,
+                arg5: string,
+            ) => void;
+            'mapped-external-port': (
+                arg0: string,
+                arg1: string,
+                arg2: string,
+                arg3: number,
+                arg4: string,
+                arg5: number,
+                arg6: string,
+            ) => void;
+            'notify::main-context': (pspec: GObject.ParamSpec) => void;
+            'error-mapping-port::main-context': (
+                arg0: GLib.Error,
+                arg1: string,
+                arg2: number,
+                arg3: string,
+                arg4: number,
+                arg5: string,
+            ) => void;
         }
 
         // Constructor properties interface
@@ -95,6 +86,14 @@ export namespace GUPnPIgd {
 
         get main_context(): any;
         get mainContext(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SimpleIgd.SignalSignatures;
 
         // Constructors
 
@@ -106,16 +105,19 @@ export namespace GUPnPIgd {
 
         // Signals
 
-        connect<K extends keyof SimpleIgd.SignalSignatures>(signal: K, callback: SimpleIgd.SignalSignatures[K]): number;
+        connect<K extends keyof SimpleIgd.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, SimpleIgd.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleIgd.SignalSignatures>(
             signal: K,
-            callback: SimpleIgd.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SimpleIgd.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleIgd.SignalSignatures>(
             signal: K,
-            ...args: SimpleIgd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SimpleIgd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -180,7 +182,7 @@ export namespace GUPnPIgd {
     namespace SimpleIgdThread {
         // Signal signatures
         interface SignalSignatures extends SimpleIgd.SignalSignatures {
-            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -193,6 +195,14 @@ export namespace GUPnPIgd {
      */
     class SimpleIgdThread extends SimpleIgd {
         static $gtype: GObject.GType<SimpleIgdThread>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SimpleIgdThread.SignalSignatures;
 
         // Constructors
 
@@ -206,17 +216,17 @@ export namespace GUPnPIgd {
 
         connect<K extends keyof SimpleIgdThread.SignalSignatures>(
             signal: K,
-            callback: SimpleIgdThread.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SimpleIgdThread.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleIgdThread.SignalSignatures>(
             signal: K,
-            callback: SimpleIgdThread.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SimpleIgdThread.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleIgdThread.SignalSignatures>(
             signal: K,
-            ...args: SimpleIgdThread.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SimpleIgdThread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

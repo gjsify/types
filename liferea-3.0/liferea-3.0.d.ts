@@ -263,20 +263,20 @@ export namespace Liferea {
     namespace Application {
         // Signal signatures
         interface SignalSignatures extends Gtk.Application.SignalSignatures {
-            'notify::active-window': GObject.Object.Notify;
-            'notify::app-menu': GObject.Object.Notify;
-            'notify::menubar': GObject.Object.Notify;
-            'notify::register-session': GObject.Object.Notify;
-            'notify::screensaver-active': GObject.Object.Notify;
-            'notify::action-group': GObject.Object.Notify;
-            'notify::application-id': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::inactivity-timeout': GObject.Object.Notify;
-            'notify::is-busy': GObject.Object.Notify;
-            'notify::is-registered': GObject.Object.Notify;
-            'notify::is-remote': GObject.Object.Notify;
-            'notify::resource-base-path': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
+            'notify::active-window': (pspec: GObject.ParamSpec) => void;
+            'notify::app-menu': (pspec: GObject.ParamSpec) => void;
+            'notify::menubar': (pspec: GObject.ParamSpec) => void;
+            'notify::register-session': (pspec: GObject.ParamSpec) => void;
+            'notify::screensaver-active': (pspec: GObject.ParamSpec) => void;
+            'notify::action-group': (pspec: GObject.ParamSpec) => void;
+            'notify::application-id': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::inactivity-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::is-busy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-registered': (pspec: GObject.ParamSpec) => void;
+            'notify::is-remote': (pspec: GObject.ParamSpec) => void;
+            'notify::resource-base-path': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -289,6 +289,14 @@ export namespace Liferea {
 
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Application.SignalSignatures;
 
         // Constructors
 
@@ -300,17 +308,17 @@ export namespace Liferea {
 
         connect<K extends keyof Application.SignalSignatures>(
             signal: K,
-            callback: Application.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Application.SignalSignatures>(
             signal: K,
-            callback: Application.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -765,26 +773,12 @@ export namespace Liferea {
     }
 
     namespace Browser {
-        // Signal callback interfaces
-
-        interface LocationChanged {
-            (_source: Browser, object: string): void;
-        }
-
-        interface StatusbarChanged {
-            (_source: Browser, object: string): void;
-        }
-
-        interface TitleChanged {
-            (_source: Browser, object: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'location-changed': LocationChanged;
-            'statusbar-changed': StatusbarChanged;
-            'title-changed': TitleChanged;
-            'notify::renderwidget': GObject.Object.Notify;
+            'location-changed': (arg0: string) => void;
+            'statusbar-changed': (arg0: string) => void;
+            'title-changed': (arg0: string) => void;
+            'notify::renderwidget': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -800,6 +794,14 @@ export namespace Liferea {
         // Properties
 
         get renderwidget(): Gtk.Widget;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Browser.SignalSignatures;
 
         // Constructors
 
@@ -809,16 +811,19 @@ export namespace Liferea {
 
         // Signals
 
-        connect<K extends keyof Browser.SignalSignatures>(signal: K, callback: Browser.SignalSignatures[K]): number;
+        connect<K extends keyof Browser.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Browser.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Browser.SignalSignatures>(
             signal: K,
-            callback: Browser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Browser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Browser.SignalSignatures>(
             signal: K,
-            ...args: Browser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Browser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -890,8 +895,8 @@ export namespace Liferea {
     namespace BrowserTabs {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::head-lines': GObject.Object.Notify;
-            'notify::notebook': GObject.Object.Notify;
+            'notify::head-lines': (pspec: GObject.ParamSpec) => void;
+            'notify::notebook': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -911,6 +916,14 @@ export namespace Liferea {
         get head_lines(): Gtk.Widget;
         get headLines(): Gtk.Widget;
         get notebook(): Gtk.Notebook;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BrowserTabs.SignalSignatures;
 
         // Constructors
 
@@ -924,17 +937,17 @@ export namespace Liferea {
 
         connect<K extends keyof BrowserTabs.SignalSignatures>(
             signal: K,
-            callback: BrowserTabs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BrowserTabs.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BrowserTabs.SignalSignatures>(
             signal: K,
-            callback: BrowserTabs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BrowserTabs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BrowserTabs.SignalSignatures>(
             signal: K,
-            ...args: BrowserTabs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BrowserTabs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -958,25 +971,11 @@ export namespace Liferea {
     }
 
     namespace FeedList {
-        // Signal callback interfaces
-
-        interface ItemsUpdated {
-            (_source: FeedList, object: string): void;
-        }
-
-        interface NewItems {
-            (_source: FeedList, object?: any | null): void;
-        }
-
-        interface NodeUpdated {
-            (_source: FeedList, object: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'items-updated': ItemsUpdated;
-            'new-items': NewItems;
-            'node-updated': NodeUpdated;
+            'items-updated': (arg0: string) => void;
+            'new-items': (arg0: any | null) => void;
+            'node-updated': (arg0: string) => void;
         }
 
         // Constructor properties interface
@@ -986,6 +985,14 @@ export namespace Liferea {
 
     class FeedList extends GObject.Object {
         static $gtype: GObject.GType<FeedList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FeedList.SignalSignatures;
 
         // Constructors
 
@@ -995,16 +1002,19 @@ export namespace Liferea {
 
         // Signals
 
-        connect<K extends keyof FeedList.SignalSignatures>(signal: K, callback: FeedList.SignalSignatures[K]): number;
+        connect<K extends keyof FeedList.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, FeedList.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedList.SignalSignatures>(
             signal: K,
-            callback: FeedList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FeedList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedList.SignalSignatures>(
             signal: K,
-            ...args: FeedList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FeedList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1046,6 +1056,14 @@ export namespace Liferea {
 
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Item.SignalSignatures;
 
         // Fields
 
@@ -1081,13 +1099,19 @@ export namespace Liferea {
 
         // Signals
 
-        connect<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect<K extends keyof Item.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect_after<K extends keyof Item.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Item.SignalSignatures>(
             signal: K,
-            ...args: Item.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Item.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1100,15 +1124,9 @@ export namespace Liferea {
     }
 
     namespace ItemList {
-        // Signal callback interfaces
-
-        interface ItemUpdated {
-            (_source: ItemList, object: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'item-updated': ItemUpdated;
+            'item-updated': (arg0: string) => void;
         }
 
         // Constructor properties interface
@@ -1118,6 +1136,14 @@ export namespace Liferea {
 
     class ItemList extends GObject.Object {
         static $gtype: GObject.GType<ItemList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ItemList.SignalSignatures;
 
         // Constructors
 
@@ -1127,16 +1153,19 @@ export namespace Liferea {
 
         // Signals
 
-        connect<K extends keyof ItemList.SignalSignatures>(signal: K, callback: ItemList.SignalSignatures[K]): number;
+        connect<K extends keyof ItemList.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ItemList.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ItemList.SignalSignatures>(
             signal: K,
-            callback: ItemList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ItemList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ItemList.SignalSignatures>(
             signal: K,
-            ...args: ItemList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ItemList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1165,6 +1194,14 @@ export namespace Liferea {
 
     class ItemListView extends GObject.Object {
         static $gtype: GObject.GType<ItemListView>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ItemListView.SignalSignatures;
 
         // Constructors
 
@@ -1176,17 +1213,17 @@ export namespace Liferea {
 
         connect<K extends keyof ItemListView.SignalSignatures>(
             signal: K,
-            callback: ItemListView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ItemListView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ItemListView.SignalSignatures>(
             signal: K,
-            callback: ItemListView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ItemListView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ItemListView.SignalSignatures>(
             signal: K,
-            ...args: ItemListView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ItemListView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1225,8 +1262,8 @@ export namespace Liferea {
     namespace ItemView {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::html-view': GObject.Object.Notify;
-            'notify::item-list-view': GObject.Object.Notify;
+            'notify::html-view': (pspec: GObject.ParamSpec) => void;
+            'notify::item-list-view': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1248,6 +1285,14 @@ export namespace Liferea {
         get htmlView(): Browser;
         get item_list_view(): ItemListView;
         get itemListView(): ItemListView;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ItemView.SignalSignatures;
 
         // Constructors
 
@@ -1257,16 +1302,19 @@ export namespace Liferea {
 
         // Signals
 
-        connect<K extends keyof ItemView.SignalSignatures>(signal: K, callback: ItemView.SignalSignatures[K]): number;
+        connect<K extends keyof ItemView.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ItemView.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ItemView.SignalSignatures>(
             signal: K,
-            callback: ItemView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ItemView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ItemView.SignalSignatures>(
             signal: K,
-            ...args: ItemView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ItemView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1335,20 +1383,10 @@ export namespace Liferea {
     }
 
     namespace NetworkMonitor {
-        // Signal callback interfaces
-
-        interface OnlineStatusChanged {
-            (_source: NetworkMonitor, object: boolean): void;
-        }
-
-        interface ProxyChanged {
-            (_source: NetworkMonitor): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'online-status-changed': OnlineStatusChanged;
-            'proxy-changed': ProxyChanged;
+            'online-status-changed': (arg0: boolean) => void;
+            'proxy-changed': () => void;
         }
 
         // Constructor properties interface
@@ -1358,6 +1396,14 @@ export namespace Liferea {
 
     class NetworkMonitor extends GObject.Object {
         static $gtype: GObject.GType<NetworkMonitor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NetworkMonitor.SignalSignatures;
 
         // Constructors
 
@@ -1369,17 +1415,17 @@ export namespace Liferea {
 
         connect<K extends keyof NetworkMonitor.SignalSignatures>(
             signal: K,
-            callback: NetworkMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NetworkMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NetworkMonitor.SignalSignatures>(
             signal: K,
-            callback: NetworkMonitor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NetworkMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NetworkMonitor.SignalSignatures>(
             signal: K,
-            ...args: NetworkMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NetworkMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1403,11 +1449,11 @@ export namespace Liferea {
     namespace Shell {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::browser-tabs': GObject.Object.Notify;
-            'notify::builder': GObject.Object.Notify;
-            'notify::feed-list': GObject.Object.Notify;
-            'notify::item-list': GObject.Object.Notify;
-            'notify::item-view': GObject.Object.Notify;
+            'notify::browser-tabs': (pspec: GObject.ParamSpec) => void;
+            'notify::builder': (pspec: GObject.ParamSpec) => void;
+            'notify::feed-list': (pspec: GObject.ParamSpec) => void;
+            'notify::item-list': (pspec: GObject.ParamSpec) => void;
+            'notify::item-view': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1439,6 +1485,14 @@ export namespace Liferea {
         get itemList(): ItemList;
         get item_view(): ItemView;
         get itemView(): ItemView;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Shell.SignalSignatures;
 
         // Constructors
 
@@ -1448,13 +1502,19 @@ export namespace Liferea {
 
         // Signals
 
-        connect<K extends keyof Shell.SignalSignatures>(signal: K, callback: Shell.SignalSignatures[K]): number;
+        connect<K extends keyof Shell.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Shell.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Shell.SignalSignatures>(signal: K, callback: Shell.SignalSignatures[K]): number;
+        connect_after<K extends keyof Shell.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Shell.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Shell.SignalSignatures>(
             signal: K,
-            ...args: Shell.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Shell.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

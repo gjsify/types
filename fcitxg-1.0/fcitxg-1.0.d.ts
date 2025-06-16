@@ -21,62 +21,27 @@ export namespace FcitxG {
      */
 
     namespace Client {
-        // Signal callback interfaces
-
-        interface CommitString {
-            (_source: Client, string: string): void;
-        }
-
-        interface Connected {
-            (_source: Client): void;
-        }
-
-        interface CurrentIm {
-            (_source: Client, name: string, unique_name: string, lang_code: string): void;
-        }
-
-        interface DeleteSurroundingText {
-            (_source: Client, cursor: number, len: number): void;
-        }
-
-        interface ForwardKey {
-            (_source: Client, keyval: number, state: number, type: number): void;
-        }
-
-        interface NotifyFocusOut {
-            (_source: Client): void;
-        }
-
-        interface UpdateClientSideUi {
-            (
-                _source: Client,
-                preedit: PreeditItem[],
-                preedit_cursor: number,
-                aux_up: PreeditItem[],
-                aux_down: PreeditItem[],
-                candidate_list: CandidateItem[],
-                candidate_cursor: number,
-                candidate_layout_hint: number,
-                has_prev: boolean,
-                has_next: boolean,
-            ): void;
-        }
-
-        interface UpdateFormattedPreedit {
-            (_source: Client, preedit: PreeditItem[], cursor: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'commit-string': CommitString;
-            connected: Connected;
-            'current-im': CurrentIm;
-            'delete-surrounding-text': DeleteSurroundingText;
-            'forward-key': ForwardKey;
-            'notify-focus-out': NotifyFocusOut;
-            'update-client-side-ui': UpdateClientSideUi;
-            'update-formatted-preedit': UpdateFormattedPreedit;
-            'notify::watcher': GObject.Object.Notify;
+            'commit-string': (arg0: string) => void;
+            connected: () => void;
+            'current-im': (arg0: string, arg1: string, arg2: string) => void;
+            'delete-surrounding-text': (arg0: number, arg1: number) => void;
+            'forward-key': (arg0: number, arg1: number, arg2: number) => void;
+            'notify-focus-out': () => void;
+            'update-client-side-ui': (
+                arg0: PreeditItem[],
+                arg1: number,
+                arg2: PreeditItem[],
+                arg3: PreeditItem[],
+                arg4: CandidateItem[],
+                arg5: number,
+                arg6: number,
+                arg7: boolean,
+                arg8: boolean,
+            ) => void;
+            'update-formatted-preedit': (arg0: PreeditItem[], arg1: number) => void;
+            'notify::watcher': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -95,6 +60,14 @@ export namespace FcitxG {
         // Properties
 
         set watcher(val: Watcher);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -108,13 +81,19 @@ export namespace FcitxG {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -263,15 +242,9 @@ export namespace FcitxG {
     }
 
     namespace Watcher {
-        // Signal callback interfaces
-
-        interface AvailabilityChanged {
-            (_source: Watcher, available: boolean): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'availability-changed': AvailabilityChanged;
+            'availability-changed': (arg0: boolean) => void;
         }
 
         // Constructor properties interface
@@ -284,6 +257,14 @@ export namespace FcitxG {
      */
     class Watcher extends GObject.Object {
         static $gtype: GObject.GType<Watcher>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Watcher.SignalSignatures;
 
         // Constructors
 
@@ -295,16 +276,19 @@ export namespace FcitxG {
 
         // Signals
 
-        connect<K extends keyof Watcher.SignalSignatures>(signal: K, callback: Watcher.SignalSignatures[K]): number;
+        connect<K extends keyof Watcher.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Watcher.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Watcher.SignalSignatures>(
             signal: K,
-            callback: Watcher.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Watcher.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Watcher.SignalSignatures>(
             signal: K,
-            ...args: Watcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Watcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

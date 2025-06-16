@@ -58,6 +58,14 @@ export namespace CMenu {
 
     class DesktopAppInfo extends GObject.Object implements Gio.AppInfo {
         static $gtype: GObject.GType<DesktopAppInfo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DesktopAppInfo.SignalSignatures;
 
         // Constructors
 
@@ -75,17 +83,17 @@ export namespace CMenu {
 
         connect<K extends keyof DesktopAppInfo.SignalSignatures>(
             signal: K,
-            callback: DesktopAppInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DesktopAppInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DesktopAppInfo.SignalSignatures>(
             signal: K,
-            callback: DesktopAppInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DesktopAppInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DesktopAppInfo.SignalSignatures>(
             signal: K,
-            ...args: DesktopAppInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DesktopAppInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1144,18 +1152,12 @@ export namespace CMenu {
     }
 
     namespace Tree {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: Tree): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            'notify::flags': GObject.Object.Notify;
-            'notify::menu-basename': GObject.Object.Notify;
-            'notify::menu-path': GObject.Object.Notify;
+            changed: () => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::menu-basename': (pspec: GObject.ParamSpec) => void;
+            'notify::menu-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1200,6 +1202,14 @@ export namespace CMenu {
          * ignored.
          */
         get menuPath(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Tree.SignalSignatures;
 
         // Constructors
 
@@ -1213,13 +1223,19 @@ export namespace CMenu {
 
         // Signals
 
-        connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        connect<K extends keyof Tree.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tree.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Tree.SignalSignatures>(
             signal: K,
-            ...args: Tree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Tree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

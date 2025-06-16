@@ -65,86 +65,68 @@ export namespace MatePanelApplet {
         HAS_HANDLE,
     }
     namespace Applet {
-        // Signal callback interfaces
-
-        interface ChangeBackground {
-            (_source: Applet, object: AppletBackgroundType, p0: Gdk.RGBA, p1: cairo.Pattern): void;
-        }
-
-        interface ChangeOrient {
-            (_source: Applet, object: number): void;
-        }
-
-        interface ChangeSize {
-            (_source: Applet, object: number): void;
-        }
-
-        interface MoveFocusOutOfApplet {
-            (_source: Applet, object: Gtk.DirectionType): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
-            'change-background': ChangeBackground;
-            'change-orient': ChangeOrient;
-            'change-size': ChangeSize;
-            'move-focus-out-of-applet': MoveFocusOutOfApplet;
-            'notify::background': GObject.Object.Notify;
-            'notify::closure': GObject.Object.Notify;
-            'notify::connection': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::locked': GObject.Object.Notify;
-            'notify::locked-down': GObject.Object.Notify;
-            'notify::orient': GObject.Object.Notify;
-            'notify::out-of-process': GObject.Object.Notify;
-            'notify::prefs-path': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::size-hints': GObject.Object.Notify;
-            'notify::above-child': GObject.Object.Notify;
-            'notify::visible-window': GObject.Object.Notify;
-            'notify::border-width': GObject.Object.Notify;
-            'notify::child': GObject.Object.Notify;
-            'notify::resize-mode': GObject.Object.Notify;
-            'notify::app-paintable': GObject.Object.Notify;
-            'notify::can-default': GObject.Object.Notify;
-            'notify::can-focus': GObject.Object.Notify;
-            'notify::composite-child': GObject.Object.Notify;
-            'notify::double-buffered': GObject.Object.Notify;
-            'notify::events': GObject.Object.Notify;
-            'notify::expand': GObject.Object.Notify;
-            'notify::focus-on-click': GObject.Object.Notify;
-            'notify::halign': GObject.Object.Notify;
-            'notify::has-default': GObject.Object.Notify;
-            'notify::has-focus': GObject.Object.Notify;
-            'notify::has-tooltip': GObject.Object.Notify;
-            'notify::height-request': GObject.Object.Notify;
-            'notify::hexpand': GObject.Object.Notify;
-            'notify::hexpand-set': GObject.Object.Notify;
-            'notify::is-focus': GObject.Object.Notify;
-            'notify::margin': GObject.Object.Notify;
-            'notify::margin-bottom': GObject.Object.Notify;
-            'notify::margin-end': GObject.Object.Notify;
-            'notify::margin-left': GObject.Object.Notify;
-            'notify::margin-right': GObject.Object.Notify;
-            'notify::margin-start': GObject.Object.Notify;
-            'notify::margin-top': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::no-show-all': GObject.Object.Notify;
-            'notify::opacity': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::receives-default': GObject.Object.Notify;
-            'notify::scale-factor': GObject.Object.Notify;
-            'notify::sensitive': GObject.Object.Notify;
-            'notify::style': GObject.Object.Notify;
-            'notify::tooltip-markup': GObject.Object.Notify;
-            'notify::tooltip-text': GObject.Object.Notify;
-            'notify::valign': GObject.Object.Notify;
-            'notify::vexpand': GObject.Object.Notify;
-            'notify::vexpand-set': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::width-request': GObject.Object.Notify;
-            'notify::window': GObject.Object.Notify;
+            'change-background': (arg0: AppletBackgroundType, arg1: Gdk.RGBA, arg2: cairo.Pattern) => void;
+            'change-orient': (arg0: number) => void;
+            'change-size': (arg0: number) => void;
+            'move-focus-out-of-applet': (arg0: Gtk.DirectionType) => void;
+            'notify::background': (pspec: GObject.ParamSpec) => void;
+            'notify::closure': (pspec: GObject.ParamSpec) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::locked': (pspec: GObject.ParamSpec) => void;
+            'notify::locked-down': (pspec: GObject.ParamSpec) => void;
+            'notify::orient': (pspec: GObject.ParamSpec) => void;
+            'notify::out-of-process': (pspec: GObject.ParamSpec) => void;
+            'notify::prefs-path': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::size-hints': (pspec: GObject.ParamSpec) => void;
+            'notify::above-child': (pspec: GObject.ParamSpec) => void;
+            'notify::visible-window': (pspec: GObject.ParamSpec) => void;
+            'notify::border-width': (pspec: GObject.ParamSpec) => void;
+            'notify::child': (pspec: GObject.ParamSpec) => void;
+            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
+            'notify::can-default': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
+            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
+            'notify::events': (pspec: GObject.ParamSpec) => void;
+            'notify::expand': (pspec: GObject.ParamSpec) => void;
+            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
+            'notify::halign': (pspec: GObject.ParamSpec) => void;
+            'notify::has-default': (pspec: GObject.ParamSpec) => void;
+            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::height-request': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::margin': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
+            'notify::valign': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -204,6 +186,14 @@ export namespace MatePanelApplet {
         set size_hints(val: any);
         get sizeHints(): any;
         set sizeHints(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Applet.SignalSignatures;
 
         // Constructors
 
@@ -215,13 +205,19 @@ export namespace MatePanelApplet {
 
         // Signals
 
-        connect<K extends keyof Applet.SignalSignatures>(signal: K, callback: Applet.SignalSignatures[K]): number;
+        connect<K extends keyof Applet.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Applet.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Applet.SignalSignatures>(signal: K, callback: Applet.SignalSignatures[K]): number;
+        connect_after<K extends keyof Applet.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Applet.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Applet.SignalSignatures>(
             signal: K,
-            ...args: Applet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Applet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

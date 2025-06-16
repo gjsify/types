@@ -1044,10 +1044,10 @@ export namespace GstGL {
     namespace GLBaseFilter {
         // Signal signatures
         interface SignalSignatures extends GstBase.BaseTransform.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1069,6 +1069,14 @@ export namespace GstGL {
         // Properties
 
         get context(): GLContext;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLBaseFilter.SignalSignatures;
 
         // Fields
 
@@ -1084,17 +1092,17 @@ export namespace GstGL {
 
         connect<K extends keyof GLBaseFilter.SignalSignatures>(
             signal: K,
-            callback: GLBaseFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLBaseFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLBaseFilter.SignalSignatures>(
             signal: K,
-            callback: GLBaseFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLBaseFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLBaseFilter.SignalSignatures>(
             signal: K,
-            ...args: GLBaseFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLBaseFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1113,8 +1121,8 @@ export namespace GstGL {
     namespace GLBaseMemoryAllocator {
         // Signal signatures
         interface SignalSignatures extends Gst.Allocator.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1127,6 +1135,14 @@ export namespace GstGL {
      */
     abstract class GLBaseMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<GLBaseMemoryAllocator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLBaseMemoryAllocator.SignalSignatures;
 
         // Constructors
 
@@ -1138,17 +1154,19 @@ export namespace GstGL {
 
         connect<K extends keyof GLBaseMemoryAllocator.SignalSignatures>(
             signal: K,
-            callback: GLBaseMemoryAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLBaseMemoryAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLBaseMemoryAllocator.SignalSignatures>(
             signal: K,
-            callback: GLBaseMemoryAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLBaseMemoryAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLBaseMemoryAllocator.SignalSignatures>(
             signal: K,
-            ...args: GLBaseMemoryAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLBaseMemoryAllocator.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1162,15 +1180,15 @@ export namespace GstGL {
     namespace GLBaseMixer {
         // Signal signatures
         interface SignalSignatures extends GstVideo.VideoAggregator.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::force-live': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
-            'notify::latency': GObject.Object.Notify;
-            'notify::min-upstream-latency': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
-            'notify::start-time-selection': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::force-live': (pspec: GObject.ParamSpec) => void;
+            'notify::emit-signals': (pspec: GObject.ParamSpec) => void;
+            'notify::latency': (pspec: GObject.ParamSpec) => void;
+            'notify::min-upstream-latency': (pspec: GObject.ParamSpec) => void;
+            'notify::start-time': (pspec: GObject.ParamSpec) => void;
+            'notify::start-time-selection': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1194,6 +1212,14 @@ export namespace GstGL {
          * The #GstGLContext in use by this #GstGLBaseMixer
          */
         get context(): GLContext;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLBaseMixer.SignalSignatures;
 
         // Fields
 
@@ -1209,17 +1235,17 @@ export namespace GstGL {
 
         connect<K extends keyof GLBaseMixer.SignalSignatures>(
             signal: K,
-            callback: GLBaseMixer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLBaseMixer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLBaseMixer.SignalSignatures>(
             signal: K,
-            callback: GLBaseMixer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLBaseMixer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLBaseMixer.SignalSignatures>(
             signal: K,
-            ...args: GLBaseMixer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLBaseMixer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1242,16 +1268,16 @@ export namespace GstGL {
     namespace GLBaseMixerPad {
         // Signal signatures
         interface SignalSignatures extends GstVideo.VideoAggregatorPad.SignalSignatures {
-            'notify::max-last-buffer-repeat': GObject.Object.Notify;
-            'notify::repeat-after-eos': GObject.Object.Notify;
-            'notify::zorder': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
-            'notify::caps': GObject.Object.Notify;
-            'notify::direction': GObject.Object.Notify;
-            'notify::offset': GObject.Object.Notify;
-            'notify::template': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::max-last-buffer-repeat': (pspec: GObject.ParamSpec) => void;
+            'notify::repeat-after-eos': (pspec: GObject.ParamSpec) => void;
+            'notify::zorder': (pspec: GObject.ParamSpec) => void;
+            'notify::emit-signals': (pspec: GObject.ParamSpec) => void;
+            'notify::caps': (pspec: GObject.ParamSpec) => void;
+            'notify::direction': (pspec: GObject.ParamSpec) => void;
+            'notify::offset': (pspec: GObject.ParamSpec) => void;
+            'notify::template': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1261,6 +1287,14 @@ export namespace GstGL {
 
     class GLBaseMixerPad extends GstVideo.VideoAggregatorPad {
         static $gtype: GObject.GType<GLBaseMixerPad>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLBaseMixerPad.SignalSignatures;
 
         // Constructors
 
@@ -1272,17 +1306,17 @@ export namespace GstGL {
 
         connect<K extends keyof GLBaseMixerPad.SignalSignatures>(
             signal: K,
-            callback: GLBaseMixerPad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLBaseMixerPad.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLBaseMixerPad.SignalSignatures>(
             signal: K,
-            callback: GLBaseMixerPad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLBaseMixerPad.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLBaseMixerPad.SignalSignatures>(
             signal: K,
-            ...args: GLBaseMixerPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLBaseMixerPad.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1290,14 +1324,14 @@ export namespace GstGL {
     namespace GLBaseSrc {
         // Signal signatures
         interface SignalSignatures extends GstBase.PushSrc.SignalSignatures {
-            'notify::timestamp-offset': GObject.Object.Notify;
-            'notify::automatic-eos': GObject.Object.Notify;
-            'notify::blocksize': GObject.Object.Notify;
-            'notify::do-timestamp': GObject.Object.Notify;
-            'notify::num-buffers': GObject.Object.Notify;
-            'notify::typefind': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::timestamp-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-eos': (pspec: GObject.ParamSpec) => void;
+            'notify::blocksize': (pspec: GObject.ParamSpec) => void;
+            'notify::do-timestamp': (pspec: GObject.ParamSpec) => void;
+            'notify::num-buffers': (pspec: GObject.ParamSpec) => void;
+            'notify::typefind': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1323,6 +1357,14 @@ export namespace GstGL {
         set timestamp_offset(val: number);
         get timestampOffset(): number;
         set timestampOffset(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLBaseSrc.SignalSignatures;
 
         // Fields
 
@@ -1338,16 +1380,19 @@ export namespace GstGL {
 
         // Signals
 
-        connect<K extends keyof GLBaseSrc.SignalSignatures>(signal: K, callback: GLBaseSrc.SignalSignatures[K]): number;
+        connect<K extends keyof GLBaseSrc.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GLBaseSrc.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLBaseSrc.SignalSignatures>(
             signal: K,
-            callback: GLBaseSrc.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLBaseSrc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLBaseSrc.SignalSignatures>(
             signal: K,
-            ...args: GLBaseSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLBaseSrc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1361,8 +1406,8 @@ export namespace GstGL {
     namespace GLBufferAllocator {
         // Signal signatures
         interface SignalSignatures extends GLBaseMemoryAllocator.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1375,6 +1420,14 @@ export namespace GstGL {
      */
     class GLBufferAllocator extends GLBaseMemoryAllocator {
         static $gtype: GObject.GType<GLBufferAllocator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLBufferAllocator.SignalSignatures;
 
         // Constructors
 
@@ -1386,17 +1439,17 @@ export namespace GstGL {
 
         connect<K extends keyof GLBufferAllocator.SignalSignatures>(
             signal: K,
-            callback: GLBufferAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLBufferAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLBufferAllocator.SignalSignatures>(
             signal: K,
-            callback: GLBufferAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLBufferAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLBufferAllocator.SignalSignatures>(
             signal: K,
-            ...args: GLBufferAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLBufferAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1404,8 +1457,8 @@ export namespace GstGL {
     namespace GLBufferPool {
         // Signal signatures
         interface SignalSignatures extends Gst.BufferPool.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1425,6 +1478,14 @@ export namespace GstGL {
      */
     class GLBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<GLBufferPool>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLBufferPool.SignalSignatures;
 
         // Fields
 
@@ -1446,17 +1507,17 @@ export namespace GstGL {
 
         connect<K extends keyof GLBufferPool.SignalSignatures>(
             signal: K,
-            callback: GLBufferPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLBufferPool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLBufferPool.SignalSignatures>(
             signal: K,
-            callback: GLBufferPool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLBufferPool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLBufferPool.SignalSignatures>(
             signal: K,
-            ...args: GLBufferPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLBufferPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1475,8 +1536,8 @@ export namespace GstGL {
     namespace GLColorConvert {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1497,6 +1558,14 @@ export namespace GstGL {
      */
     class GLColorConvert extends Gst.Object {
         static $gtype: GObject.GType<GLColorConvert>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLColorConvert.SignalSignatures;
 
         // Constructors
 
@@ -1510,17 +1579,17 @@ export namespace GstGL {
 
         connect<K extends keyof GLColorConvert.SignalSignatures>(
             signal: K,
-            callback: GLColorConvert.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLColorConvert.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLColorConvert.SignalSignatures>(
             signal: K,
-            callback: GLColorConvert.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLColorConvert.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLColorConvert.SignalSignatures>(
             signal: K,
-            ...args: GLColorConvert.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLColorConvert.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1574,8 +1643,8 @@ export namespace GstGL {
     namespace GLContext {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1606,6 +1675,14 @@ export namespace GstGL {
      */
     abstract class GLContext extends Gst.Object {
         static $gtype: GObject.GType<GLContext>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLContext.SignalSignatures;
 
         // Constructors
 
@@ -1624,16 +1701,19 @@ export namespace GstGL {
 
         // Signals
 
-        connect<K extends keyof GLContext.SignalSignatures>(signal: K, callback: GLContext.SignalSignatures[K]): number;
+        connect<K extends keyof GLContext.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GLContext.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLContext.SignalSignatures>(
             signal: K,
-            callback: GLContext.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLContext.SignalSignatures>(
             signal: K,
-            ...args: GLContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1939,17 +2019,11 @@ export namespace GstGL {
     }
 
     namespace GLDisplay {
-        // Signal callback interfaces
-
-        interface CreateContext {
-            (_source: GLDisplay, context: GLContext): GLContext | null;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'create-context': CreateContext;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'create-context': (arg0: GLContext) => GLContext | null;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1981,6 +2055,14 @@ export namespace GstGL {
      */
     class GLDisplay extends Gst.Object {
         static $gtype: GObject.GType<GLDisplay>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLDisplay.SignalSignatures;
 
         // Constructors
 
@@ -1994,16 +2076,19 @@ export namespace GstGL {
 
         // Signals
 
-        connect<K extends keyof GLDisplay.SignalSignatures>(signal: K, callback: GLDisplay.SignalSignatures[K]): number;
+        connect<K extends keyof GLDisplay.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GLDisplay.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLDisplay.SignalSignatures>(
             signal: K,
-            callback: GLDisplay.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLDisplay.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLDisplay.SignalSignatures>(
             signal: K,
-            ...args: GLDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2076,10 +2161,10 @@ export namespace GstGL {
     namespace GLFilter {
         // Signal signatures
         interface SignalSignatures extends GLBaseFilter.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2093,6 +2178,14 @@ export namespace GstGL {
      */
     class GLFilter extends GLBaseFilter {
         static $gtype: GObject.GType<GLFilter>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLFilter.SignalSignatures;
 
         // Fields
 
@@ -2108,16 +2201,19 @@ export namespace GstGL {
 
         // Signals
 
-        connect<K extends keyof GLFilter.SignalSignatures>(signal: K, callback: GLFilter.SignalSignatures[K]): number;
+        connect<K extends keyof GLFilter.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GLFilter.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLFilter.SignalSignatures>(
             signal: K,
-            callback: GLFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLFilter.SignalSignatures>(
             signal: K,
-            ...args: GLFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2176,8 +2272,8 @@ export namespace GstGL {
     namespace GLFramebuffer {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2199,6 +2295,14 @@ export namespace GstGL {
      */
     class GLFramebuffer extends Gst.Object {
         static $gtype: GObject.GType<GLFramebuffer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLFramebuffer.SignalSignatures;
 
         // Constructors
 
@@ -2214,17 +2318,17 @@ export namespace GstGL {
 
         connect<K extends keyof GLFramebuffer.SignalSignatures>(
             signal: K,
-            callback: GLFramebuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLFramebuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLFramebuffer.SignalSignatures>(
             signal: K,
-            callback: GLFramebuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLFramebuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLFramebuffer.SignalSignatures>(
             signal: K,
-            ...args: GLFramebuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLFramebuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2272,8 +2376,8 @@ export namespace GstGL {
     namespace GLMemoryAllocator {
         // Signal signatures
         interface SignalSignatures extends GLBaseMemoryAllocator.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2286,6 +2390,14 @@ export namespace GstGL {
      */
     class GLMemoryAllocator extends GLBaseMemoryAllocator {
         static $gtype: GObject.GType<GLMemoryAllocator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLMemoryAllocator.SignalSignatures;
 
         // Constructors
 
@@ -2297,17 +2409,17 @@ export namespace GstGL {
 
         connect<K extends keyof GLMemoryAllocator.SignalSignatures>(
             signal: K,
-            callback: GLMemoryAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLMemoryAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLMemoryAllocator.SignalSignatures>(
             signal: K,
-            callback: GLMemoryAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLMemoryAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLMemoryAllocator.SignalSignatures>(
             signal: K,
-            ...args: GLMemoryAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLMemoryAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2319,8 +2431,8 @@ export namespace GstGL {
     namespace GLMemoryPBOAllocator {
         // Signal signatures
         interface SignalSignatures extends GLMemoryAllocator.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2333,6 +2445,14 @@ export namespace GstGL {
      */
     class GLMemoryPBOAllocator extends GLMemoryAllocator {
         static $gtype: GObject.GType<GLMemoryPBOAllocator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLMemoryPBOAllocator.SignalSignatures;
 
         // Constructors
 
@@ -2344,17 +2464,19 @@ export namespace GstGL {
 
         connect<K extends keyof GLMemoryPBOAllocator.SignalSignatures>(
             signal: K,
-            callback: GLMemoryPBOAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLMemoryPBOAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLMemoryPBOAllocator.SignalSignatures>(
             signal: K,
-            callback: GLMemoryPBOAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLMemoryPBOAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLMemoryPBOAllocator.SignalSignatures>(
             signal: K,
-            ...args: GLMemoryPBOAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLMemoryPBOAllocator.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2362,15 +2484,15 @@ export namespace GstGL {
     namespace GLMixer {
         // Signal signatures
         interface SignalSignatures extends GLBaseMixer.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::force-live': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
-            'notify::latency': GObject.Object.Notify;
-            'notify::min-upstream-latency': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
-            'notify::start-time-selection': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::force-live': (pspec: GObject.ParamSpec) => void;
+            'notify::emit-signals': (pspec: GObject.ParamSpec) => void;
+            'notify::latency': (pspec: GObject.ParamSpec) => void;
+            'notify::min-upstream-latency': (pspec: GObject.ParamSpec) => void;
+            'notify::start-time': (pspec: GObject.ParamSpec) => void;
+            'notify::start-time-selection': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2383,6 +2505,14 @@ export namespace GstGL {
      */
     abstract class GLMixer extends GLBaseMixer {
         static $gtype: GObject.GType<GLMixer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLMixer.SignalSignatures;
 
         // Constructors
 
@@ -2392,16 +2522,19 @@ export namespace GstGL {
 
         // Signals
 
-        connect<K extends keyof GLMixer.SignalSignatures>(signal: K, callback: GLMixer.SignalSignatures[K]): number;
+        connect<K extends keyof GLMixer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GLMixer.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLMixer.SignalSignatures>(
             signal: K,
-            callback: GLMixer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLMixer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLMixer.SignalSignatures>(
             signal: K,
-            ...args: GLMixer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLMixer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2441,16 +2574,16 @@ export namespace GstGL {
     namespace GLMixerPad {
         // Signal signatures
         interface SignalSignatures extends GLBaseMixerPad.SignalSignatures {
-            'notify::max-last-buffer-repeat': GObject.Object.Notify;
-            'notify::repeat-after-eos': GObject.Object.Notify;
-            'notify::zorder': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
-            'notify::caps': GObject.Object.Notify;
-            'notify::direction': GObject.Object.Notify;
-            'notify::offset': GObject.Object.Notify;
-            'notify::template': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::max-last-buffer-repeat': (pspec: GObject.ParamSpec) => void;
+            'notify::repeat-after-eos': (pspec: GObject.ParamSpec) => void;
+            'notify::zorder': (pspec: GObject.ParamSpec) => void;
+            'notify::emit-signals': (pspec: GObject.ParamSpec) => void;
+            'notify::caps': (pspec: GObject.ParamSpec) => void;
+            'notify::direction': (pspec: GObject.ParamSpec) => void;
+            'notify::offset': (pspec: GObject.ParamSpec) => void;
+            'notify::template': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2460,6 +2593,14 @@ export namespace GstGL {
 
     class GLMixerPad extends GLBaseMixerPad {
         static $gtype: GObject.GType<GLMixerPad>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLMixerPad.SignalSignatures;
 
         // Fields
 
@@ -2475,17 +2616,17 @@ export namespace GstGL {
 
         connect<K extends keyof GLMixerPad.SignalSignatures>(
             signal: K,
-            callback: GLMixerPad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLMixerPad.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLMixerPad.SignalSignatures>(
             signal: K,
-            callback: GLMixerPad.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLMixerPad.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLMixerPad.SignalSignatures>(
             signal: K,
-            ...args: GLMixerPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLMixerPad.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2493,9 +2634,9 @@ export namespace GstGL {
     namespace GLOverlayCompositor {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::yinvert': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::yinvert': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2515,6 +2656,14 @@ export namespace GstGL {
 
         get yinvert(): boolean;
         set yinvert(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLOverlayCompositor.SignalSignatures;
 
         // Constructors
 
@@ -2528,17 +2677,19 @@ export namespace GstGL {
 
         connect<K extends keyof GLOverlayCompositor.SignalSignatures>(
             signal: K,
-            callback: GLOverlayCompositor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLOverlayCompositor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLOverlayCompositor.SignalSignatures>(
             signal: K,
-            callback: GLOverlayCompositor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLOverlayCompositor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLOverlayCompositor.SignalSignatures>(
             signal: K,
-            ...args: GLOverlayCompositor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLOverlayCompositor.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2556,8 +2707,8 @@ export namespace GstGL {
     namespace GLRenderbufferAllocator {
         // Signal signatures
         interface SignalSignatures extends GLBaseMemoryAllocator.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2570,6 +2721,14 @@ export namespace GstGL {
      */
     class GLRenderbufferAllocator extends GLBaseMemoryAllocator {
         static $gtype: GObject.GType<GLRenderbufferAllocator>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLRenderbufferAllocator.SignalSignatures;
 
         // Constructors
 
@@ -2581,17 +2740,19 @@ export namespace GstGL {
 
         connect<K extends keyof GLRenderbufferAllocator.SignalSignatures>(
             signal: K,
-            callback: GLRenderbufferAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLRenderbufferAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLRenderbufferAllocator.SignalSignatures>(
             signal: K,
-            callback: GLRenderbufferAllocator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLRenderbufferAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLRenderbufferAllocator.SignalSignatures>(
             signal: K,
-            ...args: GLRenderbufferAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLRenderbufferAllocator.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2599,8 +2760,8 @@ export namespace GstGL {
     namespace GLSLStage {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2613,6 +2774,14 @@ export namespace GstGL {
      */
     class GLSLStage extends Gst.Object {
         static $gtype: GObject.GType<GLSLStage>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLSLStage.SignalSignatures;
 
         // Constructors
 
@@ -2644,16 +2813,19 @@ export namespace GstGL {
 
         // Signals
 
-        connect<K extends keyof GLSLStage.SignalSignatures>(signal: K, callback: GLSLStage.SignalSignatures[K]): number;
+        connect<K extends keyof GLSLStage.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GLSLStage.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLSLStage.SignalSignatures>(
             signal: K,
-            callback: GLSLStage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLSLStage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLSLStage.SignalSignatures>(
             signal: K,
-            ...args: GLSLStage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLSLStage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2676,9 +2848,9 @@ export namespace GstGL {
     namespace GLShader {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::linked': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::linked': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2694,6 +2866,14 @@ export namespace GstGL {
         // Properties
 
         get linked(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLShader.SignalSignatures;
 
         // Fields
 
@@ -2711,16 +2891,19 @@ export namespace GstGL {
 
         // Signals
 
-        connect<K extends keyof GLShader.SignalSignatures>(signal: K, callback: GLShader.SignalSignatures[K]): number;
+        connect<K extends keyof GLShader.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GLShader.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLShader.SignalSignatures>(
             signal: K,
-            callback: GLShader.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLShader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLShader.SignalSignatures>(
             signal: K,
-            ...args: GLShader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLShader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3021,8 +3204,8 @@ export namespace GstGL {
     namespace GLUpload {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3037,6 +3220,14 @@ export namespace GstGL {
      */
     class GLUpload extends Gst.Object {
         static $gtype: GObject.GType<GLUpload>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLUpload.SignalSignatures;
 
         // Fields
 
@@ -3052,16 +3243,19 @@ export namespace GstGL {
 
         // Signals
 
-        connect<K extends keyof GLUpload.SignalSignatures>(signal: K, callback: GLUpload.SignalSignatures[K]): number;
+        connect<K extends keyof GLUpload.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GLUpload.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLUpload.SignalSignatures>(
             signal: K,
-            callback: GLUpload.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLUpload.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLUpload.SignalSignatures>(
             signal: K,
-            ...args: GLUpload.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLUpload.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3104,13 +3298,13 @@ export namespace GstGL {
     namespace GLViewConvert {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::downmix-mode': GObject.Object.Notify;
-            'notify::input-flags-override': GObject.Object.Notify;
-            'notify::input-mode-override': GObject.Object.Notify;
-            'notify::output-flags-override': GObject.Object.Notify;
-            'notify::output-mode-override': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::downmix-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::input-flags-override': (pspec: GObject.ParamSpec) => void;
+            'notify::input-mode-override': (pspec: GObject.ParamSpec) => void;
+            'notify::output-flags-override': (pspec: GObject.ParamSpec) => void;
+            'notify::output-mode-override': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3157,6 +3351,14 @@ export namespace GstGL {
         set output_mode_override(val: GstVideo.VideoMultiviewMode);
         get outputModeOverride(): GstVideo.VideoMultiviewMode;
         set outputModeOverride(val: GstVideo.VideoMultiviewMode);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLViewConvert.SignalSignatures;
 
         // Fields
 
@@ -3182,17 +3384,17 @@ export namespace GstGL {
 
         connect<K extends keyof GLViewConvert.SignalSignatures>(
             signal: K,
-            callback: GLViewConvert.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLViewConvert.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLViewConvert.SignalSignatures>(
             signal: K,
-            callback: GLViewConvert.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLViewConvert.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLViewConvert.SignalSignatures>(
             signal: K,
-            ...args: GLViewConvert.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLViewConvert.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3252,32 +3454,14 @@ export namespace GstGL {
     }
 
     namespace GLWindow {
-        // Signal callback interfaces
-
-        interface KeyEvent {
-            (_source: GLWindow, id: string, key: string): void;
-        }
-
-        interface MouseEvent {
-            (_source: GLWindow, id: string, button: number, x: number, y: number): void;
-        }
-
-        interface ScrollEvent {
-            (_source: GLWindow, x: number, y: number, delta_x: number, delta_y: number): void;
-        }
-
-        interface WindowHandleChanged {
-            (_source: GLWindow): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'key-event': KeyEvent;
-            'mouse-event': MouseEvent;
-            'scroll-event': ScrollEvent;
-            'window-handle-changed': WindowHandleChanged;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'key-event': (arg0: string, arg1: string) => void;
+            'mouse-event': (arg0: string, arg1: number, arg2: number, arg3: number) => void;
+            'scroll-event': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            'window-handle-changed': () => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3291,6 +3475,14 @@ export namespace GstGL {
      */
     abstract class GLWindow extends Gst.Object {
         static $gtype: GObject.GType<GLWindow>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLWindow.SignalSignatures;
 
         // Constructors
 
@@ -3302,16 +3494,19 @@ export namespace GstGL {
 
         // Signals
 
-        connect<K extends keyof GLWindow.SignalSignatures>(signal: K, callback: GLWindow.SignalSignatures[K]): number;
+        connect<K extends keyof GLWindow.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GLWindow.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLWindow.SignalSignatures>(
             signal: K,
-            callback: GLWindow.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLWindow.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLWindow.SignalSignatures>(
             signal: K,
-            ...args: GLWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

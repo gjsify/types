@@ -1548,23 +1548,17 @@ export namespace ECal {
         MARKUP,
     }
     namespace Client {
-        // Signal callback interfaces
-
-        interface FreeBusyData {
-            (_source: Client, free_busy_ecalcomps: Component[]): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends EDataServer.Client.SignalSignatures {
-            'free-busy-data': FreeBusyData;
-            'notify::default-timezone': GObject.Object.Notify;
-            'notify::source-type': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::main-context': GObject.Object.Notify;
-            'notify::online': GObject.Object.Notify;
-            'notify::opened': GObject.Object.Notify;
-            'notify::readonly': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
+            'free-busy-data': (arg0: Component[]) => void;
+            'notify::default-timezone': (pspec: GObject.ParamSpec) => void;
+            'notify::source-type': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::main-context': (pspec: GObject.ParamSpec) => void;
+            'notify::online': (pspec: GObject.ParamSpec) => void;
+            'notify::opened': (pspec: GObject.ParamSpec) => void;
+            'notify::readonly': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1596,6 +1590,14 @@ export namespace ECal {
         set defaultTimezone(val: ICalGLib.Timezone);
         get source_type(): ClientSourceType;
         get sourceType(): ClientSourceType;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -1605,13 +1607,19 @@ export namespace ECal {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4003,38 +4011,16 @@ export namespace ECal {
     }
 
     namespace ClientView {
-        // Signal callback interfaces
-
-        interface Complete {
-            (_source: ClientView, object: GLib.Error): void;
-        }
-
-        interface ObjectsAdded {
-            (_source: ClientView, objects: ICalGLib.Component[]): void;
-        }
-
-        interface ObjectsModified {
-            (_source: ClientView, objects: ICalGLib.Component[]): void;
-        }
-
-        interface ObjectsRemoved {
-            (_source: ClientView, uids: ComponentId[]): void;
-        }
-
-        interface Progress {
-            (_source: ClientView, object: number, p0: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            complete: Complete;
-            'objects-added': ObjectsAdded;
-            'objects-modified': ObjectsModified;
-            'objects-removed': ObjectsRemoved;
-            progress: Progress;
-            'notify::client': GObject.Object.Notify;
-            'notify::connection': GObject.Object.Notify;
-            'notify::object-path': GObject.Object.Notify;
+            complete: (arg0: GLib.Error) => void;
+            'objects-added': (arg0: ICalGLib.Component[]) => void;
+            'objects-modified': (arg0: ICalGLib.Component[]) => void;
+            'objects-removed': (arg0: ComponentId[]) => void;
+            progress: (arg0: number, arg1: string) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4072,6 +4058,14 @@ export namespace ECal {
          * The object path used to create the D-Bus proxy
          */
         get objectPath(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClientView.SignalSignatures;
 
         // Constructors
 
@@ -4083,17 +4077,17 @@ export namespace ECal {
 
         connect<K extends keyof ClientView.SignalSignatures>(
             signal: K,
-            callback: ClientView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientView.SignalSignatures>(
             signal: K,
-            callback: ClientView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClientView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientView.SignalSignatures>(
             signal: K,
-            ...args: ClientView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClientView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4693,6 +4687,14 @@ export namespace ECal {
 
     class Component extends GObject.Object {
         static $gtype: GObject.GType<Component>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Component.SignalSignatures;
 
         // Constructors
 
@@ -4710,16 +4712,19 @@ export namespace ECal {
 
         // Signals
 
-        connect<K extends keyof Component.SignalSignatures>(signal: K, callback: Component.SignalSignatures[K]): number;
+        connect<K extends keyof Component.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Component.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Component.SignalSignatures>(
             signal: K,
-            callback: Component.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Component.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Component.SignalSignatures>(
             signal: K,
-            ...args: Component.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Component.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5376,34 +5381,14 @@ export namespace ECal {
     }
 
     namespace ReminderWatcher {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: ReminderWatcher): void;
-        }
-
-        interface FormatTime {
-            (
-                _source: ReminderWatcher,
-                rd: ReminderData,
-                itt: ICalGLib.Time,
-                inout_buffer: any,
-                buffer_size: number,
-            ): void;
-        }
-
-        interface Triggered {
-            (_source: ReminderWatcher, reminders: ReminderData[], snoozed: boolean): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            'format-time': FormatTime;
-            triggered: Triggered;
-            'notify::default-zone': GObject.Object.Notify;
-            'notify::registry': GObject.Object.Notify;
-            'notify::timers-enabled': GObject.Object.Notify;
+            changed: () => void;
+            'format-time': (arg0: ReminderData, arg1: ICalGLib.Time, arg2: any, arg3: number) => void;
+            triggered: (arg0: ReminderData[], arg1: boolean) => void;
+            'notify::default-zone': (pspec: GObject.ParamSpec) => void;
+            'notify::registry': (pspec: GObject.ParamSpec) => void;
+            'notify::timers-enabled': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5458,6 +5443,14 @@ export namespace ECal {
          */
         get timersEnabled(): boolean;
         set timersEnabled(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ReminderWatcher.SignalSignatures;
 
         // Constructors
 
@@ -5471,17 +5464,17 @@ export namespace ECal {
 
         connect<K extends keyof ReminderWatcher.SignalSignatures>(
             signal: K,
-            callback: ReminderWatcher.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ReminderWatcher.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ReminderWatcher.SignalSignatures>(
             signal: K,
-            callback: ReminderWatcher.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ReminderWatcher.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ReminderWatcher.SignalSignatures>(
             signal: K,
-            ...args: ReminderWatcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ReminderWatcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

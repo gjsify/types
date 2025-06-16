@@ -285,22 +285,22 @@ export namespace Rest {
     namespace OAuth2Proxy {
         // Signal signatures
         interface SignalSignatures extends Proxy.SignalSignatures {
-            'notify::access-token': GObject.Object.Notify;
-            'notify::auth-url': GObject.Object.Notify;
-            'notify::client-id': GObject.Object.Notify;
-            'notify::client-secret': GObject.Object.Notify;
-            'notify::expiration-date': GObject.Object.Notify;
-            'notify::redirect-uri': GObject.Object.Notify;
-            'notify::refresh-token': GObject.Object.Notify;
-            'notify::token-url': GObject.Object.Notify;
-            'notify::binding-required': GObject.Object.Notify;
-            'notify::disable-cookies': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::ssl-ca-file': GObject.Object.Notify;
-            'notify::ssl-strict': GObject.Object.Notify;
-            'notify::url-format': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
+            'notify::access-token': (pspec: GObject.ParamSpec) => void;
+            'notify::auth-url': (pspec: GObject.ParamSpec) => void;
+            'notify::client-id': (pspec: GObject.ParamSpec) => void;
+            'notify::client-secret': (pspec: GObject.ParamSpec) => void;
+            'notify::expiration-date': (pspec: GObject.ParamSpec) => void;
+            'notify::redirect-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::refresh-token': (pspec: GObject.ParamSpec) => void;
+            'notify::token-url': (pspec: GObject.ParamSpec) => void;
+            'notify::binding-required': (pspec: GObject.ParamSpec) => void;
+            'notify::disable-cookies': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::ssl-ca-file': (pspec: GObject.ParamSpec) => void;
+            'notify::ssl-strict': (pspec: GObject.ParamSpec) => void;
+            'notify::url-format': (pspec: GObject.ParamSpec) => void;
+            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -362,6 +362,14 @@ export namespace Rest {
         set token_url(val: string);
         get tokenUrl(): string;
         set tokenUrl(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OAuth2Proxy.SignalSignatures;
 
         // Constructors
 
@@ -385,17 +393,17 @@ export namespace Rest {
 
         connect<K extends keyof OAuth2Proxy.SignalSignatures>(
             signal: K,
-            callback: OAuth2Proxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OAuth2Proxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OAuth2Proxy.SignalSignatures>(
             signal: K,
-            callback: OAuth2Proxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OAuth2Proxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OAuth2Proxy.SignalSignatures>(
             signal: K,
-            ...args: OAuth2Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OAuth2Proxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -456,7 +464,7 @@ export namespace Rest {
     namespace OAuth2ProxyCall {
         // Signal signatures
         interface SignalSignatures extends ProxyCall.SignalSignatures {
-            'notify::proxy': GObject.Object.Notify;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -466,6 +474,14 @@ export namespace Rest {
 
     class OAuth2ProxyCall extends ProxyCall {
         static $gtype: GObject.GType<OAuth2ProxyCall>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OAuth2ProxyCall.SignalSignatures;
 
         // Constructors
 
@@ -477,17 +493,17 @@ export namespace Rest {
 
         connect<K extends keyof OAuth2ProxyCall.SignalSignatures>(
             signal: K,
-            callback: OAuth2ProxyCall.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OAuth2ProxyCall.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OAuth2ProxyCall.SignalSignatures>(
             signal: K,
-            callback: OAuth2ProxyCall.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OAuth2ProxyCall.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OAuth2ProxyCall.SignalSignatures>(
             signal: K,
-            ...args: OAuth2ProxyCall.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OAuth2ProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -495,14 +511,14 @@ export namespace Rest {
     namespace Proxy {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::binding-required': GObject.Object.Notify;
-            'notify::disable-cookies': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::ssl-ca-file': GObject.Object.Notify;
-            'notify::ssl-strict': GObject.Object.Notify;
-            'notify::url-format': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
+            'notify::binding-required': (pspec: GObject.ParamSpec) => void;
+            'notify::disable-cookies': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::ssl-ca-file': (pspec: GObject.ParamSpec) => void;
+            'notify::ssl-strict': (pspec: GObject.ParamSpec) => void;
+            'notify::url-format': (pspec: GObject.ParamSpec) => void;
+            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -559,6 +575,14 @@ export namespace Rest {
         set userAgent(val: string);
         get username(): string;
         set username(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Proxy.SignalSignatures;
 
         // Constructors
 
@@ -577,13 +601,19 @@ export namespace Rest {
 
         // Signals
 
-        connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect_after<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Proxy.SignalSignatures>(
             signal: K,
-            ...args: Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Proxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -640,6 +670,14 @@ export namespace Rest {
      */
     class ProxyAuth extends GObject.Object {
         static $gtype: GObject.GType<ProxyAuth>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ProxyAuth.SignalSignatures;
 
         // Constructors
 
@@ -649,16 +687,19 @@ export namespace Rest {
 
         // Signals
 
-        connect<K extends keyof ProxyAuth.SignalSignatures>(signal: K, callback: ProxyAuth.SignalSignatures[K]): number;
+        connect<K extends keyof ProxyAuth.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ProxyAuth.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProxyAuth.SignalSignatures>(
             signal: K,
-            callback: ProxyAuth.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProxyAuth.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProxyAuth.SignalSignatures>(
             signal: K,
-            ...args: ProxyAuth.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ProxyAuth.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -687,7 +728,7 @@ export namespace Rest {
     namespace ProxyCall {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::proxy': GObject.Object.Notify;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -706,6 +747,14 @@ export namespace Rest {
         // Properties
 
         get proxy(): Proxy;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ProxyCall.SignalSignatures;
 
         // Constructors
 
@@ -715,16 +764,19 @@ export namespace Rest {
 
         // Signals
 
-        connect<K extends keyof ProxyCall.SignalSignatures>(signal: K, callback: ProxyCall.SignalSignatures[K]): number;
+        connect<K extends keyof ProxyCall.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ProxyCall.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProxyCall.SignalSignatures>(
             signal: K,
-            callback: ProxyCall.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ProxyCall.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProxyCall.SignalSignatures>(
             signal: K,
-            ...args: ProxyCall.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -895,6 +947,14 @@ export namespace Rest {
      */
     class XmlParser extends GObject.Object {
         static $gtype: GObject.GType<XmlParser>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XmlParser.SignalSignatures;
 
         // Constructors
 
@@ -906,16 +966,19 @@ export namespace Rest {
 
         // Signals
 
-        connect<K extends keyof XmlParser.SignalSignatures>(signal: K, callback: XmlParser.SignalSignatures[K]): number;
+        connect<K extends keyof XmlParser.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XmlParser.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XmlParser.SignalSignatures>(
             signal: K,
-            callback: XmlParser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, XmlParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XmlParser.SignalSignatures>(
             signal: K,
-            ...args: XmlParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XmlParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

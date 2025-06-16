@@ -149,8 +149,8 @@ export namespace Zpj {
     namespace AuthorizationDomain {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::scope': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
+            'notify::scope': (pspec: GObject.ParamSpec) => void;
+            'notify::service-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -170,6 +170,14 @@ export namespace Zpj {
         get scope(): string;
         get service_name(): string;
         get serviceName(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AuthorizationDomain.SignalSignatures;
 
         // Constructors
 
@@ -181,17 +189,19 @@ export namespace Zpj {
 
         connect<K extends keyof AuthorizationDomain.SignalSignatures>(
             signal: K,
-            callback: AuthorizationDomain.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthorizationDomain.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthorizationDomain.SignalSignatures>(
             signal: K,
-            callback: AuthorizationDomain.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthorizationDomain.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthorizationDomain.SignalSignatures>(
             signal: K,
-            ...args: AuthorizationDomain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AuthorizationDomain.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -216,6 +226,14 @@ export namespace Zpj {
      */
     class GoaAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<GoaAuthorizer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GoaAuthorizer.SignalSignatures;
 
         // Constructors
 
@@ -227,17 +245,17 @@ export namespace Zpj {
 
         connect<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
-            callback: GoaAuthorizer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
-            callback: GoaAuthorizer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
-            ...args: GoaAuthorizer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GoaAuthorizer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -810,7 +828,7 @@ export namespace Zpj {
     namespace Skydrive {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::authorizer': GObject.Object.Notify;
+            'notify::authorizer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -831,6 +849,14 @@ export namespace Zpj {
 
         get authorizer(): Authorizer;
         set authorizer(val: Authorizer);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Skydrive.SignalSignatures;
 
         // Constructors
 
@@ -842,16 +868,19 @@ export namespace Zpj {
 
         // Signals
 
-        connect<K extends keyof Skydrive.SignalSignatures>(signal: K, callback: Skydrive.SignalSignatures[K]): number;
+        connect<K extends keyof Skydrive.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Skydrive.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Skydrive.SignalSignatures>(
             signal: K,
-            callback: Skydrive.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Skydrive.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Skydrive.SignalSignatures>(
             signal: K,
-            ...args: Skydrive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Skydrive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1244,16 +1273,16 @@ export namespace Zpj {
     namespace SkydriveEntry {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::created-time': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::from-id': GObject.Object.Notify;
-            'notify::from-name': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::json': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent-id': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::updated-time': GObject.Object.Notify;
+            'notify::created-time': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::from-id': (pspec: GObject.ParamSpec) => void;
+            'notify::from-name': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::json': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent-id': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-time': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1301,6 +1330,14 @@ export namespace Zpj {
         get type(): SkydriveEntryType;
         get updated_time(): GLib.DateTime;
         get updatedTime(): GLib.DateTime;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SkydriveEntry.SignalSignatures;
 
         // Constructors
 
@@ -1312,17 +1349,17 @@ export namespace Zpj {
 
         connect<K extends keyof SkydriveEntry.SignalSignatures>(
             signal: K,
-            callback: SkydriveEntry.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SkydriveEntry.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SkydriveEntry.SignalSignatures>(
             signal: K,
-            callback: SkydriveEntry.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SkydriveEntry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SkydriveEntry.SignalSignatures>(
             signal: K,
-            ...args: SkydriveEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SkydriveEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1402,17 +1439,17 @@ export namespace Zpj {
     namespace SkydriveFile {
         // Signal signatures
         interface SignalSignatures extends SkydriveEntry.SignalSignatures {
-            'notify::size': GObject.Object.Notify;
-            'notify::created-time': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::from-id': GObject.Object.Notify;
-            'notify::from-name': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::json': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent-id': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::updated-time': GObject.Object.Notify;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::created-time': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::from-id': (pspec: GObject.ParamSpec) => void;
+            'notify::from-name': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::json': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent-id': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-time': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1432,6 +1469,14 @@ export namespace Zpj {
         // Properties
 
         get size(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SkydriveFile.SignalSignatures;
 
         // Constructors
 
@@ -1445,17 +1490,17 @@ export namespace Zpj {
 
         connect<K extends keyof SkydriveFile.SignalSignatures>(
             signal: K,
-            callback: SkydriveFile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SkydriveFile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SkydriveFile.SignalSignatures>(
             signal: K,
-            callback: SkydriveFile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SkydriveFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SkydriveFile.SignalSignatures>(
             signal: K,
-            ...args: SkydriveFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SkydriveFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1473,16 +1518,16 @@ export namespace Zpj {
     namespace SkydriveFolder {
         // Signal signatures
         interface SignalSignatures extends SkydriveEntry.SignalSignatures {
-            'notify::created-time': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::from-id': GObject.Object.Notify;
-            'notify::from-name': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::json': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent-id': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::updated-time': GObject.Object.Notify;
+            'notify::created-time': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::from-id': (pspec: GObject.ParamSpec) => void;
+            'notify::from-name': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::json': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent-id': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-time': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1496,6 +1541,14 @@ export namespace Zpj {
      */
     class SkydriveFolder extends SkydriveEntry {
         static $gtype: GObject.GType<SkydriveFolder>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SkydriveFolder.SignalSignatures;
 
         // Constructors
 
@@ -1509,17 +1562,17 @@ export namespace Zpj {
 
         connect<K extends keyof SkydriveFolder.SignalSignatures>(
             signal: K,
-            callback: SkydriveFolder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SkydriveFolder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SkydriveFolder.SignalSignatures>(
             signal: K,
-            callback: SkydriveFolder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SkydriveFolder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SkydriveFolder.SignalSignatures>(
             signal: K,
-            ...args: SkydriveFolder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SkydriveFolder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1527,17 +1580,17 @@ export namespace Zpj {
     namespace SkydrivePhoto {
         // Signal signatures
         interface SignalSignatures extends SkydriveFile.SignalSignatures {
-            'notify::size': GObject.Object.Notify;
-            'notify::created-time': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::from-id': GObject.Object.Notify;
-            'notify::from-name': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::json': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent-id': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::updated-time': GObject.Object.Notify;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::created-time': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::from-id': (pspec: GObject.ParamSpec) => void;
+            'notify::from-name': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::json': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent-id': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-time': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1551,6 +1604,14 @@ export namespace Zpj {
      */
     class SkydrivePhoto extends SkydriveFile {
         static $gtype: GObject.GType<SkydrivePhoto>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SkydrivePhoto.SignalSignatures;
 
         // Constructors
 
@@ -1564,17 +1625,17 @@ export namespace Zpj {
 
         connect<K extends keyof SkydrivePhoto.SignalSignatures>(
             signal: K,
-            callback: SkydrivePhoto.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SkydrivePhoto.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SkydrivePhoto.SignalSignatures>(
             signal: K,
-            callback: SkydrivePhoto.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SkydrivePhoto.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SkydrivePhoto.SignalSignatures>(
             signal: K,
-            ...args: SkydrivePhoto.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SkydrivePhoto.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1582,21 +1643,21 @@ export namespace Zpj {
     namespace SkydriveVideo {
         // Signal signatures
         interface SignalSignatures extends SkydriveFile.SignalSignatures {
-            'notify::bitrate': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::created-time': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::from-id': GObject.Object.Notify;
-            'notify::from-name': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::json': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent-id': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::updated-time': GObject.Object.Notify;
+            'notify::bitrate': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::created-time': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::from-id': (pspec: GObject.ParamSpec) => void;
+            'notify::from-name': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::json': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent-id': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-time': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1622,6 +1683,14 @@ export namespace Zpj {
         get duration(): number;
         get height(): number;
         get width(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SkydriveVideo.SignalSignatures;
 
         // Constructors
 
@@ -1635,17 +1704,17 @@ export namespace Zpj {
 
         connect<K extends keyof SkydriveVideo.SignalSignatures>(
             signal: K,
-            callback: SkydriveVideo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SkydriveVideo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SkydriveVideo.SignalSignatures>(
             signal: K,
-            callback: SkydriveVideo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SkydriveVideo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SkydriveVideo.SignalSignatures>(
             signal: K,
-            ...args: SkydriveVideo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SkydriveVideo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

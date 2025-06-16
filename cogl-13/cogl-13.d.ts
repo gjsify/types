@@ -2190,13 +2190,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Bitmap.SignalSignatures>(signal: K, callback: Bitmap.SignalSignatures[K]): number;
+        connect<K extends keyof Bitmap.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Bitmap.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Bitmap.SignalSignatures>(signal: K, callback: Bitmap.SignalSignatures[K]): number;
+        connect_after<K extends keyof Bitmap.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Bitmap.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Bitmap.SignalSignatures>(
             signal: K,
-            ...args: Bitmap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Bitmap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2232,16 +2238,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
-            callback: Context.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2285,16 +2294,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof FrameInfo.SignalSignatures>(signal: K, callback: FrameInfo.SignalSignatures[K]): number;
+        connect<K extends keyof FrameInfo.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, FrameInfo.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FrameInfo.SignalSignatures>(
             signal: K,
-            callback: FrameInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FrameInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FrameInfo.SignalSignatures>(
             signal: K,
-            ...args: FrameInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FrameInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2340,18 +2352,12 @@ export namespace Cogl {
     }
 
     namespace Framebuffer {
-        // Signal callback interfaces
-
-        interface Destroy {
-            (_source: Framebuffer): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            destroy: Destroy;
-            'notify::driver-config': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            destroy: () => void;
+            'notify::driver-config': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2375,6 +2381,14 @@ export namespace Cogl {
         set height(val: number);
         get width(): number;
         set width(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Framebuffer.SignalSignatures;
 
         // Constructors
 
@@ -2386,17 +2400,17 @@ export namespace Cogl {
 
         connect<K extends keyof Framebuffer.SignalSignatures>(
             signal: K,
-            callback: Framebuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Framebuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Framebuffer.SignalSignatures>(
             signal: K,
-            callback: Framebuffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Framebuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Framebuffer.SignalSignatures>(
             signal: K,
-            ...args: Framebuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Framebuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3146,13 +3160,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
-            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3160,9 +3180,9 @@ export namespace Cogl {
     namespace Offscreen {
         // Signal signatures
         interface SignalSignatures extends Framebuffer.SignalSignatures {
-            'notify::driver-config': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::driver-config': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3172,6 +3192,14 @@ export namespace Cogl {
 
     class Offscreen extends Framebuffer {
         static $gtype: GObject.GType<Offscreen>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Offscreen.SignalSignatures;
 
         // Constructors
 
@@ -3183,16 +3211,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Offscreen.SignalSignatures>(signal: K, callback: Offscreen.SignalSignatures[K]): number;
+        connect<K extends keyof Offscreen.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Offscreen.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Offscreen.SignalSignatures>(
             signal: K,
-            callback: Offscreen.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Offscreen.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Offscreen.SignalSignatures>(
             signal: K,
-            ...args: Offscreen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Offscreen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3200,9 +3231,9 @@ export namespace Cogl {
     namespace Onscreen {
         // Signal signatures
         interface SignalSignatures extends Framebuffer.SignalSignatures {
-            'notify::driver-config': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
+            'notify::driver-config': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3212,6 +3243,14 @@ export namespace Cogl {
 
     class Onscreen extends Framebuffer {
         static $gtype: GObject.GType<Onscreen>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Onscreen.SignalSignatures;
 
         // Constructors
 
@@ -3221,16 +3260,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Onscreen.SignalSignatures>(signal: K, callback: Onscreen.SignalSignatures[K]): number;
+        connect<K extends keyof Onscreen.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Onscreen.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Onscreen.SignalSignatures>(
             signal: K,
-            callback: Onscreen.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Onscreen.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Onscreen.SignalSignatures>(
             signal: K,
-            ...args: Onscreen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Onscreen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3628,16 +3670,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Pipeline.SignalSignatures>(signal: K, callback: Pipeline.SignalSignatures[K]): number;
+        connect<K extends keyof Pipeline.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Pipeline.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Pipeline.SignalSignatures>(
             signal: K,
-            callback: Pipeline.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Pipeline.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Pipeline.SignalSignatures>(
             signal: K,
-            ...args: Pipeline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Pipeline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4261,16 +4306,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Snippet.SignalSignatures>(signal: K, callback: Snippet.SignalSignatures[K]): number;
+        connect<K extends keyof Snippet.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Snippet.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Snippet.SignalSignatures>(
             signal: K,
-            callback: Snippet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Snippet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Snippet.SignalSignatures>(
             signal: K,
-            ...args: Snippet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Snippet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4347,16 +4395,19 @@ export namespace Cogl {
 
         // Signals
 
-        connect<K extends keyof Texture2D.SignalSignatures>(signal: K, callback: Texture2D.SignalSignatures[K]): number;
+        connect<K extends keyof Texture2D.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Texture2D.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Texture2D.SignalSignatures>(
             signal: K,
-            callback: Texture2D.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Texture2D.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Texture2D.SignalSignatures>(
             signal: K,
-            ...args: Texture2D.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Texture2D.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4613,17 +4664,17 @@ export namespace Cogl {
 
         connect<K extends keyof Texture2DSliced.SignalSignatures>(
             signal: K,
-            callback: Texture2DSliced.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Texture2DSliced.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Texture2DSliced.SignalSignatures>(
             signal: K,
-            callback: Texture2DSliced.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Texture2DSliced.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Texture2DSliced.SignalSignatures>(
             signal: K,
-            ...args: Texture2DSliced.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Texture2DSliced.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

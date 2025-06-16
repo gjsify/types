@@ -908,16 +908,19 @@ export namespace Gsk {
 
         // Signals
 
-        connect<K extends keyof BlendNode.SignalSignatures>(signal: K, callback: BlendNode.SignalSignatures[K]): number;
+        connect<K extends keyof BlendNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, BlendNode.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BlendNode.SignalSignatures>(
             signal: K,
-            callback: BlendNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BlendNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BlendNode.SignalSignatures>(
             signal: K,
-            ...args: BlendNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BlendNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -959,16 +962,19 @@ export namespace Gsk {
 
         // Signals
 
-        connect<K extends keyof BlurNode.SignalSignatures>(signal: K, callback: BlurNode.SignalSignatures[K]): number;
+        connect<K extends keyof BlurNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, BlurNode.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BlurNode.SignalSignatures>(
             signal: K,
-            callback: BlurNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BlurNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BlurNode.SignalSignatures>(
             signal: K,
-            ...args: BlurNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BlurNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1007,17 +1013,17 @@ export namespace Gsk {
 
         connect<K extends keyof BorderNode.SignalSignatures>(
             signal: K,
-            callback: BorderNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BorderNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BorderNode.SignalSignatures>(
             signal: K,
-            callback: BorderNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BorderNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BorderNode.SignalSignatures>(
             signal: K,
-            ...args: BorderNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BorderNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1043,8 +1049,8 @@ export namespace Gsk {
     namespace BroadwayRenderer {
         // Signal signatures
         interface SignalSignatures extends Renderer.SignalSignatures {
-            'notify::realized': GObject.Object.Notify;
-            'notify::surface': GObject.Object.Notify;
+            'notify::realized': (pspec: GObject.ParamSpec) => void;
+            'notify::surface': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1059,6 +1065,14 @@ export namespace Gsk {
      */
     class BroadwayRenderer extends Renderer {
         static $gtype: GObject.GType<BroadwayRenderer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BroadwayRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1072,17 +1086,17 @@ export namespace Gsk {
 
         connect<K extends keyof BroadwayRenderer.SignalSignatures>(
             signal: K,
-            callback: BroadwayRenderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BroadwayRenderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BroadwayRenderer.SignalSignatures>(
             signal: K,
-            callback: BroadwayRenderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BroadwayRenderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BroadwayRenderer.SignalSignatures>(
             signal: K,
-            ...args: BroadwayRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BroadwayRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1106,16 +1120,19 @@ export namespace Gsk {
 
         // Signals
 
-        connect<K extends keyof CairoNode.SignalSignatures>(signal: K, callback: CairoNode.SignalSignatures[K]): number;
+        connect<K extends keyof CairoNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, CairoNode.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CairoNode.SignalSignatures>(
             signal: K,
-            callback: CairoNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CairoNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CairoNode.SignalSignatures>(
             signal: K,
-            ...args: CairoNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CairoNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1140,8 +1157,8 @@ export namespace Gsk {
     namespace CairoRenderer {
         // Signal signatures
         interface SignalSignatures extends Renderer.SignalSignatures {
-            'notify::realized': GObject.Object.Notify;
-            'notify::surface': GObject.Object.Notify;
+            'notify::realized': (pspec: GObject.ParamSpec) => void;
+            'notify::surface': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1157,6 +1174,14 @@ export namespace Gsk {
      */
     class CairoRenderer extends Renderer {
         static $gtype: GObject.GType<CairoRenderer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CairoRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1170,17 +1195,17 @@ export namespace Gsk {
 
         connect<K extends keyof CairoRenderer.SignalSignatures>(
             signal: K,
-            callback: CairoRenderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CairoRenderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CairoRenderer.SignalSignatures>(
             signal: K,
-            callback: CairoRenderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CairoRenderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CairoRenderer.SignalSignatures>(
             signal: K,
-            ...args: CairoRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CairoRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1204,16 +1229,19 @@ export namespace Gsk {
 
         // Signals
 
-        connect<K extends keyof ClipNode.SignalSignatures>(signal: K, callback: ClipNode.SignalSignatures[K]): number;
+        connect<K extends keyof ClipNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClipNode.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClipNode.SignalSignatures>(
             signal: K,
-            callback: ClipNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClipNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClipNode.SignalSignatures>(
             signal: K,
-            ...args: ClipNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClipNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1252,17 +1280,17 @@ export namespace Gsk {
 
         connect<K extends keyof ColorMatrixNode.SignalSignatures>(
             signal: K,
-            callback: ColorMatrixNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColorMatrixNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColorMatrixNode.SignalSignatures>(
             signal: K,
-            callback: ColorMatrixNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColorMatrixNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColorMatrixNode.SignalSignatures>(
             signal: K,
-            ...args: ColorMatrixNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ColorMatrixNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1304,16 +1332,19 @@ export namespace Gsk {
 
         // Signals
 
-        connect<K extends keyof ColorNode.SignalSignatures>(signal: K, callback: ColorNode.SignalSignatures[K]): number;
+        connect<K extends keyof ColorNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ColorNode.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColorNode.SignalSignatures>(
             signal: K,
-            callback: ColorNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColorNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColorNode.SignalSignatures>(
             signal: K,
-            ...args: ColorNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ColorNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1355,17 +1386,17 @@ export namespace Gsk {
 
         connect<K extends keyof ConicGradientNode.SignalSignatures>(
             signal: K,
-            callback: ConicGradientNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConicGradientNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConicGradientNode.SignalSignatures>(
             signal: K,
-            callback: ConicGradientNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ConicGradientNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConicGradientNode.SignalSignatures>(
             signal: K,
-            ...args: ConicGradientNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ConicGradientNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1424,17 +1455,17 @@ export namespace Gsk {
 
         connect<K extends keyof ContainerNode.SignalSignatures>(
             signal: K,
-            callback: ContainerNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContainerNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContainerNode.SignalSignatures>(
             signal: K,
-            callback: ContainerNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContainerNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContainerNode.SignalSignatures>(
             signal: K,
-            ...args: ContainerNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ContainerNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1474,17 +1505,17 @@ export namespace Gsk {
 
         connect<K extends keyof CrossFadeNode.SignalSignatures>(
             signal: K,
-            callback: CrossFadeNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CrossFadeNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CrossFadeNode.SignalSignatures>(
             signal: K,
-            callback: CrossFadeNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CrossFadeNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CrossFadeNode.SignalSignatures>(
             signal: K,
-            ...args: CrossFadeNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CrossFadeNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1527,16 +1558,19 @@ export namespace Gsk {
 
         // Signals
 
-        connect<K extends keyof DebugNode.SignalSignatures>(signal: K, callback: DebugNode.SignalSignatures[K]): number;
+        connect<K extends keyof DebugNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DebugNode.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DebugNode.SignalSignatures>(
             signal: K,
-            callback: DebugNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DebugNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DebugNode.SignalSignatures>(
             signal: K,
-            ...args: DebugNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DebugNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1574,16 +1608,19 @@ export namespace Gsk {
 
         // Signals
 
-        connect<K extends keyof FillNode.SignalSignatures>(signal: K, callback: FillNode.SignalSignatures[K]): number;
+        connect<K extends keyof FillNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, FillNode.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FillNode.SignalSignatures>(
             signal: K,
-            callback: FillNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FillNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FillNode.SignalSignatures>(
             signal: K,
-            ...args: FillNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FillNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1610,8 +1647,8 @@ export namespace Gsk {
     namespace GLRenderer {
         // Signal signatures
         interface SignalSignatures extends Renderer.SignalSignatures {
-            'notify::realized': GObject.Object.Notify;
-            'notify::surface': GObject.Object.Notify;
+            'notify::realized': (pspec: GObject.ParamSpec) => void;
+            'notify::surface': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1626,6 +1663,14 @@ export namespace Gsk {
      */
     class GLRenderer extends Renderer {
         static $gtype: GObject.GType<GLRenderer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1639,17 +1684,17 @@ export namespace Gsk {
 
         connect<K extends keyof GLRenderer.SignalSignatures>(
             signal: K,
-            callback: GLRenderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLRenderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLRenderer.SignalSignatures>(
             signal: K,
-            callback: GLRenderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLRenderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLRenderer.SignalSignatures>(
             signal: K,
-            ...args: GLRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1657,8 +1702,8 @@ export namespace Gsk {
     namespace GLShader {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::resource': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
+            'notify::resource': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1799,6 +1844,14 @@ export namespace Gsk {
          * The source code for the shader, as a `GBytes`.
          */
         get source(): GLib.Bytes;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLShader.SignalSignatures;
 
         // Constructors
 
@@ -1812,16 +1865,19 @@ export namespace Gsk {
 
         // Signals
 
-        connect<K extends keyof GLShader.SignalSignatures>(signal: K, callback: GLShader.SignalSignatures[K]): number;
+        connect<K extends keyof GLShader.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GLShader.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLShader.SignalSignatures>(
             signal: K,
-            callback: GLShader.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLShader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLShader.SignalSignatures>(
             signal: K,
-            ...args: GLShader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLShader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1990,17 +2046,17 @@ export namespace Gsk {
 
         connect<K extends keyof GLShaderNode.SignalSignatures>(
             signal: K,
-            callback: GLShaderNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLShaderNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLShaderNode.SignalSignatures>(
             signal: K,
-            callback: GLShaderNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLShaderNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLShaderNode.SignalSignatures>(
             signal: K,
-            ...args: GLShaderNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLShaderNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2057,17 +2113,17 @@ export namespace Gsk {
 
         connect<K extends keyof InsetShadowNode.SignalSignatures>(
             signal: K,
-            callback: InsetShadowNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InsetShadowNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InsetShadowNode.SignalSignatures>(
             signal: K,
-            callback: InsetShadowNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InsetShadowNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InsetShadowNode.SignalSignatures>(
             signal: K,
-            ...args: InsetShadowNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InsetShadowNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2134,17 +2190,17 @@ export namespace Gsk {
 
         connect<K extends keyof LinearGradientNode.SignalSignatures>(
             signal: K,
-            callback: LinearGradientNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LinearGradientNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LinearGradientNode.SignalSignatures>(
             signal: K,
-            callback: LinearGradientNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, LinearGradientNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LinearGradientNode.SignalSignatures>(
             signal: K,
-            ...args: LinearGradientNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<LinearGradientNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2191,16 +2247,19 @@ export namespace Gsk {
 
         // Signals
 
-        connect<K extends keyof MaskNode.SignalSignatures>(signal: K, callback: MaskNode.SignalSignatures[K]): number;
+        connect<K extends keyof MaskNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MaskNode.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MaskNode.SignalSignatures>(
             signal: K,
-            callback: MaskNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MaskNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MaskNode.SignalSignatures>(
             signal: K,
-            ...args: MaskNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MaskNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2226,8 +2285,8 @@ export namespace Gsk {
     namespace NglRenderer {
         // Signal signatures
         interface SignalSignatures extends Renderer.SignalSignatures {
-            'notify::realized': GObject.Object.Notify;
-            'notify::surface': GObject.Object.Notify;
+            'notify::realized': (pspec: GObject.ParamSpec) => void;
+            'notify::surface': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2242,6 +2301,14 @@ export namespace Gsk {
      */
     class NglRenderer extends Renderer {
         static $gtype: GObject.GType<NglRenderer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NglRenderer.SignalSignatures;
 
         // Constructors
 
@@ -2255,17 +2322,17 @@ export namespace Gsk {
 
         connect<K extends keyof NglRenderer.SignalSignatures>(
             signal: K,
-            callback: NglRenderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NglRenderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NglRenderer.SignalSignatures>(
             signal: K,
-            callback: NglRenderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NglRenderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NglRenderer.SignalSignatures>(
             signal: K,
-            ...args: NglRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NglRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2291,17 +2358,17 @@ export namespace Gsk {
 
         connect<K extends keyof OpacityNode.SignalSignatures>(
             signal: K,
-            callback: OpacityNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OpacityNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OpacityNode.SignalSignatures>(
             signal: K,
-            callback: OpacityNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OpacityNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OpacityNode.SignalSignatures>(
             signal: K,
-            ...args: OpacityNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OpacityNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2347,17 +2414,17 @@ export namespace Gsk {
 
         connect<K extends keyof OutsetShadowNode.SignalSignatures>(
             signal: K,
-            callback: OutsetShadowNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutsetShadowNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutsetShadowNode.SignalSignatures>(
             signal: K,
-            callback: OutsetShadowNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutsetShadowNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutsetShadowNode.SignalSignatures>(
             signal: K,
-            ...args: OutsetShadowNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OutsetShadowNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2427,17 +2494,17 @@ export namespace Gsk {
 
         connect<K extends keyof RadialGradientNode.SignalSignatures>(
             signal: K,
-            callback: RadialGradientNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RadialGradientNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RadialGradientNode.SignalSignatures>(
             signal: K,
-            callback: RadialGradientNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RadialGradientNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RadialGradientNode.SignalSignatures>(
             signal: K,
-            ...args: RadialGradientNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RadialGradientNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2510,17 +2577,17 @@ export namespace Gsk {
 
         connect<K extends keyof RenderNode.SignalSignatures>(
             signal: K,
-            callback: RenderNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RenderNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RenderNode.SignalSignatures>(
             signal: K,
-            callback: RenderNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RenderNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RenderNode.SignalSignatures>(
             signal: K,
-            ...args: RenderNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RenderNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2614,8 +2681,8 @@ export namespace Gsk {
     namespace Renderer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::realized': GObject.Object.Notify;
-            'notify::surface': GObject.Object.Notify;
+            'notify::realized': (pspec: GObject.ParamSpec) => void;
+            'notify::surface': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2651,6 +2718,14 @@ export namespace Gsk {
          * The surface associated with renderer.
          */
         get surface(): Gdk.Surface;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Renderer.SignalSignatures;
 
         // Constructors
 
@@ -2662,16 +2737,19 @@ export namespace Gsk {
 
         // Signals
 
-        connect<K extends keyof Renderer.SignalSignatures>(signal: K, callback: Renderer.SignalSignatures[K]): number;
+        connect<K extends keyof Renderer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Renderer.SignalSignatures>(
             signal: K,
-            callback: Renderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Renderer.SignalSignatures>(
             signal: K,
-            ...args: Renderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Renderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2770,17 +2848,17 @@ export namespace Gsk {
 
         connect<K extends keyof RepeatNode.SignalSignatures>(
             signal: K,
-            callback: RepeatNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RepeatNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RepeatNode.SignalSignatures>(
             signal: K,
-            callback: RepeatNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RepeatNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RepeatNode.SignalSignatures>(
             signal: K,
-            ...args: RepeatNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RepeatNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2824,17 +2902,19 @@ export namespace Gsk {
 
         connect<K extends keyof RepeatingLinearGradientNode.SignalSignatures>(
             signal: K,
-            callback: RepeatingLinearGradientNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RepeatingLinearGradientNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RepeatingLinearGradientNode.SignalSignatures>(
             signal: K,
-            callback: RepeatingLinearGradientNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RepeatingLinearGradientNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RepeatingLinearGradientNode.SignalSignatures>(
             signal: K,
-            ...args: RepeatingLinearGradientNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RepeatingLinearGradientNode.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2868,17 +2948,19 @@ export namespace Gsk {
 
         connect<K extends keyof RepeatingRadialGradientNode.SignalSignatures>(
             signal: K,
-            callback: RepeatingRadialGradientNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RepeatingRadialGradientNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RepeatingRadialGradientNode.SignalSignatures>(
             signal: K,
-            callback: RepeatingRadialGradientNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RepeatingRadialGradientNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RepeatingRadialGradientNode.SignalSignatures>(
             signal: K,
-            ...args: RepeatingRadialGradientNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RepeatingRadialGradientNode.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2904,17 +2986,17 @@ export namespace Gsk {
 
         connect<K extends keyof RoundedClipNode.SignalSignatures>(
             signal: K,
-            callback: RoundedClipNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RoundedClipNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RoundedClipNode.SignalSignatures>(
             signal: K,
-            callback: RoundedClipNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RoundedClipNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RoundedClipNode.SignalSignatures>(
             signal: K,
-            ...args: RoundedClipNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RoundedClipNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2953,17 +3035,17 @@ export namespace Gsk {
 
         connect<K extends keyof ShadowNode.SignalSignatures>(
             signal: K,
-            callback: ShadowNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ShadowNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ShadowNode.SignalSignatures>(
             signal: K,
-            callback: ShadowNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ShadowNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ShadowNode.SignalSignatures>(
             signal: K,
-            ...args: ShadowNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ShadowNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3009,17 +3091,17 @@ export namespace Gsk {
 
         connect<K extends keyof StrokeNode.SignalSignatures>(
             signal: K,
-            callback: StrokeNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StrokeNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StrokeNode.SignalSignatures>(
             signal: K,
-            callback: StrokeNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StrokeNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StrokeNode.SignalSignatures>(
             signal: K,
-            ...args: StrokeNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StrokeNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3062,17 +3144,17 @@ export namespace Gsk {
 
         connect<K extends keyof SubsurfaceNode.SignalSignatures>(
             signal: K,
-            callback: SubsurfaceNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SubsurfaceNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubsurfaceNode.SignalSignatures>(
             signal: K,
-            callback: SubsurfaceNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SubsurfaceNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubsurfaceNode.SignalSignatures>(
             signal: K,
-            ...args: SubsurfaceNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SubsurfaceNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3104,16 +3186,19 @@ export namespace Gsk {
 
         // Signals
 
-        connect<K extends keyof TextNode.SignalSignatures>(signal: K, callback: TextNode.SignalSignatures[K]): number;
+        connect<K extends keyof TextNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TextNode.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextNode.SignalSignatures>(
             signal: K,
-            callback: TextNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextNode.SignalSignatures>(
             signal: K,
-            ...args: TextNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TextNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3175,17 +3260,17 @@ export namespace Gsk {
 
         connect<K extends keyof TextureNode.SignalSignatures>(
             signal: K,
-            callback: TextureNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextureNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextureNode.SignalSignatures>(
             signal: K,
-            callback: TextureNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextureNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextureNode.SignalSignatures>(
             signal: K,
-            ...args: TextureNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TextureNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3219,17 +3304,17 @@ export namespace Gsk {
 
         connect<K extends keyof TextureScaleNode.SignalSignatures>(
             signal: K,
-            callback: TextureScaleNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextureScaleNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextureScaleNode.SignalSignatures>(
             signal: K,
-            callback: TextureScaleNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TextureScaleNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextureScaleNode.SignalSignatures>(
             signal: K,
-            ...args: TextureScaleNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TextureScaleNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3268,17 +3353,17 @@ export namespace Gsk {
 
         connect<K extends keyof TransformNode.SignalSignatures>(
             signal: K,
-            callback: TransformNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TransformNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TransformNode.SignalSignatures>(
             signal: K,
-            callback: TransformNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TransformNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TransformNode.SignalSignatures>(
             signal: K,
-            ...args: TransformNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TransformNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3299,8 +3384,8 @@ export namespace Gsk {
     namespace VulkanRenderer {
         // Signal signatures
         interface SignalSignatures extends Renderer.SignalSignatures {
-            'notify::realized': GObject.Object.Notify;
-            'notify::surface': GObject.Object.Notify;
+            'notify::realized': (pspec: GObject.ParamSpec) => void;
+            'notify::surface': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3315,6 +3400,14 @@ export namespace Gsk {
      */
     class VulkanRenderer extends Renderer {
         static $gtype: GObject.GType<VulkanRenderer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VulkanRenderer.SignalSignatures;
 
         // Constructors
 
@@ -3328,17 +3421,17 @@ export namespace Gsk {
 
         connect<K extends keyof VulkanRenderer.SignalSignatures>(
             signal: K,
-            callback: VulkanRenderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanRenderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanRenderer.SignalSignatures>(
             signal: K,
-            callback: VulkanRenderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VulkanRenderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanRenderer.SignalSignatures>(
             signal: K,
-            ...args: VulkanRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VulkanRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

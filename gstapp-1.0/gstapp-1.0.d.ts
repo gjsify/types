@@ -77,82 +77,40 @@ export namespace GstApp {
         RANDOM_ACCESS,
     }
     namespace AppSink {
-        // Signal callback interfaces
-
-        interface Eos {
-            (_source: AppSink): void;
-        }
-
-        interface NewPreroll {
-            (_source: AppSink): Gst.FlowReturn;
-        }
-
-        interface NewSample {
-            (_source: AppSink): Gst.FlowReturn;
-        }
-
-        interface NewSerializedEvent {
-            (_source: AppSink): boolean | void;
-        }
-
-        interface ProposeAllocation {
-            (_source: AppSink, query: Gst.Query): boolean | void;
-        }
-
-        interface PullPreroll {
-            (_source: AppSink): Gst.Sample | null;
-        }
-
-        interface PullSample {
-            (_source: AppSink): Gst.Sample | null;
-        }
-
-        interface TryPullObject {
-            (_source: AppSink, timeout: number): Gst.MiniObject | null;
-        }
-
-        interface TryPullPreroll {
-            (_source: AppSink, timeout: number): Gst.Sample | null;
-        }
-
-        interface TryPullSample {
-            (_source: AppSink, timeout: number): Gst.Sample | null;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GstBase.BaseSink.SignalSignatures {
-            eos: Eos;
-            'new-preroll': NewPreroll;
-            'new-sample': NewSample;
-            'new-serialized-event': NewSerializedEvent;
-            'propose-allocation': ProposeAllocation;
-            'pull-preroll': PullPreroll;
-            'pull-sample': PullSample;
-            'try-pull-object': TryPullObject;
-            'try-pull-preroll': TryPullPreroll;
-            'try-pull-sample': TryPullSample;
-            'notify::buffer-list': GObject.Object.Notify;
-            'notify::caps': GObject.Object.Notify;
-            'notify::drop': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
-            'notify::eos': GObject.Object.Notify;
-            'notify::max-buffers': GObject.Object.Notify;
-            'notify::wait-on-eos': GObject.Object.Notify;
-            'notify::async': GObject.Object.Notify;
-            'notify::blocksize': GObject.Object.Notify;
-            'notify::enable-last-sample': GObject.Object.Notify;
-            'notify::last-sample': GObject.Object.Notify;
-            'notify::max-bitrate': GObject.Object.Notify;
-            'notify::max-lateness': GObject.Object.Notify;
-            'notify::processing-deadline': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::render-delay': GObject.Object.Notify;
-            'notify::stats': GObject.Object.Notify;
-            'notify::sync': GObject.Object.Notify;
-            'notify::throttle-time': GObject.Object.Notify;
-            'notify::ts-offset': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            eos: () => void;
+            'new-preroll': () => Gst.FlowReturn;
+            'new-sample': () => Gst.FlowReturn;
+            'new-serialized-event': () => boolean | void;
+            'propose-allocation': (arg0: Gst.Query) => boolean | void;
+            'pull-preroll': () => Gst.Sample | null;
+            'pull-sample': () => Gst.Sample | null;
+            'try-pull-object': (arg0: number) => Gst.MiniObject | null;
+            'try-pull-preroll': (arg0: number) => Gst.Sample | null;
+            'try-pull-sample': (arg0: number) => Gst.Sample | null;
+            'notify::buffer-list': (pspec: GObject.ParamSpec) => void;
+            'notify::caps': (pspec: GObject.ParamSpec) => void;
+            'notify::drop': (pspec: GObject.ParamSpec) => void;
+            'notify::emit-signals': (pspec: GObject.ParamSpec) => void;
+            'notify::eos': (pspec: GObject.ParamSpec) => void;
+            'notify::max-buffers': (pspec: GObject.ParamSpec) => void;
+            'notify::wait-on-eos': (pspec: GObject.ParamSpec) => void;
+            'notify::async': (pspec: GObject.ParamSpec) => void;
+            'notify::blocksize': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-last-sample': (pspec: GObject.ParamSpec) => void;
+            'notify::last-sample': (pspec: GObject.ParamSpec) => void;
+            'notify::max-bitrate': (pspec: GObject.ParamSpec) => void;
+            'notify::max-lateness': (pspec: GObject.ParamSpec) => void;
+            'notify::processing-deadline': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::render-delay': (pspec: GObject.ParamSpec) => void;
+            'notify::stats': (pspec: GObject.ParamSpec) => void;
+            'notify::sync': (pspec: GObject.ParamSpec) => void;
+            'notify::throttle-time': (pspec: GObject.ParamSpec) => void;
+            'notify::ts-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -237,6 +195,14 @@ export namespace GstApp {
         set wait_on_eos(val: boolean);
         get waitOnEos(): boolean;
         set waitOnEos(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AppSink.SignalSignatures;
 
         // Fields
 
@@ -250,16 +216,19 @@ export namespace GstApp {
 
         // Signals
 
-        connect<K extends keyof AppSink.SignalSignatures>(signal: K, callback: AppSink.SignalSignatures[K]): number;
+        connect<K extends keyof AppSink.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AppSink.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AppSink.SignalSignatures>(
             signal: K,
-            callback: AppSink.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AppSink.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AppSink.SignalSignatures>(
             signal: K,
-            ...args: AppSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AppSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -982,71 +951,41 @@ export namespace GstApp {
     }
 
     namespace AppSrc {
-        // Signal callback interfaces
-
-        interface EndOfStream {
-            (_source: AppSrc): Gst.FlowReturn;
-        }
-
-        interface EnoughData {
-            (_source: AppSrc): void;
-        }
-
-        interface NeedData {
-            (_source: AppSrc, length: number): void;
-        }
-
-        interface PushBuffer {
-            (_source: AppSrc, buffer: Gst.Buffer): Gst.FlowReturn;
-        }
-
-        interface PushBufferList {
-            (_source: AppSrc, buffer_list: Gst.BufferList): Gst.FlowReturn;
-        }
-
-        interface PushSample {
-            (_source: AppSrc, sample: Gst.Sample): Gst.FlowReturn;
-        }
-
-        interface SeekData {
-            (_source: AppSrc, offset: number): boolean | void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GstBase.BaseSrc.SignalSignatures {
-            'end-of-stream': EndOfStream;
-            'enough-data': EnoughData;
-            'need-data': NeedData;
-            'push-buffer': PushBuffer;
-            'push-buffer-list': PushBufferList;
-            'push-sample': PushSample;
-            'seek-data': SeekData;
-            'notify::block': GObject.Object.Notify;
-            'notify::caps': GObject.Object.Notify;
-            'notify::current-level-buffers': GObject.Object.Notify;
-            'notify::current-level-bytes': GObject.Object.Notify;
-            'notify::current-level-time': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::emit-signals': GObject.Object.Notify;
-            'notify::format': GObject.Object.Notify;
-            'notify::handle-segment-change': GObject.Object.Notify;
-            'notify::is-live': GObject.Object.Notify;
-            'notify::leaky-type': GObject.Object.Notify;
-            'notify::max-buffers': GObject.Object.Notify;
-            'notify::max-bytes': GObject.Object.Notify;
-            'notify::max-latency': GObject.Object.Notify;
-            'notify::max-time': GObject.Object.Notify;
-            'notify::min-latency': GObject.Object.Notify;
-            'notify::min-percent': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::stream-type': GObject.Object.Notify;
-            'notify::automatic-eos': GObject.Object.Notify;
-            'notify::blocksize': GObject.Object.Notify;
-            'notify::do-timestamp': GObject.Object.Notify;
-            'notify::num-buffers': GObject.Object.Notify;
-            'notify::typefind': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'end-of-stream': () => Gst.FlowReturn;
+            'enough-data': () => void;
+            'need-data': (arg0: number) => void;
+            'push-buffer': (arg0: Gst.Buffer) => Gst.FlowReturn;
+            'push-buffer-list': (arg0: Gst.BufferList) => Gst.FlowReturn;
+            'push-sample': (arg0: Gst.Sample) => Gst.FlowReturn;
+            'seek-data': (arg0: number) => boolean | void;
+            'notify::block': (pspec: GObject.ParamSpec) => void;
+            'notify::caps': (pspec: GObject.ParamSpec) => void;
+            'notify::current-level-buffers': (pspec: GObject.ParamSpec) => void;
+            'notify::current-level-bytes': (pspec: GObject.ParamSpec) => void;
+            'notify::current-level-time': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::emit-signals': (pspec: GObject.ParamSpec) => void;
+            'notify::format': (pspec: GObject.ParamSpec) => void;
+            'notify::handle-segment-change': (pspec: GObject.ParamSpec) => void;
+            'notify::is-live': (pspec: GObject.ParamSpec) => void;
+            'notify::leaky-type': (pspec: GObject.ParamSpec) => void;
+            'notify::max-buffers': (pspec: GObject.ParamSpec) => void;
+            'notify::max-bytes': (pspec: GObject.ParamSpec) => void;
+            'notify::max-latency': (pspec: GObject.ParamSpec) => void;
+            'notify::max-time': (pspec: GObject.ParamSpec) => void;
+            'notify::min-latency': (pspec: GObject.ParamSpec) => void;
+            'notify::min-percent': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::stream-type': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-eos': (pspec: GObject.ParamSpec) => void;
+            'notify::blocksize': (pspec: GObject.ParamSpec) => void;
+            'notify::do-timestamp': (pspec: GObject.ParamSpec) => void;
+            'notify::num-buffers': (pspec: GObject.ParamSpec) => void;
+            'notify::typefind': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1363,6 +1302,14 @@ export namespace GstApp {
          */
         get streamType(): AppStreamType;
         set streamType(val: AppStreamType);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AppSrc.SignalSignatures;
 
         // Fields
 
@@ -1376,13 +1323,19 @@ export namespace GstApp {
 
         // Signals
 
-        connect<K extends keyof AppSrc.SignalSignatures>(signal: K, callback: AppSrc.SignalSignatures[K]): number;
+        connect<K extends keyof AppSrc.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AppSrc.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof AppSrc.SignalSignatures>(signal: K, callback: AppSrc.SignalSignatures[K]): number;
+        connect_after<K extends keyof AppSrc.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AppSrc.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AppSrc.SignalSignatures>(
             signal: K,
-            ...args: AppSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AppSrc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

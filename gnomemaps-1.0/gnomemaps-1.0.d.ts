@@ -65,10 +65,10 @@ export namespace GnomeMaps {
     namespace Contact {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::bounding-box': GObject.Object.Notify;
-            'notify::icon': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::bounding-box': (pspec: GObject.ParamSpec) => void;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -110,6 +110,14 @@ export namespace GnomeMaps {
          */
         get name(): string;
         set name(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Contact.SignalSignatures;
 
         // Constructors
 
@@ -121,16 +129,19 @@ export namespace GnomeMaps {
 
         // Signals
 
-        connect<K extends keyof Contact.SignalSignatures>(signal: K, callback: Contact.SignalSignatures[K]): number;
+        connect<K extends keyof Contact.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Contact.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Contact.SignalSignatures>(
             signal: K,
-            callback: Contact.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Contact.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Contact.SignalSignatures>(
             signal: K,
-            ...args: Contact.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Contact.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -144,7 +155,7 @@ export namespace GnomeMaps {
     namespace ContactStore {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::state': GObject.Object.Notify;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -163,6 +174,14 @@ export namespace GnomeMaps {
          * The type of the contact.
          */
         get state(): ContactStoreState;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ContactStore.SignalSignatures;
 
         // Constructors
 
@@ -176,17 +195,17 @@ export namespace GnomeMaps {
 
         connect<K extends keyof ContactStore.SignalSignatures>(
             signal: K,
-            callback: ContactStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContactStore.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContactStore.SignalSignatures>(
             signal: K,
-            callback: ContactStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContactStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContactStore.SignalSignatures>(
             signal: K,
-            ...args: ContactStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ContactStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -203,21 +222,21 @@ export namespace GnomeMaps {
     namespace FileTileSource {
         // Signal signatures
         interface SignalSignatures extends Champlain.TileSource.SignalSignatures {
-            'notify::max-zoom': GObject.Object.Notify;
-            'notify::min-zoom': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::world': GObject.Object.Notify;
-            'notify::cache': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::license': GObject.Object.Notify;
-            'notify::license-uri': GObject.Object.Notify;
-            'notify::max-zoom-level': GObject.Object.Notify;
-            'notify::min-zoom-level': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::projection': GObject.Object.Notify;
-            'notify::tile-size': GObject.Object.Notify;
-            'notify::next-source': GObject.Object.Notify;
-            'notify::renderer': GObject.Object.Notify;
+            'notify::max-zoom': (pspec: GObject.ParamSpec) => void;
+            'notify::min-zoom': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::world': (pspec: GObject.ParamSpec) => void;
+            'notify::cache': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::license': (pspec: GObject.ParamSpec) => void;
+            'notify::license-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::max-zoom-level': (pspec: GObject.ParamSpec) => void;
+            'notify::min-zoom-level': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::projection': (pspec: GObject.ParamSpec) => void;
+            'notify::tile-size': (pspec: GObject.ParamSpec) => void;
+            'notify::next-source': (pspec: GObject.ParamSpec) => void;
+            'notify::renderer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -268,6 +287,14 @@ export namespace GnomeMaps {
          * of this bounding box.
          */
         get world(): Champlain.BoundingBox;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FileTileSource.SignalSignatures;
 
         // Constructors
 
@@ -279,17 +306,17 @@ export namespace GnomeMaps {
 
         connect<K extends keyof FileTileSource.SignalSignatures>(
             signal: K,
-            callback: FileTileSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileTileSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileTileSource.SignalSignatures>(
             signal: K,
-            callback: FileTileSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileTileSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileTileSource.SignalSignatures>(
             signal: K,
-            ...args: FileTileSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FileTileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -301,8 +328,8 @@ export namespace GnomeMaps {
     namespace OSMChangeset {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::comment': GObject.Object.Notify;
-            'notify::created-by': GObject.Object.Notify;
+            'notify::comment': (pspec: GObject.ParamSpec) => void;
+            'notify::created-by': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -328,6 +355,14 @@ export namespace GnomeMaps {
         set created_by(val: string);
         get createdBy(): string;
         set createdBy(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OSMChangeset.SignalSignatures;
 
         // Constructors
 
@@ -341,17 +376,17 @@ export namespace GnomeMaps {
 
         connect<K extends keyof OSMChangeset.SignalSignatures>(
             signal: K,
-            callback: OSMChangeset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OSMChangeset.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OSMChangeset.SignalSignatures>(
             signal: K,
-            callback: OSMChangeset.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OSMChangeset.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OSMChangeset.SignalSignatures>(
             signal: K,
-            ...args: OSMChangeset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OSMChangeset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -363,11 +398,11 @@ export namespace GnomeMaps {
     namespace OSMNode {
         // Signal signatures
         interface SignalSignatures extends OSMObject.SignalSignatures {
-            'notify::latitude': GObject.Object.Notify;
-            'notify::longitude': GObject.Object.Notify;
-            'notify::changeset': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
+            'notify::latitude': (pspec: GObject.ParamSpec) => void;
+            'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            'notify::changeset': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -393,6 +428,14 @@ export namespace GnomeMaps {
          */
         get longitude(): number;
         set longitude(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OSMNode.SignalSignatures;
 
         // Constructors
 
@@ -404,16 +447,19 @@ export namespace GnomeMaps {
 
         // Signals
 
-        connect<K extends keyof OSMNode.SignalSignatures>(signal: K, callback: OSMNode.SignalSignatures[K]): number;
+        connect<K extends keyof OSMNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, OSMNode.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OSMNode.SignalSignatures>(
             signal: K,
-            callback: OSMNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OSMNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OSMNode.SignalSignatures>(
             signal: K,
-            ...args: OSMNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OSMNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -421,7 +467,7 @@ export namespace GnomeMaps {
     namespace OSMOAuthProxyCall {
         // Signal signatures
         interface SignalSignatures extends Rest.OAuthProxyCall.SignalSignatures {
-            'notify::proxy': GObject.Object.Notify;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -431,6 +477,14 @@ export namespace GnomeMaps {
 
     class OSMOAuthProxyCall extends Rest.OAuthProxyCall {
         static $gtype: GObject.GType<OSMOAuthProxyCall>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OSMOAuthProxyCall.SignalSignatures;
 
         // Constructors
 
@@ -444,17 +498,17 @@ export namespace GnomeMaps {
 
         connect<K extends keyof OSMOAuthProxyCall.SignalSignatures>(
             signal: K,
-            callback: OSMOAuthProxyCall.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OSMOAuthProxyCall.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OSMOAuthProxyCall.SignalSignatures>(
             signal: K,
-            callback: OSMOAuthProxyCall.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OSMOAuthProxyCall.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OSMOAuthProxyCall.SignalSignatures>(
             signal: K,
-            ...args: OSMOAuthProxyCall.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OSMOAuthProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -462,9 +516,9 @@ export namespace GnomeMaps {
     namespace OSMObject {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::changeset': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
+            'notify::changeset': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -496,6 +550,14 @@ export namespace GnomeMaps {
          */
         get version(): number;
         set version(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OSMObject.SignalSignatures;
 
         // Constructors
 
@@ -505,16 +567,19 @@ export namespace GnomeMaps {
 
         // Signals
 
-        connect<K extends keyof OSMObject.SignalSignatures>(signal: K, callback: OSMObject.SignalSignatures[K]): number;
+        connect<K extends keyof OSMObject.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, OSMObject.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OSMObject.SignalSignatures>(
             signal: K,
-            callback: OSMObject.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OSMObject.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OSMObject.SignalSignatures>(
             signal: K,
-            ...args: OSMObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OSMObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -529,9 +594,9 @@ export namespace GnomeMaps {
     namespace OSMRelation {
         // Signal signatures
         interface SignalSignatures extends OSMObject.SignalSignatures {
-            'notify::changeset': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
+            'notify::changeset': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -541,6 +606,14 @@ export namespace GnomeMaps {
 
     class OSMRelation extends OSMObject {
         static $gtype: GObject.GType<OSMRelation>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OSMRelation.SignalSignatures;
 
         // Constructors
 
@@ -554,17 +627,17 @@ export namespace GnomeMaps {
 
         connect<K extends keyof OSMRelation.SignalSignatures>(
             signal: K,
-            callback: OSMRelation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OSMRelation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OSMRelation.SignalSignatures>(
             signal: K,
-            callback: OSMRelation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OSMRelation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OSMRelation.SignalSignatures>(
             signal: K,
-            ...args: OSMRelation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OSMRelation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -576,9 +649,9 @@ export namespace GnomeMaps {
     namespace OSMWay {
         // Signal signatures
         interface SignalSignatures extends OSMObject.SignalSignatures {
-            'notify::changeset': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
+            'notify::changeset': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -588,6 +661,14 @@ export namespace GnomeMaps {
 
     class OSMWay extends OSMObject {
         static $gtype: GObject.GType<OSMWay>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OSMWay.SignalSignatures;
 
         // Constructors
 
@@ -599,13 +680,19 @@ export namespace GnomeMaps {
 
         // Signals
 
-        connect<K extends keyof OSMWay.SignalSignatures>(signal: K, callback: OSMWay.SignalSignatures[K]): number;
+        connect<K extends keyof OSMWay.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, OSMWay.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof OSMWay.SignalSignatures>(signal: K, callback: OSMWay.SignalSignatures[K]): number;
+        connect_after<K extends keyof OSMWay.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, OSMWay.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OSMWay.SignalSignatures>(
             signal: K,
-            ...args: OSMWay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OSMWay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

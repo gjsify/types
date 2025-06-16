@@ -31,22 +31,22 @@ export namespace FolksEds {
     namespace PersonaStore {
         // Signal signatures
         interface SignalSignatures extends Folks.PersonaStore.SignalSignatures {
-            'notify::source': GObject.Object.Notify;
-            'notify::type-id': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::personas': GObject.Object.Notify;
-            'notify::can-add-personas': GObject.Object.Notify;
-            'notify::can-alias-personas': GObject.Object.Notify;
-            'notify::can-group-personas': GObject.Object.Notify;
-            'notify::can-remove-personas': GObject.Object.Notify;
-            'notify::is-prepared': GObject.Object.Notify;
-            'notify::is-quiescent': GObject.Object.Notify;
-            'notify::is-writeable': GObject.Object.Notify;
-            'notify::trust-level': GObject.Object.Notify;
-            'notify::always-writeable-properties': GObject.Object.Notify;
-            'notify::is-primary-store': GObject.Object.Notify;
-            'notify::is-user-set-default': GObject.Object.Notify;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::type-id': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::personas': (pspec: GObject.ParamSpec) => void;
+            'notify::can-add-personas': (pspec: GObject.ParamSpec) => void;
+            'notify::can-alias-personas': (pspec: GObject.ParamSpec) => void;
+            'notify::can-group-personas': (pspec: GObject.ParamSpec) => void;
+            'notify::can-remove-personas': (pspec: GObject.ParamSpec) => void;
+            'notify::is-prepared': (pspec: GObject.ParamSpec) => void;
+            'notify::is-quiescent': (pspec: GObject.ParamSpec) => void;
+            'notify::is-writeable': (pspec: GObject.ParamSpec) => void;
+            'notify::trust-level': (pspec: GObject.ParamSpec) => void;
+            'notify::always-writeable-properties': (pspec: GObject.ParamSpec) => void;
+            'notify::is-primary-store': (pspec: GObject.ParamSpec) => void;
+            'notify::is-user-set-default': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -62,6 +62,14 @@ export namespace FolksEds {
         // Properties
 
         get source(): EDataServer.Source;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PersonaStore.SignalSignatures;
 
         // Constructors
 
@@ -77,17 +85,17 @@ export namespace FolksEds {
 
         connect<K extends keyof PersonaStore.SignalSignatures>(
             signal: K,
-            callback: PersonaStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PersonaStore.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PersonaStore.SignalSignatures>(
             signal: K,
-            callback: PersonaStore.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PersonaStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PersonaStore.SignalSignatures>(
             signal: K,
-            ...args: PersonaStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PersonaStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -106,38 +114,38 @@ export namespace FolksEds {
     namespace Persona {
         // Signal signatures
         interface SignalSignatures extends Folks.Persona.SignalSignatures {
-            'notify::contact': GObject.Object.Notify;
-            'notify::contact-id': GObject.Object.Notify;
-            'notify::system-groups': GObject.Object.Notify;
-            'notify::in-google-personal-group': GObject.Object.Notify;
-            'notify::iid': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
-            'notify::display-id': GObject.Object.Notify;
-            'notify::is-user': GObject.Object.Notify;
-            'notify::store': GObject.Object.Notify;
-            'notify::individual': GObject.Object.Notify;
-            'notify::linkable-properties': GObject.Object.Notify;
-            'notify::writeable-properties': GObject.Object.Notify;
-            'notify::anti-links': GObject.Object.Notify;
-            'notify::avatar': GObject.Object.Notify;
-            'notify::birthday': GObject.Object.Notify;
-            'notify::calendar-event-id': GObject.Object.Notify;
-            'notify::email-addresses': GObject.Object.Notify;
-            'notify::is-favourite': GObject.Object.Notify;
-            'notify::gender': GObject.Object.Notify;
-            'notify::groups': GObject.Object.Notify;
-            'notify::im-addresses': GObject.Object.Notify;
-            'notify::local-ids': GObject.Object.Notify;
-            'notify::location': GObject.Object.Notify;
-            'notify::structured-name': GObject.Object.Notify;
-            'notify::full-name': GObject.Object.Notify;
-            'notify::nickname': GObject.Object.Notify;
-            'notify::notes': GObject.Object.Notify;
-            'notify::phone-numbers': GObject.Object.Notify;
-            'notify::roles': GObject.Object.Notify;
-            'notify::urls': GObject.Object.Notify;
-            'notify::postal-addresses': GObject.Object.Notify;
-            'notify::web-service-addresses': GObject.Object.Notify;
+            'notify::contact': (pspec: GObject.ParamSpec) => void;
+            'notify::contact-id': (pspec: GObject.ParamSpec) => void;
+            'notify::system-groups': (pspec: GObject.ParamSpec) => void;
+            'notify::in-google-personal-group': (pspec: GObject.ParamSpec) => void;
+            'notify::iid': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::display-id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-user': (pspec: GObject.ParamSpec) => void;
+            'notify::store': (pspec: GObject.ParamSpec) => void;
+            'notify::individual': (pspec: GObject.ParamSpec) => void;
+            'notify::linkable-properties': (pspec: GObject.ParamSpec) => void;
+            'notify::writeable-properties': (pspec: GObject.ParamSpec) => void;
+            'notify::anti-links': (pspec: GObject.ParamSpec) => void;
+            'notify::avatar': (pspec: GObject.ParamSpec) => void;
+            'notify::birthday': (pspec: GObject.ParamSpec) => void;
+            'notify::calendar-event-id': (pspec: GObject.ParamSpec) => void;
+            'notify::email-addresses': (pspec: GObject.ParamSpec) => void;
+            'notify::is-favourite': (pspec: GObject.ParamSpec) => void;
+            'notify::gender': (pspec: GObject.ParamSpec) => void;
+            'notify::groups': (pspec: GObject.ParamSpec) => void;
+            'notify::im-addresses': (pspec: GObject.ParamSpec) => void;
+            'notify::local-ids': (pspec: GObject.ParamSpec) => void;
+            'notify::location': (pspec: GObject.ParamSpec) => void;
+            'notify::structured-name': (pspec: GObject.ParamSpec) => void;
+            'notify::full-name': (pspec: GObject.ParamSpec) => void;
+            'notify::nickname': (pspec: GObject.ParamSpec) => void;
+            'notify::notes': (pspec: GObject.ParamSpec) => void;
+            'notify::phone-numbers': (pspec: GObject.ParamSpec) => void;
+            'notify::roles': (pspec: GObject.ParamSpec) => void;
+            'notify::urls': (pspec: GObject.ParamSpec) => void;
+            'notify::postal-addresses': (pspec: GObject.ParamSpec) => void;
+            'notify::web-service-addresses': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -209,6 +217,14 @@ export namespace FolksEds {
         set in_google_personal_group(val: boolean);
         get inGooglePersonalGroup(): boolean;
         set inGooglePersonalGroup(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Persona.SignalSignatures;
 
         // Constructors
 
@@ -220,16 +236,19 @@ export namespace FolksEds {
 
         // Signals
 
-        connect<K extends keyof Persona.SignalSignatures>(signal: K, callback: Persona.SignalSignatures[K]): number;
+        connect<K extends keyof Persona.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Persona.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Persona.SignalSignatures>(
             signal: K,
-            callback: Persona.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Persona.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Persona.SignalSignatures>(
             signal: K,
-            ...args: Persona.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Persona.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

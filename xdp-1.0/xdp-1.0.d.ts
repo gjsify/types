@@ -666,59 +666,31 @@ export namespace Xdp {
         PREVIEW,
     }
     namespace Portal {
-        // Signal callback interfaces
-
-        interface LocationUpdated {
-            (
-                _source: Portal,
-                latitude: number,
-                longitude: number,
-                altitude: number,
-                accuracy: number,
-                speed: number,
-                heading: number,
-                description: string,
-                timestamp_s: number,
-                timestamp_ms: number,
-            ): void;
-        }
-
-        interface NotificationActionInvoked {
-            (_source: Portal, id: string, action: string, parameter?: GLib.Variant | null): void;
-        }
-
-        interface SessionStateChanged {
-            (_source: Portal, screensaver_active: boolean, session_state: LoginSessionState): void;
-        }
-
-        interface SpawnExited {
-            (_source: Portal, pid: number, exit_status: number): void;
-        }
-
-        interface UpdateAvailable {
-            (_source: Portal, running_commit: string, local_commit: string, remote_commit: string): void;
-        }
-
-        interface UpdateProgress {
-            (
-                _source: Portal,
-                n_ops: number,
-                op: number,
-                progress: number,
-                status: UpdateStatus,
-                error: string,
-                error_message: string,
-            ): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'location-updated': LocationUpdated;
-            'notification-action-invoked': NotificationActionInvoked;
-            'session-state-changed': SessionStateChanged;
-            'spawn-exited': SpawnExited;
-            'update-available': UpdateAvailable;
-            'update-progress': UpdateProgress;
+            'location-updated': (
+                arg0: number,
+                arg1: number,
+                arg2: number,
+                arg3: number,
+                arg4: number,
+                arg5: number,
+                arg6: string,
+                arg7: number,
+                arg8: number,
+            ) => void;
+            'notification-action-invoked': (arg0: string, arg1: string, arg2: GLib.Variant | null) => void;
+            'session-state-changed': (arg0: boolean, arg1: LoginSessionState) => void;
+            'spawn-exited': (arg0: number, arg1: number) => void;
+            'update-available': (arg0: string, arg1: string, arg2: string) => void;
+            'update-progress': (
+                arg0: number,
+                arg1: number,
+                arg2: number,
+                arg3: UpdateStatus,
+                arg4: string,
+                arg5: string,
+            ) => void;
         }
 
         // Constructor properties interface
@@ -737,6 +709,14 @@ export namespace Xdp {
      */
     class Portal extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Portal>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Portal.SignalSignatures;
 
         // Constructors
 
@@ -750,13 +730,19 @@ export namespace Xdp {
 
         // Signals
 
-        connect<K extends keyof Portal.SignalSignatures>(signal: K, callback: Portal.SignalSignatures[K]): number;
+        connect<K extends keyof Portal.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Portal.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Portal.SignalSignatures>(signal: K, callback: Portal.SignalSignatures[K]): number;
+        connect_after<K extends keyof Portal.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Portal.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Portal.SignalSignatures>(
             signal: K,
-            ...args: Portal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Portal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3401,15 +3387,9 @@ export namespace Xdp {
     }
 
     namespace Session {
-        // Signal callback interfaces
-
-        interface Closed {
-            (_source: Session): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            closed: Closed;
+            closed: () => void;
         }
 
         // Constructor properties interface
@@ -3432,6 +3412,14 @@ export namespace Xdp {
      */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -3441,16 +3429,19 @@ export namespace Xdp {
 
         // Signals
 
-        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
-            callback: Session.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -107,42 +107,32 @@ export namespace AccountsService {
     }
     function user_manager_error_quark(): GLib.Quark;
     namespace User {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: User): void;
-        }
-
-        interface SessionsChanged {
-            (_source: User): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            'sessions-changed': SessionsChanged;
-            'notify::account-type': GObject.Object.Notify;
-            'notify::automatic-login': GObject.Object.Notify;
-            'notify::email': GObject.Object.Notify;
-            'notify::home-directory': GObject.Object.Notify;
-            'notify::icon-file': GObject.Object.Notify;
-            'notify::is-loaded': GObject.Object.Notify;
-            'notify::language': GObject.Object.Notify;
-            'notify::local-account': GObject.Object.Notify;
-            'notify::location': GObject.Object.Notify;
-            'notify::locked': GObject.Object.Notify;
-            'notify::login-frequency': GObject.Object.Notify;
-            'notify::login-history': GObject.Object.Notify;
-            'notify::login-time': GObject.Object.Notify;
-            'notify::nonexistent': GObject.Object.Notify;
-            'notify::password-hint': GObject.Object.Notify;
-            'notify::password-mode': GObject.Object.Notify;
-            'notify::real-name': GObject.Object.Notify;
-            'notify::shell': GObject.Object.Notify;
-            'notify::system-account': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
-            'notify::user-name': GObject.Object.Notify;
-            'notify::x-session': GObject.Object.Notify;
+            changed: () => void;
+            'sessions-changed': () => void;
+            'notify::account-type': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-login': (pspec: GObject.ParamSpec) => void;
+            'notify::email': (pspec: GObject.ParamSpec) => void;
+            'notify::home-directory': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-file': (pspec: GObject.ParamSpec) => void;
+            'notify::is-loaded': (pspec: GObject.ParamSpec) => void;
+            'notify::language': (pspec: GObject.ParamSpec) => void;
+            'notify::local-account': (pspec: GObject.ParamSpec) => void;
+            'notify::location': (pspec: GObject.ParamSpec) => void;
+            'notify::locked': (pspec: GObject.ParamSpec) => void;
+            'notify::login-frequency': (pspec: GObject.ParamSpec) => void;
+            'notify::login-history': (pspec: GObject.ParamSpec) => void;
+            'notify::login-time': (pspec: GObject.ParamSpec) => void;
+            'notify::nonexistent': (pspec: GObject.ParamSpec) => void;
+            'notify::password-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::password-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::real-name': (pspec: GObject.ParamSpec) => void;
+            'notify::shell': (pspec: GObject.ParamSpec) => void;
+            'notify::system-account': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::user-name': (pspec: GObject.ParamSpec) => void;
+            'notify::x-session': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -246,6 +236,14 @@ export namespace AccountsService {
         get userName(): string;
         get x_session(): string;
         get xSession(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: User.SignalSignatures;
 
         // Constructors
 
@@ -255,13 +253,19 @@ export namespace AccountsService {
 
         // Signals
 
-        connect<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
+        connect<K extends keyof User.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, User.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
+        connect_after<K extends keyof User.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, User.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof User.SignalSignatures>(
             signal: K,
-            ...args: User.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<User.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -589,34 +593,16 @@ export namespace AccountsService {
     }
 
     namespace UserManager {
-        // Signal callback interfaces
-
-        interface UserAdded {
-            (_source: UserManager, user: User): void;
-        }
-
-        interface UserChanged {
-            (_source: UserManager, user: User): void;
-        }
-
-        interface UserIsLoggedInChanged {
-            (_source: UserManager, user: User): void;
-        }
-
-        interface UserRemoved {
-            (_source: UserManager, user: User): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'user-added': UserAdded;
-            'user-changed': UserChanged;
-            'user-is-logged-in-changed': UserIsLoggedInChanged;
-            'user-removed': UserRemoved;
-            'notify::exclude-usernames-list': GObject.Object.Notify;
-            'notify::has-multiple-users': GObject.Object.Notify;
-            'notify::include-usernames-list': GObject.Object.Notify;
-            'notify::is-loaded': GObject.Object.Notify;
+            'user-added': (arg0: User) => void;
+            'user-changed': (arg0: User) => void;
+            'user-is-logged-in-changed': (arg0: User) => void;
+            'user-removed': (arg0: User) => void;
+            'notify::exclude-usernames-list': (pspec: GObject.ParamSpec) => void;
+            'notify::has-multiple-users': (pspec: GObject.ParamSpec) => void;
+            'notify::include-usernames-list': (pspec: GObject.ParamSpec) => void;
+            'notify::is-loaded': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -655,6 +641,14 @@ export namespace AccountsService {
         set includeUsernamesList(val: any);
         get is_loaded(): boolean;
         get isLoaded(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UserManager.SignalSignatures;
 
         // Constructors
 
@@ -666,17 +660,17 @@ export namespace AccountsService {
 
         connect<K extends keyof UserManager.SignalSignatures>(
             signal: K,
-            callback: UserManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserManager.SignalSignatures>(
             signal: K,
-            callback: UserManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UserManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserManager.SignalSignatures>(
             signal: K,
-            ...args: UserManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UserManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

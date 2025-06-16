@@ -45,23 +45,23 @@ export namespace RygelRendererGst {
     namespace PlaybinPlayer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::playbin': GObject.Object.Notify;
-            'notify::supported-profiles': GObject.Object.Notify;
-            'notify::playback-state': GObject.Object.Notify;
-            'notify::allowed-playback-speeds': GObject.Object.Notify;
-            'notify::playback-speed': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
-            'notify::volume': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::metadata': GObject.Object.Notify;
-            'notify::mime-type': GObject.Object.Notify;
-            'notify::can-seek': GObject.Object.Notify;
-            'notify::can-seek-bytes': GObject.Object.Notify;
-            'notify::content-features': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::byte-position': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
+            'notify::playbin': (pspec: GObject.ParamSpec) => void;
+            'notify::supported-profiles': (pspec: GObject.ParamSpec) => void;
+            'notify::playback-state': (pspec: GObject.ParamSpec) => void;
+            'notify::allowed-playback-speeds': (pspec: GObject.ParamSpec) => void;
+            'notify::playback-speed': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::volume': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::metadata': (pspec: GObject.ParamSpec) => void;
+            'notify::mime-type': (pspec: GObject.ParamSpec) => void;
+            'notify::can-seek': (pspec: GObject.ParamSpec) => void;
+            'notify::can-seek-bytes': (pspec: GObject.ParamSpec) => void;
+            'notify::content-features': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::byte-position': (pspec: GObject.ParamSpec) => void;
+            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -82,6 +82,14 @@ export namespace RygelRendererGst {
         set playbin(val: Gst.Element);
         get supported_profiles(): RygelCore.DLNAProfile[];
         get supportedProfiles(): RygelCore.DLNAProfile[];
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PlaybinPlayer.SignalSignatures;
 
         // Constructors
 
@@ -93,17 +101,17 @@ export namespace RygelRendererGst {
 
         connect<K extends keyof PlaybinPlayer.SignalSignatures>(
             signal: K,
-            callback: PlaybinPlayer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlaybinPlayer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlaybinPlayer.SignalSignatures>(
             signal: K,
-            callback: PlaybinPlayer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlaybinPlayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlaybinPlayer.SignalSignatures>(
             signal: K,
-            ...args: PlaybinPlayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PlaybinPlayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -658,10 +666,10 @@ export namespace RygelRendererGst {
     namespace PlaybinRenderer {
         // Signal signatures
         interface SignalSignatures extends RygelRenderer.MediaRenderer.SignalSignatures {
-            'notify::player': GObject.Object.Notify;
-            'notify::plugin': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
+            'notify::player': (pspec: GObject.ParamSpec) => void;
+            'notify::plugin': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -671,6 +679,14 @@ export namespace RygelRendererGst {
 
     class PlaybinRenderer extends RygelRenderer.MediaRenderer {
         static $gtype: GObject.GType<PlaybinRenderer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PlaybinRenderer.SignalSignatures;
 
         // Constructors
 
@@ -684,17 +700,17 @@ export namespace RygelRendererGst {
 
         connect<K extends keyof PlaybinRenderer.SignalSignatures>(
             signal: K,
-            callback: PlaybinRenderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlaybinRenderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlaybinRenderer.SignalSignatures>(
             signal: K,
-            callback: PlaybinRenderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlaybinRenderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlaybinRenderer.SignalSignatures>(
             signal: K,
-            ...args: PlaybinRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PlaybinRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

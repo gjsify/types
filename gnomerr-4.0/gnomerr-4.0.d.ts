@@ -94,7 +94,7 @@ export namespace GnomeRR {
     namespace Config {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::screen': GObject.Object.Notify;
+            'notify::screen': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -110,6 +110,14 @@ export namespace GnomeRR {
         // Properties
 
         set screen(val: Screen);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Config.SignalSignatures;
 
         // Constructors
 
@@ -121,13 +129,19 @@ export namespace GnomeRR {
 
         // Signals
 
-        connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect_after<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Config.SignalSignatures>(
             signal: K,
-            ...args: Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -161,6 +175,14 @@ export namespace GnomeRR {
      */
     class OutputInfo extends GObject.Object {
         static $gtype: GObject.GType<OutputInfo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OutputInfo.SignalSignatures;
 
         // Constructors
 
@@ -172,17 +194,17 @@ export namespace GnomeRR {
 
         connect<K extends keyof OutputInfo.SignalSignatures>(
             signal: K,
-            callback: OutputInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputInfo.SignalSignatures>(
             signal: K,
-            callback: OutputInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputInfo.SignalSignatures>(
             signal: K,
-            ...args: OutputInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OutputInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -232,27 +254,13 @@ export namespace GnomeRR {
     }
 
     namespace Screen {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: Screen): void;
-        }
-
-        interface OutputConnected {
-            (_source: Screen, output: Output): void;
-        }
-
-        interface OutputDisconnected {
-            (_source: Screen, output: Output): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            'output-connected': OutputConnected;
-            'output-disconnected': OutputDisconnected;
-            'notify::dpms-mode': GObject.Object.Notify;
-            'notify::gdk-display': GObject.Object.Notify;
+            changed: () => void;
+            'output-connected': (arg0: Output) => void;
+            'output-disconnected': (arg0: Output) => void;
+            'notify::dpms-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::gdk-display': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -279,6 +287,14 @@ export namespace GnomeRR {
         set dpmsMode(val: DpmsModeType);
         get gdk_display(): Gdk.Display;
         get gdkDisplay(): Gdk.Display;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Screen.SignalSignatures;
 
         // Constructors
 
@@ -295,13 +311,19 @@ export namespace GnomeRR {
 
         // Signals
 
-        connect<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
+        connect<K extends keyof Screen.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Screen.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
+        connect_after<K extends keyof Screen.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Screen.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Screen.SignalSignatures>(
             signal: K,
-            ...args: Screen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Screen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

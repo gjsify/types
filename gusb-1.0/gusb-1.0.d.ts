@@ -269,6 +269,14 @@ export namespace GUsb {
 
     class BosDescriptor extends GObject.Object {
         static $gtype: GObject.GType<BosDescriptor>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BosDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -280,17 +288,17 @@ export namespace GUsb {
 
         connect<K extends keyof BosDescriptor.SignalSignatures>(
             signal: K,
-            callback: BosDescriptor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BosDescriptor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BosDescriptor.SignalSignatures>(
             signal: K,
-            callback: BosDescriptor.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BosDescriptor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BosDescriptor.SignalSignatures>(
             signal: K,
-            ...args: BosDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BosDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -309,27 +317,13 @@ export namespace GUsb {
     }
 
     namespace Context {
-        // Signal callback interfaces
-
-        interface DeviceAdded {
-            (_source: Context, device: Device): void;
-        }
-
-        interface DeviceChanged {
-            (_source: Context, device: Device): void;
-        }
-
-        interface DeviceRemoved {
-            (_source: Context, device: Device): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'device-added': DeviceAdded;
-            'device-changed': DeviceChanged;
-            'device-removed': DeviceRemoved;
-            'notify::debug-level': GObject.Object.Notify;
-            'notify::libusb-context': GObject.Object.Notify;
+            'device-added': (arg0: Device) => void;
+            'device-changed': (arg0: Device) => void;
+            'device-removed': (arg0: Device) => void;
+            'notify::debug-level': (pspec: GObject.ParamSpec) => void;
+            'notify::libusb-context': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -353,6 +347,14 @@ export namespace GUsb {
         set debugLevel(val: number);
         get libusb_context(): any;
         get libusbContext(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -364,16 +366,19 @@ export namespace GUsb {
 
         // Signals
 
-        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
-            callback: Context.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1033,9 +1038,9 @@ export namespace GUsb {
     namespace Device {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::context': GObject.Object.Notify;
-            'notify::libusb-device': GObject.Object.Notify;
-            'notify::platform-id': GObject.Object.Notify;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::libusb-device': (pspec: GObject.ParamSpec) => void;
+            'notify::platform-id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1059,6 +1064,14 @@ export namespace GUsb {
         get libusbDevice(): any;
         set platform_id(val: string);
         set platformId(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -1068,13 +1081,19 @@ export namespace GUsb {
 
         // Signals
 
-        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
-            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2159,6 +2178,14 @@ export namespace GUsb {
 
     class DeviceEvent extends GObject.Object {
         static $gtype: GObject.GType<DeviceEvent>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceEvent.SignalSignatures;
 
         // Constructors
 
@@ -2170,17 +2197,17 @@ export namespace GUsb {
 
         connect<K extends keyof DeviceEvent.SignalSignatures>(
             signal: K,
-            callback: DeviceEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceEvent.SignalSignatures>(
             signal: K,
-            callback: DeviceEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceEvent.SignalSignatures>(
             signal: K,
-            ...args: DeviceEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2214,21 +2241,11 @@ export namespace GUsb {
     }
 
     namespace DeviceList {
-        // Signal callback interfaces
-
-        interface DeviceAdded {
-            (_source: DeviceList, device: Device): void;
-        }
-
-        interface DeviceRemoved {
-            (_source: DeviceList, device: Device): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'device-added': DeviceAdded;
-            'device-removed': DeviceRemoved;
-            'notify::context': GObject.Object.Notify;
+            'device-added': (arg0: Device) => void;
+            'device-removed': (arg0: Device) => void;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2244,6 +2261,14 @@ export namespace GUsb {
         // Properties
 
         get context(): Context;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceList.SignalSignatures;
 
         // Constructors
 
@@ -2257,17 +2282,17 @@ export namespace GUsb {
 
         connect<K extends keyof DeviceList.SignalSignatures>(
             signal: K,
-            callback: DeviceList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceList.SignalSignatures>(
             signal: K,
-            callback: DeviceList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceList.SignalSignatures>(
             signal: K,
-            ...args: DeviceList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2310,6 +2335,14 @@ export namespace GUsb {
 
     class Endpoint extends GObject.Object {
         static $gtype: GObject.GType<Endpoint>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Endpoint.SignalSignatures;
 
         // Constructors
 
@@ -2319,16 +2352,19 @@ export namespace GUsb {
 
         // Signals
 
-        connect<K extends keyof Endpoint.SignalSignatures>(signal: K, callback: Endpoint.SignalSignatures[K]): number;
+        connect<K extends keyof Endpoint.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Endpoint.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
-            callback: Endpoint.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Endpoint.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
-            ...args: Endpoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Endpoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2392,6 +2428,14 @@ export namespace GUsb {
 
     class Interface extends GObject.Object {
         static $gtype: GObject.GType<Interface>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Interface.SignalSignatures;
 
         // Constructors
 
@@ -2401,16 +2445,19 @@ export namespace GUsb {
 
         // Signals
 
-        connect<K extends keyof Interface.SignalSignatures>(signal: K, callback: Interface.SignalSignatures[K]): number;
+        connect<K extends keyof Interface.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Interface.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Interface.SignalSignatures>(
             signal: K,
-            callback: Interface.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Interface.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Interface.SignalSignatures>(
             signal: K,
-            ...args: Interface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Interface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

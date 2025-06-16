@@ -131,95 +131,41 @@ export namespace GstPlayer {
         (data?: any | null): void;
     }
     namespace Player {
-        // Signal callback interfaces
-
-        interface Buffering {
-            (_source: Player, object: number): void;
-        }
-
-        interface DurationChanged {
-            (_source: Player, object: number): void;
-        }
-
-        interface EndOfStream {
-            (_source: Player): void;
-        }
-
-        interface Error {
-            (_source: Player, object: GLib.Error): void;
-        }
-
-        interface MediaInfoUpdated {
-            (_source: Player, object: PlayerMediaInfo): void;
-        }
-
-        interface MuteChanged {
-            (_source: Player): void;
-        }
-
-        interface PositionUpdated {
-            (_source: Player, object: number): void;
-        }
-
-        interface SeekDone {
-            (_source: Player, object: number): void;
-        }
-
-        interface StateChanged {
-            (_source: Player, object: PlayerState): void;
-        }
-
-        interface UriLoaded {
-            (_source: Player, object: string): void;
-        }
-
-        interface VideoDimensionsChanged {
-            (_source: Player, object: number, p0: number): void;
-        }
-
-        interface VolumeChanged {
-            (_source: Player): void;
-        }
-
-        interface Warning {
-            (_source: Player, object: GLib.Error): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            buffering: Buffering;
-            'duration-changed': DurationChanged;
-            'end-of-stream': EndOfStream;
-            error: Error;
-            'media-info-updated': MediaInfoUpdated;
-            'mute-changed': MuteChanged;
-            'position-updated': PositionUpdated;
-            'seek-done': SeekDone;
-            'state-changed': StateChanged;
-            'uri-loaded': UriLoaded;
-            'video-dimensions-changed': VideoDimensionsChanged;
-            'volume-changed': VolumeChanged;
-            warning: Warning;
-            'notify::audio-video-offset': GObject.Object.Notify;
-            'notify::current-audio-track': GObject.Object.Notify;
-            'notify::current-subtitle-track': GObject.Object.Notify;
-            'notify::current-video-track': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::media-info': GObject.Object.Notify;
-            'notify::mute': GObject.Object.Notify;
-            'notify::pipeline': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::rate': GObject.Object.Notify;
-            'notify::signal-dispatcher': GObject.Object.Notify;
-            'notify::subtitle-video-offset': GObject.Object.Notify;
-            'notify::suburi': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
-            'notify::video-multiview-flags': GObject.Object.Notify;
-            'notify::video-multiview-mode': GObject.Object.Notify;
-            'notify::video-renderer': GObject.Object.Notify;
-            'notify::volume': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            buffering: (arg0: number) => void;
+            'duration-changed': (arg0: number) => void;
+            'end-of-stream': () => void;
+            error: (arg0: GLib.Error) => void;
+            'media-info-updated': (arg0: PlayerMediaInfo) => void;
+            'mute-changed': () => void;
+            'position-updated': (arg0: number) => void;
+            'seek-done': (arg0: number) => void;
+            'state-changed': (arg0: PlayerState) => void;
+            'uri-loaded': (arg0: string) => void;
+            'video-dimensions-changed': (arg0: number, arg1: number) => void;
+            'volume-changed': () => void;
+            warning: (arg0: GLib.Error) => void;
+            'notify::audio-video-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::current-audio-track': (pspec: GObject.ParamSpec) => void;
+            'notify::current-subtitle-track': (pspec: GObject.ParamSpec) => void;
+            'notify::current-video-track': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::media-info': (pspec: GObject.ParamSpec) => void;
+            'notify::mute': (pspec: GObject.ParamSpec) => void;
+            'notify::pipeline': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::rate': (pspec: GObject.ParamSpec) => void;
+            'notify::signal-dispatcher': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle-video-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::suburi': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::video-multiview-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::video-multiview-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::video-renderer': (pspec: GObject.ParamSpec) => void;
+            'notify::volume': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -306,6 +252,14 @@ export namespace GstPlayer {
         get videoRenderer(): PlayerVideoRenderer;
         get volume(): number;
         set volume(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Player.SignalSignatures;
 
         // Constructors
 
@@ -320,13 +274,19 @@ export namespace GstPlayer {
 
         // Signals
 
-        connect<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
+        connect<K extends keyof Player.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Player.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
+        connect_after<K extends keyof Player.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Player.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Player.SignalSignatures>(
             signal: K,
-            ...args: Player.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Player.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -609,6 +569,14 @@ export namespace GstPlayer {
      */
     class PlayerAudioInfo extends PlayerStreamInfo {
         static $gtype: GObject.GType<PlayerAudioInfo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PlayerAudioInfo.SignalSignatures;
 
         // Constructors
 
@@ -620,17 +588,17 @@ export namespace GstPlayer {
 
         connect<K extends keyof PlayerAudioInfo.SignalSignatures>(
             signal: K,
-            callback: PlayerAudioInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlayerAudioInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlayerAudioInfo.SignalSignatures>(
             signal: K,
-            callback: PlayerAudioInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlayerAudioInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlayerAudioInfo.SignalSignatures>(
             signal: K,
-            ...args: PlayerAudioInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PlayerAudioInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -646,7 +614,7 @@ export namespace GstPlayer {
     namespace PlayerGMainContextSignalDispatcher {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::application-context': GObject.Object.Notify;
+            'notify::application-context': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -664,6 +632,14 @@ export namespace GstPlayer {
 
         get application_context(): GLib.MainContext;
         get applicationContext(): GLib.MainContext;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PlayerGMainContextSignalDispatcher.SignalSignatures;
 
         // Constructors
 
@@ -675,18 +651,21 @@ export namespace GstPlayer {
 
         connect<K extends keyof PlayerGMainContextSignalDispatcher.SignalSignatures>(
             signal: K,
-            callback: PlayerGMainContextSignalDispatcher.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlayerGMainContextSignalDispatcher.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlayerGMainContextSignalDispatcher.SignalSignatures>(
             signal: K,
-            callback: PlayerGMainContextSignalDispatcher.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlayerGMainContextSignalDispatcher.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlayerGMainContextSignalDispatcher.SignalSignatures>(
             signal: K,
-            ...args: PlayerGMainContextSignalDispatcher.SignalSignatures[K] extends (...args: infer P) => any
-                ? P
+            ...args: GObject.GjsParameters<PlayerGMainContextSignalDispatcher.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
@@ -1157,6 +1136,14 @@ export namespace GstPlayer {
      */
     class PlayerMediaInfo extends GObject.Object {
         static $gtype: GObject.GType<PlayerMediaInfo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PlayerMediaInfo.SignalSignatures;
 
         // Constructors
 
@@ -1168,17 +1155,17 @@ export namespace GstPlayer {
 
         connect<K extends keyof PlayerMediaInfo.SignalSignatures>(
             signal: K,
-            callback: PlayerMediaInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlayerMediaInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlayerMediaInfo.SignalSignatures>(
             signal: K,
-            callback: PlayerMediaInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlayerMediaInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlayerMediaInfo.SignalSignatures>(
             signal: K,
-            ...args: PlayerMediaInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PlayerMediaInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1223,6 +1210,14 @@ export namespace GstPlayer {
      */
     abstract class PlayerStreamInfo extends GObject.Object {
         static $gtype: GObject.GType<PlayerStreamInfo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PlayerStreamInfo.SignalSignatures;
 
         // Constructors
 
@@ -1234,17 +1229,17 @@ export namespace GstPlayer {
 
         connect<K extends keyof PlayerStreamInfo.SignalSignatures>(
             signal: K,
-            callback: PlayerStreamInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlayerStreamInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlayerStreamInfo.SignalSignatures>(
             signal: K,
-            callback: PlayerStreamInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlayerStreamInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlayerStreamInfo.SignalSignatures>(
             signal: K,
-            ...args: PlayerStreamInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PlayerStreamInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1285,6 +1280,14 @@ export namespace GstPlayer {
      */
     class PlayerSubtitleInfo extends PlayerStreamInfo {
         static $gtype: GObject.GType<PlayerSubtitleInfo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PlayerSubtitleInfo.SignalSignatures;
 
         // Constructors
 
@@ -1296,17 +1299,17 @@ export namespace GstPlayer {
 
         connect<K extends keyof PlayerSubtitleInfo.SignalSignatures>(
             signal: K,
-            callback: PlayerSubtitleInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlayerSubtitleInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlayerSubtitleInfo.SignalSignatures>(
             signal: K,
-            callback: PlayerSubtitleInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlayerSubtitleInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlayerSubtitleInfo.SignalSignatures>(
             signal: K,
-            ...args: PlayerSubtitleInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PlayerSubtitleInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1329,6 +1332,14 @@ export namespace GstPlayer {
      */
     class PlayerVideoInfo extends PlayerStreamInfo {
         static $gtype: GObject.GType<PlayerVideoInfo>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PlayerVideoInfo.SignalSignatures;
 
         // Constructors
 
@@ -1340,17 +1351,17 @@ export namespace GstPlayer {
 
         connect<K extends keyof PlayerVideoInfo.SignalSignatures>(
             signal: K,
-            callback: PlayerVideoInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlayerVideoInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlayerVideoInfo.SignalSignatures>(
             signal: K,
-            callback: PlayerVideoInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlayerVideoInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlayerVideoInfo.SignalSignatures>(
             signal: K,
-            ...args: PlayerVideoInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PlayerVideoInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1370,8 +1381,8 @@ export namespace GstPlayer {
     namespace PlayerVideoOverlayVideoRenderer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::video-sink': GObject.Object.Notify;
-            'notify::window-handle': GObject.Object.Notify;
+            'notify::video-sink': (pspec: GObject.ParamSpec) => void;
+            'notify::window-handle': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1397,6 +1408,14 @@ export namespace GstPlayer {
         set window_handle(val: any);
         get windowHandle(): any;
         set windowHandle(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PlayerVideoOverlayVideoRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1408,17 +1427,22 @@ export namespace GstPlayer {
 
         connect<K extends keyof PlayerVideoOverlayVideoRenderer.SignalSignatures>(
             signal: K,
-            callback: PlayerVideoOverlayVideoRenderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlayerVideoOverlayVideoRenderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlayerVideoOverlayVideoRenderer.SignalSignatures>(
             signal: K,
-            callback: PlayerVideoOverlayVideoRenderer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PlayerVideoOverlayVideoRenderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlayerVideoOverlayVideoRenderer.SignalSignatures>(
             signal: K,
-            ...args: PlayerVideoOverlayVideoRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PlayerVideoOverlayVideoRenderer.SignalSignatures[K]> extends [
+                any,
+                ...infer Q,
+            ]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

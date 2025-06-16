@@ -126,6 +126,14 @@ export namespace Lasem {
 
     abstract class DomCharacterData extends DomNode {
         static $gtype: GObject.GType<DomCharacterData>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomCharacterData.SignalSignatures;
 
         // Fields
 
@@ -142,17 +150,17 @@ export namespace Lasem {
 
         connect<K extends keyof DomCharacterData.SignalSignatures>(
             signal: K,
-            callback: DomCharacterData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomCharacterData.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomCharacterData.SignalSignatures>(
             signal: K,
-            callback: DomCharacterData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomCharacterData.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomCharacterData.SignalSignatures>(
             signal: K,
-            ...args: DomCharacterData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomCharacterData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -175,6 +183,14 @@ export namespace Lasem {
 
     abstract class DomDocument extends DomNode {
         static $gtype: GObject.GType<DomDocument>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomDocument.SignalSignatures;
 
         // Fields
 
@@ -197,17 +213,17 @@ export namespace Lasem {
 
         connect<K extends keyof DomDocument.SignalSignatures>(
             signal: K,
-            callback: DomDocument.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomDocument.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomDocument.SignalSignatures>(
             signal: K,
-            callback: DomDocument.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomDocument.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomDocument.SignalSignatures>(
             signal: K,
-            ...args: DomDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomDocument.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -257,6 +273,14 @@ export namespace Lasem {
 
     abstract class DomDocumentFragment extends DomNode {
         static $gtype: GObject.GType<DomDocumentFragment>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomDocumentFragment.SignalSignatures;
 
         // Fields
 
@@ -274,17 +298,19 @@ export namespace Lasem {
 
         connect<K extends keyof DomDocumentFragment.SignalSignatures>(
             signal: K,
-            callback: DomDocumentFragment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomDocumentFragment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomDocumentFragment.SignalSignatures>(
             signal: K,
-            callback: DomDocumentFragment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomDocumentFragment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomDocumentFragment.SignalSignatures>(
             signal: K,
-            ...args: DomDocumentFragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomDocumentFragment.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -300,6 +326,14 @@ export namespace Lasem {
 
     abstract class DomElement extends DomNode {
         static $gtype: GObject.GType<DomElement>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomElement.SignalSignatures;
 
         // Fields
 
@@ -315,17 +349,17 @@ export namespace Lasem {
 
         connect<K extends keyof DomElement.SignalSignatures>(
             signal: K,
-            callback: DomElement.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomElement.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomElement.SignalSignatures>(
             signal: K,
-            callback: DomElement.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomElement.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomElement.SignalSignatures>(
             signal: K,
-            ...args: DomElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -363,6 +397,14 @@ export namespace Lasem {
 
     abstract class DomNamedNodeMap extends GObject.Object {
         static $gtype: GObject.GType<DomNamedNodeMap>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomNamedNodeMap.SignalSignatures;
 
         // Fields
 
@@ -378,17 +420,17 @@ export namespace Lasem {
 
         connect<K extends keyof DomNamedNodeMap.SignalSignatures>(
             signal: K,
-            callback: DomNamedNodeMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomNamedNodeMap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomNamedNodeMap.SignalSignatures>(
             signal: K,
-            callback: DomNamedNodeMap.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomNamedNodeMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomNamedNodeMap.SignalSignatures>(
             signal: K,
-            ...args: DomNamedNodeMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomNamedNodeMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -417,6 +459,14 @@ export namespace Lasem {
 
     abstract class DomNode extends GObject.Object {
         static $gtype: GObject.GType<DomNode>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomNode.SignalSignatures;
 
         // Fields
 
@@ -435,16 +485,19 @@ export namespace Lasem {
 
         // Signals
 
-        connect<K extends keyof DomNode.SignalSignatures>(signal: K, callback: DomNode.SignalSignatures[K]): number;
+        connect<K extends keyof DomNode.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DomNode.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomNode.SignalSignatures>(
             signal: K,
-            callback: DomNode.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomNode.SignalSignatures>(
             signal: K,
-            ...args: DomNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -535,6 +588,14 @@ export namespace Lasem {
 
     abstract class DomNodeList extends GObject.Object {
         static $gtype: GObject.GType<DomNodeList>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomNodeList.SignalSignatures;
 
         // Fields
 
@@ -550,17 +611,17 @@ export namespace Lasem {
 
         connect<K extends keyof DomNodeList.SignalSignatures>(
             signal: K,
-            callback: DomNodeList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomNodeList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomNodeList.SignalSignatures>(
             signal: K,
-            callback: DomNodeList.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomNodeList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomNodeList.SignalSignatures>(
             signal: K,
-            ...args: DomNodeList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomNodeList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -586,6 +647,14 @@ export namespace Lasem {
 
     class DomText extends DomCharacterData {
         static $gtype: GObject.GType<DomText>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomText.SignalSignatures;
 
         // Fields
 
@@ -601,16 +670,19 @@ export namespace Lasem {
 
         // Signals
 
-        connect<K extends keyof DomText.SignalSignatures>(signal: K, callback: DomText.SignalSignatures[K]): number;
+        connect<K extends keyof DomText.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DomText.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomText.SignalSignatures>(
             signal: K,
-            callback: DomText.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomText.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomText.SignalSignatures>(
             signal: K,
-            ...args: DomText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -626,6 +698,14 @@ export namespace Lasem {
 
     abstract class DomView extends GObject.Object {
         static $gtype: GObject.GType<DomView>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomView.SignalSignatures;
 
         // Fields
 
@@ -645,16 +725,19 @@ export namespace Lasem {
 
         // Signals
 
-        connect<K extends keyof DomView.SignalSignatures>(signal: K, callback: DomView.SignalSignatures[K]): number;
+        connect<K extends keyof DomView.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DomView.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomView.SignalSignatures>(
             signal: K,
-            callback: DomView.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomView.SignalSignatures>(
             signal: K,
-            ...args: DomView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

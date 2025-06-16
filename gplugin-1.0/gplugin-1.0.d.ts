@@ -193,7 +193,7 @@ export namespace GPlugin {
     namespace FileSource {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::manager': GObject.Object.Notify;
+            'notify::manager': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -215,6 +215,14 @@ export namespace GPlugin {
          * The [class`GPlugin`.Manager] that this source is working for.
          */
         get manager(): Manager;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: FileSource.SignalSignatures;
 
         // Constructors
 
@@ -226,17 +234,17 @@ export namespace GPlugin {
 
         connect<K extends keyof FileSource.SignalSignatures>(
             signal: K,
-            callback: FileSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileSource.SignalSignatures>(
             signal: K,
-            callback: FileSource.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, FileSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileSource.SignalSignatures>(
             signal: K,
-            ...args: FileSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<FileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -713,7 +721,7 @@ export namespace GPlugin {
     namespace Loader {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::id': GObject.Object.Notify;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -735,6 +743,14 @@ export namespace GPlugin {
          * The identifier of the loader.
          */
         get id(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Loader.SignalSignatures;
 
         // Constructors
 
@@ -744,13 +760,19 @@ export namespace GPlugin {
 
         // Signals
 
-        connect<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
+        connect<K extends keyof Loader.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Loader.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
+        connect_after<K extends keyof Loader.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Loader.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Loader.SignalSignatures>(
             signal: K,
-            ...args: Loader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Loader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -809,50 +831,16 @@ export namespace GPlugin {
     }
 
     namespace Manager {
-        // Signal callback interfaces
-
-        interface LoadPluginFailed {
-            (_source: Manager, plugin: GObject.Object, error: GLib.Error): void;
-        }
-
-        interface LoadedPlugin {
-            (_source: Manager, plugin: GObject.Object): void;
-        }
-
-        interface LoaderRegistered {
-            (_source: Manager, loader: Loader): void;
-        }
-
-        interface LoaderUnregistered {
-            (_source: Manager, loader: Loader): void;
-        }
-
-        interface LoadingPlugin {
-            (_source: Manager, plugin: GObject.Object, error?: any | null): boolean | void;
-        }
-
-        interface UnloadPluginFailed {
-            (_source: Manager, plugin: GObject.Object, error: GLib.Error): void;
-        }
-
-        interface UnloadedPlugin {
-            (_source: Manager, plugin: GObject.Object): void;
-        }
-
-        interface UnloadingPlugin {
-            (_source: Manager, plugin: GObject.Object, error?: any | null): boolean | void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'load-plugin-failed': LoadPluginFailed;
-            'loaded-plugin': LoadedPlugin;
-            'loader-registered': LoaderRegistered;
-            'loader-unregistered': LoaderUnregistered;
-            'loading-plugin': LoadingPlugin;
-            'unload-plugin-failed': UnloadPluginFailed;
-            'unloaded-plugin': UnloadedPlugin;
-            'unloading-plugin': UnloadingPlugin;
+            'load-plugin-failed': (arg0: GObject.Object, arg1: GLib.Error) => void;
+            'loaded-plugin': (arg0: GObject.Object) => void;
+            'loader-registered': (arg0: Loader) => void;
+            'loader-unregistered': (arg0: Loader) => void;
+            'loading-plugin': (arg0: GObject.Object, arg1: any | null) => boolean | void;
+            'unload-plugin-failed': (arg0: GObject.Object, arg1: GLib.Error) => void;
+            'unloaded-plugin': (arg0: GObject.Object) => void;
+            'unloading-plugin': (arg0: GObject.Object, arg1: any | null) => boolean | void;
         }
 
         // Constructor properties interface
@@ -867,6 +855,14 @@ export namespace GPlugin {
      */
     class Manager extends GObject.Object {
         static $gtype: GObject.GType<Manager>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Manager.SignalSignatures;
 
         // Constructors
 
@@ -876,16 +872,19 @@ export namespace GPlugin {
 
         // Signals
 
-        connect<K extends keyof Manager.SignalSignatures>(signal: K, callback: Manager.SignalSignatures[K]): number;
+        connect<K extends keyof Manager.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Manager.SignalSignatures>(
             signal: K,
-            callback: Manager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Manager.SignalSignatures>(
             signal: K,
-            ...args: Manager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Manager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1060,29 +1059,29 @@ export namespace GPlugin {
     namespace PluginInfo {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::abi-version': GObject.Object.Notify;
-            'notify::authors': GObject.Object.Notify;
-            'notify::auto-load': GObject.Object.Notify;
-            'notify::bind-global': GObject.Object.Notify;
-            'notify::category': GObject.Object.Notify;
-            'notify::dependencies': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::discriminator': GObject.Object.Notify;
-            'notify::icon-name': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::internal': GObject.Object.Notify;
-            'notify::license-id': GObject.Object.Notify;
-            'notify::license-text': GObject.Object.Notify;
-            'notify::license-url': GObject.Object.Notify;
-            'notify::load-on-query': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::provides': GObject.Object.Notify;
-            'notify::settings-schema': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::unloadable': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
-            'notify::website': GObject.Object.Notify;
+            'notify::abi-version': (pspec: GObject.ParamSpec) => void;
+            'notify::authors': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-load': (pspec: GObject.ParamSpec) => void;
+            'notify::bind-global': (pspec: GObject.ParamSpec) => void;
+            'notify::category': (pspec: GObject.ParamSpec) => void;
+            'notify::dependencies': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::discriminator': (pspec: GObject.ParamSpec) => void;
+            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::internal': (pspec: GObject.ParamSpec) => void;
+            'notify::license-id': (pspec: GObject.ParamSpec) => void;
+            'notify::license-text': (pspec: GObject.ParamSpec) => void;
+            'notify::license-url': (pspec: GObject.ParamSpec) => void;
+            'notify::load-on-query': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::provides': (pspec: GObject.ParamSpec) => void;
+            'notify::settings-schema': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::unloadable': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
+            'notify::website': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1369,6 +1368,14 @@ export namespace GPlugin {
          * The url of the plugin that can be represented in a user interface.
          */
         get website(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PluginInfo.SignalSignatures;
 
         // Constructors
 
@@ -1380,17 +1387,17 @@ export namespace GPlugin {
 
         connect<K extends keyof PluginInfo.SignalSignatures>(
             signal: K,
-            callback: PluginInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PluginInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PluginInfo.SignalSignatures>(
             signal: K,
-            callback: PluginInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PluginInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PluginInfo.SignalSignatures>(
             signal: K,
-            ...args: PluginInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PluginInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

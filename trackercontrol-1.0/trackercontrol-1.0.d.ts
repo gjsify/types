@@ -46,36 +46,14 @@ export namespace TrackerControl {
         NOENT,
     }
     namespace MinerManager {
-        // Signal callback interfaces
-
-        interface MinerActivated {
-            (_source: MinerManager, miner: string): void;
-        }
-
-        interface MinerDeactivated {
-            (_source: MinerManager, miner: string): void;
-        }
-
-        interface MinerPaused {
-            (_source: MinerManager, miner: string): void;
-        }
-
-        interface MinerProgress {
-            (_source: MinerManager, miner: string, status: string, progress: number, remaining_time: number): void;
-        }
-
-        interface MinerResumed {
-            (_source: MinerManager, miner: string): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'miner-activated': MinerActivated;
-            'miner-deactivated': MinerDeactivated;
-            'miner-paused': MinerPaused;
-            'miner-progress': MinerProgress;
-            'miner-resumed': MinerResumed;
-            'notify::auto-start': GObject.Object.Notify;
+            'miner-activated': (arg0: string) => void;
+            'miner-deactivated': (arg0: string) => void;
+            'miner-paused': (arg0: string) => void;
+            'miner-progress': (arg0: string, arg1: string, arg2: number, arg3: number) => void;
+            'miner-resumed': (arg0: string) => void;
+            'notify::auto-start': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -96,6 +74,14 @@ export namespace TrackerControl {
 
         get auto_start(): boolean;
         get autoStart(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MinerManager.SignalSignatures;
 
         // Constructors
 
@@ -111,17 +97,17 @@ export namespace TrackerControl {
 
         connect<K extends keyof MinerManager.SignalSignatures>(
             signal: K,
-            callback: MinerManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MinerManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MinerManager.SignalSignatures>(
             signal: K,
-            callback: MinerManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MinerManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MinerManager.SignalSignatures>(
             signal: K,
-            ...args: MinerManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MinerManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

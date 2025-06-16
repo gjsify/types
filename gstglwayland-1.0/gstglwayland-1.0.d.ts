@@ -26,8 +26,8 @@ export namespace GstGLWayland {
     namespace GLDisplayWayland {
         // Signal signatures
         interface SignalSignatures extends GstGL.GLDisplay.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -41,6 +41,14 @@ export namespace GstGLWayland {
      */
     class GLDisplayWayland extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayWayland>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GLDisplayWayland.SignalSignatures;
 
         // Fields
 
@@ -67,17 +75,17 @@ export namespace GstGLWayland {
 
         connect<K extends keyof GLDisplayWayland.SignalSignatures>(
             signal: K,
-            callback: GLDisplayWayland.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLDisplayWayland.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLDisplayWayland.SignalSignatures>(
             signal: K,
-            callback: GLDisplayWayland.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GLDisplayWayland.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLDisplayWayland.SignalSignatures>(
             signal: K,
-            ...args: GLDisplayWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GLDisplayWayland.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

@@ -481,15 +481,9 @@ export namespace GstInterfaces {
         AUDIO,
     }
     namespace ColorBalanceChannel {
-        // Signal callback interfaces
-
-        interface ValueChanged {
-            (_source: ColorBalanceChannel, object: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'value-changed': ValueChanged;
+            'value-changed': (arg0: number) => void;
         }
 
         // Constructor properties interface
@@ -499,6 +493,14 @@ export namespace GstInterfaces {
 
     class ColorBalanceChannel extends GObject.Object {
         static $gtype: GObject.GType<ColorBalanceChannel>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ColorBalanceChannel.SignalSignatures;
 
         // Fields
 
@@ -516,17 +518,19 @@ export namespace GstInterfaces {
 
         connect<K extends keyof ColorBalanceChannel.SignalSignatures>(
             signal: K,
-            callback: ColorBalanceChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColorBalanceChannel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColorBalanceChannel.SignalSignatures>(
             signal: K,
-            callback: ColorBalanceChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ColorBalanceChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColorBalanceChannel.SignalSignatures>(
             signal: K,
-            ...args: ColorBalanceChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ColorBalanceChannel.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -534,13 +538,13 @@ export namespace GstInterfaces {
     namespace MixerOptions {
         // Signal signatures
         interface SignalSignatures extends MixerTrack.SignalSignatures {
-            'notify::flags': GObject.Object.Notify;
-            'notify::index': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::max-volume': GObject.Object.Notify;
-            'notify::min-volume': GObject.Object.Notify;
-            'notify::num-channels': GObject.Object.Notify;
-            'notify::untranslated-label': GObject.Object.Notify;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::index': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::max-volume': (pspec: GObject.ParamSpec) => void;
+            'notify::min-volume': (pspec: GObject.ParamSpec) => void;
+            'notify::num-channels': (pspec: GObject.ParamSpec) => void;
+            'notify::untranslated-label': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -550,6 +554,14 @@ export namespace GstInterfaces {
 
     class MixerOptions extends MixerTrack {
         static $gtype: GObject.GType<MixerOptions>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MixerOptions.SignalSignatures;
 
         // Fields
 
@@ -565,17 +577,17 @@ export namespace GstInterfaces {
 
         connect<K extends keyof MixerOptions.SignalSignatures>(
             signal: K,
-            callback: MixerOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MixerOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MixerOptions.SignalSignatures>(
             signal: K,
-            callback: MixerOptions.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MixerOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MixerOptions.SignalSignatures>(
             signal: K,
-            ...args: MixerOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MixerOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -583,13 +595,13 @@ export namespace GstInterfaces {
     namespace MixerTrack {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::flags': GObject.Object.Notify;
-            'notify::index': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::max-volume': GObject.Object.Notify;
-            'notify::min-volume': GObject.Object.Notify;
-            'notify::num-channels': GObject.Object.Notify;
-            'notify::untranslated-label': GObject.Object.Notify;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::index': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::max-volume': (pspec: GObject.ParamSpec) => void;
+            'notify::min-volume': (pspec: GObject.ParamSpec) => void;
+            'notify::num-channels': (pspec: GObject.ParamSpec) => void;
+            'notify::untranslated-label': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -625,6 +637,14 @@ export namespace GstInterfaces {
         get numChannels(): number;
         get untranslated_label(): string;
         get untranslatedLabel(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MixerTrack.SignalSignatures;
 
         // Constructors
 
@@ -636,36 +656,26 @@ export namespace GstInterfaces {
 
         connect<K extends keyof MixerTrack.SignalSignatures>(
             signal: K,
-            callback: MixerTrack.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MixerTrack.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MixerTrack.SignalSignatures>(
             signal: K,
-            callback: MixerTrack.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MixerTrack.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MixerTrack.SignalSignatures>(
             signal: K,
-            ...args: MixerTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MixerTrack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
 
     namespace TunerChannel {
-        // Signal callback interfaces
-
-        interface FrequencyChanged {
-            (_source: TunerChannel, object: number): void;
-        }
-
-        interface SignalChanged {
-            (_source: TunerChannel, object: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'frequency-changed': FrequencyChanged;
-            'signal-changed': SignalChanged;
+            'frequency-changed': (arg0: number) => void;
+            'signal-changed': (arg0: number) => void;
         }
 
         // Constructor properties interface
@@ -675,6 +685,14 @@ export namespace GstInterfaces {
 
     class TunerChannel extends GObject.Object {
         static $gtype: GObject.GType<TunerChannel>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TunerChannel.SignalSignatures;
 
         // Fields
 
@@ -696,17 +714,17 @@ export namespace GstInterfaces {
 
         connect<K extends keyof TunerChannel.SignalSignatures>(
             signal: K,
-            callback: TunerChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TunerChannel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TunerChannel.SignalSignatures>(
             signal: K,
-            callback: TunerChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TunerChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TunerChannel.SignalSignatures>(
             signal: K,
-            ...args: TunerChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TunerChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -722,6 +740,14 @@ export namespace GstInterfaces {
 
     class TunerNorm extends GObject.Object {
         static $gtype: GObject.GType<TunerNorm>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TunerNorm.SignalSignatures;
 
         // Fields
 
@@ -735,16 +761,19 @@ export namespace GstInterfaces {
 
         // Signals
 
-        connect<K extends keyof TunerNorm.SignalSignatures>(signal: K, callback: TunerNorm.SignalSignatures[K]): number;
+        connect<K extends keyof TunerNorm.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TunerNorm.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TunerNorm.SignalSignatures>(
             signal: K,
-            callback: TunerNorm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TunerNorm.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TunerNorm.SignalSignatures>(
             signal: K,
-            ...args: TunerNorm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TunerNorm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

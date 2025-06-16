@@ -297,63 +297,37 @@ export namespace Totem {
     function remote_command_quark(): GLib.Quark;
     function remote_setting_quark(): GLib.Quark;
     namespace Object {
-        // Signal callback interfaces
-
-        interface FileClosed {
-            (_source: Object): void;
-        }
-
-        interface FileHasPlayed {
-            (_source: Object, mrl: string): void;
-        }
-
-        interface FileOpened {
-            (_source: Object, mrl: string): void;
-        }
-
-        interface GetTextSubtitle {
-            (_source: Object, mrl: string): string;
-        }
-
-        interface GetUserAgent {
-            (_source: Object, mrl: string): string;
-        }
-
-        interface MetadataUpdated {
-            (_source: Object, artist: string, title: string, album: string, track_number: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gtk.Application.SignalSignatures {
-            'file-closed': FileClosed;
-            'file-has-played': FileHasPlayed;
-            'file-opened': FileOpened;
-            'get-text-subtitle': GetTextSubtitle;
-            'get-user-agent': GetUserAgent;
-            'metadata-updated': MetadataUpdated;
-            'notify::current-content-type': GObject.Object.Notify;
-            'notify::current-display-name': GObject.Object.Notify;
-            'notify::current-mrl': GObject.Object.Notify;
-            'notify::current-time': GObject.Object.Notify;
-            'notify::fullscreen': GObject.Object.Notify;
-            'notify::main-page': GObject.Object.Notify;
-            'notify::playing': GObject.Object.Notify;
-            'notify::seekable': GObject.Object.Notify;
-            'notify::stream-length': GObject.Object.Notify;
-            'notify::active-window': GObject.Object.Notify;
-            'notify::app-menu': GObject.Object.Notify;
-            'notify::menubar': GObject.Object.Notify;
-            'notify::register-session': GObject.Object.Notify;
-            'notify::screensaver-active': GObject.Object.Notify;
-            'notify::action-group': GObject.Object.Notify;
-            'notify::application-id': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::inactivity-timeout': GObject.Object.Notify;
-            'notify::is-busy': GObject.Object.Notify;
-            'notify::is-registered': GObject.Object.Notify;
-            'notify::is-remote': GObject.Object.Notify;
-            'notify::resource-base-path': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
+            'file-closed': () => void;
+            'file-has-played': (arg0: string) => void;
+            'file-opened': (arg0: string) => void;
+            'get-text-subtitle': (arg0: string) => string;
+            'get-user-agent': (arg0: string) => string;
+            'metadata-updated': (arg0: string, arg1: string, arg2: string, arg3: number) => void;
+            'notify::current-content-type': (pspec: GObject.ParamSpec) => void;
+            'notify::current-display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::current-mrl': (pspec: GObject.ParamSpec) => void;
+            'notify::current-time': (pspec: GObject.ParamSpec) => void;
+            'notify::fullscreen': (pspec: GObject.ParamSpec) => void;
+            'notify::main-page': (pspec: GObject.ParamSpec) => void;
+            'notify::playing': (pspec: GObject.ParamSpec) => void;
+            'notify::seekable': (pspec: GObject.ParamSpec) => void;
+            'notify::stream-length': (pspec: GObject.ParamSpec) => void;
+            'notify::active-window': (pspec: GObject.ParamSpec) => void;
+            'notify::app-menu': (pspec: GObject.ParamSpec) => void;
+            'notify::menubar': (pspec: GObject.ParamSpec) => void;
+            'notify::register-session': (pspec: GObject.ParamSpec) => void;
+            'notify::screensaver-active': (pspec: GObject.ParamSpec) => void;
+            'notify::action-group': (pspec: GObject.ParamSpec) => void;
+            'notify::application-id': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::inactivity-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::is-busy': (pspec: GObject.ParamSpec) => void;
+            'notify::is-registered': (pspec: GObject.ParamSpec) => void;
+            'notify::is-remote': (pspec: GObject.ParamSpec) => void;
+            'notify::resource-base-path': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -448,6 +422,14 @@ export namespace Totem {
          * The length of the current stream, in milliseconds.
          */
         get streamLength(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -457,13 +439,19 @@ export namespace Totem {
 
         // Signals
 
-        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
-            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

@@ -111,19 +111,13 @@ export namespace Avahi {
     }
     function error_quark(): GLib.Quark;
     namespace Client {
-        // Signal callback interfaces
-
-        interface StateChanged {
-            (_source: Client, object: ClientState): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'state-changed': StateChanged;
-            'notify::flags': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'state-changed::flags': StateChanged;
-            'state-changed::state': StateChanged;
+            'state-changed': (arg0: ClientState) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'state-changed::flags': (arg0: ClientState) => void;
+            'state-changed::state': (arg0: ClientState) => void;
         }
 
         // Constructor properties interface
@@ -141,6 +135,14 @@ export namespace Avahi {
 
         get flags(): ClientFlags;
         get state(): ClientState;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -152,13 +154,19 @@ export namespace Avahi {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -169,17 +177,11 @@ export namespace Avahi {
     }
 
     namespace EntryGroup {
-        // Signal callback interfaces
-
-        interface StateChanged {
-            (_source: EntryGroup, object: EntryGroupState): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'state-changed': StateChanged;
-            'notify::state': GObject.Object.Notify;
-            'state-changed::state': StateChanged;
+            'state-changed': (arg0: EntryGroupState) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'state-changed::state': (arg0: EntryGroupState) => void;
         }
 
         // Constructor properties interface
@@ -195,6 +197,14 @@ export namespace Avahi {
         // Properties
 
         get state(): EntryGroupState;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: EntryGroup.SignalSignatures;
 
         // Constructors
 
@@ -208,17 +218,17 @@ export namespace Avahi {
 
         connect<K extends keyof EntryGroup.SignalSignatures>(
             signal: K,
-            callback: EntryGroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EntryGroup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EntryGroup.SignalSignatures>(
             signal: K,
-            callback: EntryGroup.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, EntryGroup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EntryGroup.SignalSignatures>(
             signal: K,
-            ...args: EntryGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<EntryGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -249,61 +259,37 @@ export namespace Avahi {
     }
 
     namespace RecordBrowser {
-        // Signal callback interfaces
-
-        interface AllForNow {
-            (_source: RecordBrowser): void;
-        }
-
-        interface CacheExhausted {
-            (_source: RecordBrowser): void;
-        }
-
-        interface Failure {
-            (_source: RecordBrowser, object?: any | null): void;
-        }
-
-        interface NewRecord {
-            (
-                _source: RecordBrowser,
-                object: number,
-                p0: Protocol,
-                p1: string,
-                p2: number,
-                p3: number,
-                p4: any | null,
-                p5: number,
-                p6: LookupResultFlags,
-            ): void;
-        }
-
-        interface RemovedRecord {
-            (
-                _source: RecordBrowser,
-                object: number,
-                p0: Protocol,
-                p1: string,
-                p2: number,
-                p3: number,
-                p4: any | null,
-                p5: number,
-                p6: LookupResultFlags,
-            ): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'all-for-now': AllForNow;
-            'cache-exhausted': CacheExhausted;
-            failure: Failure;
-            'new-record': NewRecord;
-            'removed-record': RemovedRecord;
-            'notify::class': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::protocol': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
+            'all-for-now': () => void;
+            'cache-exhausted': () => void;
+            failure: (arg0: any | null) => void;
+            'new-record': (
+                arg0: number,
+                arg1: Protocol,
+                arg2: string,
+                arg3: number,
+                arg4: number,
+                arg5: any | null,
+                arg6: number,
+                arg7: LookupResultFlags,
+            ) => void;
+            'removed-record': (
+                arg0: number,
+                arg1: Protocol,
+                arg2: string,
+                arg3: number,
+                arg4: number,
+                arg5: any | null,
+                arg6: number,
+                arg7: LookupResultFlags,
+            ) => void;
+            'notify::class': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::protocol': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -335,6 +321,14 @@ export namespace Avahi {
         set protocol(val: Protocol);
         get type(): number;
         set type(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RecordBrowser.SignalSignatures;
 
         // Constructors
 
@@ -357,17 +351,17 @@ export namespace Avahi {
 
         connect<K extends keyof RecordBrowser.SignalSignatures>(
             signal: K,
-            callback: RecordBrowser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RecordBrowser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecordBrowser.SignalSignatures>(
             signal: K,
-            callback: RecordBrowser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RecordBrowser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecordBrowser.SignalSignatures>(
             signal: K,
-            ...args: RecordBrowser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RecordBrowser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -377,56 +371,32 @@ export namespace Avahi {
     }
 
     namespace ServiceBrowser {
-        // Signal callback interfaces
-
-        interface AllForNow {
-            (_source: ServiceBrowser): void;
-        }
-
-        interface CacheExhausted {
-            (_source: ServiceBrowser): void;
-        }
-
-        interface Failure {
-            (_source: ServiceBrowser, object?: any | null): void;
-        }
-
-        interface NewService {
-            (
-                _source: ServiceBrowser,
-                object: number,
-                p0: Protocol,
-                p1: string,
-                p2: string,
-                p3: string,
-                p4: LookupResultFlags,
-            ): void;
-        }
-
-        interface RemovedService {
-            (
-                _source: ServiceBrowser,
-                object: number,
-                p0: Protocol,
-                p1: string,
-                p2: string,
-                p3: string,
-                p4: LookupResultFlags,
-            ): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'all-for-now': AllForNow;
-            'cache-exhausted': CacheExhausted;
-            failure: Failure;
-            'new-service': NewService;
-            'removed-service': RemovedService;
-            'notify::domain': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::protocol': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
+            'all-for-now': () => void;
+            'cache-exhausted': () => void;
+            failure: (arg0: any | null) => void;
+            'new-service': (
+                arg0: number,
+                arg1: Protocol,
+                arg2: string,
+                arg3: string,
+                arg4: string,
+                arg5: LookupResultFlags,
+            ) => void;
+            'removed-service': (
+                arg0: number,
+                arg1: Protocol,
+                arg2: string,
+                arg3: string,
+                arg4: string,
+                arg5: LookupResultFlags,
+            ) => void;
+            'notify::domain': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::protocol': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -455,6 +425,14 @@ export namespace Avahi {
         set protocol(val: Protocol);
         get type(): string;
         set type(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ServiceBrowser.SignalSignatures;
 
         // Constructors
 
@@ -476,17 +454,17 @@ export namespace Avahi {
 
         connect<K extends keyof ServiceBrowser.SignalSignatures>(
             signal: K,
-            callback: ServiceBrowser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServiceBrowser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServiceBrowser.SignalSignatures>(
             signal: K,
-            callback: ServiceBrowser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServiceBrowser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServiceBrowser.SignalSignatures>(
             signal: K,
-            ...args: ServiceBrowser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ServiceBrowser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -496,39 +474,28 @@ export namespace Avahi {
     }
 
     namespace ServiceResolver {
-        // Signal callback interfaces
-
-        interface Failure {
-            (_source: ServiceResolver, object?: any | null): void;
-        }
-
-        interface Found {
-            (
-                _source: ServiceResolver,
-                object: number,
-                p0: Protocol,
-                p1: string,
-                p2: string,
-                p3: string,
-                p4: string,
-                p5: any | null,
-                p6: number,
-                p7: any | null,
-                p8: LookupResultFlags,
-            ): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            failure: Failure;
-            found: Found;
-            'notify::aprotocol': GObject.Object.Notify;
-            'notify::domain': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::protocol': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
+            failure: (arg0: any | null) => void;
+            found: (
+                arg0: number,
+                arg1: Protocol,
+                arg2: string,
+                arg3: string,
+                arg4: string,
+                arg5: string,
+                arg6: any | null,
+                arg7: number,
+                arg8: any | null,
+                arg9: LookupResultFlags,
+            ) => void;
+            'notify::aprotocol': (pspec: GObject.ParamSpec) => void;
+            'notify::domain': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::protocol': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -563,6 +530,14 @@ export namespace Avahi {
         set protocol(val: Protocol);
         get type(): string;
         set type(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ServiceResolver.SignalSignatures;
 
         // Constructors
 
@@ -584,17 +559,17 @@ export namespace Avahi {
 
         connect<K extends keyof ServiceResolver.SignalSignatures>(
             signal: K,
-            callback: ServiceResolver.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServiceResolver.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServiceResolver.SignalSignatures>(
             signal: K,
-            callback: ServiceResolver.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServiceResolver.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServiceResolver.SignalSignatures>(
             signal: K,
-            ...args: ServiceResolver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ServiceResolver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

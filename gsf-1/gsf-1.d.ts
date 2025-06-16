@@ -726,6 +726,14 @@ export namespace Gsf {
 
     class Blob extends GObject.Object {
         static $gtype: GObject.GType<Blob>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Blob.SignalSignatures;
 
         // Fields
 
@@ -741,13 +749,19 @@ export namespace Gsf {
 
         // Signals
 
-        connect<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
+        connect<K extends keyof Blob.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Blob.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
+        connect_after<K extends keyof Blob.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Blob.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Blob.SignalSignatures>(
             signal: K,
-            ...args: Blob.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Blob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -779,6 +793,14 @@ export namespace Gsf {
 
     class ClipData extends GObject.Object {
         static $gtype: GObject.GType<ClipData>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ClipData.SignalSignatures;
 
         // Fields
 
@@ -794,16 +816,19 @@ export namespace Gsf {
 
         // Signals
 
-        connect<K extends keyof ClipData.SignalSignatures>(signal: K, callback: ClipData.SignalSignatures[K]): number;
+        connect<K extends keyof ClipData.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClipData.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClipData.SignalSignatures>(
             signal: K,
-            callback: ClipData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ClipData.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClipData.SignalSignatures>(
             signal: K,
-            ...args: ClipData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ClipData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -854,6 +879,14 @@ export namespace Gsf {
      */
     class DocMetaData extends GObject.Object {
         static $gtype: GObject.GType<DocMetaData>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocMetaData.SignalSignatures;
 
         // Constructors
 
@@ -867,17 +900,17 @@ export namespace Gsf {
 
         connect<K extends keyof DocMetaData.SignalSignatures>(
             signal: K,
-            callback: DocMetaData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocMetaData.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocMetaData.SignalSignatures>(
             signal: K,
-            callback: DocMetaData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocMetaData.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocMetaData.SignalSignatures>(
             signal: K,
-            ...args: DocMetaData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocMetaData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -939,6 +972,14 @@ export namespace Gsf {
 
     class DocPropVector extends GObject.Object {
         static $gtype: GObject.GType<DocPropVector>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocPropVector.SignalSignatures;
 
         // Constructors
 
@@ -952,17 +993,17 @@ export namespace Gsf {
 
         connect<K extends keyof DocPropVector.SignalSignatures>(
             signal: K,
-            callback: DocPropVector.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocPropVector.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocPropVector.SignalSignatures>(
             signal: K,
-            callback: DocPropVector.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocPropVector.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocPropVector.SignalSignatures>(
             signal: K,
-            ...args: DocPropVector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocPropVector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -985,13 +1026,13 @@ export namespace Gsf {
     namespace Infile {
         // Signal signatures
         interface SignalSignatures extends Input.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::eof': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::remaining': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::eof': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1004,6 +1045,14 @@ export namespace Gsf {
      */
     abstract class Infile extends Input {
         static $gtype: GObject.GType<Infile>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Infile.SignalSignatures;
 
         // Constructors
 
@@ -1013,13 +1062,19 @@ export namespace Gsf {
 
         // Signals
 
-        connect<K extends keyof Infile.SignalSignatures>(signal: K, callback: Infile.SignalSignatures[K]): number;
+        connect<K extends keyof Infile.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Infile.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Infile.SignalSignatures>(signal: K, callback: Infile.SignalSignatures[K]): number;
+        connect_after<K extends keyof Infile.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Infile.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Infile.SignalSignatures>(
             signal: K,
-            ...args: Infile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Infile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1066,13 +1121,13 @@ export namespace Gsf {
     namespace InfileMSOle {
         // Signal signatures
         interface SignalSignatures extends Infile.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::eof': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::remaining': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::eof': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1082,6 +1137,14 @@ export namespace Gsf {
 
     class InfileMSOle extends Infile {
         static $gtype: GObject.GType<InfileMSOle>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InfileMSOle.SignalSignatures;
 
         // Constructors
 
@@ -1095,17 +1158,17 @@ export namespace Gsf {
 
         connect<K extends keyof InfileMSOle.SignalSignatures>(
             signal: K,
-            callback: InfileMSOle.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InfileMSOle.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InfileMSOle.SignalSignatures>(
             signal: K,
-            callback: InfileMSOle.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InfileMSOle.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InfileMSOle.SignalSignatures>(
             signal: K,
-            ...args: InfileMSOle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InfileMSOle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1123,13 +1186,13 @@ export namespace Gsf {
     namespace InfileMSVBA {
         // Signal signatures
         interface SignalSignatures extends Infile.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::eof': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::remaining': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::eof': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1139,6 +1202,14 @@ export namespace Gsf {
 
     class InfileMSVBA extends Infile {
         static $gtype: GObject.GType<InfileMSVBA>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InfileMSVBA.SignalSignatures;
 
         // Constructors
 
@@ -1152,17 +1223,17 @@ export namespace Gsf {
 
         connect<K extends keyof InfileMSVBA.SignalSignatures>(
             signal: K,
-            callback: InfileMSVBA.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InfileMSVBA.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InfileMSVBA.SignalSignatures>(
             signal: K,
-            callback: InfileMSVBA.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InfileMSVBA.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InfileMSVBA.SignalSignatures>(
             signal: K,
-            ...args: InfileMSVBA.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InfileMSVBA.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1183,13 +1254,13 @@ export namespace Gsf {
     namespace InfileStdio {
         // Signal signatures
         interface SignalSignatures extends Infile.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::eof': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::remaining': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::eof': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1199,6 +1270,14 @@ export namespace Gsf {
 
     class InfileStdio extends Infile {
         static $gtype: GObject.GType<InfileStdio>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InfileStdio.SignalSignatures;
 
         // Constructors
 
@@ -1212,17 +1291,17 @@ export namespace Gsf {
 
         connect<K extends keyof InfileStdio.SignalSignatures>(
             signal: K,
-            callback: InfileStdio.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InfileStdio.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InfileStdio.SignalSignatures>(
             signal: K,
-            callback: InfileStdio.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InfileStdio.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InfileStdio.SignalSignatures>(
             signal: K,
-            ...args: InfileStdio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InfileStdio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1230,14 +1309,14 @@ export namespace Gsf {
     namespace InfileTar {
         // Signal signatures
         interface SignalSignatures extends Infile.SignalSignatures {
-            'notify::source': GObject.Object.Notify;
-            'notify::container': GObject.Object.Notify;
-            'notify::eof': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::remaining': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::eof': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1253,6 +1332,14 @@ export namespace Gsf {
         // Properties
 
         get source(): Input;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InfileTar.SignalSignatures;
 
         // Constructors
 
@@ -1264,16 +1351,19 @@ export namespace Gsf {
 
         // Signals
 
-        connect<K extends keyof InfileTar.SignalSignatures>(signal: K, callback: InfileTar.SignalSignatures[K]): number;
+        connect<K extends keyof InfileTar.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, InfileTar.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InfileTar.SignalSignatures>(
             signal: K,
-            callback: InfileTar.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InfileTar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InfileTar.SignalSignatures>(
             signal: K,
-            ...args: InfileTar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InfileTar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1281,17 +1371,17 @@ export namespace Gsf {
     namespace InfileZip {
         // Signal signatures
         interface SignalSignatures extends Infile.SignalSignatures {
-            'notify::compression-level': GObject.Object.Notify;
-            'notify::internal-parent': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
-            'notify::zip64': GObject.Object.Notify;
-            'notify::container': GObject.Object.Notify;
-            'notify::eof': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::remaining': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::compression-level': (pspec: GObject.ParamSpec) => void;
+            'notify::internal-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::zip64': (pspec: GObject.ParamSpec) => void;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::eof': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1323,6 +1413,14 @@ export namespace Gsf {
         set internalParent(val: InfileZip);
         get source(): Input;
         get zip64(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InfileZip.SignalSignatures;
 
         // Constructors
 
@@ -1334,16 +1432,19 @@ export namespace Gsf {
 
         // Signals
 
-        connect<K extends keyof InfileZip.SignalSignatures>(signal: K, callback: InfileZip.SignalSignatures[K]): number;
+        connect<K extends keyof InfileZip.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, InfileZip.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InfileZip.SignalSignatures>(
             signal: K,
-            callback: InfileZip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InfileZip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InfileZip.SignalSignatures>(
             signal: K,
-            ...args: InfileZip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InfileZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1351,13 +1452,13 @@ export namespace Gsf {
     namespace Input {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::eof': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::remaining': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::eof': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1408,6 +1509,14 @@ export namespace Gsf {
          * The total number of bytes in the file.
          */
         get size(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Input.SignalSignatures;
 
         // Fields
 
@@ -1424,13 +1533,19 @@ export namespace Gsf {
 
         // Signals
 
-        connect<K extends keyof Input.SignalSignatures>(signal: K, callback: Input.SignalSignatures[K]): number;
+        connect<K extends keyof Input.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Input.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Input.SignalSignatures>(signal: K, callback: Input.SignalSignatures[K]): number;
+        connect_after<K extends keyof Input.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Input.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Input.SignalSignatures>(
             signal: K,
-            ...args: Input.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Input.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1552,16 +1667,16 @@ export namespace Gsf {
     namespace InputGZip {
         // Signal signatures
         interface SignalSignatures extends Input.SignalSignatures {
-            'notify::raw': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
-            'notify::uncompressed-size': GObject.Object.Notify;
-            'notify::container': GObject.Object.Notify;
-            'notify::eof': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::remaining': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::raw': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::uncompressed-size': (pspec: GObject.ParamSpec) => void;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::eof': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1583,6 +1698,14 @@ export namespace Gsf {
         get source(): Input;
         get uncompressed_size(): number;
         get uncompressedSize(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InputGZip.SignalSignatures;
 
         // Constructors
 
@@ -1594,16 +1717,19 @@ export namespace Gsf {
 
         // Signals
 
-        connect<K extends keyof InputGZip.SignalSignatures>(signal: K, callback: InputGZip.SignalSignatures[K]): number;
+        connect<K extends keyof InputGZip.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, InputGZip.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputGZip.SignalSignatures>(
             signal: K,
-            callback: InputGZip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputGZip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputGZip.SignalSignatures>(
             signal: K,
-            ...args: InputGZip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InputGZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1611,13 +1737,13 @@ export namespace Gsf {
     namespace InputGio {
         // Signal signatures
         interface SignalSignatures extends Input.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::eof': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::remaining': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::eof': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1627,6 +1753,14 @@ export namespace Gsf {
 
     class InputGio extends Input {
         static $gtype: GObject.GType<InputGio>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InputGio.SignalSignatures;
 
         // Constructors
 
@@ -1642,16 +1776,19 @@ export namespace Gsf {
 
         // Signals
 
-        connect<K extends keyof InputGio.SignalSignatures>(signal: K, callback: InputGio.SignalSignatures[K]): number;
+        connect<K extends keyof InputGio.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, InputGio.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputGio.SignalSignatures>(
             signal: K,
-            callback: InputGio.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputGio.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputGio.SignalSignatures>(
             signal: K,
-            ...args: InputGio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InputGio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1659,15 +1796,15 @@ export namespace Gsf {
     namespace InputHTTP {
         // Signal signatures
         interface SignalSignatures extends Input.SignalSignatures {
-            'notify::content-type': GObject.Object.Notify;
-            'notify::url': GObject.Object.Notify;
-            'notify::container': GObject.Object.Notify;
-            'notify::eof': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::remaining': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::content-type': (pspec: GObject.ParamSpec) => void;
+            'notify::url': (pspec: GObject.ParamSpec) => void;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::eof': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1687,6 +1824,14 @@ export namespace Gsf {
         get content_type(): string;
         get contentType(): string;
         get url(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InputHTTP.SignalSignatures;
 
         // Constructors
 
@@ -1698,16 +1843,19 @@ export namespace Gsf {
 
         // Signals
 
-        connect<K extends keyof InputHTTP.SignalSignatures>(signal: K, callback: InputHTTP.SignalSignatures[K]): number;
+        connect<K extends keyof InputHTTP.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, InputHTTP.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputHTTP.SignalSignatures>(
             signal: K,
-            callback: InputHTTP.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputHTTP.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputHTTP.SignalSignatures>(
             signal: K,
-            ...args: InputHTTP.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InputHTTP.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1720,13 +1868,13 @@ export namespace Gsf {
     namespace InputMemory {
         // Signal signatures
         interface SignalSignatures extends Input.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::eof': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::remaining': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::eof': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1736,6 +1884,14 @@ export namespace Gsf {
 
     class InputMemory extends Input {
         static $gtype: GObject.GType<InputMemory>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InputMemory.SignalSignatures;
 
         // Constructors
 
@@ -1755,17 +1911,17 @@ export namespace Gsf {
 
         connect<K extends keyof InputMemory.SignalSignatures>(
             signal: K,
-            callback: InputMemory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputMemory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputMemory.SignalSignatures>(
             signal: K,
-            callback: InputMemory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputMemory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputMemory.SignalSignatures>(
             signal: K,
-            ...args: InputMemory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InputMemory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1773,13 +1929,13 @@ export namespace Gsf {
     namespace InputProxy {
         // Signal signatures
         interface SignalSignatures extends Input.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::eof': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::remaining': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::eof': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1789,6 +1945,14 @@ export namespace Gsf {
 
     class InputProxy extends Input {
         static $gtype: GObject.GType<InputProxy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InputProxy.SignalSignatures;
 
         // Constructors
 
@@ -1804,17 +1968,17 @@ export namespace Gsf {
 
         connect<K extends keyof InputProxy.SignalSignatures>(
             signal: K,
-            callback: InputProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputProxy.SignalSignatures>(
             signal: K,
-            callback: InputProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputProxy.SignalSignatures>(
             signal: K,
-            ...args: InputProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InputProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1822,13 +1986,13 @@ export namespace Gsf {
     namespace InputStdio {
         // Signal signatures
         interface SignalSignatures extends Input.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::eof': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::remaining': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::eof': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1838,6 +2002,14 @@ export namespace Gsf {
 
     class InputStdio extends Input {
         static $gtype: GObject.GType<InputStdio>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InputStdio.SignalSignatures;
 
         // Constructors
 
@@ -1853,17 +2025,17 @@ export namespace Gsf {
 
         connect<K extends keyof InputStdio.SignalSignatures>(
             signal: K,
-            callback: InputStdio.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputStdio.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputStdio.SignalSignatures>(
             signal: K,
-            callback: InputStdio.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputStdio.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputStdio.SignalSignatures>(
             signal: K,
-            ...args: InputStdio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InputStdio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -1871,13 +2043,13 @@ export namespace Gsf {
     namespace InputTextline {
         // Signal signatures
         interface SignalSignatures extends Input.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::eof': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::remaining': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::eof': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1887,6 +2059,14 @@ export namespace Gsf {
 
     class InputTextline extends Input {
         static $gtype: GObject.GType<InputTextline>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InputTextline.SignalSignatures;
 
         // Constructors
 
@@ -1900,17 +2080,17 @@ export namespace Gsf {
 
         connect<K extends keyof InputTextline.SignalSignatures>(
             signal: K,
-            callback: InputTextline.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputTextline.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputTextline.SignalSignatures>(
             signal: K,
-            callback: InputTextline.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputTextline.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputTextline.SignalSignatures>(
             signal: K,
-            ...args: InputTextline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InputTextline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1935,9 +2115,9 @@ export namespace Gsf {
     namespace ODFOut {
         // Signal signatures
         interface SignalSignatures extends XMLOut.SignalSignatures {
-            'notify::odf-version': GObject.Object.Notify;
-            'notify::pretty-print': GObject.Object.Notify;
-            'notify::sink': GObject.Object.Notify;
+            'notify::odf-version': (pspec: GObject.ParamSpec) => void;
+            'notify::pretty-print': (pspec: GObject.ParamSpec) => void;
+            'notify::sink': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1955,6 +2135,14 @@ export namespace Gsf {
 
         get odf_version(): number;
         get odfVersion(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ODFOut.SignalSignatures;
 
         // Fields
 
@@ -1969,13 +2157,19 @@ export namespace Gsf {
 
         // Signals
 
-        connect<K extends keyof ODFOut.SignalSignatures>(signal: K, callback: ODFOut.SignalSignatures[K]): number;
+        connect<K extends keyof ODFOut.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ODFOut.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof ODFOut.SignalSignatures>(signal: K, callback: ODFOut.SignalSignatures[K]): number;
+        connect_after<K extends keyof ODFOut.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ODFOut.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ODFOut.SignalSignatures>(
             signal: K,
-            ...args: ODFOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ODFOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1988,12 +2182,12 @@ export namespace Gsf {
     namespace Outfile {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2006,6 +2200,14 @@ export namespace Gsf {
      */
     abstract class Outfile extends Output {
         static $gtype: GObject.GType<Outfile>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Outfile.SignalSignatures;
 
         // Constructors
 
@@ -2015,16 +2217,19 @@ export namespace Gsf {
 
         // Signals
 
-        connect<K extends keyof Outfile.SignalSignatures>(signal: K, callback: Outfile.SignalSignatures[K]): number;
+        connect<K extends keyof Outfile.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Outfile.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Outfile.SignalSignatures>(
             signal: K,
-            callback: Outfile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Outfile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Outfile.SignalSignatures>(
             signal: K,
-            ...args: Outfile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Outfile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2046,15 +2251,15 @@ export namespace Gsf {
     namespace OutfileMSOle {
         // Signal signatures
         interface SignalSignatures extends Outfile.SignalSignatures {
-            'notify::big-block-size': GObject.Object.Notify;
-            'notify::sink': GObject.Object.Notify;
-            'notify::small-block-size': GObject.Object.Notify;
-            'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::big-block-size': (pspec: GObject.ParamSpec) => void;
+            'notify::sink': (pspec: GObject.ParamSpec) => void;
+            'notify::small-block-size': (pspec: GObject.ParamSpec) => void;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2078,6 +2283,14 @@ export namespace Gsf {
         get sink(): Output;
         get small_block_size(): number;
         get smallBlockSize(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OutfileMSOle.SignalSignatures;
 
         // Constructors
 
@@ -2093,17 +2306,17 @@ export namespace Gsf {
 
         connect<K extends keyof OutfileMSOle.SignalSignatures>(
             signal: K,
-            callback: OutfileMSOle.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutfileMSOle.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutfileMSOle.SignalSignatures>(
             signal: K,
-            callback: OutfileMSOle.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutfileMSOle.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutfileMSOle.SignalSignatures>(
             signal: K,
-            ...args: OutfileMSOle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OutfileMSOle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2120,15 +2333,15 @@ export namespace Gsf {
     namespace OutfileOpenPkg {
         // Signal signatures
         interface SignalSignatures extends Outfile.SignalSignatures {
-            'notify::content-type': GObject.Object.Notify;
-            'notify::is-dir': GObject.Object.Notify;
-            'notify::sink': GObject.Object.Notify;
-            'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::content-type': (pspec: GObject.ParamSpec) => void;
+            'notify::is-dir': (pspec: GObject.ParamSpec) => void;
+            'notify::sink': (pspec: GObject.ParamSpec) => void;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2152,6 +2365,14 @@ export namespace Gsf {
         get is_dir(): boolean;
         get isDir(): boolean;
         get sink(): Outfile;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OutfileOpenPkg.SignalSignatures;
 
         // Constructors
 
@@ -2165,17 +2386,17 @@ export namespace Gsf {
 
         connect<K extends keyof OutfileOpenPkg.SignalSignatures>(
             signal: K,
-            callback: OutfileOpenPkg.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutfileOpenPkg.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutfileOpenPkg.SignalSignatures>(
             signal: K,
-            callback: OutfileOpenPkg.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutfileOpenPkg.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutfileOpenPkg.SignalSignatures>(
             signal: K,
-            ...args: OutfileOpenPkg.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OutfileOpenPkg.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2206,12 +2427,12 @@ export namespace Gsf {
     namespace OutfileStdio {
         // Signal signatures
         interface SignalSignatures extends Outfile.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2221,6 +2442,14 @@ export namespace Gsf {
 
     class OutfileStdio extends Outfile {
         static $gtype: GObject.GType<OutfileStdio>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OutfileStdio.SignalSignatures;
 
         // Constructors
 
@@ -2234,17 +2463,17 @@ export namespace Gsf {
 
         connect<K extends keyof OutfileStdio.SignalSignatures>(
             signal: K,
-            callback: OutfileStdio.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutfileStdio.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutfileStdio.SignalSignatures>(
             signal: K,
-            callback: OutfileStdio.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutfileStdio.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutfileStdio.SignalSignatures>(
             signal: K,
-            ...args: OutfileStdio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OutfileStdio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2252,17 +2481,17 @@ export namespace Gsf {
     namespace OutfileZip {
         // Signal signatures
         interface SignalSignatures extends Outfile.SignalSignatures {
-            'notify::compression-level': GObject.Object.Notify;
-            'notify::deflate-level': GObject.Object.Notify;
-            'notify::entry-name': GObject.Object.Notify;
-            'notify::sink': GObject.Object.Notify;
-            'notify::zip64': GObject.Object.Notify;
-            'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::compression-level': (pspec: GObject.ParamSpec) => void;
+            'notify::deflate-level': (pspec: GObject.ParamSpec) => void;
+            'notify::entry-name': (pspec: GObject.ParamSpec) => void;
+            'notify::sink': (pspec: GObject.ParamSpec) => void;
+            'notify::zip64': (pspec: GObject.ParamSpec) => void;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2292,6 +2521,14 @@ export namespace Gsf {
         get entryName(): string;
         get sink(): Output;
         get zip64(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OutfileZip.SignalSignatures;
 
         // Constructors
 
@@ -2305,17 +2542,17 @@ export namespace Gsf {
 
         connect<K extends keyof OutfileZip.SignalSignatures>(
             signal: K,
-            callback: OutfileZip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutfileZip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutfileZip.SignalSignatures>(
             signal: K,
-            callback: OutfileZip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutfileZip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutfileZip.SignalSignatures>(
             signal: K,
-            ...args: OutfileZip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OutfileZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2327,12 +2564,12 @@ export namespace Gsf {
     namespace Output {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2386,6 +2623,14 @@ export namespace Gsf {
          * The current file size.
          */
         get size(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Output.SignalSignatures;
 
         // Fields
 
@@ -2405,13 +2650,19 @@ export namespace Gsf {
 
         // Signals
 
-        connect<K extends keyof Output.SignalSignatures>(signal: K, callback: Output.SignalSignatures[K]): number;
+        connect<K extends keyof Output.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Output.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Output.SignalSignatures>(signal: K, callback: Output.SignalSignatures[K]): number;
+        connect_after<K extends keyof Output.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Output.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Output.SignalSignatures>(
             signal: K,
-            ...args: Output.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Output.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2511,12 +2762,12 @@ export namespace Gsf {
     namespace OutputBzip {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2526,6 +2777,14 @@ export namespace Gsf {
 
     class OutputBzip extends Output {
         static $gtype: GObject.GType<OutputBzip>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OutputBzip.SignalSignatures;
 
         // Constructors
 
@@ -2539,17 +2798,17 @@ export namespace Gsf {
 
         connect<K extends keyof OutputBzip.SignalSignatures>(
             signal: K,
-            callback: OutputBzip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputBzip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputBzip.SignalSignatures>(
             signal: K,
-            callback: OutputBzip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputBzip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputBzip.SignalSignatures>(
             signal: K,
-            ...args: OutputBzip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OutputBzip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2557,19 +2816,19 @@ export namespace Gsf {
     namespace OutputCsv {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
-            'notify::eol': GObject.Object.Notify;
-            'notify::quote': GObject.Object.Notify;
-            'notify::quoting-mode': GObject.Object.Notify;
-            'notify::quoting-on-whitespace': GObject.Object.Notify;
-            'notify::quoting-triggers': GObject.Object.Notify;
-            'notify::separator': GObject.Object.Notify;
-            'notify::sink': GObject.Object.Notify;
-            'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::eol': (pspec: GObject.ParamSpec) => void;
+            'notify::quote': (pspec: GObject.ParamSpec) => void;
+            'notify::quoting-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::quoting-on-whitespace': (pspec: GObject.ParamSpec) => void;
+            'notify::quoting-triggers': (pspec: GObject.ParamSpec) => void;
+            'notify::separator': (pspec: GObject.ParamSpec) => void;
+            'notify::sink': (pspec: GObject.ParamSpec) => void;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2613,6 +2872,14 @@ export namespace Gsf {
         set separator(val: string);
         get sink(): Output;
         set sink(val: Output);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OutputCsv.SignalSignatures;
 
         // Fields
 
@@ -2631,16 +2898,19 @@ export namespace Gsf {
 
         // Signals
 
-        connect<K extends keyof OutputCsv.SignalSignatures>(signal: K, callback: OutputCsv.SignalSignatures[K]): number;
+        connect<K extends keyof OutputCsv.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, OutputCsv.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputCsv.SignalSignatures>(
             signal: K,
-            callback: OutputCsv.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputCsv.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputCsv.SignalSignatures>(
             signal: K,
-            ...args: OutputCsv.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OutputCsv.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2653,15 +2923,15 @@ export namespace Gsf {
     namespace OutputGZip {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
-            'notify::deflate-level': GObject.Object.Notify;
-            'notify::raw': GObject.Object.Notify;
-            'notify::sink': GObject.Object.Notify;
-            'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::deflate-level': (pspec: GObject.ParamSpec) => void;
+            'notify::raw': (pspec: GObject.ParamSpec) => void;
+            'notify::sink': (pspec: GObject.ParamSpec) => void;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2685,6 +2955,14 @@ export namespace Gsf {
         set deflateLevel(val: number);
         get raw(): boolean;
         get sink(): Output;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OutputGZip.SignalSignatures;
 
         // Constructors
 
@@ -2698,17 +2976,17 @@ export namespace Gsf {
 
         connect<K extends keyof OutputGZip.SignalSignatures>(
             signal: K,
-            callback: OutputGZip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputGZip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputGZip.SignalSignatures>(
             signal: K,
-            callback: OutputGZip.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputGZip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputGZip.SignalSignatures>(
             signal: K,
-            ...args: OutputGZip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OutputGZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2716,12 +2994,12 @@ export namespace Gsf {
     namespace OutputGio {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2731,6 +3009,14 @@ export namespace Gsf {
 
     class OutputGio extends Output {
         static $gtype: GObject.GType<OutputGio>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OutputGio.SignalSignatures;
 
         // Constructors
 
@@ -2746,16 +3032,19 @@ export namespace Gsf {
 
         // Signals
 
-        connect<K extends keyof OutputGio.SignalSignatures>(signal: K, callback: OutputGio.SignalSignatures[K]): number;
+        connect<K extends keyof OutputGio.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, OutputGio.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputGio.SignalSignatures>(
             signal: K,
-            callback: OutputGio.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputGio.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputGio.SignalSignatures>(
             signal: K,
-            ...args: OutputGio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OutputGio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2763,12 +3052,12 @@ export namespace Gsf {
     namespace OutputIOChannel {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2778,6 +3067,14 @@ export namespace Gsf {
 
     class OutputIOChannel extends Output {
         static $gtype: GObject.GType<OutputIOChannel>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OutputIOChannel.SignalSignatures;
 
         // Constructors
 
@@ -2791,17 +3088,17 @@ export namespace Gsf {
 
         connect<K extends keyof OutputIOChannel.SignalSignatures>(
             signal: K,
-            callback: OutputIOChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputIOChannel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputIOChannel.SignalSignatures>(
             signal: K,
-            callback: OutputIOChannel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputIOChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputIOChannel.SignalSignatures>(
             signal: K,
-            ...args: OutputIOChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OutputIOChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2809,16 +3106,16 @@ export namespace Gsf {
     namespace OutputIconv {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
-            'notify::fallback': GObject.Object.Notify;
-            'notify::input-charset': GObject.Object.Notify;
-            'notify::output-charset': GObject.Object.Notify;
-            'notify::sink': GObject.Object.Notify;
-            'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::fallback': (pspec: GObject.ParamSpec) => void;
+            'notify::input-charset': (pspec: GObject.ParamSpec) => void;
+            'notify::output-charset': (pspec: GObject.ParamSpec) => void;
+            'notify::sink': (pspec: GObject.ParamSpec) => void;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2850,6 +3147,14 @@ export namespace Gsf {
         get output_charset(): string;
         get outputCharset(): string;
         get sink(): Output;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OutputIconv.SignalSignatures;
 
         // Constructors
 
@@ -2863,17 +3168,17 @@ export namespace Gsf {
 
         connect<K extends keyof OutputIconv.SignalSignatures>(
             signal: K,
-            callback: OutputIconv.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputIconv.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputIconv.SignalSignatures>(
             signal: K,
-            callback: OutputIconv.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputIconv.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputIconv.SignalSignatures>(
             signal: K,
-            ...args: OutputIconv.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OutputIconv.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2881,12 +3186,12 @@ export namespace Gsf {
     namespace OutputMemory {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2896,6 +3201,14 @@ export namespace Gsf {
 
     class OutputMemory extends Output {
         static $gtype: GObject.GType<OutputMemory>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OutputMemory.SignalSignatures;
 
         // Constructors
 
@@ -2909,17 +3222,17 @@ export namespace Gsf {
 
         connect<K extends keyof OutputMemory.SignalSignatures>(
             signal: K,
-            callback: OutputMemory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputMemory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputMemory.SignalSignatures>(
             signal: K,
-            callback: OutputMemory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputMemory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputMemory.SignalSignatures>(
             signal: K,
-            ...args: OutputMemory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OutputMemory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2932,12 +3245,12 @@ export namespace Gsf {
     namespace OutputStdio {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::is-closed': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2947,6 +3260,14 @@ export namespace Gsf {
 
     class OutputStdio extends Output {
         static $gtype: GObject.GType<OutputStdio>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OutputStdio.SignalSignatures;
 
         // Constructors
 
@@ -2960,17 +3281,17 @@ export namespace Gsf {
 
         connect<K extends keyof OutputStdio.SignalSignatures>(
             signal: K,
-            callback: OutputStdio.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputStdio.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputStdio.SignalSignatures>(
             signal: K,
-            callback: OutputStdio.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OutputStdio.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputStdio.SignalSignatures>(
             signal: K,
-            ...args: OutputStdio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OutputStdio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2986,6 +3307,14 @@ export namespace Gsf {
 
     class SharedMemory extends GObject.Object {
         static $gtype: GObject.GType<SharedMemory>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SharedMemory.SignalSignatures;
 
         // Fields
 
@@ -3009,17 +3338,17 @@ export namespace Gsf {
 
         connect<K extends keyof SharedMemory.SignalSignatures>(
             signal: K,
-            callback: SharedMemory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SharedMemory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SharedMemory.SignalSignatures>(
             signal: K,
-            callback: SharedMemory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SharedMemory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SharedMemory.SignalSignatures>(
             signal: K,
-            ...args: SharedMemory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SharedMemory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3027,13 +3356,13 @@ export namespace Gsf {
     namespace StructuredBlob {
         // Signal signatures
         interface SignalSignatures extends Infile.SignalSignatures {
-            'notify::container': GObject.Object.Notify;
-            'notify::eof': GObject.Object.Notify;
-            'notify::modtime': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::remaining': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
+            'notify::container': (pspec: GObject.ParamSpec) => void;
+            'notify::eof': (pspec: GObject.ParamSpec) => void;
+            'notify::modtime': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::remaining': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3043,6 +3372,14 @@ export namespace Gsf {
 
     class StructuredBlob extends Infile {
         static $gtype: GObject.GType<StructuredBlob>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StructuredBlob.SignalSignatures;
 
         // Constructors
 
@@ -3054,17 +3391,17 @@ export namespace Gsf {
 
         connect<K extends keyof StructuredBlob.SignalSignatures>(
             signal: K,
-            callback: StructuredBlob.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StructuredBlob.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StructuredBlob.SignalSignatures>(
             signal: K,
-            callback: StructuredBlob.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StructuredBlob.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StructuredBlob.SignalSignatures>(
             signal: K,
-            ...args: StructuredBlob.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StructuredBlob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3091,8 +3428,8 @@ export namespace Gsf {
     namespace XMLOut {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::pretty-print': GObject.Object.Notify;
-            'notify::sink': GObject.Object.Notify;
+            'notify::pretty-print': (pspec: GObject.ParamSpec) => void;
+            'notify::sink': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3114,6 +3451,14 @@ export namespace Gsf {
         get prettyPrint(): boolean;
         set prettyPrint(val: boolean);
         get sink(): Output;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: XMLOut.SignalSignatures;
 
         // Fields
 
@@ -3131,13 +3476,19 @@ export namespace Gsf {
 
         // Signals
 
-        connect<K extends keyof XMLOut.SignalSignatures>(signal: K, callback: XMLOut.SignalSignatures[K]): number;
+        connect<K extends keyof XMLOut.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XMLOut.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof XMLOut.SignalSignatures>(signal: K, callback: XMLOut.SignalSignatures[K]): number;
+        connect_after<K extends keyof XMLOut.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XMLOut.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XMLOut.SignalSignatures>(
             signal: K,
-            ...args: XMLOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<XMLOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

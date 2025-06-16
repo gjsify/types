@@ -44,16 +44,10 @@ export namespace GUdev {
         CHAR,
     }
     namespace Client {
-        // Signal callback interfaces
-
-        interface Uevent {
-            (_source: Client, action: string, device: Device): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            uevent: Uevent;
-            'notify::subsystems': GObject.Object.Notify;
+            uevent: (arg0: string, arg1: Device) => void;
+            'notify::subsystems': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -104,6 +98,14 @@ export namespace GUdev {
          * reported.
          */
         get subsystems(): string[];
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -115,13 +117,19 @@ export namespace GUdev {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -224,6 +232,14 @@ export namespace GUdev {
      */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -233,13 +249,19 @@ export namespace GUdev {
 
         // Signals
 
-        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
-            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -555,7 +577,7 @@ export namespace GUdev {
     namespace Enumerator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::client': GObject.Object.Notify;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -577,6 +599,14 @@ export namespace GUdev {
          * The #GUdevClient to enumerate devices from.
          */
         get client(): Client;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Enumerator.SignalSignatures;
 
         // Constructors
 
@@ -590,17 +620,17 @@ export namespace GUdev {
 
         connect<K extends keyof Enumerator.SignalSignatures>(
             signal: K,
-            callback: Enumerator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Enumerator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Enumerator.SignalSignatures>(
             signal: K,
-            callback: Enumerator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Enumerator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Enumerator.SignalSignatures>(
             signal: K,
-            ...args: Enumerator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Enumerator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

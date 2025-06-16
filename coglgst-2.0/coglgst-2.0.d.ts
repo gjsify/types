@@ -24,36 +24,26 @@ export namespace CoglGst {
      */
 
     namespace VideoSink {
-        // Signal callback interfaces
-
-        interface NewFrame {
-            (_source: VideoSink): void;
-        }
-
-        interface PipelineReady {
-            (_source: VideoSink): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GstBase.BaseSink.SignalSignatures {
-            'new-frame': NewFrame;
-            'pipeline-ready': PipelineReady;
-            'notify::update-priority': GObject.Object.Notify;
-            'notify::async': GObject.Object.Notify;
-            'notify::blocksize': GObject.Object.Notify;
-            'notify::enable-last-sample': GObject.Object.Notify;
-            'notify::last-sample': GObject.Object.Notify;
-            'notify::max-bitrate': GObject.Object.Notify;
-            'notify::max-lateness': GObject.Object.Notify;
-            'notify::processing-deadline': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::render-delay': GObject.Object.Notify;
-            'notify::stats': GObject.Object.Notify;
-            'notify::sync': GObject.Object.Notify;
-            'notify::throttle-time': GObject.Object.Notify;
-            'notify::ts-offset': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'new-frame': () => void;
+            'pipeline-ready': () => void;
+            'notify::update-priority': (pspec: GObject.ParamSpec) => void;
+            'notify::async': (pspec: GObject.ParamSpec) => void;
+            'notify::blocksize': (pspec: GObject.ParamSpec) => void;
+            'notify::enable-last-sample': (pspec: GObject.ParamSpec) => void;
+            'notify::last-sample': (pspec: GObject.ParamSpec) => void;
+            'notify::max-bitrate': (pspec: GObject.ParamSpec) => void;
+            'notify::max-lateness': (pspec: GObject.ParamSpec) => void;
+            'notify::processing-deadline': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::render-delay': (pspec: GObject.ParamSpec) => void;
+            'notify::stats': (pspec: GObject.ParamSpec) => void;
+            'notify::sync': (pspec: GObject.ParamSpec) => void;
+            'notify::throttle-time': (pspec: GObject.ParamSpec) => void;
+            'notify::ts-offset': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -77,6 +67,14 @@ export namespace CoglGst {
         set update_priority(val: number);
         get updatePriority(): number;
         set updatePriority(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VideoSink.SignalSignatures;
 
         // Constructors
 
@@ -88,16 +86,19 @@ export namespace CoglGst {
 
         // Signals
 
-        connect<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: VideoSink.SignalSignatures[K]): number;
+        connect<K extends keyof VideoSink.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
-            callback: VideoSink.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
-            ...args: VideoSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VideoSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

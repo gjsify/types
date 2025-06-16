@@ -84,23 +84,23 @@ export namespace MPID {
     namespace Device {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::access-protocols': GObject.Object.Notify;
-            'notify::audio-folders': GObject.Object.Notify;
-            'notify::drive-type': GObject.Object.Notify;
-            'notify::error': GObject.Object.Notify;
-            'notify::folder-depth': GObject.Object.Notify;
-            'notify::fs-uuid': GObject.Object.Notify;
-            'notify::input-formats': GObject.Object.Notify;
-            'notify::input-path': GObject.Object.Notify;
-            'notify::model': GObject.Object.Notify;
-            'notify::mpi-file': GObject.Object.Notify;
-            'notify::output-formats': GObject.Object.Notify;
-            'notify::playlist-formats': GObject.Object.Notify;
-            'notify::playlist-path': GObject.Object.Notify;
-            'notify::requires-eject': GObject.Object.Notify;
-            'notify::serial': GObject.Object.Notify;
-            'notify::source': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
+            'notify::access-protocols': (pspec: GObject.ParamSpec) => void;
+            'notify::audio-folders': (pspec: GObject.ParamSpec) => void;
+            'notify::drive-type': (pspec: GObject.ParamSpec) => void;
+            'notify::error': (pspec: GObject.ParamSpec) => void;
+            'notify::folder-depth': (pspec: GObject.ParamSpec) => void;
+            'notify::fs-uuid': (pspec: GObject.ParamSpec) => void;
+            'notify::input-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::input-path': (pspec: GObject.ParamSpec) => void;
+            'notify::model': (pspec: GObject.ParamSpec) => void;
+            'notify::mpi-file': (pspec: GObject.ParamSpec) => void;
+            'notify::output-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::playlist-formats': (pspec: GObject.ParamSpec) => void;
+            'notify::playlist-path': (pspec: GObject.ParamSpec) => void;
+            'notify::requires-eject': (pspec: GObject.ParamSpec) => void;
+            'notify::serial': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -268,6 +268,14 @@ export namespace MPID {
          * The device vendor name
          */
         get vendor(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -281,13 +289,19 @@ export namespace MPID {
 
         // Signals
 
-        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
-            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }

@@ -128,8 +128,8 @@ export namespace GCab {
     namespace Cabinet {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::reserved': GObject.Object.Notify;
-            'notify::signature': GObject.Object.Notify;
+            'notify::reserved': (pspec: GObject.ParamSpec) => void;
+            'notify::signature': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -152,6 +152,14 @@ export namespace GCab {
         set reserved(val: Uint8Array);
         get signature(): Uint8Array;
         set signature(val: Uint8Array);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Cabinet.SignalSignatures;
 
         // Constructors
 
@@ -163,16 +171,19 @@ export namespace GCab {
 
         // Signals
 
-        connect<K extends keyof Cabinet.SignalSignatures>(signal: K, callback: Cabinet.SignalSignatures[K]): number;
+        connect<K extends keyof Cabinet.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Cabinet.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Cabinet.SignalSignatures>(
             signal: K,
-            callback: Cabinet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Cabinet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Cabinet.SignalSignatures>(
             signal: K,
-            ...args: Cabinet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Cabinet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -276,9 +287,9 @@ export namespace GCab {
     namespace File {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::bytes': GObject.Object.Notify;
-            'notify::file': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::bytes': (pspec: GObject.ParamSpec) => void;
+            'notify::file': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -304,6 +315,14 @@ export namespace GCab {
         set file(val: Gio.File);
         get name(): string;
         set name(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: File.SignalSignatures;
 
         // Constructors
 
@@ -317,13 +336,19 @@ export namespace GCab {
 
         // Signals
 
-        connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        connect<K extends keyof File.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, File.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        connect_after<K extends keyof File.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, File.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof File.SignalSignatures>(
             signal: K,
-            ...args: File.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<File.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -409,9 +434,9 @@ export namespace GCab {
     namespace Folder {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::compression': GObject.Object.Notify;
-            'notify::comptype': GObject.Object.Notify;
-            'notify::reserved': GObject.Object.Notify;
+            'notify::compression': (pspec: GObject.ParamSpec) => void;
+            'notify::comptype': (pspec: GObject.ParamSpec) => void;
+            'notify::reserved': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -435,6 +460,14 @@ export namespace GCab {
         get comptype(): number;
         get reserved(): Uint8Array;
         set reserved(val: Uint8Array);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Folder.SignalSignatures;
 
         // Constructors
 
@@ -446,13 +479,19 @@ export namespace GCab {
 
         // Signals
 
-        connect<K extends keyof Folder.SignalSignatures>(signal: K, callback: Folder.SignalSignatures[K]): number;
+        connect<K extends keyof Folder.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Folder.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Folder.SignalSignatures>(signal: K, callback: Folder.SignalSignatures[K]): number;
+        connect_after<K extends keyof Folder.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Folder.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Folder.SignalSignatures>(
             signal: K,
-            ...args: Folder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Folder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

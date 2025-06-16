@@ -345,14 +345,14 @@ export namespace GstCodecs {
     namespace AV1Decoder {
         // Signal signatures
         interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
+            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
+            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
+            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -365,6 +365,14 @@ export namespace GstCodecs {
      */
     abstract class AV1Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<AV1Decoder>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AV1Decoder.SignalSignatures;
 
         // Constructors
 
@@ -376,17 +384,17 @@ export namespace GstCodecs {
 
         connect<K extends keyof AV1Decoder.SignalSignatures>(
             signal: K,
-            callback: AV1Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AV1Decoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AV1Decoder.SignalSignatures>(
             signal: K,
-            callback: AV1Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AV1Decoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AV1Decoder.SignalSignatures>(
             signal: K,
-            ...args: AV1Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AV1Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -446,15 +454,15 @@ export namespace GstCodecs {
     namespace H264Decoder {
         // Signal signatures
         interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
-            'notify::compliance': GObject.Object.Notify;
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::compliance': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
+            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
+            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
+            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -480,6 +488,14 @@ export namespace GstCodecs {
          */
         get compliance(): H264DecoderCompliance;
         set compliance(val: H264DecoderCompliance);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: H264Decoder.SignalSignatures;
 
         // Constructors
 
@@ -491,17 +507,17 @@ export namespace GstCodecs {
 
         connect<K extends keyof H264Decoder.SignalSignatures>(
             signal: K,
-            callback: H264Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, H264Decoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof H264Decoder.SignalSignatures>(
             signal: K,
-            callback: H264Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, H264Decoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof H264Decoder.SignalSignatures>(
             signal: K,
-            ...args: H264Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<H264Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -591,14 +607,14 @@ export namespace GstCodecs {
     namespace H265Decoder {
         // Signal signatures
         interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
+            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
+            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
+            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -611,6 +627,14 @@ export namespace GstCodecs {
      */
     abstract class H265Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<H265Decoder>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: H265Decoder.SignalSignatures;
 
         // Constructors
 
@@ -622,17 +646,17 @@ export namespace GstCodecs {
 
         connect<K extends keyof H265Decoder.SignalSignatures>(
             signal: K,
-            callback: H265Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, H265Decoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof H265Decoder.SignalSignatures>(
             signal: K,
-            callback: H265Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, H265Decoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof H265Decoder.SignalSignatures>(
             signal: K,
-            ...args: H265Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<H265Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -703,14 +727,14 @@ export namespace GstCodecs {
     namespace Mpeg2Decoder {
         // Signal signatures
         interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
+            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
+            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
+            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -723,6 +747,14 @@ export namespace GstCodecs {
      */
     abstract class Mpeg2Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<Mpeg2Decoder>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Mpeg2Decoder.SignalSignatures;
 
         // Constructors
 
@@ -734,17 +766,17 @@ export namespace GstCodecs {
 
         connect<K extends keyof Mpeg2Decoder.SignalSignatures>(
             signal: K,
-            callback: Mpeg2Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Mpeg2Decoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Mpeg2Decoder.SignalSignatures>(
             signal: K,
-            callback: Mpeg2Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Mpeg2Decoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Mpeg2Decoder.SignalSignatures>(
             signal: K,
-            ...args: Mpeg2Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Mpeg2Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -811,14 +843,14 @@ export namespace GstCodecs {
     namespace Vp8Decoder {
         // Signal signatures
         interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
+            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
+            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
+            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -831,6 +863,14 @@ export namespace GstCodecs {
      */
     abstract class Vp8Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<Vp8Decoder>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Vp8Decoder.SignalSignatures;
 
         // Constructors
 
@@ -842,17 +882,17 @@ export namespace GstCodecs {
 
         connect<K extends keyof Vp8Decoder.SignalSignatures>(
             signal: K,
-            callback: Vp8Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Vp8Decoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Vp8Decoder.SignalSignatures>(
             signal: K,
-            callback: Vp8Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Vp8Decoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Vp8Decoder.SignalSignatures>(
             signal: K,
-            ...args: Vp8Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Vp8Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -873,14 +913,14 @@ export namespace GstCodecs {
     namespace Vp9Decoder {
         // Signal signatures
         interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
-            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
-            'notify::automatic-request-sync-points': GObject.Object.Notify;
-            'notify::discard-corrupted-frames': GObject.Object.Notify;
-            'notify::max-errors': GObject.Object.Notify;
-            'notify::min-force-key-unit-interval': GObject.Object.Notify;
-            'notify::qos': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
+            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
+            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
+            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::qos': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -893,6 +933,14 @@ export namespace GstCodecs {
      */
     abstract class Vp9Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<Vp9Decoder>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Vp9Decoder.SignalSignatures;
 
         // Constructors
 
@@ -904,17 +952,17 @@ export namespace GstCodecs {
 
         connect<K extends keyof Vp9Decoder.SignalSignatures>(
             signal: K,
-            callback: Vp9Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Vp9Decoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Vp9Decoder.SignalSignatures>(
             signal: K,
-            callback: Vp9Decoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Vp9Decoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Vp9Decoder.SignalSignatures>(
             signal: K,
-            ...args: Vp9Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Vp9Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

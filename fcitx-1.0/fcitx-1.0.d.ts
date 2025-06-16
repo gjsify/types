@@ -21,64 +21,25 @@ export namespace Fcitx {
      */
 
     namespace Client {
-        // Signal callback interfaces
-
-        interface CloseIm {
-            (_source: Client): void;
-        }
-
-        interface CommitString {
-            (_source: Client, string: string): void;
-        }
-
-        interface Connected {
-            (_source: Client): void;
-        }
-
-        interface DeleteSurroundingText {
-            (_source: Client, cursor: number, len: number): void;
-        }
-
-        interface Disconnected {
-            (_source: Client): void;
-        }
-
-        interface EnableIm {
-            (_source: Client): void;
-        }
-
-        interface ForwardKey {
-            (_source: Client, keyval: number, state: number, type: number): void;
-        }
-
-        interface UpdateClientSideUi {
-            (
-                _source: Client,
-                auxup: string,
-                auxdown: string,
-                preedit: string,
-                candidateword: string,
-                imname: string,
-                cursor_pos: number,
-            ): void;
-        }
-
-        interface UpdateFormattedPreedit {
-            (_source: Client, preedit: PreeditItem[], cursor: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'close-im': CloseIm;
-            'commit-string': CommitString;
-            connected: Connected;
-            'delete-surrounding-text': DeleteSurroundingText;
-            disconnected: Disconnected;
-            'enable-im': EnableIm;
-            'forward-key': ForwardKey;
-            'update-client-side-ui': UpdateClientSideUi;
-            'update-formatted-preedit': UpdateFormattedPreedit;
-            'notify::connection': GObject.Object.Notify;
+            'close-im': () => void;
+            'commit-string': (arg0: string) => void;
+            connected: () => void;
+            'delete-surrounding-text': (arg0: number, arg1: number) => void;
+            disconnected: () => void;
+            'enable-im': () => void;
+            'forward-key': (arg0: number, arg1: number, arg2: number) => void;
+            'update-client-side-ui': (
+                arg0: string,
+                arg1: string,
+                arg2: string,
+                arg3: string,
+                arg4: string,
+                arg5: number,
+            ) => void;
+            'update-formatted-preedit': (arg0: PreeditItem[], arg1: number) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -97,6 +58,14 @@ export namespace Fcitx {
         // Properties
 
         set connection(val: Connection);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -110,13 +79,19 @@ export namespace Fcitx {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -242,20 +217,10 @@ export namespace Fcitx {
     }
 
     namespace Connection {
-        // Signal callback interfaces
-
-        interface Connected {
-            (_source: Connection): void;
-        }
-
-        interface Disconnected {
-            (_source: Connection): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            connected: Connected;
-            disconnected: Disconnected;
+            connected: () => void;
+            disconnected: () => void;
         }
 
         // Constructor properties interface
@@ -268,6 +233,14 @@ export namespace Fcitx {
      */
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Connection.SignalSignatures;
 
         // Constructors
 
@@ -281,17 +254,17 @@ export namespace Fcitx {
 
         connect<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            callback: Connection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            callback: Connection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -310,25 +283,19 @@ export namespace Fcitx {
     }
 
     namespace InputMethod {
-        // Signal callback interfaces
-
-        interface ImlistChanged {
-            (_source: InputMethod): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'imlist-changed': ImlistChanged;
-            'notify::current-im': GObject.Object.Notify;
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
+            'imlist-changed': () => void;
+            'notify::current-im': (pspec: GObject.ParamSpec) => void;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -361,6 +328,14 @@ export namespace Fcitx {
          */
         get currentIm(): string;
         set currentIm(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: InputMethod.SignalSignatures;
 
         // Constructors
 
@@ -382,17 +357,17 @@ export namespace Fcitx {
 
         connect<K extends keyof InputMethod.SignalSignatures>(
             signal: K,
-            callback: InputMethod.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputMethod.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputMethod.SignalSignatures>(
             signal: K,
-            callback: InputMethod.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, InputMethod.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputMethod.SignalSignatures>(
             signal: K,
-            ...args: InputMethod.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<InputMethod.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1238,15 +1213,15 @@ export namespace Fcitx {
     namespace Kbd {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::g-bus-type': GObject.Object.Notify;
-            'notify::g-connection': GObject.Object.Notify;
-            'notify::g-default-timeout': GObject.Object.Notify;
-            'notify::g-flags': GObject.Object.Notify;
-            'notify::g-interface-info': GObject.Object.Notify;
-            'notify::g-interface-name': GObject.Object.Notify;
-            'notify::g-name': GObject.Object.Notify;
-            'notify::g-name-owner': GObject.Object.Notify;
-            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
+            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
+            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name': (pspec: GObject.ParamSpec) => void;
+            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1263,6 +1238,14 @@ export namespace Fcitx {
      */
     class Kbd extends Gio.DBusProxy implements Gio.AsyncInitable<Kbd>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Kbd>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Kbd.SignalSignatures;
 
         // Constructors
 
@@ -1282,13 +1265,19 @@ export namespace Fcitx {
 
         // Signals
 
-        connect<K extends keyof Kbd.SignalSignatures>(signal: K, callback: Kbd.SignalSignatures[K]): number;
+        connect<K extends keyof Kbd.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Kbd.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Kbd.SignalSignatures>(signal: K, callback: Kbd.SignalSignatures[K]): number;
+        connect_after<K extends keyof Kbd.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Kbd.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Kbd.SignalSignatures>(
             signal: K,
-            ...args: Kbd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Kbd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

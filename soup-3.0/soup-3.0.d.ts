@@ -1756,12 +1756,12 @@ export namespace Soup {
     namespace Auth {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::authority': GObject.Object.Notify;
-            'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-cancelled': GObject.Object.Notify;
-            'notify::is-for-proxy': GObject.Object.Notify;
-            'notify::realm': GObject.Object.Notify;
-            'notify::scheme-name': GObject.Object.Notify;
+            'notify::authority': (pspec: GObject.ParamSpec) => void;
+            'notify::is-authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::is-cancelled': (pspec: GObject.ParamSpec) => void;
+            'notify::is-for-proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::realm': (pspec: GObject.ParamSpec) => void;
+            'notify::scheme-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1839,6 +1839,14 @@ export namespace Soup {
          * The authentication scheme name.
          */
         get schemeName(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Auth.SignalSignatures;
 
         // Constructors
 
@@ -1850,13 +1858,19 @@ export namespace Soup {
 
         // Signals
 
-        connect<K extends keyof Auth.SignalSignatures>(signal: K, callback: Auth.SignalSignatures[K]): number;
+        connect<K extends keyof Auth.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Auth.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Auth.SignalSignatures>(signal: K, callback: Auth.SignalSignatures[K]): number;
+        connect_after<K extends keyof Auth.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Auth.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Auth.SignalSignatures>(
             signal: K,
-            ...args: Auth.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Auth.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2015,12 +2029,12 @@ export namespace Soup {
     namespace AuthBasic {
         // Signal signatures
         interface SignalSignatures extends Auth.SignalSignatures {
-            'notify::authority': GObject.Object.Notify;
-            'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-cancelled': GObject.Object.Notify;
-            'notify::is-for-proxy': GObject.Object.Notify;
-            'notify::realm': GObject.Object.Notify;
-            'notify::scheme-name': GObject.Object.Notify;
+            'notify::authority': (pspec: GObject.ParamSpec) => void;
+            'notify::is-authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::is-cancelled': (pspec: GObject.ParamSpec) => void;
+            'notify::is-for-proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::realm': (pspec: GObject.ParamSpec) => void;
+            'notify::scheme-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2037,6 +2051,14 @@ export namespace Soup {
      */
     class AuthBasic extends Auth {
         static $gtype: GObject.GType<AuthBasic>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AuthBasic.SignalSignatures;
 
         // Constructors
 
@@ -2046,16 +2068,19 @@ export namespace Soup {
 
         // Signals
 
-        connect<K extends keyof AuthBasic.SignalSignatures>(signal: K, callback: AuthBasic.SignalSignatures[K]): number;
+        connect<K extends keyof AuthBasic.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AuthBasic.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthBasic.SignalSignatures>(
             signal: K,
-            callback: AuthBasic.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthBasic.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthBasic.SignalSignatures>(
             signal: K,
-            ...args: AuthBasic.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AuthBasic.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2063,12 +2088,12 @@ export namespace Soup {
     namespace AuthDigest {
         // Signal signatures
         interface SignalSignatures extends Auth.SignalSignatures {
-            'notify::authority': GObject.Object.Notify;
-            'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-cancelled': GObject.Object.Notify;
-            'notify::is-for-proxy': GObject.Object.Notify;
-            'notify::realm': GObject.Object.Notify;
-            'notify::scheme-name': GObject.Object.Notify;
+            'notify::authority': (pspec: GObject.ParamSpec) => void;
+            'notify::is-authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::is-cancelled': (pspec: GObject.ParamSpec) => void;
+            'notify::is-for-proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::realm': (pspec: GObject.ParamSpec) => void;
+            'notify::scheme-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2085,6 +2110,14 @@ export namespace Soup {
      */
     class AuthDigest extends Auth {
         static $gtype: GObject.GType<AuthDigest>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AuthDigest.SignalSignatures;
 
         // Constructors
 
@@ -2096,17 +2129,17 @@ export namespace Soup {
 
         connect<K extends keyof AuthDigest.SignalSignatures>(
             signal: K,
-            callback: AuthDigest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthDigest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthDigest.SignalSignatures>(
             signal: K,
-            callback: AuthDigest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthDigest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthDigest.SignalSignatures>(
             signal: K,
-            ...args: AuthDigest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AuthDigest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2114,12 +2147,12 @@ export namespace Soup {
     namespace AuthDomain {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::filter': GObject.Object.Notify;
-            'notify::filter-data': GObject.Object.Notify;
-            'notify::generic-auth-callback': GObject.Object.Notify;
-            'notify::generic-auth-data': GObject.Object.Notify;
-            'notify::proxy': GObject.Object.Notify;
-            'notify::realm': GObject.Object.Notify;
+            'notify::filter': (pspec: GObject.ParamSpec) => void;
+            'notify::filter-data': (pspec: GObject.ParamSpec) => void;
+            'notify::generic-auth-callback': (pspec: GObject.ParamSpec) => void;
+            'notify::generic-auth-data': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::realm': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2204,6 +2237,14 @@ export namespace Soup {
          * The realm of this auth domain.
          */
         get realm(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AuthDomain.SignalSignatures;
 
         // Constructors
 
@@ -2215,17 +2256,17 @@ export namespace Soup {
 
         connect<K extends keyof AuthDomain.SignalSignatures>(
             signal: K,
-            callback: AuthDomain.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthDomain.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthDomain.SignalSignatures>(
             signal: K,
-            callback: AuthDomain.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthDomain.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthDomain.SignalSignatures>(
             signal: K,
-            ...args: AuthDomain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AuthDomain.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2379,14 +2420,14 @@ export namespace Soup {
     namespace AuthDomainBasic {
         // Signal signatures
         interface SignalSignatures extends AuthDomain.SignalSignatures {
-            'notify::auth-callback': GObject.Object.Notify;
-            'notify::auth-data': GObject.Object.Notify;
-            'notify::filter': GObject.Object.Notify;
-            'notify::filter-data': GObject.Object.Notify;
-            'notify::generic-auth-callback': GObject.Object.Notify;
-            'notify::generic-auth-data': GObject.Object.Notify;
-            'notify::proxy': GObject.Object.Notify;
-            'notify::realm': GObject.Object.Notify;
+            'notify::auth-callback': (pspec: GObject.ParamSpec) => void;
+            'notify::auth-data': (pspec: GObject.ParamSpec) => void;
+            'notify::filter': (pspec: GObject.ParamSpec) => void;
+            'notify::filter-data': (pspec: GObject.ParamSpec) => void;
+            'notify::generic-auth-callback': (pspec: GObject.ParamSpec) => void;
+            'notify::generic-auth-data': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::realm': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2430,6 +2471,14 @@ export namespace Soup {
          */
         get authData(): any;
         set authData(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AuthDomainBasic.SignalSignatures;
 
         // Constructors
 
@@ -2441,17 +2490,17 @@ export namespace Soup {
 
         connect<K extends keyof AuthDomainBasic.SignalSignatures>(
             signal: K,
-            callback: AuthDomainBasic.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthDomainBasic.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthDomainBasic.SignalSignatures>(
             signal: K,
-            callback: AuthDomainBasic.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthDomainBasic.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthDomainBasic.SignalSignatures>(
             signal: K,
-            ...args: AuthDomainBasic.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AuthDomainBasic.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2477,14 +2526,14 @@ export namespace Soup {
     namespace AuthDomainDigest {
         // Signal signatures
         interface SignalSignatures extends AuthDomain.SignalSignatures {
-            'notify::auth-callback': GObject.Object.Notify;
-            'notify::auth-data': GObject.Object.Notify;
-            'notify::filter': GObject.Object.Notify;
-            'notify::filter-data': GObject.Object.Notify;
-            'notify::generic-auth-callback': GObject.Object.Notify;
-            'notify::generic-auth-data': GObject.Object.Notify;
-            'notify::proxy': GObject.Object.Notify;
-            'notify::realm': GObject.Object.Notify;
+            'notify::auth-callback': (pspec: GObject.ParamSpec) => void;
+            'notify::auth-data': (pspec: GObject.ParamSpec) => void;
+            'notify::filter': (pspec: GObject.ParamSpec) => void;
+            'notify::filter-data': (pspec: GObject.ParamSpec) => void;
+            'notify::generic-auth-callback': (pspec: GObject.ParamSpec) => void;
+            'notify::generic-auth-data': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::realm': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2528,6 +2577,14 @@ export namespace Soup {
          */
         get authData(): any;
         set authData(val: any);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AuthDomainDigest.SignalSignatures;
 
         // Constructors
 
@@ -2539,17 +2596,17 @@ export namespace Soup {
 
         connect<K extends keyof AuthDomainDigest.SignalSignatures>(
             signal: K,
-            callback: AuthDomainDigest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthDomainDigest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthDomainDigest.SignalSignatures>(
             signal: K,
-            callback: AuthDomainDigest.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthDomainDigest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthDomainDigest.SignalSignatures>(
             signal: K,
-            ...args: AuthDomainDigest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AuthDomainDigest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2626,6 +2683,14 @@ export namespace Soup {
      */
     class AuthManager extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<AuthManager>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AuthManager.SignalSignatures;
 
         // Constructors
 
@@ -2637,17 +2702,17 @@ export namespace Soup {
 
         connect<K extends keyof AuthManager.SignalSignatures>(
             signal: K,
-            callback: AuthManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthManager.SignalSignatures>(
             signal: K,
-            callback: AuthManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthManager.SignalSignatures>(
             signal: K,
-            ...args: AuthManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AuthManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3118,12 +3183,12 @@ export namespace Soup {
     namespace AuthNTLM {
         // Signal signatures
         interface SignalSignatures extends Auth.SignalSignatures {
-            'notify::authority': GObject.Object.Notify;
-            'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-cancelled': GObject.Object.Notify;
-            'notify::is-for-proxy': GObject.Object.Notify;
-            'notify::realm': GObject.Object.Notify;
-            'notify::scheme-name': GObject.Object.Notify;
+            'notify::authority': (pspec: GObject.ParamSpec) => void;
+            'notify::is-authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::is-cancelled': (pspec: GObject.ParamSpec) => void;
+            'notify::is-for-proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::realm': (pspec: GObject.ParamSpec) => void;
+            'notify::scheme-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3140,6 +3205,14 @@ export namespace Soup {
      */
     class AuthNTLM extends Auth {
         static $gtype: GObject.GType<AuthNTLM>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AuthNTLM.SignalSignatures;
 
         // Constructors
 
@@ -3149,16 +3222,19 @@ export namespace Soup {
 
         // Signals
 
-        connect<K extends keyof AuthNTLM.SignalSignatures>(signal: K, callback: AuthNTLM.SignalSignatures[K]): number;
+        connect<K extends keyof AuthNTLM.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AuthNTLM.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthNTLM.SignalSignatures>(
             signal: K,
-            callback: AuthNTLM.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthNTLM.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthNTLM.SignalSignatures>(
             signal: K,
-            ...args: AuthNTLM.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AuthNTLM.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3166,12 +3242,12 @@ export namespace Soup {
     namespace AuthNegotiate {
         // Signal signatures
         interface SignalSignatures extends Auth.SignalSignatures {
-            'notify::authority': GObject.Object.Notify;
-            'notify::is-authenticated': GObject.Object.Notify;
-            'notify::is-cancelled': GObject.Object.Notify;
-            'notify::is-for-proxy': GObject.Object.Notify;
-            'notify::realm': GObject.Object.Notify;
-            'notify::scheme-name': GObject.Object.Notify;
+            'notify::authority': (pspec: GObject.ParamSpec) => void;
+            'notify::is-authenticated': (pspec: GObject.ParamSpec) => void;
+            'notify::is-cancelled': (pspec: GObject.ParamSpec) => void;
+            'notify::is-for-proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::realm': (pspec: GObject.ParamSpec) => void;
+            'notify::scheme-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3193,6 +3269,14 @@ export namespace Soup {
      */
     class AuthNegotiate extends Auth {
         static $gtype: GObject.GType<AuthNegotiate>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AuthNegotiate.SignalSignatures;
 
         // Constructors
 
@@ -3204,17 +3288,17 @@ export namespace Soup {
 
         connect<K extends keyof AuthNegotiate.SignalSignatures>(
             signal: K,
-            callback: AuthNegotiate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthNegotiate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthNegotiate.SignalSignatures>(
             signal: K,
-            callback: AuthNegotiate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthNegotiate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthNegotiate.SignalSignatures>(
             signal: K,
-            ...args: AuthNegotiate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AuthNegotiate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3233,8 +3317,8 @@ export namespace Soup {
     namespace Cache {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::cache-dir': GObject.Object.Notify;
-            'notify::cache-type': GObject.Object.Notify;
+            'notify::cache-dir': (pspec: GObject.ParamSpec) => void;
+            'notify::cache-type': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3271,6 +3355,14 @@ export namespace Soup {
          * Whether the cache is private or shared.
          */
         get cacheType(): CacheType;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Cache.SignalSignatures;
 
         // Constructors
 
@@ -3282,13 +3374,19 @@ export namespace Soup {
 
         // Signals
 
-        connect<K extends keyof Cache.SignalSignatures>(signal: K, callback: Cache.SignalSignatures[K]): number;
+        connect<K extends keyof Cache.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Cache.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Cache.SignalSignatures>(signal: K, callback: Cache.SignalSignatures[K]): number;
+        connect_after<K extends keyof Cache.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Cache.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Cache.SignalSignatures>(
             signal: K,
-            ...args: Cache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Cache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3822,6 +3920,14 @@ export namespace Soup {
      */
     class ContentDecoder extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<ContentDecoder>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ContentDecoder.SignalSignatures;
 
         // Constructors
 
@@ -3833,17 +3939,17 @@ export namespace Soup {
 
         connect<K extends keyof ContentDecoder.SignalSignatures>(
             signal: K,
-            callback: ContentDecoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContentDecoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContentDecoder.SignalSignatures>(
             signal: K,
-            callback: ContentDecoder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContentDecoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContentDecoder.SignalSignatures>(
             signal: K,
-            ...args: ContentDecoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ContentDecoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4310,6 +4416,14 @@ export namespace Soup {
      */
     class ContentSniffer extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<ContentSniffer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ContentSniffer.SignalSignatures;
 
         // Constructors
 
@@ -4323,17 +4437,17 @@ export namespace Soup {
 
         connect<K extends keyof ContentSniffer.SignalSignatures>(
             signal: K,
-            callback: ContentSniffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContentSniffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContentSniffer.SignalSignatures>(
             signal: K,
-            callback: ContentSniffer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ContentSniffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContentSniffer.SignalSignatures>(
             signal: K,
-            ...args: ContentSniffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ContentSniffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4793,17 +4907,11 @@ export namespace Soup {
     }
 
     namespace CookieJar {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: CookieJar, old_cookie?: Cookie | null, new_cookie?: Cookie | null): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
-            'notify::accept-policy': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            changed: (arg0: Cookie | null, arg1: Cookie | null) => void;
+            'notify::accept-policy': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4850,6 +4958,14 @@ export namespace Soup {
          * Whether or not the cookie jar is read-only.
          */
         get readOnly(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CookieJar.SignalSignatures;
 
         // Constructors
 
@@ -4861,16 +4977,19 @@ export namespace Soup {
 
         // Signals
 
-        connect<K extends keyof CookieJar.SignalSignatures>(signal: K, callback: CookieJar.SignalSignatures[K]): number;
+        connect<K extends keyof CookieJar.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, CookieJar.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CookieJar.SignalSignatures>(
             signal: K,
-            callback: CookieJar.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CookieJar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CookieJar.SignalSignatures>(
             signal: K,
-            ...args: CookieJar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CookieJar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5491,9 +5610,9 @@ export namespace Soup {
     namespace CookieJarDB {
         // Signal signatures
         interface SignalSignatures extends CookieJar.SignalSignatures {
-            'notify::filename': GObject.Object.Notify;
-            'notify::accept-policy': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::filename': (pspec: GObject.ParamSpec) => void;
+            'notify::accept-policy': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5522,6 +5641,14 @@ export namespace Soup {
          * Cookie-storage filename.
          */
         get filename(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CookieJarDB.SignalSignatures;
 
         // Constructors
 
@@ -5538,17 +5665,17 @@ export namespace Soup {
 
         connect<K extends keyof CookieJarDB.SignalSignatures>(
             signal: K,
-            callback: CookieJarDB.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CookieJarDB.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CookieJarDB.SignalSignatures>(
             signal: K,
-            callback: CookieJarDB.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CookieJarDB.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CookieJarDB.SignalSignatures>(
             signal: K,
-            ...args: CookieJarDB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CookieJarDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5997,9 +6124,9 @@ export namespace Soup {
     namespace CookieJarText {
         // Signal signatures
         interface SignalSignatures extends CookieJar.SignalSignatures {
-            'notify::filename': GObject.Object.Notify;
-            'notify::accept-policy': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
+            'notify::filename': (pspec: GObject.ParamSpec) => void;
+            'notify::accept-policy': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6024,6 +6151,14 @@ export namespace Soup {
          * Cookie-storage filename.
          */
         get filename(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CookieJarText.SignalSignatures;
 
         // Constructors
 
@@ -6040,17 +6175,17 @@ export namespace Soup {
 
         connect<K extends keyof CookieJarText.SignalSignatures>(
             signal: K,
-            callback: CookieJarText.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CookieJarText.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CookieJarText.SignalSignatures>(
             signal: K,
-            callback: CookieJarText.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CookieJarText.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CookieJarText.SignalSignatures>(
             signal: K,
-            ...args: CookieJarText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CookieJarText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6497,15 +6632,9 @@ export namespace Soup {
     }
 
     namespace HSTSEnforcer {
-        // Signal callback interfaces
-
-        interface Changed {
-            (_source: HSTSEnforcer, old_policy: HSTSPolicy, new_policy: HSTSPolicy): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            changed: Changed;
+            changed: (arg0: HSTSPolicy, arg1: HSTSPolicy) => void;
         }
 
         // Constructor properties interface
@@ -6539,6 +6668,14 @@ export namespace Soup {
      */
     class HSTSEnforcer extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<HSTSEnforcer>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HSTSEnforcer.SignalSignatures;
 
         // Constructors
 
@@ -6552,17 +6689,17 @@ export namespace Soup {
 
         connect<K extends keyof HSTSEnforcer.SignalSignatures>(
             signal: K,
-            callback: HSTSEnforcer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HSTSEnforcer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HSTSEnforcer.SignalSignatures>(
             signal: K,
-            callback: HSTSEnforcer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HSTSEnforcer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HSTSEnforcer.SignalSignatures>(
             signal: K,
-            ...args: HSTSEnforcer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HSTSEnforcer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7076,7 +7213,7 @@ export namespace Soup {
     namespace HSTSEnforcerDB {
         // Signal signatures
         interface SignalSignatures extends HSTSEnforcer.SignalSignatures {
-            'notify::filename': GObject.Object.Notify;
+            'notify::filename': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7101,6 +7238,14 @@ export namespace Soup {
          * The filename of the SQLite database where HSTS policies are stored.
          */
         get filename(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: HSTSEnforcerDB.SignalSignatures;
 
         // Constructors
 
@@ -7117,17 +7262,17 @@ export namespace Soup {
 
         connect<K extends keyof HSTSEnforcerDB.SignalSignatures>(
             signal: K,
-            callback: HSTSEnforcerDB.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HSTSEnforcerDB.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HSTSEnforcerDB.SignalSignatures>(
             signal: K,
-            callback: HSTSEnforcerDB.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, HSTSEnforcerDB.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HSTSEnforcerDB.SignalSignatures>(
             signal: K,
-            ...args: HSTSEnforcerDB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<HSTSEnforcerDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7576,8 +7721,8 @@ export namespace Soup {
     namespace Logger {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::level': GObject.Object.Notify;
-            'notify::max-body-size': GObject.Object.Notify;
+            'notify::level': (pspec: GObject.ParamSpec) => void;
+            'notify::max-body-size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7673,6 +7818,14 @@ export namespace Soup {
          */
         get maxBodySize(): number;
         set maxBodySize(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Logger.SignalSignatures;
 
         // Constructors
 
@@ -7684,13 +7837,19 @@ export namespace Soup {
 
         // Signals
 
-        connect<K extends keyof Logger.SignalSignatures>(signal: K, callback: Logger.SignalSignatures[K]): number;
+        connect<K extends keyof Logger.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Logger.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Logger.SignalSignatures>(signal: K, callback: Logger.SignalSignatures[K]): number;
+        connect_after<K extends keyof Logger.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Logger.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Logger.SignalSignatures>(
             signal: K,
-            ...args: Logger.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Logger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8176,117 +8335,43 @@ export namespace Soup {
     }
 
     namespace Message {
-        // Signal callback interfaces
-
-        interface AcceptCertificate {
-            (
-                _source: Message,
-                tls_peer_certificate: Gio.TlsCertificate,
-                tls_peer_errors: Gio.TlsCertificateFlags,
-            ): boolean | void;
-        }
-
-        interface Authenticate {
-            (_source: Message, auth: Auth, retrying: boolean): boolean | void;
-        }
-
-        interface ContentSniffed {
-            (_source: Message, type: string, params: { [key: string]: any } | GLib.HashTable<string, string>): void;
-        }
-
-        interface Finished {
-            (_source: Message): void;
-        }
-
-        interface GotBody {
-            (_source: Message): void;
-        }
-
-        interface GotBodyData {
-            (_source: Message, chunk_size: number): void;
-        }
-
-        interface GotHeaders {
-            (_source: Message): void;
-        }
-
-        interface GotInformational {
-            (_source: Message): void;
-        }
-
-        interface HstsEnforced {
-            (_source: Message): void;
-        }
-
-        interface NetworkEvent {
-            (_source: Message, event: Gio.SocketClientEvent, connection: Gio.IOStream): void;
-        }
-
-        interface RequestCertificate {
-            (_source: Message, tls_connection: Gio.TlsClientConnection): boolean | void;
-        }
-
-        interface RequestCertificatePassword {
-            (_source: Message, tls_password: Gio.TlsPassword): boolean | void;
-        }
-
-        interface Restarted {
-            (_source: Message): void;
-        }
-
-        interface Starting {
-            (_source: Message): void;
-        }
-
-        interface WroteBody {
-            (_source: Message): void;
-        }
-
-        interface WroteBodyData {
-            (_source: Message, chunk_size: number): void;
-        }
-
-        interface WroteHeaders {
-            (_source: Message): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'accept-certificate': AcceptCertificate;
-            authenticate: Authenticate;
-            'content-sniffed': ContentSniffed;
-            finished: Finished;
-            'got-body': GotBody;
-            'got-body-data': GotBodyData;
-            'got-headers': GotHeaders;
-            'got-informational': GotInformational;
-            'hsts-enforced': HstsEnforced;
-            'network-event': NetworkEvent;
-            'request-certificate': RequestCertificate;
-            'request-certificate-password': RequestCertificatePassword;
-            restarted: Restarted;
-            starting: Starting;
-            'wrote-body': WroteBody;
-            'wrote-body-data': WroteBodyData;
-            'wrote-headers': WroteHeaders;
-            'notify::first-party': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::http-version': GObject.Object.Notify;
-            'notify::is-options-ping': GObject.Object.Notify;
-            'notify::is-top-level-navigation': GObject.Object.Notify;
-            'notify::method': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::reason-phrase': GObject.Object.Notify;
-            'notify::remote-address': GObject.Object.Notify;
-            'notify::request-headers': GObject.Object.Notify;
-            'notify::response-headers': GObject.Object.Notify;
-            'notify::site-for-cookies': GObject.Object.Notify;
-            'notify::status-code': GObject.Object.Notify;
-            'notify::tls-ciphersuite-name': GObject.Object.Notify;
-            'notify::tls-peer-certificate': GObject.Object.Notify;
-            'notify::tls-peer-certificate-errors': GObject.Object.Notify;
-            'notify::tls-protocol-version': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
+            'accept-certificate': (arg0: Gio.TlsCertificate, arg1: Gio.TlsCertificateFlags) => boolean | void;
+            authenticate: (arg0: Auth, arg1: boolean) => boolean | void;
+            'content-sniffed': (arg0: string, arg1: GLib.HashTable<string, string>) => void;
+            finished: () => void;
+            'got-body': () => void;
+            'got-body-data': (arg0: number) => void;
+            'got-headers': () => void;
+            'got-informational': () => void;
+            'hsts-enforced': () => void;
+            'network-event': (arg0: Gio.SocketClientEvent, arg1: Gio.IOStream) => void;
+            'request-certificate': (arg0: Gio.TlsClientConnection) => boolean | void;
+            'request-certificate-password': (arg0: Gio.TlsPassword) => boolean | void;
+            restarted: () => void;
+            starting: () => void;
+            'wrote-body': () => void;
+            'wrote-body-data': (arg0: number) => void;
+            'wrote-headers': () => void;
+            'notify::first-party': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::http-version': (pspec: GObject.ParamSpec) => void;
+            'notify::is-options-ping': (pspec: GObject.ParamSpec) => void;
+            'notify::is-top-level-navigation': (pspec: GObject.ParamSpec) => void;
+            'notify::method': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::reason-phrase': (pspec: GObject.ParamSpec) => void;
+            'notify::remote-address': (pspec: GObject.ParamSpec) => void;
+            'notify::request-headers': (pspec: GObject.ParamSpec) => void;
+            'notify::response-headers': (pspec: GObject.ParamSpec) => void;
+            'notify::site-for-cookies': (pspec: GObject.ParamSpec) => void;
+            'notify::status-code': (pspec: GObject.ParamSpec) => void;
+            'notify::tls-ciphersuite-name': (pspec: GObject.ParamSpec) => void;
+            'notify::tls-peer-certificate': (pspec: GObject.ParamSpec) => void;
+            'notify::tls-peer-certificate-errors': (pspec: GObject.ParamSpec) => void;
+            'notify::tls-protocol-version': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8511,6 +8596,14 @@ export namespace Soup {
          */
         get uri(): GLib.Uri;
         set uri(val: GLib.Uri);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Message.SignalSignatures;
 
         // Constructors
 
@@ -8530,16 +8623,19 @@ export namespace Soup {
 
         // Signals
 
-        connect<K extends keyof Message.SignalSignatures>(signal: K, callback: Message.SignalSignatures[K]): number;
+        connect<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Message.SignalSignatures>(
             signal: K,
-            callback: Message.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Message.SignalSignatures>(
             signal: K,
-            ...args: Message.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Message.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8852,9 +8948,9 @@ export namespace Soup {
     namespace MultipartInputStream {
         // Signal signatures
         interface SignalSignatures extends Gio.FilterInputStream.SignalSignatures {
-            'notify::message': GObject.Object.Notify;
-            'notify::base-stream': GObject.Object.Notify;
-            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::message': (pspec: GObject.ParamSpec) => void;
+            'notify::base-stream': (pspec: GObject.ParamSpec) => void;
+            'notify::close-base-stream': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8888,6 +8984,14 @@ export namespace Soup {
          * The [class`Message]`.
          */
         get message(): Message;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MultipartInputStream.SignalSignatures;
 
         // Constructors
 
@@ -8901,17 +9005,19 @@ export namespace Soup {
 
         connect<K extends keyof MultipartInputStream.SignalSignatures>(
             signal: K,
-            callback: MultipartInputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MultipartInputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MultipartInputStream.SignalSignatures>(
             signal: K,
-            callback: MultipartInputStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MultipartInputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MultipartInputStream.SignalSignatures>(
             signal: K,
-            ...args: MultipartInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MultipartInputStream.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9862,35 +9968,17 @@ export namespace Soup {
     }
 
     namespace Server {
-        // Signal callback interfaces
-
-        interface RequestAborted {
-            (_source: Server, message: ServerMessage): void;
-        }
-
-        interface RequestFinished {
-            (_source: Server, message: ServerMessage): void;
-        }
-
-        interface RequestRead {
-            (_source: Server, message: ServerMessage): void;
-        }
-
-        interface RequestStarted {
-            (_source: Server, message: ServerMessage): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'request-aborted': RequestAborted;
-            'request-finished': RequestFinished;
-            'request-read': RequestRead;
-            'request-started': RequestStarted;
-            'notify::raw-paths': GObject.Object.Notify;
-            'notify::server-header': GObject.Object.Notify;
-            'notify::tls-auth-mode': GObject.Object.Notify;
-            'notify::tls-certificate': GObject.Object.Notify;
-            'notify::tls-database': GObject.Object.Notify;
+            'request-aborted': (arg0: ServerMessage) => void;
+            'request-finished': (arg0: ServerMessage) => void;
+            'request-read': (arg0: ServerMessage) => void;
+            'request-started': (arg0: ServerMessage) => void;
+            'notify::raw-paths': (pspec: GObject.ParamSpec) => void;
+            'notify::server-header': (pspec: GObject.ParamSpec) => void;
+            'notify::tls-auth-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::tls-certificate': (pspec: GObject.ParamSpec) => void;
+            'notify::tls-database': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10110,6 +10198,14 @@ export namespace Soup {
          */
         get tlsDatabase(): Gio.TlsDatabase;
         set tlsDatabase(val: Gio.TlsDatabase);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Server.SignalSignatures;
 
         // Constructors
 
@@ -10119,13 +10215,19 @@ export namespace Soup {
 
         // Signals
 
-        connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect_after<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Server.SignalSignatures>(
             signal: K,
-            ...args: Server.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Server.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10466,76 +10568,22 @@ export namespace Soup {
     }
 
     namespace ServerMessage {
-        // Signal callback interfaces
-
-        interface AcceptCertificate {
-            (
-                _source: ServerMessage,
-                tls_peer_certificate: Gio.TlsCertificate,
-                tls_peer_errors: Gio.TlsCertificateFlags,
-            ): boolean | void;
-        }
-
-        interface Connected {
-            (_source: ServerMessage): void;
-        }
-
-        interface Disconnected {
-            (_source: ServerMessage): void;
-        }
-
-        interface Finished {
-            (_source: ServerMessage): void;
-        }
-
-        interface GotBody {
-            (_source: ServerMessage): void;
-        }
-
-        interface GotChunk {
-            (_source: ServerMessage, chunk: GLib.Bytes | Uint8Array): void;
-        }
-
-        interface GotHeaders {
-            (_source: ServerMessage): void;
-        }
-
-        interface WroteBody {
-            (_source: ServerMessage): void;
-        }
-
-        interface WroteBodyData {
-            (_source: ServerMessage, chunk_size: number): void;
-        }
-
-        interface WroteChunk {
-            (_source: ServerMessage): void;
-        }
-
-        interface WroteHeaders {
-            (_source: ServerMessage): void;
-        }
-
-        interface WroteInformational {
-            (_source: ServerMessage): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'accept-certificate': AcceptCertificate;
-            connected: Connected;
-            disconnected: Disconnected;
-            finished: Finished;
-            'got-body': GotBody;
-            'got-chunk': GotChunk;
-            'got-headers': GotHeaders;
-            'wrote-body': WroteBody;
-            'wrote-body-data': WroteBodyData;
-            'wrote-chunk': WroteChunk;
-            'wrote-headers': WroteHeaders;
-            'wrote-informational': WroteInformational;
-            'notify::tls-peer-certificate': GObject.Object.Notify;
-            'notify::tls-peer-certificate-errors': GObject.Object.Notify;
+            'accept-certificate': (arg0: Gio.TlsCertificate, arg1: Gio.TlsCertificateFlags) => boolean | void;
+            connected: () => void;
+            disconnected: () => void;
+            finished: () => void;
+            'got-body': () => void;
+            'got-chunk': (arg0: GLib.Bytes) => void;
+            'got-headers': () => void;
+            'wrote-body': () => void;
+            'wrote-body-data': (arg0: number) => void;
+            'wrote-chunk': () => void;
+            'wrote-headers': () => void;
+            'wrote-informational': () => void;
+            'notify::tls-peer-certificate': (pspec: GObject.ParamSpec) => void;
+            'notify::tls-peer-certificate-errors': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10583,6 +10631,14 @@ export namespace Soup {
          * The verification errors on #SoupServerMessage:tls-peer-certificate
          */
         get tlsPeerCertificateErrors(): Gio.TlsCertificateFlags;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ServerMessage.SignalSignatures;
 
         // Constructors
 
@@ -10594,17 +10650,17 @@ export namespace Soup {
 
         connect<K extends keyof ServerMessage.SignalSignatures>(
             signal: K,
-            callback: ServerMessage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServerMessage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServerMessage.SignalSignatures>(
             signal: K,
-            callback: ServerMessage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ServerMessage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServerMessage.SignalSignatures>(
             signal: K,
-            ...args: ServerMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ServerMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10772,32 +10828,22 @@ export namespace Soup {
     }
 
     namespace Session {
-        // Signal callback interfaces
-
-        interface RequestQueued {
-            (_source: Session, msg: Message): void;
-        }
-
-        interface RequestUnqueued {
-            (_source: Session, msg: Message): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'request-queued': RequestQueued;
-            'request-unqueued': RequestUnqueued;
-            'notify::accept-language': GObject.Object.Notify;
-            'notify::accept-language-auto': GObject.Object.Notify;
-            'notify::idle-timeout': GObject.Object.Notify;
-            'notify::local-address': GObject.Object.Notify;
-            'notify::max-conns': GObject.Object.Notify;
-            'notify::max-conns-per-host': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::remote-connectable': GObject.Object.Notify;
-            'notify::timeout': GObject.Object.Notify;
-            'notify::tls-database': GObject.Object.Notify;
-            'notify::tls-interaction': GObject.Object.Notify;
-            'notify::user-agent': GObject.Object.Notify;
+            'request-queued': (arg0: Message) => void;
+            'request-unqueued': (arg0: Message) => void;
+            'notify::accept-language': (pspec: GObject.ParamSpec) => void;
+            'notify::accept-language-auto': (pspec: GObject.ParamSpec) => void;
+            'notify::idle-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::local-address': (pspec: GObject.ParamSpec) => void;
+            'notify::max-conns': (pspec: GObject.ParamSpec) => void;
+            'notify::max-conns-per-host': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::remote-connectable': (pspec: GObject.ParamSpec) => void;
+            'notify::timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::tls-database': (pspec: GObject.ParamSpec) => void;
+            'notify::tls-interaction': (pspec: GObject.ParamSpec) => void;
+            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11115,6 +11161,14 @@ export namespace Soup {
          */
         get userAgent(): string;
         set userAgent(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -11126,16 +11180,19 @@ export namespace Soup {
 
         // Signals
 
-        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
-            callback: Session.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11788,45 +11845,23 @@ export namespace Soup {
     }
 
     namespace WebsocketConnection {
-        // Signal callback interfaces
-
-        interface Closed {
-            (_source: WebsocketConnection): void;
-        }
-
-        interface Closing {
-            (_source: WebsocketConnection): void;
-        }
-
-        interface Error {
-            (_source: WebsocketConnection, error: GLib.Error): void;
-        }
-
-        interface Message {
-            (_source: WebsocketConnection, type: number, message: GLib.Bytes | Uint8Array): void;
-        }
-
-        interface Pong {
-            (_source: WebsocketConnection, message: GLib.Bytes | Uint8Array): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            closed: Closed;
-            closing: Closing;
-            error: Error;
-            message: Message;
-            pong: Pong;
-            'notify::connection-type': GObject.Object.Notify;
-            'notify::extensions': GObject.Object.Notify;
-            'notify::io-stream': GObject.Object.Notify;
-            'notify::keepalive-interval': GObject.Object.Notify;
-            'notify::keepalive-pong-timeout': GObject.Object.Notify;
-            'notify::max-incoming-payload-size': GObject.Object.Notify;
-            'notify::origin': GObject.Object.Notify;
-            'notify::protocol': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
+            closed: () => void;
+            closing: () => void;
+            error: (arg0: GLib.Error) => void;
+            message: (arg0: number, arg1: GLib.Bytes) => void;
+            pong: (arg0: GLib.Bytes) => void;
+            'notify::connection-type': (pspec: GObject.ParamSpec) => void;
+            'notify::extensions': (pspec: GObject.ParamSpec) => void;
+            'notify::io-stream': (pspec: GObject.ParamSpec) => void;
+            'notify::keepalive-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::keepalive-pong-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::max-incoming-payload-size': (pspec: GObject.ParamSpec) => void;
+            'notify::origin': (pspec: GObject.ParamSpec) => void;
+            'notify::protocol': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11974,6 +12009,14 @@ export namespace Soup {
          * and for clients it is the address connected to.
          */
         get uri(): GLib.Uri;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WebsocketConnection.SignalSignatures;
 
         // Constructors
 
@@ -11994,17 +12037,19 @@ export namespace Soup {
 
         connect<K extends keyof WebsocketConnection.SignalSignatures>(
             signal: K,
-            callback: WebsocketConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebsocketConnection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebsocketConnection.SignalSignatures>(
             signal: K,
-            callback: WebsocketConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebsocketConnection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebsocketConnection.SignalSignatures>(
             signal: K,
-            ...args: WebsocketConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WebsocketConnection.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12169,6 +12214,14 @@ export namespace Soup {
      */
     abstract class WebsocketExtension extends GObject.Object {
         static $gtype: GObject.GType<WebsocketExtension>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WebsocketExtension.SignalSignatures;
 
         // Constructors
 
@@ -12180,17 +12233,17 @@ export namespace Soup {
 
         connect<K extends keyof WebsocketExtension.SignalSignatures>(
             signal: K,
-            callback: WebsocketExtension.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebsocketExtension.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebsocketExtension.SignalSignatures>(
             signal: K,
-            callback: WebsocketExtension.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebsocketExtension.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebsocketExtension.SignalSignatures>(
             signal: K,
-            ...args: WebsocketExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WebsocketExtension.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12312,6 +12365,14 @@ export namespace Soup {
      */
     class WebsocketExtensionDeflate extends WebsocketExtension {
         static $gtype: GObject.GType<WebsocketExtensionDeflate>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WebsocketExtensionDeflate.SignalSignatures;
 
         // Constructors
 
@@ -12323,17 +12384,19 @@ export namespace Soup {
 
         connect<K extends keyof WebsocketExtensionDeflate.SignalSignatures>(
             signal: K,
-            callback: WebsocketExtensionDeflate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebsocketExtensionDeflate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebsocketExtensionDeflate.SignalSignatures>(
             signal: K,
-            callback: WebsocketExtensionDeflate.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebsocketExtensionDeflate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebsocketExtensionDeflate.SignalSignatures>(
             signal: K,
-            ...args: WebsocketExtensionDeflate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WebsocketExtensionDeflate.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -12359,6 +12422,14 @@ export namespace Soup {
      */
     class WebsocketExtensionManager extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<WebsocketExtensionManager>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WebsocketExtensionManager.SignalSignatures;
 
         // Constructors
 
@@ -12370,17 +12441,19 @@ export namespace Soup {
 
         connect<K extends keyof WebsocketExtensionManager.SignalSignatures>(
             signal: K,
-            callback: WebsocketExtensionManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebsocketExtensionManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebsocketExtensionManager.SignalSignatures>(
             signal: K,
-            callback: WebsocketExtensionManager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WebsocketExtensionManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebsocketExtensionManager.SignalSignatures>(
             signal: K,
-            ...args: WebsocketExtensionManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WebsocketExtensionManager.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

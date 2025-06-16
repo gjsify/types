@@ -1443,8 +1443,8 @@ export namespace GData {
     namespace APPCategories {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::is-fixed': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::is-fixed': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1475,6 +1475,14 @@ export namespace GData {
          * API reference: <ulink type="http" url="http://www.atomenabled.org/developers/protocol/#appCategories2">app:categories</ulink>
          */
         get isFixed(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: APPCategories.SignalSignatures;
 
         // Constructors
 
@@ -1486,17 +1494,17 @@ export namespace GData {
 
         connect<K extends keyof APPCategories.SignalSignatures>(
             signal: K,
-            callback: APPCategories.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, APPCategories.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof APPCategories.SignalSignatures>(
             signal: K,
-            callback: APPCategories.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, APPCategories.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof APPCategories.SignalSignatures>(
             signal: K,
-            ...args: APPCategories.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<APPCategories.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1512,22 +1520,22 @@ export namespace GData {
     namespace AccessRule {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
-            'notify::edited': GObject.Object.Notify;
-            'notify::key': GObject.Object.Notify;
-            'notify::role': GObject.Object.Notify;
-            'notify::scope-type': GObject.Object.Notify;
-            'notify::scope-value': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::edited': (pspec: GObject.ParamSpec) => void;
+            'notify::key': (pspec: GObject.ParamSpec) => void;
+            'notify::role': (pspec: GObject.ParamSpec) => void;
+            'notify::scope-type': (pspec: GObject.ParamSpec) => void;
+            'notify::scope-value': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1597,6 +1605,14 @@ export namespace GData {
          */
         get scopeValue(): string;
         set scopeValue(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AccessRule.SignalSignatures;
 
         // Constructors
 
@@ -1613,17 +1629,17 @@ export namespace GData {
 
         connect<K extends keyof AccessRule.SignalSignatures>(
             signal: K,
-            callback: AccessRule.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AccessRule.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AccessRule.SignalSignatures>(
             signal: K,
-            callback: AccessRule.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AccessRule.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AccessRule.SignalSignatures>(
             signal: K,
-            ...args: AccessRule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AccessRule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1673,10 +1689,10 @@ export namespace GData {
     namespace Author {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::email-address': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::email-address': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1729,6 +1745,14 @@ export namespace GData {
          */
         get uri(): string;
         set uri(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Author.SignalSignatures;
 
         // Constructors
 
@@ -1740,13 +1764,19 @@ export namespace GData {
 
         // Signals
 
-        connect<K extends keyof Author.SignalSignatures>(signal: K, callback: Author.SignalSignatures[K]): number;
+        connect<K extends keyof Author.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Author.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Author.SignalSignatures>(signal: K, callback: Author.SignalSignatures[K]): number;
+        connect_after<K extends keyof Author.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Author.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Author.SignalSignatures>(
             signal: K,
-            ...args: Author.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Author.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2245,8 +2275,8 @@ export namespace GData {
     namespace AuthorizationDomain {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::scope': GObject.Object.Notify;
-            'notify::service-name': GObject.Object.Notify;
+            'notify::scope': (pspec: GObject.ParamSpec) => void;
+            'notify::service-name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2281,6 +2311,14 @@ export namespace GData {
          * <ulink type="http" url="http://code.google.com/apis/documents/faq_gdata.html#clientlogin">online documentation</ulink>.
          */
         get serviceName(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AuthorizationDomain.SignalSignatures;
 
         // Constructors
 
@@ -2292,17 +2330,19 @@ export namespace GData {
 
         connect<K extends keyof AuthorizationDomain.SignalSignatures>(
             signal: K,
-            callback: AuthorizationDomain.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthorizationDomain.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthorizationDomain.SignalSignatures>(
             signal: K,
-            callback: AuthorizationDomain.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AuthorizationDomain.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthorizationDomain.SignalSignatures>(
             signal: K,
-            ...args: AuthorizationDomain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AuthorizationDomain.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2323,9 +2363,9 @@ export namespace GData {
     namespace BatchOperation {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::authorization-domain': GObject.Object.Notify;
-            'notify::feed-uri': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
+            'notify::authorization-domain': (pspec: GObject.ParamSpec) => void;
+            'notify::feed-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2375,6 +2415,14 @@ export namespace GData {
          * The service this batch operation is attached to.
          */
         get service(): Service;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: BatchOperation.SignalSignatures;
 
         // Constructors
 
@@ -2386,17 +2434,17 @@ export namespace GData {
 
         connect<K extends keyof BatchOperation.SignalSignatures>(
             signal: K,
-            callback: BatchOperation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BatchOperation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BatchOperation.SignalSignatures>(
             signal: K,
-            callback: BatchOperation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, BatchOperation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BatchOperation.SignalSignatures>(
             signal: K,
-            ...args: BatchOperation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<BatchOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2545,22 +2593,22 @@ export namespace GData {
     namespace CalendarAccessRule {
         // Signal signatures
         interface SignalSignatures extends AccessRule.SignalSignatures {
-            'notify::edited': GObject.Object.Notify;
-            'notify::key': GObject.Object.Notify;
-            'notify::role': GObject.Object.Notify;
-            'notify::scope-type': GObject.Object.Notify;
-            'notify::scope-value': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::edited': (pspec: GObject.ParamSpec) => void;
+            'notify::key': (pspec: GObject.ParamSpec) => void;
+            'notify::role': (pspec: GObject.ParamSpec) => void;
+            'notify::scope-type': (pspec: GObject.ParamSpec) => void;
+            'notify::scope-value': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2574,6 +2622,14 @@ export namespace GData {
      */
     class CalendarAccessRule extends AccessRule {
         static $gtype: GObject.GType<CalendarAccessRule>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CalendarAccessRule.SignalSignatures;
 
         // Constructors
 
@@ -2590,17 +2646,17 @@ export namespace GData {
 
         connect<K extends keyof CalendarAccessRule.SignalSignatures>(
             signal: K,
-            callback: CalendarAccessRule.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CalendarAccessRule.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalendarAccessRule.SignalSignatures>(
             signal: K,
-            callback: CalendarAccessRule.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CalendarAccessRule.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalendarAccessRule.SignalSignatures>(
             signal: K,
-            ...args: CalendarAccessRule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CalendarAccessRule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -2608,22 +2664,22 @@ export namespace GData {
     namespace CalendarCalendar {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
-            'notify::access-level': GObject.Object.Notify;
-            'notify::color': GObject.Object.Notify;
-            'notify::is-hidden': GObject.Object.Notify;
-            'notify::is-selected': GObject.Object.Notify;
-            'notify::timezone': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::access-level': (pspec: GObject.ParamSpec) => void;
+            'notify::color': (pspec: GObject.ParamSpec) => void;
+            'notify::is-hidden': (pspec: GObject.ParamSpec) => void;
+            'notify::is-selected': (pspec: GObject.ParamSpec) => void;
+            'notify::timezone': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2693,6 +2749,14 @@ export namespace GData {
          */
         get timezone(): string;
         set timezone(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CalendarCalendar.SignalSignatures;
 
         // Constructors
 
@@ -2706,17 +2770,17 @@ export namespace GData {
 
         connect<K extends keyof CalendarCalendar.SignalSignatures>(
             signal: K,
-            callback: CalendarCalendar.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CalendarCalendar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalendarCalendar.SignalSignatures>(
             signal: K,
-            callback: CalendarCalendar.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CalendarCalendar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalendarCalendar.SignalSignatures>(
             signal: K,
-            ...args: CalendarCalendar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CalendarCalendar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3051,30 +3115,30 @@ export namespace GData {
     namespace CalendarEvent {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
-            'notify::anyone-can-add-self': GObject.Object.Notify;
-            'notify::edited': GObject.Object.Notify;
-            'notify::guests-can-invite-others': GObject.Object.Notify;
-            'notify::guests-can-modify': GObject.Object.Notify;
-            'notify::guests-can-see-guests': GObject.Object.Notify;
-            'notify::original-event-id': GObject.Object.Notify;
-            'notify::original-event-uri': GObject.Object.Notify;
-            'notify::recurrence': GObject.Object.Notify;
-            'notify::sequence': GObject.Object.Notify;
-            'notify::status': GObject.Object.Notify;
-            'notify::transparency': GObject.Object.Notify;
-            'notify::uid': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::anyone-can-add-self': (pspec: GObject.ParamSpec) => void;
+            'notify::edited': (pspec: GObject.ParamSpec) => void;
+            'notify::guests-can-invite-others': (pspec: GObject.ParamSpec) => void;
+            'notify::guests-can-modify': (pspec: GObject.ParamSpec) => void;
+            'notify::guests-can-see-guests': (pspec: GObject.ParamSpec) => void;
+            'notify::original-event-id': (pspec: GObject.ParamSpec) => void;
+            'notify::original-event-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::recurrence': (pspec: GObject.ParamSpec) => void;
+            'notify::sequence': (pspec: GObject.ParamSpec) => void;
+            'notify::status': (pspec: GObject.ParamSpec) => void;
+            'notify::transparency': (pspec: GObject.ParamSpec) => void;
+            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3245,6 +3309,14 @@ export namespace GData {
          */
         get visibility(): string;
         set visibility(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CalendarEvent.SignalSignatures;
 
         // Constructors
 
@@ -3258,17 +3330,17 @@ export namespace GData {
 
         connect<K extends keyof CalendarEvent.SignalSignatures>(
             signal: K,
-            callback: CalendarEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CalendarEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalendarEvent.SignalSignatures>(
             signal: K,
-            callback: CalendarEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CalendarEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalendarEvent.SignalSignatures>(
             signal: K,
-            ...args: CalendarEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CalendarEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3468,20 +3540,20 @@ export namespace GData {
     namespace CalendarFeed {
         // Signal signatures
         interface SignalSignatures extends Feed.SignalSignatures {
-            'notify::etag': GObject.Object.Notify;
-            'notify::generator': GObject.Object.Notify;
-            'notify::icon': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::items-per-page': GObject.Object.Notify;
-            'notify::logo': GObject.Object.Notify;
-            'notify::next-page-token': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
-            'notify::subtitle': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::total-results': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::generator': (pspec: GObject.ParamSpec) => void;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::items-per-page': (pspec: GObject.ParamSpec) => void;
+            'notify::logo': (pspec: GObject.ParamSpec) => void;
+            'notify::next-page-token': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::start-index': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::total-results': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3494,6 +3566,14 @@ export namespace GData {
      */
     class CalendarFeed extends Feed {
         static $gtype: GObject.GType<CalendarFeed>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CalendarFeed.SignalSignatures;
 
         // Constructors
 
@@ -3505,17 +3585,17 @@ export namespace GData {
 
         connect<K extends keyof CalendarFeed.SignalSignatures>(
             signal: K,
-            callback: CalendarFeed.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CalendarFeed.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalendarFeed.SignalSignatures>(
             signal: K,
-            callback: CalendarFeed.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CalendarFeed.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalendarFeed.SignalSignatures>(
             signal: K,
-            ...args: CalendarFeed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CalendarFeed.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -3523,25 +3603,25 @@ export namespace GData {
     namespace CalendarQuery {
         // Signal signatures
         interface SignalSignatures extends Query.SignalSignatures {
-            'notify::future-events': GObject.Object.Notify;
-            'notify::max-attendees': GObject.Object.Notify;
-            'notify::order-by': GObject.Object.Notify;
-            'notify::show-deleted': GObject.Object.Notify;
-            'notify::single-events': GObject.Object.Notify;
-            'notify::start-max': GObject.Object.Notify;
-            'notify::start-min': GObject.Object.Notify;
-            'notify::timezone': GObject.Object.Notify;
-            'notify::author': GObject.Object.Notify;
-            'notify::categories': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::is-strict': GObject.Object.Notify;
-            'notify::max-results': GObject.Object.Notify;
-            'notify::published-max': GObject.Object.Notify;
-            'notify::published-min': GObject.Object.Notify;
-            'notify::q': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
-            'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-min': GObject.Object.Notify;
+            'notify::future-events': (pspec: GObject.ParamSpec) => void;
+            'notify::max-attendees': (pspec: GObject.ParamSpec) => void;
+            'notify::order-by': (pspec: GObject.ParamSpec) => void;
+            'notify::show-deleted': (pspec: GObject.ParamSpec) => void;
+            'notify::single-events': (pspec: GObject.ParamSpec) => void;
+            'notify::start-max': (pspec: GObject.ParamSpec) => void;
+            'notify::start-min': (pspec: GObject.ParamSpec) => void;
+            'notify::timezone': (pspec: GObject.ParamSpec) => void;
+            'notify::author': (pspec: GObject.ParamSpec) => void;
+            'notify::categories': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::is-strict': (pspec: GObject.ParamSpec) => void;
+            'notify::max-results': (pspec: GObject.ParamSpec) => void;
+            'notify::published-max': (pspec: GObject.ParamSpec) => void;
+            'notify::published-min': (pspec: GObject.ParamSpec) => void;
+            'notify::q': (pspec: GObject.ParamSpec) => void;
+            'notify::start-index': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-max': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-min': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3676,6 +3756,14 @@ export namespace GData {
          */
         get timezone(): string;
         set timezone(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CalendarQuery.SignalSignatures;
 
         // Constructors
 
@@ -3691,17 +3779,17 @@ export namespace GData {
 
         connect<K extends keyof CalendarQuery.SignalSignatures>(
             signal: K,
-            callback: CalendarQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CalendarQuery.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalendarQuery.SignalSignatures>(
             signal: K,
-            callback: CalendarQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CalendarQuery.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalendarQuery.SignalSignatures>(
             signal: K,
-            ...args: CalendarQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CalendarQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -3799,10 +3887,10 @@ export namespace GData {
     namespace CalendarService {
         // Signal signatures
         interface SignalSignatures extends Service.SignalSignatures {
-            'notify::authorizer': GObject.Object.Notify;
-            'notify::locale': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::timeout': GObject.Object.Notify;
+            'notify::authorizer': (pspec: GObject.ParamSpec) => void;
+            'notify::locale': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::timeout': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3815,6 +3903,14 @@ export namespace GData {
      */
     class CalendarService extends Service implements Batchable {
         static $gtype: GObject.GType<CalendarService>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: CalendarService.SignalSignatures;
 
         // Constructors
 
@@ -3828,17 +3924,17 @@ export namespace GData {
 
         connect<K extends keyof CalendarService.SignalSignatures>(
             signal: K,
-            callback: CalendarService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CalendarService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalendarService.SignalSignatures>(
             signal: K,
-            callback: CalendarService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, CalendarService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalendarService.SignalSignatures>(
             signal: K,
-            ...args: CalendarService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<CalendarService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -4614,10 +4710,10 @@ export namespace GData {
     namespace Category {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::label': GObject.Object.Notify;
-            'notify::scheme': GObject.Object.Notify;
-            'notify::term': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::scheme': (pspec: GObject.ParamSpec) => void;
+            'notify::term': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4664,6 +4760,14 @@ export namespace GData {
          */
         get term(): string;
         set term(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Category.SignalSignatures;
 
         // Constructors
 
@@ -4675,16 +4779,19 @@ export namespace GData {
 
         // Signals
 
-        connect<K extends keyof Category.SignalSignatures>(signal: K, callback: Category.SignalSignatures[K]): number;
+        connect<K extends keyof Category.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Category.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Category.SignalSignatures>(
             signal: K,
-            callback: Category.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Category.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Category.SignalSignatures>(
             signal: K,
-            ...args: Category.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Category.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5183,17 +5290,17 @@ export namespace GData {
     namespace Comment {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5206,6 +5313,14 @@ export namespace GData {
      */
     abstract class Comment extends Entry {
         static $gtype: GObject.GType<Comment>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Comment.SignalSignatures;
 
         // Constructors
 
@@ -5215,16 +5330,19 @@ export namespace GData {
 
         // Signals
 
-        connect<K extends keyof Comment.SignalSignatures>(signal: K, callback: Comment.SignalSignatures[K]): number;
+        connect<K extends keyof Comment.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Comment.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Comment.SignalSignatures>(
             signal: K,
-            callback: Comment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Comment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Comment.SignalSignatures>(
             signal: K,
-            ...args: Comment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Comment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -5232,22 +5350,22 @@ export namespace GData {
     namespace DocumentsAccessRule {
         // Signal signatures
         interface SignalSignatures extends AccessRule.SignalSignatures {
-            'notify::edited': GObject.Object.Notify;
-            'notify::key': GObject.Object.Notify;
-            'notify::role': GObject.Object.Notify;
-            'notify::scope-type': GObject.Object.Notify;
-            'notify::scope-value': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::edited': (pspec: GObject.ParamSpec) => void;
+            'notify::key': (pspec: GObject.ParamSpec) => void;
+            'notify::role': (pspec: GObject.ParamSpec) => void;
+            'notify::scope-type': (pspec: GObject.ParamSpec) => void;
+            'notify::scope-value': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5261,6 +5379,14 @@ export namespace GData {
      */
     class DocumentsAccessRule extends AccessRule {
         static $gtype: GObject.GType<DocumentsAccessRule>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentsAccessRule.SignalSignatures;
 
         // Constructors
 
@@ -5277,17 +5403,19 @@ export namespace GData {
 
         connect<K extends keyof DocumentsAccessRule.SignalSignatures>(
             signal: K,
-            callback: DocumentsAccessRule.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsAccessRule.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsAccessRule.SignalSignatures>(
             signal: K,
-            callback: DocumentsAccessRule.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsAccessRule.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsAccessRule.SignalSignatures>(
             signal: K,
-            ...args: DocumentsAccessRule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentsAccessRule.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -5295,26 +5423,26 @@ export namespace GData {
     namespace DocumentsDocument {
         // Signal signatures
         interface SignalSignatures extends DocumentsEntry.SignalSignatures {
-            'notify::can-edit': GObject.Object.Notify;
-            'notify::file-size': GObject.Object.Notify;
-            'notify::is-deleted': GObject.Object.Notify;
-            'notify::last-modified-by': GObject.Object.Notify;
-            'notify::last-viewed': GObject.Object.Notify;
-            'notify::quota-used': GObject.Object.Notify;
-            'notify::resource-id': GObject.Object.Notify;
-            'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::writers-can-invite': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::can-edit': (pspec: GObject.ParamSpec) => void;
+            'notify::file-size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-deleted': (pspec: GObject.ParamSpec) => void;
+            'notify::last-modified-by': (pspec: GObject.ParamSpec) => void;
+            'notify::last-viewed': (pspec: GObject.ParamSpec) => void;
+            'notify::quota-used': (pspec: GObject.ParamSpec) => void;
+            'notify::resource-id': (pspec: GObject.ParamSpec) => void;
+            'notify::shared-with-me-date': (pspec: GObject.ParamSpec) => void;
+            'notify::writers-can-invite': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5327,6 +5455,14 @@ export namespace GData {
      */
     class DocumentsDocument extends DocumentsEntry implements AccessHandler {
         static $gtype: GObject.GType<DocumentsDocument>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentsDocument.SignalSignatures;
 
         // Constructors
 
@@ -5340,17 +5476,17 @@ export namespace GData {
 
         connect<K extends keyof DocumentsDocument.SignalSignatures>(
             signal: K,
-            callback: DocumentsDocument.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsDocument.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsDocument.SignalSignatures>(
             signal: K,
-            callback: DocumentsDocument.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsDocument.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsDocument.SignalSignatures>(
             signal: K,
-            ...args: DocumentsDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentsDocument.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -5737,26 +5873,26 @@ export namespace GData {
     namespace DocumentsDrawing {
         // Signal signatures
         interface SignalSignatures extends DocumentsDocument.SignalSignatures {
-            'notify::can-edit': GObject.Object.Notify;
-            'notify::file-size': GObject.Object.Notify;
-            'notify::is-deleted': GObject.Object.Notify;
-            'notify::last-modified-by': GObject.Object.Notify;
-            'notify::last-viewed': GObject.Object.Notify;
-            'notify::quota-used': GObject.Object.Notify;
-            'notify::resource-id': GObject.Object.Notify;
-            'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::writers-can-invite': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::can-edit': (pspec: GObject.ParamSpec) => void;
+            'notify::file-size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-deleted': (pspec: GObject.ParamSpec) => void;
+            'notify::last-modified-by': (pspec: GObject.ParamSpec) => void;
+            'notify::last-viewed': (pspec: GObject.ParamSpec) => void;
+            'notify::quota-used': (pspec: GObject.ParamSpec) => void;
+            'notify::resource-id': (pspec: GObject.ParamSpec) => void;
+            'notify::shared-with-me-date': (pspec: GObject.ParamSpec) => void;
+            'notify::writers-can-invite': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -5769,6 +5905,14 @@ export namespace GData {
      */
     class DocumentsDrawing extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsDrawing>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentsDrawing.SignalSignatures;
 
         // Constructors
 
@@ -5782,17 +5926,17 @@ export namespace GData {
 
         connect<K extends keyof DocumentsDrawing.SignalSignatures>(
             signal: K,
-            callback: DocumentsDrawing.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsDrawing.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsDrawing.SignalSignatures>(
             signal: K,
-            callback: DocumentsDrawing.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsDrawing.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsDrawing.SignalSignatures>(
             signal: K,
-            ...args: DocumentsDrawing.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentsDrawing.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6025,18 +6169,18 @@ export namespace GData {
     namespace DocumentsDrive {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6055,6 +6199,14 @@ export namespace GData {
          * The human-readable name of this shared drive.
          */
         get name(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentsDrive.SignalSignatures;
 
         // Constructors
 
@@ -6066,17 +6218,17 @@ export namespace GData {
 
         connect<K extends keyof DocumentsDrive.SignalSignatures>(
             signal: K,
-            callback: DocumentsDrive.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsDrive.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsDrive.SignalSignatures>(
             signal: K,
-            callback: DocumentsDrive.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsDrive.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsDrive.SignalSignatures>(
             signal: K,
-            ...args: DocumentsDrive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentsDrive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6092,17 +6244,17 @@ export namespace GData {
     namespace DocumentsDriveQuery {
         // Signal signatures
         interface SignalSignatures extends Query.SignalSignatures {
-            'notify::author': GObject.Object.Notify;
-            'notify::categories': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::is-strict': GObject.Object.Notify;
-            'notify::max-results': GObject.Object.Notify;
-            'notify::published-max': GObject.Object.Notify;
-            'notify::published-min': GObject.Object.Notify;
-            'notify::q': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
-            'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-min': GObject.Object.Notify;
+            'notify::author': (pspec: GObject.ParamSpec) => void;
+            'notify::categories': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::is-strict': (pspec: GObject.ParamSpec) => void;
+            'notify::max-results': (pspec: GObject.ParamSpec) => void;
+            'notify::published-max': (pspec: GObject.ParamSpec) => void;
+            'notify::published-min': (pspec: GObject.ParamSpec) => void;
+            'notify::q': (pspec: GObject.ParamSpec) => void;
+            'notify::start-index': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-max': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-min': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6112,6 +6264,14 @@ export namespace GData {
 
     class DocumentsDriveQuery extends Query {
         static $gtype: GObject.GType<DocumentsDriveQuery>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentsDriveQuery.SignalSignatures;
 
         // Constructors
 
@@ -6125,17 +6285,19 @@ export namespace GData {
 
         connect<K extends keyof DocumentsDriveQuery.SignalSignatures>(
             signal: K,
-            callback: DocumentsDriveQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsDriveQuery.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsDriveQuery.SignalSignatures>(
             signal: K,
-            callback: DocumentsDriveQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsDriveQuery.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsDriveQuery.SignalSignatures>(
             signal: K,
-            ...args: DocumentsDriveQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentsDriveQuery.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -6143,26 +6305,26 @@ export namespace GData {
     namespace DocumentsEntry {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
-            'notify::can-edit': GObject.Object.Notify;
-            'notify::file-size': GObject.Object.Notify;
-            'notify::is-deleted': GObject.Object.Notify;
-            'notify::last-modified-by': GObject.Object.Notify;
-            'notify::last-viewed': GObject.Object.Notify;
-            'notify::quota-used': GObject.Object.Notify;
-            'notify::resource-id': GObject.Object.Notify;
-            'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::writers-can-invite': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::can-edit': (pspec: GObject.ParamSpec) => void;
+            'notify::file-size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-deleted': (pspec: GObject.ParamSpec) => void;
+            'notify::last-modified-by': (pspec: GObject.ParamSpec) => void;
+            'notify::last-viewed': (pspec: GObject.ParamSpec) => void;
+            'notify::quota-used': (pspec: GObject.ParamSpec) => void;
+            'notify::resource-id': (pspec: GObject.ParamSpec) => void;
+            'notify::shared-with-me-date': (pspec: GObject.ParamSpec) => void;
+            'notify::writers-can-invite': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6307,6 +6469,14 @@ export namespace GData {
          */
         get writersCanInvite(): boolean;
         set writersCanInvite(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentsEntry.SignalSignatures;
 
         // Constructors
 
@@ -6318,17 +6488,17 @@ export namespace GData {
 
         connect<K extends keyof DocumentsEntry.SignalSignatures>(
             signal: K,
-            callback: DocumentsEntry.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsEntry.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsEntry.SignalSignatures>(
             signal: K,
-            callback: DocumentsEntry.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsEntry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsEntry.SignalSignatures>(
             signal: K,
-            ...args: DocumentsEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentsEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6698,20 +6868,20 @@ export namespace GData {
     namespace DocumentsFeed {
         // Signal signatures
         interface SignalSignatures extends Feed.SignalSignatures {
-            'notify::etag': GObject.Object.Notify;
-            'notify::generator': GObject.Object.Notify;
-            'notify::icon': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::items-per-page': GObject.Object.Notify;
-            'notify::logo': GObject.Object.Notify;
-            'notify::next-page-token': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
-            'notify::subtitle': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::total-results': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::generator': (pspec: GObject.ParamSpec) => void;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::items-per-page': (pspec: GObject.ParamSpec) => void;
+            'notify::logo': (pspec: GObject.ParamSpec) => void;
+            'notify::next-page-token': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::start-index': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::total-results': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6724,6 +6894,14 @@ export namespace GData {
      */
     class DocumentsFeed extends Feed {
         static $gtype: GObject.GType<DocumentsFeed>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentsFeed.SignalSignatures;
 
         // Constructors
 
@@ -6735,17 +6913,17 @@ export namespace GData {
 
         connect<K extends keyof DocumentsFeed.SignalSignatures>(
             signal: K,
-            callback: DocumentsFeed.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsFeed.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsFeed.SignalSignatures>(
             signal: K,
-            callback: DocumentsFeed.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsFeed.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsFeed.SignalSignatures>(
             signal: K,
-            ...args: DocumentsFeed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentsFeed.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -6753,26 +6931,26 @@ export namespace GData {
     namespace DocumentsFolder {
         // Signal signatures
         interface SignalSignatures extends DocumentsEntry.SignalSignatures {
-            'notify::can-edit': GObject.Object.Notify;
-            'notify::file-size': GObject.Object.Notify;
-            'notify::is-deleted': GObject.Object.Notify;
-            'notify::last-modified-by': GObject.Object.Notify;
-            'notify::last-viewed': GObject.Object.Notify;
-            'notify::quota-used': GObject.Object.Notify;
-            'notify::resource-id': GObject.Object.Notify;
-            'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::writers-can-invite': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::can-edit': (pspec: GObject.ParamSpec) => void;
+            'notify::file-size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-deleted': (pspec: GObject.ParamSpec) => void;
+            'notify::last-modified-by': (pspec: GObject.ParamSpec) => void;
+            'notify::last-viewed': (pspec: GObject.ParamSpec) => void;
+            'notify::quota-used': (pspec: GObject.ParamSpec) => void;
+            'notify::resource-id': (pspec: GObject.ParamSpec) => void;
+            'notify::shared-with-me-date': (pspec: GObject.ParamSpec) => void;
+            'notify::writers-can-invite': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6785,6 +6963,14 @@ export namespace GData {
      */
     class DocumentsFolder extends DocumentsEntry implements AccessHandler {
         static $gtype: GObject.GType<DocumentsFolder>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentsFolder.SignalSignatures;
 
         // Constructors
 
@@ -6798,17 +6984,17 @@ export namespace GData {
 
         connect<K extends keyof DocumentsFolder.SignalSignatures>(
             signal: K,
-            callback: DocumentsFolder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsFolder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsFolder.SignalSignatures>(
             signal: K,
-            callback: DocumentsFolder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsFolder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsFolder.SignalSignatures>(
             signal: K,
-            ...args: DocumentsFolder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentsFolder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7104,9 +7290,9 @@ export namespace GData {
     namespace DocumentsMetadata {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::quota-total': GObject.Object.Notify;
-            'notify::quota-used': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::quota-total': (pspec: GObject.ParamSpec) => void;
+            'notify::quota-used': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7143,6 +7329,14 @@ export namespace GData {
          * The amount of user quota used up across all services. Measured in bytes.
          */
         get quotaUsed(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentsMetadata.SignalSignatures;
 
         // Constructors
 
@@ -7154,17 +7348,17 @@ export namespace GData {
 
         connect<K extends keyof DocumentsMetadata.SignalSignatures>(
             signal: K,
-            callback: DocumentsMetadata.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsMetadata.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsMetadata.SignalSignatures>(
             signal: K,
-            callback: DocumentsMetadata.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsMetadata.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsMetadata.SignalSignatures>(
             signal: K,
-            ...args: DocumentsMetadata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentsMetadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7185,26 +7379,26 @@ export namespace GData {
     namespace DocumentsPdf {
         // Signal signatures
         interface SignalSignatures extends DocumentsDocument.SignalSignatures {
-            'notify::can-edit': GObject.Object.Notify;
-            'notify::file-size': GObject.Object.Notify;
-            'notify::is-deleted': GObject.Object.Notify;
-            'notify::last-modified-by': GObject.Object.Notify;
-            'notify::last-viewed': GObject.Object.Notify;
-            'notify::quota-used': GObject.Object.Notify;
-            'notify::resource-id': GObject.Object.Notify;
-            'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::writers-can-invite': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::can-edit': (pspec: GObject.ParamSpec) => void;
+            'notify::file-size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-deleted': (pspec: GObject.ParamSpec) => void;
+            'notify::last-modified-by': (pspec: GObject.ParamSpec) => void;
+            'notify::last-viewed': (pspec: GObject.ParamSpec) => void;
+            'notify::quota-used': (pspec: GObject.ParamSpec) => void;
+            'notify::resource-id': (pspec: GObject.ParamSpec) => void;
+            'notify::shared-with-me-date': (pspec: GObject.ParamSpec) => void;
+            'notify::writers-can-invite': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7217,6 +7411,14 @@ export namespace GData {
      */
     class DocumentsPdf extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsPdf>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentsPdf.SignalSignatures;
 
         // Constructors
 
@@ -7230,17 +7432,17 @@ export namespace GData {
 
         connect<K extends keyof DocumentsPdf.SignalSignatures>(
             signal: K,
-            callback: DocumentsPdf.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsPdf.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsPdf.SignalSignatures>(
             signal: K,
-            callback: DocumentsPdf.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsPdf.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsPdf.SignalSignatures>(
             signal: K,
-            ...args: DocumentsPdf.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentsPdf.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7473,26 +7675,26 @@ export namespace GData {
     namespace DocumentsPresentation {
         // Signal signatures
         interface SignalSignatures extends DocumentsDocument.SignalSignatures {
-            'notify::can-edit': GObject.Object.Notify;
-            'notify::file-size': GObject.Object.Notify;
-            'notify::is-deleted': GObject.Object.Notify;
-            'notify::last-modified-by': GObject.Object.Notify;
-            'notify::last-viewed': GObject.Object.Notify;
-            'notify::quota-used': GObject.Object.Notify;
-            'notify::resource-id': GObject.Object.Notify;
-            'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::writers-can-invite': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::can-edit': (pspec: GObject.ParamSpec) => void;
+            'notify::file-size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-deleted': (pspec: GObject.ParamSpec) => void;
+            'notify::last-modified-by': (pspec: GObject.ParamSpec) => void;
+            'notify::last-viewed': (pspec: GObject.ParamSpec) => void;
+            'notify::quota-used': (pspec: GObject.ParamSpec) => void;
+            'notify::resource-id': (pspec: GObject.ParamSpec) => void;
+            'notify::shared-with-me-date': (pspec: GObject.ParamSpec) => void;
+            'notify::writers-can-invite': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7505,6 +7707,14 @@ export namespace GData {
      */
     class DocumentsPresentation extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsPresentation>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentsPresentation.SignalSignatures;
 
         // Constructors
 
@@ -7518,17 +7728,19 @@ export namespace GData {
 
         connect<K extends keyof DocumentsPresentation.SignalSignatures>(
             signal: K,
-            callback: DocumentsPresentation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsPresentation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsPresentation.SignalSignatures>(
             signal: K,
-            callback: DocumentsPresentation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsPresentation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsPresentation.SignalSignatures>(
             signal: K,
-            ...args: DocumentsPresentation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentsPresentation.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7761,11 +7973,11 @@ export namespace GData {
     namespace DocumentsProperty {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::etag': GObject.Object.Notify;
-            'notify::key': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::key': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7816,6 +8028,14 @@ export namespace GData {
          */
         get visibility(): string;
         set visibility(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentsProperty.SignalSignatures;
 
         // Constructors
 
@@ -7829,17 +8049,17 @@ export namespace GData {
 
         connect<K extends keyof DocumentsProperty.SignalSignatures>(
             signal: K,
-            callback: DocumentsProperty.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsProperty.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsProperty.SignalSignatures>(
             signal: K,
-            callback: DocumentsProperty.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsProperty.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsProperty.SignalSignatures>(
             signal: K,
-            ...args: DocumentsProperty.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentsProperty.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8340,22 +8560,22 @@ export namespace GData {
     namespace DocumentsQuery {
         // Signal signatures
         interface SignalSignatures extends Query.SignalSignatures {
-            'notify::exact-title': GObject.Object.Notify;
-            'notify::folder-id': GObject.Object.Notify;
-            'notify::show-deleted': GObject.Object.Notify;
-            'notify::show-folders': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::author': GObject.Object.Notify;
-            'notify::categories': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::is-strict': GObject.Object.Notify;
-            'notify::max-results': GObject.Object.Notify;
-            'notify::published-max': GObject.Object.Notify;
-            'notify::published-min': GObject.Object.Notify;
-            'notify::q': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
-            'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-min': GObject.Object.Notify;
+            'notify::exact-title': (pspec: GObject.ParamSpec) => void;
+            'notify::folder-id': (pspec: GObject.ParamSpec) => void;
+            'notify::show-deleted': (pspec: GObject.ParamSpec) => void;
+            'notify::show-folders': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::author': (pspec: GObject.ParamSpec) => void;
+            'notify::categories': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::is-strict': (pspec: GObject.ParamSpec) => void;
+            'notify::max-results': (pspec: GObject.ParamSpec) => void;
+            'notify::published-max': (pspec: GObject.ParamSpec) => void;
+            'notify::published-min': (pspec: GObject.ParamSpec) => void;
+            'notify::q': (pspec: GObject.ParamSpec) => void;
+            'notify::start-index': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-max': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-min': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8427,6 +8647,14 @@ export namespace GData {
          */
         get title(): string;
         set title(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentsQuery.SignalSignatures;
 
         // Constructors
 
@@ -8442,17 +8670,17 @@ export namespace GData {
 
         connect<K extends keyof DocumentsQuery.SignalSignatures>(
             signal: K,
-            callback: DocumentsQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsQuery.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsQuery.SignalSignatures>(
             signal: K,
-            callback: DocumentsQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsQuery.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsQuery.SignalSignatures>(
             signal: K,
-            ...args: DocumentsQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentsQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -8523,10 +8751,10 @@ export namespace GData {
     namespace DocumentsService {
         // Signal signatures
         interface SignalSignatures extends Service.SignalSignatures {
-            'notify::authorizer': GObject.Object.Notify;
-            'notify::locale': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::timeout': GObject.Object.Notify;
+            'notify::authorizer': (pspec: GObject.ParamSpec) => void;
+            'notify::locale': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::timeout': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8539,6 +8767,14 @@ export namespace GData {
      */
     class DocumentsService extends Service implements Batchable {
         static $gtype: GObject.GType<DocumentsService>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentsService.SignalSignatures;
 
         // Constructors
 
@@ -8552,17 +8788,17 @@ export namespace GData {
 
         connect<K extends keyof DocumentsService.SignalSignatures>(
             signal: K,
-            callback: DocumentsService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsService.SignalSignatures>(
             signal: K,
-            callback: DocumentsService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsService.SignalSignatures>(
             signal: K,
-            ...args: DocumentsService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentsService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9698,26 +9934,26 @@ export namespace GData {
     namespace DocumentsSpreadsheet {
         // Signal signatures
         interface SignalSignatures extends DocumentsDocument.SignalSignatures {
-            'notify::can-edit': GObject.Object.Notify;
-            'notify::file-size': GObject.Object.Notify;
-            'notify::is-deleted': GObject.Object.Notify;
-            'notify::last-modified-by': GObject.Object.Notify;
-            'notify::last-viewed': GObject.Object.Notify;
-            'notify::quota-used': GObject.Object.Notify;
-            'notify::resource-id': GObject.Object.Notify;
-            'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::writers-can-invite': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::can-edit': (pspec: GObject.ParamSpec) => void;
+            'notify::file-size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-deleted': (pspec: GObject.ParamSpec) => void;
+            'notify::last-modified-by': (pspec: GObject.ParamSpec) => void;
+            'notify::last-viewed': (pspec: GObject.ParamSpec) => void;
+            'notify::quota-used': (pspec: GObject.ParamSpec) => void;
+            'notify::resource-id': (pspec: GObject.ParamSpec) => void;
+            'notify::shared-with-me-date': (pspec: GObject.ParamSpec) => void;
+            'notify::writers-can-invite': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -9730,6 +9966,14 @@ export namespace GData {
      */
     class DocumentsSpreadsheet extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsSpreadsheet>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentsSpreadsheet.SignalSignatures;
 
         // Constructors
 
@@ -9743,17 +9987,19 @@ export namespace GData {
 
         connect<K extends keyof DocumentsSpreadsheet.SignalSignatures>(
             signal: K,
-            callback: DocumentsSpreadsheet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsSpreadsheet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsSpreadsheet.SignalSignatures>(
             signal: K,
-            callback: DocumentsSpreadsheet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsSpreadsheet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsSpreadsheet.SignalSignatures>(
             signal: K,
-            ...args: DocumentsSpreadsheet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentsSpreadsheet.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10005,26 +10251,26 @@ export namespace GData {
     namespace DocumentsText {
         // Signal signatures
         interface SignalSignatures extends DocumentsDocument.SignalSignatures {
-            'notify::can-edit': GObject.Object.Notify;
-            'notify::file-size': GObject.Object.Notify;
-            'notify::is-deleted': GObject.Object.Notify;
-            'notify::last-modified-by': GObject.Object.Notify;
-            'notify::last-viewed': GObject.Object.Notify;
-            'notify::quota-used': GObject.Object.Notify;
-            'notify::resource-id': GObject.Object.Notify;
-            'notify::shared-with-me-date': GObject.Object.Notify;
-            'notify::writers-can-invite': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::can-edit': (pspec: GObject.ParamSpec) => void;
+            'notify::file-size': (pspec: GObject.ParamSpec) => void;
+            'notify::is-deleted': (pspec: GObject.ParamSpec) => void;
+            'notify::last-modified-by': (pspec: GObject.ParamSpec) => void;
+            'notify::last-viewed': (pspec: GObject.ParamSpec) => void;
+            'notify::quota-used': (pspec: GObject.ParamSpec) => void;
+            'notify::resource-id': (pspec: GObject.ParamSpec) => void;
+            'notify::shared-with-me-date': (pspec: GObject.ParamSpec) => void;
+            'notify::writers-can-invite': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10037,6 +10283,14 @@ export namespace GData {
      */
     class DocumentsText extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsText>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentsText.SignalSignatures;
 
         // Constructors
 
@@ -10050,17 +10304,17 @@ export namespace GData {
 
         connect<K extends keyof DocumentsText.SignalSignatures>(
             signal: K,
-            callback: DocumentsText.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsText.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsText.SignalSignatures>(
             signal: K,
-            callback: DocumentsText.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsText.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsText.SignalSignatures>(
             signal: K,
-            ...args: DocumentsText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentsText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10293,8 +10547,8 @@ export namespace GData {
     namespace DocumentsUploadQuery {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::convert': GObject.Object.Notify;
-            'notify::folder': GObject.Object.Notify;
+            'notify::convert': (pspec: GObject.ParamSpec) => void;
+            'notify::folder': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10332,6 +10586,14 @@ export namespace GData {
          */
         get folder(): DocumentsFolder;
         set folder(val: DocumentsFolder);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DocumentsUploadQuery.SignalSignatures;
 
         // Constructors
 
@@ -10345,17 +10607,19 @@ export namespace GData {
 
         connect<K extends keyof DocumentsUploadQuery.SignalSignatures>(
             signal: K,
-            callback: DocumentsUploadQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsUploadQuery.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsUploadQuery.SignalSignatures>(
             signal: K,
-            callback: DocumentsUploadQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DocumentsUploadQuery.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsUploadQuery.SignalSignatures>(
             signal: K,
-            ...args: DocumentsUploadQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DocumentsUploadQuery.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10394,12 +10658,12 @@ export namespace GData {
     namespace DownloadStream {
         // Signal signatures
         interface SignalSignatures extends Gio.InputStream.SignalSignatures {
-            'notify::authorization-domain': GObject.Object.Notify;
-            'notify::cancellable': GObject.Object.Notify;
-            'notify::content-length': GObject.Object.Notify;
-            'notify::content-type': GObject.Object.Notify;
-            'notify::download-uri': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
+            'notify::authorization-domain': (pspec: GObject.ParamSpec) => void;
+            'notify::cancellable': (pspec: GObject.ParamSpec) => void;
+            'notify::content-length': (pspec: GObject.ParamSpec) => void;
+            'notify::content-type': (pspec: GObject.ParamSpec) => void;
+            'notify::download-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10496,6 +10760,14 @@ export namespace GData {
          * The service which is used to authorize the download, and to which the download relates.
          */
         get service(): Service;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DownloadStream.SignalSignatures;
 
         // Constructors
 
@@ -10514,17 +10786,17 @@ export namespace GData {
 
         connect<K extends keyof DownloadStream.SignalSignatures>(
             signal: K,
-            callback: DownloadStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DownloadStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DownloadStream.SignalSignatures>(
             signal: K,
-            callback: DownloadStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DownloadStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DownloadStream.SignalSignatures>(
             signal: K,
-            ...args: DownloadStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DownloadStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11108,17 +11380,17 @@ export namespace GData {
     namespace Entry {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11235,6 +11507,14 @@ export namespace GData {
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.updated">Atom specification</ulink>.
          */
         get updated(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Entry.SignalSignatures;
 
         // Constructors
 
@@ -11246,13 +11526,19 @@ export namespace GData {
 
         // Signals
 
-        connect<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
+        connect<K extends keyof Entry.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Entry.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
+        connect_after<K extends keyof Entry.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Entry.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Entry.SignalSignatures>(
             signal: K,
-            ...args: Entry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Entry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11396,20 +11682,20 @@ export namespace GData {
     namespace Feed {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::etag': GObject.Object.Notify;
-            'notify::generator': GObject.Object.Notify;
-            'notify::icon': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::items-per-page': GObject.Object.Notify;
-            'notify::logo': GObject.Object.Notify;
-            'notify::next-page-token': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
-            'notify::subtitle': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::total-results': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::generator': (pspec: GObject.ParamSpec) => void;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::items-per-page': (pspec: GObject.ParamSpec) => void;
+            'notify::logo': (pspec: GObject.ParamSpec) => void;
+            'notify::next-page-token': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::start-index': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::total-results': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11574,6 +11860,14 @@ export namespace GData {
          * atom:updated</ulink>
          */
         get updated(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Feed.SignalSignatures;
 
         // Constructors
 
@@ -11583,13 +11877,19 @@ export namespace GData {
 
         // Signals
 
-        connect<K extends keyof Feed.SignalSignatures>(signal: K, callback: Feed.SignalSignatures[K]): number;
+        connect<K extends keyof Feed.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Feed.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Feed.SignalSignatures>(signal: K, callback: Feed.SignalSignatures[K]): number;
+        connect_after<K extends keyof Feed.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Feed.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Feed.SignalSignatures>(
             signal: K,
-            ...args: Feed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Feed.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11702,11 +12002,11 @@ export namespace GData {
     namespace GContactCalendar {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::is-primary': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::is-primary': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::relation-type': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11779,6 +12079,14 @@ export namespace GData {
          */
         get uri(): string;
         set uri(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GContactCalendar.SignalSignatures;
 
         // Constructors
 
@@ -11797,17 +12105,17 @@ export namespace GData {
 
         connect<K extends keyof GContactCalendar.SignalSignatures>(
             signal: K,
-            callback: GContactCalendar.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GContactCalendar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GContactCalendar.SignalSignatures>(
             signal: K,
-            callback: GContactCalendar.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GContactCalendar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GContactCalendar.SignalSignatures>(
             signal: K,
-            ...args: GContactCalendar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GContactCalendar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12314,10 +12622,10 @@ export namespace GData {
     namespace GContactEvent {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::date': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::date': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::relation-type': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12373,6 +12681,14 @@ export namespace GData {
          */
         get relationType(): string;
         set relationType(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GContactEvent.SignalSignatures;
 
         // Constructors
 
@@ -12386,17 +12702,17 @@ export namespace GData {
 
         connect<K extends keyof GContactEvent.SignalSignatures>(
             signal: K,
-            callback: GContactEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GContactEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GContactEvent.SignalSignatures>(
             signal: K,
-            callback: GContactEvent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GContactEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GContactEvent.SignalSignatures>(
             signal: K,
-            ...args: GContactEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GContactEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12443,10 +12759,10 @@ export namespace GData {
     namespace GContactExternalID {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::label': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::value': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::relation-type': (pspec: GObject.ParamSpec) => void;
+            'notify::value': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12501,6 +12817,14 @@ export namespace GData {
          */
         get value(): string;
         set value(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GContactExternalID.SignalSignatures;
 
         // Constructors
 
@@ -12514,17 +12838,17 @@ export namespace GData {
 
         connect<K extends keyof GContactExternalID.SignalSignatures>(
             signal: K,
-            callback: GContactExternalID.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GContactExternalID.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GContactExternalID.SignalSignatures>(
             signal: K,
-            callback: GContactExternalID.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GContactExternalID.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GContactExternalID.SignalSignatures>(
             signal: K,
-            ...args: GContactExternalID.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GContactExternalID.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13026,9 +13350,9 @@ export namespace GData {
     namespace GContactJot {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::content': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::relation-type': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13072,6 +13396,14 @@ export namespace GData {
          */
         get relationType(): string;
         set relationType(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GContactJot.SignalSignatures;
 
         // Constructors
 
@@ -13085,17 +13417,17 @@ export namespace GData {
 
         connect<K extends keyof GContactJot.SignalSignatures>(
             signal: K,
-            callback: GContactJot.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GContactJot.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GContactJot.SignalSignatures>(
             signal: K,
-            callback: GContactJot.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GContactJot.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GContactJot.SignalSignatures>(
             signal: K,
-            ...args: GContactJot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GContactJot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13127,9 +13459,9 @@ export namespace GData {
     namespace GContactLanguage {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::code': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::code': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13164,6 +13496,14 @@ export namespace GData {
          */
         get label(): string;
         set label(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GContactLanguage.SignalSignatures;
 
         // Constructors
 
@@ -13177,17 +13517,17 @@ export namespace GData {
 
         connect<K extends keyof GContactLanguage.SignalSignatures>(
             signal: K,
-            callback: GContactLanguage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GContactLanguage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GContactLanguage.SignalSignatures>(
             signal: K,
-            callback: GContactLanguage.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GContactLanguage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GContactLanguage.SignalSignatures>(
             signal: K,
-            ...args: GContactLanguage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GContactLanguage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13678,10 +14018,10 @@ export namespace GData {
     namespace GContactRelation {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::label': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::relation-type': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13736,6 +14076,14 @@ export namespace GData {
          */
         get relationType(): string;
         set relationType(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GContactRelation.SignalSignatures;
 
         // Constructors
 
@@ -13749,17 +14097,17 @@ export namespace GData {
 
         connect<K extends keyof GContactRelation.SignalSignatures>(
             signal: K,
-            callback: GContactRelation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GContactRelation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GContactRelation.SignalSignatures>(
             signal: K,
-            callback: GContactRelation.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GContactRelation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GContactRelation.SignalSignatures>(
             signal: K,
-            ...args: GContactRelation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GContactRelation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13807,11 +14155,11 @@ export namespace GData {
     namespace GContactWebsite {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::is-primary': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::is-primary': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::relation-type': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13885,6 +14233,14 @@ export namespace GData {
          */
         get uri(): string;
         set uri(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GContactWebsite.SignalSignatures;
 
         // Constructors
 
@@ -13898,17 +14254,17 @@ export namespace GData {
 
         connect<K extends keyof GContactWebsite.SignalSignatures>(
             signal: K,
-            callback: GContactWebsite.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GContactWebsite.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GContactWebsite.SignalSignatures>(
             signal: K,
-            callback: GContactWebsite.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GContactWebsite.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GContactWebsite.SignalSignatures>(
             signal: K,
-            ...args: GContactWebsite.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GContactWebsite.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14415,12 +14771,12 @@ export namespace GData {
     namespace GDEmailAddress {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::address': GObject.Object.Notify;
-            'notify::display-name': GObject.Object.Notify;
-            'notify::is-primary': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::address': (pspec: GObject.ParamSpec) => void;
+            'notify::display-name': (pspec: GObject.ParamSpec) => void;
+            'notify::is-primary': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::relation-type': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14509,6 +14865,14 @@ export namespace GData {
          */
         get relationType(): string;
         set relationType(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GDEmailAddress.SignalSignatures;
 
         // Constructors
 
@@ -14527,17 +14891,17 @@ export namespace GData {
 
         connect<K extends keyof GDEmailAddress.SignalSignatures>(
             signal: K,
-            callback: GDEmailAddress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GDEmailAddress.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDEmailAddress.SignalSignatures>(
             signal: K,
-            callback: GDEmailAddress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GDEmailAddress.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDEmailAddress.SignalSignatures>(
             signal: K,
-            ...args: GDEmailAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GDEmailAddress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -15053,12 +15417,12 @@ export namespace GData {
     namespace GDIMAddress {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::address': GObject.Object.Notify;
-            'notify::is-primary': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::protocol': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::address': (pspec: GObject.ParamSpec) => void;
+            'notify::is-primary': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::protocol': (pspec: GObject.ParamSpec) => void;
+            'notify::relation-type': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15138,6 +15502,14 @@ export namespace GData {
          */
         get relationType(): string;
         set relationType(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GDIMAddress.SignalSignatures;
 
         // Constructors
 
@@ -15157,17 +15529,17 @@ export namespace GData {
 
         connect<K extends keyof GDIMAddress.SignalSignatures>(
             signal: K,
-            callback: GDIMAddress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GDIMAddress.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDIMAddress.SignalSignatures>(
             signal: K,
-            callback: GDIMAddress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GDIMAddress.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDIMAddress.SignalSignatures>(
             signal: K,
-            ...args: GDIMAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GDIMAddress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -15681,13 +16053,13 @@ export namespace GData {
     namespace GDName {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::additional-name': GObject.Object.Notify;
-            'notify::family-name': GObject.Object.Notify;
-            'notify::full-name': GObject.Object.Notify;
-            'notify::given-name': GObject.Object.Notify;
-            'notify::prefix': GObject.Object.Notify;
-            'notify::suffix': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::additional-name': (pspec: GObject.ParamSpec) => void;
+            'notify::family-name': (pspec: GObject.ParamSpec) => void;
+            'notify::full-name': (pspec: GObject.ParamSpec) => void;
+            'notify::given-name': (pspec: GObject.ParamSpec) => void;
+            'notify::prefix': (pspec: GObject.ParamSpec) => void;
+            'notify::suffix': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15796,6 +16168,14 @@ export namespace GData {
          */
         get suffix(): string;
         set suffix(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GDName.SignalSignatures;
 
         // Constructors
 
@@ -15807,13 +16187,19 @@ export namespace GData {
 
         // Signals
 
-        connect<K extends keyof GDName.SignalSignatures>(signal: K, callback: GDName.SignalSignatures[K]): number;
+        connect<K extends keyof GDName.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GDName.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof GDName.SignalSignatures>(signal: K, callback: GDName.SignalSignatures[K]): number;
+        connect_after<K extends keyof GDName.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GDName.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDName.SignalSignatures>(
             signal: K,
-            ...args: GDName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GDName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -16338,16 +16724,16 @@ export namespace GData {
     namespace GDOrganization {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::department': GObject.Object.Notify;
-            'notify::is-primary': GObject.Object.Notify;
-            'notify::job-description': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::location': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::symbol': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::department': (pspec: GObject.ParamSpec) => void;
+            'notify::is-primary': (pspec: GObject.ParamSpec) => void;
+            'notify::job-description': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::location': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::relation-type': (pspec: GObject.ParamSpec) => void;
+            'notify::symbol': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -16473,6 +16859,14 @@ export namespace GData {
          */
         get title(): string;
         set title(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GDOrganization.SignalSignatures;
 
         // Constructors
 
@@ -16492,17 +16886,17 @@ export namespace GData {
 
         connect<K extends keyof GDOrganization.SignalSignatures>(
             signal: K,
-            callback: GDOrganization.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GDOrganization.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDOrganization.SignalSignatures>(
             signal: K,
-            callback: GDOrganization.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GDOrganization.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDOrganization.SignalSignatures>(
             signal: K,
-            ...args: GDOrganization.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GDOrganization.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -17068,12 +17462,12 @@ export namespace GData {
     namespace GDPhoneNumber {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::is-primary': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::number': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::is-primary': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::number': (pspec: GObject.ParamSpec) => void;
+            'notify::relation-type': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -17153,6 +17547,14 @@ export namespace GData {
          */
         get uri(): string;
         set uri(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GDPhoneNumber.SignalSignatures;
 
         // Constructors
 
@@ -17172,17 +17574,17 @@ export namespace GData {
 
         connect<K extends keyof GDPhoneNumber.SignalSignatures>(
             signal: K,
-            callback: GDPhoneNumber.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GDPhoneNumber.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDPhoneNumber.SignalSignatures>(
             signal: K,
-            callback: GDPhoneNumber.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GDPhoneNumber.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDPhoneNumber.SignalSignatures>(
             signal: K,
-            ...args: GDPhoneNumber.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GDPhoneNumber.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -17698,24 +18100,24 @@ export namespace GData {
     namespace GDPostalAddress {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::address': GObject.Object.Notify;
-            'notify::agent': GObject.Object.Notify;
-            'notify::city': GObject.Object.Notify;
-            'notify::country': GObject.Object.Notify;
-            'notify::country-code': GObject.Object.Notify;
-            'notify::house-name': GObject.Object.Notify;
-            'notify::is-primary': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::mail-class': GObject.Object.Notify;
-            'notify::neighborhood': GObject.Object.Notify;
-            'notify::po-box': GObject.Object.Notify;
-            'notify::postcode': GObject.Object.Notify;
-            'notify::region': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::street': GObject.Object.Notify;
-            'notify::subregion': GObject.Object.Notify;
-            'notify::usage': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::address': (pspec: GObject.ParamSpec) => void;
+            'notify::agent': (pspec: GObject.ParamSpec) => void;
+            'notify::city': (pspec: GObject.ParamSpec) => void;
+            'notify::country': (pspec: GObject.ParamSpec) => void;
+            'notify::country-code': (pspec: GObject.ParamSpec) => void;
+            'notify::house-name': (pspec: GObject.ParamSpec) => void;
+            'notify::is-primary': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::mail-class': (pspec: GObject.ParamSpec) => void;
+            'notify::neighborhood': (pspec: GObject.ParamSpec) => void;
+            'notify::po-box': (pspec: GObject.ParamSpec) => void;
+            'notify::postcode': (pspec: GObject.ParamSpec) => void;
+            'notify::region': (pspec: GObject.ParamSpec) => void;
+            'notify::relation-type': (pspec: GObject.ParamSpec) => void;
+            'notify::street': (pspec: GObject.ParamSpec) => void;
+            'notify::subregion': (pspec: GObject.ParamSpec) => void;
+            'notify::usage': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -17945,6 +18347,14 @@ export namespace GData {
          */
         get usage(): string;
         set usage(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GDPostalAddress.SignalSignatures;
 
         // Constructors
 
@@ -17958,17 +18368,17 @@ export namespace GData {
 
         connect<K extends keyof GDPostalAddress.SignalSignatures>(
             signal: K,
-            callback: GDPostalAddress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GDPostalAddress.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDPostalAddress.SignalSignatures>(
             signal: K,
-            callback: GDPostalAddress.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GDPostalAddress.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDPostalAddress.SignalSignatures>(
             signal: K,
-            ...args: GDPostalAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GDPostalAddress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -18623,11 +19033,11 @@ export namespace GData {
     namespace GDReminder {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::absolute-time': GObject.Object.Notify;
-            'notify::is-absolute-time': GObject.Object.Notify;
-            'notify::method': GObject.Object.Notify;
-            'notify::relative-time': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::absolute-time': (pspec: GObject.ParamSpec) => void;
+            'notify::is-absolute-time': (pspec: GObject.ParamSpec) => void;
+            'notify::method': (pspec: GObject.ParamSpec) => void;
+            'notify::relative-time': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -18705,6 +19115,14 @@ export namespace GData {
          */
         get relativeTime(): number;
         set relativeTime(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GDReminder.SignalSignatures;
 
         // Constructors
 
@@ -18718,17 +19136,17 @@ export namespace GData {
 
         connect<K extends keyof GDReminder.SignalSignatures>(
             signal: K,
-            callback: GDReminder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GDReminder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDReminder.SignalSignatures>(
             signal: K,
-            callback: GDReminder.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GDReminder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDReminder.SignalSignatures>(
             signal: K,
-            ...args: GDReminder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GDReminder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -19229,11 +19647,11 @@ export namespace GData {
     namespace GDWhen {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::end-time': GObject.Object.Notify;
-            'notify::is-date': GObject.Object.Notify;
-            'notify::start-time': GObject.Object.Notify;
-            'notify::value-string': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::end-time': (pspec: GObject.ParamSpec) => void;
+            'notify::is-date': (pspec: GObject.ParamSpec) => void;
+            'notify::start-time': (pspec: GObject.ParamSpec) => void;
+            'notify::value-string': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19324,6 +19742,14 @@ export namespace GData {
          */
         get valueString(): string;
         set valueString(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GDWhen.SignalSignatures;
 
         // Constructors
 
@@ -19335,13 +19761,19 @@ export namespace GData {
 
         // Signals
 
-        connect<K extends keyof GDWhen.SignalSignatures>(signal: K, callback: GDWhen.SignalSignatures[K]): number;
+        connect<K extends keyof GDWhen.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GDWhen.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof GDWhen.SignalSignatures>(signal: K, callback: GDWhen.SignalSignatures[K]): number;
+        connect_after<K extends keyof GDWhen.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GDWhen.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDWhen.SignalSignatures>(
             signal: K,
-            ...args: GDWhen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GDWhen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -19859,10 +20291,10 @@ export namespace GData {
     namespace GDWhere {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::label': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::value-string': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::relation-type': (pspec: GObject.ParamSpec) => void;
+            'notify::value-string': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19926,6 +20358,14 @@ export namespace GData {
          */
         get valueString(): string;
         set valueString(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GDWhere.SignalSignatures;
 
         // Constructors
 
@@ -19937,16 +20377,19 @@ export namespace GData {
 
         // Signals
 
-        connect<K extends keyof GDWhere.SignalSignatures>(signal: K, callback: GDWhere.SignalSignatures[K]): number;
+        connect<K extends keyof GDWhere.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GDWhere.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDWhere.SignalSignatures>(
             signal: K,
-            callback: GDWhere.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GDWhere.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDWhere.SignalSignatures>(
             signal: K,
-            ...args: GDWhere.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GDWhere.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -20447,10 +20890,10 @@ export namespace GData {
     namespace GDWho {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::email-address': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::value-string': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::email-address': (pspec: GObject.ParamSpec) => void;
+            'notify::relation-type': (pspec: GObject.ParamSpec) => void;
+            'notify::value-string': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -20523,6 +20966,14 @@ export namespace GData {
          */
         get valueString(): string;
         set valueString(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GDWho.SignalSignatures;
 
         // Constructors
 
@@ -20538,13 +20989,19 @@ export namespace GData {
 
         // Signals
 
-        connect<K extends keyof GDWho.SignalSignatures>(signal: K, callback: GDWho.SignalSignatures[K]): number;
+        connect<K extends keyof GDWho.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GDWho.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof GDWho.SignalSignatures>(signal: K, callback: GDWho.SignalSignatures[K]): number;
+        connect_after<K extends keyof GDWho.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GDWho.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDWho.SignalSignatures>(
             signal: K,
-            ...args: GDWho.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GDWho.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21045,10 +21502,10 @@ export namespace GData {
     namespace Generator {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21092,6 +21549,14 @@ export namespace GData {
          * Atom specification</ulink>.
          */
         get version(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Generator.SignalSignatures;
 
         // Constructors
 
@@ -21101,16 +21566,19 @@ export namespace GData {
 
         // Signals
 
-        connect<K extends keyof Generator.SignalSignatures>(signal: K, callback: Generator.SignalSignatures[K]): number;
+        connect<K extends keyof Generator.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Generator.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Generator.SignalSignatures>(
             signal: K,
-            callback: Generator.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Generator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Generator.SignalSignatures>(
             signal: K,
-            ...args: Generator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Generator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21590,7 +22058,7 @@ export namespace GData {
     namespace GoaAuthorizer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::goa-object': GObject.Object.Notify;
+            'notify::goa-object': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21617,6 +22085,14 @@ export namespace GData {
          * The GOA account providing authentication. This should have all the necessary services enabled on it.
          */
         get goaObject(): Goa.Object;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: GoaAuthorizer.SignalSignatures;
 
         // Constructors
 
@@ -21630,17 +22106,17 @@ export namespace GData {
 
         connect<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
-            callback: GoaAuthorizer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
-            callback: GoaAuthorizer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
-            ...args: GoaAuthorizer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<GoaAuthorizer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22302,13 +22778,13 @@ export namespace GData {
     namespace Link {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::content-type': GObject.Object.Notify;
-            'notify::language': GObject.Object.Notify;
-            'notify::length': GObject.Object.Notify;
-            'notify::relation-type': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::content-type': (pspec: GObject.ParamSpec) => void;
+            'notify::language': (pspec: GObject.ParamSpec) => void;
+            'notify::length': (pspec: GObject.ParamSpec) => void;
+            'notify::relation-type': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22399,6 +22875,14 @@ export namespace GData {
          */
         get uri(): string;
         set uri(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Link.SignalSignatures;
 
         // Constructors
 
@@ -22410,13 +22894,19 @@ export namespace GData {
 
         // Signals
 
-        connect<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
+        connect<K extends keyof Link.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Link.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
+        connect_after<K extends keyof Link.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Link.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Link.SignalSignatures>(
             signal: K,
-            ...args: Link.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Link.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22959,10 +23449,10 @@ export namespace GData {
     namespace MediaCategory {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::category': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::scheme': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::category': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::scheme': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23003,6 +23493,14 @@ export namespace GData {
          */
         get scheme(): string;
         set scheme(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MediaCategory.SignalSignatures;
 
         // Constructors
 
@@ -23016,17 +23514,17 @@ export namespace GData {
 
         connect<K extends keyof MediaCategory.SignalSignatures>(
             signal: K,
-            callback: MediaCategory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaCategory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaCategory.SignalSignatures>(
             signal: K,
-            callback: MediaCategory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaCategory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaCategory.SignalSignatures>(
             signal: K,
-            ...args: MediaCategory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MediaCategory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23071,16 +23569,16 @@ export namespace GData {
     namespace MediaContent {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::content-type': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::expression': GObject.Object.Notify;
-            'notify::filesize': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::is-default': GObject.Object.Notify;
-            'notify::medium': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::content-type': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::expression': (pspec: GObject.ParamSpec) => void;
+            'notify::filesize': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::is-default': (pspec: GObject.ParamSpec) => void;
+            'notify::medium': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23175,6 +23673,14 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          */
         get width(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MediaContent.SignalSignatures;
 
         // Constructors
 
@@ -23186,17 +23692,17 @@ export namespace GData {
 
         connect<K extends keyof MediaContent.SignalSignatures>(
             signal: K,
-            callback: MediaContent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaContent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaContent.SignalSignatures>(
             signal: K,
-            callback: MediaContent.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaContent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaContent.SignalSignatures>(
             signal: K,
-            ...args: MediaContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MediaContent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23262,10 +23768,10 @@ export namespace GData {
     namespace MediaCredit {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::credit': GObject.Object.Notify;
-            'notify::role': GObject.Object.Notify;
-            'notify::scheme': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::credit': (pspec: GObject.ParamSpec) => void;
+            'notify::role': (pspec: GObject.ParamSpec) => void;
+            'notify::scheme': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23303,6 +23809,14 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          */
         get scheme(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MediaCredit.SignalSignatures;
 
         // Constructors
 
@@ -23314,17 +23828,17 @@ export namespace GData {
 
         connect<K extends keyof MediaCredit.SignalSignatures>(
             signal: K,
-            callback: MediaCredit.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaCredit.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaCredit.SignalSignatures>(
             signal: K,
-            callback: MediaCredit.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaCredit.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaCredit.SignalSignatures>(
             signal: K,
-            ...args: MediaCredit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MediaCredit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23350,11 +23864,11 @@ export namespace GData {
     namespace MediaThumbnail {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::height': GObject.Object.Notify;
-            'notify::time': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::time': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23399,6 +23913,14 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          */
         get width(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: MediaThumbnail.SignalSignatures;
 
         // Constructors
 
@@ -23410,17 +23932,17 @@ export namespace GData {
 
         connect<K extends keyof MediaThumbnail.SignalSignatures>(
             signal: K,
-            callback: MediaThumbnail.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaThumbnail.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaThumbnail.SignalSignatures>(
             signal: K,
-            callback: MediaThumbnail.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, MediaThumbnail.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaThumbnail.SignalSignatures>(
             signal: K,
-            ...args: MediaThumbnail.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<MediaThumbnail.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23466,13 +23988,13 @@ export namespace GData {
     namespace OAuth2Authorizer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::client-id': GObject.Object.Notify;
-            'notify::client-secret': GObject.Object.Notify;
-            'notify::locale': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::redirect-uri': GObject.Object.Notify;
-            'notify::refresh-token': GObject.Object.Notify;
-            'notify::timeout': GObject.Object.Notify;
+            'notify::client-id': (pspec: GObject.ParamSpec) => void;
+            'notify::client-secret': (pspec: GObject.ParamSpec) => void;
+            'notify::locale': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::redirect-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::refresh-token': (pspec: GObject.ParamSpec) => void;
+            'notify::timeout': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23657,6 +24179,14 @@ export namespace GData {
          */
         get timeout(): number;
         set timeout(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: OAuth2Authorizer.SignalSignatures;
 
         // Constructors
 
@@ -23682,17 +24212,17 @@ export namespace GData {
 
         connect<K extends keyof OAuth2Authorizer.SignalSignatures>(
             signal: K,
-            callback: OAuth2Authorizer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OAuth2Authorizer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OAuth2Authorizer.SignalSignatures>(
             signal: K,
-            callback: OAuth2Authorizer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, OAuth2Authorizer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OAuth2Authorizer.SignalSignatures>(
             signal: K,
-            ...args: OAuth2Authorizer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<OAuth2Authorizer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -24504,7 +25034,7 @@ export namespace GData {
     namespace Parsable {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24531,6 +25061,14 @@ export namespace GData {
          * Specifies whether the object was constructed by parsing XML or manually.
          */
         get constructedFromXml(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Parsable.SignalSignatures;
 
         // Constructors
 
@@ -24544,16 +25082,19 @@ export namespace GData {
 
         // Signals
 
-        connect<K extends keyof Parsable.SignalSignatures>(signal: K, callback: Parsable.SignalSignatures[K]): number;
+        connect<K extends keyof Parsable.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Parsable.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Parsable.SignalSignatures>(
             signal: K,
-            callback: Parsable.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Parsable.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Parsable.SignalSignatures>(
             signal: K,
-            ...args: Parsable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Parsable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -24593,32 +25134,32 @@ export namespace GData {
     namespace PicasaWebAlbum {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
-            'notify::album-id': GObject.Object.Notify;
-            'notify::bytes-used': GObject.Object.Notify;
-            'notify::comment-count': GObject.Object.Notify;
-            'notify::edited': GObject.Object.Notify;
-            'notify::is-commenting-enabled': GObject.Object.Notify;
-            'notify::latitude': GObject.Object.Notify;
-            'notify::location': GObject.Object.Notify;
-            'notify::longitude': GObject.Object.Notify;
-            'notify::nickname': GObject.Object.Notify;
-            'notify::num-photos': GObject.Object.Notify;
-            'notify::num-photos-remaining': GObject.Object.Notify;
-            'notify::tags': GObject.Object.Notify;
-            'notify::timestamp': GObject.Object.Notify;
-            'notify::user': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::album-id': (pspec: GObject.ParamSpec) => void;
+            'notify::bytes-used': (pspec: GObject.ParamSpec) => void;
+            'notify::comment-count': (pspec: GObject.ParamSpec) => void;
+            'notify::edited': (pspec: GObject.ParamSpec) => void;
+            'notify::is-commenting-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::latitude': (pspec: GObject.ParamSpec) => void;
+            'notify::location': (pspec: GObject.ParamSpec) => void;
+            'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            'notify::nickname': (pspec: GObject.ParamSpec) => void;
+            'notify::num-photos': (pspec: GObject.ParamSpec) => void;
+            'notify::num-photos-remaining': (pspec: GObject.ParamSpec) => void;
+            'notify::tags': (pspec: GObject.ParamSpec) => void;
+            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
+            'notify::user': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24809,6 +25350,14 @@ export namespace GData {
          */
         get visibility(): PicasaWebVisibility;
         set visibility(val: PicasaWebVisibility);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PicasaWebAlbum.SignalSignatures;
 
         // Constructors
 
@@ -24822,17 +25371,17 @@ export namespace GData {
 
         connect<K extends keyof PicasaWebAlbum.SignalSignatures>(
             signal: K,
-            callback: PicasaWebAlbum.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PicasaWebAlbum.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PicasaWebAlbum.SignalSignatures>(
             signal: K,
-            callback: PicasaWebAlbum.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PicasaWebAlbum.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PicasaWebAlbum.SignalSignatures>(
             signal: K,
-            ...args: PicasaWebAlbum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PicasaWebAlbum.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -24962,17 +25511,17 @@ export namespace GData {
     namespace PicasaWebComment {
         // Signal signatures
         interface SignalSignatures extends Comment.SignalSignatures {
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24985,6 +25534,14 @@ export namespace GData {
      */
     class PicasaWebComment extends Comment {
         static $gtype: GObject.GType<PicasaWebComment>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PicasaWebComment.SignalSignatures;
 
         // Constructors
 
@@ -25001,17 +25558,17 @@ export namespace GData {
 
         connect<K extends keyof PicasaWebComment.SignalSignatures>(
             signal: K,
-            callback: PicasaWebComment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PicasaWebComment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PicasaWebComment.SignalSignatures>(
             signal: K,
-            callback: PicasaWebComment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PicasaWebComment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PicasaWebComment.SignalSignatures>(
             signal: K,
-            ...args: PicasaWebComment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PicasaWebComment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -25019,20 +25576,20 @@ export namespace GData {
     namespace PicasaWebFeed {
         // Signal signatures
         interface SignalSignatures extends Feed.SignalSignatures {
-            'notify::etag': GObject.Object.Notify;
-            'notify::generator': GObject.Object.Notify;
-            'notify::icon': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::items-per-page': GObject.Object.Notify;
-            'notify::logo': GObject.Object.Notify;
-            'notify::next-page-token': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
-            'notify::subtitle': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::total-results': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::generator': (pspec: GObject.ParamSpec) => void;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::items-per-page': (pspec: GObject.ParamSpec) => void;
+            'notify::logo': (pspec: GObject.ParamSpec) => void;
+            'notify::next-page-token': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::start-index': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::total-results': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25045,6 +25602,14 @@ export namespace GData {
      */
     class PicasaWebFeed extends Feed {
         static $gtype: GObject.GType<PicasaWebFeed>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PicasaWebFeed.SignalSignatures;
 
         // Constructors
 
@@ -25056,17 +25621,17 @@ export namespace GData {
 
         connect<K extends keyof PicasaWebFeed.SignalSignatures>(
             signal: K,
-            callback: PicasaWebFeed.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PicasaWebFeed.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PicasaWebFeed.SignalSignatures>(
             signal: K,
-            callback: PicasaWebFeed.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PicasaWebFeed.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PicasaWebFeed.SignalSignatures>(
             signal: K,
-            ...args: PicasaWebFeed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PicasaWebFeed.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -25074,44 +25639,44 @@ export namespace GData {
     namespace PicasaWebFile {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
-            'notify::album-id': GObject.Object.Notify;
-            'notify::caption': GObject.Object.Notify;
-            'notify::checksum': GObject.Object.Notify;
-            'notify::comment-count': GObject.Object.Notify;
-            'notify::credit': GObject.Object.Notify;
-            'notify::distance': GObject.Object.Notify;
-            'notify::edited': GObject.Object.Notify;
-            'notify::exposure': GObject.Object.Notify;
-            'notify::file-id': GObject.Object.Notify;
-            'notify::flash': GObject.Object.Notify;
-            'notify::focal-length': GObject.Object.Notify;
-            'notify::fstop': GObject.Object.Notify;
-            'notify::height': GObject.Object.Notify;
-            'notify::image-unique-id': GObject.Object.Notify;
-            'notify::is-commenting-enabled': GObject.Object.Notify;
-            'notify::iso': GObject.Object.Notify;
-            'notify::latitude': GObject.Object.Notify;
-            'notify::longitude': GObject.Object.Notify;
-            'notify::make': GObject.Object.Notify;
-            'notify::model': GObject.Object.Notify;
-            'notify::rotation': GObject.Object.Notify;
-            'notify::size': GObject.Object.Notify;
-            'notify::tags': GObject.Object.Notify;
-            'notify::timestamp': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
-            'notify::video-status': GObject.Object.Notify;
-            'notify::width': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::album-id': (pspec: GObject.ParamSpec) => void;
+            'notify::caption': (pspec: GObject.ParamSpec) => void;
+            'notify::checksum': (pspec: GObject.ParamSpec) => void;
+            'notify::comment-count': (pspec: GObject.ParamSpec) => void;
+            'notify::credit': (pspec: GObject.ParamSpec) => void;
+            'notify::distance': (pspec: GObject.ParamSpec) => void;
+            'notify::edited': (pspec: GObject.ParamSpec) => void;
+            'notify::exposure': (pspec: GObject.ParamSpec) => void;
+            'notify::file-id': (pspec: GObject.ParamSpec) => void;
+            'notify::flash': (pspec: GObject.ParamSpec) => void;
+            'notify::focal-length': (pspec: GObject.ParamSpec) => void;
+            'notify::fstop': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::image-unique-id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-commenting-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::iso': (pspec: GObject.ParamSpec) => void;
+            'notify::latitude': (pspec: GObject.ParamSpec) => void;
+            'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            'notify::make': (pspec: GObject.ParamSpec) => void;
+            'notify::model': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::tags': (pspec: GObject.ParamSpec) => void;
+            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
+            'notify::video-status': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25411,6 +25976,14 @@ export namespace GData {
          * gphoto specification</ulink>.
          */
         get width(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PicasaWebFile.SignalSignatures;
 
         // Constructors
 
@@ -25424,17 +25997,17 @@ export namespace GData {
 
         connect<K extends keyof PicasaWebFile.SignalSignatures>(
             signal: K,
-            callback: PicasaWebFile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PicasaWebFile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PicasaWebFile.SignalSignatures>(
             signal: K,
-            callback: PicasaWebFile.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PicasaWebFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PicasaWebFile.SignalSignatures>(
             signal: K,
-            ...args: PicasaWebFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PicasaWebFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -26095,22 +26668,22 @@ export namespace GData {
     namespace PicasaWebQuery {
         // Signal signatures
         interface SignalSignatures extends Query.SignalSignatures {
-            'notify::image-size': GObject.Object.Notify;
-            'notify::location': GObject.Object.Notify;
-            'notify::tag': GObject.Object.Notify;
-            'notify::thumbnail-size': GObject.Object.Notify;
-            'notify::visibility': GObject.Object.Notify;
-            'notify::author': GObject.Object.Notify;
-            'notify::categories': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::is-strict': GObject.Object.Notify;
-            'notify::max-results': GObject.Object.Notify;
-            'notify::published-max': GObject.Object.Notify;
-            'notify::published-min': GObject.Object.Notify;
-            'notify::q': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
-            'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-min': GObject.Object.Notify;
+            'notify::image-size': (pspec: GObject.ParamSpec) => void;
+            'notify::location': (pspec: GObject.ParamSpec) => void;
+            'notify::tag': (pspec: GObject.ParamSpec) => void;
+            'notify::thumbnail-size': (pspec: GObject.ParamSpec) => void;
+            'notify::visibility': (pspec: GObject.ParamSpec) => void;
+            'notify::author': (pspec: GObject.ParamSpec) => void;
+            'notify::categories': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::is-strict': (pspec: GObject.ParamSpec) => void;
+            'notify::max-results': (pspec: GObject.ParamSpec) => void;
+            'notify::published-max': (pspec: GObject.ParamSpec) => void;
+            'notify::published-min': (pspec: GObject.ParamSpec) => void;
+            'notify::q': (pspec: GObject.ParamSpec) => void;
+            'notify::start-index': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-max': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-min': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -26183,6 +26756,14 @@ export namespace GData {
          */
         get visibility(): number;
         set visibility(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PicasaWebQuery.SignalSignatures;
 
         // Constructors
 
@@ -26198,17 +26779,17 @@ export namespace GData {
 
         connect<K extends keyof PicasaWebQuery.SignalSignatures>(
             signal: K,
-            callback: PicasaWebQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PicasaWebQuery.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PicasaWebQuery.SignalSignatures>(
             signal: K,
-            callback: PicasaWebQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PicasaWebQuery.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PicasaWebQuery.SignalSignatures>(
             signal: K,
-            ...args: PicasaWebQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PicasaWebQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -26293,10 +26874,10 @@ export namespace GData {
     namespace PicasaWebService {
         // Signal signatures
         interface SignalSignatures extends Service.SignalSignatures {
-            'notify::authorizer': GObject.Object.Notify;
-            'notify::locale': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::timeout': GObject.Object.Notify;
+            'notify::authorizer': (pspec: GObject.ParamSpec) => void;
+            'notify::locale': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::timeout': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -26309,6 +26890,14 @@ export namespace GData {
      */
     class PicasaWebService extends Service {
         static $gtype: GObject.GType<PicasaWebService>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PicasaWebService.SignalSignatures;
 
         // Constructors
 
@@ -26322,17 +26911,17 @@ export namespace GData {
 
         connect<K extends keyof PicasaWebService.SignalSignatures>(
             signal: K,
-            callback: PicasaWebService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PicasaWebService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PicasaWebService.SignalSignatures>(
             signal: K,
-            callback: PicasaWebService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PicasaWebService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PicasaWebService.SignalSignatures>(
             signal: K,
-            ...args: PicasaWebService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PicasaWebService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -26560,23 +27149,23 @@ export namespace GData {
     namespace PicasaWebUser {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
-            'notify::max-photos-per-album': GObject.Object.Notify;
-            'notify::nickname': GObject.Object.Notify;
-            'notify::quota-current': GObject.Object.Notify;
-            'notify::quota-limit': GObject.Object.Notify;
-            'notify::thumbnail-uri': GObject.Object.Notify;
-            'notify::user': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::max-photos-per-album': (pspec: GObject.ParamSpec) => void;
+            'notify::nickname': (pspec: GObject.ParamSpec) => void;
+            'notify::quota-current': (pspec: GObject.ParamSpec) => void;
+            'notify::quota-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::thumbnail-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::user': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -26665,6 +27254,14 @@ export namespace GData {
          * http://code.google.com/apis/picasaweb/docs/2.0/reference.html#gphoto_user
          */
         get user(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: PicasaWebUser.SignalSignatures;
 
         // Constructors
 
@@ -26676,17 +27273,17 @@ export namespace GData {
 
         connect<K extends keyof PicasaWebUser.SignalSignatures>(
             signal: K,
-            callback: PicasaWebUser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PicasaWebUser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PicasaWebUser.SignalSignatures>(
             signal: K,
-            callback: PicasaWebUser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, PicasaWebUser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PicasaWebUser.SignalSignatures>(
             signal: K,
-            ...args: PicasaWebUser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<PicasaWebUser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -26733,17 +27330,17 @@ export namespace GData {
     namespace Query {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::author': GObject.Object.Notify;
-            'notify::categories': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::is-strict': GObject.Object.Notify;
-            'notify::max-results': GObject.Object.Notify;
-            'notify::published-max': GObject.Object.Notify;
-            'notify::published-min': GObject.Object.Notify;
-            'notify::q': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
-            'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-min': GObject.Object.Notify;
+            'notify::author': (pspec: GObject.ParamSpec) => void;
+            'notify::categories': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::is-strict': (pspec: GObject.ParamSpec) => void;
+            'notify::max-results': (pspec: GObject.ParamSpec) => void;
+            'notify::published-max': (pspec: GObject.ParamSpec) => void;
+            'notify::published-min': (pspec: GObject.ParamSpec) => void;
+            'notify::q': (pspec: GObject.ParamSpec) => void;
+            'notify::start-index': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-max': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-min': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -26919,6 +27516,14 @@ export namespace GData {
          */
         get updatedMin(): number;
         set updatedMin(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Query.SignalSignatures;
 
         // Constructors
 
@@ -26932,13 +27537,19 @@ export namespace GData {
 
         // Signals
 
-        connect<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        connect<K extends keyof Query.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Query.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        connect_after<K extends keyof Query.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Query.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Query.SignalSignatures>(
             signal: K,
-            ...args: Query.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Query.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -27105,10 +27716,10 @@ export namespace GData {
     namespace Service {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::authorizer': GObject.Object.Notify;
-            'notify::locale': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::timeout': GObject.Object.Notify;
+            'notify::authorizer': (pspec: GObject.ParamSpec) => void;
+            'notify::locale': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::timeout': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -27177,6 +27788,14 @@ export namespace GData {
          */
         get timeout(): number;
         set timeout(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Service.SignalSignatures;
 
         // Constructors
 
@@ -27186,16 +27805,19 @@ export namespace GData {
 
         // Signals
 
-        connect<K extends keyof Service.SignalSignatures>(signal: K, callback: Service.SignalSignatures[K]): number;
+        connect<K extends keyof Service.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Service.SignalSignatures>(
             signal: K,
-            callback: Service.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Service.SignalSignatures>(
             signal: K,
-            ...args: Service.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Service.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -27765,24 +28387,24 @@ export namespace GData {
     namespace TasksQuery {
         // Signal signatures
         interface SignalSignatures extends Query.SignalSignatures {
-            'notify::completed-max': GObject.Object.Notify;
-            'notify::completed-min': GObject.Object.Notify;
-            'notify::due-max': GObject.Object.Notify;
-            'notify::due-min': GObject.Object.Notify;
-            'notify::show-completed': GObject.Object.Notify;
-            'notify::show-deleted': GObject.Object.Notify;
-            'notify::show-hidden': GObject.Object.Notify;
-            'notify::author': GObject.Object.Notify;
-            'notify::categories': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::is-strict': GObject.Object.Notify;
-            'notify::max-results': GObject.Object.Notify;
-            'notify::published-max': GObject.Object.Notify;
-            'notify::published-min': GObject.Object.Notify;
-            'notify::q': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
-            'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-min': GObject.Object.Notify;
+            'notify::completed-max': (pspec: GObject.ParamSpec) => void;
+            'notify::completed-min': (pspec: GObject.ParamSpec) => void;
+            'notify::due-max': (pspec: GObject.ParamSpec) => void;
+            'notify::due-min': (pspec: GObject.ParamSpec) => void;
+            'notify::show-completed': (pspec: GObject.ParamSpec) => void;
+            'notify::show-deleted': (pspec: GObject.ParamSpec) => void;
+            'notify::show-hidden': (pspec: GObject.ParamSpec) => void;
+            'notify::author': (pspec: GObject.ParamSpec) => void;
+            'notify::categories': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::is-strict': (pspec: GObject.ParamSpec) => void;
+            'notify::max-results': (pspec: GObject.ParamSpec) => void;
+            'notify::published-max': (pspec: GObject.ParamSpec) => void;
+            'notify::published-min': (pspec: GObject.ParamSpec) => void;
+            'notify::q': (pspec: GObject.ParamSpec) => void;
+            'notify::start-index': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-max': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-min': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -27891,6 +28513,14 @@ export namespace GData {
          */
         get showHidden(): boolean;
         set showHidden(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TasksQuery.SignalSignatures;
 
         // Constructors
 
@@ -27904,17 +28534,17 @@ export namespace GData {
 
         connect<K extends keyof TasksQuery.SignalSignatures>(
             signal: K,
-            callback: TasksQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TasksQuery.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TasksQuery.SignalSignatures>(
             signal: K,
-            callback: TasksQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TasksQuery.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TasksQuery.SignalSignatures>(
             signal: K,
-            ...args: TasksQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TasksQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -28007,10 +28637,10 @@ export namespace GData {
     namespace TasksService {
         // Signal signatures
         interface SignalSignatures extends Service.SignalSignatures {
-            'notify::authorizer': GObject.Object.Notify;
-            'notify::locale': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::timeout': GObject.Object.Notify;
+            'notify::authorizer': (pspec: GObject.ParamSpec) => void;
+            'notify::locale': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::timeout': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -28023,6 +28653,14 @@ export namespace GData {
      */
     class TasksService extends Service {
         static $gtype: GObject.GType<TasksService>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TasksService.SignalSignatures;
 
         // Constructors
 
@@ -28036,17 +28674,17 @@ export namespace GData {
 
         connect<K extends keyof TasksService.SignalSignatures>(
             signal: K,
-            callback: TasksService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TasksService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TasksService.SignalSignatures>(
             signal: K,
-            callback: TasksService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TasksService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TasksService.SignalSignatures>(
             signal: K,
-            ...args: TasksService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TasksService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -28307,25 +28945,25 @@ export namespace GData {
     namespace TasksTask {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
-            'notify::completed': GObject.Object.Notify;
-            'notify::due': GObject.Object.Notify;
-            'notify::is-deleted': GObject.Object.Notify;
-            'notify::is-hidden': GObject.Object.Notify;
-            'notify::notes': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::position': GObject.Object.Notify;
-            'notify::status': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::completed': (pspec: GObject.ParamSpec) => void;
+            'notify::due': (pspec: GObject.ParamSpec) => void;
+            'notify::is-deleted': (pspec: GObject.ParamSpec) => void;
+            'notify::is-hidden': (pspec: GObject.ParamSpec) => void;
+            'notify::notes': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::status': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -28420,6 +29058,14 @@ export namespace GData {
          */
         get status(): string;
         set status(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TasksTask.SignalSignatures;
 
         // Constructors
 
@@ -28431,16 +29077,19 @@ export namespace GData {
 
         // Signals
 
-        connect<K extends keyof TasksTask.SignalSignatures>(signal: K, callback: TasksTask.SignalSignatures[K]): number;
+        connect<K extends keyof TasksTask.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TasksTask.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TasksTask.SignalSignatures>(
             signal: K,
-            callback: TasksTask.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TasksTask.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TasksTask.SignalSignatures>(
             signal: K,
-            ...args: TasksTask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TasksTask.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -28524,17 +29173,17 @@ export namespace GData {
     namespace TasksTasklist {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -28547,6 +29196,14 @@ export namespace GData {
      */
     class TasksTasklist extends Entry {
         static $gtype: GObject.GType<TasksTasklist>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: TasksTasklist.SignalSignatures;
 
         // Constructors
 
@@ -28560,17 +29217,17 @@ export namespace GData {
 
         connect<K extends keyof TasksTasklist.SignalSignatures>(
             signal: K,
-            callback: TasksTasklist.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TasksTasklist.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TasksTasklist.SignalSignatures>(
             signal: K,
-            callback: TasksTasklist.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, TasksTasklist.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TasksTasklist.SignalSignatures>(
             signal: K,
-            ...args: TasksTasklist.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<TasksTasklist.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -28578,15 +29235,15 @@ export namespace GData {
     namespace UploadStream {
         // Signal signatures
         interface SignalSignatures extends Gio.OutputStream.SignalSignatures {
-            'notify::authorization-domain': GObject.Object.Notify;
-            'notify::cancellable': GObject.Object.Notify;
-            'notify::content-length': GObject.Object.Notify;
-            'notify::content-type': GObject.Object.Notify;
-            'notify::entry': GObject.Object.Notify;
-            'notify::method': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
-            'notify::slug': GObject.Object.Notify;
-            'notify::upload-uri': GObject.Object.Notify;
+            'notify::authorization-domain': (pspec: GObject.ParamSpec) => void;
+            'notify::cancellable': (pspec: GObject.ParamSpec) => void;
+            'notify::content-length': (pspec: GObject.ParamSpec) => void;
+            'notify::content-type': (pspec: GObject.ParamSpec) => void;
+            'notify::entry': (pspec: GObject.ParamSpec) => void;
+            'notify::method': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::slug': (pspec: GObject.ParamSpec) => void;
+            'notify::upload-uri': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -28684,6 +29341,14 @@ export namespace GData {
          * The URI to upload the data and metadata to. This must be HTTPS.
          */
         get uploadUri(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: UploadStream.SignalSignatures;
 
         // Constructors
 
@@ -28718,17 +29383,17 @@ export namespace GData {
 
         connect<K extends keyof UploadStream.SignalSignatures>(
             signal: K,
-            callback: UploadStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UploadStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UploadStream.SignalSignatures>(
             signal: K,
-            callback: UploadStream.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, UploadStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UploadStream.SignalSignatures>(
             signal: K,
-            ...args: UploadStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<UploadStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -28802,12 +29467,12 @@ export namespace GData {
     namespace YouTubeCategory {
         // Signal signatures
         interface SignalSignatures extends Category.SignalSignatures {
-            'notify::is-assignable': GObject.Object.Notify;
-            'notify::is-deprecated': GObject.Object.Notify;
-            'notify::label': GObject.Object.Notify;
-            'notify::scheme': GObject.Object.Notify;
-            'notify::term': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::is-assignable': (pspec: GObject.ParamSpec) => void;
+            'notify::is-deprecated': (pspec: GObject.ParamSpec) => void;
+            'notify::label': (pspec: GObject.ParamSpec) => void;
+            'notify::scheme': (pspec: GObject.ParamSpec) => void;
+            'notify::term': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -28844,6 +29509,14 @@ export namespace GData {
          * Whether the category is deprecated.
          */
         get isDeprecated(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: YouTubeCategory.SignalSignatures;
 
         // Constructors
 
@@ -28855,17 +29528,17 @@ export namespace GData {
 
         connect<K extends keyof YouTubeCategory.SignalSignatures>(
             signal: K,
-            callback: YouTubeCategory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, YouTubeCategory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof YouTubeCategory.SignalSignatures>(
             signal: K,
-            callback: YouTubeCategory.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, YouTubeCategory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof YouTubeCategory.SignalSignatures>(
             signal: K,
-            ...args: YouTubeCategory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<YouTubeCategory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -29337,18 +30010,18 @@ export namespace GData {
     namespace YouTubeComment {
         // Signal signatures
         interface SignalSignatures extends Comment.SignalSignatures {
-            'notify::parent-comment-uri': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::parent-comment-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -29381,6 +30054,14 @@ export namespace GData {
          */
         get parentCommentUri(): string;
         set parentCommentUri(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: YouTubeComment.SignalSignatures;
 
         // Constructors
 
@@ -29397,17 +30078,17 @@ export namespace GData {
 
         connect<K extends keyof YouTubeComment.SignalSignatures>(
             signal: K,
-            callback: YouTubeComment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, YouTubeComment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof YouTubeComment.SignalSignatures>(
             signal: K,
-            callback: YouTubeComment.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, YouTubeComment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof YouTubeComment.SignalSignatures>(
             signal: K,
-            ...args: YouTubeComment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<YouTubeComment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -29434,20 +30115,20 @@ export namespace GData {
     namespace YouTubeFeed {
         // Signal signatures
         interface SignalSignatures extends Feed.SignalSignatures {
-            'notify::etag': GObject.Object.Notify;
-            'notify::generator': GObject.Object.Notify;
-            'notify::icon': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::items-per-page': GObject.Object.Notify;
-            'notify::logo': GObject.Object.Notify;
-            'notify::next-page-token': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
-            'notify::subtitle': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::total-results': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::generator': (pspec: GObject.ParamSpec) => void;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::items-per-page': (pspec: GObject.ParamSpec) => void;
+            'notify::logo': (pspec: GObject.ParamSpec) => void;
+            'notify::next-page-token': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::start-index': (pspec: GObject.ParamSpec) => void;
+            'notify::subtitle': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::total-results': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -29461,6 +30142,14 @@ export namespace GData {
      */
     class YouTubeFeed extends Feed {
         static $gtype: GObject.GType<YouTubeFeed>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: YouTubeFeed.SignalSignatures;
 
         // Constructors
 
@@ -29472,17 +30161,17 @@ export namespace GData {
 
         connect<K extends keyof YouTubeFeed.SignalSignatures>(
             signal: K,
-            callback: YouTubeFeed.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, YouTubeFeed.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof YouTubeFeed.SignalSignatures>(
             signal: K,
-            callback: YouTubeFeed.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, YouTubeFeed.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof YouTubeFeed.SignalSignatures>(
             signal: K,
-            ...args: YouTubeFeed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<YouTubeFeed.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -29490,25 +30179,25 @@ export namespace GData {
     namespace YouTubeQuery {
         // Signal signatures
         interface SignalSignatures extends Query.SignalSignatures {
-            'notify::age': GObject.Object.Notify;
-            'notify::latitude': GObject.Object.Notify;
-            'notify::license': GObject.Object.Notify;
-            'notify::location-radius': GObject.Object.Notify;
-            'notify::longitude': GObject.Object.Notify;
-            'notify::order-by': GObject.Object.Notify;
-            'notify::restriction': GObject.Object.Notify;
-            'notify::safe-search': GObject.Object.Notify;
-            'notify::author': GObject.Object.Notify;
-            'notify::categories': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::is-strict': GObject.Object.Notify;
-            'notify::max-results': GObject.Object.Notify;
-            'notify::published-max': GObject.Object.Notify;
-            'notify::published-min': GObject.Object.Notify;
-            'notify::q': GObject.Object.Notify;
-            'notify::start-index': GObject.Object.Notify;
-            'notify::updated-max': GObject.Object.Notify;
-            'notify::updated-min': GObject.Object.Notify;
+            'notify::age': (pspec: GObject.ParamSpec) => void;
+            'notify::latitude': (pspec: GObject.ParamSpec) => void;
+            'notify::license': (pspec: GObject.ParamSpec) => void;
+            'notify::location-radius': (pspec: GObject.ParamSpec) => void;
+            'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            'notify::order-by': (pspec: GObject.ParamSpec) => void;
+            'notify::restriction': (pspec: GObject.ParamSpec) => void;
+            'notify::safe-search': (pspec: GObject.ParamSpec) => void;
+            'notify::author': (pspec: GObject.ParamSpec) => void;
+            'notify::categories': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::is-strict': (pspec: GObject.ParamSpec) => void;
+            'notify::max-results': (pspec: GObject.ParamSpec) => void;
+            'notify::published-max': (pspec: GObject.ParamSpec) => void;
+            'notify::published-min': (pspec: GObject.ParamSpec) => void;
+            'notify::q': (pspec: GObject.ParamSpec) => void;
+            'notify::start-index': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-max': (pspec: GObject.ParamSpec) => void;
+            'notify::updated-min': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -29651,6 +30340,14 @@ export namespace GData {
          */
         get safeSearch(): YouTubeSafeSearch;
         set safeSearch(val: YouTubeSafeSearch);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: YouTubeQuery.SignalSignatures;
 
         // Constructors
 
@@ -29664,17 +30361,17 @@ export namespace GData {
 
         connect<K extends keyof YouTubeQuery.SignalSignatures>(
             signal: K,
-            callback: YouTubeQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, YouTubeQuery.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof YouTubeQuery.SignalSignatures>(
             signal: K,
-            callback: YouTubeQuery.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, YouTubeQuery.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof YouTubeQuery.SignalSignatures>(
             signal: K,
-            ...args: YouTubeQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<YouTubeQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -29754,11 +30451,11 @@ export namespace GData {
     namespace YouTubeService {
         // Signal signatures
         interface SignalSignatures extends Service.SignalSignatures {
-            'notify::developer-key': GObject.Object.Notify;
-            'notify::authorizer': GObject.Object.Notify;
-            'notify::locale': GObject.Object.Notify;
-            'notify::proxy-resolver': GObject.Object.Notify;
-            'notify::timeout': GObject.Object.Notify;
+            'notify::developer-key': (pspec: GObject.ParamSpec) => void;
+            'notify::authorizer': (pspec: GObject.ParamSpec) => void;
+            'notify::locale': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
+            'notify::timeout': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -29795,6 +30492,14 @@ export namespace GData {
          * developer key.
          */
         get developerKey(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: YouTubeService.SignalSignatures;
 
         // Constructors
 
@@ -29808,17 +30513,17 @@ export namespace GData {
 
         connect<K extends keyof YouTubeService.SignalSignatures>(
             signal: K,
-            callback: YouTubeService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, YouTubeService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof YouTubeService.SignalSignatures>(
             signal: K,
-            callback: YouTubeService.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, YouTubeService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof YouTubeService.SignalSignatures>(
             signal: K,
-            ...args: YouTubeService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<YouTubeService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -30659,11 +31364,11 @@ export namespace GData {
     namespace YouTubeState {
         // Signal signatures
         interface SignalSignatures extends Parsable.SignalSignatures {
-            'notify::help-uri': GObject.Object.Notify;
-            'notify::message': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::reason-code': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::help-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::message': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::reason-code': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -30730,6 +31435,14 @@ export namespace GData {
          * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:state">online documentation</ulink>.
          */
         get reasonCode(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: YouTubeState.SignalSignatures;
 
         // Constructors
 
@@ -30741,17 +31454,17 @@ export namespace GData {
 
         connect<K extends keyof YouTubeState.SignalSignatures>(
             signal: K,
-            callback: YouTubeState.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, YouTubeState.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof YouTubeState.SignalSignatures>(
             signal: K,
-            callback: YouTubeState.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, YouTubeState.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof YouTubeState.SignalSignatures>(
             signal: K,
-            ...args: YouTubeState.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<YouTubeState.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -30782,36 +31495,36 @@ export namespace GData {
     namespace YouTubeVideo {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
-            'notify::aspect-ratio': GObject.Object.Notify;
-            'notify::average-rating': GObject.Object.Notify;
-            'notify::category': GObject.Object.Notify;
-            'notify::description': GObject.Object.Notify;
-            'notify::duration': GObject.Object.Notify;
-            'notify::favorite-count': GObject.Object.Notify;
-            'notify::is-private': GObject.Object.Notify;
-            'notify::keywords': GObject.Object.Notify;
-            'notify::latitude': GObject.Object.Notify;
-            'notify::location': GObject.Object.Notify;
-            'notify::longitude': GObject.Object.Notify;
-            'notify::max-rating': GObject.Object.Notify;
-            'notify::min-rating': GObject.Object.Notify;
-            'notify::player-uri': GObject.Object.Notify;
-            'notify::rating-count': GObject.Object.Notify;
-            'notify::recorded': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::uploaded': GObject.Object.Notify;
-            'notify::view-count': GObject.Object.Notify;
-            'notify::content': GObject.Object.Notify;
-            'notify::content-uri': GObject.Object.Notify;
-            'notify::etag': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::is-inserted': GObject.Object.Notify;
-            'notify::published': GObject.Object.Notify;
-            'notify::rights': GObject.Object.Notify;
-            'notify::summary': GObject.Object.Notify;
-            'notify::title': GObject.Object.Notify;
-            'notify::updated': GObject.Object.Notify;
-            'notify::constructed-from-xml': GObject.Object.Notify;
+            'notify::aspect-ratio': (pspec: GObject.ParamSpec) => void;
+            'notify::average-rating': (pspec: GObject.ParamSpec) => void;
+            'notify::category': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::duration': (pspec: GObject.ParamSpec) => void;
+            'notify::favorite-count': (pspec: GObject.ParamSpec) => void;
+            'notify::is-private': (pspec: GObject.ParamSpec) => void;
+            'notify::keywords': (pspec: GObject.ParamSpec) => void;
+            'notify::latitude': (pspec: GObject.ParamSpec) => void;
+            'notify::location': (pspec: GObject.ParamSpec) => void;
+            'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            'notify::max-rating': (pspec: GObject.ParamSpec) => void;
+            'notify::min-rating': (pspec: GObject.ParamSpec) => void;
+            'notify::player-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::rating-count': (pspec: GObject.ParamSpec) => void;
+            'notify::recorded': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::uploaded': (pspec: GObject.ParamSpec) => void;
+            'notify::view-count': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::etag': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::is-inserted': (pspec: GObject.ParamSpec) => void;
+            'notify::published': (pspec: GObject.ParamSpec) => void;
+            'notify::rights': (pspec: GObject.ParamSpec) => void;
+            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::updated': (pspec: GObject.ParamSpec) => void;
+            'notify::constructed-from-xml': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -31048,6 +31761,14 @@ export namespace GData {
          * url="https://developers.google.com/youtube/v3/docs/videos#statistics.viewCount">online documentation</ulink>.
          */
         get viewCount(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: YouTubeVideo.SignalSignatures;
 
         // Constructors
 
@@ -31061,17 +31782,17 @@ export namespace GData {
 
         connect<K extends keyof YouTubeVideo.SignalSignatures>(
             signal: K,
-            callback: YouTubeVideo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, YouTubeVideo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof YouTubeVideo.SignalSignatures>(
             signal: K,
-            callback: YouTubeVideo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, YouTubeVideo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof YouTubeVideo.SignalSignatures>(
             signal: K,
-            ...args: YouTubeVideo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<YouTubeVideo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

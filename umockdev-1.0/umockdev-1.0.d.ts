@@ -44,6 +44,14 @@ export namespace UMockdev {
 
     class Testbed extends GObject.Object {
         static $gtype: GObject.GType<Testbed>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Testbed.SignalSignatures;
 
         // Constructors
 
@@ -55,16 +63,19 @@ export namespace UMockdev {
 
         // Signals
 
-        connect<K extends keyof Testbed.SignalSignatures>(signal: K, callback: Testbed.SignalSignatures[K]): number;
+        connect<K extends keyof Testbed.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Testbed.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Testbed.SignalSignatures>(
             signal: K,
-            callback: Testbed.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Testbed.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Testbed.SignalSignatures>(
             signal: K,
-            ...args: Testbed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Testbed.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -120,6 +131,14 @@ export namespace UMockdev {
 
     class IoctlData extends GObject.Object {
         static $gtype: GObject.GType<IoctlData>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IoctlData.SignalSignatures;
 
         // Fields
 
@@ -135,16 +154,19 @@ export namespace UMockdev {
 
         // Signals
 
-        connect<K extends keyof IoctlData.SignalSignatures>(signal: K, callback: IoctlData.SignalSignatures[K]): number;
+        connect<K extends keyof IoctlData.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, IoctlData.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IoctlData.SignalSignatures>(
             signal: K,
-            callback: IoctlData.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IoctlData.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IoctlData.SignalSignatures>(
             signal: K,
-            ...args: IoctlData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IoctlData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -162,10 +184,10 @@ export namespace UMockdev {
     namespace IoctlClient {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::devnode': GObject.Object.Notify;
-            'notify::request': GObject.Object.Notify;
-            'notify::arg': GObject.Object.Notify;
-            'notify::connected': GObject.Object.Notify;
+            'notify::devnode': (pspec: GObject.ParamSpec) => void;
+            'notify::request': (pspec: GObject.ParamSpec) => void;
+            'notify::arg': (pspec: GObject.ParamSpec) => void;
+            'notify::connected': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -187,6 +209,14 @@ export namespace UMockdev {
         get request(): number;
         get arg(): IoctlData;
         get connected(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IoctlClient.SignalSignatures;
 
         // Constructors
 
@@ -198,17 +228,17 @@ export namespace UMockdev {
 
         connect<K extends keyof IoctlClient.SignalSignatures>(
             signal: K,
-            callback: IoctlClient.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IoctlClient.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IoctlClient.SignalSignatures>(
             signal: K,
-            callback: IoctlClient.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IoctlClient.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IoctlClient.SignalSignatures>(
             signal: K,
-            ...args: IoctlClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IoctlClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -224,20 +254,10 @@ export namespace UMockdev {
     }
 
     namespace IoctlBase {
-        // Signal callback interfaces
-
-        interface ClientConnected {
-            (_source: IoctlBase, client: IoctlClient): void;
-        }
-
-        interface ClientVanished {
-            (_source: IoctlBase, client: IoctlClient): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'client-connected': ClientConnected;
-            'client-vanished': ClientVanished;
+            'client-connected': (arg0: IoctlClient) => void;
+            'client-vanished': (arg0: IoctlClient) => void;
         }
 
         // Constructor properties interface
@@ -247,6 +267,14 @@ export namespace UMockdev {
 
     class IoctlBase extends GObject.Object {
         static $gtype: GObject.GType<IoctlBase>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IoctlBase.SignalSignatures;
 
         // Constructors
 
@@ -258,16 +286,19 @@ export namespace UMockdev {
 
         // Signals
 
-        connect<K extends keyof IoctlBase.SignalSignatures>(signal: K, callback: IoctlBase.SignalSignatures[K]): number;
+        connect<K extends keyof IoctlBase.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, IoctlBase.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IoctlBase.SignalSignatures>(
             signal: K,
-            callback: IoctlBase.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IoctlBase.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IoctlBase.SignalSignatures>(
             signal: K,
-            ...args: IoctlBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IoctlBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

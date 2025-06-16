@@ -385,32 +385,14 @@ export namespace LibvirtGObject {
         ERROR,
     }
     namespace Connection {
-        // Signal callback interfaces
-
-        interface ConnectionClosed {
-            (_source: Connection): void;
-        }
-
-        interface ConnectionOpened {
-            (_source: Connection): void;
-        }
-
-        interface DomainAdded {
-            (_source: Connection, object: Domain): void;
-        }
-
-        interface DomainRemoved {
-            (_source: Connection, object: Domain): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'connection-closed': ConnectionClosed;
-            'connection-opened': ConnectionOpened;
-            'domain-added': DomainAdded;
-            'domain-removed': DomainRemoved;
-            'notify::handle': GObject.Object.Notify;
-            'notify::uri': GObject.Object.Notify;
+            'connection-closed': () => void;
+            'connection-opened': () => void;
+            'domain-added': (arg0: Domain) => void;
+            'domain-removed': (arg0: Domain) => void;
+            'notify::handle': (pspec: GObject.ParamSpec) => void;
+            'notify::uri': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -428,6 +410,14 @@ export namespace LibvirtGObject {
 
         get handle(): ConnectionHandle;
         get uri(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Connection.SignalSignatures;
 
         // Constructors
 
@@ -441,17 +431,17 @@ export namespace LibvirtGObject {
 
         connect<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            callback: Connection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            callback: Connection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -734,52 +724,26 @@ export namespace LibvirtGObject {
     }
 
     namespace Domain {
-        // Signal callback interfaces
-
-        interface Pmsuspended {
-            (_source: Domain): void;
-        }
-
-        interface Resumed {
-            (_source: Domain): void;
-        }
-
-        interface Started {
-            (_source: Domain): void;
-        }
-
-        interface Stopped {
-            (_source: Domain): void;
-        }
-
-        interface Suspended {
-            (_source: Domain): void;
-        }
-
-        interface Updated {
-            (_source: Domain): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            pmsuspended: Pmsuspended;
-            resumed: Resumed;
-            started: Started;
-            stopped: Stopped;
-            suspended: Suspended;
-            updated: Updated;
-            'notify::handle': GObject.Object.Notify;
-            'notify::persistent': GObject.Object.Notify;
-            'pmsuspended::handle': Pmsuspended;
-            'pmsuspended::persistent': Pmsuspended;
-            'resumed::handle': Resumed;
-            'resumed::persistent': Resumed;
-            'started::handle': Started;
-            'started::persistent': Started;
-            'stopped::handle': Stopped;
-            'stopped::persistent': Stopped;
-            'suspended::handle': Suspended;
-            'suspended::persistent': Suspended;
+            pmsuspended: () => void;
+            resumed: () => void;
+            started: () => void;
+            stopped: () => void;
+            suspended: () => void;
+            updated: () => void;
+            'notify::handle': (pspec: GObject.ParamSpec) => void;
+            'notify::persistent': (pspec: GObject.ParamSpec) => void;
+            'pmsuspended::handle': () => void;
+            'pmsuspended::persistent': () => void;
+            'resumed::handle': () => void;
+            'resumed::persistent': () => void;
+            'started::handle': () => void;
+            'started::persistent': () => void;
+            'stopped::handle': () => void;
+            'stopped::persistent': () => void;
+            'suspended::handle': () => void;
+            'suspended::persistent': () => void;
         }
 
         // Constructor properties interface
@@ -797,6 +761,14 @@ export namespace LibvirtGObject {
 
         get handle(): DomainHandle;
         get persistent(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Domain.SignalSignatures;
 
         // Constructors
 
@@ -806,13 +778,19 @@ export namespace LibvirtGObject {
 
         // Signals
 
-        connect<K extends keyof Domain.SignalSignatures>(signal: K, callback: Domain.SignalSignatures[K]): number;
+        connect<K extends keyof Domain.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Domain.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Domain.SignalSignatures>(signal: K, callback: Domain.SignalSignatures[K]): number;
+        connect_after<K extends keyof Domain.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Domain.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Domain.SignalSignatures>(
             signal: K,
-            ...args: Domain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Domain.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1194,8 +1172,8 @@ export namespace LibvirtGObject {
     namespace DomainDevice {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::config': GObject.Object.Notify;
-            'notify::domain': GObject.Object.Notify;
+            'notify::config': (pspec: GObject.ParamSpec) => void;
+            'notify::domain': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1213,6 +1191,14 @@ export namespace LibvirtGObject {
 
         get config(): LibvirtGConfig.DomainDevice;
         get domain(): Domain;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainDevice.SignalSignatures;
 
         // Constructors
 
@@ -1224,17 +1210,17 @@ export namespace LibvirtGObject {
 
         connect<K extends keyof DomainDevice.SignalSignatures>(
             signal: K,
-            callback: DomainDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainDevice.SignalSignatures>(
             signal: K,
-            callback: DomainDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainDevice.SignalSignatures>(
             signal: K,
-            ...args: DomainDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1247,8 +1233,8 @@ export namespace LibvirtGObject {
     namespace DomainDisk {
         // Signal signatures
         interface SignalSignatures extends DomainDevice.SignalSignatures {
-            'notify::config': GObject.Object.Notify;
-            'notify::domain': GObject.Object.Notify;
+            'notify::config': (pspec: GObject.ParamSpec) => void;
+            'notify::domain': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1258,6 +1244,14 @@ export namespace LibvirtGObject {
 
     class DomainDisk extends DomainDevice {
         static $gtype: GObject.GType<DomainDisk>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainDisk.SignalSignatures;
 
         // Constructors
 
@@ -1269,17 +1263,17 @@ export namespace LibvirtGObject {
 
         connect<K extends keyof DomainDisk.SignalSignatures>(
             signal: K,
-            callback: DomainDisk.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainDisk.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainDisk.SignalSignatures>(
             signal: K,
-            callback: DomainDisk.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainDisk.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainDisk.SignalSignatures>(
             signal: K,
-            ...args: DomainDisk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainDisk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1304,8 +1298,8 @@ export namespace LibvirtGObject {
     namespace DomainInterface {
         // Signal signatures
         interface SignalSignatures extends DomainDevice.SignalSignatures {
-            'notify::config': GObject.Object.Notify;
-            'notify::domain': GObject.Object.Notify;
+            'notify::config': (pspec: GObject.ParamSpec) => void;
+            'notify::domain': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1315,6 +1309,14 @@ export namespace LibvirtGObject {
 
     class DomainInterface extends DomainDevice {
         static $gtype: GObject.GType<DomainInterface>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainInterface.SignalSignatures;
 
         // Constructors
 
@@ -1326,17 +1328,17 @@ export namespace LibvirtGObject {
 
         connect<K extends keyof DomainInterface.SignalSignatures>(
             signal: K,
-            callback: DomainInterface.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainInterface.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainInterface.SignalSignatures>(
             signal: K,
-            callback: DomainInterface.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainInterface.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainInterface.SignalSignatures>(
             signal: K,
-            ...args: DomainInterface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainInterface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1354,7 +1356,7 @@ export namespace LibvirtGObject {
     namespace DomainSnapshot {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::handle': GObject.Object.Notify;
+            'notify::handle': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1370,6 +1372,14 @@ export namespace LibvirtGObject {
         // Properties
 
         get handle(): DomainSnapshotHandle;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DomainSnapshot.SignalSignatures;
 
         // Constructors
 
@@ -1381,17 +1391,17 @@ export namespace LibvirtGObject {
 
         connect<K extends keyof DomainSnapshot.SignalSignatures>(
             signal: K,
-            callback: DomainSnapshot.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSnapshot.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomainSnapshot.SignalSignatures>(
             signal: K,
-            callback: DomainSnapshot.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DomainSnapshot.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomainSnapshot.SignalSignatures>(
             signal: K,
-            ...args: DomainSnapshot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DomainSnapshot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1438,7 +1448,7 @@ export namespace LibvirtGObject {
     namespace Interface {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::handle': GObject.Object.Notify;
+            'notify::handle': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1454,6 +1464,14 @@ export namespace LibvirtGObject {
         // Properties
 
         get handle(): InterfaceHandle;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Interface.SignalSignatures;
 
         // Constructors
 
@@ -1463,16 +1481,19 @@ export namespace LibvirtGObject {
 
         // Signals
 
-        connect<K extends keyof Interface.SignalSignatures>(signal: K, callback: Interface.SignalSignatures[K]): number;
+        connect<K extends keyof Interface.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Interface.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Interface.SignalSignatures>(
             signal: K,
-            callback: Interface.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Interface.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Interface.SignalSignatures>(
             signal: K,
-            ...args: Interface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Interface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1484,20 +1505,10 @@ export namespace LibvirtGObject {
     }
 
     namespace Manager {
-        // Signal callback interfaces
-
-        interface ConnectionAdded {
-            (_source: Manager, object: Connection): void;
-        }
-
-        interface ConnectionRemoved {
-            (_source: Manager, object: Connection): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'connection-added': ConnectionAdded;
-            'connection-removed': ConnectionRemoved;
+            'connection-added': (arg0: Connection) => void;
+            'connection-removed': (arg0: Connection) => void;
         }
 
         // Constructor properties interface
@@ -1507,6 +1518,14 @@ export namespace LibvirtGObject {
 
     class Manager extends GObject.Object {
         static $gtype: GObject.GType<Manager>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Manager.SignalSignatures;
 
         // Constructors
 
@@ -1518,16 +1537,19 @@ export namespace LibvirtGObject {
 
         // Signals
 
-        connect<K extends keyof Manager.SignalSignatures>(signal: K, callback: Manager.SignalSignatures[K]): number;
+        connect<K extends keyof Manager.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Manager.SignalSignatures>(
             signal: K,
-            callback: Manager.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Manager.SignalSignatures>(
             signal: K,
-            ...args: Manager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Manager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1547,7 +1569,7 @@ export namespace LibvirtGObject {
     namespace Network {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::handle': GObject.Object.Notify;
+            'notify::handle': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1563,6 +1585,14 @@ export namespace LibvirtGObject {
         // Properties
 
         get handle(): NetworkHandle;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Network.SignalSignatures;
 
         // Constructors
 
@@ -1572,16 +1602,19 @@ export namespace LibvirtGObject {
 
         // Signals
 
-        connect<K extends keyof Network.SignalSignatures>(signal: K, callback: Network.SignalSignatures[K]): number;
+        connect<K extends keyof Network.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Network.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Network.SignalSignatures>(
             signal: K,
-            callback: Network.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Network.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Network.SignalSignatures>(
             signal: K,
-            ...args: Network.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Network.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1610,7 +1643,7 @@ export namespace LibvirtGObject {
     namespace NetworkDHCPLease {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::handle': GObject.Object.Notify;
+            'notify::handle': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1626,6 +1659,14 @@ export namespace LibvirtGObject {
         // Properties
 
         get handle(): any;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NetworkDHCPLease.SignalSignatures;
 
         // Constructors
 
@@ -1637,17 +1678,17 @@ export namespace LibvirtGObject {
 
         connect<K extends keyof NetworkDHCPLease.SignalSignatures>(
             signal: K,
-            callback: NetworkDHCPLease.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NetworkDHCPLease.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NetworkDHCPLease.SignalSignatures>(
             signal: K,
-            callback: NetworkDHCPLease.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NetworkDHCPLease.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NetworkDHCPLease.SignalSignatures>(
             signal: K,
-            ...args: NetworkDHCPLease.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NetworkDHCPLease.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1667,7 +1708,7 @@ export namespace LibvirtGObject {
     namespace NetworkFilter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::handle': GObject.Object.Notify;
+            'notify::handle': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1683,6 +1724,14 @@ export namespace LibvirtGObject {
         // Properties
 
         get handle(): NetworkFilterHandle;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NetworkFilter.SignalSignatures;
 
         // Constructors
 
@@ -1694,17 +1743,17 @@ export namespace LibvirtGObject {
 
         connect<K extends keyof NetworkFilter.SignalSignatures>(
             signal: K,
-            callback: NetworkFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NetworkFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NetworkFilter.SignalSignatures>(
             signal: K,
-            callback: NetworkFilter.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NetworkFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NetworkFilter.SignalSignatures>(
             signal: K,
-            ...args: NetworkFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NetworkFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1718,7 +1767,7 @@ export namespace LibvirtGObject {
     namespace NodeDevice {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::handle': GObject.Object.Notify;
+            'notify::handle': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1734,6 +1783,14 @@ export namespace LibvirtGObject {
         // Properties
 
         get handle(): NodeDeviceHandle;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: NodeDevice.SignalSignatures;
 
         // Constructors
 
@@ -1745,17 +1802,17 @@ export namespace LibvirtGObject {
 
         connect<K extends keyof NodeDevice.SignalSignatures>(
             signal: K,
-            callback: NodeDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NodeDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NodeDevice.SignalSignatures>(
             signal: K,
-            callback: NodeDevice.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, NodeDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NodeDevice.SignalSignatures>(
             signal: K,
-            ...args: NodeDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<NodeDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1768,7 +1825,7 @@ export namespace LibvirtGObject {
     namespace Secret {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::handle': GObject.Object.Notify;
+            'notify::handle': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1784,6 +1841,14 @@ export namespace LibvirtGObject {
         // Properties
 
         get handle(): SecretHandle;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Secret.SignalSignatures;
 
         // Constructors
 
@@ -1793,13 +1858,19 @@ export namespace LibvirtGObject {
 
         // Signals
 
-        connect<K extends keyof Secret.SignalSignatures>(signal: K, callback: Secret.SignalSignatures[K]): number;
+        connect<K extends keyof Secret.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Secret.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Secret.SignalSignatures>(signal: K, callback: Secret.SignalSignatures[K]): number;
+        connect_after<K extends keyof Secret.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Secret.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Secret.SignalSignatures>(
             signal: K,
-            ...args: Secret.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Secret.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1813,7 +1884,7 @@ export namespace LibvirtGObject {
     namespace StoragePool {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::handle': GObject.Object.Notify;
+            'notify::handle': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1829,6 +1900,14 @@ export namespace LibvirtGObject {
         // Properties
 
         get handle(): StoragePoolHandle;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StoragePool.SignalSignatures;
 
         // Constructors
 
@@ -1840,17 +1919,17 @@ export namespace LibvirtGObject {
 
         connect<K extends keyof StoragePool.SignalSignatures>(
             signal: K,
-            callback: StoragePool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StoragePool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StoragePool.SignalSignatures>(
             signal: K,
-            callback: StoragePool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StoragePool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StoragePool.SignalSignatures>(
             signal: K,
-            ...args: StoragePool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StoragePool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -1940,8 +2019,8 @@ export namespace LibvirtGObject {
     namespace StorageVol {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::handle': GObject.Object.Notify;
-            'notify::pool': GObject.Object.Notify;
+            'notify::handle': (pspec: GObject.ParamSpec) => void;
+            'notify::pool': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1959,6 +2038,14 @@ export namespace LibvirtGObject {
 
         get handle(): StorageVolHandle;
         get pool(): StoragePool;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: StorageVol.SignalSignatures;
 
         // Constructors
 
@@ -1970,17 +2057,17 @@ export namespace LibvirtGObject {
 
         connect<K extends keyof StorageVol.SignalSignatures>(
             signal: K,
-            callback: StorageVol.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StorageVol.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StorageVol.SignalSignatures>(
             signal: K,
-            callback: StorageVol.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, StorageVol.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StorageVol.SignalSignatures>(
             signal: K,
-            ...args: StorageVol.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<StorageVol.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -2010,10 +2097,10 @@ export namespace LibvirtGObject {
     namespace Stream {
         // Signal signatures
         interface SignalSignatures extends Gio.IOStream.SignalSignatures {
-            'notify::handle': GObject.Object.Notify;
-            'notify::closed': GObject.Object.Notify;
-            'notify::input-stream': GObject.Object.Notify;
-            'notify::output-stream': GObject.Object.Notify;
+            'notify::handle': (pspec: GObject.ParamSpec) => void;
+            'notify::closed': (pspec: GObject.ParamSpec) => void;
+            'notify::input-stream': (pspec: GObject.ParamSpec) => void;
+            'notify::output-stream': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -2029,6 +2116,14 @@ export namespace LibvirtGObject {
         // Properties
 
         get handle(): StreamHandle;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Stream.SignalSignatures;
 
         // Constructors
 
@@ -2038,13 +2133,19 @@ export namespace LibvirtGObject {
 
         // Signals
 
-        connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        connect<K extends keyof Stream.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stream.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Stream.SignalSignatures>(
             signal: K,
-            ...args: Stream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Stream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

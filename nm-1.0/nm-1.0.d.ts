@@ -6748,20 +6748,20 @@ export namespace NM {
     namespace AccessPoint {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::bandwidth': GObject.Object.Notify;
-            'notify::bssid': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::frequency': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::last-seen': GObject.Object.Notify;
-            'notify::max-bitrate': GObject.Object.Notify;
-            'notify::mode': GObject.Object.Notify;
-            'notify::rsn-flags': GObject.Object.Notify;
-            'notify::ssid': GObject.Object.Notify;
-            'notify::strength': GObject.Object.Notify;
-            'notify::wpa-flags': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
+            'notify::bandwidth': (pspec: GObject.ParamSpec) => void;
+            'notify::bssid': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::frequency': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::last-seen': (pspec: GObject.ParamSpec) => void;
+            'notify::max-bitrate': (pspec: GObject.ParamSpec) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::rsn-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ssid': (pspec: GObject.ParamSpec) => void;
+            'notify::strength': (pspec: GObject.ParamSpec) => void;
+            'notify::wpa-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -6866,6 +6866,14 @@ export namespace NM {
          * The WPA flags of the access point.
          */
         get wpaFlags(): __80211ApSecurityFlags;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: AccessPoint.SignalSignatures;
 
         // Constructors
 
@@ -6877,17 +6885,17 @@ export namespace NM {
 
         connect<K extends keyof AccessPoint.SignalSignatures>(
             signal: K,
-            callback: AccessPoint.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AccessPoint.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AccessPoint.SignalSignatures>(
             signal: K,
-            callback: AccessPoint.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, AccessPoint.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AccessPoint.SignalSignatures>(
             signal: K,
-            ...args: AccessPoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<AccessPoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -6977,34 +6985,28 @@ export namespace NM {
     }
 
     namespace ActiveConnection {
-        // Signal callback interfaces
-
-        interface StateChanged {
-            (_source: ActiveConnection, state: number, reason: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'state-changed': StateChanged;
-            'notify::connection': GObject.Object.Notify;
-            'notify::controller': GObject.Object.Notify;
-            'notify::default': GObject.Object.Notify;
-            'notify::default6': GObject.Object.Notify;
-            'notify::devices': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::master': GObject.Object.Notify;
-            'notify::specific-object-path': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-flags': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::uuid': GObject.Object.Notify;
-            'notify::vpn': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
+            'state-changed': (arg0: number, arg1: number) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::controller': (pspec: GObject.ParamSpec) => void;
+            'notify::default': (pspec: GObject.ParamSpec) => void;
+            'notify::default6': (pspec: GObject.ParamSpec) => void;
+            'notify::devices': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::master': (pspec: GObject.ParamSpec) => void;
+            'notify::specific-object-path': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::uuid': (pspec: GObject.ParamSpec) => void;
+            'notify::vpn': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7136,6 +7138,14 @@ export namespace NM {
          * Whether the active connection is a VPN connection.
          */
         get vpn(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: ActiveConnection.SignalSignatures;
 
         // Constructors
 
@@ -7147,17 +7157,17 @@ export namespace NM {
 
         connect<K extends keyof ActiveConnection.SignalSignatures>(
             signal: K,
-            callback: ActiveConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ActiveConnection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ActiveConnection.SignalSignatures>(
             signal: K,
-            callback: ActiveConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, ActiveConnection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ActiveConnection.SignalSignatures>(
             signal: K,
-            ...args: ActiveConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<ActiveConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7269,11 +7279,11 @@ export namespace NM {
     namespace Checkpoint {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::created': GObject.Object.Notify;
-            'notify::devices': GObject.Object.Notify;
-            'notify::rollback-timeout': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
+            'notify::created': (pspec: GObject.ParamSpec) => void;
+            'notify::devices': (pspec: GObject.ParamSpec) => void;
+            'notify::rollback-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7307,6 +7317,14 @@ export namespace NM {
          * Timeout in seconds for automatic rollback, or zero.
          */
         get rollbackTimeout(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Checkpoint.SignalSignatures;
 
         // Constructors
 
@@ -7318,17 +7336,17 @@ export namespace NM {
 
         connect<K extends keyof Checkpoint.SignalSignatures>(
             signal: K,
-            callback: Checkpoint.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Checkpoint.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Checkpoint.SignalSignatures>(
             signal: K,
-            callback: Checkpoint.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Checkpoint.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Checkpoint.SignalSignatures>(
             signal: K,
-            ...args: Checkpoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Checkpoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -7355,90 +7373,52 @@ export namespace NM {
     }
 
     namespace Client {
-        // Signal callback interfaces
-
-        interface ActiveConnectionAdded {
-            (_source: Client, active_connection: ActiveConnection): void;
-        }
-
-        interface ActiveConnectionRemoved {
-            (_source: Client, active_connection: ActiveConnection): void;
-        }
-
-        interface AnyDeviceAdded {
-            (_source: Client, device: Device): void;
-        }
-
-        interface AnyDeviceRemoved {
-            (_source: Client, device: Device): void;
-        }
-
-        interface ConnectionAdded {
-            (_source: Client, connection: RemoteConnection): void;
-        }
-
-        interface ConnectionRemoved {
-            (_source: Client, connection: RemoteConnection): void;
-        }
-
-        interface DeviceAdded {
-            (_source: Client, device: Device): void;
-        }
-
-        interface DeviceRemoved {
-            (_source: Client, device: Device): void;
-        }
-
-        interface PermissionChanged {
-            (_source: Client, permission: number, result: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'active-connection-added': ActiveConnectionAdded;
-            'active-connection-removed': ActiveConnectionRemoved;
-            'any-device-added': AnyDeviceAdded;
-            'any-device-removed': AnyDeviceRemoved;
-            'connection-added': ConnectionAdded;
-            'connection-removed': ConnectionRemoved;
-            'device-added': DeviceAdded;
-            'device-removed': DeviceRemoved;
-            'permission-changed': PermissionChanged;
-            'notify::activating-connection': GObject.Object.Notify;
-            'notify::active-connections': GObject.Object.Notify;
-            'notify::all-devices': GObject.Object.Notify;
-            'notify::can-modify': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::checkpoints': GObject.Object.Notify;
-            'notify::connections': GObject.Object.Notify;
-            'notify::connectivity': GObject.Object.Notify;
-            'notify::connectivity-check-available': GObject.Object.Notify;
-            'notify::connectivity-check-enabled': GObject.Object.Notify;
-            'notify::connectivity-check-uri': GObject.Object.Notify;
-            'notify::dbus-connection': GObject.Object.Notify;
-            'notify::dbus-name-owner': GObject.Object.Notify;
-            'notify::devices': GObject.Object.Notify;
-            'notify::dns-configuration': GObject.Object.Notify;
-            'notify::dns-mode': GObject.Object.Notify;
-            'notify::dns-rc-manager': GObject.Object.Notify;
-            'notify::hostname': GObject.Object.Notify;
-            'notify::instance-flags': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::networking-enabled': GObject.Object.Notify;
-            'notify::nm-running': GObject.Object.Notify;
-            'notify::permissions-state': GObject.Object.Notify;
-            'notify::primary-connection': GObject.Object.Notify;
-            'notify::radio-flags': GObject.Object.Notify;
-            'notify::startup': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::version': GObject.Object.Notify;
-            'notify::version-info': GObject.Object.Notify;
-            'notify::wimax-enabled': GObject.Object.Notify;
-            'notify::wimax-hardware-enabled': GObject.Object.Notify;
-            'notify::wireless-enabled': GObject.Object.Notify;
-            'notify::wireless-hardware-enabled': GObject.Object.Notify;
-            'notify::wwan-enabled': GObject.Object.Notify;
-            'notify::wwan-hardware-enabled': GObject.Object.Notify;
+            'active-connection-added': (arg0: ActiveConnection) => void;
+            'active-connection-removed': (arg0: ActiveConnection) => void;
+            'any-device-added': (arg0: Device) => void;
+            'any-device-removed': (arg0: Device) => void;
+            'connection-added': (arg0: RemoteConnection) => void;
+            'connection-removed': (arg0: RemoteConnection) => void;
+            'device-added': (arg0: Device) => void;
+            'device-removed': (arg0: Device) => void;
+            'permission-changed': (arg0: number, arg1: number) => void;
+            'notify::activating-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::all-devices': (pspec: GObject.ParamSpec) => void;
+            'notify::can-modify': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::checkpoints': (pspec: GObject.ParamSpec) => void;
+            'notify::connections': (pspec: GObject.ParamSpec) => void;
+            'notify::connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::connectivity-check-available': (pspec: GObject.ParamSpec) => void;
+            'notify::connectivity-check-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::connectivity-check-uri': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-name-owner': (pspec: GObject.ParamSpec) => void;
+            'notify::devices': (pspec: GObject.ParamSpec) => void;
+            'notify::dns-configuration': (pspec: GObject.ParamSpec) => void;
+            'notify::dns-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::dns-rc-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::hostname': (pspec: GObject.ParamSpec) => void;
+            'notify::instance-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::networking-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-running': (pspec: GObject.ParamSpec) => void;
+            'notify::permissions-state': (pspec: GObject.ParamSpec) => void;
+            'notify::primary-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::radio-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::startup': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::version': (pspec: GObject.ParamSpec) => void;
+            'notify::version-info': (pspec: GObject.ParamSpec) => void;
+            'notify::wimax-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::wimax-hardware-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::wireless-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::wireless-hardware-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::wwan-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::wwan-hardware-enabled': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -7844,6 +7824,14 @@ export namespace NM {
          * Whether the WWAN hardware is enabled.
          */
         get wwanHardwareEnabled(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -7860,13 +7848,19 @@ export namespace NM {
 
         // Signals
 
-        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
-            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -9994,49 +9988,43 @@ export namespace NM {
     }
 
     namespace Device {
-        // Signal callback interfaces
-
-        interface StateChanged {
-            (_source: Device, new_state: number, old_state: number, reason: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'state-changed': StateChanged;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'state-changed': (arg0: number, arg1: number, arg2: number) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10333,6 +10321,14 @@ export namespace NM {
          * The vendor string of the device.
          */
         get vendor(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -10342,13 +10338,19 @@ export namespace NM {
 
         // Signals
 
-        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
-            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10806,41 +10808,41 @@ export namespace NM {
     namespace Device6Lowpan {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::parent': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10859,6 +10861,14 @@ export namespace NM {
          * The devices's parent device.
          */
         get parent(): Device;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Device6Lowpan.SignalSignatures;
 
         // Constructors
 
@@ -10870,17 +10880,17 @@ export namespace NM {
 
         connect<K extends keyof Device6Lowpan.SignalSignatures>(
             signal: K,
-            callback: Device6Lowpan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Device6Lowpan.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Device6Lowpan.SignalSignatures>(
             signal: K,
-            callback: Device6Lowpan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Device6Lowpan.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Device6Lowpan.SignalSignatures>(
             signal: K,
-            ...args: Device6Lowpan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Device6Lowpan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10892,41 +10902,41 @@ export namespace NM {
     namespace DeviceAdsl {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::carrier': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::carrier': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -10945,6 +10955,14 @@ export namespace NM {
          * Whether the device has carrier.
          */
         get carrier(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceAdsl.SignalSignatures;
 
         // Constructors
 
@@ -10956,17 +10974,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceAdsl.SignalSignatures>(
             signal: K,
-            callback: DeviceAdsl.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceAdsl.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceAdsl.SignalSignatures>(
             signal: K,
-            callback: DeviceAdsl.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceAdsl.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceAdsl.SignalSignatures>(
             signal: K,
-            ...args: DeviceAdsl.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceAdsl.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -10982,42 +11000,42 @@ export namespace NM {
     namespace DeviceBond {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::carrier': GObject.Object.Notify;
-            'notify::slaves': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::carrier': (pspec: GObject.ParamSpec) => void;
+            'notify::slaves': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11041,6 +11059,14 @@ export namespace NM {
          * The devices attached as port to the bond device.
          */
         get slaves(): Device[];
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceBond.SignalSignatures;
 
         // Constructors
 
@@ -11052,17 +11078,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceBond.SignalSignatures>(
             signal: K,
-            callback: DeviceBond.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceBond.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceBond.SignalSignatures>(
             signal: K,
-            callback: DeviceBond.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceBond.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceBond.SignalSignatures>(
             signal: K,
-            ...args: DeviceBond.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceBond.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11083,42 +11109,42 @@ export namespace NM {
     namespace DeviceBridge {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::carrier': GObject.Object.Notify;
-            'notify::slaves': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::carrier': (pspec: GObject.ParamSpec) => void;
+            'notify::slaves': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11142,6 +11168,14 @@ export namespace NM {
          * The devices attached as port to the bridge device.
          */
         get slaves(): Device[];
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceBridge.SignalSignatures;
 
         // Constructors
 
@@ -11153,17 +11187,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceBridge.SignalSignatures>(
             signal: K,
-            callback: DeviceBridge.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceBridge.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceBridge.SignalSignatures>(
             signal: K,
-            callback: DeviceBridge.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceBridge.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceBridge.SignalSignatures>(
             signal: K,
-            ...args: DeviceBridge.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceBridge.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11184,42 +11218,42 @@ export namespace NM {
     namespace DeviceBt {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::bt-capabilities': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::bt-capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11248,6 +11282,14 @@ export namespace NM {
          * The name of the bluetooth device.
          */
         get name(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceBt.SignalSignatures;
 
         // Constructors
 
@@ -11257,16 +11299,19 @@ export namespace NM {
 
         // Signals
 
-        connect<K extends keyof DeviceBt.SignalSignatures>(signal: K, callback: DeviceBt.SignalSignatures[K]): number;
+        connect<K extends keyof DeviceBt.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DeviceBt.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceBt.SignalSignatures>(
             signal: K,
-            callback: DeviceBt.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceBt.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceBt.SignalSignatures>(
             signal: K,
-            ...args: DeviceBt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceBt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11289,40 +11334,40 @@ export namespace NM {
     namespace DeviceDummy {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11332,6 +11377,14 @@ export namespace NM {
 
     class DeviceDummy extends Device {
         static $gtype: GObject.GType<DeviceDummy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceDummy.SignalSignatures;
 
         // Constructors
 
@@ -11343,17 +11396,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceDummy.SignalSignatures>(
             signal: K,
-            callback: DeviceDummy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceDummy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceDummy.SignalSignatures>(
             signal: K,
-            callback: DeviceDummy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceDummy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceDummy.SignalSignatures>(
             signal: K,
-            ...args: DeviceDummy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceDummy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -11361,44 +11414,44 @@ export namespace NM {
     namespace DeviceEthernet {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::carrier': GObject.Object.Notify;
-            'notify::perm-hw-address': GObject.Object.Notify;
-            'notify::s390-subchannels': GObject.Object.Notify;
-            'notify::speed': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::carrier': (pspec: GObject.ParamSpec) => void;
+            'notify::perm-hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::s390-subchannels': (pspec: GObject.ParamSpec) => void;
+            'notify::speed': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11444,6 +11497,14 @@ export namespace NM {
          * The speed of the device.
          */
         get speed(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceEthernet.SignalSignatures;
 
         // Constructors
 
@@ -11455,17 +11516,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceEthernet.SignalSignatures>(
             signal: K,
-            callback: DeviceEthernet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceEthernet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceEthernet.SignalSignatures>(
             signal: K,
-            callback: DeviceEthernet.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceEthernet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceEthernet.SignalSignatures>(
             signal: K,
-            ...args: DeviceEthernet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceEthernet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11496,41 +11557,41 @@ export namespace NM {
     namespace DeviceGeneric {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::type-description': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::type-description': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11556,6 +11617,14 @@ export namespace NM {
          * if not known.
          */
         get typeDescription(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceGeneric.SignalSignatures;
 
         // Constructors
 
@@ -11567,17 +11636,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceGeneric.SignalSignatures>(
             signal: K,
-            callback: DeviceGeneric.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceGeneric.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceGeneric.SignalSignatures>(
             signal: K,
-            callback: DeviceGeneric.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceGeneric.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceGeneric.SignalSignatures>(
             signal: K,
-            ...args: DeviceGeneric.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceGeneric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -11585,45 +11654,45 @@ export namespace NM {
     namespace DeviceHsr {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::multicast-spec': GObject.Object.Notify;
-            'notify::port1': GObject.Object.Notify;
-            'notify::port2': GObject.Object.Notify;
-            'notify::prp': GObject.Object.Notify;
-            'notify::supervision-address': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::multicast-spec': (pspec: GObject.ParamSpec) => void;
+            'notify::port1': (pspec: GObject.ParamSpec) => void;
+            'notify::port2': (pspec: GObject.ParamSpec) => void;
+            'notify::prp': (pspec: GObject.ParamSpec) => void;
+            'notify::supervision-address': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11672,6 +11741,14 @@ export namespace NM {
          * The device supervision MAC adddress.
          */
         get supervisionAddress(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceHsr.SignalSignatures;
 
         // Constructors
 
@@ -11681,16 +11758,19 @@ export namespace NM {
 
         // Signals
 
-        connect<K extends keyof DeviceHsr.SignalSignatures>(signal: K, callback: DeviceHsr.SignalSignatures[K]): number;
+        connect<K extends keyof DeviceHsr.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DeviceHsr.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceHsr.SignalSignatures>(
             signal: K,
-            callback: DeviceHsr.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceHsr.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceHsr.SignalSignatures>(
             signal: K,
-            ...args: DeviceHsr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceHsr.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11706,53 +11786,53 @@ export namespace NM {
     namespace DeviceIPTunnel {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::encapsulation-limit': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::flow-label': GObject.Object.Notify;
-            'notify::fwmark': GObject.Object.Notify;
-            'notify::input-key': GObject.Object.Notify;
-            'notify::local': GObject.Object.Notify;
-            'notify::mode': GObject.Object.Notify;
-            'notify::output-key': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::path-mtu-discovery': GObject.Object.Notify;
-            'notify::remote': GObject.Object.Notify;
-            'notify::tos': GObject.Object.Notify;
-            'notify::ttl': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::encapsulation-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::flow-label': (pspec: GObject.ParamSpec) => void;
+            'notify::fwmark': (pspec: GObject.ParamSpec) => void;
+            'notify::input-key': (pspec: GObject.ParamSpec) => void;
+            'notify::local': (pspec: GObject.ParamSpec) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::output-key': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::path-mtu-discovery': (pspec: GObject.ParamSpec) => void;
+            'notify::remote': (pspec: GObject.ParamSpec) => void;
+            'notify::tos': (pspec: GObject.ParamSpec) => void;
+            'notify::ttl': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11865,6 +11945,14 @@ export namespace NM {
          *  meaning that packets inherit the TTL value
          */
         get ttl(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceIPTunnel.SignalSignatures;
 
         // Constructors
 
@@ -11876,17 +11964,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceIPTunnel.SignalSignatures>(
             signal: K,
-            callback: DeviceIPTunnel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceIPTunnel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceIPTunnel.SignalSignatures>(
             signal: K,
-            callback: DeviceIPTunnel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceIPTunnel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceIPTunnel.SignalSignatures>(
             signal: K,
-            ...args: DeviceIPTunnel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceIPTunnel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -11910,41 +11998,41 @@ export namespace NM {
     namespace DeviceInfiniband {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::carrier': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::carrier': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -11963,6 +12051,14 @@ export namespace NM {
          * Whether the device has carrier.
          */
         get carrier(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceInfiniband.SignalSignatures;
 
         // Constructors
 
@@ -11974,17 +12070,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceInfiniband.SignalSignatures>(
             signal: K,
-            callback: DeviceInfiniband.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceInfiniband.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceInfiniband.SignalSignatures>(
             signal: K,
-            callback: DeviceInfiniband.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceInfiniband.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceInfiniband.SignalSignatures>(
             signal: K,
-            ...args: DeviceInfiniband.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceInfiniband.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12000,40 +12096,40 @@ export namespace NM {
     namespace DeviceLoopback {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12043,6 +12139,14 @@ export namespace NM {
 
     class DeviceLoopback extends Device {
         static $gtype: GObject.GType<DeviceLoopback>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceLoopback.SignalSignatures;
 
         // Constructors
 
@@ -12054,17 +12158,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceLoopback.SignalSignatures>(
             signal: K,
-            callback: DeviceLoopback.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceLoopback.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceLoopback.SignalSignatures>(
             signal: K,
-            callback: DeviceLoopback.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceLoopback.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceLoopback.SignalSignatures>(
             signal: K,
-            ...args: DeviceLoopback.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceLoopback.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -12072,53 +12176,53 @@ export namespace NM {
     namespace DeviceMacsec {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::cipher-suite': GObject.Object.Notify;
-            'notify::encoding-sa': GObject.Object.Notify;
-            'notify::encrypt': GObject.Object.Notify;
-            'notify::es': GObject.Object.Notify;
-            'notify::icv-length': GObject.Object.Notify;
-            'notify::include-sci': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::protect': GObject.Object.Notify;
-            'notify::replay-protect': GObject.Object.Notify;
-            'notify::scb': GObject.Object.Notify;
-            'notify::sci': GObject.Object.Notify;
-            'notify::validation': GObject.Object.Notify;
-            'notify::window': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::cipher-suite': (pspec: GObject.ParamSpec) => void;
+            'notify::encoding-sa': (pspec: GObject.ParamSpec) => void;
+            'notify::encrypt': (pspec: GObject.ParamSpec) => void;
+            'notify::es': (pspec: GObject.ParamSpec) => void;
+            'notify::icv-length': (pspec: GObject.ParamSpec) => void;
+            'notify::include-sci': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::protect': (pspec: GObject.ParamSpec) => void;
+            'notify::replay-protect': (pspec: GObject.ParamSpec) => void;
+            'notify::scb': (pspec: GObject.ParamSpec) => void;
+            'notify::sci': (pspec: GObject.ParamSpec) => void;
+            'notify::validation': (pspec: GObject.ParamSpec) => void;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12229,6 +12333,14 @@ export namespace NM {
          * The size of the replay window.
          */
         get window(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceMacsec.SignalSignatures;
 
         // Constructors
 
@@ -12240,17 +12352,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceMacsec.SignalSignatures>(
             signal: K,
-            callback: DeviceMacsec.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceMacsec.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceMacsec.SignalSignatures>(
             signal: K,
-            callback: DeviceMacsec.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceMacsec.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceMacsec.SignalSignatures>(
             signal: K,
-            ...args: DeviceMacsec.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceMacsec.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12327,44 +12439,44 @@ export namespace NM {
     namespace DeviceMacvlan {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::mode': GObject.Object.Notify;
-            'notify::no-promisc': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::tap': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::no-promisc': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::tap': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12403,6 +12515,14 @@ export namespace NM {
          * Whether the device is a MACVTAP.
          */
         get tap(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceMacvlan.SignalSignatures;
 
         // Constructors
 
@@ -12414,17 +12534,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceMacvlan.SignalSignatures>(
             signal: K,
-            callback: DeviceMacvlan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceMacvlan.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceMacvlan.SignalSignatures>(
             signal: K,
-            callback: DeviceMacvlan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceMacvlan.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceMacvlan.SignalSignatures>(
             signal: K,
-            ...args: DeviceMacvlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceMacvlan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12451,45 +12571,45 @@ export namespace NM {
     namespace DeviceModem {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::apn': GObject.Object.Notify;
-            'notify::current-capabilities': GObject.Object.Notify;
-            'notify::device-id': GObject.Object.Notify;
-            'notify::modem-capabilities': GObject.Object.Notify;
-            'notify::operator-code': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::apn': (pspec: GObject.ParamSpec) => void;
+            'notify::current-capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-id': (pspec: GObject.ParamSpec) => void;
+            'notify::modem-capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::operator-code': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12541,6 +12661,14 @@ export namespace NM {
         get modemCapabilities(): DeviceModemCapabilities;
         get operator_code(): string;
         get operatorCode(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceModem.SignalSignatures;
 
         // Constructors
 
@@ -12552,17 +12680,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceModem.SignalSignatures>(
             signal: K,
-            callback: DeviceModem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceModem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceModem.SignalSignatures>(
             signal: K,
-            callback: DeviceModem.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceModem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceModem.SignalSignatures>(
             signal: K,
-            ...args: DeviceModem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceModem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12604,42 +12732,42 @@ export namespace NM {
     namespace DeviceOlpcMesh {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::active-channel': GObject.Object.Notify;
-            'notify::companion': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::active-channel': (pspec: GObject.ParamSpec) => void;
+            'notify::companion': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12668,6 +12796,14 @@ export namespace NM {
          * The companion device.
          */
         get companion(): DeviceWifi;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceOlpcMesh.SignalSignatures;
 
         // Constructors
 
@@ -12679,17 +12815,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceOlpcMesh.SignalSignatures>(
             signal: K,
-            callback: DeviceOlpcMesh.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceOlpcMesh.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceOlpcMesh.SignalSignatures>(
             signal: K,
-            callback: DeviceOlpcMesh.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceOlpcMesh.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceOlpcMesh.SignalSignatures>(
             signal: K,
-            ...args: DeviceOlpcMesh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceOlpcMesh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12710,41 +12846,41 @@ export namespace NM {
     namespace DeviceOvsBridge {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::slaves': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::slaves': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12763,6 +12899,14 @@ export namespace NM {
          * Gets the ports currently attached as port to the device.
          */
         get slaves(): Device[];
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceOvsBridge.SignalSignatures;
 
         // Constructors
 
@@ -12774,17 +12918,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceOvsBridge.SignalSignatures>(
             signal: K,
-            callback: DeviceOvsBridge.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceOvsBridge.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceOvsBridge.SignalSignatures>(
             signal: K,
-            callback: DeviceOvsBridge.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceOvsBridge.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceOvsBridge.SignalSignatures>(
             signal: K,
-            ...args: DeviceOvsBridge.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceOvsBridge.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12800,40 +12944,40 @@ export namespace NM {
     namespace DeviceOvsInterface {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12843,6 +12987,14 @@ export namespace NM {
 
     class DeviceOvsInterface extends Device {
         static $gtype: GObject.GType<DeviceOvsInterface>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceOvsInterface.SignalSignatures;
 
         // Constructors
 
@@ -12854,17 +13006,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceOvsInterface.SignalSignatures>(
             signal: K,
-            callback: DeviceOvsInterface.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceOvsInterface.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceOvsInterface.SignalSignatures>(
             signal: K,
-            callback: DeviceOvsInterface.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceOvsInterface.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceOvsInterface.SignalSignatures>(
             signal: K,
-            ...args: DeviceOvsInterface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceOvsInterface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -12872,41 +13024,41 @@ export namespace NM {
     namespace DeviceOvsPort {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::slaves': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::slaves': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -12925,6 +13077,14 @@ export namespace NM {
          * Gets the interfaces currently attached as port to the device.
          */
         get slaves(): Device[];
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceOvsPort.SignalSignatures;
 
         // Constructors
 
@@ -12936,17 +13096,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceOvsPort.SignalSignatures>(
             signal: K,
-            callback: DeviceOvsPort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceOvsPort.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceOvsPort.SignalSignatures>(
             signal: K,
-            callback: DeviceOvsPort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceOvsPort.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceOvsPort.SignalSignatures>(
             signal: K,
-            ...args: DeviceOvsPort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceOvsPort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -12962,40 +13122,40 @@ export namespace NM {
     namespace DevicePpp {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13005,6 +13165,14 @@ export namespace NM {
 
     class DevicePpp extends Device {
         static $gtype: GObject.GType<DevicePpp>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DevicePpp.SignalSignatures;
 
         // Constructors
 
@@ -13014,16 +13182,19 @@ export namespace NM {
 
         // Signals
 
-        connect<K extends keyof DevicePpp.SignalSignatures>(signal: K, callback: DevicePpp.SignalSignatures[K]): number;
+        connect<K extends keyof DevicePpp.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DevicePpp.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DevicePpp.SignalSignatures>(
             signal: K,
-            callback: DevicePpp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DevicePpp.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DevicePpp.SignalSignatures>(
             signal: K,
-            ...args: DevicePpp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DevicePpp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -13031,43 +13202,43 @@ export namespace NM {
     namespace DeviceTeam {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::carrier': GObject.Object.Notify;
-            'notify::config': GObject.Object.Notify;
-            'notify::slaves': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::carrier': (pspec: GObject.ParamSpec) => void;
+            'notify::config': (pspec: GObject.ParamSpec) => void;
+            'notify::slaves': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13096,6 +13267,14 @@ export namespace NM {
          * The devices attached as port to the team device.
          */
         get slaves(): Device[];
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceTeam.SignalSignatures;
 
         // Constructors
 
@@ -13107,17 +13286,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceTeam.SignalSignatures>(
             signal: K,
-            callback: DeviceTeam.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceTeam.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceTeam.SignalSignatures>(
             signal: K,
-            callback: DeviceTeam.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceTeam.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceTeam.SignalSignatures>(
             signal: K,
-            ...args: DeviceTeam.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceTeam.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13143,46 +13322,46 @@ export namespace NM {
     namespace DeviceTun {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::group': GObject.Object.Notify;
-            'notify::mode': GObject.Object.Notify;
-            'notify::multi-queue': GObject.Object.Notify;
-            'notify::no-pi': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
-            'notify::vnet-hdr': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::group': (pspec: GObject.ParamSpec) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::multi-queue': (pspec: GObject.ParamSpec) => void;
+            'notify::no-pi': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
+            'notify::vnet-hdr': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13249,6 +13428,14 @@ export namespace NM {
          * include a virtio network header.
          */
         get vnetHdr(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceTun.SignalSignatures;
 
         // Constructors
 
@@ -13258,16 +13445,19 @@ export namespace NM {
 
         // Signals
 
-        connect<K extends keyof DeviceTun.SignalSignatures>(signal: K, callback: DeviceTun.SignalSignatures[K]): number;
+        connect<K extends keyof DeviceTun.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DeviceTun.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceTun.SignalSignatures>(
             signal: K,
-            callback: DeviceTun.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceTun.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceTun.SignalSignatures>(
             signal: K,
-            ...args: DeviceTun.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceTun.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13308,45 +13498,45 @@ export namespace NM {
     namespace DeviceVeth {
         // Signal signatures
         interface SignalSignatures extends DeviceEthernet.SignalSignatures {
-            'notify::peer': GObject.Object.Notify;
-            'notify::carrier': GObject.Object.Notify;
-            'notify::perm-hw-address': GObject.Object.Notify;
-            'notify::s390-subchannels': GObject.Object.Notify;
-            'notify::speed': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::peer': (pspec: GObject.ParamSpec) => void;
+            'notify::carrier': (pspec: GObject.ParamSpec) => void;
+            'notify::perm-hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::s390-subchannels': (pspec: GObject.ParamSpec) => void;
+            'notify::speed': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13365,6 +13555,14 @@ export namespace NM {
          * The device's peer device.
          */
         get peer(): Device;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceVeth.SignalSignatures;
 
         // Constructors
 
@@ -13376,17 +13574,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceVeth.SignalSignatures>(
             signal: K,
-            callback: DeviceVeth.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceVeth.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceVeth.SignalSignatures>(
             signal: K,
-            callback: DeviceVeth.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceVeth.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceVeth.SignalSignatures>(
             signal: K,
-            ...args: DeviceVeth.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceVeth.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13398,43 +13596,43 @@ export namespace NM {
     namespace DeviceVlan {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::carrier': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::vlan-id': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::carrier': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::vlan-id': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13468,6 +13666,14 @@ export namespace NM {
          * The device's VLAN ID.
          */
         get vlanId(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceVlan.SignalSignatures;
 
         // Constructors
 
@@ -13479,17 +13685,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceVlan.SignalSignatures>(
             signal: K,
-            callback: DeviceVlan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceVlan.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceVlan.SignalSignatures>(
             signal: K,
-            callback: DeviceVlan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceVlan.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceVlan.SignalSignatures>(
             signal: K,
-            ...args: DeviceVlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceVlan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13507,41 +13713,41 @@ export namespace NM {
     namespace DeviceVrf {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::table': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::table': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13560,6 +13766,14 @@ export namespace NM {
          * The device's VRF table.
          */
         get table(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceVrf.SignalSignatures;
 
         // Constructors
 
@@ -13569,16 +13783,19 @@ export namespace NM {
 
         // Signals
 
-        connect<K extends keyof DeviceVrf.SignalSignatures>(signal: K, callback: DeviceVrf.SignalSignatures[K]): number;
+        connect<K extends keyof DeviceVrf.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DeviceVrf.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceVrf.SignalSignatures>(
             signal: K,
-            callback: DeviceVrf.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceVrf.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceVrf.SignalSignatures>(
             signal: K,
-            ...args: DeviceVrf.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceVrf.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13590,57 +13807,57 @@ export namespace NM {
     namespace DeviceVxlan {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::ageing': GObject.Object.Notify;
-            'notify::carrier': GObject.Object.Notify;
-            'notify::dst-port': GObject.Object.Notify;
-            'notify::group': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::l2miss': GObject.Object.Notify;
-            'notify::l3miss': GObject.Object.Notify;
-            'notify::learning': GObject.Object.Notify;
-            'notify::limit': GObject.Object.Notify;
-            'notify::local': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::proxy': GObject.Object.Notify;
-            'notify::rsc': GObject.Object.Notify;
-            'notify::src-port-max': GObject.Object.Notify;
-            'notify::src-port-min': GObject.Object.Notify;
-            'notify::tos': GObject.Object.Notify;
-            'notify::ttl': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::ageing': (pspec: GObject.ParamSpec) => void;
+            'notify::carrier': (pspec: GObject.ParamSpec) => void;
+            'notify::dst-port': (pspec: GObject.ParamSpec) => void;
+            'notify::group': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::l2miss': (pspec: GObject.ParamSpec) => void;
+            'notify::l3miss': (pspec: GObject.ParamSpec) => void;
+            'notify::learning': (pspec: GObject.ParamSpec) => void;
+            'notify::limit': (pspec: GObject.ParamSpec) => void;
+            'notify::local': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::rsc': (pspec: GObject.ParamSpec) => void;
+            'notify::src-port-max': (pspec: GObject.ParamSpec) => void;
+            'notify::src-port-min': (pspec: GObject.ParamSpec) => void;
+            'notify::tos': (pspec: GObject.ParamSpec) => void;
+            'notify::ttl': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13765,6 +13982,14 @@ export namespace NM {
          * The time-to-live value to use in outgoing packets.
          */
         get ttl(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceVxlan.SignalSignatures;
 
         // Constructors
 
@@ -13776,17 +14001,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceVxlan.SignalSignatures>(
             signal: K,
-            callback: DeviceVxlan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceVxlan.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceVxlan.SignalSignatures>(
             signal: K,
-            callback: DeviceVxlan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceVxlan.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceVxlan.SignalSignatures>(
             signal: K,
-            ...args: DeviceVxlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceVxlan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -13816,61 +14041,51 @@ export namespace NM {
     }
 
     namespace DeviceWifi {
-        // Signal callback interfaces
-
-        interface AccessPointAdded {
-            (_source: DeviceWifi, ap: GObject.Object): void;
-        }
-
-        interface AccessPointRemoved {
-            (_source: DeviceWifi, ap: GObject.Object): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'access-point-added': AccessPointAdded;
-            'access-point-removed': AccessPointRemoved;
-            'notify::access-points': GObject.Object.Notify;
-            'notify::active-access-point': GObject.Object.Notify;
-            'notify::bitrate': GObject.Object.Notify;
-            'notify::last-scan': GObject.Object.Notify;
-            'notify::mode': GObject.Object.Notify;
-            'notify::perm-hw-address': GObject.Object.Notify;
-            'notify::wireless-capabilities': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'access-point-added': (arg0: GObject.Object) => void;
+            'access-point-removed': (arg0: GObject.Object) => void;
+            'notify::access-points': (pspec: GObject.ParamSpec) => void;
+            'notify::active-access-point': (pspec: GObject.ParamSpec) => void;
+            'notify::bitrate': (pspec: GObject.ParamSpec) => void;
+            'notify::last-scan': (pspec: GObject.ParamSpec) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::perm-hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::wireless-capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13948,6 +14163,14 @@ export namespace NM {
          * The wireless capabilities of the device.
          */
         get wirelessCapabilities(): DeviceWifiCapabilities;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceWifi.SignalSignatures;
 
         // Constructors
 
@@ -13959,17 +14182,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceWifi.SignalSignatures>(
             signal: K,
-            callback: DeviceWifi.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceWifi.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceWifi.SignalSignatures>(
             signal: K,
-            callback: DeviceWifi.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceWifi.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceWifi.SignalSignatures>(
             signal: K,
-            ...args: DeviceWifi.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceWifi.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14098,55 +14321,45 @@ export namespace NM {
     }
 
     namespace DeviceWifiP2P {
-        // Signal callback interfaces
-
-        interface PeerAdded {
-            (_source: DeviceWifiP2P, peer: GObject.Object): void;
-        }
-
-        interface PeerRemoved {
-            (_source: DeviceWifiP2P, peer: GObject.Object): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'peer-added': PeerAdded;
-            'peer-removed': PeerRemoved;
-            'notify::peers': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'peer-added': (arg0: GObject.Object) => void;
+            'peer-removed': (arg0: GObject.Object) => void;
+            'notify::peers': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14165,6 +14378,14 @@ export namespace NM {
          * List of all Wi-Fi P2P peers the device can see.
          */
         get peers(): WifiP2PPeer[];
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceWifiP2P.SignalSignatures;
 
         // Constructors
 
@@ -14176,17 +14397,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceWifiP2P.SignalSignatures>(
             signal: K,
-            callback: DeviceWifiP2P.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceWifiP2P.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceWifiP2P.SignalSignatures>(
             signal: K,
-            callback: DeviceWifiP2P.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceWifiP2P.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceWifiP2P.SignalSignatures>(
             signal: K,
-            ...args: DeviceWifiP2P.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceWifiP2P.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14281,61 +14502,51 @@ export namespace NM {
     }
 
     namespace DeviceWimax {
-        // Signal callback interfaces
-
-        interface NspAdded {
-            (_source: DeviceWimax, nsp: GObject.Object): void;
-        }
-
-        interface NspRemoved {
-            (_source: DeviceWimax, nsp: GObject.Object): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'nsp-added': NspAdded;
-            'nsp-removed': NspRemoved;
-            'notify::active-nsp': GObject.Object.Notify;
-            'notify::bsid': GObject.Object.Notify;
-            'notify::center-frequency': GObject.Object.Notify;
-            'notify::cinr': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::nsps': GObject.Object.Notify;
-            'notify::rssi': GObject.Object.Notify;
-            'notify::tx-power': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'nsp-added': (arg0: GObject.Object) => void;
+            'nsp-removed': (arg0: GObject.Object) => void;
+            'notify::active-nsp': (pspec: GObject.ParamSpec) => void;
+            'notify::bsid': (pspec: GObject.ParamSpec) => void;
+            'notify::center-frequency': (pspec: GObject.ParamSpec) => void;
+            'notify::cinr': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::nsps': (pspec: GObject.ParamSpec) => void;
+            'notify::rssi': (pspec: GObject.ParamSpec) => void;
+            'notify::tx-power': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14423,6 +14634,14 @@ export namespace NM {
          * -5.5 dBm.  Has no meaning when the device is not connected.
          */
         get txPower(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceWimax.SignalSignatures;
 
         // Constructors
 
@@ -14434,17 +14653,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceWimax.SignalSignatures>(
             signal: K,
-            callback: DeviceWimax.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceWimax.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceWimax.SignalSignatures>(
             signal: K,
-            callback: DeviceWimax.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceWimax.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceWimax.SignalSignatures>(
             signal: K,
-            ...args: DeviceWimax.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceWimax.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14510,43 +14729,43 @@ export namespace NM {
     namespace DeviceWireGuard {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::fwmark': GObject.Object.Notify;
-            'notify::listen-port': GObject.Object.Notify;
-            'notify::public-key': GObject.Object.Notify;
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::fwmark': (pspec: GObject.ParamSpec) => void;
+            'notify::listen-port': (pspec: GObject.ParamSpec) => void;
+            'notify::public-key': (pspec: GObject.ParamSpec) => void;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14589,6 +14808,14 @@ export namespace NM {
          * 32-byte public key, derived from the current private key.
          */
         get publicKey(): GLib.Bytes;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceWireGuard.SignalSignatures;
 
         // Constructors
 
@@ -14600,17 +14827,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceWireGuard.SignalSignatures>(
             signal: K,
-            callback: DeviceWireGuard.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceWireGuard.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceWireGuard.SignalSignatures>(
             signal: K,
-            callback: DeviceWireGuard.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceWireGuard.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceWireGuard.SignalSignatures>(
             signal: K,
-            ...args: DeviceWireGuard.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceWireGuard.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14638,40 +14865,40 @@ export namespace NM {
     namespace DeviceWpan {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
-            'notify::active-connection': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::available-connections': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::device-type': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::driver': GObject.Object.Notify;
-            'notify::driver-version': GObject.Object.Notify;
-            'notify::firmware-missing': GObject.Object.Notify;
-            'notify::firmware-version': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::interface': GObject.Object.Notify;
-            'notify::interface-flags': GObject.Object.Notify;
-            'notify::ip-interface': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip4-connectivity': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::ip6-connectivity': GObject.Object.Notify;
-            'notify::lldp-neighbors': GObject.Object.Notify;
-            'notify::managed': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::nm-plugin-missing': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::physical-port-id': GObject.Object.Notify;
-            'notify::ports': GObject.Object.Notify;
-            'notify::product': GObject.Object.Notify;
-            'notify::real': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-reason': GObject.Object.Notify;
-            'notify::udi': GObject.Object.Notify;
-            'notify::vendor': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
+            'notify::active-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::available-connections': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::device-type': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::driver-version': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::firmware-version': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::interface': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ip-interface': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-connectivity': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp-neighbors': (pspec: GObject.ParamSpec) => void;
+            'notify::managed': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::nm-plugin-missing': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::physical-port-id': (pspec: GObject.ParamSpec) => void;
+            'notify::ports': (pspec: GObject.ParamSpec) => void;
+            'notify::product': (pspec: GObject.ParamSpec) => void;
+            'notify::real': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-reason': (pspec: GObject.ParamSpec) => void;
+            'notify::udi': (pspec: GObject.ParamSpec) => void;
+            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14681,6 +14908,14 @@ export namespace NM {
 
     class DeviceWpan extends Device {
         static $gtype: GObject.GType<DeviceWpan>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DeviceWpan.SignalSignatures;
 
         // Constructors
 
@@ -14692,17 +14927,17 @@ export namespace NM {
 
         connect<K extends keyof DeviceWpan.SignalSignatures>(
             signal: K,
-            callback: DeviceWpan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceWpan.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceWpan.SignalSignatures>(
             signal: K,
-            callback: DeviceWpan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DeviceWpan.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceWpan.SignalSignatures>(
             signal: K,
-            ...args: DeviceWpan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DeviceWpan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -14710,10 +14945,10 @@ export namespace NM {
     namespace DhcpConfig {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::family': GObject.Object.Notify;
-            'notify::options': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
+            'notify::family': (pspec: GObject.ParamSpec) => void;
+            'notify::options': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14738,6 +14973,14 @@ export namespace NM {
          * The #GHashTable containing options of the configuration.
          */
         get options(): GLib.HashTable<string, string>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: DhcpConfig.SignalSignatures;
 
         // Constructors
 
@@ -14749,17 +14992,17 @@ export namespace NM {
 
         connect<K extends keyof DhcpConfig.SignalSignatures>(
             signal: K,
-            callback: DhcpConfig.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DhcpConfig.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DhcpConfig.SignalSignatures>(
             signal: K,
-            callback: DhcpConfig.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, DhcpConfig.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DhcpConfig.SignalSignatures>(
             signal: K,
-            ...args: DhcpConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<DhcpConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14786,16 +15029,16 @@ export namespace NM {
     namespace IPConfig {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::addresses': GObject.Object.Notify;
-            'notify::domains': GObject.Object.Notify;
-            'notify::family': GObject.Object.Notify;
-            'notify::gateway': GObject.Object.Notify;
-            'notify::nameservers': GObject.Object.Notify;
-            'notify::routes': GObject.Object.Notify;
-            'notify::searches': GObject.Object.Notify;
-            'notify::wins-servers': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
+            'notify::addresses': (pspec: GObject.ParamSpec) => void;
+            'notify::domains': (pspec: GObject.ParamSpec) => void;
+            'notify::family': (pspec: GObject.ParamSpec) => void;
+            'notify::gateway': (pspec: GObject.ParamSpec) => void;
+            'notify::nameservers': (pspec: GObject.ParamSpec) => void;
+            'notify::routes': (pspec: GObject.ParamSpec) => void;
+            'notify::searches': (pspec: GObject.ParamSpec) => void;
+            'notify::wins-servers': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14857,6 +15100,14 @@ export namespace NM {
          * (This will always be empty for IPv6 configurations.)
          */
         get winsServers(): string[];
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: IPConfig.SignalSignatures;
 
         // Constructors
 
@@ -14866,16 +15117,19 @@ export namespace NM {
 
         // Signals
 
-        connect<K extends keyof IPConfig.SignalSignatures>(signal: K, callback: IPConfig.SignalSignatures[K]): number;
+        connect<K extends keyof IPConfig.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, IPConfig.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IPConfig.SignalSignatures>(
             signal: K,
-            callback: IPConfig.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, IPConfig.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IPConfig.SignalSignatures>(
             signal: K,
-            ...args: IPConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<IPConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14926,8 +15180,8 @@ export namespace NM {
     namespace Object {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::client': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -14960,6 +15214,14 @@ export namespace NM {
          * cache, check NMObject:client.
          */
         get path(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -14969,13 +15231,19 @@ export namespace NM {
 
         // Signals
 
-        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
+        ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
-            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -14999,13 +15267,13 @@ export namespace NM {
     namespace RemoteConnection {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::filename': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::unsaved': GObject.Object.Notify;
-            'notify::version-id': GObject.Object.Notify;
-            'notify::visible': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
+            'notify::filename': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::unsaved': (pspec: GObject.ParamSpec) => void;
+            'notify::version-id': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -15060,6 +15328,14 @@ export namespace NM {
          * after you already have a reference to it.)
          */
         get visible(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: RemoteConnection.SignalSignatures;
 
         // Constructors
 
@@ -15071,17 +15347,17 @@ export namespace NM {
 
         connect<K extends keyof RemoteConnection.SignalSignatures>(
             signal: K,
-            callback: RemoteConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RemoteConnection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RemoteConnection.SignalSignatures>(
             signal: K,
-            callback: RemoteConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, RemoteConnection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RemoteConnection.SignalSignatures>(
             signal: K,
-            ...args: RemoteConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<RemoteConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -16174,11 +16450,11 @@ export namespace NM {
     namespace SecretAgentOld {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::auto-register': GObject.Object.Notify;
-            'notify::capabilities': GObject.Object.Notify;
-            'notify::dbus-connection': GObject.Object.Notify;
-            'notify::identifier': GObject.Object.Notify;
-            'notify::registered': GObject.Object.Notify;
+            'notify::auto-register': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::identifier': (pspec: GObject.ParamSpec) => void;
+            'notify::registered': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -16278,6 +16554,14 @@ export namespace NM {
          * %TRUE if the agent is registered with NetworkManager, %FALSE if not.
          */
         get registered(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SecretAgentOld.SignalSignatures;
 
         // Constructors
 
@@ -16289,17 +16573,17 @@ export namespace NM {
 
         connect<K extends keyof SecretAgentOld.SignalSignatures>(
             signal: K,
-            callback: SecretAgentOld.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SecretAgentOld.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SecretAgentOld.SignalSignatures>(
             signal: K,
-            callback: SecretAgentOld.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SecretAgentOld.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SecretAgentOld.SignalSignatures>(
             signal: K,
-            ...args: SecretAgentOld.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SecretAgentOld.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -17293,7 +17577,7 @@ export namespace NM {
     namespace Setting {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -17314,6 +17598,14 @@ export namespace NM {
          * example "ppp" or "802-11-wireless" or "802-3-ethernet".
          */
         get name(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Setting.SignalSignatures;
 
         // Constructors
 
@@ -17323,16 +17615,19 @@ export namespace NM {
 
         // Signals
 
-        connect<K extends keyof Setting.SignalSignatures>(signal: K, callback: Setting.SignalSignatures[K]): number;
+        connect<K extends keyof Setting.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Setting.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Setting.SignalSignatures>(
             signal: K,
-            callback: Setting.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Setting.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Setting.SignalSignatures>(
             signal: K,
-            ...args: Setting.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Setting.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -17490,8 +17785,8 @@ export namespace NM {
     namespace Setting6Lowpan {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::parent': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -17515,6 +17810,14 @@ export namespace NM {
          */
         get parent(): string;
         set parent(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Setting6Lowpan.SignalSignatures;
 
         // Constructors
 
@@ -17528,17 +17831,17 @@ export namespace NM {
 
         connect<K extends keyof Setting6Lowpan.SignalSignatures>(
             signal: K,
-            callback: Setting6Lowpan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Setting6Lowpan.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Setting6Lowpan.SignalSignatures>(
             signal: K,
-            callback: Setting6Lowpan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Setting6Lowpan.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Setting6Lowpan.SignalSignatures>(
             signal: K,
-            ...args: Setting6Lowpan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Setting6Lowpan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -17550,55 +17853,55 @@ export namespace NM {
     namespace Setting8021x {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::altsubject-matches': GObject.Object.Notify;
-            'notify::anonymous-identity': GObject.Object.Notify;
-            'notify::auth-timeout': GObject.Object.Notify;
-            'notify::ca-cert': GObject.Object.Notify;
-            'notify::ca-cert-password': GObject.Object.Notify;
-            'notify::ca-cert-password-flags': GObject.Object.Notify;
-            'notify::ca-path': GObject.Object.Notify;
-            'notify::client-cert': GObject.Object.Notify;
-            'notify::client-cert-password': GObject.Object.Notify;
-            'notify::client-cert-password-flags': GObject.Object.Notify;
-            'notify::domain-match': GObject.Object.Notify;
-            'notify::domain-suffix-match': GObject.Object.Notify;
-            'notify::eap': GObject.Object.Notify;
-            'notify::identity': GObject.Object.Notify;
-            'notify::openssl-ciphers': GObject.Object.Notify;
-            'notify::optional': GObject.Object.Notify;
-            'notify::pac-file': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::password-flags': GObject.Object.Notify;
-            'notify::password-raw': GObject.Object.Notify;
-            'notify::password-raw-flags': GObject.Object.Notify;
-            'notify::phase1-auth-flags': GObject.Object.Notify;
-            'notify::phase1-fast-provisioning': GObject.Object.Notify;
-            'notify::phase1-peaplabel': GObject.Object.Notify;
-            'notify::phase1-peapver': GObject.Object.Notify;
-            'notify::phase2-altsubject-matches': GObject.Object.Notify;
-            'notify::phase2-auth': GObject.Object.Notify;
-            'notify::phase2-autheap': GObject.Object.Notify;
-            'notify::phase2-ca-cert': GObject.Object.Notify;
-            'notify::phase2-ca-cert-password': GObject.Object.Notify;
-            'notify::phase2-ca-cert-password-flags': GObject.Object.Notify;
-            'notify::phase2-ca-path': GObject.Object.Notify;
-            'notify::phase2-client-cert': GObject.Object.Notify;
-            'notify::phase2-client-cert-password': GObject.Object.Notify;
-            'notify::phase2-client-cert-password-flags': GObject.Object.Notify;
-            'notify::phase2-domain-match': GObject.Object.Notify;
-            'notify::phase2-domain-suffix-match': GObject.Object.Notify;
-            'notify::phase2-private-key': GObject.Object.Notify;
-            'notify::phase2-private-key-password': GObject.Object.Notify;
-            'notify::phase2-private-key-password-flags': GObject.Object.Notify;
-            'notify::phase2-subject-match': GObject.Object.Notify;
-            'notify::pin': GObject.Object.Notify;
-            'notify::pin-flags': GObject.Object.Notify;
-            'notify::private-key': GObject.Object.Notify;
-            'notify::private-key-password': GObject.Object.Notify;
-            'notify::private-key-password-flags': GObject.Object.Notify;
-            'notify::subject-match': GObject.Object.Notify;
-            'notify::system-ca-certs': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::altsubject-matches': (pspec: GObject.ParamSpec) => void;
+            'notify::anonymous-identity': (pspec: GObject.ParamSpec) => void;
+            'notify::auth-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::ca-cert': (pspec: GObject.ParamSpec) => void;
+            'notify::ca-cert-password': (pspec: GObject.ParamSpec) => void;
+            'notify::ca-cert-password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::ca-path': (pspec: GObject.ParamSpec) => void;
+            'notify::client-cert': (pspec: GObject.ParamSpec) => void;
+            'notify::client-cert-password': (pspec: GObject.ParamSpec) => void;
+            'notify::client-cert-password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::domain-match': (pspec: GObject.ParamSpec) => void;
+            'notify::domain-suffix-match': (pspec: GObject.ParamSpec) => void;
+            'notify::eap': (pspec: GObject.ParamSpec) => void;
+            'notify::identity': (pspec: GObject.ParamSpec) => void;
+            'notify::openssl-ciphers': (pspec: GObject.ParamSpec) => void;
+            'notify::optional': (pspec: GObject.ParamSpec) => void;
+            'notify::pac-file': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::password-raw': (pspec: GObject.ParamSpec) => void;
+            'notify::password-raw-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::phase1-auth-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::phase1-fast-provisioning': (pspec: GObject.ParamSpec) => void;
+            'notify::phase1-peaplabel': (pspec: GObject.ParamSpec) => void;
+            'notify::phase1-peapver': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-altsubject-matches': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-auth': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-autheap': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-ca-cert': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-ca-cert-password': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-ca-cert-password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-ca-path': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-client-cert': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-client-cert-password': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-client-cert-password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-domain-match': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-domain-suffix-match': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-private-key': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-private-key-password': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-private-key-password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::phase2-subject-match': (pspec: GObject.ParamSpec) => void;
+            'notify::pin': (pspec: GObject.ParamSpec) => void;
+            'notify::pin-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::private-key': (pspec: GObject.ParamSpec) => void;
+            'notify::private-key-password': (pspec: GObject.ParamSpec) => void;
+            'notify::private-key-password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::subject-match': (pspec: GObject.ParamSpec) => void;
+            'notify::system-ca-certs': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -18616,6 +18919,14 @@ export namespace NM {
          */
         get systemCaCerts(): boolean;
         set systemCaCerts(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Setting8021x.SignalSignatures;
 
         // Constructors
 
@@ -18629,17 +18940,17 @@ export namespace NM {
 
         connect<K extends keyof Setting8021x.SignalSignatures>(
             signal: K,
-            callback: Setting8021x.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Setting8021x.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Setting8021x.SignalSignatures>(
             signal: K,
-            callback: Setting8021x.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Setting8021x.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Setting8021x.SignalSignatures>(
             signal: K,
-            ...args: Setting8021x.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Setting8021x.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -19227,14 +19538,14 @@ export namespace NM {
     namespace SettingAdsl {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::encapsulation': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::password-flags': GObject.Object.Notify;
-            'notify::protocol': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
-            'notify::vci': GObject.Object.Notify;
-            'notify::vpi': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::encapsulation': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::protocol': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
+            'notify::vci': (pspec: GObject.ParamSpec) => void;
+            'notify::vpi': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19299,6 +19610,14 @@ export namespace NM {
          */
         get vpi(): number;
         set vpi(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingAdsl.SignalSignatures;
 
         // Constructors
 
@@ -19312,17 +19631,17 @@ export namespace NM {
 
         connect<K extends keyof SettingAdsl.SignalSignatures>(
             signal: K,
-            callback: SettingAdsl.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingAdsl.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingAdsl.SignalSignatures>(
             signal: K,
-            callback: SettingAdsl.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingAdsl.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingAdsl.SignalSignatures>(
             signal: K,
-            ...args: SettingAdsl.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingAdsl.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -19340,9 +19659,9 @@ export namespace NM {
     namespace SettingBluetooth {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::bdaddr': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::bdaddr': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19372,6 +19691,14 @@ export namespace NM {
          */
         get type(): string;
         set type(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingBluetooth.SignalSignatures;
 
         // Constructors
 
@@ -19385,17 +19712,17 @@ export namespace NM {
 
         connect<K extends keyof SettingBluetooth.SignalSignatures>(
             signal: K,
-            callback: SettingBluetooth.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingBluetooth.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingBluetooth.SignalSignatures>(
             signal: K,
-            callback: SettingBluetooth.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingBluetooth.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingBluetooth.SignalSignatures>(
             signal: K,
-            ...args: SettingBluetooth.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingBluetooth.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -19418,8 +19745,8 @@ export namespace NM {
     namespace SettingBond {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::options': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::options': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19444,6 +19771,14 @@ export namespace NM {
          */
         get options(): GLib.HashTable<string, string>;
         set options(val: GLib.HashTable<string, string>);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingBond.SignalSignatures;
 
         // Constructors
 
@@ -19457,17 +19792,17 @@ export namespace NM {
 
         connect<K extends keyof SettingBond.SignalSignatures>(
             signal: K,
-            callback: SettingBond.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingBond.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingBond.SignalSignatures>(
             signal: K,
-            callback: SettingBond.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingBond.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingBond.SignalSignatures>(
             signal: K,
-            ...args: SettingBond.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingBond.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -19536,9 +19871,9 @@ export namespace NM {
     namespace SettingBondPort {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::prio': GObject.Object.Notify;
-            'notify::queue-id': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::prio': (pspec: GObject.ParamSpec) => void;
+            'notify::queue-id': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19578,6 +19913,14 @@ export namespace NM {
          */
         get queueId(): number;
         set queueId(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingBondPort.SignalSignatures;
 
         // Constructors
 
@@ -19591,17 +19934,17 @@ export namespace NM {
 
         connect<K extends keyof SettingBondPort.SignalSignatures>(
             signal: K,
-            callback: SettingBondPort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingBondPort.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingBondPort.SignalSignatures>(
             signal: K,
-            callback: SettingBondPort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingBondPort.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingBondPort.SignalSignatures>(
             signal: K,
-            ...args: SettingBondPort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingBondPort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -19614,34 +19957,34 @@ export namespace NM {
     namespace SettingBridge {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::ageing-time': GObject.Object.Notify;
-            'notify::forward-delay': GObject.Object.Notify;
-            'notify::group-address': GObject.Object.Notify;
-            'notify::group-forward-mask': GObject.Object.Notify;
-            'notify::hello-time': GObject.Object.Notify;
-            'notify::mac-address': GObject.Object.Notify;
-            'notify::max-age': GObject.Object.Notify;
-            'notify::multicast-hash-max': GObject.Object.Notify;
-            'notify::multicast-last-member-count': GObject.Object.Notify;
-            'notify::multicast-last-member-interval': GObject.Object.Notify;
-            'notify::multicast-membership-interval': GObject.Object.Notify;
-            'notify::multicast-querier': GObject.Object.Notify;
-            'notify::multicast-querier-interval': GObject.Object.Notify;
-            'notify::multicast-query-interval': GObject.Object.Notify;
-            'notify::multicast-query-response-interval': GObject.Object.Notify;
-            'notify::multicast-query-use-ifaddr': GObject.Object.Notify;
-            'notify::multicast-router': GObject.Object.Notify;
-            'notify::multicast-snooping': GObject.Object.Notify;
-            'notify::multicast-startup-query-count': GObject.Object.Notify;
-            'notify::multicast-startup-query-interval': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::stp': GObject.Object.Notify;
-            'notify::vlan-default-pvid': GObject.Object.Notify;
-            'notify::vlan-filtering': GObject.Object.Notify;
-            'notify::vlan-protocol': GObject.Object.Notify;
-            'notify::vlan-stats-enabled': GObject.Object.Notify;
-            'notify::vlans': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::ageing-time': (pspec: GObject.ParamSpec) => void;
+            'notify::forward-delay': (pspec: GObject.ParamSpec) => void;
+            'notify::group-address': (pspec: GObject.ParamSpec) => void;
+            'notify::group-forward-mask': (pspec: GObject.ParamSpec) => void;
+            'notify::hello-time': (pspec: GObject.ParamSpec) => void;
+            'notify::mac-address': (pspec: GObject.ParamSpec) => void;
+            'notify::max-age': (pspec: GObject.ParamSpec) => void;
+            'notify::multicast-hash-max': (pspec: GObject.ParamSpec) => void;
+            'notify::multicast-last-member-count': (pspec: GObject.ParamSpec) => void;
+            'notify::multicast-last-member-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::multicast-membership-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::multicast-querier': (pspec: GObject.ParamSpec) => void;
+            'notify::multicast-querier-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::multicast-query-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::multicast-query-response-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::multicast-query-use-ifaddr': (pspec: GObject.ParamSpec) => void;
+            'notify::multicast-router': (pspec: GObject.ParamSpec) => void;
+            'notify::multicast-snooping': (pspec: GObject.ParamSpec) => void;
+            'notify::multicast-startup-query-count': (pspec: GObject.ParamSpec) => void;
+            'notify::multicast-startup-query-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::stp': (pspec: GObject.ParamSpec) => void;
+            'notify::vlan-default-pvid': (pspec: GObject.ParamSpec) => void;
+            'notify::vlan-filtering': (pspec: GObject.ParamSpec) => void;
+            'notify::vlan-protocol': (pspec: GObject.ParamSpec) => void;
+            'notify::vlan-stats-enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::vlans': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -20054,6 +20397,14 @@ export namespace NM {
          */
         get vlans(): BridgeVlan[];
         set vlans(val: BridgeVlan[]);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingBridge.SignalSignatures;
 
         // Constructors
 
@@ -20067,17 +20418,17 @@ export namespace NM {
 
         connect<K extends keyof SettingBridge.SignalSignatures>(
             signal: K,
-            callback: SettingBridge.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingBridge.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingBridge.SignalSignatures>(
             signal: K,
-            callback: SettingBridge.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingBridge.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingBridge.SignalSignatures>(
             signal: K,
-            ...args: SettingBridge.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingBridge.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -20140,11 +20491,11 @@ export namespace NM {
     namespace SettingBridgePort {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::hairpin-mode': GObject.Object.Notify;
-            'notify::path-cost': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::vlans': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::hairpin-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::path-cost': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::vlans': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -20212,6 +20563,14 @@ export namespace NM {
          */
         get vlans(): BridgeVlan[];
         set vlans(val: BridgeVlan[]);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingBridgePort.SignalSignatures;
 
         // Constructors
 
@@ -20225,17 +20584,17 @@ export namespace NM {
 
         connect<K extends keyof SettingBridgePort.SignalSignatures>(
             signal: K,
-            callback: SettingBridgePort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingBridgePort.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingBridgePort.SignalSignatures>(
             signal: K,
-            callback: SettingBridgePort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingBridgePort.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingBridgePort.SignalSignatures>(
             signal: K,
-            ...args: SettingBridgePort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingBridgePort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -20275,12 +20634,12 @@ export namespace NM {
     namespace SettingCdma {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::mtu': GObject.Object.Notify;
-            'notify::number': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::password-flags': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::number': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -20340,6 +20699,14 @@ export namespace NM {
          */
         get username(): string;
         set username(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingCdma.SignalSignatures;
 
         // Constructors
 
@@ -20353,17 +20720,17 @@ export namespace NM {
 
         connect<K extends keyof SettingCdma.SignalSignatures>(
             signal: K,
-            callback: SettingCdma.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingCdma.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingCdma.SignalSignatures>(
             signal: K,
-            callback: SettingCdma.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingCdma.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingCdma.SignalSignatures>(
             signal: K,
-            ...args: SettingCdma.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingCdma.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -20379,39 +20746,39 @@ export namespace NM {
     namespace SettingConnection {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::auth-retries': GObject.Object.Notify;
-            'notify::autoconnect': GObject.Object.Notify;
-            'notify::autoconnect-ports': GObject.Object.Notify;
-            'notify::autoconnect-priority': GObject.Object.Notify;
-            'notify::autoconnect-retries': GObject.Object.Notify;
-            'notify::autoconnect-slaves': GObject.Object.Notify;
-            'notify::controller': GObject.Object.Notify;
-            'notify::dns-over-tls': GObject.Object.Notify;
-            'notify::down-on-poweroff': GObject.Object.Notify;
-            'notify::gateway-ping-timeout': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::interface-name': GObject.Object.Notify;
-            'notify::lldp': GObject.Object.Notify;
-            'notify::llmnr': GObject.Object.Notify;
-            'notify::master': GObject.Object.Notify;
-            'notify::mdns': GObject.Object.Notify;
-            'notify::metered': GObject.Object.Notify;
-            'notify::mptcp-flags': GObject.Object.Notify;
-            'notify::mud-url': GObject.Object.Notify;
-            'notify::multi-connect': GObject.Object.Notify;
-            'notify::permissions': GObject.Object.Notify;
-            'notify::port-type': GObject.Object.Notify;
-            'notify::read-only': GObject.Object.Notify;
-            'notify::secondaries': GObject.Object.Notify;
-            'notify::slave-type': GObject.Object.Notify;
-            'notify::stable-id': GObject.Object.Notify;
-            'notify::timestamp': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::uuid': GObject.Object.Notify;
-            'notify::wait-activation-delay': GObject.Object.Notify;
-            'notify::wait-device-timeout': GObject.Object.Notify;
-            'notify::zone': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::auth-retries': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect-ports': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect-priority': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect-retries': (pspec: GObject.ParamSpec) => void;
+            'notify::autoconnect-slaves': (pspec: GObject.ParamSpec) => void;
+            'notify::controller': (pspec: GObject.ParamSpec) => void;
+            'notify::dns-over-tls': (pspec: GObject.ParamSpec) => void;
+            'notify::down-on-poweroff': (pspec: GObject.ParamSpec) => void;
+            'notify::gateway-ping-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::lldp': (pspec: GObject.ParamSpec) => void;
+            'notify::llmnr': (pspec: GObject.ParamSpec) => void;
+            'notify::master': (pspec: GObject.ParamSpec) => void;
+            'notify::mdns': (pspec: GObject.ParamSpec) => void;
+            'notify::metered': (pspec: GObject.ParamSpec) => void;
+            'notify::mptcp-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::mud-url': (pspec: GObject.ParamSpec) => void;
+            'notify::multi-connect': (pspec: GObject.ParamSpec) => void;
+            'notify::permissions': (pspec: GObject.ParamSpec) => void;
+            'notify::port-type': (pspec: GObject.ParamSpec) => void;
+            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            'notify::secondaries': (pspec: GObject.ParamSpec) => void;
+            'notify::slave-type': (pspec: GObject.ParamSpec) => void;
+            'notify::stable-id': (pspec: GObject.ParamSpec) => void;
+            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::uuid': (pspec: GObject.ParamSpec) => void;
+            'notify::wait-activation-delay': (pspec: GObject.ParamSpec) => void;
+            'notify::wait-device-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::zone': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21143,6 +21510,14 @@ export namespace NM {
          */
         get zone(): string;
         set zone(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingConnection.SignalSignatures;
 
         // Constructors
 
@@ -21156,17 +21531,17 @@ export namespace NM {
 
         connect<K extends keyof SettingConnection.SignalSignatures>(
             signal: K,
-            callback: SettingConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingConnection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingConnection.SignalSignatures>(
             signal: K,
-            callback: SettingConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingConnection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingConnection.SignalSignatures>(
             signal: K,
-            ...args: SettingConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21360,22 +21735,22 @@ export namespace NM {
     namespace SettingDcb {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::app-fcoe-flags': GObject.Object.Notify;
-            'notify::app-fcoe-mode': GObject.Object.Notify;
-            'notify::app-fcoe-priority': GObject.Object.Notify;
-            'notify::app-fip-flags': GObject.Object.Notify;
-            'notify::app-fip-priority': GObject.Object.Notify;
-            'notify::app-iscsi-flags': GObject.Object.Notify;
-            'notify::app-iscsi-priority': GObject.Object.Notify;
-            'notify::priority-bandwidth': GObject.Object.Notify;
-            'notify::priority-flow-control': GObject.Object.Notify;
-            'notify::priority-flow-control-flags': GObject.Object.Notify;
-            'notify::priority-group-bandwidth': GObject.Object.Notify;
-            'notify::priority-group-flags': GObject.Object.Notify;
-            'notify::priority-group-id': GObject.Object.Notify;
-            'notify::priority-strict-bandwidth': GObject.Object.Notify;
-            'notify::priority-traffic-class': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::app-fcoe-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::app-fcoe-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::app-fcoe-priority': (pspec: GObject.ParamSpec) => void;
+            'notify::app-fip-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::app-fip-priority': (pspec: GObject.ParamSpec) => void;
+            'notify::app-iscsi-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::app-iscsi-priority': (pspec: GObject.ParamSpec) => void;
+            'notify::priority-bandwidth': (pspec: GObject.ParamSpec) => void;
+            'notify::priority-flow-control': (pspec: GObject.ParamSpec) => void;
+            'notify::priority-flow-control-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::priority-group-bandwidth': (pspec: GObject.ParamSpec) => void;
+            'notify::priority-group-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::priority-group-id': (pspec: GObject.ParamSpec) => void;
+            'notify::priority-strict-bandwidth': (pspec: GObject.ParamSpec) => void;
+            'notify::priority-traffic-class': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21642,6 +22017,14 @@ export namespace NM {
          */
         get priorityTrafficClass(): number[];
         set priorityTrafficClass(val: number[]);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingDcb.SignalSignatures;
 
         // Constructors
 
@@ -21655,17 +22038,17 @@ export namespace NM {
 
         connect<K extends keyof SettingDcb.SignalSignatures>(
             signal: K,
-            callback: SettingDcb.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingDcb.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingDcb.SignalSignatures>(
             signal: K,
-            callback: SettingDcb.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingDcb.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingDcb.SignalSignatures>(
             signal: K,
-            ...args: SettingDcb.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingDcb.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21727,7 +22110,7 @@ export namespace NM {
     namespace SettingDummy {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21740,6 +22123,14 @@ export namespace NM {
      */
     class SettingDummy extends Setting {
         static $gtype: GObject.GType<SettingDummy>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingDummy.SignalSignatures;
 
         // Constructors
 
@@ -21753,17 +22144,17 @@ export namespace NM {
 
         connect<K extends keyof SettingDummy.SignalSignatures>(
             signal: K,
-            callback: SettingDummy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingDummy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingDummy.SignalSignatures>(
             signal: K,
-            callback: SettingDummy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingDummy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingDummy.SignalSignatures>(
             signal: K,
-            ...args: SettingDummy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingDummy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -21771,7 +22162,7 @@ export namespace NM {
     namespace SettingEthtool {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21784,6 +22175,14 @@ export namespace NM {
      */
     class SettingEthtool extends Setting {
         static $gtype: GObject.GType<SettingEthtool>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingEthtool.SignalSignatures;
 
         // Constructors
 
@@ -21797,17 +22196,17 @@ export namespace NM {
 
         connect<K extends keyof SettingEthtool.SignalSignatures>(
             signal: K,
-            callback: SettingEthtool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingEthtool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingEthtool.SignalSignatures>(
             signal: K,
-            callback: SettingEthtool.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingEthtool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingEthtool.SignalSignatures>(
             signal: K,
-            ...args: SettingEthtool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingEthtool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21848,8 +22247,8 @@ export namespace NM {
     namespace SettingGeneric {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::device-handler': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::device-handler': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -21898,6 +22297,14 @@ export namespace NM {
          */
         get deviceHandler(): string;
         set deviceHandler(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingGeneric.SignalSignatures;
 
         // Constructors
 
@@ -21911,17 +22318,17 @@ export namespace NM {
 
         connect<K extends keyof SettingGeneric.SignalSignatures>(
             signal: K,
-            callback: SettingGeneric.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingGeneric.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingGeneric.SignalSignatures>(
             signal: K,
-            callback: SettingGeneric.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingGeneric.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingGeneric.SignalSignatures>(
             signal: K,
-            ...args: SettingGeneric.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingGeneric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -21937,23 +22344,23 @@ export namespace NM {
     namespace SettingGsm {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::apn': GObject.Object.Notify;
-            'notify::auto-config': GObject.Object.Notify;
-            'notify::device-id': GObject.Object.Notify;
-            'notify::home-only': GObject.Object.Notify;
-            'notify::initial-eps-bearer-apn': GObject.Object.Notify;
-            'notify::initial-eps-bearer-configure': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::network-id': GObject.Object.Notify;
-            'notify::number': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::password-flags': GObject.Object.Notify;
-            'notify::pin': GObject.Object.Notify;
-            'notify::pin-flags': GObject.Object.Notify;
-            'notify::sim-id': GObject.Object.Notify;
-            'notify::sim-operator-id': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::apn': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-config': (pspec: GObject.ParamSpec) => void;
+            'notify::device-id': (pspec: GObject.ParamSpec) => void;
+            'notify::home-only': (pspec: GObject.ParamSpec) => void;
+            'notify::initial-eps-bearer-apn': (pspec: GObject.ParamSpec) => void;
+            'notify::initial-eps-bearer-configure': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::network-id': (pspec: GObject.ParamSpec) => void;
+            'notify::number': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::pin': (pspec: GObject.ParamSpec) => void;
+            'notify::pin-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::sim-id': (pspec: GObject.ParamSpec) => void;
+            'notify::sim-operator-id': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22184,6 +22591,14 @@ export namespace NM {
          */
         get username(): string;
         set username(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingGsm.SignalSignatures;
 
         // Constructors
 
@@ -22197,17 +22612,17 @@ export namespace NM {
 
         connect<K extends keyof SettingGsm.SignalSignatures>(
             signal: K,
-            callback: SettingGsm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingGsm.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingGsm.SignalSignatures>(
             signal: K,
-            callback: SettingGsm.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingGsm.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingGsm.SignalSignatures>(
             signal: K,
-            ...args: SettingGsm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingGsm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22234,11 +22649,11 @@ export namespace NM {
     namespace SettingHostname {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::from-dhcp': GObject.Object.Notify;
-            'notify::from-dns-lookup': GObject.Object.Notify;
-            'notify::only-from-default': GObject.Object.Notify;
-            'notify::priority': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::from-dhcp': (pspec: GObject.ParamSpec) => void;
+            'notify::from-dns-lookup': (pspec: GObject.ParamSpec) => void;
+            'notify::only-from-default': (pspec: GObject.ParamSpec) => void;
+            'notify::priority': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22351,6 +22766,14 @@ export namespace NM {
          */
         get priority(): number;
         set priority(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingHostname.SignalSignatures;
 
         // Constructors
 
@@ -22364,17 +22787,17 @@ export namespace NM {
 
         connect<K extends keyof SettingHostname.SignalSignatures>(
             signal: K,
-            callback: SettingHostname.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingHostname.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingHostname.SignalSignatures>(
             signal: K,
-            callback: SettingHostname.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingHostname.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingHostname.SignalSignatures>(
             signal: K,
-            ...args: SettingHostname.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingHostname.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22409,11 +22832,11 @@ export namespace NM {
     namespace SettingHsr {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::multicast-spec': GObject.Object.Notify;
-            'notify::port1': GObject.Object.Notify;
-            'notify::port2': GObject.Object.Notify;
-            'notify::prp': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::multicast-spec': (pspec: GObject.ParamSpec) => void;
+            'notify::port1': (pspec: GObject.ParamSpec) => void;
+            'notify::port2': (pspec: GObject.ParamSpec) => void;
+            'notify::prp': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22460,6 +22883,14 @@ export namespace NM {
          */
         get prp(): boolean;
         set prp(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingHsr.SignalSignatures;
 
         // Constructors
 
@@ -22473,17 +22904,17 @@ export namespace NM {
 
         connect<K extends keyof SettingHsr.SignalSignatures>(
             signal: K,
-            callback: SettingHsr.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingHsr.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingHsr.SignalSignatures>(
             signal: K,
-            callback: SettingHsr.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingHsr.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingHsr.SignalSignatures>(
             signal: K,
-            ...args: SettingHsr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingHsr.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22498,37 +22929,37 @@ export namespace NM {
     namespace SettingIP4Config {
         // Signal signatures
         interface SignalSignatures extends SettingIPConfig.SignalSignatures {
-            'notify::dhcp-client-id': GObject.Object.Notify;
-            'notify::dhcp-fqdn': GObject.Object.Notify;
-            'notify::dhcp-vendor-class-identifier': GObject.Object.Notify;
-            'notify::link-local': GObject.Object.Notify;
-            'notify::addresses': GObject.Object.Notify;
-            'notify::auto-route-ext-gw': GObject.Object.Notify;
-            'notify::dad-timeout': GObject.Object.Notify;
-            'notify::dhcp-dscp': GObject.Object.Notify;
-            'notify::dhcp-hostname': GObject.Object.Notify;
-            'notify::dhcp-hostname-flags': GObject.Object.Notify;
-            'notify::dhcp-iaid': GObject.Object.Notify;
-            'notify::dhcp-reject-servers': GObject.Object.Notify;
-            'notify::dhcp-send-hostname': GObject.Object.Notify;
-            'notify::dhcp-send-release': GObject.Object.Notify;
-            'notify::dhcp-timeout': GObject.Object.Notify;
-            'notify::dns': GObject.Object.Notify;
-            'notify::dns-options': GObject.Object.Notify;
-            'notify::dns-priority': GObject.Object.Notify;
-            'notify::dns-search': GObject.Object.Notify;
-            'notify::gateway': GObject.Object.Notify;
-            'notify::ignore-auto-dns': GObject.Object.Notify;
-            'notify::ignore-auto-routes': GObject.Object.Notify;
-            'notify::may-fail': GObject.Object.Notify;
-            'notify::method': GObject.Object.Notify;
-            'notify::never-default': GObject.Object.Notify;
-            'notify::replace-local-rule': GObject.Object.Notify;
-            'notify::required-timeout': GObject.Object.Notify;
-            'notify::route-metric': GObject.Object.Notify;
-            'notify::route-table': GObject.Object.Notify;
-            'notify::routes': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::dhcp-client-id': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-fqdn': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-vendor-class-identifier': (pspec: GObject.ParamSpec) => void;
+            'notify::link-local': (pspec: GObject.ParamSpec) => void;
+            'notify::addresses': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-route-ext-gw': (pspec: GObject.ParamSpec) => void;
+            'notify::dad-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-dscp': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-hostname': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-hostname-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-iaid': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-reject-servers': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-send-hostname': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-send-release': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::dns': (pspec: GObject.ParamSpec) => void;
+            'notify::dns-options': (pspec: GObject.ParamSpec) => void;
+            'notify::dns-priority': (pspec: GObject.ParamSpec) => void;
+            'notify::dns-search': (pspec: GObject.ParamSpec) => void;
+            'notify::gateway': (pspec: GObject.ParamSpec) => void;
+            'notify::ignore-auto-dns': (pspec: GObject.ParamSpec) => void;
+            'notify::ignore-auto-routes': (pspec: GObject.ParamSpec) => void;
+            'notify::may-fail': (pspec: GObject.ParamSpec) => void;
+            'notify::method': (pspec: GObject.ParamSpec) => void;
+            'notify::never-default': (pspec: GObject.ParamSpec) => void;
+            'notify::replace-local-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::required-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::route-metric': (pspec: GObject.ParamSpec) => void;
+            'notify::route-table': (pspec: GObject.ParamSpec) => void;
+            'notify::routes': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -22693,6 +23124,14 @@ export namespace NM {
          */
         get linkLocal(): number;
         set linkLocal(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingIP4Config.SignalSignatures;
 
         // Constructors
 
@@ -22706,17 +23145,17 @@ export namespace NM {
 
         connect<K extends keyof SettingIP4Config.SignalSignatures>(
             signal: K,
-            callback: SettingIP4Config.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingIP4Config.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingIP4Config.SignalSignatures>(
             signal: K,
-            callback: SettingIP4Config.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingIP4Config.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingIP4Config.SignalSignatures>(
             signal: K,
-            ...args: SettingIP4Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingIP4Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -22751,42 +23190,42 @@ export namespace NM {
     namespace SettingIP6Config {
         // Signal signatures
         interface SignalSignatures extends SettingIPConfig.SignalSignatures {
-            'notify::addr-gen-mode': GObject.Object.Notify;
-            'notify::dhcp-duid': GObject.Object.Notify;
-            'notify::dhcp-pd-hint': GObject.Object.Notify;
-            'notify::ip6-privacy': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::ra-timeout': GObject.Object.Notify;
-            'notify::temp-preferred-lifetime': GObject.Object.Notify;
-            'notify::temp-valid-lifetime': GObject.Object.Notify;
-            'notify::token': GObject.Object.Notify;
-            'notify::addresses': GObject.Object.Notify;
-            'notify::auto-route-ext-gw': GObject.Object.Notify;
-            'notify::dad-timeout': GObject.Object.Notify;
-            'notify::dhcp-dscp': GObject.Object.Notify;
-            'notify::dhcp-hostname': GObject.Object.Notify;
-            'notify::dhcp-hostname-flags': GObject.Object.Notify;
-            'notify::dhcp-iaid': GObject.Object.Notify;
-            'notify::dhcp-reject-servers': GObject.Object.Notify;
-            'notify::dhcp-send-hostname': GObject.Object.Notify;
-            'notify::dhcp-send-release': GObject.Object.Notify;
-            'notify::dhcp-timeout': GObject.Object.Notify;
-            'notify::dns': GObject.Object.Notify;
-            'notify::dns-options': GObject.Object.Notify;
-            'notify::dns-priority': GObject.Object.Notify;
-            'notify::dns-search': GObject.Object.Notify;
-            'notify::gateway': GObject.Object.Notify;
-            'notify::ignore-auto-dns': GObject.Object.Notify;
-            'notify::ignore-auto-routes': GObject.Object.Notify;
-            'notify::may-fail': GObject.Object.Notify;
-            'notify::method': GObject.Object.Notify;
-            'notify::never-default': GObject.Object.Notify;
-            'notify::replace-local-rule': GObject.Object.Notify;
-            'notify::required-timeout': GObject.Object.Notify;
-            'notify::route-metric': GObject.Object.Notify;
-            'notify::route-table': GObject.Object.Notify;
-            'notify::routes': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::addr-gen-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-duid': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-pd-hint': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-privacy': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::ra-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::temp-preferred-lifetime': (pspec: GObject.ParamSpec) => void;
+            'notify::temp-valid-lifetime': (pspec: GObject.ParamSpec) => void;
+            'notify::token': (pspec: GObject.ParamSpec) => void;
+            'notify::addresses': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-route-ext-gw': (pspec: GObject.ParamSpec) => void;
+            'notify::dad-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-dscp': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-hostname': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-hostname-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-iaid': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-reject-servers': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-send-hostname': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-send-release': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::dns': (pspec: GObject.ParamSpec) => void;
+            'notify::dns-options': (pspec: GObject.ParamSpec) => void;
+            'notify::dns-priority': (pspec: GObject.ParamSpec) => void;
+            'notify::dns-search': (pspec: GObject.ParamSpec) => void;
+            'notify::gateway': (pspec: GObject.ParamSpec) => void;
+            'notify::ignore-auto-dns': (pspec: GObject.ParamSpec) => void;
+            'notify::ignore-auto-routes': (pspec: GObject.ParamSpec) => void;
+            'notify::may-fail': (pspec: GObject.ParamSpec) => void;
+            'notify::method': (pspec: GObject.ParamSpec) => void;
+            'notify::never-default': (pspec: GObject.ParamSpec) => void;
+            'notify::replace-local-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::required-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::route-metric': (pspec: GObject.ParamSpec) => void;
+            'notify::route-table': (pspec: GObject.ParamSpec) => void;
+            'notify::routes': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23105,6 +23544,14 @@ export namespace NM {
          */
         get token(): string;
         set token(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingIP6Config.SignalSignatures;
 
         // Constructors
 
@@ -23118,17 +23565,17 @@ export namespace NM {
 
         connect<K extends keyof SettingIP6Config.SignalSignatures>(
             signal: K,
-            callback: SettingIP6Config.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingIP6Config.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingIP6Config.SignalSignatures>(
             signal: K,
-            callback: SettingIP6Config.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingIP6Config.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingIP6Config.SignalSignatures>(
             signal: K,
-            ...args: SettingIP6Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingIP6Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -23183,33 +23630,33 @@ export namespace NM {
     namespace SettingIPConfig {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::addresses': GObject.Object.Notify;
-            'notify::auto-route-ext-gw': GObject.Object.Notify;
-            'notify::dad-timeout': GObject.Object.Notify;
-            'notify::dhcp-dscp': GObject.Object.Notify;
-            'notify::dhcp-hostname': GObject.Object.Notify;
-            'notify::dhcp-hostname-flags': GObject.Object.Notify;
-            'notify::dhcp-iaid': GObject.Object.Notify;
-            'notify::dhcp-reject-servers': GObject.Object.Notify;
-            'notify::dhcp-send-hostname': GObject.Object.Notify;
-            'notify::dhcp-send-release': GObject.Object.Notify;
-            'notify::dhcp-timeout': GObject.Object.Notify;
-            'notify::dns': GObject.Object.Notify;
-            'notify::dns-options': GObject.Object.Notify;
-            'notify::dns-priority': GObject.Object.Notify;
-            'notify::dns-search': GObject.Object.Notify;
-            'notify::gateway': GObject.Object.Notify;
-            'notify::ignore-auto-dns': GObject.Object.Notify;
-            'notify::ignore-auto-routes': GObject.Object.Notify;
-            'notify::may-fail': GObject.Object.Notify;
-            'notify::method': GObject.Object.Notify;
-            'notify::never-default': GObject.Object.Notify;
-            'notify::replace-local-rule': GObject.Object.Notify;
-            'notify::required-timeout': GObject.Object.Notify;
-            'notify::route-metric': GObject.Object.Notify;
-            'notify::route-table': GObject.Object.Notify;
-            'notify::routes': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::addresses': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-route-ext-gw': (pspec: GObject.ParamSpec) => void;
+            'notify::dad-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-dscp': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-hostname': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-hostname-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-iaid': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-reject-servers': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-send-hostname': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-send-release': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::dns': (pspec: GObject.ParamSpec) => void;
+            'notify::dns-options': (pspec: GObject.ParamSpec) => void;
+            'notify::dns-priority': (pspec: GObject.ParamSpec) => void;
+            'notify::dns-search': (pspec: GObject.ParamSpec) => void;
+            'notify::gateway': (pspec: GObject.ParamSpec) => void;
+            'notify::ignore-auto-dns': (pspec: GObject.ParamSpec) => void;
+            'notify::ignore-auto-routes': (pspec: GObject.ParamSpec) => void;
+            'notify::may-fail': (pspec: GObject.ParamSpec) => void;
+            'notify::method': (pspec: GObject.ParamSpec) => void;
+            'notify::never-default': (pspec: GObject.ParamSpec) => void;
+            'notify::replace-local-rule': (pspec: GObject.ParamSpec) => void;
+            'notify::required-timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::route-metric': (pspec: GObject.ParamSpec) => void;
+            'notify::route-table': (pspec: GObject.ParamSpec) => void;
+            'notify::routes': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -23969,6 +24416,14 @@ export namespace NM {
          */
         get routes(): IPRoute[];
         set routes(val: IPRoute[]);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingIPConfig.SignalSignatures;
 
         // Constructors
 
@@ -23980,17 +24435,17 @@ export namespace NM {
 
         connect<K extends keyof SettingIPConfig.SignalSignatures>(
             signal: K,
-            callback: SettingIPConfig.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingIPConfig.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingIPConfig.SignalSignatures>(
             signal: K,
-            callback: SettingIPConfig.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingIPConfig.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingIPConfig.SignalSignatures>(
             signal: K,
-            ...args: SettingIPConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingIPConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -24265,21 +24720,21 @@ export namespace NM {
     namespace SettingIPTunnel {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::encapsulation-limit': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::flow-label': GObject.Object.Notify;
-            'notify::fwmark': GObject.Object.Notify;
-            'notify::input-key': GObject.Object.Notify;
-            'notify::local': GObject.Object.Notify;
-            'notify::mode': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::output-key': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::path-mtu-discovery': GObject.Object.Notify;
-            'notify::remote': GObject.Object.Notify;
-            'notify::tos': GObject.Object.Notify;
-            'notify::ttl': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::encapsulation-limit': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::flow-label': (pspec: GObject.ParamSpec) => void;
+            'notify::fwmark': (pspec: GObject.ParamSpec) => void;
+            'notify::input-key': (pspec: GObject.ParamSpec) => void;
+            'notify::local': (pspec: GObject.ParamSpec) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::output-key': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::path-mtu-discovery': (pspec: GObject.ParamSpec) => void;
+            'notify::remote': (pspec: GObject.ParamSpec) => void;
+            'notify::tos': (pspec: GObject.ParamSpec) => void;
+            'notify::ttl': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24436,6 +24891,14 @@ export namespace NM {
          */
         get ttl(): number;
         set ttl(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingIPTunnel.SignalSignatures;
 
         // Constructors
 
@@ -24449,17 +24912,17 @@ export namespace NM {
 
         connect<K extends keyof SettingIPTunnel.SignalSignatures>(
             signal: K,
-            callback: SettingIPTunnel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingIPTunnel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingIPTunnel.SignalSignatures>(
             signal: K,
-            callback: SettingIPTunnel.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingIPTunnel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingIPTunnel.SignalSignatures>(
             signal: K,
-            ...args: SettingIPTunnel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingIPTunnel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -24540,12 +25003,12 @@ export namespace NM {
     namespace SettingInfiniband {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::mac-address': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::p-key': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::transport-mode': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::mac-address': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::p-key': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::transport-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24640,6 +25103,14 @@ export namespace NM {
          */
         get transportMode(): string;
         set transportMode(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingInfiniband.SignalSignatures;
 
         // Constructors
 
@@ -24653,17 +25124,17 @@ export namespace NM {
 
         connect<K extends keyof SettingInfiniband.SignalSignatures>(
             signal: K,
-            callback: SettingInfiniband.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingInfiniband.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingInfiniband.SignalSignatures>(
             signal: K,
-            callback: SettingInfiniband.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingInfiniband.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingInfiniband.SignalSignatures>(
             signal: K,
-            ...args: SettingInfiniband.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingInfiniband.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -24701,11 +25172,11 @@ export namespace NM {
     namespace SettingLink {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::gro-max-size': GObject.Object.Notify;
-            'notify::gso-max-segments': GObject.Object.Notify;
-            'notify::gso-max-size': GObject.Object.Notify;
-            'notify::tx-queue-length': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::gro-max-size': (pspec: GObject.ParamSpec) => void;
+            'notify::gso-max-segments': (pspec: GObject.ParamSpec) => void;
+            'notify::gso-max-size': (pspec: GObject.ParamSpec) => void;
+            'notify::tx-queue-length': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24784,6 +25255,14 @@ export namespace NM {
          */
         get txQueueLength(): number;
         set txQueueLength(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingLink.SignalSignatures;
 
         // Constructors
 
@@ -24797,17 +25276,17 @@ export namespace NM {
 
         connect<K extends keyof SettingLink.SignalSignatures>(
             signal: K,
-            callback: SettingLink.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingLink.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingLink.SignalSignatures>(
             signal: K,
-            callback: SettingLink.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingLink.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingLink.SignalSignatures>(
             signal: K,
-            ...args: SettingLink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingLink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -24842,8 +25321,8 @@ export namespace NM {
     namespace SettingLoopback {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::mtu': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -24867,6 +25346,14 @@ export namespace NM {
          */
         get mtu(): number;
         set mtu(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingLoopback.SignalSignatures;
 
         // Constructors
 
@@ -24880,17 +25367,17 @@ export namespace NM {
 
         connect<K extends keyof SettingLoopback.SignalSignatures>(
             signal: K,
-            callback: SettingLoopback.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingLoopback.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingLoopback.SignalSignatures>(
             signal: K,
-            callback: SettingLoopback.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingLoopback.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingLoopback.SignalSignatures>(
             signal: K,
-            ...args: SettingLoopback.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingLoopback.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -24902,17 +25389,17 @@ export namespace NM {
     namespace SettingMacsec {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::encrypt': GObject.Object.Notify;
-            'notify::mka-cak': GObject.Object.Notify;
-            'notify::mka-cak-flags': GObject.Object.Notify;
-            'notify::mka-ckn': GObject.Object.Notify;
-            'notify::mode': GObject.Object.Notify;
-            'notify::offload': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::port': GObject.Object.Notify;
-            'notify::send-sci': GObject.Object.Notify;
-            'notify::validation': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::encrypt': (pspec: GObject.ParamSpec) => void;
+            'notify::mka-cak': (pspec: GObject.ParamSpec) => void;
+            'notify::mka-cak-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::mka-ckn': (pspec: GObject.ParamSpec) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::offload': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::port': (pspec: GObject.ParamSpec) => void;
+            'notify::send-sci': (pspec: GObject.ParamSpec) => void;
+            'notify::validation': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25037,6 +25524,14 @@ export namespace NM {
          */
         get validation(): number;
         set validation(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingMacsec.SignalSignatures;
 
         // Constructors
 
@@ -25050,17 +25545,17 @@ export namespace NM {
 
         connect<K extends keyof SettingMacsec.SignalSignatures>(
             signal: K,
-            callback: SettingMacsec.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingMacsec.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingMacsec.SignalSignatures>(
             signal: K,
-            callback: SettingMacsec.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingMacsec.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingMacsec.SignalSignatures>(
             signal: K,
-            ...args: SettingMacsec.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingMacsec.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -25081,11 +25576,11 @@ export namespace NM {
     namespace SettingMacvlan {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::mode': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::promiscuous': GObject.Object.Notify;
-            'notify::tap': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::promiscuous': (pspec: GObject.ParamSpec) => void;
+            'notify::tap': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25130,6 +25625,14 @@ export namespace NM {
          */
         get tap(): boolean;
         set tap(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingMacvlan.SignalSignatures;
 
         // Constructors
 
@@ -25143,17 +25646,17 @@ export namespace NM {
 
         connect<K extends keyof SettingMacvlan.SignalSignatures>(
             signal: K,
-            callback: SettingMacvlan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingMacvlan.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingMacvlan.SignalSignatures>(
             signal: K,
-            callback: SettingMacvlan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingMacvlan.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingMacvlan.SignalSignatures>(
             signal: K,
-            ...args: SettingMacvlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingMacvlan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -25168,11 +25671,11 @@ export namespace NM {
     namespace SettingMatch {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::driver': GObject.Object.Notify;
-            'notify::interface-name': GObject.Object.Notify;
-            'notify::kernel-command-line': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::driver': (pspec: GObject.ParamSpec) => void;
+            'notify::interface-name': (pspec: GObject.ParamSpec) => void;
+            'notify::kernel-command-line': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25293,6 +25796,14 @@ export namespace NM {
          */
         get path(): string[];
         set path(val: string[]);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingMatch.SignalSignatures;
 
         // Constructors
 
@@ -25306,17 +25817,17 @@ export namespace NM {
 
         connect<K extends keyof SettingMatch.SignalSignatures>(
             signal: K,
-            callback: SettingMatch.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingMatch.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingMatch.SignalSignatures>(
             signal: K,
-            callback: SettingMatch.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingMatch.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingMatch.SignalSignatures>(
             signal: K,
-            ...args: SettingMatch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingMatch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -25455,10 +25966,10 @@ export namespace NM {
     namespace SettingOlpcMesh {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::channel': GObject.Object.Notify;
-            'notify::dhcp-anycast-address': GObject.Object.Notify;
-            'notify::ssid': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::channel': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp-anycast-address': (pspec: GObject.ParamSpec) => void;
+            'notify::ssid': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25507,6 +26018,14 @@ export namespace NM {
          */
         get ssid(): GLib.Bytes;
         set ssid(val: GLib.Bytes);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingOlpcMesh.SignalSignatures;
 
         // Constructors
 
@@ -25520,17 +26039,17 @@ export namespace NM {
 
         connect<K extends keyof SettingOlpcMesh.SignalSignatures>(
             signal: K,
-            callback: SettingOlpcMesh.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingOlpcMesh.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingOlpcMesh.SignalSignatures>(
             signal: K,
-            callback: SettingOlpcMesh.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingOlpcMesh.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingOlpcMesh.SignalSignatures>(
             signal: K,
-            ...args: SettingOlpcMesh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingOlpcMesh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -25544,12 +26063,12 @@ export namespace NM {
     namespace SettingOvsBridge {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::datapath-type': GObject.Object.Notify;
-            'notify::fail-mode': GObject.Object.Notify;
-            'notify::mcast-snooping-enable': GObject.Object.Notify;
-            'notify::rstp-enable': GObject.Object.Notify;
-            'notify::stp-enable': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::datapath-type': (pspec: GObject.ParamSpec) => void;
+            'notify::fail-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::mcast-snooping-enable': (pspec: GObject.ParamSpec) => void;
+            'notify::rstp-enable': (pspec: GObject.ParamSpec) => void;
+            'notify::stp-enable': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25626,6 +26145,14 @@ export namespace NM {
          */
         get stpEnable(): boolean;
         set stpEnable(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingOvsBridge.SignalSignatures;
 
         // Constructors
 
@@ -25639,17 +26166,17 @@ export namespace NM {
 
         connect<K extends keyof SettingOvsBridge.SignalSignatures>(
             signal: K,
-            callback: SettingOvsBridge.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingOvsBridge.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingOvsBridge.SignalSignatures>(
             signal: K,
-            callback: SettingOvsBridge.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingOvsBridge.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingOvsBridge.SignalSignatures>(
             signal: K,
-            ...args: SettingOvsBridge.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingOvsBridge.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -25665,11 +26192,11 @@ export namespace NM {
     namespace SettingOvsDpdk {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::devargs': GObject.Object.Notify;
-            'notify::n-rxq': GObject.Object.Notify;
-            'notify::n-rxq-desc': GObject.Object.Notify;
-            'notify::n-txq-desc': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::devargs': (pspec: GObject.ParamSpec) => void;
+            'notify::n-rxq': (pspec: GObject.ParamSpec) => void;
+            'notify::n-rxq-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::n-txq-desc': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25748,6 +26275,14 @@ export namespace NM {
          */
         get nTxqDesc(): number;
         set nTxqDesc(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingOvsDpdk.SignalSignatures;
 
         // Constructors
 
@@ -25761,17 +26296,17 @@ export namespace NM {
 
         connect<K extends keyof SettingOvsDpdk.SignalSignatures>(
             signal: K,
-            callback: SettingOvsDpdk.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingOvsDpdk.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingOvsDpdk.SignalSignatures>(
             signal: K,
-            callback: SettingOvsDpdk.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingOvsDpdk.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingOvsDpdk.SignalSignatures>(
             signal: K,
-            ...args: SettingOvsDpdk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingOvsDpdk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -25786,8 +26321,8 @@ export namespace NM {
     namespace SettingOvsExternalIDs {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::data': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25810,6 +26345,14 @@ export namespace NM {
          */
         get data(): GLib.HashTable<string, string>;
         set data(val: GLib.HashTable<string, string>);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingOvsExternalIDs.SignalSignatures;
 
         // Constructors
 
@@ -25823,17 +26366,19 @@ export namespace NM {
 
         connect<K extends keyof SettingOvsExternalIDs.SignalSignatures>(
             signal: K,
-            callback: SettingOvsExternalIDs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingOvsExternalIDs.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingOvsExternalIDs.SignalSignatures>(
             signal: K,
-            callback: SettingOvsExternalIDs.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingOvsExternalIDs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingOvsExternalIDs.SignalSignatures>(
             signal: K,
-            ...args: SettingOvsExternalIDs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingOvsExternalIDs.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -25868,9 +26413,9 @@ export namespace NM {
     namespace SettingOvsInterface {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::ofport-request': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::ofport-request': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25913,6 +26458,14 @@ export namespace NM {
          */
         get type(): string;
         set type(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingOvsInterface.SignalSignatures;
 
         // Constructors
 
@@ -25926,17 +26479,19 @@ export namespace NM {
 
         connect<K extends keyof SettingOvsInterface.SignalSignatures>(
             signal: K,
-            callback: SettingOvsInterface.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingOvsInterface.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingOvsInterface.SignalSignatures>(
             signal: K,
-            callback: SettingOvsInterface.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingOvsInterface.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingOvsInterface.SignalSignatures>(
             signal: K,
-            ...args: SettingOvsInterface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingOvsInterface.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -25949,8 +26504,8 @@ export namespace NM {
     namespace SettingOvsOtherConfig {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::data': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -25975,6 +26530,14 @@ export namespace NM {
          */
         get data(): GLib.HashTable<string, string>;
         set data(val: GLib.HashTable<string, string>);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingOvsOtherConfig.SignalSignatures;
 
         // Constructors
 
@@ -25988,17 +26551,19 @@ export namespace NM {
 
         connect<K extends keyof SettingOvsOtherConfig.SignalSignatures>(
             signal: K,
-            callback: SettingOvsOtherConfig.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingOvsOtherConfig.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingOvsOtherConfig.SignalSignatures>(
             signal: K,
-            callback: SettingOvsOtherConfig.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingOvsOtherConfig.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingOvsOtherConfig.SignalSignatures>(
             signal: K,
-            ...args: SettingOvsOtherConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingOvsOtherConfig.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -26016,8 +26581,8 @@ export namespace NM {
     namespace SettingOvsPatch {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::peer': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::peer': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -26041,6 +26606,14 @@ export namespace NM {
          */
         get peer(): string;
         set peer(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingOvsPatch.SignalSignatures;
 
         // Constructors
 
@@ -26054,17 +26627,17 @@ export namespace NM {
 
         connect<K extends keyof SettingOvsPatch.SignalSignatures>(
             signal: K,
-            callback: SettingOvsPatch.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingOvsPatch.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingOvsPatch.SignalSignatures>(
             signal: K,
-            callback: SettingOvsPatch.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingOvsPatch.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingOvsPatch.SignalSignatures>(
             signal: K,
-            ...args: SettingOvsPatch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingOvsPatch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -26076,14 +26649,14 @@ export namespace NM {
     namespace SettingOvsPort {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::bond-downdelay': GObject.Object.Notify;
-            'notify::bond-mode': GObject.Object.Notify;
-            'notify::bond-updelay': GObject.Object.Notify;
-            'notify::lacp': GObject.Object.Notify;
-            'notify::tag': GObject.Object.Notify;
-            'notify::trunks': GObject.Object.Notify;
-            'notify::vlan-mode': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::bond-downdelay': (pspec: GObject.ParamSpec) => void;
+            'notify::bond-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::bond-updelay': (pspec: GObject.ParamSpec) => void;
+            'notify::lacp': (pspec: GObject.ParamSpec) => void;
+            'notify::tag': (pspec: GObject.ParamSpec) => void;
+            'notify::trunks': (pspec: GObject.ParamSpec) => void;
+            'notify::vlan-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -26172,6 +26745,14 @@ export namespace NM {
          */
         get vlanMode(): string;
         set vlanMode(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingOvsPort.SignalSignatures;
 
         // Constructors
 
@@ -26185,17 +26766,17 @@ export namespace NM {
 
         connect<K extends keyof SettingOvsPort.SignalSignatures>(
             signal: K,
-            callback: SettingOvsPort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingOvsPort.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingOvsPort.SignalSignatures>(
             signal: K,
-            callback: SettingOvsPort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingOvsPort.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingOvsPort.SignalSignatures>(
             signal: K,
-            ...args: SettingOvsPort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingOvsPort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -26236,26 +26817,26 @@ export namespace NM {
     namespace SettingPpp {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::baud': GObject.Object.Notify;
-            'notify::crtscts': GObject.Object.Notify;
-            'notify::lcp-echo-failure': GObject.Object.Notify;
-            'notify::lcp-echo-interval': GObject.Object.Notify;
-            'notify::mppe-stateful': GObject.Object.Notify;
-            'notify::mru': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::no-vj-comp': GObject.Object.Notify;
-            'notify::noauth': GObject.Object.Notify;
-            'notify::nobsdcomp': GObject.Object.Notify;
-            'notify::nodeflate': GObject.Object.Notify;
-            'notify::refuse-chap': GObject.Object.Notify;
-            'notify::refuse-eap': GObject.Object.Notify;
-            'notify::refuse-mschap': GObject.Object.Notify;
-            'notify::refuse-mschapv2': GObject.Object.Notify;
-            'notify::refuse-pap': GObject.Object.Notify;
-            'notify::require-mppe': GObject.Object.Notify;
-            'notify::require-mppe-128': GObject.Object.Notify;
-            'notify::require-mppe128': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::baud': (pspec: GObject.ParamSpec) => void;
+            'notify::crtscts': (pspec: GObject.ParamSpec) => void;
+            'notify::lcp-echo-failure': (pspec: GObject.ParamSpec) => void;
+            'notify::lcp-echo-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::mppe-stateful': (pspec: GObject.ParamSpec) => void;
+            'notify::mru': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::no-vj-comp': (pspec: GObject.ParamSpec) => void;
+            'notify::noauth': (pspec: GObject.ParamSpec) => void;
+            'notify::nobsdcomp': (pspec: GObject.ParamSpec) => void;
+            'notify::nodeflate': (pspec: GObject.ParamSpec) => void;
+            'notify::refuse-chap': (pspec: GObject.ParamSpec) => void;
+            'notify::refuse-eap': (pspec: GObject.ParamSpec) => void;
+            'notify::refuse-mschap': (pspec: GObject.ParamSpec) => void;
+            'notify::refuse-mschapv2': (pspec: GObject.ParamSpec) => void;
+            'notify::refuse-pap': (pspec: GObject.ParamSpec) => void;
+            'notify::require-mppe': (pspec: GObject.ParamSpec) => void;
+            'notify::require-mppe-128': (pspec: GObject.ParamSpec) => void;
+            'notify::require-mppe128': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -26479,6 +27060,14 @@ export namespace NM {
          */
         get requireMppe128(): boolean;
         set requireMppe128(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingPpp.SignalSignatures;
 
         // Constructors
 
@@ -26492,17 +27081,17 @@ export namespace NM {
 
         connect<K extends keyof SettingPpp.SignalSignatures>(
             signal: K,
-            callback: SettingPpp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingPpp.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingPpp.SignalSignatures>(
             signal: K,
-            callback: SettingPpp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingPpp.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingPpp.SignalSignatures>(
             signal: K,
-            ...args: SettingPpp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingPpp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -26531,12 +27120,12 @@ export namespace NM {
     namespace SettingPppoe {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::parent': GObject.Object.Notify;
-            'notify::password': GObject.Object.Notify;
-            'notify::password-flags': GObject.Object.Notify;
-            'notify::service': GObject.Object.Notify;
-            'notify::username': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::service': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -26595,6 +27184,14 @@ export namespace NM {
          */
         get username(): string;
         set username(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingPppoe.SignalSignatures;
 
         // Constructors
 
@@ -26608,17 +27205,17 @@ export namespace NM {
 
         connect<K extends keyof SettingPppoe.SignalSignatures>(
             signal: K,
-            callback: SettingPppoe.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingPppoe.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingPppoe.SignalSignatures>(
             signal: K,
-            callback: SettingPppoe.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingPppoe.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingPppoe.SignalSignatures>(
             signal: K,
-            ...args: SettingPppoe.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingPppoe.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -26634,11 +27231,11 @@ export namespace NM {
     namespace SettingProxy {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::browser-only': GObject.Object.Notify;
-            'notify::method': GObject.Object.Notify;
-            'notify::pac-script': GObject.Object.Notify;
-            'notify::pac-url': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::browser-only': (pspec: GObject.ParamSpec) => void;
+            'notify::method': (pspec: GObject.ParamSpec) => void;
+            'notify::pac-script': (pspec: GObject.ParamSpec) => void;
+            'notify::pac-url': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -26699,6 +27296,14 @@ export namespace NM {
          */
         get pacUrl(): string;
         set pacUrl(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingProxy.SignalSignatures;
 
         // Constructors
 
@@ -26712,17 +27317,17 @@ export namespace NM {
 
         connect<K extends keyof SettingProxy.SignalSignatures>(
             signal: K,
-            callback: SettingProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingProxy.SignalSignatures>(
             signal: K,
-            callback: SettingProxy.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingProxy.SignalSignatures>(
             signal: K,
-            ...args: SettingProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -26743,12 +27348,12 @@ export namespace NM {
     namespace SettingSerial {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::baud': GObject.Object.Notify;
-            'notify::bits': GObject.Object.Notify;
-            'notify::parity': GObject.Object.Notify;
-            'notify::send-delay': GObject.Object.Notify;
-            'notify::stopbits': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::baud': (pspec: GObject.ParamSpec) => void;
+            'notify::bits': (pspec: GObject.ParamSpec) => void;
+            'notify::parity': (pspec: GObject.ParamSpec) => void;
+            'notify::send-delay': (pspec: GObject.ParamSpec) => void;
+            'notify::stopbits': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -26804,6 +27409,14 @@ export namespace NM {
          */
         get stopbits(): number;
         set stopbits(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingSerial.SignalSignatures;
 
         // Constructors
 
@@ -26817,17 +27430,17 @@ export namespace NM {
 
         connect<K extends keyof SettingSerial.SignalSignatures>(
             signal: K,
-            callback: SettingSerial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingSerial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingSerial.SignalSignatures>(
             signal: K,
-            callback: SettingSerial.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingSerial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingSerial.SignalSignatures>(
             signal: K,
-            ...args: SettingSerial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingSerial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -26843,13 +27456,13 @@ export namespace NM {
     namespace SettingSriov {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::autoprobe-drivers': GObject.Object.Notify;
-            'notify::eswitch-encap-mode': GObject.Object.Notify;
-            'notify::eswitch-inline-mode': GObject.Object.Notify;
-            'notify::eswitch-mode': GObject.Object.Notify;
-            'notify::total-vfs': GObject.Object.Notify;
-            'notify::vfs': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::autoprobe-drivers': (pspec: GObject.ParamSpec) => void;
+            'notify::eswitch-encap-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::eswitch-inline-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::eswitch-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::total-vfs': (pspec: GObject.ParamSpec) => void;
+            'notify::vfs': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -27028,6 +27641,14 @@ export namespace NM {
          */
         get vfs(): SriovVF[];
         set vfs(val: SriovVF[]);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingSriov.SignalSignatures;
 
         // Constructors
 
@@ -27041,17 +27662,17 @@ export namespace NM {
 
         connect<K extends keyof SettingSriov.SignalSignatures>(
             signal: K,
-            callback: SettingSriov.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingSriov.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingSriov.SignalSignatures>(
             signal: K,
-            callback: SettingSriov.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingSriov.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingSriov.SignalSignatures>(
             signal: K,
-            ...args: SettingSriov.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingSriov.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -27100,9 +27721,9 @@ export namespace NM {
     namespace SettingTCConfig {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::qdiscs': GObject.Object.Notify;
-            'notify::tfilters': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::qdiscs': (pspec: GObject.ParamSpec) => void;
+            'notify::tfilters': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -27147,6 +27768,14 @@ export namespace NM {
          */
         get tfilters(): TCTfilter[];
         set tfilters(val: TCTfilter[]);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingTCConfig.SignalSignatures;
 
         // Constructors
 
@@ -27160,17 +27789,17 @@ export namespace NM {
 
         connect<K extends keyof SettingTCConfig.SignalSignatures>(
             signal: K,
-            callback: SettingTCConfig.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingTCConfig.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingTCConfig.SignalSignatures>(
             signal: K,
-            callback: SettingTCConfig.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingTCConfig.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingTCConfig.SignalSignatures>(
             signal: K,
-            ...args: SettingTCConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingTCConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -27233,23 +27862,23 @@ export namespace NM {
     namespace SettingTeam {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::config': GObject.Object.Notify;
-            'notify::link-watchers': GObject.Object.Notify;
-            'notify::mcast-rejoin-count': GObject.Object.Notify;
-            'notify::mcast-rejoin-interval': GObject.Object.Notify;
-            'notify::notify-peers-count': GObject.Object.Notify;
-            'notify::notify-peers-interval': GObject.Object.Notify;
-            'notify::runner': GObject.Object.Notify;
-            'notify::runner-active': GObject.Object.Notify;
-            'notify::runner-agg-select-policy': GObject.Object.Notify;
-            'notify::runner-fast-rate': GObject.Object.Notify;
-            'notify::runner-hwaddr-policy': GObject.Object.Notify;
-            'notify::runner-min-ports': GObject.Object.Notify;
-            'notify::runner-sys-prio': GObject.Object.Notify;
-            'notify::runner-tx-balancer': GObject.Object.Notify;
-            'notify::runner-tx-balancer-interval': GObject.Object.Notify;
-            'notify::runner-tx-hash': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::config': (pspec: GObject.ParamSpec) => void;
+            'notify::link-watchers': (pspec: GObject.ParamSpec) => void;
+            'notify::mcast-rejoin-count': (pspec: GObject.ParamSpec) => void;
+            'notify::mcast-rejoin-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::notify-peers-count': (pspec: GObject.ParamSpec) => void;
+            'notify::notify-peers-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::runner': (pspec: GObject.ParamSpec) => void;
+            'notify::runner-active': (pspec: GObject.ParamSpec) => void;
+            'notify::runner-agg-select-policy': (pspec: GObject.ParamSpec) => void;
+            'notify::runner-fast-rate': (pspec: GObject.ParamSpec) => void;
+            'notify::runner-hwaddr-policy': (pspec: GObject.ParamSpec) => void;
+            'notify::runner-min-ports': (pspec: GObject.ParamSpec) => void;
+            'notify::runner-sys-prio': (pspec: GObject.ParamSpec) => void;
+            'notify::runner-tx-balancer': (pspec: GObject.ParamSpec) => void;
+            'notify::runner-tx-balancer-interval': (pspec: GObject.ParamSpec) => void;
+            'notify::runner-tx-hash': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -27465,6 +28094,14 @@ export namespace NM {
          */
         get runnerTxHash(): string[];
         set runnerTxHash(val: string[]);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingTeam.SignalSignatures;
 
         // Constructors
 
@@ -27478,17 +28115,17 @@ export namespace NM {
 
         connect<K extends keyof SettingTeam.SignalSignatures>(
             signal: K,
-            callback: SettingTeam.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingTeam.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingTeam.SignalSignatures>(
             signal: K,
-            callback: SettingTeam.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingTeam.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingTeam.SignalSignatures>(
             signal: K,
-            ...args: SettingTeam.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingTeam.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -27555,14 +28192,14 @@ export namespace NM {
     namespace SettingTeamPort {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::config': GObject.Object.Notify;
-            'notify::lacp-key': GObject.Object.Notify;
-            'notify::lacp-prio': GObject.Object.Notify;
-            'notify::link-watchers': GObject.Object.Notify;
-            'notify::prio': GObject.Object.Notify;
-            'notify::queue-id': GObject.Object.Notify;
-            'notify::sticky': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::config': (pspec: GObject.ParamSpec) => void;
+            'notify::lacp-key': (pspec: GObject.ParamSpec) => void;
+            'notify::lacp-prio': (pspec: GObject.ParamSpec) => void;
+            'notify::link-watchers': (pspec: GObject.ParamSpec) => void;
+            'notify::prio': (pspec: GObject.ParamSpec) => void;
+            'notify::queue-id': (pspec: GObject.ParamSpec) => void;
+            'notify::sticky': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -27664,6 +28301,14 @@ export namespace NM {
          */
         get sticky(): boolean;
         set sticky(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingTeamPort.SignalSignatures;
 
         // Constructors
 
@@ -27677,17 +28322,17 @@ export namespace NM {
 
         connect<K extends keyof SettingTeamPort.SignalSignatures>(
             signal: K,
-            callback: SettingTeamPort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingTeamPort.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingTeamPort.SignalSignatures>(
             signal: K,
-            callback: SettingTeamPort.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingTeamPort.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingTeamPort.SignalSignatures>(
             signal: K,
-            ...args: SettingTeamPort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingTeamPort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -27727,13 +28372,13 @@ export namespace NM {
     namespace SettingTun {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::group': GObject.Object.Notify;
-            'notify::mode': GObject.Object.Notify;
-            'notify::multi-queue': GObject.Object.Notify;
-            'notify::owner': GObject.Object.Notify;
-            'notify::pi': GObject.Object.Notify;
-            'notify::vnet-hdr': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::group': (pspec: GObject.ParamSpec) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::multi-queue': (pspec: GObject.ParamSpec) => void;
+            'notify::owner': (pspec: GObject.ParamSpec) => void;
+            'notify::pi': (pspec: GObject.ParamSpec) => void;
+            'notify::vnet-hdr': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -27812,6 +28457,14 @@ export namespace NM {
          */
         get vnetHdr(): boolean;
         set vnetHdr(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingTun.SignalSignatures;
 
         // Constructors
 
@@ -27825,17 +28478,17 @@ export namespace NM {
 
         connect<K extends keyof SettingTun.SignalSignatures>(
             signal: K,
-            callback: SettingTun.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingTun.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingTun.SignalSignatures>(
             signal: K,
-            callback: SettingTun.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingTun.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingTun.SignalSignatures>(
             signal: K,
-            ...args: SettingTun.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingTun.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -27852,8 +28505,8 @@ export namespace NM {
     namespace SettingUser {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::data': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -27878,6 +28531,14 @@ export namespace NM {
          */
         get data(): GLib.HashTable<string, string>;
         set data(val: GLib.HashTable<string, string>);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingUser.SignalSignatures;
 
         // Constructors
 
@@ -27891,17 +28552,17 @@ export namespace NM {
 
         connect<K extends keyof SettingUser.SignalSignatures>(
             signal: K,
-            callback: SettingUser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingUser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingUser.SignalSignatures>(
             signal: K,
-            callback: SettingUser.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingUser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingUser.SignalSignatures>(
             signal: K,
-            ...args: SettingUser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingUser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -27937,8 +28598,8 @@ export namespace NM {
     namespace SettingVeth {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::peer': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::peer': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -27962,6 +28623,14 @@ export namespace NM {
          */
         get peer(): string;
         set peer(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingVeth.SignalSignatures;
 
         // Constructors
 
@@ -27975,17 +28644,17 @@ export namespace NM {
 
         connect<K extends keyof SettingVeth.SignalSignatures>(
             signal: K,
-            callback: SettingVeth.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingVeth.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingVeth.SignalSignatures>(
             signal: K,
-            callback: SettingVeth.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingVeth.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingVeth.SignalSignatures>(
             signal: K,
-            ...args: SettingVeth.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingVeth.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -27997,13 +28666,13 @@ export namespace NM {
     namespace SettingVlan {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::egress-priority-map': GObject.Object.Notify;
-            'notify::flags': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::ingress-priority-map': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::protocol': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::egress-priority-map': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::ingress-priority-map': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::protocol': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -28093,6 +28762,14 @@ export namespace NM {
          */
         get protocol(): string;
         set protocol(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingVlan.SignalSignatures;
 
         // Constructors
 
@@ -28106,17 +28783,17 @@ export namespace NM {
 
         connect<K extends keyof SettingVlan.SignalSignatures>(
             signal: K,
-            callback: SettingVlan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingVlan.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingVlan.SignalSignatures>(
             signal: K,
-            callback: SettingVlan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingVlan.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingVlan.SignalSignatures>(
             signal: K,
-            ...args: SettingVlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingVlan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -28206,13 +28883,13 @@ export namespace NM {
     namespace SettingVpn {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::data': GObject.Object.Notify;
-            'notify::persistent': GObject.Object.Notify;
-            'notify::secrets': GObject.Object.Notify;
-            'notify::service-type': GObject.Object.Notify;
-            'notify::timeout': GObject.Object.Notify;
-            'notify::user-name': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::data': (pspec: GObject.ParamSpec) => void;
+            'notify::persistent': (pspec: GObject.ParamSpec) => void;
+            'notify::secrets': (pspec: GObject.ParamSpec) => void;
+            'notify::service-type': (pspec: GObject.ParamSpec) => void;
+            'notify::timeout': (pspec: GObject.ParamSpec) => void;
+            'notify::user-name': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -28299,6 +28976,14 @@ export namespace NM {
          */
         get userName(): string;
         set userName(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingVpn.SignalSignatures;
 
         // Constructors
 
@@ -28312,17 +28997,17 @@ export namespace NM {
 
         connect<K extends keyof SettingVpn.SignalSignatures>(
             signal: K,
-            callback: SettingVpn.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingVpn.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingVpn.SignalSignatures>(
             signal: K,
-            callback: SettingVpn.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingVpn.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingVpn.SignalSignatures>(
             signal: K,
-            ...args: SettingVpn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingVpn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -28427,8 +29112,8 @@ export namespace NM {
     namespace SettingVrf {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::table': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::table': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -28451,6 +29136,14 @@ export namespace NM {
          */
         get table(): number;
         set table(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingVrf.SignalSignatures;
 
         // Constructors
 
@@ -28464,17 +29157,17 @@ export namespace NM {
 
         connect<K extends keyof SettingVrf.SignalSignatures>(
             signal: K,
-            callback: SettingVrf.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingVrf.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingVrf.SignalSignatures>(
             signal: K,
-            callback: SettingVrf.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingVrf.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingVrf.SignalSignatures>(
             signal: K,
-            ...args: SettingVrf.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingVrf.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -28486,23 +29179,23 @@ export namespace NM {
     namespace SettingVxlan {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::ageing': GObject.Object.Notify;
-            'notify::destination-port': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::l2-miss': GObject.Object.Notify;
-            'notify::l3-miss': GObject.Object.Notify;
-            'notify::learning': GObject.Object.Notify;
-            'notify::limit': GObject.Object.Notify;
-            'notify::local': GObject.Object.Notify;
-            'notify::parent': GObject.Object.Notify;
-            'notify::proxy': GObject.Object.Notify;
-            'notify::remote': GObject.Object.Notify;
-            'notify::rsc': GObject.Object.Notify;
-            'notify::source-port-max': GObject.Object.Notify;
-            'notify::source-port-min': GObject.Object.Notify;
-            'notify::tos': GObject.Object.Notify;
-            'notify::ttl': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::ageing': (pspec: GObject.ParamSpec) => void;
+            'notify::destination-port': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::l2-miss': (pspec: GObject.ParamSpec) => void;
+            'notify::l3-miss': (pspec: GObject.ParamSpec) => void;
+            'notify::learning': (pspec: GObject.ParamSpec) => void;
+            'notify::limit': (pspec: GObject.ParamSpec) => void;
+            'notify::local': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy': (pspec: GObject.ParamSpec) => void;
+            'notify::remote': (pspec: GObject.ParamSpec) => void;
+            'notify::rsc': (pspec: GObject.ParamSpec) => void;
+            'notify::source-port-max': (pspec: GObject.ParamSpec) => void;
+            'notify::source-port-min': (pspec: GObject.ParamSpec) => void;
+            'notify::tos': (pspec: GObject.ParamSpec) => void;
+            'notify::ttl': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -28656,6 +29349,14 @@ export namespace NM {
          */
         get ttl(): number;
         set ttl(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingVxlan.SignalSignatures;
 
         // Constructors
 
@@ -28669,17 +29370,17 @@ export namespace NM {
 
         connect<K extends keyof SettingVxlan.SignalSignatures>(
             signal: K,
-            callback: SettingVxlan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingVxlan.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingVxlan.SignalSignatures>(
             signal: K,
-            callback: SettingVxlan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingVxlan.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingVxlan.SignalSignatures>(
             signal: K,
-            ...args: SettingVxlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingVxlan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -28706,10 +29407,10 @@ export namespace NM {
     namespace SettingWifiP2P {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::peer': GObject.Object.Notify;
-            'notify::wfd-ies': GObject.Object.Notify;
-            'notify::wps-method': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::peer': (pspec: GObject.ParamSpec) => void;
+            'notify::wfd-ies': (pspec: GObject.ParamSpec) => void;
+            'notify::wps-method': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -28773,6 +29474,14 @@ export namespace NM {
          */
         get wpsMethod(): number;
         set wpsMethod(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingWifiP2P.SignalSignatures;
 
         // Constructors
 
@@ -28786,17 +29495,17 @@ export namespace NM {
 
         connect<K extends keyof SettingWifiP2P.SignalSignatures>(
             signal: K,
-            callback: SettingWifiP2P.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWifiP2P.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingWifiP2P.SignalSignatures>(
             signal: K,
-            callback: SettingWifiP2P.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWifiP2P.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingWifiP2P.SignalSignatures>(
             signal: K,
-            ...args: SettingWifiP2P.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingWifiP2P.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -28810,9 +29519,9 @@ export namespace NM {
     namespace SettingWimax {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::mac-address': GObject.Object.Notify;
-            'notify::network-name': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::mac-address': (pspec: GObject.ParamSpec) => void;
+            'notify::network-name': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -28859,6 +29568,14 @@ export namespace NM {
          */
         get networkName(): string;
         set networkName(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingWimax.SignalSignatures;
 
         // Constructors
 
@@ -28872,17 +29589,17 @@ export namespace NM {
 
         connect<K extends keyof SettingWimax.SignalSignatures>(
             signal: K,
-            callback: SettingWimax.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWimax.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingWimax.SignalSignatures>(
             signal: K,
-            callback: SettingWimax.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWimax.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingWimax.SignalSignatures>(
             signal: K,
-            ...args: SettingWimax.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingWimax.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -28905,15 +29622,15 @@ export namespace NM {
     namespace SettingWireGuard {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::fwmark': GObject.Object.Notify;
-            'notify::ip4-auto-default-route': GObject.Object.Notify;
-            'notify::ip6-auto-default-route': GObject.Object.Notify;
-            'notify::listen-port': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::peer-routes': GObject.Object.Notify;
-            'notify::private-key': GObject.Object.Notify;
-            'notify::private-key-flags': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::fwmark': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-auto-default-route': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-auto-default-route': (pspec: GObject.ParamSpec) => void;
+            'notify::listen-port': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::peer-routes': (pspec: GObject.ParamSpec) => void;
+            'notify::private-key': (pspec: GObject.ParamSpec) => void;
+            'notify::private-key-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -29079,6 +29796,14 @@ export namespace NM {
          */
         get privateKeyFlags(): SettingSecretFlags;
         set privateKeyFlags(val: SettingSecretFlags);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingWireGuard.SignalSignatures;
 
         // Constructors
 
@@ -29092,17 +29817,17 @@ export namespace NM {
 
         connect<K extends keyof SettingWireGuard.SignalSignatures>(
             signal: K,
-            callback: SettingWireGuard.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWireGuard.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingWireGuard.SignalSignatures>(
             signal: K,
-            callback: SettingWireGuard.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWireGuard.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingWireGuard.SignalSignatures>(
             signal: K,
-            ...args: SettingWireGuard.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingWireGuard.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -29149,23 +29874,23 @@ export namespace NM {
     namespace SettingWired {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::accept-all-mac-addresses': GObject.Object.Notify;
-            'notify::auto-negotiate': GObject.Object.Notify;
-            'notify::cloned-mac-address': GObject.Object.Notify;
-            'notify::duplex': GObject.Object.Notify;
-            'notify::generate-mac-address-mask': GObject.Object.Notify;
-            'notify::mac-address': GObject.Object.Notify;
-            'notify::mac-address-blacklist': GObject.Object.Notify;
-            'notify::mac-address-denylist': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::port': GObject.Object.Notify;
-            'notify::s390-nettype': GObject.Object.Notify;
-            'notify::s390-options': GObject.Object.Notify;
-            'notify::s390-subchannels': GObject.Object.Notify;
-            'notify::speed': GObject.Object.Notify;
-            'notify::wake-on-lan': GObject.Object.Notify;
-            'notify::wake-on-lan-password': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::accept-all-mac-addresses': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-negotiate': (pspec: GObject.ParamSpec) => void;
+            'notify::cloned-mac-address': (pspec: GObject.ParamSpec) => void;
+            'notify::duplex': (pspec: GObject.ParamSpec) => void;
+            'notify::generate-mac-address-mask': (pspec: GObject.ParamSpec) => void;
+            'notify::mac-address': (pspec: GObject.ParamSpec) => void;
+            'notify::mac-address-blacklist': (pspec: GObject.ParamSpec) => void;
+            'notify::mac-address-denylist': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::port': (pspec: GObject.ParamSpec) => void;
+            'notify::s390-nettype': (pspec: GObject.ParamSpec) => void;
+            'notify::s390-options': (pspec: GObject.ParamSpec) => void;
+            'notify::s390-subchannels': (pspec: GObject.ParamSpec) => void;
+            'notify::speed': (pspec: GObject.ParamSpec) => void;
+            'notify::wake-on-lan': (pspec: GObject.ParamSpec) => void;
+            'notify::wake-on-lan-password': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -29547,6 +30272,14 @@ export namespace NM {
          */
         get wakeOnLanPassword(): string;
         set wakeOnLanPassword(val: string);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingWired.SignalSignatures;
 
         // Constructors
 
@@ -29560,17 +30293,17 @@ export namespace NM {
 
         connect<K extends keyof SettingWired.SignalSignatures>(
             signal: K,
-            callback: SettingWired.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWired.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingWired.SignalSignatures>(
             signal: K,
-            callback: SettingWired.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWired.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingWired.SignalSignatures>(
             signal: K,
-            ...args: SettingWired.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingWired.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -29716,27 +30449,27 @@ export namespace NM {
     namespace SettingWireless {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::ap-isolation': GObject.Object.Notify;
-            'notify::band': GObject.Object.Notify;
-            'notify::bssid': GObject.Object.Notify;
-            'notify::channel': GObject.Object.Notify;
-            'notify::channel-width': GObject.Object.Notify;
-            'notify::cloned-mac-address': GObject.Object.Notify;
-            'notify::generate-mac-address-mask': GObject.Object.Notify;
-            'notify::hidden': GObject.Object.Notify;
-            'notify::mac-address': GObject.Object.Notify;
-            'notify::mac-address-blacklist': GObject.Object.Notify;
-            'notify::mac-address-denylist': GObject.Object.Notify;
-            'notify::mac-address-randomization': GObject.Object.Notify;
-            'notify::mode': GObject.Object.Notify;
-            'notify::mtu': GObject.Object.Notify;
-            'notify::powersave': GObject.Object.Notify;
-            'notify::rate': GObject.Object.Notify;
-            'notify::seen-bssids': GObject.Object.Notify;
-            'notify::ssid': GObject.Object.Notify;
-            'notify::tx-power': GObject.Object.Notify;
-            'notify::wake-on-wlan': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::ap-isolation': (pspec: GObject.ParamSpec) => void;
+            'notify::band': (pspec: GObject.ParamSpec) => void;
+            'notify::bssid': (pspec: GObject.ParamSpec) => void;
+            'notify::channel': (pspec: GObject.ParamSpec) => void;
+            'notify::channel-width': (pspec: GObject.ParamSpec) => void;
+            'notify::cloned-mac-address': (pspec: GObject.ParamSpec) => void;
+            'notify::generate-mac-address-mask': (pspec: GObject.ParamSpec) => void;
+            'notify::hidden': (pspec: GObject.ParamSpec) => void;
+            'notify::mac-address': (pspec: GObject.ParamSpec) => void;
+            'notify::mac-address-blacklist': (pspec: GObject.ParamSpec) => void;
+            'notify::mac-address-denylist': (pspec: GObject.ParamSpec) => void;
+            'notify::mac-address-randomization': (pspec: GObject.ParamSpec) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::mtu': (pspec: GObject.ParamSpec) => void;
+            'notify::powersave': (pspec: GObject.ParamSpec) => void;
+            'notify::rate': (pspec: GObject.ParamSpec) => void;
+            'notify::seen-bssids': (pspec: GObject.ParamSpec) => void;
+            'notify::ssid': (pspec: GObject.ParamSpec) => void;
+            'notify::tx-power': (pspec: GObject.ParamSpec) => void;
+            'notify::wake-on-wlan': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -30176,6 +30909,14 @@ export namespace NM {
          */
         get wakeOnWlan(): number;
         set wakeOnWlan(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingWireless.SignalSignatures;
 
         // Constructors
 
@@ -30189,17 +30930,17 @@ export namespace NM {
 
         connect<K extends keyof SettingWireless.SignalSignatures>(
             signal: K,
-            callback: SettingWireless.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWireless.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingWireless.SignalSignatures>(
             signal: K,
-            callback: SettingWireless.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWireless.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingWireless.SignalSignatures>(
             signal: K,
-            ...args: SettingWireless.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingWireless.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -30320,27 +31061,27 @@ export namespace NM {
     namespace SettingWirelessSecurity {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::auth-alg': GObject.Object.Notify;
-            'notify::fils': GObject.Object.Notify;
-            'notify::group': GObject.Object.Notify;
-            'notify::key-mgmt': GObject.Object.Notify;
-            'notify::leap-password': GObject.Object.Notify;
-            'notify::leap-password-flags': GObject.Object.Notify;
-            'notify::leap-username': GObject.Object.Notify;
-            'notify::pairwise': GObject.Object.Notify;
-            'notify::pmf': GObject.Object.Notify;
-            'notify::proto': GObject.Object.Notify;
-            'notify::psk': GObject.Object.Notify;
-            'notify::psk-flags': GObject.Object.Notify;
-            'notify::wep-key-flags': GObject.Object.Notify;
-            'notify::wep-key-type': GObject.Object.Notify;
-            'notify::wep-key0': GObject.Object.Notify;
-            'notify::wep-key1': GObject.Object.Notify;
-            'notify::wep-key2': GObject.Object.Notify;
-            'notify::wep-key3': GObject.Object.Notify;
-            'notify::wep-tx-keyidx': GObject.Object.Notify;
-            'notify::wps-method': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::auth-alg': (pspec: GObject.ParamSpec) => void;
+            'notify::fils': (pspec: GObject.ParamSpec) => void;
+            'notify::group': (pspec: GObject.ParamSpec) => void;
+            'notify::key-mgmt': (pspec: GObject.ParamSpec) => void;
+            'notify::leap-password': (pspec: GObject.ParamSpec) => void;
+            'notify::leap-password-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::leap-username': (pspec: GObject.ParamSpec) => void;
+            'notify::pairwise': (pspec: GObject.ParamSpec) => void;
+            'notify::pmf': (pspec: GObject.ParamSpec) => void;
+            'notify::proto': (pspec: GObject.ParamSpec) => void;
+            'notify::psk': (pspec: GObject.ParamSpec) => void;
+            'notify::psk-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::wep-key-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::wep-key-type': (pspec: GObject.ParamSpec) => void;
+            'notify::wep-key0': (pspec: GObject.ParamSpec) => void;
+            'notify::wep-key1': (pspec: GObject.ParamSpec) => void;
+            'notify::wep-key2': (pspec: GObject.ParamSpec) => void;
+            'notify::wep-key3': (pspec: GObject.ParamSpec) => void;
+            'notify::wep-tx-keyidx': (pspec: GObject.ParamSpec) => void;
+            'notify::wps-method': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -30655,6 +31396,14 @@ export namespace NM {
          */
         get wpsMethod(): number;
         set wpsMethod(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingWirelessSecurity.SignalSignatures;
 
         // Constructors
 
@@ -30668,17 +31417,19 @@ export namespace NM {
 
         connect<K extends keyof SettingWirelessSecurity.SignalSignatures>(
             signal: K,
-            callback: SettingWirelessSecurity.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWirelessSecurity.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingWirelessSecurity.SignalSignatures>(
             signal: K,
-            callback: SettingWirelessSecurity.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWirelessSecurity.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingWirelessSecurity.SignalSignatures>(
             signal: K,
-            ...args: SettingWirelessSecurity.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingWirelessSecurity.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -30808,12 +31559,12 @@ export namespace NM {
     namespace SettingWpan {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::channel': GObject.Object.Notify;
-            'notify::mac-address': GObject.Object.Notify;
-            'notify::page': GObject.Object.Notify;
-            'notify::pan-id': GObject.Object.Notify;
-            'notify::short-address': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::channel': (pspec: GObject.ParamSpec) => void;
+            'notify::mac-address': (pspec: GObject.ParamSpec) => void;
+            'notify::page': (pspec: GObject.ParamSpec) => void;
+            'notify::pan-id': (pspec: GObject.ParamSpec) => void;
+            'notify::short-address': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -30882,6 +31633,14 @@ export namespace NM {
          */
         get shortAddress(): number;
         set shortAddress(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SettingWpan.SignalSignatures;
 
         // Constructors
 
@@ -30895,17 +31654,17 @@ export namespace NM {
 
         connect<K extends keyof SettingWpan.SignalSignatures>(
             signal: K,
-            callback: SettingWpan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWpan.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingWpan.SignalSignatures>(
             signal: K,
-            callback: SettingWpan.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SettingWpan.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingWpan.SignalSignatures>(
             signal: K,
-            ...args: SettingWpan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SettingWpan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -30929,6 +31688,14 @@ export namespace NM {
 
     class SimpleConnection extends GObject.Object implements Connection {
         static $gtype: GObject.GType<SimpleConnection>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: SimpleConnection.SignalSignatures;
 
         // Constructors
 
@@ -30940,17 +31707,17 @@ export namespace NM {
 
         connect<K extends keyof SimpleConnection.SignalSignatures>(
             signal: K,
-            callback: SimpleConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SimpleConnection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleConnection.SignalSignatures>(
             signal: K,
-            callback: SimpleConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, SimpleConnection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleConnection.SignalSignatures>(
             signal: K,
-            ...args: SimpleConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<SimpleConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -31830,36 +32597,30 @@ export namespace NM {
     }
 
     namespace VpnConnection {
-        // Signal callback interfaces
-
-        interface VpnStateChanged {
-            (_source: VpnConnection, object: number, p0: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends ActiveConnection.SignalSignatures {
-            'vpn-state-changed': VpnStateChanged;
-            'notify::banner': GObject.Object.Notify;
-            'notify::vpn-state': GObject.Object.Notify;
-            'notify::connection': GObject.Object.Notify;
-            'notify::controller': GObject.Object.Notify;
-            'notify::default': GObject.Object.Notify;
-            'notify::default6': GObject.Object.Notify;
-            'notify::devices': GObject.Object.Notify;
-            'notify::dhcp4-config': GObject.Object.Notify;
-            'notify::dhcp6-config': GObject.Object.Notify;
-            'notify::id': GObject.Object.Notify;
-            'notify::ip4-config': GObject.Object.Notify;
-            'notify::ip6-config': GObject.Object.Notify;
-            'notify::master': GObject.Object.Notify;
-            'notify::specific-object-path': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::state-flags': GObject.Object.Notify;
-            'notify::type': GObject.Object.Notify;
-            'notify::uuid': GObject.Object.Notify;
-            'notify::vpn': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
+            'vpn-state-changed': (arg0: number, arg1: number) => void;
+            'notify::banner': (pspec: GObject.ParamSpec) => void;
+            'notify::vpn-state': (pspec: GObject.ParamSpec) => void;
+            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            'notify::controller': (pspec: GObject.ParamSpec) => void;
+            'notify::default': (pspec: GObject.ParamSpec) => void;
+            'notify::default6': (pspec: GObject.ParamSpec) => void;
+            'notify::devices': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::dhcp6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::ip4-config': (pspec: GObject.ParamSpec) => void;
+            'notify::ip6-config': (pspec: GObject.ParamSpec) => void;
+            'notify::master': (pspec: GObject.ParamSpec) => void;
+            'notify::specific-object-path': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::state-flags': (pspec: GObject.ParamSpec) => void;
+            'notify::type': (pspec: GObject.ParamSpec) => void;
+            'notify::uuid': (pspec: GObject.ParamSpec) => void;
+            'notify::vpn': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -31888,6 +32649,14 @@ export namespace NM {
          * The VPN state of the active VPN connection.
          */
         get vpnState(): VpnConnectionState;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VpnConnection.SignalSignatures;
 
         // Constructors
 
@@ -31899,17 +32668,17 @@ export namespace NM {
 
         connect<K extends keyof VpnConnection.SignalSignatures>(
             signal: K,
-            callback: VpnConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VpnConnection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VpnConnection.SignalSignatures>(
             signal: K,
-            callback: VpnConnection.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VpnConnection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VpnConnection.SignalSignatures>(
             signal: K,
-            ...args: VpnConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VpnConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -31930,9 +32699,9 @@ export namespace NM {
     namespace VpnPluginInfo {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::filename': GObject.Object.Notify;
-            'notify::keyfile': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
+            'notify::filename': (pspec: GObject.ParamSpec) => void;
+            'notify::keyfile': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -31966,6 +32735,14 @@ export namespace NM {
          * The name of the VPN plugin.
          */
         get name(): string;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VpnPluginInfo.SignalSignatures;
 
         // Constructors
 
@@ -31983,17 +32760,17 @@ export namespace NM {
 
         connect<K extends keyof VpnPluginInfo.SignalSignatures>(
             signal: K,
-            callback: VpnPluginInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VpnPluginInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VpnPluginInfo.SignalSignatures>(
             signal: K,
-            callback: VpnPluginInfo.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VpnPluginInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VpnPluginInfo.SignalSignatures>(
             signal: K,
-            ...args: VpnPluginInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VpnPluginInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -32587,52 +33364,18 @@ export namespace NM {
     }
 
     namespace VpnPluginOld {
-        // Signal callback interfaces
-
-        interface Config {
-            (_source: VpnPluginOld, object: GLib.Variant): void;
-        }
-
-        interface Failure {
-            (_source: VpnPluginOld, object: number): void;
-        }
-
-        interface Ip4Config {
-            (_source: VpnPluginOld, object: GLib.Variant): void;
-        }
-
-        interface Ip6Config {
-            (_source: VpnPluginOld, object: GLib.Variant): void;
-        }
-
-        interface LoginBanner {
-            (_source: VpnPluginOld, object: string): void;
-        }
-
-        interface Quit {
-            (_source: VpnPluginOld): void;
-        }
-
-        interface SecretsRequired {
-            (_source: VpnPluginOld, object: string, p0: string[]): void;
-        }
-
-        interface StateChanged {
-            (_source: VpnPluginOld, object: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            config: Config;
-            failure: Failure;
-            'ip4-config': Ip4Config;
-            'ip6-config': Ip6Config;
-            'login-banner': LoginBanner;
-            quit: Quit;
-            'secrets-required': SecretsRequired;
-            'state-changed': StateChanged;
-            'notify::service-name': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
+            config: (arg0: GLib.Variant) => void;
+            failure: (arg0: number) => void;
+            'ip4-config': (arg0: GLib.Variant) => void;
+            'ip6-config': (arg0: GLib.Variant) => void;
+            'login-banner': (arg0: string) => void;
+            quit: () => void;
+            'secrets-required': (arg0: string, arg1: string[]) => void;
+            'state-changed': (arg0: number) => void;
+            'notify::service-name': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -32662,6 +33405,14 @@ export namespace NM {
          */
         get state(): VpnServiceState;
         set state(val: VpnServiceState);
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VpnPluginOld.SignalSignatures;
 
         // Constructors
 
@@ -32673,17 +33424,17 @@ export namespace NM {
 
         connect<K extends keyof VpnPluginOld.SignalSignatures>(
             signal: K,
-            callback: VpnPluginOld.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VpnPluginOld.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VpnPluginOld.SignalSignatures>(
             signal: K,
-            callback: VpnPluginOld.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VpnPluginOld.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VpnPluginOld.SignalSignatures>(
             signal: K,
-            ...args: VpnPluginOld.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VpnPluginOld.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -33267,53 +34018,19 @@ export namespace NM {
     }
 
     namespace VpnServicePlugin {
-        // Signal callback interfaces
-
-        interface Config {
-            (_source: VpnServicePlugin, object: GLib.Variant): void;
-        }
-
-        interface Failure {
-            (_source: VpnServicePlugin, object: number): void;
-        }
-
-        interface Ip4Config {
-            (_source: VpnServicePlugin, object: GLib.Variant): void;
-        }
-
-        interface Ip6Config {
-            (_source: VpnServicePlugin, object: GLib.Variant): void;
-        }
-
-        interface LoginBanner {
-            (_source: VpnServicePlugin, object: string): void;
-        }
-
-        interface Quit {
-            (_source: VpnServicePlugin): void;
-        }
-
-        interface SecretsRequired {
-            (_source: VpnServicePlugin, object: string, p0: string[]): void;
-        }
-
-        interface StateChanged {
-            (_source: VpnServicePlugin, object: number): void;
-        }
-
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            config: Config;
-            failure: Failure;
-            'ip4-config': Ip4Config;
-            'ip6-config': Ip6Config;
-            'login-banner': LoginBanner;
-            quit: Quit;
-            'secrets-required': SecretsRequired;
-            'state-changed': StateChanged;
-            'notify::service-name': GObject.Object.Notify;
-            'notify::state': GObject.Object.Notify;
-            'notify::watch-peer': GObject.Object.Notify;
+            config: (arg0: GLib.Variant) => void;
+            failure: (arg0: number) => void;
+            'ip4-config': (arg0: GLib.Variant) => void;
+            'ip6-config': (arg0: GLib.Variant) => void;
+            'login-banner': (arg0: string) => void;
+            quit: () => void;
+            'secrets-required': (arg0: string, arg1: string[]) => void;
+            'state-changed': (arg0: number) => void;
+            'notify::service-name': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::watch-peer': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -33353,6 +34070,14 @@ export namespace NM {
          * Whether to watch for D-Bus peer's changes.
          */
         get watchPeer(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: VpnServicePlugin.SignalSignatures;
 
         // Constructors
 
@@ -33364,17 +34089,17 @@ export namespace NM {
 
         connect<K extends keyof VpnServicePlugin.SignalSignatures>(
             signal: K,
-            callback: VpnServicePlugin.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VpnServicePlugin.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VpnServicePlugin.SignalSignatures>(
             signal: K,
-            callback: VpnServicePlugin.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, VpnServicePlugin.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VpnServicePlugin.SignalSignatures>(
             signal: K,
-            ...args: VpnServicePlugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<VpnServicePlugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -33969,18 +34694,18 @@ export namespace NM {
     namespace WifiP2PPeer {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::flags': GObject.Object.Notify;
-            'notify::hw-address': GObject.Object.Notify;
-            'notify::last-seen': GObject.Object.Notify;
-            'notify::manufacturer': GObject.Object.Notify;
-            'notify::model': GObject.Object.Notify;
-            'notify::model-number': GObject.Object.Notify;
-            'notify::name': GObject.Object.Notify;
-            'notify::serial': GObject.Object.Notify;
-            'notify::strength': GObject.Object.Notify;
-            'notify::wfd-ies': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
+            'notify::flags': (pspec: GObject.ParamSpec) => void;
+            'notify::hw-address': (pspec: GObject.ParamSpec) => void;
+            'notify::last-seen': (pspec: GObject.ParamSpec) => void;
+            'notify::manufacturer': (pspec: GObject.ParamSpec) => void;
+            'notify::model': (pspec: GObject.ParamSpec) => void;
+            'notify::model-number': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::serial': (pspec: GObject.ParamSpec) => void;
+            'notify::strength': (pspec: GObject.ParamSpec) => void;
+            'notify::wfd-ies': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -34066,6 +34791,14 @@ export namespace NM {
          * The WFD information elements of the P2P peer.
          */
         get wfdIes(): GLib.Bytes;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WifiP2PPeer.SignalSignatures;
 
         // Constructors
 
@@ -34077,17 +34810,17 @@ export namespace NM {
 
         connect<K extends keyof WifiP2PPeer.SignalSignatures>(
             signal: K,
-            callback: WifiP2PPeer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WifiP2PPeer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WifiP2PPeer.SignalSignatures>(
             signal: K,
-            callback: WifiP2PPeer.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WifiP2PPeer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WifiP2PPeer.SignalSignatures>(
             signal: K,
-            ...args: WifiP2PPeer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WifiP2PPeer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
@@ -34171,11 +34904,11 @@ export namespace NM {
     namespace WimaxNsp {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::name': GObject.Object.Notify;
-            'notify::network-type': GObject.Object.Notify;
-            'notify::signal-quality': GObject.Object.Notify;
-            'notify::client': GObject.Object.Notify;
-            'notify::path': GObject.Object.Notify;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::network-type': (pspec: GObject.ParamSpec) => void;
+            'notify::signal-quality': (pspec: GObject.ParamSpec) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+            'notify::path': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -34214,6 +34947,14 @@ export namespace NM {
          * The signal quality of the WiMAX NSP.
          */
         get signalQuality(): number;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: WimaxNsp.SignalSignatures;
 
         // Constructors
 
@@ -34223,16 +34964,19 @@ export namespace NM {
 
         // Signals
 
-        connect<K extends keyof WimaxNsp.SignalSignatures>(signal: K, callback: WimaxNsp.SignalSignatures[K]): number;
+        connect<K extends keyof WimaxNsp.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WimaxNsp.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WimaxNsp.SignalSignatures>(
             signal: K,
-            callback: WimaxNsp.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, WimaxNsp.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WimaxNsp.SignalSignatures>(
             signal: K,
-            ...args: WimaxNsp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<WimaxNsp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 

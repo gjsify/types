@@ -355,6 +355,14 @@ export namespace MediaArt {
      */
     class Process extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Process>;
+        /**
+         * Compile-time signal type information.
+         *
+         * This static property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        static $signals: Process.SignalSignatures;
 
         // Constructors
 
@@ -366,16 +374,19 @@ export namespace MediaArt {
 
         // Signals
 
-        connect<K extends keyof Process.SignalSignatures>(signal: K, callback: Process.SignalSignatures[K]): number;
+        connect<K extends keyof Process.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Process.SignalSignatures[K]>,
+        ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Process.SignalSignatures>(
             signal: K,
-            callback: Process.SignalSignatures[K],
+            callback: GObject.SignalCallback<this, Process.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Process.SignalSignatures>(
             signal: K,
-            ...args: Process.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+            ...args: GObject.GjsParameters<Process.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
